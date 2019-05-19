@@ -1,22 +1,21 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React, { FunctionComponent } from 'react';
 
-import Header from './header';
+import Navbar from './navbar.component';
 import './layout.css';
 import Footer from './footer.component';
+import { Landing } from './landing.component';
 
-interface LayoutProps {}
+interface LayoutProps {
+    landing?: boolean;
+}
 
 // tslint:disable: jsx-no-lambda
-const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
+const Layout: FunctionComponent<LayoutProps> = ({
+    children,
+    landing = false,
+}) => (
     <>
-        <Header />
+        {landing ? <Landing /> : <Navbar />}
         <main>{children}</main>
         <Footer />
     </>
