@@ -2,11 +2,12 @@ import { FunctionComponent } from 'react';
 import React from 'react';
 import { Container } from './container.component';
 import styled from '@emotion/styled';
-import { OutboundLink } from 'gatsby-plugin-gtag';
+import { MainOutboundLink } from './link.component';
 
 const ContainerFlex = styled(Container)`
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 
     @media (min-width: 768px) {
         flex-direction: row;
@@ -21,19 +22,31 @@ const FooterWrapper = styled.footer`
 `;
 
 const LinksBox = styled.div`
-    width: 16.666%;
+    @media (min-width: 768px) {
+        width: 16.666%;
+    }
+    width: 100%;
 `;
 
 const SocialBox = styled.div`
-    width: 16.666%;
+    @media (min-width: 768px) {
+        width: 16.666%;
+    }
+    width: 100%;
 `;
 
 const SponsorBox = styled.div`
-    width: 25%;
+    @media (min-width: 768px) {
+        width: 25%;
+    }
+    width: 100%;
 `;
 
 const SiteBox = styled.div`
-    width: 33.333%;
+    @media (min-width: 768px) {
+        width: 33.333%;
+    }
+    width: 100%;
 `;
 
 const SectionHeader = styled.h4`
@@ -41,6 +54,19 @@ const SectionHeader = styled.h4`
     font-size: 18px;
     font-weight: 500;
     line-height: 32.4px;
+    margin-bottom: 8px;
+`;
+
+const FooterUl = styled.ul`
+    padding-left: 0;
+    list-style: none;
+    margin-left: 0;
+`;
+
+const FooterLi = styled.li`
+    line-height: 23.8px;
+    font-size: 14px;
+    margin-bottom: 0;
 `;
 
 const Footer: FunctionComponent<{}> = () => {
@@ -49,37 +75,39 @@ const Footer: FunctionComponent<{}> = () => {
             <ContainerFlex>
                 <LinksBox>
                     <SectionHeader>Resources</SectionHeader>
-                    <ul>
-                        <li>
-                            <OutboundLink href="http://wiki.sk89q.com/wiki/Main_Page">
+                    <FooterUl>
+                        <FooterLi>
+                            <MainOutboundLink href="http://wiki.sk89q.com/wiki/Main_Page">
                                 Wiki
-                            </OutboundLink>
-                        </li>
-                        <li>
-                            <OutboundLink href="http://dev.enginehub.org/youtrack/">
+                            </MainOutboundLink>
+                        </FooterLi>
+                        <FooterLi>
+                            <MainOutboundLink href="http://dev.enginehub.org/youtrack/">
                                 Issue Tracker
-                            </OutboundLink>
-                        </li>
-                        <li>
-                            <OutboundLink href="https://builds.enginehub.org">
+                            </MainOutboundLink>
+                        </FooterLi>
+                        <FooterLi>
+                            <MainOutboundLink href="https://builds.enginehub.org">
                                 Test Builds
-                            </OutboundLink>
-                        </li>
-                    </ul>
+                            </MainOutboundLink>
+                        </FooterLi>
+                    </FooterUl>
                 </LinksBox>
                 <SocialBox>
                     <SectionHeader>Social</SectionHeader>
-                    <ul>
-                        <li>
-                            <OutboundLink href="https://discord.gg/enginehub">
+                    <FooterUl>
+                        <FooterLi>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
                                 Discord
-                            </OutboundLink>
-                        </li>
-                    </ul>
+                            </MainOutboundLink>
+                        </FooterLi>
+                    </FooterUl>
                 </SocialBox>
                 <SponsorBox>
                     <SectionHeader>Sponsors</SectionHeader>
-                    TODO
+                    <a href="https://www.netlify.com">
+                        <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" />
+                    </a>
                 </SponsorBox>
                 <SiteBox>
                     <SectionHeader>EngineHub.org</SectionHeader>
@@ -87,9 +115,9 @@ const Footer: FunctionComponent<{}> = () => {
                         <small>
                             The content and trademarks presented are the
                             property of their respective owners. Please{' '}
-                            <OutboundLink href="https://matthewmiller.dev/">
+                            <MainOutboundLink href="https://matthewmiller.dev/contact/">
                                 contact Me4502
-                            </OutboundLink>{' '}
+                            </MainOutboundLink>{' '}
                             about website errors.
                         </small>
                     </p>

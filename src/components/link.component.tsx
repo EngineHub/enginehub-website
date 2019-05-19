@@ -1,0 +1,13 @@
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { Link } from 'gatsby';
+import { OutboundLink } from 'gatsby-plugin-gtag';
+
+const MainLinkStyle = () => css`
+    color: rgb(0, 89, 209);
+    text-decoration: none;
+`;
+
+export const MainLink = styled(Link)(MainLinkStyle);
+
+export const MainOutboundLink = styled(OutboundLink)(MainLinkStyle);

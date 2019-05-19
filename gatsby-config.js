@@ -3,6 +3,7 @@ module.exports = {
     title: `EngineHub`,
     description: `Open-source mods for and by the Minecraft community`,
     author: `@the_me4502`,
+    siteUrl: 'https://enginehub.org/'
   },
   plugins: [
     `gatsby-plugin-sitemap`,
