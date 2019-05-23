@@ -36,6 +36,7 @@ const Title = styled.h1`
     margin-bottom: 11.5px;
     font-weight: 500;
     max-width: 720px;
+    text-align: center;
 
     @media (min-width: 768px) {
         font-size: 36px;
@@ -50,6 +51,7 @@ const Subtitle = styled.h2`
     line-height: 1.7;
     font-weight: 400;
     max-width: 720px;
+    text-align: center;
 
     @media (min-width: 768px) {
         font-size: 16px;
