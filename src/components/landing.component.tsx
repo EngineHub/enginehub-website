@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Navbar from './navbar.component';
+import { Container } from './container.component';
 
 interface LandingProps {}
 
@@ -24,8 +25,15 @@ const HeaderImg = styled(Img)`
 
 const HeaderContent = styled.div`
     position: absolute;
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 100%;
+    height: 24rem;
+    padding-top: 30px;
+    padding-bottom: 30px;
+`;
+
+const LandingText = styled.div`
+    padding: 50px 0;
+    text-align: center;
 `;
 
 const Title = styled.h1`
@@ -36,7 +44,6 @@ const Title = styled.h1`
     margin-bottom: 11.5px;
     font-weight: 500;
     max-width: 720px;
-    text-align: center;
 
     @media (min-width: 768px) {
         font-size: 36px;
@@ -51,7 +58,6 @@ const Subtitle = styled.h2`
     line-height: 1.7;
     font-weight: 400;
     max-width: 720px;
-    text-align: center;
 
     @media (min-width: 768px) {
         font-size: 16px;
@@ -77,18 +83,22 @@ export const Landing: FunctionComponent<LandingProps> = () => {
                 
                 <HeaderContent>
                     <Navbar inverted={true} />
-                    <Title>
-                        Open-source mods for and by the Minecraft community
-                    </Title>
-                    <Subtitle>
-                        We're a collection of mods, plugins, and tools created
-                        for Minecraft by members of the community. Our projects
-                        are all open source and power all varieties of servers —
-                        from the large to the family-sized. Many of our projects
-                        are available, officially or unofficially, for Bukkit,
-                        Sponge, Minecraft Forge, MinecraftEdu, LiteLoader, and
-                        other platforms.
-                    </Subtitle>
+                    <LandingText>
+                        <Container>
+                            <Title>
+                                Open-source mods for and by the Minecraft community
+                            </Title>
+                            <Subtitle>
+                                We're a collection of mods, plugins, and tools created
+                                for Minecraft by members of the community. Our projects
+                                are all open source and power all varieties of servers —
+                                from the large to the family-sized. Many of our projects
+                                are available, officially or unofficially, for Bukkit,
+                                Sponge, Minecraft Forge, MinecraftEdu, LiteLoader, and
+                                other platforms.
+                            </Subtitle>
+                        </Container>
+                    </LandingText>
                 </HeaderContent>
             </HeaderWrapper>
         </>
