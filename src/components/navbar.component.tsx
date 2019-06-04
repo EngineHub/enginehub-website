@@ -8,21 +8,21 @@ interface NavbarProps {
     inverted?: boolean;
 }
 
-const Nav = styled.nav`
+const Nav = styled.nav<InvertedProps>`
     position: relative;
     min-height: 50px;
     margin: 0;
-    background: 0;
+    background: ${props => (props.inverted ? `0` : `#f8f8f8`)};
     border: 0;
     border-radius: 0;
 `;
 
 type InvertedProps = {
     inverted: boolean;
-}
+};
 
 const HeaderLink = styled(Link)<InvertedProps>`
-    color: ${props => props.inverted ? `#fff` : `#777777`};
+    color: ${props => (props.inverted ? `#fff` : `#777777`)};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;
@@ -32,15 +32,20 @@ const HeaderLink = styled(Link)<InvertedProps>`
 `;
 
 const DiscordButton = styled(OutboundLink)<InvertedProps>`
-    border: 1px solid #412e61;
-    color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,.1);
+    border: ${props =>
+        props.inverted ? `1px solid #412e61` : `1px solid #ccc`};
+    color: ${props => (props.inverted ? `#fff` : `#333`)};
+    text-shadow: ${props =>
+        props.inverted ? `0 1px rgba(0,0,0,.1)` : `0 1px 0 #fff`};
     font-weight: 700;
     cursor: pointer;
     margin-top: 6.5px;
     margin-bottom: 6.5px;
     float: right;
-    background-image: linear-gradient(to bottom,#4d3672 0,#412e61 100%);
+    background-image: ${props =>
+        props.inverted
+            ? `linear-gradient(to bottom,#4d3672 0,#412e61 100%)`
+            : `linear-gradient(to bottom,#f5f5f5 0,#f1f1f1 100%)`};
     text-align: center;
     vertical-align: middle;
     padding: 6px 12px;
@@ -48,21 +53,34 @@ const DiscordButton = styled(OutboundLink)<InvertedProps>`
     line-height: 1.7;
     border-radius: 4px;
     text-decoration: none;
+    box-shadow: ${props =>
+        props.inverted ? `none` : `0 1px 1px rgba(0,0,0,.1)`};
 
     :hover {
-        border: 1px solid #36264f;
-        background-image: linear-gradient(to bottom,#4d3672 0,#36264f 100%);
+        border: ${props =>
+            props.inverted ? `1px solid #36264f` : `1px solid #c6c6c6`};
+        background-image: ${props =>
+            props.inverted
+                ? `linear-gradient(to bottom,#4d3672 0,#36264f 100%)`
+                : `linear-gradient(to bottom,#f8f8f8 0,#f1f1f1 100%)`};
     }
 `;
 
 const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false }) => (
-    <Nav>
+    <Nav inverted={inverted}>
         <Container>
             <div>
-                <HeaderLink to="/" inverted={inverted}>EngineHub.org</HeaderLink>
+                <HeaderLink to="/" inverted={inverted}>
+                    EngineHub.org
+                </HeaderLink>
             </div>
             <div>
-                <DiscordButton href={'https://discord.gg/enginehub'}>Ask questions on our Discord</DiscordButton>
+                <DiscordButton
+                    inverted={inverted}
+                    href={'https://discord.gg/enginehub'}
+                >
+                    Ask questions on our Discord
+                </DiscordButton>
             </div>
         </Container>
     </Nav>

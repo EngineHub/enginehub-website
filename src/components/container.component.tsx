@@ -14,3 +14,7 @@ export const Container = styled.div`
     width: 1030px;
   }
 `;
+
+export const ContainerPadded = styled(Container)`
+  margin-top: 20px;
+`;
