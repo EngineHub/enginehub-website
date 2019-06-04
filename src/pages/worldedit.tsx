@@ -17,7 +17,11 @@ import {
 import { MainOutboundLink } from '../components/link.component';
 import SidebarDivider from '../components/sidebar/sidebar-divider.component';
 import SubtleText from '../components/subtle-text.component';
-import JumbotronContainer, { JumbotronText, JumbotronButtonBox } from '../components/jumbotron.component';
+import JumbotronContainer, {
+    JumbotronText,
+    JumbotronButtonBox,
+} from '../components/jumbotron.component';
+import SectionHeading from '../components/section-heading.component';
 
 interface WorldEditPageData {
     allFile: {
@@ -87,7 +91,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </MainOutboundLink>
                         </SubtleText>
                         <iframe
-                            src="http://ghbtns.com/github-btn.html?user=EngineHub&amp;repo=worldedit&amp;type=watch&amp;count=true"
+                            src="https://ghbtns.com/github-btn.html?user=EngineHub&amp;repo=worldedit&amp;type=watch&amp;count=true"
                             allowTransparency={true}
                             frameBorder="0"
                             scrolling="0"
@@ -97,8 +101,79 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     </ColumnsQuarter>
                     <ColumnsThreeQuarter>
                         <JumbotronContainer>
-                            <JumbotronText>WorldEdit is an open source in-game map editor available for Bukkit, Forge, MinecraftEdu, and many other platforms.</JumbotronText>
+                            <JumbotronText>
+                                WorldEdit is an open source in-game map editor
+                                available for Bukkit, Forge, MinecraftEdu, and
+                                many other platforms.
+                            </JumbotronText>
                         </JumbotronContainer>
+                        <SectionHeading>Features</SectionHeading>
+                        <p>
+                            WorldEdit lets you build <em>fast</em> and{' '}
+                            <em>smart</em>. Why should you spend your time
+                            building a wall or excavating a hole when you can
+                            work on something <em>creative</em>?
+                        </p>
+                        <ul>
+                            <li>
+                                Create more impressive and much larger builds
+                                with less time
+                            </li>
+                            <li>
+                                Fix griefing and other issues without shutting
+                                down your server
+                            </li>
+                            <li>
+                                Quickly create, replace or delete thousands of
+                                blocks in seconds
+                            </li>
+                            <li>
+                                Level an entire mountain and replace it with
+                                natural looking terrain
+                            </li>
+                            <li>
+                                Use hand-bound tools and brushes to quickly
+                                build mountains
+                            </li>
+                            <li>
+                                Generate spheres, cylinders, cuboids, forests,
+                                pumpkin patches, and snowy areas
+                            </li>
+                            <li>
+                                Use your compass to quickly teleport to areas by
+                                left clicking or using /jumpto
+                            </li>
+                            <li>
+                                Choose an area and have it instantly restored
+                                from backups
+                            </li>
+                            <li>
+                                Copy areas, paste them, load them, and save them
+                                as schematics
+                            </li>
+                            <li>
+                                Evaluate mathematical expressions such as{' '}
+                                <code>{`//g stone (0.75-sqrt(x^2+y^2))^2+z^2 < 0.25^2`}</code>
+                            </li>
+                            <li>Many more! There are over 100 functions.</li>
+                        </ul>
+                        <SectionHeading>Watch it in action</SectionHeading>
+                        <iframe
+                            width="100%"
+                            height="410"
+                            src="https://www.youtube.com/embed/72HlPD9CW10?theme=light&amp;rel=0"
+                            frameBorder={0}
+                            allowFullScreen={true}
+                        />
+                        <iframe
+                            width="100%"
+                            height="410"
+                            src="https://www.youtube.com/embed/yl1hTctucOc?theme=light&amp;rel=0"
+                            frameBorder={0}
+                            allowFullScreen={true}
+                        />
+                        <SectionHeading>Downloads</SectionHeading>
+                        <p>Please choose a download for your platform.</p>
                     </ColumnsThreeQuarter>
                 </Row>
             </ContainerPadded>

@@ -32,6 +32,8 @@ html {
 }
 body {
   margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -353,7 +355,7 @@ ul {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin-bottom: 11.5px;
   list-style-position: outside;
   list-style-image: none;
 }
@@ -521,9 +523,6 @@ dt {
 th {
   font-weight: bold;
 }
-li {
-  margin-bottom: calc(1.45rem / 2);
-}
 ol li {
   padding-left: 0;
 }
@@ -553,8 +552,11 @@ li > p {
   margin-bottom: calc(1.45rem / 2);
 }
 code {
-  font-size: 0.85rem;
-  line-height: 1.45rem;
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
 }
 kbd {
   font-size: 0.85rem;
@@ -605,8 +607,7 @@ tt,
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
-  font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
-    "Liberation Mono", Menlo, Courier, monospace;
+  font-family: Menlo,Monaco,Consolas,courier new,monospace;
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
