@@ -9,13 +9,17 @@ interface LandingProps {}
 
 const HeaderWrapper = styled.div`
     overflow: hidden;
-    height: 24rem;
+    height: 32rem;
     width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media(min-width: 430px) {
+        height: 24rem;
+    }
 `;
 
 const HeaderImg = styled(Img)`
@@ -25,9 +29,10 @@ const HeaderImg = styled(Img)`
 
 const HeaderContent = styled.div`
     position: absolute;
+    top: 1rem;
     width: 100%;
     height: 24rem;
-    padding-top: 30px;
+    padding-top: 0px;
     padding-bottom: 30px;
 `;
 
