@@ -284,6 +284,50 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </ol>
                         </PlatformBanner>
                         <PlatformBanner
+                            logo={logoMap.get('spongepowered-logo')!}
+                            alt={'SpongePowered'}
+                        >
+                            <p>We officially support WorldEdit for Sponge.</p>
+                            <p>
+                                <BlueOutboundButton
+                                    href={
+                                        'https://ore.spongepowered.org/enginehub/WorldEdit'
+                                    }
+                                >
+                                    Latest release for Sponge
+                                </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://builds.enginehub.org/job/worldedit'
+                                    }
+                                >
+                                    Experimental builds for Sponge
+                                </GrayOutboundButton>
+                            </p>
+                            <ol>
+                                <li>
+                                    Find the <em>mods</em> folder inside your
+                                    Sponge server's folder.
+                                </li>
+                                <li>
+                                    Place the downloaded ".jar" file in your
+                                    mods folder.
+                                </li>
+                                <li>
+                                    Start your server as you may have done
+                                    before.
+                                </li>
+                                <li>
+                                    Either configure your permissions plugin (if
+                                    you are using one); otherwise, use{' '}
+                                    <b>/op your_name</b> to make yourself a
+                                    server operator.
+                                </li>
+                            </ol>
+                        </PlatformBanner>
+                        <PlatformBanner
                             logo={logoMap.get('mcedu-logo')!}
                             alt={'MinecraftEdu'}
                         >
@@ -344,6 +388,7 @@ export const query = graphql`
                         "mcedu-logo"
                         "liteloader-logo"
                         "canarymod-logo"
+                        "spongepowered-logo"
                     ]
                 }
             }

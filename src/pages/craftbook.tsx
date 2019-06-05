@@ -249,6 +249,58 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
+                        <PlatformBanner
+                            logo={logoMap.get('spongepowered-logo')!}
+                            alt={'SpongePowered'}
+                        >
+                            <p>We officially support CraftBook for Sponge.</p>
+                            <p>
+                                <BlueOutboundButton
+                                    href={
+                                        'https://ore.spongepowered.org/EngineHub/CraftBook'
+                                    }
+                                >
+                                    Latest release for Sponge
+                                </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://builds.enginehub.org/job/craftbook'
+                                    }
+                                >
+                                    Experimental builds for Sponge
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <WarningLabel>Note!</WarningLabel> CraftBook
+                                requires that{' '}
+                                <MainLink to={'/worldedit/'}>
+                                    WorldEdit
+                                </MainLink>{' '}
+                                is installed.
+                            </p>
+                            <ol>
+                                <li>
+                                    Find the <em>mods</em> folder inside your
+                                    Sponge server's folder.
+                                </li>
+                                <li>
+                                    Place the downloaded ".jar" file in your
+                                    mods folder.
+                                </li>
+                                <li>
+                                    Start your server as you may have done
+                                    before.
+                                </li>
+                                <li>
+                                    Either configure your permissions plugin (if
+                                    you are using one); otherwise, use{' '}
+                                    <b>/op your_name</b> to make yourself a
+                                    server operator.
+                                </li>
+                            </ol>
+                        </PlatformBanner>
                     </ColumnsThreeQuarter>
                 </Row>
             </ContainerPadded>
@@ -267,7 +319,7 @@ export const query = graphql`
                 }
             }
         }
-        allFile(filter: { name: { in: ["bukkit-logo"] } }) {
+        allFile(filter: { name: { in: ["bukkit-logo", "spongepowered-logo"] } }) {
             nodes {
                 childImageSharp {
                     fixed(width: 150, quality: 100) {

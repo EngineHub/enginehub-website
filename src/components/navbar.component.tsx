@@ -33,10 +33,22 @@ const HeaderLink = styled(Link)<InvertedProps>`
 
 const FloatedPurpleButton = styled(PurpleOutboundButton)`
     float: right;
+
+    display: none;
+
+    @media(min-width: 410px) {
+        display: block;
+    }
 `;
 
 const FloatedGrayButton = styled(GrayOutboundButton)`
     float: right;
+
+    display: none;
+
+    @media(min-width: 410px) {
+        display: block;
+    }
 `;
 
 const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false }) => {
