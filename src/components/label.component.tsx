@@ -16,3 +16,7 @@ const Label = styled.span`
 export const WarningLabel = styled(Label)`
     background-color: #f0ad4e;
 `;
+
+export const InfoLabel = styled(Label)`
+    background-color: #777;
+`;
