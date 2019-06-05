@@ -56,6 +56,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
             <SEO
                 title="WorldEdit"
                 description="WorldEdit is an open source in-game map editor available for Bukkit, Sponge, Forge, MinecraftEdu, and many other platforms."
+                image={data.file.childImageSharp.fixed.src}
             />
             <ContainerPadded>
                 <Row>

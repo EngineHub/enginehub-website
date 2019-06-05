@@ -34,6 +34,11 @@ const ProjectList = styled.ul`
 `;
 
 interface IndexPageData {
+    file: {
+        childImageSharp: {
+            fixed: FixedObject;
+        }
+    };
     allFile: {
         nodes: {
             childImageSharp: {
@@ -53,6 +58,7 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
             <SEO
                 title="Welcome"
                 description="Open-source mods for and by the Minecraft community"
+                image={data.file.childImageSharp.fixed.src}
             />
             <Container>
                 <HeadingContainer>
@@ -107,6 +113,13 @@ export default IndexPage;
 
 export const query = graphql`
     query {
+        file(name: { eq: "enginehub-logo" }) {
+            childImageSharp {
+                fixed(width: 100, height: 100, quality: 100) {
+                    ...GatsbyImageSharpFixed
+                }
+            }
+        }
         allFile(
             filter: {
                 name: {

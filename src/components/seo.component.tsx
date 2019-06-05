@@ -15,9 +15,10 @@ interface SEOProps {
   meta?: any[];
   keywords?: string[];
   title: string;
+  image?: string;
 }
 
-const SEO: FunctionComponent<SEOProps> = ({ description, lang, meta, keywords, title }) => {
+const SEO: FunctionComponent<SEOProps> = ({ description, lang, meta, keywords, title, image }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -74,6 +75,10 @@ const SEO: FunctionComponent<SEOProps> = ({ description, lang, meta, keywords, t
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          property: `og:image`,
+          content: image
+        }
       ]
         .concat(
           keywords!.length > 0
@@ -93,6 +98,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
+  image: undefined
 }
 
 export default SEO
