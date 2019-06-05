@@ -23,7 +23,7 @@ export const JumbotronText = styled.h2`
 `;
 
 export const JumbotronButtonBox = styled.div`
-
+    margin: 0 0 0 10px;
 `;
 
 export default JumbotronContainer;

@@ -14,7 +14,7 @@ import {
     SidebarNavList,
     SidebarNavListItem,
 } from '../components/sidebar/sidebar-nav.component';
-import { MainOutboundLink } from '../components/link.component';
+import { MainOutboundLink, MainLink } from '../components/link.component';
 import SidebarDivider from '../components/sidebar/sidebar-divider.component';
 import SubtleText from '../components/subtle-text.component';
 import JumbotronContainer, {
@@ -22,8 +22,21 @@ import JumbotronContainer, {
     JumbotronButtonBox,
 } from '../components/jumbotron.component';
 import SectionHeading from '../components/section-heading.component';
+import GitHubButton from 'react-github-btn';
+import PlatformBanner from '../components/platform-banner.component';
+import { WarningLabel } from '../components/label.component';
+import {
+    GrayOutboundButton,
+    BlueButton,
+    BlueOutboundButton,
+} from '../components/button.component';
 
 interface WorldEditPageData {
+    file: {
+        childImageSharp: {
+            fixed: FixedObject;
+        };
+    };
     allFile: {
         nodes: {
             childImageSharp: {
@@ -48,19 +61,25 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                 <Row>
                     <ColumnsQuarter>
                         <SidebarIcon
-                            image={logoMap.get('worldedit-icon')!}
+                            image={data.file.childImageSharp.fixed}
                             alt={'WorldEdit Logo'}
                         />
                         <SidebarHeading>WorldEdit</SidebarHeading>
                         <SidebarNavList>
                             <SidebarNavListItem>
-                                Features (Anchor Point TODO)
+                                <MainLink to={'/worldedit/#features'}>
+                                    Features
+                                </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                Videos (Anchor Point TODO)
+                                <MainLink to={'/worldedit/#videos'}>
+                                    Videos
+                                </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                Downloads (Anchor Point TODO)
+                                <MainLink to={'/worldedit/#downloads'}>
+                                    Downloads
+                                </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
                                 <MainOutboundLink href="https://worldedit.rtfd.io">
@@ -90,14 +109,14 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 Me4502
                             </MainOutboundLink>
                         </SubtleText>
-                        <iframe
-                            src="https://ghbtns.com/github-btn.html?user=EngineHub&amp;repo=worldedit&amp;type=watch&amp;count=true"
-                            allowTransparency={true}
-                            frameBorder="0"
-                            scrolling="0"
-                            width="110"
-                            height="20"
-                        />
+                        <GitHubButton
+                            href="https://github.com/EngineHub/worldedit"
+                            data-icon="octicon-star"
+                            data-show-count="true"
+                            aria-label="Star EngineHub/worldedit on GitHub"
+                        >
+                            Star
+                        </GitHubButton>
                     </ColumnsQuarter>
                     <ColumnsThreeQuarter>
                         <JumbotronContainer>
@@ -106,8 +125,13 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 available for Bukkit, Forge, MinecraftEdu, and
                                 many other platforms.
                             </JumbotronText>
+                            <JumbotronButtonBox>
+                                <BlueButton to={'/worldedit/#downloads'}>
+                                    List downloads
+                                </BlueButton>
+                            </JumbotronButtonBox>
                         </JumbotronContainer>
-                        <SectionHeading>Features</SectionHeading>
+                        <SectionHeading id="features">Features</SectionHeading>
                         <p>
                             WorldEdit lets you build <em>fast</em> and{' '}
                             <em>smart</em>. Why should you spend your time
@@ -157,7 +181,9 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </li>
                             <li>Many more! There are over 100 functions.</li>
                         </ul>
-                        <SectionHeading>Watch it in action</SectionHeading>
+                        <SectionHeading id="videos">
+                            Watch it in action
+                        </SectionHeading>
                         <iframe
                             width="100%"
                             height="410"
@@ -172,8 +198,124 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                        <SectionHeading>Downloads</SectionHeading>
+                        <SectionHeading id="downloads">
+                            Downloads
+                        </SectionHeading>
                         <p>Please choose a download for your platform.</p>
+                        <PlatformBanner
+                            logo={logoMap.get('bukkit-logo')!}
+                            alt={'Bukkit'}
+                        >
+                            <p>We officially support WorldEdit for Bukkit.</p>
+                            <p>
+                                <BlueOutboundButton
+                                    href={
+                                        'http://dev.bukkit.org/bukkit-plugins/worldedit/files/'
+                                    }
+                                >
+                                    Latest release for Bukkit
+                                </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://builds.enginehub.org/job/worldedit'
+                                    }
+                                >
+                                    Experimental builds for Bukkit
+                                </GrayOutboundButton>
+                            </p>
+                            <ol>
+                                <li>
+                                    Find the <em>plugins</em> folder inside your
+                                    Bukkit server's folder.
+                                </li>
+                                <li>
+                                    Place the downloaded ".jar" file in your
+                                    plugins folder.
+                                </li>
+                                <li>
+                                    Start your server as you may have done
+                                    before.
+                                </li>
+                                <li>
+                                    Either configure your permissions plugin (if
+                                    you are using one); otherwise, use{' '}
+                                    <b>/op your_name</b> to make yourself a
+                                    server operator.
+                                </li>
+                            </ol>
+                        </PlatformBanner>
+                        <PlatformBanner
+                            logo={logoMap.get('forge-logo')!}
+                            alt={'Minecraft Forge'}
+                        >
+                            <p>
+                                We officially support WorldEdit for
+                                MinecraftForge.
+                            </p>
+                            <GrayOutboundButton
+                                href={
+                                    'https://builds.enginehub.org/job/worldedit'
+                                }
+                            >
+                                Experimental builds for MinecraftForge
+                            </GrayOutboundButton>
+                            <ol>
+                                <li>
+                                    Find the <em>mods</em> folder inside your
+                                    Minecraft client/server's folder.
+                                </li>
+                                <li>
+                                    Place the downloaded ".jar" file in your
+                                    mods folder.
+                                </li>
+                                <li>
+                                    Start your server or client as you may have
+                                    done before.
+                                </li>
+                                <li>
+                                    Either configure your permissions plugin (if
+                                    you are using one); otherwise, use{' '}
+                                    <b>/op your_name</b> to make yourself a
+                                    server operator.
+                                </li>
+                            </ol>
+                        </PlatformBanner>
+                        <PlatformBanner
+                            logo={logoMap.get('mcedu-logo')!}
+                            alt={'MinecraftEdu'}
+                        >
+                            <p>
+                                MinecraftEdu comes bundled with an (older)
+                                version of WorldEdit. While we can assist with
+                                usage of WorldEdit, we are unable to assist with
+                                the update or installation of WorldEdit with
+                                MinecraftEdu.
+                            </p>
+                        </PlatformBanner>
+                        <PlatformBanner
+                            logo={logoMap.get('liteloader-logo')!}
+                            alt={'LiteLoader'}
+                        >
+                            <p>
+                                We do not officially support LiteLoader, but you
+                                can download{' '}
+                                <MainOutboundLink
+                                    href={
+                                        'http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1294341-worldeditwrapper-use-worldedit-in-single-player'
+                                    }
+                                >
+                                    an unofficial WorldEditWrapper
+                                </MainOutboundLink>{' '}
+                                that supports Minecraft 1.7.2.
+                            </p>
+                            <p>
+                                <WarningLabel>Note!</WarningLabel> Some
+                                features, such as setting biomes or copying and
+                                pasting chests may not work with this version.
+                            </p>
+                        </PlatformBanner>
                     </ColumnsThreeQuarter>
                 </Row>
             </ContainerPadded>
@@ -185,10 +327,29 @@ export default WorldEditPage;
 
 export const query = graphql`
     query {
-        allFile(filter: { name: { in: ["worldedit-icon"] } }) {
+        file(name: { eq: "worldedit-icon" }) {
+            childImageSharp {
+                fixed(width: 100, height: 100, quality: 100) {
+                    ...GatsbyImageSharpFixed
+                }
+            }
+        }
+        allFile(
+            filter: {
+                name: {
+                    in: [
+                        "bukkit-logo"
+                        "forge-logo"
+                        "mcedu-logo"
+                        "liteloader-logo"
+                        "canarymod-logo"
+                    ]
+                }
+            }
+        ) {
             nodes {
                 childImageSharp {
-                    fixed(width: 100, height: 100, quality: 100) {
+                    fixed(width: 150, quality: 100) {
                         ...GatsbyImageSharpFixed
                     }
                 }
