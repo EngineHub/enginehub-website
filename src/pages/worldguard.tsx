@@ -207,7 +207,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'https://builds.enginehub.org/job/worldguard'
+                                        'http://builds.enginehub.org/job/worldguard'
                                     }
                                 >
                                     Experimental builds for Bukkit

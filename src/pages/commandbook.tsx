@@ -193,7 +193,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'https://builds.enginehub.org/job/commandbook'
+                                        'http://builds.enginehub.org/job/commandbook'
                                     }
                                 >
                                     Experimental builds for Bukkit

@@ -220,7 +220,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'https://builds.enginehub.org/job/worldedit'
+                                        'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Bukkit
@@ -257,7 +257,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </p>
                             <GrayOutboundButton
                                 href={
-                                    'https://builds.enginehub.org/job/worldedit'
+                                    'http://builds.enginehub.org/job/worldedit'
                                 }
                             >
                                 Experimental builds for MinecraftForge
@@ -300,7 +300,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'https://builds.enginehub.org/job/worldedit'
+                                        'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Sponge

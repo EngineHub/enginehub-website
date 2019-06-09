@@ -87,7 +87,7 @@ const Footer: FunctionComponent<{}> = () => {
                             </MainOutboundLink>
                         </FooterLi>
                         <FooterLi>
-                            <MainOutboundLink href="https://builds.enginehub.org">
+                            <MainOutboundLink href="http://builds.enginehub.org">
                                 Test Builds
                             </MainOutboundLink>
                         </FooterLi>
