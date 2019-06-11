@@ -255,13 +255,24 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 We officially support WorldEdit for
                                 MinecraftForge.
                             </p>
-                            <GrayOutboundButton
-                                href={
-                                    'http://builds.enginehub.org/job/worldedit'
-                                }
-                            >
-                                Experimental builds for MinecraftForge
-                            </GrayOutboundButton>
+                            <p>
+                                <BlueOutboundButton
+                                    href={
+                                        'https://minecraft.curseforge.com/projects/worldedit'
+                                    }
+                                >
+                                    Latest release for Forge
+                                </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'http://builds.enginehub.org/job/worldedit'
+                                    }
+                                >
+                                    Experimental builds for Forge
+                                </GrayOutboundButton>
+                            </p>
                             <ol>
                                 <li>
                                     Find the <em>mods</em> folder inside your
