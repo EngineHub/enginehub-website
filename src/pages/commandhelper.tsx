@@ -187,15 +187,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 no longer released — the builds above are built
                                 from the latest code.
                             </p>
-                            <p>
-                                <WarningLabel>Note!</WarningLabel> CommandHelper
-                                requires that{' '}
-                                <MainLink to={'/worldedit/'}>
-                                    WorldEdit
-                                </MainLink>{' '}
-                                is installed.
-                            </p>
-                            <ol>
+                           <ol>
                                 <li>
                                     Find the <em>plugins</em> folder inside your
                                     Bukkit server's folder.
