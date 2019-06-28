@@ -6,6 +6,7 @@ import Footer from './footer.component';
 import { Landing } from './landing.component';
 
 interface LayoutProps {
+    discordOverride?: string;
     landing?: boolean;
 }
 
@@ -13,6 +14,7 @@ interface LayoutProps {
 const Layout: FunctionComponent<LayoutProps> = ({
     children,
     landing = false,
+    discordOverride
 }) => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -21,7 +23,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
     }, []);
     return (
         <>
-            {landing ? <Landing /> : <Navbar />}
+            {landing ? <Landing discordOverride={discordOverride} /> : <Navbar discordOverride={discordOverride} />}
             <main>{children}</main>
             <Footer />
         </>

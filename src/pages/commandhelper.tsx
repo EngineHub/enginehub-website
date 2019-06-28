@@ -25,11 +25,10 @@ import SectionHeading from '../components/section-heading.component';
 import GitHubButton from 'react-github-btn';
 import PlatformBanner from '../components/platform-banner.component';
 import {
-    GrayOutboundButton,
     BlueButton,
     BlueOutboundButton,
 } from '../components/button.component';
-import { WarningLabel, InfoLabel } from '../components/label.component';
+import { InfoLabel } from '../components/label.component';
 
 interface CommandHelperPageData {
     file: {
@@ -52,7 +51,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
         data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
     );
     return (
-        <Layout>
+        <Layout discordOverride={"https://discord.gg/Z7jpHed"}>
             <SEO
                 title="CommandHelper"
                 description="CommandHelper lets you create easy-to-write and 'hot-reloadable' scripts for your Bukkit server to handle events and perform tasks — no Java knowledge required!"

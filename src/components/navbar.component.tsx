@@ -5,6 +5,7 @@ import { Container } from './container.component';
 import { GrayOutboundButton, PurpleOutboundButton } from './button.component';
 
 interface NavbarProps {
+    discordOverride?: string;
     inverted?: boolean;
 }
 
@@ -51,7 +52,7 @@ const FloatedGrayButton = styled(GrayOutboundButton)`
     }
 `;
 
-const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false }) => {
+const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false, discordOverride }) => {
     const ButtonComp = inverted ? FloatedPurpleButton : FloatedGrayButton;
     return (
         <Nav inverted={inverted}>
@@ -64,7 +65,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false }) => {
                 <div>
                     <ButtonComp
                         inverted={inverted}
-                        href={'https://discord.gg/enginehub'}
+                        href={discordOverride ? discordOverride : 'https://discord.gg/enginehub'}
                     >
                         Ask questions on our Discord
                     </ButtonComp>

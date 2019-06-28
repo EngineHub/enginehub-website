@@ -5,7 +5,9 @@ import Img from 'gatsby-image';
 import Navbar from './navbar.component';
 import { Container } from './container.component';
 
-interface LandingProps {}
+interface LandingProps {
+    discordOverride?: string;
+}
 
 const HeaderWrapper = styled.div`
     overflow: hidden;
@@ -71,7 +73,7 @@ const Subtitle = styled.h2`
 `;
 
 // tslint:disable: jsx-no-lambda
-export const Landing: FunctionComponent<LandingProps> = () => {
+export const Landing: FunctionComponent<LandingProps> = (props) => {
     return (
         <>
             <HeaderWrapper>
@@ -87,7 +89,7 @@ export const Landing: FunctionComponent<LandingProps> = () => {
                 />
                 
                 <HeaderContent>
-                    <Navbar inverted={true} />
+                    <Navbar inverted={true} discordOverride={props.discordOverride} />
                     <LandingText>
                         <Container>
                             <Title>
