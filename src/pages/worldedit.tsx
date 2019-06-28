@@ -55,7 +55,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
         <Layout>
             <SEO
                 title="WorldEdit"
-                description="WorldEdit is an open source in-game map editor available for Bukkit, Sponge, Forge, MinecraftEdu, and many other platforms."
+                description="WorldEdit is an open source in-game map editor available for Bukkit, Sponge, Forge, Fabric, MinecraftEdu, and many other platforms."
                 image={data.file.childImageSharp.fixed.src}
             />
             <ContainerPadded>
@@ -295,6 +295,53 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </ol>
                         </PlatformBanner>
                         <PlatformBanner
+                            logo={logoMap.get('fabric-logo')!}
+                            alt={'Fabric'}
+                        >
+                            <p>
+                                We officially support WorldEdit for
+                                Fabric.
+                            </p>
+                            <p>
+                                <BlueOutboundButton
+                                    href={
+                                        'https://minecraft.curseforge.com/projects/worldedit'
+                                    }
+                                >
+                                    Latest release for Fabric
+                                </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'http://builds.enginehub.org/job/worldedit'
+                                    }
+                                >
+                                    Experimental builds for Fabric
+                                </GrayOutboundButton>
+                            </p>
+                            <ol>
+                                <li>
+                                    Find the <em>mods</em> folder inside your
+                                    Minecraft client/server's folder.
+                                </li>
+                                <li>
+                                    Place the downloaded ".jar" file in your
+                                    mods folder.
+                                </li>
+                                <li>
+                                    Start your server or client as you may have
+                                    done before.
+                                </li>
+                                <li>
+                                    Either configure your permissions mods (if
+                                    you are using one); otherwise, use{' '}
+                                    <b>/op your_name</b> to make yourself a
+                                    server operator.
+                                </li>
+                            </ol>
+                        </PlatformBanner>
+                        <PlatformBanner
                             logo={logoMap.get('spongepowered-logo')!}
                             alt={'SpongePowered'}
                         >
@@ -386,7 +433,7 @@ export const query = graphql`
         file(name: { eq: "worldedit-icon" }) {
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
-                    ...GatsbyImageSharpFixed
+                    ...GatsbyImageSharpFixed_tracedSVG
                 }
             }
         }
@@ -396,6 +443,7 @@ export const query = graphql`
                     in: [
                         "bukkit-logo"
                         "forge-logo"
+                        "fabric-logo"
                         "mcedu-logo"
                         "liteloader-logo"
                         "canarymod-logo"
@@ -407,7 +455,7 @@ export const query = graphql`
             nodes {
                 childImageSharp {
                     fixed(width: 150, quality: 100) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_tracedSVG
                     }
                 }
                 name

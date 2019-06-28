@@ -115,7 +115,7 @@ const query = graphql`
         file(relativePath: { eq: "landing-bg.jpg" }) {
             childImageSharp {
                 fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid
+                    ...GatsbyImageSharpFluid_withWebp
                 }
             }
         }

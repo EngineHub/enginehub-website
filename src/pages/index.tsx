@@ -116,7 +116,7 @@ export const query = graphql`
         file(name: { eq: "enginehub-logo" }) {
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
-                    ...GatsbyImageSharpFixed
+                    ...GatsbyImageSharpFixed_tracedSVG
                 }
             }
         }
@@ -136,7 +136,7 @@ export const query = graphql`
             nodes {
                 childImageSharp {
                     fixed(width: 80, height: 80, quality: 100) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_tracedSVG
                     }
                 }
                 name
