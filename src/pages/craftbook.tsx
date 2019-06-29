@@ -83,9 +83,9 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                 </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="http://wiki.sk89q.com/wiki/CraftBook">
+                                <MainLink to="/documentation/">
                                     Documentation
-                                </MainOutboundLink>
+                                </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
                                 <MainOutboundLink href="https://discord.gg/enginehub">

@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import React from 'react';
 import { Container } from './container.component';
 import styled from '@emotion/styled';
-import { MainOutboundLink } from './link.component';
+import { MainOutboundLink, MainLink } from './link.component';
 
 const ContainerFlex = styled(Container)`
     display: flex;
@@ -77,9 +77,9 @@ const Footer: FunctionComponent<{}> = () => {
                     <SectionHeader>Resources</SectionHeader>
                     <FooterUl>
                         <FooterLi>
-                            <MainOutboundLink href="http://wiki.sk89q.com/wiki/Main_Page">
-                                Wiki
-                            </MainOutboundLink>
+                            <MainLink to="/documentation/">
+                                Docs 
+                            </MainLink>
                         </FooterLi>
                         <FooterLi>
                             <MainOutboundLink href="http://dev.enginehub.org/youtrack/">
