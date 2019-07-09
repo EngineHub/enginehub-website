@@ -3,10 +3,10 @@ import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import React from 'react';
 import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import Row from '@shared/components/grid/row.component';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4.component';
 import SidebarHeading from '../components/sidebar/sidebar-heading.component';
 import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '../components/sidebar/sidebar-icon.component';
@@ -51,7 +51,9 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                         <SidebarHeading>Docs</SidebarHeading>
                     </ColumnsQuarter>
                     <ColumnsThreeQuarter>
-                        <SectionHeading id="documentation">Documentation</SectionHeading>
+                        <SectionHeading id="documentation">
+                            Documentation
+                        </SectionHeading>
                         <p>Documentation for the following is available:</p>
                         <PlatformBanner
                             logo={logoMap.get('worldedit-icon')!}
@@ -124,9 +126,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                         >
                             <p>
                                 <BlueOutboundButton
-                                    href={
-                                        'https://methodscript.com/docs/'
-                                    }
+                                    href={'https://methodscript.com/docs/'}
                                 >
                                     CommandHelper Docs
                                 </BlueOutboundButton>

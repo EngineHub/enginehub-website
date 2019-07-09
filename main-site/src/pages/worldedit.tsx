@@ -3,23 +3,23 @@ import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import React from 'react';
 import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import Row from '@shared/components/grid/row.component';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4.component';
 import SidebarHeading from '../components/sidebar/sidebar-heading.component';
 import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '../components/sidebar/sidebar-icon.component';
 import {
     SidebarNavList,
-    SidebarNavListItem,
+    SidebarNavListItem
 } from '../components/sidebar/sidebar-nav.component';
 import { MainOutboundLink, MainLink } from '../components/link.component';
 import SidebarDivider from '../components/sidebar/sidebar-divider.component';
 import SubtleText from '../components/subtle-text.component';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox,
+    JumbotronButtonBox
 } from '../components/jumbotron.component';
 import SectionHeading from '../components/section-heading.component';
 import GitHubButton from 'react-github-btn';
@@ -28,7 +28,7 @@ import { WarningLabel } from '../components/label.component';
 import {
     GrayOutboundButton,
     BlueButton,
-    BlueOutboundButton,
+    BlueOutboundButton
 } from '../components/button.component';
 
 interface WorldEditPageData {
@@ -298,10 +298,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             logo={logoMap.get('fabric-logo')!}
                             alt={'Fabric'}
                         >
-                            <p>
-                                We officially support WorldEdit for
-                                Fabric.
-                            </p>
+                            <p>We officially support WorldEdit for Fabric.</p>
                             <p>
                                 <BlueOutboundButton
                                     href={

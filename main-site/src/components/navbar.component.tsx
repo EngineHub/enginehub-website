@@ -37,7 +37,7 @@ const FloatedPurpleButton = styled(PurpleOutboundButton)`
 
     display: none;
 
-    @media(min-width: 410px) {
+    @media (min-width: 410px) {
         display: block;
     }
 `;
@@ -47,12 +47,15 @@ const FloatedGrayButton = styled(GrayOutboundButton)`
 
     display: none;
 
-    @media(min-width: 410px) {
+    @media (min-width: 410px) {
         display: block;
     }
 `;
 
-const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false, discordOverride }) => {
+const Navbar: FunctionComponent<NavbarProps> = ({
+    inverted = false,
+    discordOverride
+}) => {
     const ButtonComp = inverted ? FloatedPurpleButton : FloatedGrayButton;
     return (
         <Nav inverted={inverted}>
@@ -64,8 +67,11 @@ const Navbar: FunctionComponent<NavbarProps> = ({ inverted = false, discordOverr
                 </div>
                 <div>
                     <ButtonComp
-                        inverted={inverted}
-                        href={discordOverride ? discordOverride : 'https://discord.gg/enginehub'}
+                        href={
+                            discordOverride
+                                ? discordOverride
+                                : 'https://discord.gg/enginehub'
+                        }
                     >
                         Ask questions on our Discord
                     </ButtonComp>

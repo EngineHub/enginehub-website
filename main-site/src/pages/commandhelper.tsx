@@ -3,31 +3,28 @@ import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import React from 'react';
 import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import Row from '@shared/components/grid/row.component';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4.component';
 import SidebarHeading from '../components/sidebar/sidebar-heading.component';
 import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '../components/sidebar/sidebar-icon.component';
 import {
     SidebarNavList,
-    SidebarNavListItem,
+    SidebarNavListItem
 } from '../components/sidebar/sidebar-nav.component';
 import { MainOutboundLink, MainLink } from '../components/link.component';
 import SidebarDivider from '../components/sidebar/sidebar-divider.component';
 import SubtleText from '../components/subtle-text.component';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox,
+    JumbotronButtonBox
 } from '../components/jumbotron.component';
 import SectionHeading from '../components/section-heading.component';
 import GitHubButton from 'react-github-btn';
 import PlatformBanner from '../components/platform-banner.component';
-import {
-    BlueButton,
-    BlueOutboundButton,
-} from '../components/button.component';
+import { BlueButton, BlueOutboundButton } from '../components/button.component';
 import { InfoLabel } from '../components/label.component';
 
 interface CommandHelperPageData {
@@ -51,7 +48,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
         data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
     );
     return (
-        <Layout discordOverride={"https://discord.gg/Z7jpHed"}>
+        <Layout discordOverride={'https://discord.gg/Z7jpHed'}>
             <SEO
                 title="CommandHelper"
                 description="CommandHelper lets you create easy-to-write and 'hot-reloadable' scripts for your Bukkit server to handle events and perform tasks — no Java knowledge required!"
@@ -186,7 +183,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 no longer released — the builds above are built
                                 from the latest code.
                             </p>
-                           <ol>
+                            <ol>
                                 <li>
                                     Find the <em>plugins</em> folder inside your
                                     Bukkit server's folder.

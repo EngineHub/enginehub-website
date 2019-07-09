@@ -2,9 +2,9 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@shared": ["shared/src/*"],
-            "@builds": ["builds/src/*"],
-            "@main": ["main-site/src/*"]
+            "@shared/*": ["shared/src/*"],
+            "@builds/*": ["builds/src/*"],
+            "@main/*": ["main-site/src/*"]
         },
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,

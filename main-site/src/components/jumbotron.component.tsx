@@ -1,5 +1,4 @@
-import styled from "@emotion/styled";
-import { Container } from "./container.component";
+import styled from '@emotion/styled';
 
 const JumbotronContainer = styled.div`
     padding: 20px;

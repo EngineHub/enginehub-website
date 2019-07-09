@@ -4,8 +4,8 @@ import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import styled from '@emotion/styled';
 import { Container } from '../components/container.component';
-import Row from '../components/grid/row.component';
-import Columns2 from '../components/grid/columns-2.component';
+import Row from '@shared/components/grid/row.component';
+import Columns2 from '@shared/components/grid/columns-2.component';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
 import ProjectBox from '../components/project-box.component';
@@ -37,7 +37,7 @@ interface IndexPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
-        }
+        };
     };
     allFile: {
         nodes: {

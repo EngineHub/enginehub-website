@@ -1,6 +1,6 @@
 import css from '@emotion/css';
 import styled from '@emotion/styled';
-import { OutboundLink } from 'gatsby-plugin-gtag';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import { Link } from 'gatsby';
 
 const MainButtonStyle = () => css`
@@ -55,13 +55,13 @@ const PurpleButtonStyle = () => css`
 const BlueButtonStyle = () => css`
     border: 1px solid #00439e;
     color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,.1);
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
     font-weight: 700;
     cursor: pointer;
     display: inline-block;
     margin-top: 6.5px;
     margin-bottom: 6.5px;
-    background-image: linear-gradient(to bottom,#0059d1 0,#004eb8 100%);
+    background-image: linear-gradient(to bottom, #0059d1 0, #004eb8 100%);
     text-align: center;
     vertical-align: middle;
     padding: 6px 12px;
@@ -73,7 +73,7 @@ const BlueButtonStyle = () => css`
 
     :hover {
         border: 1px solid #00439e;
-        background-image: linear-gradient(to bottom,#0059d1 0,#00439e 100%);
+        background-image: linear-gradient(to bottom, #0059d1 0, #00439e 100%);
     }
 `;
 
