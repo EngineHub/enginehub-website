@@ -1,0 +1,28 @@
+{
+    "name": "builds",
+    "private": true,
+    "description": "EngineHub builds site, builds.enginehub.org",
+    "version": "1.0.0",
+    "author": "EngineHub",
+    "dependencies": {
+        "next": "^9.0.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
+    },
+    "devDependencies": {},
+    "keywords": [
+        "nextjs",
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start",
+        "type-check": "tsc --project ./tsconfig.json --noEmit",
+        "lint": "tslint --config ./tslint.json --project ./tsconfig.json",
+        "lint:fix": "tslint --config ./tslint.json --project ./tsconfig.json --fix"
+    }
+}

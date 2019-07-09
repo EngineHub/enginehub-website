@@ -1,8 +1,18 @@
 {
-  "name": "enginehub-websites",
-  "private": true,
-  "workspaces": [
-    "main-site",
-    "workspace-b"
-  ]
+    "name": "enginehub-websites",
+    "private": true,
+    "main": "index.js",
+    "description": "EngineHub Websites",
+    "version": "1.0.0",
+    "author": "EngineHub",
+    "workspaces": [
+        "main-site",
+        "builds",
+        "shared"
+    ],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EngineHub/enginehub-website"
+    }
 }

@@ -26,6 +26,9 @@
     "react-github-btn": "^1.0.5",
     "react-helmet": "^5.2.1",
     "smooth-scroll": "^16.1.0",
+    "tsconfig": "^7.0.0",
+    "tsconfig-paths": "^3.8.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.5.2"
   },
   "devDependencies": {
@@ -44,17 +47,15 @@
     "worldguard",
     "craftbook"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/EngineHub/enginehub-website"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "type-check": "tsc --project ./tsconfig.json --noEmit",
+    "lint": "tslint --config ./tslint.json --project ./tsconfig.json",
+    "lint:fix": "tslint --config ./tslint.json --project ./tsconfig.json --fix"
   }
 }

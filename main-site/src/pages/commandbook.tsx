@@ -3,23 +3,23 @@ import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import React from 'react';
 import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import Row from '@shared/components/grid/row.component';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4.component';
 import SidebarHeading from '../components/sidebar/sidebar-heading.component';
 import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '../components/sidebar/sidebar-icon.component';
 import {
     SidebarNavList,
-    SidebarNavListItem,
+    SidebarNavListItem
 } from '../components/sidebar/sidebar-nav.component';
 import { MainOutboundLink, MainLink } from '../components/link.component';
 import SidebarDivider from '../components/sidebar/sidebar-divider.component';
 import SubtleText from '../components/subtle-text.component';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox,
+    JumbotronButtonBox
 } from '../components/jumbotron.component';
 import SectionHeading from '../components/section-heading.component';
 import GitHubButton from 'react-github-btn';
@@ -27,7 +27,7 @@ import PlatformBanner from '../components/platform-banner.component';
 import {
     GrayOutboundButton,
     BlueButton,
-    BlueOutboundButton,
+    BlueOutboundButton
 } from '../components/button.component';
 import { WarningLabel, InfoLabel } from '../components/label.component';
 
@@ -157,10 +157,11 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                             </li>
                         </ul>
                         <p>
-                            <InfoLabel>Did you know?</InfoLabel> CommandBook was the first addon for
-                            Minecraft that let you enter expressions (such as{' '}
-                            <code>#near</code>) and natural language parameters
-                            ("3am" rather than "15450") for commands.
+                            <InfoLabel>Did you know?</InfoLabel> CommandBook was
+                            the first addon for Minecraft that let you enter
+                            expressions (such as <code>#near</code>) and natural
+                            language parameters ("3am" rather than "15450") for
+                            commands.
                         </p>
                         <SectionHeading id="videos">
                             Watch it in action
