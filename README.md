@@ -1,2 +1,9 @@
 # enginehub-website
-A new website for EngineHub, powered by GatsbyJS
+
+The repo containing the EngineHub websites.
+
+## Projects
+
+### main-site
+
+The main EngineHub website, hosted at https://enginehub.org powered by GatsbyJS.
