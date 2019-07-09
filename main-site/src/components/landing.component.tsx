@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Navbar from './navbar.component';
-import { Container } from './container.component';
+import { Container } from '@shared/components/container.component';
 
 interface LandingProps {
     discordOverride?: string;

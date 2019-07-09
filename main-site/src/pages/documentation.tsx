@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import React from 'react';
-import { ContainerPadded } from '../components/container.component';
+import { ContainerPadded } from '@shared/components/container.component';
 import Row from '@shared/components/grid/row.component';
 import ColumnsQuarter, {
     ColumnsThreeQuarter
@@ -11,7 +11,7 @@ import SidebarHeading from '../components/sidebar/sidebar-heading.component';
 import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '../components/sidebar/sidebar-icon.component';
 import { BlueOutboundButton } from '../components/button.component';
-import SectionHeading from '../components/section-heading.component';
+import SectionHeading from '@shared/components/text/section-heading.component';
 import PlatformBanner from '../components/platform-banner.component';
 
 interface DocumentationPageData {

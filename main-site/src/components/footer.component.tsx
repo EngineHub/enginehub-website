@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'react';
 import React from 'react';
-import { Container } from './container.component';
+import { Container } from '@shared/components/container.component';
 import styled from '@emotion/styled';
 import { MainOutboundLink, MainLink } from './link.component';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 
 const ContainerFlex = styled(Container)`
     display: flex;
@@ -69,7 +70,7 @@ const FooterLi = styled.li`
     margin-bottom: 0;
 `;
 
-const Footer: FunctionComponent<{}> = () => {
+const Footer: FunctionComponent = () => {
     return (
         <FooterWrapper>
             <ContainerFlex>
@@ -77,9 +78,7 @@ const Footer: FunctionComponent<{}> = () => {
                     <SectionHeader>Resources</SectionHeader>
                     <FooterUl>
                         <FooterLi>
-                            <MainLink to="/documentation/">
-                                Docs 
-                            </MainLink>
+                            <MainLink to="/documentation/">Docs</MainLink>
                         </FooterLi>
                         <FooterLi>
                             <MainOutboundLink href="http://dev.enginehub.org/youtrack/">
@@ -105,9 +104,9 @@ const Footer: FunctionComponent<{}> = () => {
                 </SocialBox>
                 <SponsorBox>
                     <SectionHeader>Sponsors</SectionHeader>
-                    <a href="https://www.netlify.com">
+                    <OutboundLink href="https://www.netlify.com">
                         <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" />
-                    </a>
+                    </OutboundLink>
                 </SponsorBox>
                 <SiteBox>
                     <SectionHeader>EngineHub.org</SectionHeader>

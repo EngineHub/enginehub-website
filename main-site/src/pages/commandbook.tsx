@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import React from 'react';
-import { ContainerPadded } from '../components/container.component';
+import { ContainerPadded } from '@shared/components/container.component';
 import Row from '@shared/components/grid/row.component';
 import ColumnsQuarter, {
     ColumnsThreeQuarter
@@ -16,12 +16,12 @@ import {
 } from '../components/sidebar/sidebar-nav.component';
 import { MainOutboundLink, MainLink } from '../components/link.component';
 import SidebarDivider from '../components/sidebar/sidebar-divider.component';
-import SubtleText from '../components/subtle-text.component';
+import SubtleText from '@shared/components/text/subtle-text.component';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox
-} from '../components/jumbotron.component';
-import SectionHeading from '../components/section-heading.component';
+} from '@shared/components/jumbotron.component';
+import SectionHeading from '@shared/components/text/section-heading.component';
 import GitHubButton from 'react-github-btn';
 import PlatformBanner from '../components/platform-banner.component';
 import {
@@ -29,7 +29,7 @@ import {
     BlueButton,
     BlueOutboundButton
 } from '../components/button.component';
-import { WarningLabel, InfoLabel } from '../components/label.component';
+import { WarningLabel, InfoLabel } from '@shared/components/text/label.component';
 
 interface CommandBookPageData {
     file: {

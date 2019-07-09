@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { Container } from './container.component';
+import { Container } from '@shared/components/container.component';
 import { GrayOutboundButton, PurpleOutboundButton } from './button.component';
 
 interface NavbarProps {

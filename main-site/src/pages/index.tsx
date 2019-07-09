@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from '../components/layout.component';
 import SEO from '../components/seo.component';
 import styled from '@emotion/styled';
-import { Container } from '../components/container.component';
+import { Container } from '@shared/components/container.component';
 import Row from '@shared/components/grid/row.component';
 import Columns2 from '@shared/components/grid/columns-2.component';
 import { graphql } from 'gatsby';
