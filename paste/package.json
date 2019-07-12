@@ -1,18 +1,24 @@
 {
-    "name": "builds",
+    "name": "paste",
     "private": true,
-    "description": "EngineHub builds site, builds.enginehub.org",
+    "description": "EngineHub paste site, paste.enginehub.org",
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "next": "^9.0.0",
+        "next": "^9.0.1",
+        "next-aws-lambda": "^2.0.5-alpha.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "serverless-nextjs-plugin": "2.0.3-alpha.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "@types/node": "^12.6.2",
+        "@types/react": "^16.8.23",
+        "@types/react-dom": "^16.8.4",
+        "serverless-nextjs-plugin": "^2.2.0"
+    },
     "keywords": [
-        "nextjs",
+        "pastebin",
         "enginehub",
         "worldedit",
         "worldguard",
