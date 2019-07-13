@@ -14,8 +14,7 @@
     "devDependencies": {
         "@types/node": "^12.6.2",
         "@types/react": "^16.8.23",
-        "@types/react-dom": "^16.8.4",
-        "serverless-nextjs-plugin": "^2.2.0"
+        "@types/react-dom": "^16.8.4"
     },
     "keywords": [
         "pastebin",
