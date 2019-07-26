@@ -1,7 +1,7 @@
 import Img, { FixedObject } from "gatsby-image";
 import styled from "@emotion/styled";
-import { Link } from "@reach/router";
 import React, { FunctionComponent } from "react";
+import { Link } from 'gatsby';
 
 interface ProjectBoxProps {
     description: string;

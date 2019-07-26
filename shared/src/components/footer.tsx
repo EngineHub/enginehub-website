@@ -1,9 +1,8 @@
-import { FunctionComponent } from 'react';
-import React from 'react';
-import { Container } from '@shared/components/container.component';
+import React, { FunctionComponent } from 'react';
+import { Container } from '@shared/components/container';
 import styled from '@emotion/styled';
-import { MainOutboundLink, MainLink } from './link.component';
-import { OutboundLink } from 'gatsby-plugin-google-gtag';
+import { LinkProviderProps } from '@shared/utils/link-provider';
+import { MainLinkStyle } from '@shared/components/link';
 
 const ContainerFlex = styled(Container)`
     display: flex;
@@ -70,7 +69,13 @@ const FooterLi = styled.li`
     margin-bottom: 0;
 `;
 
-const Footer: FunctionComponent = () => {
+const Footer: FunctionComponent<LinkProviderProps> = props => {
+    const OutboundLink = props.linkProvider.getOutboundLinkComponent();
+    const MainOutboundLink = styled(OutboundLink)(MainLinkStyle);
+    const MainLink = styled(props.linkProvider.getLinkComponent())(
+        MainLinkStyle
+    );
+
     return (
         <FooterWrapper>
             <ContainerFlex>
@@ -78,7 +83,7 @@ const Footer: FunctionComponent = () => {
                     <SectionHeader>Resources</SectionHeader>
                     <FooterUl>
                         <FooterLi>
-                            <MainLink to="/documentation/">Docs</MainLink>
+                            <MainLink href="/documentation/">Docs</MainLink>
                         </FooterLi>
                         <FooterLi>
                             <MainOutboundLink href="http://dev.enginehub.org/youtrack/">

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from '../components/layout.component';
-import SEO from '../components/seo.component';
+import Layout from '../components/layout';
+import SEO from '@shared/components/seo';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
 

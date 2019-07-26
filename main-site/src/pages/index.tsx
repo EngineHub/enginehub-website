@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Layout from '../components/layout.component';
-import SEO from '../components/seo.component';
+import Layout from '../components/layout';
+import SEO from '@shared/components/seo';
 import styled from '@emotion/styled';
-import { Container } from '@shared/components/container.component';
-import Row from '@shared/components/grid/row.component';
-import Columns2 from '@shared/components/grid/columns-2.component';
+import { Container } from '@shared/components/container';
+import Row from '@shared/components/grid/row';
+import Columns2 from '@shared/components/grid/columns-2';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
-import ProjectBox from '../components/project-box.component';
+import ProjectBox from '../components/project-box';
 
 const HeadingContainer = styled.div`
     margin: 20px 0 60px;

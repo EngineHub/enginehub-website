@@ -9692,6 +9692,13 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-pace@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-pace/-/react-pace-1.0.0.tgz#cb006791523fc4805c1e424ed9f18215bb17d237"
+  integrity sha1-ywBnkVI/xIBcHkJO2fGCFbsX0jc=
+  dependencies:
+    react ">=0.13.3"
+
 react-reconciler@^0.20.0:
   version "0.20.4"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.20.4.tgz#3da6a95841592f849cb4edd3d38676c86fd920b2"
@@ -9708,7 +9715,7 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react@^16.8.4, react@^16.8.6:
+react@>=0.13.3, react@^16.8.4, react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   dependencies:

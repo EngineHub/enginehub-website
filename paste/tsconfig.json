@@ -21,6 +21,8 @@
     "isolatedModules": true
   },
   "include": [
-    "pages/**/*"
-  ]
+    "pages/**/*",
+    "src/**/*"
+  ],
+  "files": ["typings.d.ts"]
 }

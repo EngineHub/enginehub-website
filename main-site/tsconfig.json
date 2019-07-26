@@ -13,6 +13,6 @@
         "noEmit": true,
         "skipLibCheck": true
     },
-    "include": ["./src/**/*", "../shared/src/components/jumbotron.component.tsx", "../shared/src/components/label.component.tsx", "../shared/src/components/section-heading.component.tsx", "../shared/src/components/subtle-text.component.tsx", "../shared/src/components/container.component.tsx"],
+    "include": ["./src/**/*", "../shared/src/components/navbar.tsx", "../shared/src/components/footer.tsx"],
     "exclude": [".cache", "public"]
 }

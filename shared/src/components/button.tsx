@@ -1,9 +1,6 @@
 import css from '@emotion/css';
-import styled from '@emotion/styled';
-import { OutboundLink } from 'gatsby-plugin-google-gtag';
-import { Link } from 'gatsby';
 
-const MainButtonStyle = () => css`
+export const MainButtonStyle = () => css`
     border: 1px solid #ccc;
     color: #333;
     text-shadow: 0 1px 0 #fff;
@@ -28,7 +25,7 @@ const MainButtonStyle = () => css`
     }
 `;
 
-const PurpleButtonStyle = () => css`
+export const PurpleButtonStyle = () => css`
     border: 1px solid #412e61;
     color: #fff;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
@@ -52,7 +49,7 @@ const PurpleButtonStyle = () => css`
     }
 `;
 
-const BlueButtonStyle = () => css`
+export const BlueButtonStyle = () => css`
     border: 1px solid #00439e;
     color: #fff;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
@@ -76,9 +73,3 @@ const BlueButtonStyle = () => css`
         background-image: linear-gradient(to bottom, #0059d1 0, #00439e 100%);
     }
 `;
-
-export const GrayOutboundButton = styled(OutboundLink)(MainButtonStyle);
-export const PurpleOutboundButton = styled(OutboundLink)(PurpleButtonStyle);
-export const BlueOutboundButton = styled(OutboundLink)(BlueButtonStyle);
-
-export const BlueButton = styled(Link)(BlueButtonStyle);

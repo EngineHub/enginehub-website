@@ -1,8 +1,9 @@
-import { Link } from 'gatsby';
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { Container } from '@shared/components/container.component';
-import { GrayOutboundButton, PurpleOutboundButton } from './button.component';
+import { Container } from '@shared/components/container';
+import css from '@emotion/css';
+import { LinkProviderProps } from '@shared/utils/link-provider';
+import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/button';
 
 interface NavbarProps {
     discordOverride?: string;
@@ -22,8 +23,8 @@ type InvertedProps = {
     inverted: boolean;
 };
 
-const HeaderLink = styled(Link)<InvertedProps>`
-    color: ${props => (props.inverted ? `#fff` : `#777777`)};
+const HeaderLinkStyle = (props: InvertedProps) => css`
+    color: ${props.inverted ? `#fff` : `#777777`};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;
@@ -32,7 +33,8 @@ const HeaderLink = styled(Link)<InvertedProps>`
     float: left;
 `;
 
-const FloatedPurpleButton = styled(PurpleOutboundButton)`
+const FloatedPurpleButton = () => css`
+    ${PurpleButtonStyle()};
     float: right;
 
     display: none;
@@ -42,7 +44,8 @@ const FloatedPurpleButton = styled(PurpleOutboundButton)`
     }
 `;
 
-const FloatedGrayButton = styled(GrayOutboundButton)`
+const FloatedGrayButton = () => css`
+    ${MainButtonStyle()};
     float: right;
 
     display: none;
@@ -52,16 +55,22 @@ const FloatedGrayButton = styled(GrayOutboundButton)`
     }
 `;
 
-const Navbar: FunctionComponent<NavbarProps> = ({
+const Navbar: FunctionComponent<NavbarProps & LinkProviderProps> = ({
     inverted = false,
-    discordOverride
+    discordOverride,
+    linkProvider
 }) => {
-    const ButtonComp = inverted ? FloatedPurpleButton : FloatedGrayButton;
+    const Link = linkProvider.getLinkComponent();
+    const OutboundLink = linkProvider.getOutboundLinkComponent();
+    const HeaderLink = styled(Link)<InvertedProps>(HeaderLinkStyle);
+    const ButtonComp = inverted
+        ? styled(OutboundLink)(FloatedPurpleButton)
+        : styled(OutboundLink)(FloatedGrayButton);
     return (
         <Nav inverted={inverted}>
             <Container>
                 <div>
-                    <HeaderLink to="/" inverted={inverted}>
+                    <HeaderLink href="/" inverted={inverted}>
                         EngineHub.org
                     </HeaderLink>
                 </div>

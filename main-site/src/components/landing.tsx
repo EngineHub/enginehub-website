@@ -2,8 +2,9 @@ import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import Navbar from './navbar.component';
-import { Container } from '@shared/components/container.component';
+import Navbar from '../../../shared/src/components/navbar';
+import { Container } from '@shared/components/container';
+import { LinkProviderProps } from '@shared/utils/link-provider';
 
 interface LandingProps {
     discordOverride?: string;
@@ -73,7 +74,7 @@ const Subtitle = styled.h2`
 `;
 
 // tslint:disable: jsx-no-lambda
-export const Landing: FunctionComponent<LandingProps> = (props) => {
+export const Landing: FunctionComponent<LandingProps & LinkProviderProps> = (props) => {
     return (
         <>
             <HeaderWrapper>
@@ -89,7 +90,7 @@ export const Landing: FunctionComponent<LandingProps> = (props) => {
                 />
                 
                 <HeaderContent>
-                    <Navbar inverted={true} discordOverride={props.discordOverride} />
+                    <Navbar inverted={true} discordOverride={props.discordOverride} linkProvider={props.linkProvider} />
                     <LandingText>
                         <Container>
                             <Title>
