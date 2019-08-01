@@ -60,7 +60,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             <p>
                                 <BlueOutboundButton
                                     href={
-                                        'https://worldedit.readthedocs.io/en/latest/'
+                                        'https://worldedit.enginehub.org/en/latest/'
                                     }
                                 >
                                     WorldEdit Docs
@@ -74,7 +74,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             <p>
                                 <BlueOutboundButton
                                     href={
-                                        'https://worldguard.readthedocs.io/en/latest/'
+                                        'https://worldguard.enginehub.org/en/latest/'
                                     }
                                 >
                                     WorldGuard Docs
@@ -88,7 +88,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             <p>
                                 <BlueOutboundButton
                                     href={
-                                        'https://craftbook.readthedocs.io/en/3.x/'
+                                        'https://craftbook.enginehub.org/en/3.x/'
                                     }
                                 >
                                     CraftBook 3 Docs (Spigot)
@@ -97,7 +97,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             <p>
                                 <BlueOutboundButton
                                     href={
-                                        'https://craftbook.readthedocs.io/en/latest/'
+                                        'https://craftbook.enginehub.org/en/latest/'
                                     }
                                 >
                                     CraftBook 4 Docs (Sponge)
