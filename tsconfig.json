@@ -4,7 +4,8 @@
         "paths": {
             "@shared/*": ["shared/src/*"],
             "@builds/*": ["builds/src/*"],
-            "@main/*": ["main-site/src/*"]
+            "@main/*": ["main-site/src/*"],
+            "@paste/*": ["paste/src/*"]
         },
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,
@@ -20,6 +21,9 @@
     "include": [
         "main-site/src/**/*",
         "builds/src/**/*",
+        "builds/pages/**/*",
+        "paste/pages/**/*",
+        "paste/src/**/*",
         "shared/src/**/*"
     ]
 }

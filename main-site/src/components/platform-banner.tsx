@@ -1,5 +1,4 @@
-import { FunctionComponent } from "react";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import Img, { FixedObject } from "gatsby-image";
 

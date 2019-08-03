@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, useMemo } from 'react';
+import React, { FunctionComponent, useEffect, useMemo } from 'react';
 import Helmet from 'react-helmet';
 import Navbar from '@shared/components/navbar';
 import './layout.css';

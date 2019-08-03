@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { StaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import Navbar from '../../../shared/src/components/navbar';
+import { StaticQuery, graphql, useStaticQuery } from 'gatsby';
+import Img, { FluidObject } from 'gatsby-image';
+import Navbar from '@shared/components/navbar';
 import { Container } from '@shared/components/container';
 import { LinkProviderProps } from '@shared/utils/link-provider';
 
@@ -20,7 +20,7 @@ const HeaderWrapper = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media(min-width: 430px) {
+    @media (min-width: 430px) {
         height: 24rem;
     }
 `;
@@ -73,43 +73,49 @@ const Subtitle = styled.h2`
     }
 `;
 
-// tslint:disable: jsx-no-lambda
-export const Landing: FunctionComponent<LandingProps & LinkProviderProps> = (props) => {
+interface ImageQueryResult {
+    data: {
+        file: {
+            childImageSharp: {
+                fluid: FluidObject;
+            };
+        };
+    };
+}
+
+export const Landing: FunctionComponent<
+    LandingProps & LinkProviderProps
+> = props => {
+    const { data }: ImageQueryResult = useStaticQuery(query);
+
     return (
-        <>
-            <HeaderWrapper>
-                <StaticQuery
-                    query={query}
-                    render={data => {
-                        return (
-                            <HeaderImg
-                                fluid={data.file.childImageSharp.fluid}
-                            />
-                        );
-                    }}
+        <HeaderWrapper>
+            <HeaderImg fluid={data.file.childImageSharp.fluid} />
+            <HeaderContent>
+                <Navbar
+                    inverted={true}
+                    discordOverride={props.discordOverride}
+                    linkProvider={props.linkProvider}
                 />
-                
-                <HeaderContent>
-                    <Navbar inverted={true} discordOverride={props.discordOverride} linkProvider={props.linkProvider} />
-                    <LandingText>
-                        <Container>
-                            <Title>
-                                Open-source mods for and by the Minecraft community
-                            </Title>
-                            <Subtitle>
-                                We're a collection of mods, plugins, and tools created
-                                for Minecraft by members of the community. Our projects
-                                are all open source and power all varieties of servers —
-                                from the large to the family-sized. Many of our projects
-                                are available, officially or unofficially, for Bukkit,
-                                Sponge, Minecraft Forge, MinecraftEdu, LiteLoader, and
-                                other platforms.
-                            </Subtitle>
-                        </Container>
-                    </LandingText>
-                </HeaderContent>
-            </HeaderWrapper>
-        </>
+                <LandingText>
+                    <Container>
+                        <Title>
+                            Open-source mods for and by the Minecraft community
+                        </Title>
+                        <Subtitle>
+                            We're a collection of mods, plugins, and tools
+                            created for Minecraft by members of the community.
+                            Our projects are all open source and power all
+                            varieties of servers — from the large to the
+                            family-sized. Many of our projects are available,
+                            officially or unofficially, for Bukkit, Sponge,
+                            Minecraft Forge, MinecraftEdu, LiteLoader, and other
+                            platforms.
+                        </Subtitle>
+                    </Container>
+                </LandingText>
+            </HeaderContent>
+        </HeaderWrapper>
     );
 };
 

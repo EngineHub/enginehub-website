@@ -16,4 +16,5 @@ package:
     - ./**
 
 custom:
-  serverless-nextjs: {}
+  serverless-nextjs:
+    assetsBucketName: "paste-static.enginehub.org"
