@@ -1,18 +1,18 @@
 import { graphql } from 'gatsby';
-import Layout from '../components/layout.component';
-import SEO from '../components/seo.component';
+import Layout from '../components/layout';
+import SEO from '@shared/components/seo';
 import React from 'react';
-import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import { ContainerPadded } from '@shared/components/container';
+import Row from '@shared/components/grid/row';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
-import SidebarHeading from '../components/sidebar/sidebar-heading.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4';
+import SidebarHeading from '@shared/components/sidebar/sidebar-heading';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '../components/sidebar/sidebar-icon.component';
-import { BlueOutboundButton } from '../components/button.component';
-import SectionHeading from '../components/section-heading.component';
-import PlatformBanner from '../components/platform-banner.component';
+import SidebarIcon from '../components/sidebar/sidebar-icon';
+import { BlueOutboundButton } from '../components/button';
+import SectionHeading from '@shared/components/text/section-heading';
+import PlatformBanner from '../components/platform-banner';
 
 interface DocumentationPageData {
     file: {
@@ -51,7 +51,9 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                         <SidebarHeading>Docs</SidebarHeading>
                     </ColumnsQuarter>
                     <ColumnsThreeQuarter>
-                        <SectionHeading id="documentation">Documentation</SectionHeading>
+                        <SectionHeading id="documentation">
+                            Documentation
+                        </SectionHeading>
                         <p>Documentation for the following is available:</p>
                         <PlatformBanner
                             logo={logoMap.get('worldedit-icon')!}
@@ -124,9 +126,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                         >
                             <p>
                                 <BlueOutboundButton
-                                    href={
-                                        'https://methodscript.com/docs/'
-                                    }
+                                    href={'https://methodscript.com/docs/'}
                                 >
                                     CommandHelper Docs
                                 </BlueOutboundButton>

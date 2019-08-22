@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@shared/*": ["shared/src/*"],
+            "@builds/*": ["builds/src/*"],
+            "@main/*": ["main-site/src/*"],
+            "@paste/*": ["paste/src/*"]
+        },
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "importHelpers": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+    },
+    "exclude": ["node_modules"],
+    "include": [
+        "main-site/src/**/*",
+        "builds/src/**/*",
+        "builds/pages/**/*",
+        "paste/pages/**/*",
+        "paste/src/**/*",
+        "shared/src/**/*"
+    ]
+}

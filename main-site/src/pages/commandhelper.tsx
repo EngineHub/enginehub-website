@@ -1,34 +1,31 @@
 import { graphql } from 'gatsby';
-import Layout from '../components/layout.component';
-import SEO from '../components/seo.component';
+import Layout from '../components/layout';
+import SEO from '@shared/components/seo';
 import React from 'react';
-import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import { ContainerPadded } from '@shared/components/container';
+import Row from '@shared/components/grid/row';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
-import SidebarHeading from '../components/sidebar/sidebar-heading.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4';
+import SidebarHeading from '@shared/components/sidebar/sidebar-heading';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '../components/sidebar/sidebar-icon.component';
+import SidebarIcon from '../components/sidebar/sidebar-icon';
 import {
     SidebarNavList,
-    SidebarNavListItem,
-} from '../components/sidebar/sidebar-nav.component';
-import { MainOutboundLink, MainLink } from '../components/link.component';
-import SidebarDivider from '../components/sidebar/sidebar-divider.component';
-import SubtleText from '../components/subtle-text.component';
+    SidebarNavListItem
+} from '@shared/components/sidebar/sidebar-nav';
+import { MainOutboundLink, MainLink } from '../components/link';
+import SidebarDivider from '@shared/components/sidebar/sidebar-divider';
+import SubtleText from '@shared/components/text/subtle-text';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox,
-} from '../components/jumbotron.component';
-import SectionHeading from '../components/section-heading.component';
+    JumbotronButtonBox
+} from '@shared/components/jumbotron';
+import SectionHeading from '@shared/components/text/section-heading';
 import GitHubButton from 'react-github-btn';
-import PlatformBanner from '../components/platform-banner.component';
-import {
-    BlueButton,
-    BlueOutboundButton,
-} from '../components/button.component';
-import { InfoLabel } from '../components/label.component';
+import PlatformBanner from '../components/platform-banner';
+import { BlueButton, BlueOutboundButton } from '../components/button';
+import { InfoLabel } from '@shared/components/text/label';
 
 interface CommandHelperPageData {
     file: {
@@ -51,7 +48,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
         data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
     );
     return (
-        <Layout discordOverride={"https://discord.gg/Z7jpHed"}>
+        <Layout discordOverride={'https://discord.gg/Z7jpHed'}>
             <SEO
                 title="CommandHelper"
                 description="CommandHelper lets you create easy-to-write and 'hot-reloadable' scripts for your Bukkit server to handle events and perform tasks — no Java knowledge required!"
@@ -186,7 +183,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 no longer released — the builds above are built
                                 from the latest code.
                             </p>
-                           <ol>
+                            <ol>
                                 <li>
                                     Find the <em>plugins</em> folder inside your
                                     Bukkit server's folder.

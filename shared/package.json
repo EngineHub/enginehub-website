@@ -1,0 +1,45 @@
+{
+    "name": "shared",
+    "private": true,
+    "description": "Shared libs for the EngineHub sites",
+    "version": "1.0.0",
+    "author": "EngineHub",
+    "dependencies": {
+        "@emotion/core": "^10.0.14",
+        "@emotion/styled": "^10.0.14",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "tsconfig": "^7.0.0",
+        "tsconfig-paths": "^3.8.0",
+        "tsconfig-paths-webpack-plugin": "^3.2.0",
+        "typescript": "^3.5.3"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.0",
+        "@types/node": "^12.6.1",
+        "@types/react": "^16.8.23",
+        "@types/react-dom": "^16.8.4",
+        "babel-loader": "^8.0.6",
+        "lint-staged": "^9.1.0",
+        "tslint": "^5.18.0",
+        "tslint-react": "^4.0.0",
+        "tslint-sonarts": "^1.9.0"
+    },
+    "lint-staged": {
+        "./**/*.{ts,tsx}": [
+            "tslint --project ./tsconfig.json --config ./tslint.json --fix",
+            "git add"
+        ]
+    },
+    "keywords": [
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
+    "scripts": {
+        "type-check": "tsc --project ./tsconfig.json --noEmit",
+        "lint": "tslint --config ./tslint.json --project ./tsconfig.json",
+        "lint:fix": "tslint --config ./tslint.json --project ./tsconfig.json --fix"
+    }
+}

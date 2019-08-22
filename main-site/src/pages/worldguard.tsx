@@ -1,35 +1,35 @@
 import { graphql } from 'gatsby';
-import Layout from '../components/layout.component';
-import SEO from '../components/seo.component';
+import Layout from '../components/layout';
+import SEO from '@shared/components/seo';
 import React from 'react';
-import { ContainerPadded } from '../components/container.component';
-import Row from '../components/grid/row.component';
+import { ContainerPadded } from '@shared/components/container';
+import Row from '@shared/components/grid/row';
 import ColumnsQuarter, {
-    ColumnsThreeQuarter,
-} from '../components/grid/columns-4.component';
-import SidebarHeading from '../components/sidebar/sidebar-heading.component';
+    ColumnsThreeQuarter
+} from '@shared/components/grid/columns-4';
+import SidebarHeading from '@shared/components/sidebar/sidebar-heading';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '../components/sidebar/sidebar-icon.component';
+import SidebarIcon from '../components/sidebar/sidebar-icon';
 import {
     SidebarNavList,
-    SidebarNavListItem,
-} from '../components/sidebar/sidebar-nav.component';
-import { MainOutboundLink, MainLink } from '../components/link.component';
-import SidebarDivider from '../components/sidebar/sidebar-divider.component';
-import SubtleText from '../components/subtle-text.component';
+    SidebarNavListItem
+} from '@shared/components/sidebar/sidebar-nav';
+import { MainOutboundLink, MainLink } from '../components/link';
+import SidebarDivider from '@shared/components/sidebar/sidebar-divider';
+import SubtleText from '@shared/components/text/subtle-text';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox,
-} from '../components/jumbotron.component';
-import SectionHeading from '../components/section-heading.component';
+    JumbotronButtonBox
+} from '@shared/components/jumbotron';
+import SectionHeading from '@shared/components/text/section-heading';
 import GitHubButton from 'react-github-btn';
-import PlatformBanner from '../components/platform-banner.component';
+import PlatformBanner from '../components/platform-banner';
 import {
     GrayOutboundButton,
     BlueButton,
-    BlueOutboundButton,
-} from '../components/button.component';
-import { WarningLabel } from '../components/label.component';
+    BlueOutboundButton
+} from '../components/button';
+import { WarningLabel } from '@shared/components/text/label';
 
 interface WorldGuardPageData {
     file: {

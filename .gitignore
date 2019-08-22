@@ -67,3 +67,10 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Serverless
+.serverless
+sls-next-build
+
+# Next
+.next
