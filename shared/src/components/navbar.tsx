@@ -2,29 +2,41 @@ import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import { Container } from '@shared/components/container';
 import css from '@emotion/css';
-import { LinkProviderProps } from '@shared/utils/link-provider';
+import { LinkProviderContext } from '@shared/utils/link-provider';
 import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/button';
+
+const NavBackgroundColours = new Map([
+    ['default', '#f8f8f8'],
+    ['inverted', '0'],
+    ['purple', '#4d3672']
+]);
+
+const HeaderTextColors = new Map([
+    ['default', '#777777'],
+    ['inverted', '#fff'],
+    ['purple', '#fff']
+]);
 
 interface NavbarProps {
     discordOverride?: string;
-    inverted?: boolean;
+    headerTheme?: 'default' | 'inverted' | 'purple';
 }
 
 const Nav = styled.nav<InvertedProps>`
     position: relative;
     min-height: 50px;
     margin: 0;
-    background: ${props => (props.inverted ? `0` : `#f8f8f8`)};
+    background: ${props => NavBackgroundColours.get(props.headerTheme)!};
     border: 0;
     border-radius: 0;
 `;
 
 type InvertedProps = {
-    inverted: boolean;
+    headerTheme: 'default' | 'inverted' | 'purple';
 };
 
 const HeaderLinkStyle = (props: InvertedProps) => css`
-    color: ${props.inverted ? `#fff` : `#777777`};
+    color: ${HeaderTextColors.get(props.headerTheme)!};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;
@@ -55,38 +67,44 @@ const FloatedGrayButton = () => css`
     }
 `;
 
-const Navbar: FunctionComponent<NavbarProps & LinkProviderProps> = ({
-    inverted = false,
-    discordOverride,
-    linkProvider
+const Navbar: FunctionComponent<NavbarProps> = ({
+    headerTheme = 'default',
+    discordOverride
 }) => {
-    const Link = linkProvider.getLinkComponent();
-    const OutboundLink = linkProvider.getOutboundLinkComponent();
-    const HeaderLink = styled(Link)<InvertedProps>(HeaderLinkStyle);
-    const ButtonComp = inverted
-        ? styled(OutboundLink)(FloatedPurpleButton)
-        : styled(OutboundLink)(FloatedGrayButton);
     return (
-        <Nav inverted={inverted}>
-            <Container>
-                <div>
-                    <HeaderLink href="/" inverted={inverted}>
-                        EngineHub.org
-                    </HeaderLink>
-                </div>
-                <div>
-                    <ButtonComp
-                        href={
-                            discordOverride
-                                ? discordOverride
-                                : 'https://discord.gg/enginehub'
-                        }
-                    >
-                        Ask questions on our Discord
-                    </ButtonComp>
-                </div>
-            </Container>
-        </Nav>
+        <LinkProviderContext.Consumer>
+            {linkProvider => {
+                const Link = linkProvider.getLinkComponent();
+                const OutboundLink = linkProvider.getOutboundLinkComponent();
+                const HeaderLink = styled(Link)<InvertedProps>(HeaderLinkStyle);
+                const ButtonComp =
+                    headerTheme !== 'default'
+                        ? styled(OutboundLink)(FloatedPurpleButton)
+                        : styled(OutboundLink)(FloatedGrayButton);
+                return (
+                    <Nav headerTheme={headerTheme}>
+                        <Container>
+                            <div>
+                                <HeaderLink href="/" headerTheme={headerTheme}>
+                                    EngineHub.org
+                                </HeaderLink>
+                            </div>
+                            <div>
+                                <ButtonComp
+                                    href={
+                                        discordOverride
+                                            ? discordOverride
+                                            : 'https://discord.gg/enginehub'
+                                    }
+                                >
+                                    Ask questions on our Discord
+                                </ButtonComp>
+                            </div>
+                        </Container>
+                    </Nav>
+                );
+            }}
+        </LinkProviderContext.Consumer>
     );
 };
 

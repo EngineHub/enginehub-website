@@ -22,7 +22,7 @@
   },
   "include": [
     "pages/**/*",
-    "src/**/*"
+    "src/**/*", "../shared/src/utils/gtag.ts"
   ],
   "files": ["typings.d.ts"]
 }

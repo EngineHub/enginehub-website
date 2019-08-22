@@ -14,7 +14,7 @@ function Index() {
 }
 
 Index.getInitialProps = async ({}) => {
-    return { data: await new Promise((resolve, _reject) => resolve()) };
+    return {};
 };
 
 export default Index;

@@ -4,6 +4,9 @@ import Layout from '../components/layout';
 import SEO from '@shared/components/seo';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
+import { BlueButton } from '@main/components/button';
+import { Container } from '@shared/components/container';
+import { PageHeader } from '@shared/components/PageHeader';
 
 interface NotFoundData {
     file: {
@@ -16,8 +19,12 @@ interface NotFoundData {
 const NotFoundPage = ({ data }: { data: NotFoundData }) => (
     <Layout>
         <SEO title="Missing Page" image={data.file.childImageSharp.fixed.src} />
-        <h1>Missing Page</h1>
-        <p>Sorry, the page or resource that you are looking for cannot be found.</p>
+        <PageHeader text={'Missing Page'} showSponsors={true}>
+            Sorry, the page or resource that you are looking for cannot be found.
+        </PageHeader>
+        <Container>
+            <BlueButton to="/">Go to EngineHub.org</BlueButton> 
+        </Container>
     </Layout>
 );
 

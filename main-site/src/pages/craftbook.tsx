@@ -52,7 +52,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
         data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
     );
     return (
-        <Layout>
+        <Layout extraSponsors={['beastnode']}>
             <SEO
                 title="CraftBook"
                 description="CraftBook lets you create magically extending bridges, compact Redstone circuits, complex Minecart mechanics, and much more — all without a client mod and fully customizable by the server."

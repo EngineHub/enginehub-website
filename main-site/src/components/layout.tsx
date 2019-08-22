@@ -4,9 +4,10 @@ import Navbar from '@shared/components/navbar';
 import './layout.css';
 import Footer from '@shared/components/footer';
 import { Landing } from './landing';
-import { LinkProvider, WrapperLinkProps } from '@shared/utils/link-provider';
+import { LinkProvider, WrapperLinkProps, LinkProviderContext } from '@shared/utils/link-provider';
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-gtag';
+import { ExtraSponsorProps } from '@shared/components/sponsors';
 
 interface LayoutProps {
     discordOverride?: string;
@@ -39,11 +40,9 @@ class GatsbyLinkProvider implements LinkProvider {
     }
 }
 
-const Layout: FunctionComponent<LayoutProps> = ({
-    children,
-    landing = false,
-    discordOverride
-}) => {
+const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = (
+    { children, landing = false, discordOverride, extraSponsors = [] }
+) => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             require('smooth-scroll')('a[href*="#"]');
@@ -51,7 +50,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
     }, []);
     const linkProvider = useMemo(() => new GatsbyLinkProvider(), []);
     return (
-        <>
+        <LinkProviderContext.Provider value={linkProvider}>
             <Helmet
                 link={[
                     {
@@ -73,17 +72,18 @@ const Layout: FunctionComponent<LayoutProps> = ({
             {landing ? (
                 <Landing
                     discordOverride={discordOverride}
-                    linkProvider={linkProvider}
                 />
             ) : (
                 <Navbar
                     discordOverride={discordOverride}
-                    linkProvider={linkProvider}
                 />
             )}
             <main>{children}</main>
-            <Footer linkProvider={linkProvider} />
-        </>
+            <Footer
+                mainSite={true}
+                extraSponsors={['netlify'].concat(extraSponsors)}
+            />
+        </LinkProviderContext.Provider>
     );
 };
 

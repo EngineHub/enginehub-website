@@ -1,10 +1,11 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withCSS = require('@zeit/next-css')
+const withImages = require('next-images')
 
 const prod = process.env.NODE_ENV === 'production';
-const ASSETS_PREFIX = 'https://paste-static.enginehub.org';
+const ASSETS_PREFIX = 'https://builds-static.enginehub.org'
 
-module.exports = withCSS({
+module.exports = withImages(withCSS({
     target: 'serverless',
     assetsPrefix: ASSETS_PREFIX,
     webpack: (config, options) => {
@@ -25,6 +26,6 @@ module.exports = withCSS({
     },
     env: {
         STATIC_PREFIX: prod ? ASSETS_PREFIX : '',
-        GA_TRACKING_ID: 'UA-139849956-4'
+        GA_TRACKING_ID: 'UA-139849956-5'
     }
-});
+}));

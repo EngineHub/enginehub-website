@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Link } from '@reach/router';
 import styled from '@emotion/styled';
 
 const MainHeader = styled.header`
@@ -31,7 +30,7 @@ const HelpText = styled.span`
     line-height: 1.7;
 `;
 
-const SiteLink = styled(Link)`
+const SiteLink = styled.a`
     color: #0059d1;
     text-decoration: none;
 
@@ -42,11 +41,15 @@ const SiteLink = styled(Link)`
     }
 `;
 
-export const Header: FC = () => (
+interface HeaderProps {
+    showHelp: boolean;
+}
+
+export const Header: FC<HeaderProps> = ({ showHelp }) => (
     <MainHeader>
         <SiteTitle>
-            <SiteLink to="/">Pastebin</SiteLink>
+            <SiteLink href="/">Pastebin</SiteLink>
         </SiteTitle>
-        <HelpText>ctrl + s to save</HelpText>
+        {showHelp && <HelpText>ctrl + s to save</HelpText>}
     </MainHeader>
 );

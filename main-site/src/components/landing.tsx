@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { StaticQuery, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import Navbar from '@shared/components/navbar';
 import { Container } from '@shared/components/container';
-import { LinkProviderProps } from '@shared/utils/link-provider';
 
 interface LandingProps {
     discordOverride?: string;
@@ -74,28 +73,23 @@ const Subtitle = styled.h2`
 `;
 
 interface ImageQueryResult {
-    data: {
-        file: {
-            childImageSharp: {
-                fluid: FluidObject;
-            };
+    file: {
+        childImageSharp: {
+            fluid: FluidObject;
         };
     };
 }
 
-export const Landing: FunctionComponent<
-    LandingProps & LinkProviderProps
-> = props => {
-    const { data }: ImageQueryResult = useStaticQuery(query);
-
+export const Landing: FunctionComponent<LandingProps> = props => {
+    const data: ImageQueryResult = useStaticQuery(query);
+    console.log(data);
     return (
         <HeaderWrapper>
             <HeaderImg fluid={data.file.childImageSharp.fluid} />
             <HeaderContent>
                 <Navbar
-                    inverted={true}
+                    headerTheme="inverted"
                     discordOverride={props.discordOverride}
-                    linkProvider={props.linkProvider}
                 />
                 <LandingText>
                     <Container>
