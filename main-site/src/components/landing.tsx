@@ -82,7 +82,6 @@ interface ImageQueryResult {
 
 export const Landing: FunctionComponent<LandingProps> = props => {
     const data: ImageQueryResult = useStaticQuery(query);
-    console.log(data);
     return (
         <HeaderWrapper>
             <HeaderImg fluid={data.file.childImageSharp.fluid} />
