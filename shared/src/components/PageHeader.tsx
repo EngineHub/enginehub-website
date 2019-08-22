@@ -1,9 +1,9 @@
 import React from 'react';
 import { ContainerPadded } from '@shared/components/container';
 import styled from '@emotion/styled';
-import RandomSponsor from '@shared/components/sponsors';
+import RandomSponsor, { ExtraSponsorProps } from '@shared/components/sponsors';
 
-interface PageHeaderProps {
+interface PageHeaderProps extends ExtraSponsorProps {
     text: string;
     icon?: string;
     showSponsors?: boolean;
@@ -62,6 +62,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     text,
     showSponsors = false,
     icon,
+    extraSponsors,
     children
 }) => {
     return (
@@ -80,7 +81,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                     {showSponsors && (
                         <HeaderSponsorArea>
                             <small>Sponsored by</small>
-                            <RandomSponsor />
+                            <RandomSponsor extraSponsors={extraSponsors} />
                         </HeaderSponsorArea>
                     )}
                 </HeaderContent>

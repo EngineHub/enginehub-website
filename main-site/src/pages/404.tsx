@@ -12,18 +12,23 @@ interface NotFoundData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
-        }
+        };
     };
 }
 
 const NotFoundPage = ({ data }: { data: NotFoundData }) => (
     <Layout>
         <SEO title="Missing Page" image={data.file.childImageSharp.fixed.src} />
-        <PageHeader text={'Missing Page'} showSponsors={true}>
-            Sorry, the page or resource that you are looking for cannot be found.
+        <PageHeader
+            text={'Missing Page'}
+            showSponsors={true}
+            extraSponsors={['netlify']}
+        >
+            Sorry, the page or resource that you are looking for cannot be
+            found.
         </PageHeader>
         <Container>
-            <BlueButton to="/">Go to EngineHub.org</BlueButton> 
+            <BlueButton to="/">Go to EngineHub.org</BlueButton>
         </Container>
     </Layout>
 );
