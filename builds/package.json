@@ -5,6 +5,8 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
+        "@emotion/core": "^10.0.16",
+        "@emotion/styled": "^10.0.15",
         "@zeit/next-css": "^1.0.1",
         "babel-loader": "^8.0.6",
         "babel-preset-react-app": "^9.0.1",
