@@ -105,10 +105,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                         </SidebarNavList>
                         <SidebarDivider />
                         <SubtleText>
-                            Project lead:{' '}
-                            <MainOutboundLink href="https://twitter.com/the_me4502">
-                                Me4502
-                            </MainOutboundLink>
+                            Project lead: wizjany
                         </SubtleText>
                         <GitHubButton
                             href="https://github.com/EngineHub/worldguard"
