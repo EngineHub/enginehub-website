@@ -18,3 +18,14 @@ package:
 custom:
   serverless-nextjs:
     assetsBucketName: "paste-static.enginehub.org"
+    routes:
+      - src: api/paste
+        path: paste
+      - src: api/documents/[id]
+        path: documents/{id}
+        request:
+          parameters:
+            paths:
+              id: true
+      - src: _error
+        path: "404"

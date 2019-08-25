@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Layout } from '@paste/Layout';
 import { NextPageContext } from 'next-server/dist/lib/utils';
 import styled from '@emotion/styled';
+import { getPaste } from '@paste/loadPaste';
+import Router from 'next/router';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -65,7 +67,7 @@ function isValidExtension(extension: string): extension is Extension {
     return EXTENSIONS.has(extension);
 }
 
-Document.getInitialProps = async ({ query }: NextPageContext) => {
+Document.getInitialProps = async ({ query, res }: NextPageContext) => {
     const { id } = query;
     let pasteId = `${id}`;
     let extension: Extension = '';
@@ -77,8 +79,19 @@ Document.getInitialProps = async ({ query }: NextPageContext) => {
         }
         pasteId = pasteId.substring(0, dotIndex);
     }
+    const pasteContents = getPaste(pasteId);
+    if (!pasteContents) {
+        if (res) {
+            res.writeHead(302, {
+              Location: '/'
+            })
+            res.end()
+          } else {
+            Router.push('/')
+          }
+    }
     return {
-        paste: 'Test Data please ignore ' + pasteId,
+        paste: pasteContents,
         extension
     };
 };
