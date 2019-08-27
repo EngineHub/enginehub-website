@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { Layout } from '@paste/Layout';
 import { NextPageContext } from 'next-server/dist/lib/utils';
 import styled from '@emotion/styled';
-import { getPaste } from '@paste/loadPaste';
+import { loadPaste } from '@paste/loadPaste';
 import Router from 'next/router';
+import { Gutter } from '@paste/Gutter';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -18,14 +19,7 @@ const PasteContent = styled.div`
     padding: 15px;
     padding-left: 55px;
     padding-right: 55px;
-`;
-
-const Gutter = styled.div`
-    padding: 15px;
-    float: left;
-    width: 60px;
-    text-align: right;
-    color: #ccc;
+    white-space: pre-line;
 `;
 
 const PasteComponent: FC<PasteProps> = ({ paste }) => {
@@ -49,7 +43,8 @@ const EXTENSIONS: Map<string, FC<PasteProps>> = new Map([
     ['', PasteComponent],
     ['paste', PasteComponent],
     ['report', PasteComponent],
-    ['profile', PasteComponent]
+    ['profile', PasteComponent],
+    ['log', PasteComponent]
 ]);
 
 type Extension = '' | 'report' | 'paste' | 'profile';
@@ -74,24 +69,33 @@ Document.getInitialProps = async ({ query, res }: NextPageContext) => {
     const dotIndex = id.lastIndexOf('.');
     if (dotIndex !== -1) {
         const extracted = pasteId.substring(dotIndex + 1);
+        pasteId = pasteId.substring(0, dotIndex);
         if (isValidExtension(extracted)) {
             extension = extracted;
+        } else {
+            if (res) {
+                res.writeHead(302, {
+                    Location: `/${pasteId}`
+                });
+                res.end();
+            } else {
+                Router.push(`/${pasteId}`);
+            }
         }
-        pasteId = pasteId.substring(0, dotIndex);
     }
-    const pasteContents = getPaste(pasteId);
+    const pasteContents = await loadPaste(pasteId);
     if (!pasteContents) {
         if (res) {
             res.writeHead(302, {
-              Location: '/'
-            })
-            res.end()
-          } else {
-            Router.push('/')
-          }
+                Location: '/'
+            });
+            res.end();
+        } else {
+            Router.push('/');
+        }
     }
     return {
-        paste: pasteContents,
+        paste: pasteContents || '',
         extension
     };
 };

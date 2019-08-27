@@ -17,6 +17,7 @@ package:
 
 custom:
   serverless-nextjs:
+    customHandler: ./handler.js
     assetsBucketName: "paste-static.enginehub.org"
     routes:
       - src: api/paste

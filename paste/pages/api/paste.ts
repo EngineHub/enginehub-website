@@ -1,11 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
+import { createPaste } from '@paste/dynamoDb';
 
 const MAX_CONTENT_LENGTH = 5242880; // 5MB
 // const MAX_PER_HOUR = 100;
 
-export default function handle(req: NextApiRequest, res: NextApiResponse) {
-    let { content } = req.body;
-    console.log(content);
+export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+    let { content, from } = req.body;
+
+    if (!content) {
+        res.writeHead(400, 'Field "content" must be provided.');
+        res.end();
+        return;
+    }
 
     if (content.length > MAX_CONTENT_LENGTH) {
         res.writeHead(503, `Content larger than ${MAX_CONTENT_LENGTH}`);
@@ -23,9 +29,11 @@ export default function handle(req: NextApiRequest, res: NextApiResponse) {
         return;
     }
 
-    res.end(JSON.stringify({ url: 'https://paste.enginehub.org/' }));
-}
-
-export const config = {
-
+    try {
+        const pasteResponse = await createPaste(content, from);
+        res.json({ url: `https://paste.enginehub.org/${pasteResponse}` });
+    } catch (e) {
+        console.log(e);
+        res.json({ error: 'An unknown error occured.' });
+    }
 }
