@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Layout } from '@paste/Layout';
 import styled from '@emotion/styled';
 import { Gutter } from '@paste/Gutter';
+import Loader from '@shared/components/Loader';
 
 const Form = styled.div`
     position: fixed;
@@ -29,12 +30,29 @@ const PasteArea = styled.textarea`
     }
 `;
 
+const SavingOverlay = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
 function Index() {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    const [saving, setSaving] = useState(false);
 
     const onKeyDown = async (event: KeyboardEvent) => {
-        if (event.ctrlKey && event.keyCode === 83) {
+        if (!saving && event.ctrlKey && event.keyCode === 83) {
             event.preventDefault();
+            setSaving(true);
             var content = textAreaRef.current!.value;
             if (content.trim().length > 0) {
                 try {
@@ -55,6 +73,7 @@ function Index() {
                     console.log(e);
                     alert('Failed to submit the post');
                 }
+                setSaving(false);
             }
         }
     };
@@ -69,6 +88,11 @@ function Index() {
             <Form>
                 <PasteArea ref={textAreaRef} />
             </Form>
+            {saving && (
+                <SavingOverlay>
+                    <Loader />
+                </SavingOverlay>
+            )}
         </Layout>
     );
 }

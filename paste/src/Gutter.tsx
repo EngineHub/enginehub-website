@@ -7,5 +7,6 @@ export const Gutter = styled.div`
     text-align: right;
     color: #ccc;
     display: flex;
-    white-space: pre-line;
+    line-height: 130%;
+    white-space: pre;
 `;

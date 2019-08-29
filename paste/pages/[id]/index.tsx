@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Layout } from '@paste/Layout';
 import { NextPageContext } from 'next-server/dist/lib/utils';
 import styled from '@emotion/styled';
@@ -19,18 +19,22 @@ const PasteContent = styled.div`
     padding: 15px;
     padding-left: 55px;
     padding-right: 55px;
-    white-space: pre-line;
+    line-height: 130%;
+    white-space: pre;
 `;
 
 const PasteComponent: FC<PasteProps> = ({ paste }) => {
-    const lineCount = paste.split('\n').length;
-    let lineNos = '';
-    for (let i = 0; i < lineCount; i++) {
-        if (i !== 0) {
-            lineNos += '\n';
+    let lineNos = useMemo(() => {
+        let text = '';
+        const lineCount = paste.split('\n').length;
+        for (let i = 0; i < lineCount; i++) {
+            if (i !== 0) {
+                text += '\n';
+            }
+            text += i + 1;
         }
-        lineNos += i + 1;
-    }
+        return text;
+    }, [paste]);
     return (
         <>
             <Gutter>{lineNos}</Gutter>
