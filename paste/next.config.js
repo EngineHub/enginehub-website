@@ -6,7 +6,7 @@ const ASSETS_PREFIX = 'https://paste-static.enginehub.org';
 
 module.exports = withCSS({
     target: 'serverless',
-    assetsPrefix: ASSETS_PREFIX,
+    assetPrefix: prod ? ASSETS_PREFIX : undefined,
     webpack: (config, options) => {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
