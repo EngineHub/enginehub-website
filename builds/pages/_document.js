@@ -18,7 +18,7 @@ class MyDocument extends Document {
                     {helmet.title.toComponent()}
                     {helmet.link.toComponent()}
                     <link
-                        href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=block"
+                        href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=block"
                         rel="stylesheet"
                     />
                     <link

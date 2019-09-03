@@ -6,7 +6,7 @@ import {
     LinkProviderProps
 } from '@shared/utils/link-provider';
 
-const sponsors = ['empty'];
+const sponsors: string[] = [];
 
 export interface ExtraSponsorProps {
     extraSponsors?: string[];
@@ -59,6 +59,9 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     ]);
 
     const availableSponsors = sponsors.concat(extraSponsors);
+    if (availableSponsors.length < 3) {
+        availableSponsors.push('empty');
+    }
 
     const [sponsorIndex, setSponsorIndex] = useState(
         Math.floor(Math.random() * availableSponsors.length)
@@ -83,6 +86,22 @@ const RandomSponsor: React.FC<ExtraSponsorProps> = props => (
     <LinkProviderContext.Consumer>
         {linkProvider => <SponsorImpl linkProvider={linkProvider} {...props} />}
     </LinkProviderContext.Consumer>
+);
+
+const HorizontalSponsorArea = styled.div`
+    display: flex;
+    align-items: center;
+
+    small {
+        margin-right: 0.5rem;
+    }
+`;
+
+export const LabelledSponsorsArea: React.FC<ExtraSponsorProps> = props => (
+    <HorizontalSponsorArea>
+        <small>Sponsored by</small>
+        <RandomSponsor extraSponsors={props.extraSponsors} />
+    </HorizontalSponsorArea>
 );
 
 export default RandomSponsor;

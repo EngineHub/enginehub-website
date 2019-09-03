@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContainerPadded } from '@shared/components/container';
 import styled from '@emotion/styled';
-import RandomSponsor, { ExtraSponsorProps } from '@shared/components/sponsors';
+import { LabelledSponsorsArea, ExtraSponsorProps } from '@shared/components/sponsors';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;
@@ -16,7 +16,7 @@ const HeaderWrapper = styled.div`
     padding-top: 0;
 `;
 
-const HeaderText = styled.h1`
+export const HeaderText = styled.h1`
     font-size: 36px;
     font-weight: 500;
     line-height: 1.8;
@@ -42,20 +42,14 @@ const HeaderTextArea = styled.div`
     flex-direction: column;
 `;
 
-const HeaderSponsorArea = styled.div`
-    display: flex;
-    align-items: center;
-    float: right;
-
-    small {
-        margin-right: 0.5rem;
-    }
-`;
-
 const HeaderImg = styled.img`
     margin: 0 20px 0 0;
     width: 100px;
     height: 100px;
+`;
+
+const RightAlignedSponsors = styled(LabelledSponsorsArea)`
+    float: right;
 `;
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
@@ -79,10 +73,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                         </HeaderTextArea>
                     </HeaderLeftArea>
                     {showSponsors && (
-                        <HeaderSponsorArea>
-                            <small>Sponsored by</small>
-                            <RandomSponsor extraSponsors={extraSponsors} />
-                        </HeaderSponsorArea>
+                        <RightAlignedSponsors extraSponsors={extraSponsors} />
                     )}
                 </HeaderContent>
             </ContainerPadded>
