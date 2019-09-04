@@ -7,35 +7,6 @@ export interface Project {
     extraSponsors?: string[];
 }
 
-export interface Build {
-    build_id: string;
-    build_number: number;
-    build_hash: string;
-    project: string;
-    state: 'SUCCESS' | 'FAILED';
-    build_date: number;
-    download_count: number;
-    branch: string;
-    data: string | BuildData;
-}
-
-export interface BuildChange {
-    version: string;
-    summary: string;
-    username: string;
-    date: number;
-}
-
-export interface BuildArtifact {
-    name: string;
-    size: number;
-}
-
-export interface BuildData {
-    artifacts: BuildArtifact[];
-    changes: BuildChange[];
-}
-
 export const PROJECT_MAP = new Map<string, Project>([
     ['worldedit', {
         id: 'worldedit',

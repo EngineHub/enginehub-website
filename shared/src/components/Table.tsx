@@ -28,6 +28,12 @@ export const Table = styled.table`
                 background-color: rgb(249, 249, 249);
             }
         }
+
+        tr.danger {
+            th, td {
+                background-color: #f2dede;
+            }
+        }
     }
 `;
 
