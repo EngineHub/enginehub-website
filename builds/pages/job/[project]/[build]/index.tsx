@@ -22,7 +22,7 @@ import Row from '@shared/components/grid/row';
 import ColumnsThird, {
     ColumnsTwoThird
 } from '@shared/components/grid/columns-3';
-import { getBuild, Build } from '@builds/builds';
+import { getBuild, Build, getLatestBuild } from '@builds/builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
@@ -86,7 +86,11 @@ function Index({ project, build }: BuildPageProps) {
                     </Breadcrumb>
                     <Breadcrumb>
                         <MainLink
-                            href={`/job/${project.id}?branch=${build.branch}`}
+                            href={`/job/${project.id}${
+                                build.branch === 'master'
+                                    ? ''
+                                    : `?branch=${build.branch}`
+                            }`}
                         >
                             {project.name} (<code>{build.branch}</code>)
                         </MainLink>
@@ -232,12 +236,19 @@ function Index({ project, build }: BuildPageProps) {
 }
 
 Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project, build } = query;
+    const { project, build, branch } = query;
     const projectObj = PROJECT_MAP.get(project as string);
-    const buildObj = await getBuild(build as string);
-    if (!projectObj || !buildObj) {
-        return {};
+    if (!projectObj) {
+        return { project: projectObj };
     }
+    let buildObj = undefined;
+    try {
+        if (build === 'last-successful') {
+            buildObj = await getLatestBuild(projectObj, branch as string);
+        } else {
+            buildObj = await getBuild(build as string);
+        }
+    } catch (e) {}
     return { project: projectObj, build: buildObj };
 };
 

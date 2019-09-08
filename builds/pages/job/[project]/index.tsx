@@ -7,20 +7,29 @@ import { PageHeader } from '@shared/components/PageHeader';
 import { PROJECT_MAP, Project } from '@builds/project';
 import Error from '../../_error';
 import { Table } from '@shared/components/Table';
-import { Build, getBuild } from '@builds/builds';
+import { Build, getBranches } from '@builds/builds';
 import styled from '@emotion/styled';
 import { BlueButtonStyle, MainButtonStyle } from '@shared/components/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDownload,
     faCheckCircle,
-    faExclamationTriangle
+    faExclamationTriangle,
+    faCodeBranch
 } from '@fortawesome/free-solid-svg-icons';
 import { MainLinkStyle } from '@shared/components/link';
+import BranchWarning from '@builds/BranchWarning';
+import {
+    BranchButtonList,
+    BranchButtonItem,
+    BranchButton
+} from '@builds/BranchButton';
 
 interface ProjectPageProps {
+    activeBranch: string;
     project: Project;
     builds: Build[];
+    branches: string[];
 }
 
 const TdNoWrap = styled.td`
@@ -31,7 +40,15 @@ const MainLink = styled.a(MainLinkStyle);
 const MainButton = styled.a(MainButtonStyle);
 const BlueButton = styled.a(BlueButtonStyle);
 
-function Index({ project, builds }: ProjectPageProps) {
+const MiniPaddedIcon = styled(FontAwesomeIcon)`
+    line-height: 0.75em;
+    vertical-align: -15%;
+    margin-right: 0.25rem;
+    max-width: 16px;
+    max-height: 16px;
+`;
+
+function Index({ project, builds, branches, activeBranch }: ProjectPageProps) {
     if (!project) {
         return <Error statusCode={404} />;
     }
@@ -42,10 +59,36 @@ function Index({ project, builds }: ProjectPageProps) {
                 text={`${project.name} Builds`}
                 showSponsors={false}
                 icon={project.icon}
-            />
+            >
+                <BranchButtonList>
+                    {branches.map(branch => (
+                        <BranchButtonItem key={branch}>
+                            <BranchButton
+                                className={
+                                    branch === activeBranch
+                                        ? 'active'
+                                        : undefined
+                                }
+                                href={`/job/${project.id}?branch=${branch}`}
+                            >
+                                <MiniPaddedIcon icon={faCodeBranch} /> {branch}
+                            </BranchButton>
+                        </BranchButtonItem>
+                    ))}
+                </BranchButtonList>
+            </PageHeader>
             <Container>
+                {activeBranch !== project.defaultBranch &&
+                    (!project.pinnedBranches ||
+                        !project.pinnedBranches.includes(activeBranch)) && (
+                        <BranchWarning
+                            currentBranch={activeBranch}
+                            mainBranch={project.defaultBranch}
+                            projectId={project.id}
+                        />
+                    )}
                 <MainButton
-                    href={`/job/${project.id}/last-successful`}
+                    href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
                     style={{ float: 'right', marginBottom: '2rem' }}
                 >
                     View last successful build
@@ -123,15 +166,26 @@ function Index({ project, builds }: ProjectPageProps) {
 }
 
 Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project } = query;
+    const { project, branch } = query;
     const projectObj = PROJECT_MAP.get(project as string);
     if (!projectObj) {
-        return {};
+        return {
+            project: undefined,
+            builds: [],
+            branches: [],
+            activeBranch: undefined
+        };
     }
 
-    const builds = [await getBuild('1234'), await getBuild('1235')];
+    const builds: Build[] = [];
+    const branches = await getBranches(projectObj);
 
-    return { project: projectObj, builds };
+    return {
+        project: projectObj,
+        builds,
+        branches,
+        activeBranch: branch || projectObj.defaultBranch
+    };
 };
 
 export default Index;
