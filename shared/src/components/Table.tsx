@@ -22,7 +22,7 @@ export const Table = styled.table`
             }
         }
 
-        tr:nth-child(2n + 1) {
+        tr:nth-of-type(2n + 1) {
             th,
             td {
                 background-color: rgb(249, 249, 249);

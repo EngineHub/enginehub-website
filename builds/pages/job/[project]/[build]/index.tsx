@@ -30,6 +30,8 @@ import {
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import BranchWarning from '@builds/BranchWarning';
+import moment from 'moment';
+import { WarningBox } from '@shared/components/WarningBox';
 
 interface BuildPageProps {
     build: Build;
@@ -168,7 +170,9 @@ function Index({ project, build }: BuildPageProps) {
                                 </tr>
                                 <tr>
                                     <th>Date</th>
-                                    <td>{build.build_date}</td>
+                                    <td>
+                                        {moment(build.build_date).fromNow()}
+                                    </td>
                                 </tr>
                             </tbody>
                         </BorderedTable>
@@ -177,24 +181,39 @@ function Index({ project, build }: BuildPageProps) {
                         <Panel>
                             <PanelHeading>Artifacts</PanelHeading>
                             <PanelBody>
-                                {build.artifacts.map((artifact, i) => (
-                                    <DownloadLinkDiv
-                                        key={`${artifact.name}-${i}`}
-                                    >
-                                        <img
-                                            src="/static/download_icon.png"
-                                            alt="Download"
-                                        />
-                                        <MainOutboundLink
-                                            href={`https://ci.enginehub.org/repository/download/${project.buildType}/${build.build_id}:id/${artifact.name}?branch=${build.branch}&guest=1`}
+                                {build.artifacts.length > 0 ? (
+                                    build.artifacts.map((artifact, i) => (
+                                        <DownloadLinkDiv
+                                            key={`${artifact.name}-${i}`}
                                         >
-                                            {artifact.name}
-                                        </MainOutboundLink>
-                                        <small>
-                                            ({artifact.size / 1024} kBytes)
-                                        </small>
-                                    </DownloadLinkDiv>
-                                ))}
+                                            <img
+                                                src="/static/download_icon.png"
+                                                alt="Download"
+                                            />
+                                            <MainOutboundLink
+                                                href={`https://ci.enginehub.org/repository/download/${project.buildType}/${build.build_id}:id/${artifact.name}?branch=${build.branch}&guest=1`}
+                                            >
+                                                {artifact.name}
+                                            </MainOutboundLink>
+                                            <small>
+                                                (
+                                                {Math.round(
+                                                    (artifact.size / 1024) *
+                                                        100 +
+                                                        Number.EPSILON
+                                                ) / 100}{' '}
+                                                kBytes)
+                                            </small>
+                                        </DownloadLinkDiv>
+                                    ))
+                                ) : (
+                                    <WarningBox>
+                                        <p>
+                                            No artifacts (files) are available
+                                            for this build!
+                                        </p>
+                                    </WarningBox>
+                                )}
                                 <Breaker />
                                 <LabelledSponsorsArea
                                     extraSponsors={project.extraSponsors}
@@ -221,10 +240,16 @@ function Index({ project, build }: BuildPageProps) {
                             </tr>
                             {build.changes.map(change => (
                                 <tr key={change.version}>
-                                    <td>{change.version}</td>
+                                    <td>
+                                        <MainOutboundLink
+                                            href={`${project.vcsRoot}/commit/${change.version}`}
+                                        >
+                                            {change.version.substring(0, 8)}
+                                        </MainOutboundLink>
+                                    </td>
                                     <td>{change.summary}</td>
                                     <td>{change.username}</td>
-                                    <td>{change.date}</td>
+                                    <td>{moment(change.date).fromNow()}</td>
                                 </tr>
                             ))}
                         </tbody>

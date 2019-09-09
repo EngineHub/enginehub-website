@@ -7,7 +7,7 @@ import { PageHeader } from '@shared/components/PageHeader';
 import { PROJECT_MAP, Project } from '@builds/project';
 import Error from '../../_error';
 import { Table } from '@shared/components/Table';
-import { Build, getBranches } from '@builds/builds';
+import { Build, getBranches, getBuildPage, BUILDS_PER_PAGE } from '@builds/builds';
 import styled from '@emotion/styled';
 import { BlueButtonStyle, MainButtonStyle } from '@shared/components/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,12 +24,16 @@ import {
     BranchButtonItem,
     BranchButton
 } from '@builds/BranchButton';
+import moment from 'moment';
+import Pagination from '@shared/components/Pagination';
 
 interface ProjectPageProps {
     activeBranch: string;
     project: Project;
     builds: Build[];
     branches: string[];
+    pageNumber: number;
+    hasNextPage: boolean;
 }
 
 const TdNoWrap = styled.td`
@@ -39,6 +43,7 @@ const TdNoWrap = styled.td`
 const MainLink = styled.a(MainLinkStyle);
 const MainButton = styled.a(MainButtonStyle);
 const BlueButton = styled.a(BlueButtonStyle);
+const MainOutboundLink = styled.a(MainLinkStyle);
 
 const MiniPaddedIcon = styled(FontAwesomeIcon)`
     line-height: 0.75em;
@@ -48,7 +53,14 @@ const MiniPaddedIcon = styled(FontAwesomeIcon)`
     max-height: 16px;
 `;
 
-function Index({ project, builds, branches, activeBranch }: ProjectPageProps) {
+function Index({
+    project,
+    builds,
+    branches,
+    activeBranch,
+    pageNumber,
+    hasNextPage
+}: ProjectPageProps) {
     if (!project) {
         return <Error statusCode={404} />;
     }
@@ -147,8 +159,37 @@ function Index({ project, builds, branches, activeBranch }: ProjectPageProps) {
                                 <td>
                                     <small>{build.statusText}</small>
                                 </td>
-                                <td>//TODO Changes</td>
-                                <TdNoWrap>{build.build_date}</TdNoWrap>
+                                <td>
+                                    <ul>
+                                        {build.changes.length > 0 ? (
+                                            build.changes.map(change => (
+                                                <li key={change.version}>
+                                                    {change.summary}{' '}
+                                                    <small>
+                                                        (
+                                                        <MainOutboundLink
+                                                            href={`${project.vcsRoot}/commit/${change.version}`}
+                                                        >
+                                                            {change.version.substring(
+                                                                0,
+                                                                8
+                                                            )}
+                                                        </MainOutboundLink>{' '}
+                                                        by {change.username})
+                                                    </small>
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <small>
+                                                No new changes were added in
+                                                this build.
+                                            </small>
+                                        )}
+                                    </ul>
+                                </td>
+                                <TdNoWrap>
+                                    {moment(build.build_date).fromNow()}
+                                </TdNoWrap>
                                 <TdNoWrap>
                                     <BlueButton
                                         href={`/job/${project.id}/${build.build_id}`}
@@ -160,13 +201,18 @@ function Index({ project, builds, branches, activeBranch }: ProjectPageProps) {
                         ))}
                     </tbody>
                 </Table>
+                <Pagination
+                    currentPage={pageNumber}
+                    hasNextPage={hasNextPage}
+                    pageMask={`/job/${project.id}?branch=${activeBranch}&page=:page`}
+                />
             </Container>
         </Layout>
     );
 }
 
 Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project, branch } = query;
+    const { project, branch, page } = query;
     const projectObj = PROJECT_MAP.get(project as string);
     if (!projectObj) {
         return {
@@ -177,14 +223,26 @@ Index.getInitialProps = async ({ query }: NextPageContext) => {
         };
     }
 
-    const builds: Build[] = [];
+    const pageNumber = parseInt(page as string) || 0;
+
+    const builds: Build[] = await getBuildPage(
+        projectObj,
+        (branch as string) || projectObj.defaultBranch,
+        pageNumber
+    );
     const branches = await getBranches(projectObj);
+    const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
+    if (hasNextPage) {
+        builds.pop();
+    }
 
     return {
         project: projectObj,
         builds,
         branches,
-        activeBranch: branch || projectObj.defaultBranch
+        activeBranch: branch || projectObj.defaultBranch,
+        pageNumber,
+        hasNextPage
     };
 };
 

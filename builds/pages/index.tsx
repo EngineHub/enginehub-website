@@ -4,25 +4,178 @@ import { Container } from '@shared/components/container';
 import { WarningBox } from '@shared/components/WarningBox';
 import SEO from '@shared/components/seo';
 import { PageHeader } from '@shared/components/PageHeader';
+import { Table } from '@shared/components/Table';
+import { Project, PROJECTS } from '@builds/project';
+import { Build, getBranches, getLatestBuild } from '@builds/builds';
+import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faCodeBranch,
+    faCheckCircle,
+    faExclamationTriangle
+} from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
+import { MainLinkStyle } from '@shared/components/link';
+import { InfoLabel } from '@shared/components/text/label';
 
-function Index() {
+interface ProjectEntry {
+    project: Project;
+    builds: Build[];
+}
+
+interface IndexProps {
+    projectEntries: ProjectEntry[];
+}
+
+const TdNoWrap = styled.td`
+    white-space: nowrap;
+`;
+
+const MiniPaddedIcon = styled(FontAwesomeIcon)`
+    line-height: 0.75em;
+    vertical-align: -15%;
+    margin-right: 0.25rem;
+    max-width: 16px;
+    max-height: 16px;
+`;
+
+const ProjectTitleRow = styled.tr`
+    background: #eee;
+
+    td {
+        h2 {
+            margin: 2px 0 0;
+    padding: 0 5px;
+    font-size: 14px;
+        }
+    }
+`;
+
+const MainLink = styled.a(MainLinkStyle);
+
+function Index({ projectEntries }: IndexProps) {
     return (
         <Layout>
-            <SEO title={"Builds"} />
-            <PageHeader text={"Builds"} showSponsors={true} />
+            <SEO title={'Builds'} />
+            <PageHeader text={'Builds'} showSponsors={true} />
             <Container>
                 <WarningBox>
-                    <b>The builds page is temporarily unavailable due to a hardware failure! Please use release
-                    builds from <a href="https://enginehub.org/">here</a> for
-                    now, or <a href="https://discord.gg/enginehub">join the Discord</a> for dev builds.</b>
+                    <strong>These are not the main downloads!</strong>
+                    <p>
+                        These downloads are created from every change made in
+                        the code, which may mean that some of these downloads
+                        may be unstable or cause problems. Unless you have been
+                        instructed to use these downloads, please prefer the use
+                        of stable versions.
+                    </p>
                 </WarningBox>
+                <Table>
+                    <colgroup>
+                        <col style={{ width: '20px' }} />
+                        <col />
+                        <col style={{ width: '1%' }} />
+                        <col style={{ width: '25%' }} />
+                        <col style={{ width: '10%' }} />
+                        <col style={{ width: '20%' }} />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th />
+                            <th>Branch</th>
+                            <th colSpan={2}>Last Build</th>
+                            <th />
+                            <th>Finished</th>
+                        </tr>
+                        {projectEntries.map(projectEntry => (
+                            <>
+                                <ProjectTitleRow>
+                                    <td colSpan={6}>
+                                        <h2>{projectEntry.project.name}</h2>
+                                    </td>
+                                </ProjectTitleRow>
+                                {projectEntry.builds.map(build => (
+                                    <tr
+                                        className={
+                                            build.state !== 'SUCCESS'
+                                                ? 'danger'
+                                                : ''
+                                        }
+                                        key={build.build_id}
+                                    >
+                                        <td />
+                                        <td>
+                                            <MiniPaddedIcon
+                                                icon={faCodeBranch}
+                                            />
+                                            <MainLink
+                                                href={`/job/${projectEntry.project.id}?branch=${build.branch}`}
+                                            >
+                                                {build.branch}
+                                            </MainLink>
+                                            {build.branch === projectEntry.project.defaultBranch && (
+                                                <InfoLabel style={{ marginLeft: '0.5rem;'}}>main branch</InfoLabel>
+                                            )}
+                                        </td>
+                                        <td>
+                                            <FontAwesomeIcon
+                                                icon={
+                                                    build.state === 'SUCCESS'
+                                                        ? faCheckCircle
+                                                        : faExclamationTriangle
+                                                }
+                                                style={{
+                                                    color:
+                                                        build.state ===
+                                                        'SUCCESS'
+                                                            ? '#3c763d'
+                                                            : '#a94442'
+                                                }}
+                                            />
+                                        </td>
+                                        <td>
+                                            <small>{build.statusText}</small>
+                                        </td>
+                                        <td>
+                                            <MainLink
+                                                href={`/job/${projectEntry.project.id}/${build.build_id}`}
+                                            >
+                                                #{build.build_number}
+                                            </MainLink>
+                                        </td>
+                                        <TdNoWrap>
+                                            {moment(build.build_date).fromNow()}{' '}
+                                        </TdNoWrap>
+                                    </tr>
+                                ))}
+                            </>
+                        ))}
+                    </tbody>
+                </Table>
             </Container>
         </Layout>
     );
 }
 
-Index.getInitialProps = async ({}) => {
-    return { data: await new Promise((resolve, _reject) => resolve()) };
+Index.getInitialProps = async () => {
+    const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
+        project: proj,
+        builds: []
+    }));
+
+    await Promise.all(
+        projectEntries.map(async proj => {
+            const branches = (await getBranches(proj.project)).filter(branch => !branch.includes('/')); // remove later
+            proj.builds = await Promise.all(
+                branches.map(
+                    async branch => await getLatestBuild(proj.project, branch)
+                )
+            );
+        })
+    );
+
+    return {
+        projectEntries
+    };
 };
 
 export default Index;
