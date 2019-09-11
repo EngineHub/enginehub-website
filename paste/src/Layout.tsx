@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Header } from './Header';
 import './layout.css';
-import SEO from '@shared/components/seo';
+import SEO from '@shared/components/Seo';
 
 interface LayoutProps {
     showHelp?: boolean;

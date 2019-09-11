@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Layout from '../components/layout';
-import SEO from '@shared/components/seo';
+import Layout from '@main/components/Layout';
+import SEO from '@shared/components/Seo';
 import styled from '@emotion/styled';
-import { Container } from '@shared/components/container';
-import Row from '@shared/components/grid/row';
-import Columns2 from '@shared/components/grid/columns-2';
+import { Container } from '@shared/components/Container';
+import { Row, ColumnHalf } from '@shared/components/grid';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
-import ProjectBox from '../components/project-box';
+import ProjectBox from '@main/components/ProjectBox';
 
 const HeadingContainer = styled.div`
     margin: 20px 0 60px;
@@ -65,7 +64,7 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
                     <FeatureHeading>Our Projects</FeatureHeading>
                 </HeadingContainer>
                 <Row>
-                    <Columns2>
+                    <ColumnHalf>
                         <ProjectList>
                             <ProjectBox
                                 name="WorldEdit"
@@ -86,8 +85,8 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
                                 description="Basic and essential commands for your Bukkit server in a lightweight plugin."
                             />
                         </ProjectList>
-                    </Columns2>
-                    <Columns2>
+                    </ColumnHalf>
+                    <ColumnHalf>
                         <ProjectList>
                             <ProjectBox
                                 name="CraftBook"
@@ -102,7 +101,7 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
                                 description="Script your Bukkit server without any Java knowledge using a easy to use and powerful language."
                             />
                         </ProjectList>
-                    </Columns2>
+                    </ColumnHalf>
                 </Row>
             </Container>
         </Layout>

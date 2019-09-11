@@ -5,7 +5,7 @@ import {
     MainButtonStyle,
     PurpleButtonStyle,
     BlueButtonStyle
-} from '@shared/components/button';
+} from '@shared/components/Button';
 
 export const GrayOutboundButton = styled(OutboundLink)(MainButtonStyle);
 export const PurpleOutboundButton = styled(OutboundLink)(PurpleButtonStyle);

@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { Container } from '@shared/components/container';
+import { Container } from '@shared/components/Container';
 import styled from '@emotion/styled';
 import {
     LinkProviderContext,
     LinkProviderProps
-} from '@shared/utils/link-provider';
-import { MainLinkStyle } from '@shared/components/link';
-import RandomSponsor, { ExtraSponsorProps } from './sponsors';
+} from '@shared/utils/LinkProvider';
+import { MainLinkStyle } from '@shared/components/Link';
+import RandomSponsor, { ExtraSponsorProps } from './Sponsors';
 
 const ContainerFlex = styled(Container)`
     display: flex;

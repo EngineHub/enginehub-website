@@ -1,15 +1,13 @@
 import styled from '@emotion/styled';
 
-const ColumnsThird = styled.div`
+export const ColumnQuarter = styled.div`
     padding-left: 15px;
     padding-right: 15px;
-    flex: 33%;
+    flex: 25%;
 `;
 
-export default ColumnsThird;
-
-export const ColumnsTwoThird = styled.div`
-    flex: 66%;
+export const ColumnThreeQuarter = styled.div`
+    flex: 75%;
     padding-left: 15px;
     padding-right: 15px;
 `;

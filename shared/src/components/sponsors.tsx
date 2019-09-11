@@ -1,10 +1,10 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { MainLinkStyle } from './link';
+import { MainLinkStyle } from './Link';
 import {
     LinkProviderContext,
     LinkProviderProps
-} from '@shared/utils/link-provider';
+} from '@shared/utils/LinkProvider';
 
 const sponsors: string[] = [];
 

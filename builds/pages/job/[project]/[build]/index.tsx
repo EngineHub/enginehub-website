@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '@builds/layout';
-import { ContainerPadded } from '@shared/components/container';
+import Layout from '@builds/Layout';
+import { ContainerPadded } from '@shared/components/Container';
 import styled from '@emotion/styled';
 import { InfoBox } from '@shared/components/InfoBox';
 import { NextPageContext } from 'next-server/dist/lib/utils';
-import SEO from '@shared/components/seo';
+import SEO from '@shared/components/Seo';
 import { PROJECT_MAP, Project } from '@builds/project';
 import Error from '../../../_error';
 import {
@@ -12,16 +12,13 @@ import {
     Breadcrumb,
     ActiveBreadcrumb
 } from '@shared/components/Breadcrumbs';
-import { MainLinkStyle } from '@shared/components/link';
+import { MainLinkStyle } from '@shared/components/Link';
 import { HeaderText } from '@shared/components/PageHeader';
-import { MainButtonStyle } from '@shared/components/button';
+import { MainButtonStyle } from '@shared/components/Button';
 import { Panel, PanelHeading, PanelBody } from '@shared/components/Panel';
-import { LabelledSponsorsArea } from '@shared/components/sponsors';
+import { LabelledSponsorsArea } from '@shared/components/Sponsors';
 import { Table, BorderedTable } from '@shared/components/Table';
-import Row from '@shared/components/grid/row';
-import ColumnsThird, {
-    ColumnsTwoThird
-} from '@shared/components/grid/columns-3';
+import { Row, ColumnThird, ColumnTwoThird } from '@shared/components/grid';
 import { getBuild, Build, getLatestBuild } from '@builds/builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -123,7 +120,7 @@ function Index({ project, build }: BuildPageProps) {
                     </InfoBox>
                 )}
                 <Row>
-                    <ColumnsThird style={{ paddingLeft: '0' }}>
+                    <ColumnThird style={{ paddingLeft: '0' }}>
                         <BorderedTable>
                             <tbody>
                                 <tr>
@@ -176,8 +173,8 @@ function Index({ project, build }: BuildPageProps) {
                                 </tr>
                             </tbody>
                         </BorderedTable>
-                    </ColumnsThird>
-                    <ColumnsTwoThird style={{ paddingRight: '0' }}>
+                    </ColumnThird>
+                    <ColumnTwoThird style={{ paddingRight: '0' }}>
                         <Panel>
                             <PanelHeading>Artifacts</PanelHeading>
                             <PanelBody>
@@ -220,7 +217,7 @@ function Index({ project, build }: BuildPageProps) {
                                 />
                             </PanelBody>
                         </Panel>
-                    </ColumnsTwoThird>
+                    </ColumnTwoThird>
                 </Row>
                 <Panel>
                     <PanelHeading>Changes</PanelHeading>

@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { Container } from '@shared/components/container';
+import { Container } from '@shared/components/Container';
 import css from '@emotion/css';
-import { LinkProviderContext } from '@shared/utils/link-provider';
-import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/button';
+import { LinkProviderContext } from '@shared/utils/LinkProvider';
+import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
 
 const NavBackgroundColours = new Map([
     ['default', '#f8f8f8'],

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContainerPadded } from '@shared/components/container';
+import { ContainerPadded } from '@shared/components/Container';
 import styled from '@emotion/styled';
-import { LabelledSponsorsArea, ExtraSponsorProps } from '@shared/components/sponsors';
+import { LabelledSponsorsArea, ExtraSponsorProps } from '@shared/components/Sponsors';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;

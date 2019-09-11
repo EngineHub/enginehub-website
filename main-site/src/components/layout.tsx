@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useMemo } from 'react';
 import Helmet from 'react-helmet';
-import Navbar from '@shared/components/navbar';
+import Navbar from '@shared/components/Navbar';
 import './layout.css';
-import Footer from '@shared/components/footer';
-import { Landing } from './landing';
-import { LinkProvider, WrapperLinkProps, LinkProviderContext } from '@shared/utils/link-provider';
+import Footer from '@shared/components/Footer';
+import { Landing } from './Landing';
+import { LinkProvider, WrapperLinkProps, LinkProviderContext } from '@shared/utils/LinkProvider';
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-gtag';
-import { ExtraSponsorProps } from '@shared/components/sponsors';
+import { ExtraSponsorProps } from '@shared/components/Sponsors';
 
 interface LayoutProps {
     discordOverride?: string;

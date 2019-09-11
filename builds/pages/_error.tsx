@@ -1,12 +1,12 @@
 import React from 'react';
 import { NextPageContext } from 'next-server/dist/lib/utils';
 import NextError from 'next/error';
-import Layout from '@builds/layout';
-import SEO from '@shared/components/seo';
+import Layout from '@builds/Layout';
+import SEO from '@shared/components/Seo';
 import { PageHeader } from '@shared/components/PageHeader';
-import { Container } from '@shared/components/container';
+import { Container } from '@shared/components/Container';
 import styled from '@emotion/styled';
-import { BlueButtonStyle } from '@shared/components/button';
+import { BlueButtonStyle } from '@shared/components/Button';
 
 export const BlueButton = styled.a(BlueButtonStyle);
 

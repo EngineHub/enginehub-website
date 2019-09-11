@@ -1,38 +1,36 @@
 import { graphql } from 'gatsby';
-import Layout from '../components/layout';
-import SEO from '@shared/components/seo';
+import Layout from '@main/components/Layout';
+import SEO from '@shared/components/Seo';
 import React from 'react';
-import { ContainerPadded } from '@shared/components/container';
-import Row from '@shared/components/grid/row';
-import ColumnsQuarter, {
-    ColumnsThreeQuarter
-} from '@shared/components/grid/columns-4';
-import SidebarHeading from '@shared/components/sidebar/sidebar-heading';
-import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '../components/sidebar/sidebar-icon';
+import { ContainerPadded } from '@shared/components/Container';
 import {
+    Row,
+    ColumnQuarter,
+    ColumnThreeQuarter
+} from '@shared/components/grid';
+import {
+    SidebarHeading,
+    SidebarDivider,
     SidebarNavList,
     SidebarNavListItem
-} from '@shared/components/sidebar/sidebar-nav';
-import { MainOutboundLink, MainLink } from '../components/link';
-import SidebarDivider from '@shared/components/sidebar/sidebar-divider';
-import SubtleText from '@shared/components/text/subtle-text';
+} from '@shared/components/sidebar';
+import { FixedObject } from 'gatsby-image';
+import SidebarIcon from '@main/components/sidebar/SidebarIcon';
+import { MainOutboundLink, MainLink } from '@main/components/Link';
+import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox
 } from '@shared/components/jumbotron';
-import SectionHeading from '@shared/components/text/section-heading';
+import { SectionHeading } from '@shared/components/text/SectionHeading';
 import GitHubButton from 'react-github-btn';
-import PlatformBanner from '../components/platform-banner';
+import PlatformBanner from '@main/components/PlatformBanner';
 import {
     GrayOutboundButton,
     BlueButton,
     BlueOutboundButton
-} from '../components/button';
-import {
-    WarningLabel,
-    InfoLabel
-} from '@shared/components/text/label';
+} from '@main/components/Button';
+import { WarningLabel, InfoLabel } from '@shared/components/text/Label';
 
 interface CommandBookPageData {
     file: {
@@ -63,7 +61,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
             />
             <ContainerPadded>
                 <Row>
-                    <ColumnsQuarter>
+                    <ColumnQuarter>
                         <SidebarIcon
                             image={data.file.childImageSharp.fixed}
                             alt={'CommandBook Logo'}
@@ -111,13 +109,13 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                         <GitHubButton
                             href="https://github.com/EngineHub/commandbook"
                             data-icon="octicon-star"
-                            data-show-count="true"
+                            data-show-count={true}
                             aria-label="Star EngineHub/commandbook on GitHub"
                         >
                             Star
                         </GitHubButton>
-                    </ColumnsQuarter>
-                    <ColumnsThreeQuarter>
+                    </ColumnQuarter>
+                    <ColumnThreeQuarter>
                         <JumbotronContainer>
                             <JumbotronText>
                                 CommandBook provides a long list of basic,
@@ -232,7 +230,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                    </ColumnsThreeQuarter>
+                    </ColumnThreeQuarter>
                 </Row>
             </ContainerPadded>
         </Layout>

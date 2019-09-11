@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Row = styled.div`
+export const Row = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 30px;
@@ -9,5 +9,3 @@ const Row = styled.div`
     flex-direction: column;
   }
 `;
-
-export default Row;

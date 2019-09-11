@@ -3,12 +3,12 @@ import {
     LinkProvider,
     LinkProviderContext,
     WrapperLink
-} from '@shared/utils/link-provider';
+} from '@shared/utils/LinkProvider';
 import { Link } from '@reach/router';
-import Navbar from '@shared/components/navbar';
-import Footer from '@shared/components/footer';
+import Navbar from '@shared/components/Navbar';
+import Footer from '@shared/components/Footer';
 import './layout.css';
-import { ExtraSponsorProps } from '@shared/components/sponsors';
+import { ExtraSponsorProps } from '@shared/components/Sponsors';
 
 class NextLinkProvider implements LinkProvider {
     getLinkComponent(): WrapperLink {

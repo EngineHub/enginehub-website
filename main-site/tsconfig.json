@@ -13,6 +13,6 @@
         "noEmit": true,
         "skipLibCheck": true
     },
-    "include": ["./src/**/*", "../shared/src/components/navbar.tsx", "../shared/src/components/footer.tsx"],
+    "include": ["./src/**/*"],
     "exclude": [".cache", "public"]
 }

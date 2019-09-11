@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
-import Navbar from '@shared/components/navbar';
-import { Container } from '@shared/components/container';
+import Navbar from '@shared/components/Navbar';
+import { Container } from '@shared/components/Container';
 
 interface LandingProps {
     discordOverride?: string;

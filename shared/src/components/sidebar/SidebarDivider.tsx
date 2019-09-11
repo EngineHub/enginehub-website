@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const SidebarDivider = styled.hr`
+export const SidebarDivider = styled.hr`
     margin-top: 23px;
     margin-bottom: 23px;
     border: 0;
@@ -8,5 +8,3 @@ const SidebarDivider = styled.hr`
     height: 0;
     box-sizing: content-box;
 `;
-
-export default SidebarDivider;

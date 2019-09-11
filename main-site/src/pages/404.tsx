@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Layout from '../components/layout';
-import SEO from '@shared/components/seo';
+import Layout from '@main/components/Layout';
+import SEO from '@shared/components/Seo';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
-import { BlueButton } from '@main/components/button';
-import { Container } from '@shared/components/container';
+import { BlueButton } from '@main/components/Button';
+import { Container } from '@shared/components/Container';
 import { PageHeader } from '@shared/components/PageHeader';
 
 interface NotFoundData {

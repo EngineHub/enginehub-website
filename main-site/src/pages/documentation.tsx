@@ -1,18 +1,19 @@
 import { graphql } from 'gatsby';
-import Layout from '../components/layout';
-import SEO from '@shared/components/seo';
+import Layout from '@main/components/Layout';
+import SEO from '@shared/components/Seo';
 import React from 'react';
-import { ContainerPadded } from '@shared/components/container';
-import Row from '@shared/components/grid/row';
-import ColumnsQuarter, {
-    ColumnsThreeQuarter
-} from '@shared/components/grid/columns-4';
-import SidebarHeading from '@shared/components/sidebar/sidebar-heading';
+import { ContainerPadded } from '@shared/components/Container';
+import {
+    Row,
+    ColumnQuarter,
+    ColumnThreeQuarter
+} from '@shared/components/grid';
+import { SidebarHeading } from '@shared/components/sidebar';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '../components/sidebar/sidebar-icon';
-import { BlueOutboundButton } from '../components/button';
-import SectionHeading from '@shared/components/text/section-heading';
-import PlatformBanner from '../components/platform-banner';
+import SidebarIcon from '@main/components/sidebar/SidebarIcon';
+import { BlueOutboundButton } from '@main/components/Button';
+import { SectionHeading } from '@shared/components/text/SectionHeading';
+import PlatformBanner from '@main/components/PlatformBanner';
 
 interface DocumentationPageData {
     file: {
@@ -43,14 +44,14 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
             />
             <ContainerPadded>
                 <Row>
-                    <ColumnsQuarter>
+                    <ColumnQuarter>
                         <SidebarIcon
                             image={data.file.childImageSharp.fixed}
                             alt={'EngineHub Logo'}
                         />
                         <SidebarHeading>Docs</SidebarHeading>
-                    </ColumnsQuarter>
-                    <ColumnsThreeQuarter>
+                    </ColumnQuarter>
+                    <ColumnThreeQuarter>
                         <SectionHeading id="documentation">
                             Documentation
                         </SectionHeading>
@@ -132,7 +133,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                                 </BlueOutboundButton>
                             </p>
                         </PlatformBanner>
-                    </ColumnsThreeQuarter>
+                    </ColumnThreeQuarter>
                 </Row>
             </ContainerPadded>
         </Layout>

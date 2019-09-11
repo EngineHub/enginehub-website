@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '@builds/layout';
-import { Container } from '@shared/components/container';
-import SEO from '@shared/components/seo';
+import Layout from '@builds/Layout';
+import { Container } from '@shared/components/Container';
+import SEO from '@shared/components/Seo';
 import { NextPageContext } from 'next-server/dist/lib/utils';
 import { PageHeader } from '@shared/components/PageHeader';
 import { PROJECT_MAP, Project } from '@builds/project';
@@ -9,7 +9,7 @@ import Error from '../../_error';
 import { Table } from '@shared/components/Table';
 import { Build, getBranches, getBuildPage, BUILDS_PER_PAGE } from '@builds/builds';
 import styled from '@emotion/styled';
-import { BlueButtonStyle, MainButtonStyle } from '@shared/components/button';
+import { BlueButtonStyle, MainButtonStyle } from '@shared/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDownload,
@@ -17,7 +17,7 @@ import {
     faExclamationTriangle,
     faCodeBranch
 } from '@fortawesome/free-solid-svg-icons';
-import { MainLinkStyle } from '@shared/components/link';
+import { MainLinkStyle } from '@shared/components/Link';
 import BranchWarning from '@builds/BranchWarning';
 import {
     BranchButtonList,

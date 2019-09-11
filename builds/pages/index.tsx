@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../src/layout';
-import { Container } from '@shared/components/container';
+import Layout from '../src/Layout';
+import { Container } from '@shared/components/Container';
 import { WarningBox } from '@shared/components/WarningBox';
-import SEO from '@shared/components/seo';
+import SEO from '@shared/components/Seo';
 import { PageHeader } from '@shared/components/PageHeader';
 import { Table } from '@shared/components/Table';
 import { Project, PROJECTS } from '@builds/project';
@@ -15,8 +15,8 @@ import {
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import { MainLinkStyle } from '@shared/components/link';
-import { InfoLabel } from '@shared/components/text/label';
+import { MainLinkStyle } from '@shared/components/Link';
+import { InfoLabel } from '@shared/components/text/Label';
 
 interface ProjectEntry {
     project: Project;
