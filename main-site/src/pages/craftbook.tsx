@@ -21,7 +21,7 @@ import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox
-} from '@shared/components/jumbotron';
+} from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
