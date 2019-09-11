@@ -25,6 +25,7 @@ export const PROJECTS = [
         defaultBranch: 'master',
         icon: require('../images/worldguard-icon.png'),
         buildType: 'bt11',
+        pinnedBranches: ['archive/1.13'],
         vcsRoot: 'https://github.com/EngineHub/WorldGuard'
     },
     {
