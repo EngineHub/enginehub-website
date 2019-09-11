@@ -1,0 +1,27 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Yarn Install
+      run: |
+        npm install -g yarn serverless
+        yarn
+        yarn workspace builds type-check
+        NODE_ENV=production sls deploy -v
+      env:
+        CI: true
