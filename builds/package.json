@@ -14,6 +14,7 @@
         "axios": "^0.19.0",
         "babel-loader": "^8.0.6",
         "babel-preset-react-app": "^9.0.1",
+        "cross-env": "^5.2.1",
         "moment": "^2.24.0",
         "next": "^9.0.5",
         "next-images": "^1.1.2",
@@ -39,6 +40,7 @@
     "scripts": {
         "dev": "next",
         "build": "next build",
+        "deploy": "cross-env NODE_ENV=production sls deploy -v",
         "start": "next start",
         "type-check": "tsc --project ./tsconfig.json --noEmit",
         "lint": "tslint --config ./tslint.json --project ./tsconfig.json",

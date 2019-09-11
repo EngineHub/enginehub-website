@@ -1,15 +1,13 @@
 name: Node CI
 
-on: [push]
+on:
+  push:
+    branches:    
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -17,11 +15,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: Yarn Install
+    - name: Test and Deploy
       run: |
         npm install -g yarn serverless
         yarn
         yarn workspace builds type-check
-        NODE_ENV=production sls deploy -v
+        yarn workspace builds deploy 
       env:
         CI: true
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
