@@ -4,7 +4,8 @@ on:
   push:
     branches:    
       - master
-
+    paths:
+      - 'builds/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,7 +21,7 @@ jobs:
         npm install -g yarn serverless
         yarn
         yarn workspace builds type-check
-        yarn workspace builds deploy 
+        yarn workspace builds deploy
       env:
         CI: true
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
