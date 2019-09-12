@@ -29,6 +29,7 @@ import {
 import BranchWarning from '@builds/BranchWarning';
 import moment from 'moment';
 import { WarningBox } from '@shared/components/WarningBox';
+import Link from 'next/link';
 
 interface BuildPageProps {
     build: Build;
@@ -81,18 +82,23 @@ function Index({ project, build }: BuildPageProps) {
             <ContainerPadded>
                 <BreadcrumbWrapper>
                     <Breadcrumb>
-                        <MainLink href={'/'}>Builds</MainLink>
+                        <Link href={'/'} passHref={true}>
+                            <MainLink>Builds</MainLink>
+                        </Link>
                     </Breadcrumb>
                     <Breadcrumb>
-                        <MainLink
+                        <Link
                             href={`/job/${project.id}${
                                 build.branch === 'master'
                                     ? ''
                                     : `?branch=${build.branch}`
                             }`}
+                            passHref={true}
                         >
-                            {project.name} (<code>{build.branch}</code>)
-                        </MainLink>
+                            <MainLink>
+                                {project.name} (<code>{build.branch}</code>)
+                            </MainLink>
+                        </Link>
                     </Breadcrumb>
                     <ActiveBreadcrumb>
                         Build #{build.build_number}
@@ -116,7 +122,7 @@ function Index({ project, build }: BuildPageProps) {
                             We recommend the use of released versions whenever
                             possible.
                         </p>
-                        <MainButton>View Stable Downloads</MainButton>
+                        <MainButton href={`https://enginehub.org/${project.id}/#downloads`}>View Stable Downloads</MainButton>
                     </InfoBox>
                 )}
                 <Row>
@@ -126,11 +132,11 @@ function Index({ project, build }: BuildPageProps) {
                                 <tr>
                                     <th>Project</th>
                                     <td>
-                                        <MainLink
+                                        <MainOutboundLink
                                             href={`https://enginehub.org/${project.id}/`}
                                         >
                                             {project.name}
-                                        </MainLink>
+                                        </MainOutboundLink>
                                     </td>
                                 </tr>
                                 <tr>

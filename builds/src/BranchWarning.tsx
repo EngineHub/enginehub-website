@@ -2,6 +2,7 @@ import { WarningBox } from '@shared/components/WarningBox';
 import { MainButtonStyle } from '@shared/components/Button';
 import styled from '@emotion/styled';
 import React from 'react';
+import Link from 'next/link';
 
 interface BranchWarningProps {
     projectId: string;
@@ -21,9 +22,13 @@ const BranchWarning: React.FC<BranchWarningProps> = props => (
             Branches other than the main one may be experimental. In addition,
             you should be using stable releases rather than these test builds.
         </p>
-        <MainButton href={`/job/${props.projectId}?branch=${props.mainBranch}`}>
-            Go to main branch
-        </MainButton>{' '}
+        <Link
+            href={`/job/${props.projectId}?branch=${props.mainBranch}`}
+            passHref={true}
+        >
+            <MainButton>Go to main branch</MainButton>
+        </Link>
+        {' '}
         <MainButton
             href={`https://enginehub.org/${props.projectId}/#downloads`}
         >

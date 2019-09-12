@@ -4,7 +4,6 @@ import {
     LinkProviderContext,
     WrapperLink
 } from '@shared/utils/LinkProvider';
-import { Link } from '@reach/router';
 import Navbar from '@shared/components/Navbar';
 import Footer from '@shared/components/Footer';
 import './layout.css';
@@ -13,9 +12,9 @@ import { ExtraSponsorProps } from '@shared/components/Sponsors';
 class NextLinkProvider implements LinkProvider {
     getLinkComponent(): WrapperLink {
         return ({ href, children, ...props }) => (
-            <Link to={href} {...props}>
+            <a href={href} {...props}>
                 {children}
-            </Link>
+            </a>
         );
     }
 

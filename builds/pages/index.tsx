@@ -17,6 +17,7 @@ import {
 import moment from 'moment';
 import { MainLinkStyle } from '@shared/components/Link';
 import { InfoLabel } from '@shared/components/text/Label';
+import Link from 'next/link';
 
 interface ProjectEntry {
     project: Project;
@@ -45,8 +46,8 @@ const ProjectTitleRow = styled.tr`
     td {
         h2 {
             margin: 2px 0 0;
-    padding: 0 5px;
-    font-size: 14px;
+            padding: 0 5px;
+            font-size: 14px;
         }
     }
 `;
@@ -107,13 +108,24 @@ function Index({ projectEntries }: IndexProps) {
                                             <MiniPaddedIcon
                                                 icon={faCodeBranch}
                                             />
-                                            <MainLink
+                                            <Link
                                                 href={`/job/${projectEntry.project.id}?branch=${build.branch}`}
+                                                passHref={true}
                                             >
-                                                {build.branch}
-                                            </MainLink>
-                                            {build.branch === projectEntry.project.defaultBranch && (
-                                                <InfoLabel style={{ marginLeft: '0.5rem;'}}>main branch</InfoLabel>
+                                                <MainLink>
+                                                    {build.branch}
+                                                </MainLink>
+                                            </Link>
+                                            {build.branch ===
+                                                projectEntry.project
+                                                    .defaultBranch && (
+                                                <InfoLabel
+                                                    style={{
+                                                        marginLeft: '0.5rem'
+                                                    }}
+                                                >
+                                                    main branch
+                                                </InfoLabel>
                                             )}
                                         </td>
                                         <td>
@@ -136,11 +148,14 @@ function Index({ projectEntries }: IndexProps) {
                                             <small>{build.statusText}</small>
                                         </td>
                                         <td>
-                                            <MainLink
+                                            <Link
                                                 href={`/job/${projectEntry.project.id}/${build.build_id}`}
+                                                passHref={true}
                                             >
-                                                #{build.build_number}
-                                            </MainLink>
+                                                <MainLink>
+                                                    #{build.build_number}
+                                                </MainLink>
+                                            </Link>
                                         </td>
                                         <TdNoWrap>
                                             {moment(build.build_date).fromNow()}{' '}
@@ -164,7 +179,9 @@ Index.getInitialProps = async () => {
 
     await Promise.all(
         projectEntries.map(async proj => {
-            const branches = (await getBranches(proj.project)).filter(branch => !branch.includes('/')); // remove later
+            const branches = (await getBranches(proj.project)).filter(
+                branch => !branch.includes('/')
+            ); // remove later
             proj.builds = await Promise.all(
                 branches.map(
                     async branch => await getLatestBuild(proj.project, branch)
