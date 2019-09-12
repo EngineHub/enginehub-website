@@ -3,6 +3,7 @@ import { Layout } from '@paste/Layout';
 import styled from '@emotion/styled';
 import { Gutter } from '@paste/Gutter';
 import Loader from '@shared/components/Loader';
+import Router from 'next/router';
 
 const Form = styled.div`
     position: fixed;
@@ -49,32 +50,42 @@ function Index() {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const [saving, setSaving] = useState(false);
 
-    const onKeyDown = async (event: KeyboardEvent) => {
-        if (!saving && event.ctrlKey && event.keyCode === 83) {
-            event.preventDefault();
-            setSaving(true);
-            var content = textAreaRef.current!.value;
-            if (content.trim().length > 0) {
-                try {
-                    const response = await (await fetch('/paste', {
+    const save = async () => {
+        setSaving(true);
+        var content = textAreaRef.current!.value;
+        if (content.trim().length > 0) {
+            try {
+                const response = await(
+                    await fetch('/paste', {
                         method: 'POST',
                         headers: {
                             Accept: 'application/json',
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({ content })
-                    })).json();
-                    if ('url' in response) {
-                        window.location.href = response['url'];
+                    })
+                ).json();
+                if ('url' in response) {
+                    if (response['url'].startsWith('https://paste.enginehub.org')) {
+                        Router.push(response['url'].substring('https://paste.enginehub.org'.length));
                     } else {
-                        alert(response['error']);
+                        window.location.href = response['url'];
                     }
-                } catch (e) {
-                    console.log(e);
-                    alert('Failed to submit the post');
+                } else {
+                    alert(response['error']);
                 }
-                setSaving(false);
+            } catch (e) {
+                console.log(e);
+                alert('Failed to submit the post');
             }
+            setSaving(false);
+        }
+    };
+
+    const onKeyDown = async (event: KeyboardEvent) => {
+        if (!saving && event.ctrlKey && event.keyCode === 83) {
+            event.preventDefault();
+            await save();
         }
     };
 
@@ -83,7 +94,7 @@ function Index() {
         return () => window.removeEventListener('keydown', onKeyDown);
     }, []);
     return (
-        <Layout>
+        <Layout saveCallback={save}>
             <Gutter>></Gutter>
             <Form>
                 <PasteArea ref={textAreaRef} />

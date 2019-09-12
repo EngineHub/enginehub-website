@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 const MainHeader = styled.header`
     padding: 6px 15px;
@@ -25,14 +26,25 @@ const SiteTitle = styled.h1`
 `;
 
 const HelpText = styled.span`
-    padding: 4px 0;
+    padding: 4px 0.3rem;
     color: #555;
     line-height: 1.7;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    transition: background-color 0.1s ease-in-out;
+    cursor: pointer;
+
+    :hover {
+        background-color: #eee;
+    }
 `;
 
 const SiteLink = styled.a`
     color: #0059d1;
     text-decoration: none;
+    cursor: pointer;
+    user-select: none;
 
     :hover,
     :focus {
@@ -43,13 +55,14 @@ const SiteLink = styled.a`
 
 interface HeaderProps {
     showHelp: boolean;
+    saveCallback?: () => void;
 }
 
-export const Header: FC<HeaderProps> = ({ showHelp }) => (
+export const Header: FC<HeaderProps> = ({ showHelp, saveCallback }) => (
     <MainHeader>
         <SiteTitle>
-            <SiteLink href="/">Pastebin</SiteLink>
+            <Link href="/" as="/"><SiteLink>Pastebin</SiteLink></Link>
         </SiteTitle>
-        {showHelp && <HelpText>ctrl + s to save</HelpText>}
+        {showHelp && <HelpText onClick={saveCallback}>ctrl + s to save</HelpText>}
     </MainHeader>
 );

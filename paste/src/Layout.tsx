@@ -5,15 +5,16 @@ import SEO from '@shared/components/Seo';
 
 interface LayoutProps {
     showHelp?: boolean;
+    saveCallback?: () => void;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, showHelp = true }) => (
+export const Layout: FC<LayoutProps> = ({ children, showHelp = true, saveCallback }) => (
     <>
         <SEO
             title="Pastebin at EngineHub"
             description="EngineHub Pastebin Service"
         />
-        <Header showHelp={showHelp} />
+        <Header showHelp={showHelp} saveCallback={saveCallback} />
         <main>{children}</main>
     </>
 );
