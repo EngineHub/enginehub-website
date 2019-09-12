@@ -5,7 +5,11 @@ on:
     branches:    
       - master
     paths:
-      - 'paste/**'
+      - 'paste/*'
+      - 'paste/*/*'
+      - 'paste/*/*/*'
+      - 'paste/*/*/*/*'
+      - 'paste/*/*/*/*/*'
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -5,7 +5,11 @@ on:
     branches:    
       - master
     paths:
-      - 'builds/**'
+      - 'builds/*'
+      - 'builds/*/*'
+      - 'builds/*/*/*'
+      - 'builds/*/*/*/*'
+      - 'builds/*/*/*/*/*'
 jobs:
   build:
     runs-on: ubuntu-latest
