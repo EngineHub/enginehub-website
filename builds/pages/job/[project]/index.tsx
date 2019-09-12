@@ -82,7 +82,8 @@ function Index({
                     {branches.map(branch => (
                         <BranchButtonItem key={branch}>
                             <Link
-                                href={`/job/${project.id}?branch=${branch}`}
+                                href={`/job/[project]?branch=${branch}`}
+                                as={`/job/${project.id}?branch=${branch}`}
                                 passHref={true}
                             >
                                 <BranchButton
@@ -111,7 +112,8 @@ function Index({
                         />
                     )}
                 <Link
-                    href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
+                    href={`/job/[project]/[build]?branch=${activeBranch}`}
+                    as={`/job/${project.id}/last-successful?branch=${activeBranch}`}
                     passHref={true}
                 >
                     <MainButton
@@ -151,7 +153,8 @@ function Index({
                                 </TdNoWrap>
                                 <TdNoWrap>
                                     <Link
-                                        href={`/job/${project.id}/${build.build_id}`}
+                                        href="/job/[project]/[build]"
+                                        as={`/job/${project.id}/${build.build_id}`}
                                         passHref={true}
                                     >
                                         <MainLink>
@@ -210,7 +213,8 @@ function Index({
                                 </TdNoWrap>
                                 <TdNoWrap>
                                     <Link
-                                        href={`/job/${project.id}/${build.build_id}`}
+                                        href="/job/[project]/[build]"
+                                        as={`/job/${project.id}/${build.build_id}`}
                                         passHref={true}
                                     >
                                         <BlueButton>

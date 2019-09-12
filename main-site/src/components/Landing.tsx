@@ -87,7 +87,7 @@ export const Landing: FunctionComponent<LandingProps> = props => {
             <HeaderImg fluid={data.file.childImageSharp.fluid} />
             <HeaderContent>
                 <Navbar
-                    headerTheme="inverted"
+                    headertheme="inverted"
                     discordOverride={props.discordOverride}
                 />
                 <LandingText>

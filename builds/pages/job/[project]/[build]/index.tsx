@@ -88,11 +88,8 @@ function Index({ project, build }: BuildPageProps) {
                     </Breadcrumb>
                     <Breadcrumb>
                         <Link
-                            href={`/job/${project.id}${
-                                build.branch === 'master'
-                                    ? ''
-                                    : `?branch=${build.branch}`
-                            }`}
+                            href={`/job/[project]?branch=${build.branch}`}
+                            as={`/job/${project.id}?branch=${build.branch}`}
                             passHref={true}
                         >
                             <MainLink>

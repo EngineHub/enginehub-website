@@ -29,9 +29,13 @@ async function getChanges(changesHref: string): Promise<BuildChange[]> {
 }
 
 async function getBuildFromTCSelector(selector: string): Promise<Build> {
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/builds/${selector}`;
+    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds/${selector}`;
 
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url, {
+        headers: {
+            Accept: 'application/json'
+        }
+    });
     const artifacts = await axios.get(TEAMCITY_API_URL + data.artifacts.href);
 
     return {
@@ -84,15 +88,21 @@ export async function getBuildPage(
         return [];
     }
 
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/builds?locator=buildType:${
+    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds?locator=buildType:${
         project.buildType
     },branch:${branch},count:${BUILDS_PER_PAGE + 1},start:${pageNumber *
         BUILDS_PER_PAGE}&fields=build(number,status,id,statusText,finishDate,changes)`;
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url, {
+        headers: {
+            Accept: 'application/json'
+        }
+    });
 
-    await Promise.all(data.build.map(async (build: any) => {
-        build.changeData = await getChanges(build.changes.href);
-    }));
+    await Promise.all(
+        data.build.map(async (build: any) => {
+            build.changeData = await getChanges(build.changes.href);
+        })
+    );
 
     return data.build.map((build: any) => ({
         state: build.status,
@@ -107,8 +117,12 @@ export async function getBuildPage(
 }
 
 export async function getBranches(project: Project): Promise<string[]> {
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/projects/${project.id}/branches`;
-    const { data } = await axios.get(url);
+    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/projects/${project.id}/branches`;
+    const { data } = await axios.get(url, {
+        headers: {
+            Accept: 'application/json'
+        }
+    });
     const branches = data.branch.map((branch: any) =>
         branch.default ? project.defaultBranch : branch.name
     );

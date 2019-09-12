@@ -31,7 +31,7 @@ const Layout: React.FC<ExtraSponsorProps> = ({ children, extraSponsors }) => {
     const linkProvider = useMemo(() => new NextLinkProvider(), []);
     return (
         <LinkProviderContext.Provider value={linkProvider}>
-            <Navbar headerTheme="purple" />
+            <Navbar headertheme="purple" />
             <main>{children}</main>
             <Footer mainSite={false} extraSponsors={extraSponsors} />
         </LinkProviderContext.Provider>

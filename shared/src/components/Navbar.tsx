@@ -19,24 +19,24 @@ const HeaderTextColors = new Map([
 
 interface NavbarProps {
     discordOverride?: string;
-    headerTheme?: 'default' | 'inverted' | 'purple';
+    headertheme?: 'default' | 'inverted' | 'purple';
 }
 
 const Nav = styled.nav<InvertedProps>`
     position: relative;
     min-height: 50px;
     margin: 0;
-    background: ${props => NavBackgroundColours.get(props.headerTheme)!};
+    background: ${props => NavBackgroundColours.get(props.headertheme)!};
     border: 0;
     border-radius: 0;
 `;
 
 type InvertedProps = {
-    headerTheme: 'default' | 'inverted' | 'purple';
+    headertheme: 'default' | 'inverted' | 'purple';
 };
 
 const HeaderLinkStyle = (props: InvertedProps) => css`
-    color: ${HeaderTextColors.get(props.headerTheme)!};
+    color: ${HeaderTextColors.get(props.headertheme)!};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;
@@ -68,7 +68,7 @@ const FloatedGrayButton = () => css`
 `;
 
 const Navbar: FunctionComponent<NavbarProps> = ({
-    headerTheme = 'default',
+    headertheme = 'default',
     discordOverride
 }) => {
     return (
@@ -78,14 +78,14 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                 const OutboundLink = linkProvider.getOutboundLinkComponent();
                 const HeaderLink = styled(Link)<InvertedProps>(HeaderLinkStyle);
                 const ButtonComp =
-                    headerTheme !== 'default'
+                    headertheme !== 'default'
                         ? styled(OutboundLink)(FloatedPurpleButton)
                         : styled(OutboundLink)(FloatedGrayButton);
                 return (
-                    <Nav headerTheme={headerTheme}>
+                    <Nav headertheme={headertheme}>
                         <Container>
                             <div>
-                                <HeaderLink href="/" headerTheme={headerTheme}>
+                                <HeaderLink href="/" headertheme={headertheme}>
                                     EngineHub.org
                                 </HeaderLink>
                             </div>
