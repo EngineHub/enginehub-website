@@ -2,7 +2,6 @@ import React, { FC, useMemo } from 'react';
 import { Layout } from '@paste/Layout';
 import { NextPageContext } from 'next-server/dist/lib/utils';
 import styled from '@emotion/styled';
-import { loadPaste } from '@paste/loadPaste';
 import Router from 'next/router';
 import { Gutter } from '@paste/Gutter';
 
@@ -87,7 +86,7 @@ Document.getInitialProps = async ({ query, res }: NextPageContext) => {
             }
         }
     }
-    const pasteContents = await loadPaste(pasteId);
+    const pasteContents = await (await fetch(`/documents/${pasteId}`)).text();
     if (!pasteContents) {
         if (res) {
             res.writeHead(302, {

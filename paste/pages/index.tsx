@@ -67,7 +67,7 @@ function Index() {
                 ).json();
                 if ('url' in response) {
                     if (response['url'].startsWith('https://paste.enginehub.org')) {
-                        Router.push(response['url'].substring('https://paste.enginehub.org'.length));
+                        Router.push('/[id]', response['url'].substring('https://paste.enginehub.org'.length));
                     } else {
                         window.location.href = response['url'];
                     }
