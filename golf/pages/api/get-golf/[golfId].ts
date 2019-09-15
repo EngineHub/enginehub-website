@@ -1,4 +1,4 @@
-import { getGolf, getLeaderboard, getUser } from '@golf/dynamoDb';
+import { getGolf, getLeaderboard, getUsers } from '@golf/dynamoDb';
 import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 return a.score - b.score || a.submitted_time - b.submitted_time;
             });
             const leaderUsers = sortedLeaderboards.map(lead => lead.user_id);
-            const users = await Promise.all(leaderUsers.map(async user => await getUser(user)));
+            const users = await getUsers(leaderUsers);
             userMap = users.reduce((a, b) => {
                 a[b.user_id] = b;
                 return a;

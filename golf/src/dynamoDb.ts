@@ -246,9 +246,11 @@ export async function addLeaderboard(
 ): Promise<void> {
     let existingEntry = undefined;
     try {
-        existingEntry = await getSingleLeaderboard(leaderboard.golf_id, leaderboard.user_id);
-    } catch (e) {
-    }
+        existingEntry = await getSingleLeaderboard(
+            leaderboard.golf_id,
+            leaderboard.user_id
+        );
+    } catch (e) {}
     if (existingEntry && existingEntry.score <= leaderboard.score) {
         // Don't add a score worse than their best
         return Promise.resolve();
@@ -328,6 +330,38 @@ export async function getUser(userId: string): Promise<User> {
                 reject(err);
             } else {
                 resolve(data.Item as User);
+            }
+        });
+    });
+}
+
+export async function getUsers(userIds: string[]): Promise<User[]> {
+    if (process.env.NODE_ENV !== 'production') {
+        return Promise.resolve(
+            userIds.map(userId => ({
+                user_id: userId,
+                fullname: 'Test Testerson',
+                username: 'test2',
+                avatar:
+                    'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+            }))
+        );
+    }
+
+    const readParams: AWS.DynamoDB.DocumentClient.BatchGetItemInput = {
+        RequestItems: {
+            [UsersTableName]: {
+                Keys: userIds.map(userId => ({ user_id: `${userId}` }))
+            }
+        }
+    };
+
+    return await new Promise((resolve, reject) => {
+        docClient.batchGet(readParams, (err, data) => {
+            if (err || !data || !data.Responses) {
+                reject(err);
+            } else {
+                resolve(data.Responses[UsersTableName] as User[]);
             }
         });
     });
