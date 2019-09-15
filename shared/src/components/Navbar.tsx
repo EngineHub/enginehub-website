@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { Container } from '@shared/components/Container';
 import css from '@emotion/css';
@@ -67,9 +67,10 @@ const FloatedGrayButton = () => css`
     }
 `;
 
-const Navbar: FunctionComponent<NavbarProps> = ({
+const Navbar: React.FC<NavbarProps> = ({
     headertheme = 'default',
-    discordOverride
+    discordOverride,
+    children
 }) => {
     return (
         <LinkProviderContext.Consumer>
@@ -100,6 +101,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
                                     Ask questions on our Discord
                                 </ButtonComp>
                             </div>
+                            {children}
                         </Container>
                     </Nav>
                 );
