@@ -32,17 +32,24 @@ export const Schematic: React.FC<SchematicProps> = ({
         }
     }, [size]);
 
-    // useEffect(() => {
-    //     if (schematic && ref.current) {
-    //         const { destroy, resize: r } = renderSchematic(
-    //             ref.current,
-    //             schematic,
-    //             size
-    //         );
-    //         setResize(() => r);
-    //         return destroy;
-    //     }
-    // }, [schematic]);
+    useEffect(() => {
+        if (schematic && ref.current) {
+            // const { destroy, resize: r } = renderSchematic(
+            //     ref.current,
+            //     schematic,
+            //     size
+            // );
+            // setResize(() => r);
+            // return destroy;
+            const context = ref.current!.getContext('2d')!;
+            context.textAlign = 'center';
+            context.fillText(
+                'Back Soon',
+                ref.current!.width / 2,
+                ref.current!.height / 2
+            );
+        }
+    }, [schematic]);
 
     return (
         <Container size={size} {...rest}>

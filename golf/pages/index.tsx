@@ -1,7 +1,6 @@
 import React from 'react';
 import { OpenChallenge } from '@golf/components/OpenChallenges';
 import { useIsLoggedIn } from '@golf/components/Auth';
-import { getAllGolfs } from '@golf/dynamoDb';
 import styled from '@emotion/styled';
 import Layout from '@golf/Layout';
 import { Golf } from '@golf/types/database';
@@ -10,14 +9,17 @@ import Link from 'next/link';
 import { Container } from '@shared/components/Container';
 import SEO from '@shared/components/Seo';
 import { BrandHeader } from '@golf/components/BrandHeader';
-
-const isServerRendered = typeof window === 'undefined';
+import axios from 'axios';
 
 const ChallengeButton = styled.a`
     ${PurpleButtonStyle()}
     font-size: 22px;
-    margin: auto;
-    display: block;
+`;
+
+const NewChallengeBlock = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
 `;
 
 interface HomeProps {
@@ -32,23 +34,23 @@ function Home({ golfs }: HomeProps) {
             <SEO title="WorldEdit Golf" />
             <Container>
                 <BrandHeader isHomePage={true} />
-                {isAuthenticated && !isServerRendered && (
-                    <Link href="/submit" passHref={true}>
-                        <ChallengeButton>
-                            New Challenge
-                        </ChallengeButton>
-                    </Link>
+                {isAuthenticated && (
+                    <NewChallengeBlock>
+                        <Link href="/submit" passHref={true}>
+                            <ChallengeButton>New Challenge</ChallengeButton>
+                        </Link>
+                    </NewChallengeBlock>
                 )}
                 <OpenChallenge golfs={golfs} />
             </Container>
         </Layout>
     );
-};
+}
 
 Home.getInitialProps = async () => {
     try {
-        const golfs = await getAllGolfs();
-        return { golfs };
+        const { data } = await axios.get(`${process.env.API_PREFIX}/api/get-golfs`);
+        return { golfs: data };
     } catch (e) {
         return { error: e, golfs: [] };
     }

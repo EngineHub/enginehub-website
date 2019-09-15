@@ -46,7 +46,7 @@ export const BrandHeader: React.FC<{ isHomePage?: boolean }> = ({
         <StyledContainer isHome={isHomePage}>
             <Logo />
             <h1>
-                <Link href="/" passHref={true}>
+                <Link as="/" href="/" passHref={true}>
                     <HeaderLink>WorldEdit Golf</HeaderLink>
                 </Link>
             </h1>

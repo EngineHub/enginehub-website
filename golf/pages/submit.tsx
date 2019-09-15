@@ -12,10 +12,7 @@ import { FileSelector } from '@shared/components/FileSelector';
 import { useElementWidth } from '@shared/hooks/useElementWidth';
 import { BrandHeader } from '@golf/components/BrandHeader';
 import SEO from '@shared/components/Seo';
-
-const Container = styled.div`
-    position: relative;
-`;
+import { Container } from '@shared/components/Container';
 
 const LoadingContainer = styled.div`
     position: absolute;

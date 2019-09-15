@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { NextPageContext } from 'next-server/dist/lib/utils';
-import { getGolf, getLeaderboard, getUser } from '@golf/dynamoDb';
 import { Golf, GolfLeaderboard, User } from '@golf/types/database';
-import Router from 'next/router';
 import {
     LeaderboardEntry,
     Leaderboard
@@ -12,13 +10,14 @@ import { pollBroker, queueTask, clearTask } from '@golf/broker';
 import { Schematic } from '@golf/components/Schematic';
 import { useToken } from '@golf/components/Auth';
 import Layout from '@golf/Layout';
-import { BlueButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
+import { BlueButtonStyle, MainButtonStyle } from '@shared/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { Container } from '@shared/components/Container';
 import { useElementWidth } from '@shared/hooks/useElementWidth';
 import { BrandHeader } from '@golf/components/BrandHeader';
 import SEO from '@shared/components/Seo';
+import axios from 'axios';
 
 interface DocumentProps {
     golf: Golf;
@@ -68,8 +67,19 @@ const SchematicBoxText = styled.div`
     justify-content: space-evenly;
 `;
 
+const GrayButton = styled.a(MainButtonStyle);
 const BlueButton = styled.a(BlueButtonStyle);
-const PurpleButton = styled.a(PurpleButtonStyle);
+
+const RunButtonBox = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    * {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+`;
 
 const SchematicBoxTitle = styled.p`
     font-size: 16px;
@@ -222,7 +232,15 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                         </PreviewBox>
                         <h3>Commands</h3>
                         <BaseTextStyle ref={commandBox} />
-                        <PurpleButton onClick={queueBroker}>Run</PurpleButton>
+                        <RunButtonBox>
+                            <GrayButton
+                                target="_blank"
+                                href="https://worldedit.enginehub.org/en/latest/commands/"
+                            >
+                                Help
+                            </GrayButton>
+                            <BlueButton onClick={queueBroker}>Run</BlueButton>
+                        </RunButtonBox>
                         <h3>Output</h3>
                         <BaseTextStyle disabled={true} ref={statusBox} />
                         {resultSchem && (
@@ -270,36 +288,17 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     );
 }
 
-Document.getInitialProps = async ({ query, res }: NextPageContext) => {
+Document.getInitialProps = async ({ query }: NextPageContext) => {
     const { golfId } = query;
 
-    const golf = await getGolf(golfId as string);
-    const leaderboards = await getLeaderboard(golfId as string);
-
-    if (!golf) {
-        if (res) {
-            res.writeHead(302, {
-                Location: '/'
-            });
-            res.end();
-        } else {
-            Router.push('/');
-        }
+    try {
+        const { data } = await axios.get(
+            `${process.env.API_PREFIX}/api/get-golf/${golfId}`
+        );
+        return data;
+    } catch (e) {
+        return { error: e, golf: {}, leaderboards: [], userMap: {} };
     }
-    let userMap = {};
-
-    if (leaderboards) {
-        const sortedLeaderboards = leaderboards.sort((a, b) => {
-            return a.score - b.score || a.submitted_time - b.submitted_time;
-        });
-        const leaderUsers = sortedLeaderboards.map(lead => lead.user_id);
-        const users = await Promise.all(leaderUsers.map(user => getUser(user)));
-        userMap = users.reduce((a, b) => {
-            a[b.user_id] = b;
-            return a;
-        }, {});
-    }
-    return { golf, leaderboards, userMap };
 };
 
 export default Document;
