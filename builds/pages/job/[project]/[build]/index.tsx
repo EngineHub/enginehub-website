@@ -119,7 +119,11 @@ function Index({ project, build }: BuildPageProps) {
                             We recommend the use of released versions whenever
                             possible.
                         </p>
-                        <MainButton href={`https://enginehub.org/${project.id}/#downloads`}>View Stable Downloads</MainButton>
+                        <MainButton
+                            href={`https://enginehub.org/${project.id}/#downloads`}
+                        >
+                            View Stable Downloads
+                        </MainButton>
                     </InfoBox>
                 )}
                 <Row>
@@ -247,7 +251,7 @@ function Index({ project, build }: BuildPageProps) {
                                             {change.version.substring(0, 8)}
                                         </MainOutboundLink>
                                     </td>
-                                    <td>{change.summary}</td>
+                                    <td>{change.comment}</td>
                                     <td>{change.username}</td>
                                     <td>{moment(change.date).fromNow()}</td>
                                 </tr>

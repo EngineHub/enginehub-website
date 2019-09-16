@@ -13,7 +13,7 @@ export interface Build {
 
 export interface BuildChange {
     version: string;
-    summary: string;
+    comment: string;
     username: string;
     date: number;
 }

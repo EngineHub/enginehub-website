@@ -1,4 +1,4 @@
-import { Build, BuildChange } from './types';
+import { Build } from './types';
 import axios from 'axios';
 import { DUMMY_BUILD } from './dummyData';
 import { Project } from '@builds/project';
@@ -9,43 +9,31 @@ export * from './types';
 const TEAMCITY_API_URL = 'https://ci.enginehub.org';
 const TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmssZ';
 
-async function getChanges(buildId: string): Promise<BuildChange[]> {
-    const { data } = await axios.get(`${TEAMCITY_API_URL}/guestAuth/app/rest/changes?locator=build(id:${buildId})&fields=change(version,username,comment,date)`);
-    if (!data.change) {
-        return [];
-    }
-    return data.change.map((change: any) => ({
-        version: change.version,
-        username: change.username,
-        summary: change.comment,
-        date: moment(change.date, TEAMCITY_DATE_FORMAT).valueOf()
-    }));
-}
+const CHANGE_FIELDS = `changes(change(version,username,comment,date))`;
+const ARTIFACT_FIELDS = `artifacts(file(name,size))`;
 
 async function getBuildFromTCSelector(selector: string): Promise<Build> {
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds/${selector}`;
+    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds/?locator=${selector}&fields=build(id,status,statusText,branchName,finishDate,number,buildType(projectId),${CHANGE_FIELDS},${ARTIFACT_FIELDS})`;
 
     const { data } = await axios.get(url, {
         headers: {
             Accept: 'application/json'
         }
     });
-    const artifacts = await axios.get(TEAMCITY_API_URL + data.artifacts.href);
+
+    const build = data.build[0];
 
     return {
-        build_id: data.id,
-        state: data.status,
-        changes: await getChanges(data.id),
-        artifacts: artifacts.data.file.map((artifact: any) => ({
-            name: artifact.name,
-            size: artifact.size
-        })),
-        statusText: data.statusText,
-        branch: data.branchName,
-        build_date: moment(data.finishDate, TEAMCITY_DATE_FORMAT).valueOf(),
-        build_hash: data.number.split('-')[1],
-        build_number: data.number.split('-')[0],
-        project: data.buildType.projectId.toLowerCase()
+        build_id: build.id,
+        state: build.status,
+        changes: build.changes.change,
+        artifacts: build.artifacts.file,
+        statusText: build.statusText,
+        branch: build.branchName,
+        build_date: moment(build.finishDate, TEAMCITY_DATE_FORMAT).valueOf(),
+        build_hash: build.number.split('-')[1],
+        build_number: build.number.split('-')[0],
+        project: build.buildType.projectId.toLowerCase()
     };
 }
 
@@ -85,18 +73,12 @@ export async function getBuildPage(
     const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds?locator=buildType:${
         project.buildType
     },branch:${branch},count:${BUILDS_PER_PAGE + 1},start:${pageNumber *
-        BUILDS_PER_PAGE}&fields=build(number,status,id,statusText,finishDate,changes)`;
+        BUILDS_PER_PAGE}&fields=build(number,status,id,statusText,finishDate,${CHANGE_FIELDS})`;
     const { data } = await axios.get(url, {
         headers: {
             Accept: 'application/json'
         }
     });
-
-    await Promise.all(
-        data.build.map(async (build: any) => {
-            build.changeData = await getChanges(build.id);
-        })
-    );
 
     return data.build.map((build: any) => ({
         state: build.status,
@@ -106,7 +88,7 @@ export async function getBuildPage(
         build_number: build.number.split('-')[0],
         statusText: build.statusText,
         build_date: moment(build.finishDate, TEAMCITY_DATE_FORMAT).valueOf(),
-        changes: build.changeData
+        changes: build.changes.change
     }));
 }
 

@@ -13,13 +13,13 @@ export const DUMMY_BUILD: (buildId: string) => Build = (buildId: string) => ({
         {
             version: 'abababa',
             username: 'testerson',
-            summary: 'Made some test changes',
+            comment: 'Made some test changes',
             date: Date.now()
         },
         {
             version: 'abababa',
             username: 'testerson',
-            summary: 'Made some test changes',
+            comment: 'Made some test changes',
             date: Date.now()
         }
     ],

@@ -185,7 +185,7 @@ function Index({
                                         {build.changes.length > 0 ? (
                                             build.changes.map(change => (
                                                 <li key={change.version}>
-                                                    {change.summary}{' '}
+                                                    {change.comment}{' '}
                                                     <small>
                                                         (
                                                         <MainOutboundLink
