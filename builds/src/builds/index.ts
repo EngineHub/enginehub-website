@@ -9,18 +9,12 @@ export * from './types';
 const TEAMCITY_API_URL = 'https://ci.enginehub.org';
 const TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmssZ';
 
-async function getChanges(changesHref: string): Promise<BuildChange[]> {
-    const { data } = await axios.get(TEAMCITY_API_URL + changesHref);
+async function getChanges(buildId: string): Promise<BuildChange[]> {
+    const { data } = await axios.get(`${TEAMCITY_API_URL}/guestAuth/app/rest/changes?locator=build(id:${buildId})&fields=change(version,username,comment,date)`);
     if (!data.change) {
         return [];
     }
-    const changeSummaries = (await Promise.all(
-        data.change.map((change: any) =>
-            axios.get(TEAMCITY_API_URL + change.href)
-        )
-    )).map((c: any) => c.data);
-
-    return changeSummaries.map((change: any) => ({
+    return data.change.map((change: any) => ({
         version: change.version,
         username: change.username,
         summary: change.comment,
@@ -41,7 +35,7 @@ async function getBuildFromTCSelector(selector: string): Promise<Build> {
     return {
         build_id: data.id,
         state: data.status,
-        changes: await getChanges(data.changes.href),
+        changes: await getChanges(data.id),
         artifacts: artifacts.data.file.map((artifact: any) => ({
             name: artifact.name,
             size: artifact.size
@@ -100,7 +94,7 @@ export async function getBuildPage(
 
     await Promise.all(
         data.build.map(async (build: any) => {
-            build.changeData = await getChanges(build.changes.href);
+            build.changeData = await getChanges(build.id);
         })
     );
 
