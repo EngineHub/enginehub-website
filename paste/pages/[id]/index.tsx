@@ -4,6 +4,7 @@ import { NextPageContext } from 'next-server/dist/lib/utils';
 import styled from '@emotion/styled';
 import Router from 'next/router';
 import { Gutter } from '@paste/Gutter';
+import axios from 'axios';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -86,7 +87,9 @@ Document.getInitialProps = async ({ query, res }: NextPageContext) => {
             }
         }
     }
-    const pasteContents = await (await fetch(`/documents/${pasteId}`)).text();
+    const pasteContents = (await axios.get(
+        `https://paste.enginehub.org/documents/${pasteId}`
+    )).data;
     if (!pasteContents) {
         if (res) {
             res.writeHead(302, {

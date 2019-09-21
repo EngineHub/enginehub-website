@@ -1,4 +1,4 @@
-import { getPaste } from './dynamoDb';
+import { getPaste } from './pasteStore';
 
 export async function loadPaste(id: string): Promise<string | undefined> {
     if (id === 'test') {

@@ -1,0 +1,50 @@
+import AWS from 'aws-sdk';
+import shortid from 'shortid';
+
+AWS.config.update({
+    region: 'us-east-1'
+});
+
+const s3 = new AWS.S3();
+
+const PasteS3Bucket = 'paste-static.enginehub.org';
+const PastePrefix = 'pastes/';
+
+// 1 Month
+const EXPIRY_TIME = 60 * 60 * 24 * 31 * 1;
+
+export async function createPaste(
+    content: string,
+    from?: string
+): Promise<string> {
+    const created_at = Math.floor(Date.now() / 1000);
+    const ttl = created_at + EXPIRY_TIME;
+    const id = shortid.generate();
+
+    await s3
+        .putObject({
+            Bucket: PasteS3Bucket,
+            Key: PastePrefix + id,
+            Body: content,
+            Expires: new Date(ttl * 1000),
+            Metadata: {
+                from: from || 'unknown'
+            }
+        })
+        .promise();
+
+    return id;
+}
+
+export async function getPaste(pasteId: string): Promise<string> {
+    const data = await s3
+        .getObject({
+            Bucket: PasteS3Bucket,
+            Key: PastePrefix + pasteId
+        })
+        .promise();
+    if (!data.Body) {
+        throw new Error('Failed to find paste');
+    }
+    return data.Body.toString('utf-8');
+}

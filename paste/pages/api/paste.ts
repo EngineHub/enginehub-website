@@ -1,8 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
-import { createPaste } from '@paste/dynamoDb';
+import { createPaste } from '@paste/pasteStore';
 
 const MAX_CONTENT_LENGTH = 5242880; // 5MB
-// const MAX_PER_HOUR = 100;
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     let { content, from } = req.body;
@@ -34,6 +33,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         res.json({ url: `https://paste.enginehub.org/${pasteResponse}` });
     } catch (e) {
         console.log(e);
-        res.json({ error: 'An unknown error occured.' });
+        res.json({ error: 'An unknown error occurred.' });
     }
 }
