@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { renderSchematic } from '@enginehub/schematicwebviewer';
 
 interface SchematicProps {
     schematic: string;
@@ -24,7 +25,7 @@ export const Schematic: React.FC<SchematicProps> = ({
     ...rest
 }) => {
     const ref = useRef<HTMLCanvasElement>(null);
-    const [resize] = useState<(size: number) => void>();
+    const [resize, setResize] = useState<(size: number) => void>();
 
     useEffect(() => {
         if (resize) {
@@ -34,21 +35,15 @@ export const Schematic: React.FC<SchematicProps> = ({
 
     useEffect(() => {
         if (schematic && ref.current) {
-            // const { destroy, resize: r } = renderSchematic(
-            //     ref.current,
-            //     schematic,
-            //     size
-            // );
-            // setResize(() => r);
-            // return destroy;
-            const context = ref.current!.getContext('2d')!;
-            context.textAlign = 'center';
-            context.fillText(
-                'Back Soon',
-                ref.current!.width / 2,
-                ref.current!.height / 2
+            const { destroy, resize: r } = renderSchematic(
+                ref.current,
+                schematic,
+                size
             );
+            setResize(() => r);
+            return destroy;
         }
+        return;
     }, [schematic]);
 
     return (

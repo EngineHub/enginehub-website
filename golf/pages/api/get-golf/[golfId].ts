@@ -5,15 +5,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { golfId } = req.query;
 
     try {
-        const golf = await getGolf(golfId as string);
-        const leaderboards = await getLeaderboard(golfId as string);
+        const [golf, leaderboards] = await Promise.all([
+            getGolf(golfId as string),
+            getLeaderboard(golfId as string)
+        ]);
 
         if (!golf) {
             res.status(404);
-            res.end(JSON.stringify({ error: 'Unknown golf! '}));    
+            res.end(JSON.stringify({ error: 'Unknown golf! ' }));
             return;
         }
-        
+
         let userMap = {};
 
         if (leaderboards) {
@@ -29,11 +31,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         res.status(200);
-        res.end(JSON.stringify({
-            golf,
-            leaderboards,
-            userMap
-        }));
+        res.end(
+            JSON.stringify({
+                golf,
+                leaderboards,
+                userMap
+            })
+        );
     } catch (e) {
         res.status(500);
         res.end(JSON.stringify({ error: 'An unknown error occurred' }));
