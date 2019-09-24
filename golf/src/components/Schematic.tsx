@@ -38,7 +38,10 @@ export const Schematic: React.FC<SchematicProps> = ({
             const { destroy, resize: r } = renderSchematic(
                 ref.current,
                 schematic,
-                size
+                {
+                    size,
+                    texturePrefix: 'https://worldedit.golf/static'
+                }
             );
             setResize(() => r);
             return destroy;
