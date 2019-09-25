@@ -12,11 +12,16 @@
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
         "noImplicitAny": true,
+        "noUnusedParameters": true,
         "importHelpers": true,
         "strictNullChecks": true,
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true
     },
     "exclude": ["node_modules"],
     "include": [
