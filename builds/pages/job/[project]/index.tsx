@@ -252,12 +252,14 @@ Index.getInitialProps = async ({ query }: NextPageContext) => {
 
     const pageNumber = parseInt(page as string) || 0;
 
-    const builds: Build[] = await getBuildPage(
-        projectObj,
-        (branch as string) || projectObj.defaultBranch,
-        pageNumber
-    );
-    const branches = await getBranches(projectObj);
+    const [builds, branches] = await Promise.all([
+        getBuildPage(
+            projectObj,
+            (branch as string) || projectObj.defaultBranch,
+            pageNumber
+        ),
+        getBranches(projectObj)
+    ]);
     const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
     if (hasNextPage) {
         builds.pop();
