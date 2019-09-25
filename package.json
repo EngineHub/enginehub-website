@@ -9,6 +9,7 @@
         "main-site",
         "builds",
         "paste",
+        "golf",
         "shared"
     ],
     "license": "MIT",

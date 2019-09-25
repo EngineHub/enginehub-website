@@ -23,6 +23,5 @@
   "include": [
     "pages/**/*",
     "src/**/*"
-  ],
-  "files": ["typings.d.ts"]
+  ]
 }

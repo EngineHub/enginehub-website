@@ -1,0 +1,37 @@
+name: Golf Deployer
+
+on:
+  push:
+    branches:    
+      - master
+    paths:
+      - 'golf/*'
+      - 'golf/*/*'
+      - 'golf/*/*/*'
+      - 'golf/*/*/*/*'
+      - 'golf/*/*/*/*/*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - name: Test and Deploy
+      run: |
+        npm install -g yarn serverless
+        yarn
+        yarn workspace golf type-check
+        yarn workspace golf deploy
+      env:
+        CI: true
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        CLIENT_SECRET: ${{ secrets.GOLF_GITHUB_CLIENT_SECRET }}
+        CLIENT_ID: ${{ secrets.GOLF_GITHUB_CLIENT_ID }}
+        JWT_SECRET: ${{ secrets.GOLF_JWT_SECRET }}
+        BROKER_API_KEY: ${{ secrets.GOLF_BROKER_API_KEY }}
+        BROKER_API_HOSTNAME: ${{ secrets.GOLF_BROKER_API_HOSTNAME }}

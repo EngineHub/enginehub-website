@@ -44,6 +44,20 @@ export const PurpleButtonStyle = () => css`
     border-radius: 4px;
     text-decoration: none;
 
+    :disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+        background-image: linear-gradient(to bottom, #4d3672 0, #412e61 100%);
+
+        :hover {
+            background-image: linear-gradient(
+                to bottom,
+                #4d3672 0,
+                #412e61 100%
+            );
+        }
+    }
+
     :hover {
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         border: 1px solid #36264f;
@@ -68,7 +82,7 @@ export const BlueButtonStyle = () => css`
     line-height: 1.7;
     border-radius: 4px;
     text-decoration: none;
-    
+
     :hover {
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         border: 1px solid #00439e;

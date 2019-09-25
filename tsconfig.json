@@ -5,7 +5,8 @@
             "@shared/*": ["shared/src/*"],
             "@builds/*": ["builds/src/*"],
             "@main/*": ["main-site/src/*"],
-            "@paste/*": ["paste/src/*"]
+            "@paste/*": ["paste/src/*"],
+            "@golf/*": ["golf/src/*"]
         },
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,
@@ -24,6 +25,8 @@
         "builds/pages/**/*",
         "paste/pages/**/*",
         "paste/src/**/*",
+        "golf/pages/**/*",
+        "golf/src/**/*",
         "shared/src/**/*"
     ]
 }
