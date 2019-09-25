@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '@builds/Layout';
 import { Container } from '@shared/components/Container';
 import SEO from '@shared/components/Seo';
-import { NextPageContext } from 'next-server/dist/lib/utils';
+import { NextPageContext } from 'next';
 import { PageHeader } from '@shared/components/PageHeader';
 import { PROJECT_MAP, Project } from '@builds/project';
 import Error from '../../_error';

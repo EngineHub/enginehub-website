@@ -1,5 +1,5 @@
 import { getGolf, getLeaderboard, getUsers } from '@golf/dynamoDb';
-import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { golfId } = req.query;

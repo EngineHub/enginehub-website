@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextPageContext } from 'next-server/dist/lib/utils';
+import { NextPageContext } from 'next';
 import NextError from 'next/error';
 import SEO from '@shared/components/Seo';
 import { PageHeader } from '@shared/components/PageHeader';

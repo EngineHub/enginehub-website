@@ -1,7 +1,7 @@
 import {
     NextApiRequest,
     NextApiResponse
-} from 'next-server/dist/lib/utils';
+} from 'next';
 import { loadPaste } from '@paste/loadPaste';
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {

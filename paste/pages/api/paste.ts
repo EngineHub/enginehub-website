@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { createPaste } from '@paste/pasteStore';
 
 const MAX_CONTENT_LENGTH = 5242880; // 5MB

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { NextPageContext } from 'next-server/dist/lib/utils';
+import { NextPageContext } from 'next';
 import { Golf, GolfLeaderboard, User } from '@golf/types/database';
 import {
     LeaderboardEntry,

@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
+import { NextApiRequest, NextApiResponse } from 'next';
 import got from 'got';
 import jwt from 'jsonwebtoken';
 import { addUser } from '@golf/dynamoDb';

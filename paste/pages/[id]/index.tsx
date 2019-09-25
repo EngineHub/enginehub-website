@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import { Layout } from '@paste/Layout';
-import { NextPageContext } from 'next-server/dist/lib/utils';
+import { NextPageContext } from 'next';
 import styled from '@emotion/styled';
 import Router from 'next/router';
 import { Gutter } from '@paste/Gutter';

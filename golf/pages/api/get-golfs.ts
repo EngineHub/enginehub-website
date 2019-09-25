@@ -1,5 +1,5 @@
 import { getAllGolfs } from '@golf/dynamoDb';
-import { NextApiRequest, NextApiResponse } from 'next-server/dist/lib/utils';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     try {
