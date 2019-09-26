@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useMemo } from 'react';
+import { LinkProviderProps } from '@shared/utils/LinkProvider';
 
 const PaginationBox = styled.ul`
     margin-top: 0;
@@ -44,28 +45,51 @@ interface PaginationProps {
     currentPage: number;
     hasNextPage: boolean;
     pageMask: string;
+    pageMaskAs?: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination: React.FC<PaginationProps & LinkProviderProps> = ({
     hasNextPage,
     currentPage,
-    pageMask
+    pageMask,
+    pageMaskAs,
+    linkProvider
 }) => {
     const hasPrevPage = currentPage > 0;
+    const MainLink = useMemo(() => linkProvider.getLinkComponent(), []);
     return (
         <PaginationBox>
             <li>
                 {hasPrevPage ? (
-                    <a href={pageMask.replace(':page', `${currentPage - 1}`)}>
+                    <MainLink
+                        href={pageMask.replace(':page', `${currentPage - 1}`)}
+                        as={
+                            pageMaskAs
+                                ? pageMaskAs.replace(
+                                      ':page',
+                                      `${currentPage - 1}`
+                                  )
+                                : undefined
+                        }
+                    >
                         «
-                    </a>
+                    </MainLink>
                 ) : (
                     <span>«</span>
                 )}
             </li>
             {hasPrevPage && (
                 <li>
-                    <a href={pageMask.replace(':page', '0')}>1</a>
+                    <MainLink
+                        href={pageMask.replace(':page', '0')}
+                        as={
+                            pageMaskAs
+                                ? pageMaskAs.replace(':page', `0`)
+                                : undefined
+                        }
+                    >
+                        1
+                    </MainLink>
                 </li>
             )}
             <li>
@@ -73,9 +97,19 @@ const Pagination: React.FC<PaginationProps> = ({
             </li>
             <li>
                 {hasNextPage ? (
-                    <a href={pageMask.replace(':page', `${currentPage + 1}`)}>
+                    <MainLink
+                        href={pageMask.replace(':page', `${currentPage + 1}`)}
+                        as={
+                            pageMaskAs
+                                ? pageMaskAs.replace(
+                                      ':page',
+                                      `${currentPage + 1}`
+                                  )
+                                : undefined
+                        }
+                    >
                         »
-                    </a>
+                    </MainLink>
                 ) : (
                     <span>»</span>
                 )}

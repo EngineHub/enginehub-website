@@ -2,31 +2,22 @@ import React, { FunctionComponent } from 'react';
 
 export interface WrapperLinkProps {
     href: string;
+    as?: string;
 }
 
 export type WrapperLink = FunctionComponent<WrapperLinkProps>;
 
 export interface LinkProvider {
     getLinkComponent(): WrapperLink;
-
-    getOutboundLinkComponent(): WrapperLink;
 }
 
 export interface LinkProviderProps {
     linkProvider: LinkProvider;
 }
 
-class AnchorLinkProvider implements LinkProvider {
+export class AnchorLinkProvider implements LinkProvider {
     getLinkComponent(): WrapperLink {
-        return ({ href, children, ...props }) => (
-            <a href={href} {...props}>
-                {children}
-            </a>
-        );
-    }
-
-    getOutboundLinkComponent(): WrapperLink {
-        return ({ href, children, ...props }) => (
+        return ({ href, children, as: _as, ...props }) => (
             <a href={href} {...props}>
                 {children}
             </a>

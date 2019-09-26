@@ -32,6 +32,7 @@ import {
 import moment from 'moment';
 import Pagination from '@shared/components/Pagination';
 import Link from 'next/link';
+import { LinkProviderContext } from '@shared/utils/LinkProvider';
 
 interface ProjectPageProps {
     activeBranch: string;
@@ -228,11 +229,17 @@ function Index({
                         ))}
                     </tbody>
                 </Table>
-                <Pagination
-                    currentPage={pageNumber}
-                    hasNextPage={hasNextPage}
-                    pageMask={`/job/${project.id}?branch=${activeBranch}&page=:page`}
-                />
+                <LinkProviderContext.Consumer>
+                    {linkProvider => (
+                        <Pagination
+                            currentPage={pageNumber}
+                            hasNextPage={hasNextPage}
+                            pageMask={`/job/[project]?branch=${activeBranch}&page=:page`}
+                            pageMaskAs={`/job/${project.id}?branch=${activeBranch}&page=:page`}
+                            linkProvider={linkProvider}
+                        />
+                    )}
+                </LinkProviderContext.Consumer>
             </Container>
         </Layout>
     );

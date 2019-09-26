@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import {
-    LinkProvider,
     LinkProviderContext,
-    WrapperLink
+    WrapperLink,
+    AnchorLinkProvider
 } from '@shared/utils/LinkProvider';
 import Navbar from '@shared/components/Navbar';
 import Footer from '@shared/components/Footer';
@@ -11,22 +11,26 @@ import { ExtraSponsorProps } from '@shared/components/Sponsors';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
 import { PurpleButtonStyle } from '@shared/components/Button';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
-class NextLinkProvider implements LinkProvider {
+class NextLinkProvider extends AnchorLinkProvider {
     getLinkComponent(): WrapperLink {
-        return ({ href, children, ...props }) => (
-            <a href={href} {...props}>
-                {children}
-            </a>
-        );
-    }
-
-    getOutboundLinkComponent(): WrapperLink {
-        return ({ href, children, ...props }) => (
-            <a href={href} {...props}>
-                {children}
-            </a>
-        );
+        return ({ href, children, as, ...props }) => {
+            if (
+                !href.startsWith('https://worldedit.golf/') &&
+                (!href.startsWith('/') || href.startsWith('//'))
+            ) {
+                return super.getLinkComponent()({ href, children, ...props });
+            }
+            if (href.startsWith('https://worldedit.golf/')) {
+                href = href.substring('https://worldedit.golf/'.length);
+            }
+            return (
+                <Link href={as ? as : href} as={href} passHref={true}>
+                    <a {...props}>{children}</a>
+                </Link>
+            );
+        };
     }
 }
 

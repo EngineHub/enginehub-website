@@ -78,43 +78,30 @@ interface FooterProps extends ExtraSponsorProps {
 }
 
 const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
-    const MainOutboundLink = useMemo(
-        () =>
-            styled(props.linkProvider.getOutboundLinkComponent())(
-                MainLinkStyle
-            ),
+    const MainLink = useMemo(
+        () => styled(props.linkProvider.getLinkComponent())(MainLinkStyle),
         []
     );
 
-    let DocsLink = useMemo(() => {
-        if (props.mainSite) {
-            const MainLink = styled(props.linkProvider.getLinkComponent())(
-                MainLinkStyle
-            );
-            return <MainLink href="/documentation/">Docs</MainLink>;
-        } else {
-            return (
-                <MainOutboundLink href="https://enginehub.org/documentation/">
-                    Docs
-                </MainOutboundLink>
-            );
-        }
-    }, []);
     return (
         <ContainerFlex>
             <LinksBox>
                 <SectionHeader>Resources</SectionHeader>
                 <FooterUl>
-                    <FooterLi>{DocsLink}</FooterLi>
                     <FooterLi>
-                        <MainOutboundLink href="http://dev.enginehub.org/youtrack/">
-                            Issue Tracker
-                        </MainOutboundLink>
+                        <MainLink href="https://enginehub.org/documentation/">
+                            Docs
+                        </MainLink>
                     </FooterLi>
                     <FooterLi>
-                        <MainOutboundLink href="http://builds.enginehub.org">
+                        <MainLink href="http://dev.enginehub.org/youtrack/">
+                            Issue Tracker
+                        </MainLink>
+                    </FooterLi>
+                    <FooterLi>
+                        <MainLink href="https://builds.enginehub.org/">
                             Test Builds
-                        </MainOutboundLink>
+                        </MainLink>
                     </FooterLi>
                 </FooterUl>
             </LinksBox>
@@ -122,9 +109,9 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                 <SectionHeader>Social</SectionHeader>
                 <FooterUl>
                     <FooterLi>
-                        <MainOutboundLink href="https://discord.gg/enginehub">
+                        <MainLink href="https://discord.gg/enginehub">
                             Discord
-                        </MainOutboundLink>
+                        </MainLink>
                     </FooterLi>
                 </FooterUl>
             </SocialBox>
@@ -138,9 +125,9 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                     <small>
                         The content and trademarks presented are the property of
                         their respective owners. Please{' '}
-                        <MainOutboundLink href="https://matthewmiller.dev/contact/">
+                        <MainLink href="https://matthewmiller.dev/contact/">
                             contact Me4502
-                        </MainOutboundLink>{' '}
+                        </MainLink>{' '}
                         about website errors.
                     </small>
                 </p>

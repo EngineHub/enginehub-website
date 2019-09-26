@@ -4,7 +4,11 @@ import Navbar from '@shared/components/Navbar';
 import './layout.css';
 import Footer from '@shared/components/Footer';
 import { Landing } from './Landing';
-import { LinkProvider, WrapperLinkProps, LinkProviderContext } from '@shared/utils/LinkProvider';
+import {
+    LinkProvider,
+    WrapperLinkProps,
+    LinkProviderContext
+} from '@shared/utils/LinkProvider';
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
@@ -16,33 +20,35 @@ interface LayoutProps {
 
 class GatsbyLinkProvider implements LinkProvider {
     getLinkComponent(): FunctionComponent<WrapperLinkProps> {
-        return ({ href, children, ...props }) =>
-            useMemo(
-                () => (
-                    <Link to={href} {...props}>
-                        {children}
-                    </Link>
-                ),
-                [href, children, props]
-            );
-    }
-
-    getOutboundLinkComponent(): FunctionComponent<WrapperLinkProps> {
-        return ({ href, children, ...props }) =>
-            useMemo(
-                () => (
+        return ({ href, children, ...props }) => {
+            if (
+                !href.startsWith('https://enginehub.org/') &&
+                (!href.startsWith('/') || href.startsWith('//'))
+            ) {
+                return (
                     <OutboundLink href={href} {...props}>
                         {children}
                     </OutboundLink>
-                ),
-                [href, children, props]
+                );
+            }
+            if (href.startsWith('https://enginehub.org/')) {
+                href = href.substring('https://enginehub.org/'.length);
+            }
+            return (
+                <Link to={href} {...props}>
+                    {children}
+                </Link>
             );
+        };
     }
 }
 
-const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = (
-    { children, landing = false, discordOverride, extraSponsors = [] }
-) => {
+const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
+    children,
+    landing = false,
+    discordOverride,
+    extraSponsors = []
+}) => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             require('smooth-scroll')('a[href*="#"]');
@@ -70,13 +76,9 @@ const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = (
                 ]}
             />
             {landing ? (
-                <Landing
-                    discordOverride={discordOverride}
-                />
+                <Landing discordOverride={discordOverride} />
             ) : (
-                <Navbar
-                    discordOverride={discordOverride}
-                />
+                <Navbar discordOverride={discordOverride} />
             )}
             <main>{children}</main>
             <Footer

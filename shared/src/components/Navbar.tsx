@@ -76,12 +76,11 @@ const Navbar: React.FC<NavbarProps> = ({
         <LinkProviderContext.Consumer>
             {linkProvider => {
                 const Link = linkProvider.getLinkComponent();
-                const OutboundLink = linkProvider.getOutboundLinkComponent();
                 const HeaderLink = styled(Link)<InvertedProps>(HeaderLinkStyle);
                 const ButtonComp =
                     headertheme !== 'default'
-                        ? styled(OutboundLink)(FloatedPurpleButton)
-                        : styled(OutboundLink)(FloatedGrayButton);
+                        ? styled(Link)(FloatedPurpleButton)
+                        : styled(Link)(FloatedGrayButton);
                 return (
                     <Nav headertheme={headertheme}>
                         <Container>

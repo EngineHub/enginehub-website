@@ -20,29 +20,29 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     extraSponsors = [],
     linkProvider
 }) => {
-    const OutboundLink = useMemo(
-        () => linkProvider.getOutboundLinkComponent(),
+    const Link = useMemo(
+        () => linkProvider.getLinkComponent(),
         []
     );
 
     const NetlifySponsor: React.FC = () => (
-        <OutboundLink href="https://www.netlify.com">
+        <Link href="https://www.netlify.com">
             <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" />
-        </OutboundLink>
+        </Link>
     );
 
     const BeastNodeSponsor: React.FC = () => {
         const img = require('../images/beastnode.png');
         return (
-            <OutboundLink href="https://www.beastnode.com">
+            <Link href="https://www.beastnode.com">
                 <img src={img} />
-            </OutboundLink>
+            </Link>
         );
     };
 
     const EmptySponsor: React.FC = () => {
         const MainOutboundLink = useMemo(
-            () => styled(OutboundLink)(MainLinkStyle),
+            () => styled(Link)(MainLinkStyle),
             []
         );
         return (
