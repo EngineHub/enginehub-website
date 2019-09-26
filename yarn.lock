@@ -1162,13 +1162,13 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
-"@enginehub/schematicwebviewer@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-1.1.1.tgz#c71e67795ca894b9a090a823232938bdfa80e3be"
-  integrity sha512-sg2MzGicfxsLcLEzwPNshwI/8IDcow/0FYi6Zm7tfzIGD6NqL/gWe7j6ce6KKkmqkjHjMl+3i6vDFjJ788R1/Q==
+"@enginehub/schematicwebviewer@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-1.1.2.tgz#247081ef63e466ed12e99ee070dfad440bd37583"
+  integrity sha512-xAC5hnK3e/ay7iGewfAnc1LXG1j4pvYMsmgilC/K943U/fFEhcVPHEwI9FHtWcDl8Xrr+b+vltOYDtd0WJ9fPw==
   dependencies:
     gzip-js "^0.3.2"
-    nbt-ts "^1.3.1"
+    nbt-ts "^1.3.3"
     patch-package "^6.2.0"
     postinstall-postinstall "^2.0.0"
     three "^0.108.0"
@@ -9603,10 +9603,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nbt-ts@^1.2.3, nbt-ts@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/nbt-ts/-/nbt-ts-1.3.1.tgz#5a56a44ffc40664ea52b7e839d8457b7f92c9673"
-  integrity sha512-9/P9/2CaELP7c4KtlC7YBswT5/vLLy1GXW7JCedTzQNazt/yXXDPvmvzSkt9x//hMQVr9I4MmS8bMGHEf2Qefw==
+nbt-ts@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/nbt-ts/-/nbt-ts-1.3.3.tgz#1c5c8fa60f4a1de5bfccc481b65436308973185e"
+  integrity sha512-xmEVWDJzO7YdA2YJHqAkfiOKlKECXe/hfNB10t3W7aDJsCXTjXyRbhP5HYvCwrMefGk8p6arQqeMO2V6djyfxQ==
 
 needle@^2.2.1:
   version "2.4.0"

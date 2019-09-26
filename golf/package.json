@@ -7,7 +7,7 @@
     "dependencies": {
         "@emotion/core": "^10.0.17",
         "@emotion/styled": "^10.0.17",
-        "@enginehub/schematicwebviewer": "^1.1.1",
+        "@enginehub/schematicwebviewer": "^1.1.2",
         "@fortawesome/fontawesome-svg-core": "^1.2.25",
         "@fortawesome/free-solid-svg-icons": "^5.11.2",
         "@fortawesome/react-fontawesome": "^0.1.4",
@@ -16,7 +16,6 @@
         "got": "^9.6.0",
         "gzip-js": "^0.3.2",
         "jsonwebtoken": "^8.5.1",
-        "nbt-ts": "^1.2.3",
         "next": "^9.0.6",
         "next-server": "^9.0.5",
         "react": "^16.9.0",
