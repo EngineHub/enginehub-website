@@ -6,7 +6,7 @@ import {
     LinkProviderProps
 } from '@shared/utils/LinkProvider';
 
-const sponsors: string[] = [];
+const sponsors: string[] = ['mcprohosting'];
 
 export interface ExtraSponsorProps {
     extraSponsors?: string[];
@@ -14,16 +14,20 @@ export interface ExtraSponsorProps {
 
 const NarrowDiv = styled.div`
     max-width: 200px;
+    min-height: 70px;
+    max-height: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
 const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     extraSponsors = [],
     linkProvider
 }) => {
-    const Link = useMemo(
-        () => linkProvider.getLinkComponent(),
-        []
-    );
+    const Link = useMemo(() => linkProvider.getLinkComponent(), []);
 
     const NetlifySponsor: React.FC = () => (
         <Link href="https://www.netlify.com">
@@ -35,16 +39,27 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         const img = require('../images/beastnode.png');
         return (
             <Link href="https://www.beastnode.com">
-                <img src={img} />
+                <img src={img} style={{ marginBottom: 0 }} />
             </Link>
         );
     };
 
-    const EmptySponsor: React.FC = () => {
-        const MainOutboundLink = useMemo(
-            () => styled(Link)(MainLinkStyle),
-            []
+    const MCProHostingSponsor: React.FC = () => {
+        const img = require('../images/mcprohosting.svg');
+        return (
+            <>
+                <Link href="https://mcph.info/enginehub">
+                    <img src={img} style={{ marginBottom: 0 }} />
+                </Link>
+                <p style={{ textAlign: 'center', lineHeight: '4px' }}>
+                    25% OFF! Code: <code>enginehub</code>
+                </p>
+            </>
         );
+    };
+
+    const EmptySponsor: React.FC = () => {
+        const MainOutboundLink = useMemo(() => styled(Link)(MainLinkStyle), []);
         return (
             <MainOutboundLink href="https://matthewmiller.dev/contact/">
                 Interested? Contact Me4502
@@ -55,7 +70,8 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     const sponsorMap = new Map([
         ['empty', EmptySponsor],
         ['netlify', NetlifySponsor],
-        ['beastnode', BeastNodeSponsor]
+        ['beastnode', BeastNodeSponsor],
+        ['mcprohosting', MCProHostingSponsor]
     ]);
 
     const availableSponsors = sponsors.concat(extraSponsors);
@@ -64,13 +80,16 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     }
 
     const [sponsorIndex, setSponsorIndex] = useState(
-        Math.floor(Math.random() * availableSponsors.length)
+        Math.floor(
+            Math.random() *
+                availableSponsors.filter(sp => sp !== 'empty').length
+        )
     );
 
     useEffect(() => {
         const timeout = setTimeout(() => {
             setSponsorIndex((sponsorIndex + 1) % availableSponsors.length);
-        }, 5000);
+        }, 7500);
         return () => clearTimeout(timeout);
     }, [sponsorIndex]);
 
