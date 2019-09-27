@@ -87,9 +87,10 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     );
 
     useEffect(() => {
+        const timeoutTime = availableSponsors[sponsorIndex] === 'empty' ? 5000 : 10000;
         const timeout = setTimeout(() => {
             setSponsorIndex((sponsorIndex + 1) % availableSponsors.length);
-        }, 7500);
+        }, timeoutTime);
         return () => clearTimeout(timeout);
     }, [sponsorIndex]);
 
