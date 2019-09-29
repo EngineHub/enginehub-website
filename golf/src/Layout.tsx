@@ -60,7 +60,7 @@ const LayoutInner: React.FC<ExtraSponsorProps> = ({
 
     return (
         <LinkProviderContext.Provider value={linkProvider}>
-            <Navbar headertheme="purple">
+            <Navbar headertheme="purple" headertitle="WorldEdit.golf">
                 {!isAuthenticated && (
                     <div>
                         <FloatedPurpleButton

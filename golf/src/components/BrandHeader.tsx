@@ -39,24 +39,33 @@ const HeaderLink = styled.a`
     text-decoration: none;
 `;
 
+const HorizontalDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
 export const BrandHeader: React.FC<{ isHomePage?: boolean }> = ({
     isHomePage = false
 }) => (
     <div>
         <StyledContainer isHome={isHomePage}>
-            <Logo />
-            <h1>
-                <Link as="/" href="/" passHref={true}>
-                    <HeaderLink>WorldEdit Golf</HeaderLink>
-                </Link>
-            </h1>
+            <Link as="/" href="/" passHref={true}>
+                <HeaderLink>
+                    <HorizontalDiv>
+                        <Logo />
+                        <h1 style={{ marginLeft: '0.5rem' }}>WorldEdit Golf</h1>
+                    </HorizontalDiv>
+                </HeaderLink>
+            </Link>
         </StyledContainer>
         {isHomePage && (
             <StyledContainerBase isHome={isHomePage}>
-                <h2>Real WorldEdit ninjas count every command - do you?</h2>
+                <h2>For WorldEdit pros, every command counts</h2>
                 <p>
-                    Pick a challenge, write some commands, and show us what you
-                    got.
+                    Pick a challenge, write some commands, and see how you stack
+                    up.
                 </p>
             </StyledContainerBase>
         )}

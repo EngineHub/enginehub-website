@@ -20,6 +20,7 @@ const HeaderTextColors = new Map([
 interface NavbarProps {
     discordOverride?: string;
     headertheme?: 'default' | 'inverted' | 'purple';
+    headertitle?: string;
 }
 
 const Nav = styled.nav<InvertedProps>`
@@ -69,6 +70,7 @@ const FloatedGrayButton = () => css`
 
 const Navbar: React.FC<NavbarProps> = ({
     headertheme = 'default',
+    headertitle = 'EngineHub.org',
     discordOverride,
     children
 }) => {
@@ -86,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         <Container>
                             <div>
                                 <HeaderLink href="/" headertheme={headertheme}>
-                                    EngineHub.org
+                                    {headertitle}
                                 </HeaderLink>
                             </div>
                             <div>
