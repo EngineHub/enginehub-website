@@ -23,6 +23,7 @@ const handler = withAuth(async (req, res) => {
         });
         res.end('Score submitted');
     } catch (e) {
+        console.error(e);
         res.status(501);
         res.end('Failed to submit score');
     }

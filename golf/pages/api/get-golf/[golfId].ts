@@ -39,6 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             })
         );
     } catch (e) {
+        console.error(e);
         res.status(500);
         res.end(JSON.stringify({ error: 'An unknown error occurred' }));
     }
