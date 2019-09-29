@@ -336,6 +336,7 @@ export async function getUser(userId: string): Promise<User> {
 }
 
 export async function getUsers(userIds: string[]): Promise<User[]> {
+    console.log(userIds);
     if (process.env.NODE_ENV !== 'production') {
         return Promise.resolve(
             userIds.map(userId => ({
