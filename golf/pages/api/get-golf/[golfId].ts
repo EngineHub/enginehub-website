@@ -23,7 +23,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             leaderboards.forEach(lead => usersToLookup.add(lead.user_id));
         }
 
-        usersToLookup.add(golf.user_id);
+        if (!usersToLookup.has(golf.user_id)) {
+            usersToLookup.add(golf.user_id);
+        }
         const users = await getUsers([...usersToLookup]);
         userMap = users.reduce((a, b) => {
             a[b.user_id] = b;
