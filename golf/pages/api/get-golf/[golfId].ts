@@ -16,20 +16,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return;
         }
 
+        const usersToLookup = new Set<string>();
         let userMap = {};
 
-        if (leaderboards && leaderboards.length > 0) {
-            const sortedLeaderboards = leaderboards.sort((a, b) => {
-                return a.score - b.score || a.submitted_time - b.submitted_time;
-            });
-            const leaderUsers = sortedLeaderboards.map(lead => lead.user_id);
-            const users = await getUsers(leaderUsers);
-            userMap = users.reduce((a, b) => {
-                a[b.user_id] = b;
-                return a;
-            }, {});
+        if (leaderboards) {
+            leaderboards.forEach(lead => usersToLookup.add(lead.user_id));
         }
 
+        usersToLookup.add(golf.user_id);
+        const users = await getUsers([...usersToLookup]);
+        userMap = users.reduce((a, b) => {
+            a[b.user_id] = b;
+            return a;
+        }, {});
+        
         res.status(200);
         res.end(
             JSON.stringify({

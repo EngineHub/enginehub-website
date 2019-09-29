@@ -18,6 +18,7 @@ import { useElementWidth } from '@shared/hooks/useElementWidth';
 import { BrandHeader } from '@golf/components/BrandHeader';
 import SEO from '@shared/components/Seo';
 import axios from 'axios';
+import { MainLinkStyle } from '@shared/components/Link';
 
 interface DocumentProps {
     golf: Golf;
@@ -69,6 +70,7 @@ const SchematicBoxText = styled.div`
 
 const GrayButton = styled.a(MainButtonStyle);
 const BlueButton = styled.a(BlueButtonStyle);
+const MainLink = styled.a(MainLinkStyle);
 
 const RunButtonBox = styled.div`
     display: flex;
@@ -124,6 +126,14 @@ const ResultPreview = styled(SchematicBox)`
 
 const DescriptionText = styled.p`
     font-size: 20px;
+`;
+
+const TitleText = styled.h1`
+    margin-bottom: 0;
+`;
+
+const SmallText = styled.small`
+    margin-bottom: 1.5rem;
 `;
 
 function Document({ golf, leaderboards, userMap }: DocumentProps) {
@@ -208,6 +218,10 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     };
 
     const smallSize = width / 2.05;
+    const uploadingUser = userMap[golf.user_id] || {
+        username: 'unknown',
+        fullname: 'unknown'
+    };
 
     return (
         <Layout>
@@ -216,7 +230,16 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                 <BrandHeader />
                 <PageColumns>
                     <MainContent ref={contentRef}>
-                        <h1>{golf.title}</h1>
+                        <TitleText>{golf.title}</TitleText>
+                        <SmallText>
+                            Uploaded by{' '}
+                            <MainLink
+                                target="__blank"
+                                href={`https://github.com/${uploadingUser.username}/`}
+                            >
+                                @{uploadingUser.fullname}
+                            </MainLink>
+                        </SmallText>
                         <DescriptionText>{golf.description}</DescriptionText>
                         <PreviewBox>
                             <SchematicBox
