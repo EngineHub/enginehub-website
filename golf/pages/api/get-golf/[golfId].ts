@@ -30,11 +30,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return a;
         }, {});
 
+        const sortedLeaderboards = (leaderboards || []).sort((a, b) => {
+            return a.score - b.score || a.submitted_time - b.submitted_time;
+        });
+
         res.status(200);
         res.end(
             JSON.stringify({
                 golf,
-                leaderboards,
+                leaderboards: sortedLeaderboards,
                 userMap
             })
         );
