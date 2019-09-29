@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         let userMap = {};
 
-        if (leaderboards) {
+        if (leaderboards && leaderboards.length > 0) {
             const sortedLeaderboards = leaderboards.sort((a, b) => {
                 return a.score - b.score || a.submitted_time - b.submitted_time;
             });
