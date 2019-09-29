@@ -232,12 +232,12 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                     <MainContent ref={contentRef}>
                         <TitleText>{golf.title}</TitleText>
                         <SmallText>
-                            Uploaded by{' '}
+                            Uploaded by {uploadingUser.fullname} / {' '}
                             <MainLink
                                 target="__blank"
                                 href={`https://github.com/${uploadingUser.username}/`}
                             >
-                                @{uploadingUser.fullname}
+                                @{uploadingUser.username}
                             </MainLink>
                         </SmallText>
                         <DescriptionText>{golf.description}</DescriptionText>
