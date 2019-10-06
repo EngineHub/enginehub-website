@@ -76,7 +76,6 @@ function Index({
             <SEO title={`${project.name} Builds`} />
             <PageHeader
                 text={`${project.name} Builds`}
-                showSponsors={false}
                 icon={project.icon}
             >
                 <BranchButtonList>

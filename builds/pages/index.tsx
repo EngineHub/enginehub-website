@@ -58,7 +58,7 @@ function Index({ projectEntries }: IndexProps) {
     return (
         <Layout>
             <SEO title={'Builds'} />
-            <PageHeader text={'Builds'} showSponsors={true} />
+            <PageHeader text={'Builds'} />
             <Container>
                 <WarningBox>
                     <strong>These are not the main downloads!</strong>

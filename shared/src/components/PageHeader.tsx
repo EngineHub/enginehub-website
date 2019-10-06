@@ -1,12 +1,14 @@
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
 import styled from '@emotion/styled';
-import { LabelledSponsorsArea, ExtraSponsorProps } from '@shared/components/Sponsors';
+import {
+    LabelledSponsorsArea,
+    ExtraSponsorProps
+} from '@shared/components/Sponsors';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;
     icon?: string;
-    showSponsors?: boolean;
 }
 
 const HeaderWrapper = styled.div`
@@ -54,7 +56,6 @@ const RightAlignedSponsors = styled(LabelledSponsorsArea)`
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
     text,
-    showSponsors = false,
     icon,
     extraSponsors,
     children
@@ -64,17 +65,13 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             <ContainerPadded>
                 <HeaderContent>
                     <HeaderLeftArea>
-                        {icon && (
-                            <HeaderImg src={icon} />
-                        )}
+                        {icon && <HeaderImg src={icon} />}
                         <HeaderTextArea>
                             <HeaderText>{text}</HeaderText>
                             {children}
                         </HeaderTextArea>
                     </HeaderLeftArea>
-                    {showSponsors && (
-                        <RightAlignedSponsors extraSponsors={extraSponsors} />
-                    )}
+                    <RightAlignedSponsors extraSponsors={extraSponsors} />
                 </HeaderContent>
             </ContainerPadded>
         </HeaderWrapper>

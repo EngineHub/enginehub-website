@@ -15,7 +15,7 @@ function Error({ statusCode }: { statusCode: number }) {
         return (
             <Layout>
                 <SEO title={'Missing Page'} />
-                <PageHeader text={'Missing Page'} showSponsors={true}>
+                <PageHeader text={'Missing Page'}>
                     Sorry, the page or resource that you are looking for cannot be found.
                 </PageHeader>
                 <Container>
