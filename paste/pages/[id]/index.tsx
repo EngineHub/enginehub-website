@@ -1,53 +1,24 @@
-import React, { FC, useMemo } from 'react';
+import React from 'react';
 import { Layout } from '@paste/Layout';
 import { NextPageContext } from 'next';
-import styled from '@emotion/styled';
 import Router from 'next/router';
-import { Gutter } from '@paste/Gutter';
 import axios from 'axios';
+import PasteComponent from '@paste/views/PasteComponent';
+import ProfileComponent from '@paste/views/ProfileComponent';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
 }
 
-interface PasteProps {
+export interface PasteProps {
     paste: string;
 }
 
-const PasteContent = styled.div`
-    display: block;
-    padding: 15px;
-    padding-left: 55px;
-    padding-right: 55px;
-    line-height: 130%;
-    white-space: pre;
-`;
-
-const PasteComponent: FC<PasteProps> = ({ paste }) => {
-    let lineNos = useMemo(() => {
-        let text = '';
-        const lineCount = paste.split('\n').length;
-        for (let i = 0; i < lineCount; i++) {
-            if (i !== 0) {
-                text += '\n';
-            }
-            text += i + 1;
-        }
-        return text;
-    }, [paste]);
-    return (
-        <>
-            <Gutter>{lineNos}</Gutter>
-            <PasteContent>{paste}</PasteContent>
-        </>
-    );
-};
-
-const EXTENSIONS: Map<string, FC<PasteProps>> = new Map([
+const EXTENSIONS: Map<string, React.FC<PasteProps>> = new Map([
     ['', PasteComponent],
     ['paste', PasteComponent],
     ['report', PasteComponent],
-    ['profile', PasteComponent],
+    ['profile', ProfileComponent],
     ['log', PasteComponent]
 ]);
 
