@@ -2,23 +2,23 @@ import React, { useMemo, useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import styled from '@emotion/styled';
 
-const CLOSE_ICON =
-    'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA10lEQVR4Xt2Tu8rCQBSEzzlJmYBvYJ7EShArfQ1BrPNDyoB5DRHsrUQQQc3lcfxBiKbIHjfiCuayKSwEB6ZYPpjdGVhkZvhEJP3dALMMgmB+FoI7ddUQEYhw7bp/48YAkYtOfzCEJu22m5G2gnjeHIYxxHGiXJwV11dQTzdN4w0QKa4JULplGcymkwo4Rkn7iCjNOcNiuVK3vQZ0ug5gWwAgPnpalgW1+yDqA4hQmmSADVVGBW8bES7RaW+zYOBSNSSENL0etAGe5/UkMKBZ/77vv8APfKY7cvZVTt7VqzwAAAAASUVORK5CYII=)';
-const OPEN_ICON =
-    'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7ElEQVR4Xt1TzYrCQAxOYo8z0GeRZY+eBPGkryGIZ4UeC/Yx/EHvnqTssot/9XF2YUHXQyd2RtuC2OnBg2AgJF/CfJkvwyAzwyNGiT+XwLktBMHwRyl270lDRCDCRb8/aBcSqFi59UYTiuwzXLasEtR18nYbQRTt4f2tqqPGad8uIb2641TyKUSJp307gbH/0wl63U4Ks3y925e/AibOMcN4OofRZKZLOmps6lj2CoBodAohspKUMtePaCcgQqNZCGlw+PFt8nwXWLZE+NttviQrBr6RhoRwOBxXVgLP82pJqECx/fq+n4EX+ExnBI9csQQ1hIoAAAAASUVORK5CYII=)';
+const CloseIcon = require('../../../shared/src/images/close.png');
+const OpenIcon = require('../../../shared/src/images/open.png');
 
 interface ProfileEntry {
     name: string;
     selfTime: number;
     children: ProfileEntry[];
-    depth: number;
-    parent?: ProfileEntry;
+    parent?: ProfileEntry | RootEntry;
+}
+
+interface RootEntry {
+    children: ProfileEntry[];
 }
 
 const INVALID_PROFILE = {
     name: 'Invalid Profile',
     selfTime: 0,
-    depth: 0,
     children: []
 };
 
@@ -53,7 +53,7 @@ const TimeText = styled.span`
 `;
 
 const ProfileNodeText = styled.div<{ open: boolean }>`
-    background: ${props => (props.open ? CLOSE_ICON : OPEN_ICON)} center left
+    background: url(${props => (props.open ? CloseIcon : OpenIcon)}) center left
         no-repeat;
     padding-left: 20px;
     cursor: pointer;
@@ -126,47 +126,59 @@ const ProfileNode: React.FC<ProfileNodeProps> = ({ entry, allTime }) => {
     );
 };
 
-const ProfileComponent: React.FC<PasteProps> = ({ paste }) => {
-    const rootEntry: ProfileEntry = useMemo(() => {
-        const lines = paste.split('\n');
-        if (lines.length < 2 || !lines[0].startsWith('Server thread')) {
-            return INVALID_PROFILE;
+function generateProfileEntries(paste: string): RootEntry {
+    const lines = paste.split('\n');
+    if (lines.length < 2 || !lines[0].startsWith('Server thread')) {
+        return { children: [INVALID_PROFILE] };
+    }
+    const rootEntry = {
+        children: []
+    };
+    let currentDepth = 0;
+    let currentEntry: ProfileEntry | RootEntry = rootEntry;
+    for (const line of lines) {
+        if (line.trim().length === 0) {
+            break;
         }
-        const startLine = parseLine(lines.shift()!);
-        const entry: ProfileEntry = {
-            ...startLine,
-            depth: 0,
+        const innerDepth = line.length - line.trimLeft().length;
+        if (currentDepth + 1 < innerDepth) {
+            return { children: [INVALID_PROFILE] };
+        }
+        while (currentDepth > innerDepth) {
+            currentEntry = currentEntry['parent'];
+            currentDepth--;
+        }
+        currentDepth = innerDepth;
+
+        const currentLine = parseLine(line);
+        if (isNaN(currentLine.selfTime)) {
+            return { children: [INVALID_PROFILE] };
+        }
+        const newEntry: ProfileEntry = {
+            ...currentLine,
+            parent: currentEntry,
             children: []
         };
-        let currentDepth = 0;
-        let currentEntry = entry;
-        for (const line of lines) {
-            const innerDepth = line.length - line.trimLeft().length;
-            if (currentDepth + 1 < innerDepth) {
-                return INVALID_PROFILE;
-            }
-            while (currentDepth > innerDepth) {
-                currentEntry = currentEntry.parent!;
-                currentDepth--;
-            }
-            currentDepth = innerDepth;
+        currentEntry.children.push(newEntry);
+        currentEntry = newEntry;
+        currentDepth ++;
+    }
+    return rootEntry;
+}
 
-            const currentLine = parseLine(line);
-            if (isNaN(currentLine.selfTime)) {
-                break;
-            }
-            const newEntry: ProfileEntry = {
-                ...currentLine,
-                depth: currentDepth,
-                parent: currentEntry,
-                children: []
-            };
-            currentEntry.children.push(newEntry);
-            currentEntry = newEntry;
-        }
-        return entry;
-    }, [paste]);
-    return <ProfileNode entry={rootEntry} allTime={rootEntry.selfTime} />;
+const ProfileComponent: React.FC<PasteProps> = ({ paste }) => {
+    const rootEntry = useMemo(() => generateProfileEntries(paste), [paste]);
+    return (
+        <>
+            {rootEntry.children.map((entry, i) => (
+                <ProfileNode
+                    key={`entry-${i}`}
+                    entry={entry}
+                    allTime={entry.selfTime}
+                />
+            ))}
+        </>
+    );
 };
 
 export default ProfileComponent;
