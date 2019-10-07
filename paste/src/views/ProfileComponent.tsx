@@ -18,7 +18,7 @@ interface RootEntry {
 
 const INVALID_PROFILE = {
     name: 'Invalid Profile',
-    selfTime: 0,
+    selfTime: 60000,
     children: []
 };
 
@@ -136,6 +136,7 @@ function generateProfileEntries(paste: string): RootEntry {
     };
     let currentDepth = 0;
     let currentEntry: ProfileEntry | RootEntry = rootEntry;
+    let skipping = false;
     for (let line of lines) {
         const fullLength = line.length;
         line = line.trimLeft();
@@ -143,6 +144,13 @@ function generateProfileEntries(paste: string): RootEntry {
             break;
         }
         const innerDepth = fullLength - line.length;
+        if (skipping) {
+            if (innerDepth < currentDepth) {
+                skipping = false;
+            } else {
+                continue;
+            }
+        }
         if (currentDepth + 1 < innerDepth) {
             return { children: [INVALID_PROFILE] };
         }
@@ -153,6 +161,10 @@ function generateProfileEntries(paste: string): RootEntry {
         currentDepth = innerDepth;
 
         const currentLine = parseLine(line);
+        if (currentLine.selfTime <= 200) {
+            skipping = true;
+            continue;
+        }
         if (isNaN(currentLine.selfTime)) {
             return { children: [INVALID_PROFILE] };
         }
