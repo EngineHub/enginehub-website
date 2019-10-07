@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import styled from '@emotion/styled';
 
@@ -21,15 +21,6 @@ const INVALID_PROFILE = {
     selfTime: 0,
     children: []
 };
-
-function parseLine(line: string): { name: string; selfTime: number } {
-    const split = line.trimLeft().split(' ');
-    const timePart = split.pop()!;
-    return {
-        name: split.join(' '),
-        selfTime: parseInt(timePart.substring(0, timePart.length))
-    };
-}
 
 const ProfileNodeBox = styled.div`
     margin-left: 6px;
@@ -102,6 +93,15 @@ function calculatePercentage(self: number, all: number): number {
     return Math.round((self / all) * 10000) / 100;
 }
 
+function parseLine(line: string): { name: string; selfTime: number } {
+    const split = line.split(' ');
+    const timePart = split.pop()!;
+    return {
+        name: split.join(' '),
+        selfTime: parseInt(timePart.substring(0, timePart.length - 2))
+    };
+}
+
 const ProfileNode: React.FC<ProfileNodeProps> = ({ entry, allTime }) => {
     const [open, setOpen] = useState<boolean>(true);
     const onToggle = () => setOpen(!open);
@@ -115,8 +115,8 @@ const ProfileNode: React.FC<ProfileNodeProps> = ({ entry, allTime }) => {
                     <BarInner style={{ width: percent }} />
                 </Bar>
             </ProfileNodeText>
-            {open && entry.children.length > 0 && (
-                <div>
+            {entry.children.length > 0 && (
+                <div style={{ display: open ? 'block' : 'none'}}>
                     {entry.children.map((child, i) => (
                         <ProfileNode key={i} entry={child} allTime={allTime} />
                     ))}
@@ -136,11 +136,13 @@ function generateProfileEntries(paste: string): RootEntry {
     };
     let currentDepth = 0;
     let currentEntry: ProfileEntry | RootEntry = rootEntry;
-    for (const line of lines) {
-        if (line.trim().length === 0) {
+    for (let line of lines) {
+        const fullLength = line.length;
+        line = line.trimLeft();
+        if (line.length === 0) {
             break;
         }
-        const innerDepth = line.length - line.trimLeft().length;
+        const innerDepth = fullLength - line.length;
         if (currentDepth + 1 < innerDepth) {
             return { children: [INVALID_PROFILE] };
         }
@@ -155,7 +157,8 @@ function generateProfileEntries(paste: string): RootEntry {
             return { children: [INVALID_PROFILE] };
         }
         const newEntry: ProfileEntry = {
-            ...currentLine,
+            name: currentLine.name,
+            selfTime: currentLine.selfTime,
             parent: currentEntry,
             children: []
         };
@@ -167,7 +170,7 @@ function generateProfileEntries(paste: string): RootEntry {
 }
 
 const ProfileComponent: React.FC<PasteProps> = ({ paste }) => {
-    const rootEntry = useMemo(() => generateProfileEntries(paste), [paste]);
+    const rootEntry = generateProfileEntries(paste);
     return (
         <>
             {rootEntry.children.map((entry, i) => (
