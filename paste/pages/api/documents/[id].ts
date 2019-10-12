@@ -1,10 +1,10 @@
-import {
-    NextApiRequest,
-    NextApiResponse
-} from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { loadPaste } from '@paste/loadPaste';
 
-export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+export default async function handle(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
     const { id } = req.query;
     let pasteId = `${id}`;
     const dotIndex = id.lastIndexOf('.');
@@ -15,5 +15,8 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     if (!pasteContents) {
         res.end('Invalid Paste ID');
     }
-    res.end(pasteContents);
+    res.setHeader('content-type', 'text/plain');
+    res.write(pasteContents);
+    res.status(200);
+    res.end();
 }
