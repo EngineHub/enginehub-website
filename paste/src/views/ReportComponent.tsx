@@ -90,7 +90,7 @@ function generateReportEntries(paste: string): ReportEntry[] {
                     currentState = ReportState.HEADER_TITLE;
                 } else {
                     if (currentSection.content.length !== 0 || line !== '') {
-                        currentSection.content = `${currentSection.content}${line}\n`;
+                        currentSection.content += `${line}\n`;
                     }
                 }
                 break;
