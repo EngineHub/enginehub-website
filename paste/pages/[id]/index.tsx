@@ -5,6 +5,7 @@ import Router from 'next/router';
 import axios from 'axios';
 import PasteComponent from '@paste/views/PasteComponent';
 import ProfileComponent from '@paste/views/ProfileComponent';
+import ReportComponent from '@paste/views/ReportComponent';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -17,7 +18,7 @@ export interface PasteProps {
 const EXTENSIONS: Map<string, React.FC<PasteProps>> = new Map([
     ['', PasteComponent],
     ['paste', PasteComponent],
-    ['report', PasteComponent],
+    ['report', ReportComponent],
     ['profile', ProfileComponent],
     ['log', PasteComponent]
 ]);
