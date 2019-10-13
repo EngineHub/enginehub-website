@@ -21,7 +21,6 @@ const NotFoundPage = ({ data }: { data: NotFoundData }) => (
         <SEO title="Missing Page" image={data.file.childImageSharp.fixed.src} />
         <PageHeader
             text={'Missing Page'}
-            showSponsors={true}
             extraSponsors={['netlify']}
         >
             Sorry, the page or resource that you are looking for cannot be
@@ -40,7 +39,7 @@ export const query = graphql`
         file(name: { eq: "enginehub-logo" }) {
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
-                    ...GatsbyImageSharpFixed_tracedSVG
+                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
             }
         }

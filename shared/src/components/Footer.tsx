@@ -70,7 +70,7 @@ const FooterUl = styled.ul`
 const FooterLi = styled.li`
     line-height: 23.8px;
     font-size: 14px;
-    margin-bottom: 0;
+    margin-bottom: 0.75rem;
 `;
 
 interface FooterProps extends ExtraSponsorProps {

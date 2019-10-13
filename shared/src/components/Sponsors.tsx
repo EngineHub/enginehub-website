@@ -31,7 +31,10 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
 
     const NetlifySponsor: React.FC = () => (
         <Link href="https://www.netlify.com">
-            <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" />
+            <img
+                src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"
+                alt="Netlify"
+            />
         </Link>
     );
 
@@ -39,7 +42,7 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         const img = require('../images/beastnode.png');
         return (
             <Link href="https://www.beastnode.com">
-                <img src={img} style={{ marginBottom: 0 }} />
+                <img src={img} style={{ marginBottom: 0 }} alt="BeastNode" />
             </Link>
         );
     };
@@ -49,7 +52,11 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         return (
             <>
                 <Link href="https://mcph.info/enginehub">
-                    <img src={img} style={{ marginBottom: 0 }} />
+                    <img
+                        src={img}
+                        style={{ marginBottom: 0 }}
+                        alt="MCProHosting"
+                    />
                 </Link>
                 <p style={{ textAlign: 'center', lineHeight: '4px' }}>
                     25% OFF! Code: <code>enginehub</code>
