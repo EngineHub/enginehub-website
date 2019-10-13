@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 interface SEOProps {
     description?: string;
