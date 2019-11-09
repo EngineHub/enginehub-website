@@ -12,7 +12,7 @@ const TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmssZ';
 const CHANGE_FIELDS = `changes(change(version,username,comment,date))`;
 const ARTIFACT_FIELDS = `artifacts(file(name,size))`;
 
-async function getBuildFromTCSelector(selector: string): Promise<Build> {
+async function getBuildFromTCSelector(selector: string): Promise<Build | undefined> {
     const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds/?locator=${selector}&fields=build(id,status,statusText,branchName,finishDate,number,buildType(projectId),${CHANGE_FIELDS},${ARTIFACT_FIELDS})`;
 
     const { data } = await axios.get(url, {
@@ -22,6 +22,10 @@ async function getBuildFromTCSelector(selector: string): Promise<Build> {
     });
 
     const build = data.build[0];
+
+    if (build === undefined) {
+        return undefined;
+    }
 
     return {
         build_id: build.id,
@@ -37,7 +41,7 @@ async function getBuildFromTCSelector(selector: string): Promise<Build> {
     };
 }
 
-export async function getBuild(buildId: string): Promise<Build> {
+export async function getBuild(buildId: string): Promise<Build | undefined> {
     if (process.env.NODE_ENV !== 'production' && buildId === 'test') {
         return await Promise.resolve(DUMMY_BUILD(buildId));
     }
@@ -48,7 +52,7 @@ export async function getBuild(buildId: string): Promise<Build> {
 export async function getLatestBuild(
     project: Project,
     branch?: string
-): Promise<Build> {
+): Promise<Build | undefined> {
     if (branch && branch.includes('/')) {
         branch = undefined; // TODO Find a workaround for this Tomcat bug
     }

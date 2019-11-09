@@ -8,8 +8,8 @@ import Router from 'next/router';
 const Form = styled.div`
     position: fixed;
     top: 72px;
-    right: 55px;
-    bottom: 15px;
+    right: 0;
+    bottom: 0;
     left: 40px;
 `;
 

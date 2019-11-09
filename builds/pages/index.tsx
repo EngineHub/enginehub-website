@@ -88,7 +88,7 @@ function Index({ projectEntries }: IndexProps) {
                             <th>Finished</th>
                         </tr>
                         {projectEntries.map(projectEntry => (
-                            <>
+                            <React.Fragment key={projectEntry.project.id}>
                                 <ProjectTitleRow>
                                     <td colSpan={6}>
                                         <h2>{projectEntry.project.name}</h2>
@@ -164,7 +164,7 @@ function Index({ projectEntries }: IndexProps) {
                                         </TdNoWrap>
                                     </tr>
                                 ))}
-                            </>
+                            </React.Fragment>
                         ))}
                     </tbody>
                 </Table>
@@ -184,11 +184,11 @@ Index.getInitialProps = async () => {
             const branches = (await getBranches(proj.project)).filter(
                 branch => !branch.includes('/')
             ); // remove later
-            proj.builds = await Promise.all(
+            proj.builds = (await Promise.all(
                 branches.map(
                     async branch => await getLatestBuild(proj.project, branch)
                 )
-            );
+            )).filter(b => b) as Build[];
         })
     );
 

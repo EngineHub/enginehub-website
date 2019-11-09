@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createPaste } from '@paste/pasteStore';
 
-const MAX_CONTENT_LENGTH = 5242880; // 5MB
+const MAX_CONTENT_LENGTH = 1024 * 1024 * 20; // 20MB
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     let { content, from } = req.body;
@@ -13,7 +13,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     }
 
     if (content.length > MAX_CONTENT_LENGTH) {
-        res.writeHead(503, `Content larger than ${MAX_CONTENT_LENGTH}`);
+        res.writeHead(413, `Content larger than ${MAX_CONTENT_LENGTH}`);
         res.end();
         return;
     }
