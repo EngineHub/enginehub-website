@@ -162,7 +162,7 @@ const Submit = () => {
 
     return (
         <Layout>
-            <SEO title="Submit | WorldEdit Golf" />
+            <SEO title="Submit | WorldEdit Golf" description="Create a new challenge at WorldEdit Golf!" />
             <Container ref={containerRef}>
                 <BrandHeader />
                 {submitting && submitting.type === 'loading' && (

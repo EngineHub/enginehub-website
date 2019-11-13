@@ -57,7 +57,12 @@ const MainLink = styled.a(MainLinkStyle);
 function Index({ projectEntries }: IndexProps) {
     return (
         <Layout>
-            <SEO title={'Builds'} />
+            <SEO
+                title={'Builds'}
+                description={
+                    'Downloads and builds for many EngineHub projects. WorldEdit, WorldGuard, CraftBook, CommandHelper, and more!'
+                }
+            />
             <PageHeader text={'Builds'} />
             <Container>
                 <WarningBox>

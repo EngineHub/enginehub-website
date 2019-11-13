@@ -12,7 +12,7 @@ export const Layout: FC<LayoutProps> = ({ children, showHelp = true, saveCallbac
     <>
         <SEO
             title="Pastebin at EngineHub"
-            description="EngineHub Pastebin Service"
+            description="EngineHub Pastebin Service. Store logs, profiles, and reports with ease."
         />
         <Header showHelp={showHelp} saveCallback={saveCallback} />
         <main>{children}</main>

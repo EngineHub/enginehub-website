@@ -78,7 +78,10 @@ function Index({ project, build }: BuildPageProps) {
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>
-            <SEO title={`${project.name} Builds`} />
+            <SEO
+                title={`${project.name} Build #${build.build_number}`}
+                description={`${project.name} Builds. Build #${build.build_number} for ${project.name} ${build.branch}. Download test builds at EngineHub.`}
+            />
             <ContainerPadded>
                 <BreadcrumbWrapper>
                     <Breadcrumb>

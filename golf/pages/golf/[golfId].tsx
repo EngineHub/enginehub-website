@@ -225,14 +225,14 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
 
     return (
         <Layout>
-            <SEO title={`${golf.title} | WorldEdit Golf`} />
+            <SEO title={`${golf.title} | WorldEdit Golf`} description={`Try out the ${golf.title} challenge by ${uploadingUser.fullname}! Only at WorldEdit.Golf`} />
             <Container>
                 <BrandHeader />
                 <PageColumns>
                     <MainContent ref={contentRef}>
                         <TitleText>{golf.title}</TitleText>
                         <SmallText>
-                            Uploaded by {uploadingUser.fullname} / {' '}
+                            Uploaded by {uploadingUser.fullname} /{' '}
                             <MainLink
                                 target="__blank"
                                 href={`https://github.com/${uploadingUser.username}/`}

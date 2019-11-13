@@ -73,11 +73,11 @@ function Index({
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>
-            <SEO title={`${project.name} Builds`} />
-            <PageHeader
-                text={`${project.name} Builds`}
-                icon={project.icon}
-            >
+            <SEO
+                title={`${project.name} Builds`}
+                description={`Downloads and builds for the ${project.name} project. Download beta and test builds!`}
+            />
+            <PageHeader text={`${project.name} Builds`} icon={project.icon}>
                 <BranchButtonList>
                     {branches.map(branch => (
                         <BranchButtonItem key={branch}>

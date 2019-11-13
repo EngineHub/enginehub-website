@@ -18,11 +18,12 @@ interface NotFoundData {
 
 const NotFoundPage = ({ data }: { data: NotFoundData }) => (
     <Layout>
-        <SEO title="Missing Page" image={data.file.childImageSharp.fixed.src} />
-        <PageHeader
-            text={'Missing Page'}
-            extraSponsors={['netlify']}
-        >
+        <SEO
+            title="Missing Page"
+            image={data.file.childImageSharp.fixed.src}
+            description="Sorry, the page or resource that you are looking for cannot be found."
+        />
+        <PageHeader text={'Missing Page'} extraSponsors={['netlify']}>
             Sorry, the page or resource that you are looking for cannot be
             found.
         </PageHeader>

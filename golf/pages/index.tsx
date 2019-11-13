@@ -31,7 +31,10 @@ function Home({ golfs }: HomeProps) {
 
     return (
         <Layout>
-            <SEO title="WorldEdit Golf" />
+            <SEO
+                title="WorldEdit Golf"
+                description="For WorldEdit Pros, every command counts. Pick a challenge, write some commands, and show us what you've got."
+            />
             <Container>
                 <BrandHeader isHomePage={true} />
                 {isAuthenticated && (
@@ -49,7 +52,9 @@ function Home({ golfs }: HomeProps) {
 
 Home.getInitialProps = async () => {
     try {
-        const { data } = await axios.get(`${process.env.API_PREFIX}/api/get-golfs`);
+        const { data } = await axios.get(
+            `${process.env.API_PREFIX}/api/get-golfs`
+        );
         return { golfs: data };
     } catch (e) {
         return { error: e, golfs: [] };
