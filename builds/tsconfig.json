@@ -1,20 +1,36 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "target": "esnext",
-    "isolatedModules": true
-  },
-  "include": [
-    "pages/**/*",
-    "src/**/*"
-  ]
+    "include": ["pages/**/*", "src/**/*"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@shared/*": ["../shared/src/*"],
+            "@builds/*": ["src/*"],
+            "@main/*": ["../main-site/src/*"],
+            "@paste/*": ["../paste/src/*"],
+            "@golf/*": ["../golf/src/*"]
+        },
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noUnusedParameters": true,
+        "importHelpers": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "lib": ["dom", "es2017"]
+    },
+    "exclude": ["node_modules"]
 }
