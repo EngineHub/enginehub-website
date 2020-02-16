@@ -36,16 +36,13 @@ export default async function handle(
     const clientSecret = process.env.CLIENT_SECRET;
     const url = `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`;
 
-    const { body } = await got(url);
+    const { body } = (await got(url)) as { body: string };
 
-    const data = body.split('&').reduce(
-        (acc, a) => {
-            const [key, value] = a.split('=');
-            acc[key] = value;
-            return acc;
-        },
-        {} as { [key: string]: string }
-    );
+    const data = body.split('&').reduce((acc, a) => {
+        const [key, value] = a.split('=');
+        acc[key] = value;
+        return acc;
+    }, {} as { [key: string]: string });
 
     if (data.error) {
         res.write(JSON.stringify(data));
@@ -73,7 +70,7 @@ export default async function handle(
         const {
             body: { id: github_id, avatar_url, name, login }
         }: UserResponse = await got('https://api.github.com/user', {
-            json: true,
+            responseType: 'json',
             headers: { authorization: `token ${access_token}` }
         });
 
