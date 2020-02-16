@@ -6,7 +6,6 @@ import {
 } from '@shared/utils/LinkProvider';
 import Navbar from '@shared/components/Navbar';
 import Footer from '@shared/components/Footer';
-import './layout.css';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
 import Link from 'next/link';
 

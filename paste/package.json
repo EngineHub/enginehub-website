@@ -7,7 +7,6 @@
     "dependencies": {
         "@emotion/core": "^10.0.27",
         "@emotion/styled": "^10.0.27",
-        "@zeit/next-css": "^1.0.1",
         "axios": "^0.19.2",
         "next": "^9.2.1",
         "next-server": "^9.0.5",

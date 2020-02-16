@@ -6,7 +6,6 @@ import {
 } from '@shared/utils/LinkProvider';
 import Navbar from '@shared/components/Navbar';
 import Footer from '@shared/components/Footer';
-import './layout.css';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
 import { PurpleButtonStyle } from '@shared/components/Button';

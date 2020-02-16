@@ -1,5 +1,4 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const withCSS = require('@zeit/next-css')
 const withImages = require('next-images')
 
 const prod = process.env.NODE_ENV === 'production';
@@ -7,7 +6,7 @@ const ASSETS_PREFIX = 'https://static.worldedit.golf';
 
 const API_PREFIX = prod ? 'https://worldedit.golf' : 'http://localhost:3000';
 
-module.exports = withImages(withCSS({
+module.exports = withImages({
     target: 'serverless',
     assetPrefix: prod ? ASSETS_PREFIX : undefined,
     webpack: (config, options) => {
@@ -36,4 +35,4 @@ module.exports = withImages(withCSS({
         BROKER_API_HOSTNAME: process.env.BROKER_API_HOSTNAME,
         GA_TRACKING_ID: 'UA-139849956-6'
     }
-}));
+});
