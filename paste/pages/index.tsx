@@ -66,10 +66,12 @@ function Index() {
                     })
                 ).json();
                 if ('url' in response) {
-                    if (response['url'].startsWith('https://paste.enginehub.org')) {
-                        Router.push('/[id]', response['url'].substring('https://paste.enginehub.org'.length));
+                    const url = response.url;
+                    alert("Saved! Available at " + url);
+                    if (url.startsWith('https://paste.enginehub.org')) {
+                        Router.push('/[id]', url.substring('https://paste.enginehub.org'.length));
                     } else {
-                        window.location.href = response['url'];
+                        window.location.href = url;
                     }
                 } else {
                     alert(response['error']);
