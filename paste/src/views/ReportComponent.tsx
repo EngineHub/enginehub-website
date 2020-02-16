@@ -103,6 +103,12 @@ function generateReportEntries(paste: string): ReportEntry[] {
                 break;
         }
     }
+    if (
+        currentState == ReportState.CONTENT &&
+        currentSection.content.length !== 0
+    ) {
+        sections.push(currentSection);
+    }
     return sections;
 }
 
