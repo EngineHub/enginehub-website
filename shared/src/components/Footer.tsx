@@ -94,11 +94,6 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                         </MainLink>
                     </FooterLi>
                     <FooterLi>
-                        <MainLink href="http://dev.enginehub.org/youtrack/">
-                            Issue Tracker
-                        </MainLink>
-                    </FooterLi>
-                    <FooterLi>
                         <MainLink href="https://builds.enginehub.org/">
                             Test Builds
                         </MainLink>

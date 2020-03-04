@@ -84,7 +84,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://worldedit.rtfd.io">
+                                <MainOutboundLink href="https://worldedit.enginehub.org">
                                     Documentation
                                 </MainOutboundLink>
                             </SidebarNavListItem>
@@ -94,7 +94,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 </MainOutboundLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://dev.enginehub.org/youtrack/issues/WORLDEDIT">
+                                <MainOutboundLink href="https://github.com/EngineHub/WorldEdit/issues">
                                     Bug / Feature Tracker
                                 </MainOutboundLink>
                             </SidebarNavListItem>

@@ -94,7 +94,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                                 </MainOutboundLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://dev.enginehub.org/youtrack/issues/CMDBOOK">
+                                <MainOutboundLink href="https://github.com/EngineHub/CommandBook/issues">
                                     Bug / Feature Tracker
                                 </MainOutboundLink>
                             </SidebarNavListItem>

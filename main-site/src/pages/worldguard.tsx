@@ -84,7 +84,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 </MainLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://worldguard.rtfd.io">
+                                <MainOutboundLink href="https://worldguard.enginehub.org">
                                     Documentation
                                 </MainOutboundLink>
                             </SidebarNavListItem>
@@ -94,7 +94,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 </MainOutboundLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://dev.enginehub.org/youtrack/issues/WORLDGUARD">
+                                <MainOutboundLink href="https://github.com/EngineHub/WorldGuard/issues">
                                     Bug / Feature Tracker
                                 </MainOutboundLink>
                             </SidebarNavListItem>

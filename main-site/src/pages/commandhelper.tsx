@@ -90,7 +90,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 </MainOutboundLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://dev.enginehub.org/youtrack/issues/CMDHELPER">
+                                <MainOutboundLink href="https://github.com/EngineHub/CommandHelper/issues">
                                     Bug / Feature Tracker
                                 </MainOutboundLink>
                             </SidebarNavListItem>

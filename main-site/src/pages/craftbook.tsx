@@ -94,7 +94,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                 </MainOutboundLink>
                             </SidebarNavListItem>
                             <SidebarNavListItem>
-                                <MainOutboundLink href="https://dev.enginehub.org/youtrack/issues/CRAFTBOOK">
+                                <MainOutboundLink href="https://github.com/EngineHub/CraftBook/issues">
                                     Bug / Feature Tracker
                                 </MainOutboundLink>
                             </SidebarNavListItem>
