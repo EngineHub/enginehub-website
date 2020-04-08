@@ -26,5 +26,8 @@ module.exports = withImages({
     env: {
         STATIC_PREFIX: prod ? ASSETS_PREFIX : '',
         GA_TRACKING_ID: 'UA-139849956-5'
+    },
+    experimental: {
+        granularChunks: true
     }
 });

@@ -34,5 +34,8 @@ module.exports = withImages({
         BROKER_API_KEY: process.env.BROKER_API_KEY,
         BROKER_API_HOSTNAME: process.env.BROKER_API_HOSTNAME,
         GA_TRACKING_ID: 'UA-139849956-6'
+    },
+    experimental: {
+        granularChunks: true
     }
 });
