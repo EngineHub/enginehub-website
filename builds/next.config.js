@@ -6,7 +6,7 @@ const ASSETS_PREFIX = 'https://builds-static.enginehub.org'
 
 module.exports = withImages({
     target: 'serverless',
-    assetPrefix: prod ? ASSETS_PREFIX : undefined,
+    assetPrefix: prod ? ASSETS_PREFIX : '',
     webpack: (config, options) => {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,

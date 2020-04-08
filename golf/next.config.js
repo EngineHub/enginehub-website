@@ -8,7 +8,7 @@ const API_PREFIX = prod ? 'https://worldedit.golf' : 'http://localhost:3000';
 
 module.exports = withImages({
     target: 'serverless',
-    assetPrefix: prod ? ASSETS_PREFIX : undefined,
+    assetPrefix: prod ? ASSETS_PREFIX : '',
     webpack: (config, options) => {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,

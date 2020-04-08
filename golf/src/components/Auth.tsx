@@ -1,9 +1,6 @@
-import React, {
-    useContext,
-    useState,
-    useEffect
-} from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import router from 'next/router';
+import jwt from 'jsonwebtoken';
 
 const getToken = () =>
     typeof window !== 'undefined' ? window.localStorage.getItem('token')! : ' ';
@@ -48,6 +45,27 @@ export const useSetToken: () => (value?: string) => void = () => {
 
 export const useToken: () => string | undefined = () => {
     const { token } = useContext(AuthContext);
+
+    try {
+        if (token) {
+            const isValid = useMemo(() => {
+                const decodedToken = jwt.decode(token);
+
+                return (
+                    decodedToken &&
+                    decodedToken['exp'] &&
+                    decodedToken['exp'] * 1000 < Date.now()
+                );
+            }, [token]);
+
+            if (!isValid) {
+                const setToken = useSetToken();
+                setToken(undefined);
+                return undefined;
+            }
+        }
+    } catch (e) {}
+
     return token;
 };
 

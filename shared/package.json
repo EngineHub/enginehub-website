@@ -5,25 +5,25 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@emotion/core": "^10.0.27",
+        "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.27",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0"
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.8.4",
-        "@types/node": "^13.7.1",
-        "@types/react": "^16.9.19",
-        "@types/react-dom": "^16.9.5",
-        "babel-loader": "^8.0.6",
-        "lint-staged": "^10.0.7",
+        "@babel/core": "^7.9.0",
+        "@types/node": "^13.11.0",
+        "@types/react": "^16.9.32",
+        "@types/react-dom": "^16.9.6",
+        "babel-loader": "^8.1.0",
+        "lint-staged": "^10.1.2",
         "tsconfig": "^7.0.0",
         "tsconfig-paths": "^3.9.0",
         "tsconfig-paths-webpack-plugin": "^3.2.0",
-        "tslint": "^6.0.0",
+        "tslint": "^6.1.1",
         "tslint-react": "^4.2.0",
         "tslint-sonarts": "^1.9.0",
-        "typescript": "^3.7.5"
+        "typescript": "^3.8.3"
     },
     "lint-staged": {
         "./**/*.{ts,tsx}": [
