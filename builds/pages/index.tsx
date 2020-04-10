@@ -186,14 +186,15 @@ Index.getInitialProps = async () => {
 
     await Promise.all(
         projectEntries.map(async proj => {
-            const branches = (await getBranches(proj.project)).filter(
-                branch => !branch.includes('/')
-            ); // remove later
-            proj.builds = (await Promise.all(
-                branches.map(
-                    async branch => await getLatestBuild(proj.project, branch)
+            const branches = await getBranches(proj.project);
+            proj.builds = (
+                await Promise.all(
+                    branches.map(
+                        async branch =>
+                            await getLatestBuild(proj.project, branch)
+                    )
                 )
-            )).filter(b => b) as Build[];
+            ).filter(b => b) as Build[];
         })
     );
 

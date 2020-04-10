@@ -53,10 +53,7 @@ export async function getLatestBuild(
     project: Project,
     branch?: string
 ): Promise<Build | undefined> {
-    if (branch && branch.includes('/')) {
-        branch = undefined; // TODO Find a workaround for this Tomcat bug
-    }
-    return await getBuildFromTCSelector(
+   return await getBuildFromTCSelector(
         `branch:${branch ? branch : project.defaultBranch},buildType:${
             project.buildType
         },status:SUCCESS`
@@ -105,7 +102,7 @@ export async function getBranches(project: Project): Promise<string[]> {
     });
     const branches = data.branch.map((branch: any) =>
         branch.default ? project.defaultBranch : branch.name
-    );
+    ) as string[];
     if (project.pinnedBranches) {
         for (const pinnedBranch of project.pinnedBranches) {
             if (!branches.includes(pinnedBranch)) {
@@ -114,5 +111,5 @@ export async function getBranches(project: Project): Promise<string[]> {
         }
     }
 
-    return branches;
+    return branches.filter(branch => !branch.startsWith('refs/heads/'));
 }
