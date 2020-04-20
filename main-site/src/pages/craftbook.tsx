@@ -218,7 +218,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                         'http://dev.bukkit.org/bukkit-plugins/craftbook/files/'
                                     }
                                 >
-                                    Latest release for Bukkit
+                                    Stable builds for Bukkit
                                 </BlueOutboundButton>
                             </p>
                             <p>
@@ -270,7 +270,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                         'https://ore.spongepowered.org/EngineHub/CraftBook'
                                     }
                                 >
-                                    Latest release for Sponge
+                                    Stable builds for Sponge
                                 </BlueOutboundButton>
                             </p>
                             <p>

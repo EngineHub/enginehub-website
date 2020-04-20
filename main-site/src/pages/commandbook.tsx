@@ -189,7 +189,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                                         'http://dev.bukkit.org/bukkit-plugins/commandbook/files/'
                                     }
                                 >
-                                    Latest release for Bukkit
+                                    Stable builds for Bukkit
                                 </BlueOutboundButton>
                             </p>
                             <p>

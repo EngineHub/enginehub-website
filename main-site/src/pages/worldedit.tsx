@@ -215,7 +215,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                         'http://dev.bukkit.org/bukkit-plugins/worldedit/files/'
                                     }
                                 >
-                                    Latest release for Bukkit
+                                    Stable builds for Bukkit
                                 </BlueOutboundButton>
                             </p>
                             <p>
@@ -262,7 +262,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                         'https://minecraft.curseforge.com/projects/worldedit'
                                     }
                                 >
-                                    Latest release for Forge
+                                    Stable builds for Forge
                                 </BlueOutboundButton>
                             </p>
                             <p>
@@ -306,7 +306,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                         'https://minecraft.curseforge.com/projects/worldedit'
                                     }
                                 >
-                                    Latest release for Fabric
+                                    Stable builds for Fabric
                                 </BlueOutboundButton>
                             </p>
                             <p>
@@ -350,7 +350,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                         'https://ore.spongepowered.org/enginehub/WorldEdit'
                                     }
                                 >
-                                    Latest release for Sponge
+                                    Stable builds for Sponge
                                 </BlueOutboundButton>
                             </p>
                             <p>
