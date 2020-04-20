@@ -197,7 +197,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                         'http://dev.bukkit.org/bukkit-plugins/worldguard/files/'
                                     }
                                 >
-                                    Latest release for Bukkit
+                                    Stable builds for Bukkit
                                 </BlueOutboundButton>
                             </p>
                             <p>
