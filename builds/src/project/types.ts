@@ -35,7 +35,7 @@ export const PROJECTS = [
         icon: require('../images/craftbook-icon.png'),
         buildType: 'bt6',
         extraSponsors: ['beastnode'],
-        pinnedBranches: ['3.x', 'five'],
+        pinnedBranches: ['4.x', 'five'],
         vcsRoot: 'https://github.com/EngineHub/CraftBook'
     },
     {
