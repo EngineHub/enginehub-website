@@ -14,6 +14,7 @@ export default async function handle(
     const pasteContents = await loadPaste(pasteId);
     if (!pasteContents) {
         res.end('Invalid Paste ID');
+        return;
     }
     res.setHeader('content-type', 'text/plain');
     res.write(pasteContents);
