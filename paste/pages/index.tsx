@@ -97,7 +97,7 @@ function Index() {
     }, []);
     return (
         <Layout saveCallback={save}>
-            <Gutter>></Gutter>
+            <Gutter>&gt;</Gutter>
             <Form>
                 <PasteArea ref={textAreaRef} />
             </Form>

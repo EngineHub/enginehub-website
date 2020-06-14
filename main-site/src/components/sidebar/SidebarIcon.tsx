@@ -11,7 +11,7 @@ interface SidebarIconProps {
 const SidebarIcon: FunctionComponent<SidebarIconProps> = (props) => {
     return (
         <div>
-            <Img fixed={props.image} alt={props.alt} />
+            <Img fixed={props.image} alt={props.alt} loading={'eager'} />
         </div>
     )
 };

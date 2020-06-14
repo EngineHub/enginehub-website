@@ -84,7 +84,10 @@ export const Landing: FunctionComponent<LandingProps> = props => {
     const data: ImageQueryResult = useStaticQuery(query);
     return (
         <HeaderWrapper>
-            <HeaderImg fluid={data.file.childImageSharp.fluid} />
+            <HeaderImg
+                fluid={data.file.childImageSharp.fluid}
+                loading={'eager'}
+            />
             <HeaderContent>
                 <Navbar
                     headertheme="inverted"

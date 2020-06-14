@@ -42,7 +42,7 @@ Document.getInitialProps = async ({ query, res }: NextPageContext) => {
     const { id } = query;
     let pasteId = `${id}`;
     let extension: Extension = '';
-    const dotIndex = id.lastIndexOf('.');
+    const dotIndex = id!.lastIndexOf('.');
     if (dotIndex !== -1) {
         const extracted = pasteId.substring(dotIndex + 1);
         pasteId = pasteId.substring(0, dotIndex);
