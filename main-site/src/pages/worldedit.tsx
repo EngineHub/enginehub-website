@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
@@ -9,18 +10,17 @@ import {
     ColumnThreeQuarter
 } from '@shared/components/grid';
 import {
-    SidebarHeading,
     SidebarDivider,
     SidebarNavListItem,
     SidebarNavList
 } from '@shared/components/sidebar';
-import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
+import { FixedObject, FluidObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import GitHubButton from 'react-github-btn';
@@ -36,6 +36,11 @@ interface WorldEditPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
+        };
+    };
+    header: {
+        childImageSharp: {
+            fluid: FluidObject;
         };
     };
     allFile: {
@@ -61,12 +66,28 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
             />
             <ContainerPadded>
                 <Row>
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <Img
+                                fluid={data.header.childImageSharp.fluid}
+                                alt={'WorldEdit'}
+                            />
+                        </JumbotronImageBox>
+                        <JumbotronText>
+                            WorldEdit let's you build <em>fast</em> and{' '}
+                            <em>smart</em>. Get started with the essential
+                            building tool used by almost all professional
+                            Minecraft builders today!
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/worldedit/#downloads'}>
+                                List downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
                     <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'WorldEdit Logo'}
-                        />
-                        <SidebarHeading>WorldEdit</SidebarHeading>
                         <SidebarNavList>
                             <SidebarNavListItem>
                                 <MainLink to={'/worldedit/#features'}>
@@ -121,19 +142,12 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                         </GitHubButton>
                     </ColumnQuarter>
                     <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                WorldEdit is an open source in-game map editor
-                                available for Bukkit, Forge, MinecraftEdu, and
-                                many other platforms.
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/worldedit/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
+                        <SectionHeading
+                            id="features"
+                            style={{ marginTop: '0' }}
+                        >
+                            Features
+                        </SectionHeading>
                         <p>
                             WorldEdit lets you build <em>fast</em> and{' '}
                             <em>smart</em>. Why should you spend your time
@@ -432,6 +446,13 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                }
+            }
+        }
+        header: file(name: { eq: "worldedit-header" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }

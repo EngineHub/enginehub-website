@@ -5,5 +5,4 @@ export const SectionHeading = styled.h3`
     font-size: 30px;
     margin-bottom: 11.5px;
     font-weight: 500;
-    line-height: 1.8;
 `;
