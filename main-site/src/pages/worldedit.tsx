@@ -68,10 +68,12 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                 <Row>
                     <JumbotronContainer>
                         <JumbotronImageBox>
-                            <Img
-                                fluid={data.header.childImageSharp.fluid}
-                                alt={'WorldEdit'}
-                            />
+                            <h1>
+                                <Img
+                                    fluid={data.header.childImageSharp.fluid}
+                                    alt={'WorldEdit'}
+                                />
+                            </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
                             WorldEdit let's you build <em>fast</em> and{' '}
