@@ -7,19 +7,19 @@ export interface ColorPalette {
 }
 
 export const BRAND: ColorPalette = {
-    lighter: '#7b5bb1',
+    lighter: '#573D81',
     normal: '#4B3570',
-    darker: '#34254e',
+    darker: '#3F2D5F',
     font: '#FFF',
-    accent: '#b3a1d2'
+    accent: '#896cb9'
 };
 
 export const PRIMARY: ColorPalette = {
-    lighter: '#2686ff',
+    lighter: '#0064e3',
     normal: '#0059c9',
-    darker: '#003e8c',
+    darker: '#004eb0',
     font: '#FFF',
-    accent: '#83baff'
+    accent: '#64a8ff'
 };
 
 export const SECONDARY: ColorPalette = {

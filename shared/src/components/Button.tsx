@@ -13,6 +13,7 @@ const BaseButtonLayout = () => css`
     font-size: 14px;
     line-height: 1.7;
     text-decoration: none;
+    border-radius: 5px;
 
     :disabled {
         cursor: not-allowed;
@@ -31,7 +32,7 @@ const ButtonColorStyle = (palette: ColorPalette) => css`
         opacity: 0.7;
     }
 
-    :hover {
+    :hover, :focus {
         background-color: ${palette.lighter};
         box-shadow: 0 0 0 1px ${palette.accent} inset;
     }
