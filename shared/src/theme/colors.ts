@@ -27,5 +27,5 @@ export const SECONDARY: ColorPalette = {
     normal: '#f5f5f5',
     darker: '#f8f8f8',
     font: '#333',
-    accent: '#333'
+    accent: '#cfcfcf'
 };
