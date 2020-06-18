@@ -9,18 +9,17 @@ import {
     ColumnThreeQuarter
 } from '@shared/components/grid';
 import {
-    SidebarHeading,
     SidebarDivider,
     SidebarNavList,
     SidebarNavListItem
 } from '@shared/components/sidebar';
-import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
+import Img, { FixedObject, FluidObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import GitHubButton from 'react-github-btn';
@@ -36,6 +35,11 @@ interface CommandBookPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
+        };
+    };
+    header: {
+        childImageSharp: {
+            fluid: FluidObject;
         };
     };
     allFile: {
@@ -61,12 +65,29 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
             />
             <ContainerPadded>
                 <Row>
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <h1>
+                                <Img
+                                    fluid={data.header.childImageSharp.fluid}
+                                    alt={'CommandBook'}
+                                />
+                            </h1>
+                        </JumbotronImageBox>
+                        <JumbotronText>
+                            CommandBook provides a long list of basic, "default"
+                            commands for you and your players on any Bukkit
+                            server.
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/commandbook/#downloads'}>
+                                List downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
                     <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'CommandBook Logo'}
-                        />
-                        <SidebarHeading>CmdBook</SidebarHeading>
                         <SidebarNavList>
                             <SidebarNavListItem>
                                 <MainLink to={'/commandbook/#features'}>
@@ -116,19 +137,12 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                         </GitHubButton>
                     </ColumnQuarter>
                     <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                CommandBook provides a long list of basic,
-                                "default" commands for you and your players on
-                                any Bukkit server.
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/commandbook/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
+                        <SectionHeading
+                            id="features"
+                            style={{ marginTop: '0' }}
+                        >
+                            Features
+                        </SectionHeading>
                         <ul>
                             <li>
                                 Modular, and extremely light on your server.
@@ -245,6 +259,13 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                }
+            }
+        }
+        header: file(name: { eq: "commandbook-header" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }

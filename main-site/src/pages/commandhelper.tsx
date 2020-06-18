@@ -9,18 +9,17 @@ import {
     ColumnThreeQuarter
 } from '@shared/components/grid';
 import {
-    SidebarHeading,
     SidebarDivider,
     SidebarNavList,
     SidebarNavListItem
 } from '@shared/components/sidebar';
-import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
+import Img, { FixedObject, FluidObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import GitHubButton from 'react-github-btn';
@@ -32,6 +31,11 @@ interface CommandHelperPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
+        };
+    };
+    header: {
+        childImageSharp: {
+            fluid: FluidObject;
         };
     };
     allFile: {
@@ -57,12 +61,30 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
             />
             <ContainerPadded>
                 <Row>
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <h1>
+                                <Img
+                                    fluid={data.header.childImageSharp.fluid}
+                                    alt={'CommandHelper'}
+                                />
+                            </h1>
+                        </JumbotronImageBox>
+                        <JumbotronText>
+                            CommandHelper lets you create easy-to-write and
+                            "hot-reloadable" scripts for your Bukkit server to
+                            handle events and perform tasks — no Java knowledge
+                            required!
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/commandhelper/#downloads'}>
+                                List downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
                     <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'CommandHelper Logo'}
-                        />
-                        <SidebarHeading>CmdHelper</SidebarHeading>
                         <SidebarNavList>
                             <SidebarNavListItem>
                                 <MainLink to={'/commandhelper/#features'}>
@@ -117,20 +139,12 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                         </GitHubButton>
                     </ColumnQuarter>
                     <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                CommandHelper lets you create easy-to-write and
-                                "hot-reloadable" scripts for your Bukkit server
-                                to handle events and perform tasks — no Java
-                                knowledge required!
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/commandhelper/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
+                        <SectionHeading
+                            id="features"
+                            style={{ marginTop: '0' }}
+                        >
+                            Features
+                        </SectionHeading>
                         <ul>
                             <li>
                                 Alias commands like /battle to run /warp
@@ -220,6 +234,13 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                }
+            }
+        }
+        header: file(name: { eq: "commandhelper-header" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }

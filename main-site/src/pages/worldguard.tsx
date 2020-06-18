@@ -9,18 +9,17 @@ import {
     ColumnThreeQuarter
 } from '@shared/components/grid';
 import {
-    SidebarHeading,
     SidebarDivider,
     SidebarNavList,
     SidebarNavListItem
 } from '@shared/components/sidebar';
-import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
+import Img, { FixedObject, FluidObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import GitHubButton from 'react-github-btn';
@@ -36,6 +35,11 @@ interface WorldGuardPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
+        };
+    };
+    header: {
+        childImageSharp: {
+            fluid: FluidObject;
         };
     };
     allFile: {
@@ -61,12 +65,29 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
             />
             <ContainerPadded>
                 <Row>
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <h1>
+                                <Img
+                                    fluid={data.header.childImageSharp.fluid}
+                                    alt={'WorldGuard'}
+                                />
+                            </h1>
+                        </JumbotronImageBox>
+                        <JumbotronText>
+                            WorldGuard lets you and players guard areas of land
+                            against griefers and undesirables, as well as tweak
+                            and disable various gameplay features of Minecraft.
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/worldguard/#downloads'}>
+                                List downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
                     <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'WorldGuard Logo'}
-                        />
-                        <SidebarHeading>WorldGuard</SidebarHeading>
                         <SidebarNavList>
                             <SidebarNavListItem>
                                 <MainLink to={'/worldguard/#features'}>
@@ -116,20 +137,12 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                         </GitHubButton>
                     </ColumnQuarter>
                     <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                WorldGuard lets you and players guard areas of
-                                land against griefers and undesirables, as well
-                                as tweak and disable various gameplay features
-                                of Minecraft.
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/worldguard/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
+                        <SectionHeading
+                            id="features"
+                            style={{ marginTop: '0' }}
+                        >
+                            Features
+                        </SectionHeading>
                         <ul>
                             <li>
                                 Block creeper and wither block damage, falling
@@ -253,6 +266,13 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                }
+            }
+        }
+        header: file(name: { eq: "worldguard-header" }) {
+            childImageSharp {
+                fluid(quality: 100) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }
