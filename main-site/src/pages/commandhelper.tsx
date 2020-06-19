@@ -67,6 +67,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 <Img
                                     fluid={data.header.childImageSharp.fluid}
                                     alt={'CommandHelper'}
+                                    loading={'eager'}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -125,15 +126,15 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                         <SidebarDivider />
                         <SubtleText>
                             Project lead:{' '}
-                            <MainOutboundLink href="http://forum.sk89q.com/members/ladycailin.270/">
+                            <MainOutboundLink href="https://github.com/LadyCailin">
                                 LadyCailin
                             </MainOutboundLink>
                         </SubtleText>
                         <GitHubButton
-                            href="https://github.com/EngineHub/commandhelper"
+                            href="https://github.com/EngineHub/CommandHelper"
                             data-icon="octicon-star"
                             data-show-count={true}
-                            aria-label="Star EngineHub/commandhelper on GitHub"
+                            aria-label="Star EngineHub/CommandHelper on GitHub"
                         >
                             Star
                         </GitHubButton>

@@ -72,6 +72,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 <Img
                                     fluid={data.header.childImageSharp.fluid}
                                     alt={'WorldEdit'}
+                                    loading={'eager'}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -135,10 +136,10 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </MainOutboundLink>
                         </SubtleText>
                         <GitHubButton
-                            href="https://github.com/EngineHub/worldedit"
+                            href="https://github.com/EngineHub/WorldEdit"
                             data-icon="octicon-star"
                             data-show-count={true}
-                            aria-label="Star EngineHub/worldedit on GitHub"
+                            aria-label="Star EngineHub/WorldEdit on GitHub"
                         >
                             Star
                         </GitHubButton>

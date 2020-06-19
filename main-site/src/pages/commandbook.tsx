@@ -71,6 +71,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                                 <Img
                                     fluid={data.header.childImageSharp.fluid}
                                     alt={'CommandBook'}
+                                    loading={'eager'}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -128,10 +129,10 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                         <SidebarDivider />
                         <SubtleText>Project lead: Dark_Arc</SubtleText>
                         <GitHubButton
-                            href="https://github.com/EngineHub/commandbook"
+                            href="https://github.com/EngineHub/CommandBook"
                             data-icon="octicon-star"
                             data-show-count={true}
-                            aria-label="Star EngineHub/commandbook on GitHub"
+                            aria-label="Star EngineHub/CommandBook on GitHub"
                         >
                             Star
                         </GitHubButton>

@@ -71,6 +71,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                 <Img
                                     fluid={data.header.childImageSharp.fluid}
                                     alt={'CraftBook'}
+                                    loading={'eager'}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -134,10 +135,10 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                             </MainOutboundLink>
                         </SubtleText>
                         <GitHubButton
-                            href="https://github.com/EngineHub/craftbook"
+                            href="https://github.com/EngineHub/CraftBook"
                             data-icon="octicon-star"
                             data-show-count={true}
-                            aria-label="Star EngineHub/craftbook on GitHub"
+                            aria-label="Star EngineHub/CraftBook on GitHub"
                         >
                             Star
                         </GitHubButton>

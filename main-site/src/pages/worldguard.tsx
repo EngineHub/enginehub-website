@@ -71,6 +71,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 <Img
                                     fluid={data.header.childImageSharp.fluid}
                                     alt={'WorldGuard'}
+                                    loading={'eager'}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -128,10 +129,10 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                         <SidebarDivider />
                         <SubtleText>Project lead: wizjany</SubtleText>
                         <GitHubButton
-                            href="https://github.com/EngineHub/worldguard"
+                            href="https://github.com/EngineHub/WorldGuard"
                             data-icon="octicon-star"
                             data-show-count={true}
-                            aria-label="Star EngineHub/worldguard on GitHub"
+                            aria-label="Star EngineHub/WorldGuard on GitHub"
                         >
                             Star
                         </GitHubButton>
