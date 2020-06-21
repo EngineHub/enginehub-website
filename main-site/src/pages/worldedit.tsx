@@ -31,6 +31,10 @@ import {
     BlueButton,
     BlueOutboundButton
 } from '@main/components/Button';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
 
 interface WorldEditPageData {
     file: {
@@ -90,61 +94,63 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     </JumbotronContainer>
                 </Row>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldedit/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldedit/#videos'}>
-                                    Videos
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldedit/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://worldedit.enginehub.org">
-                                    Documentation
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/enginehub">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldEdit/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldEdit">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>
-                            Project lead:{' '}
-                            <MainOutboundLink href="https://twitter.com/the_me4502">
-                                Me4502
+                    <HorizontalNav>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainLink to={'/worldedit/#features'}>
+                                Features
+                            </MainLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainLink to={'/worldedit/#videos'}>
+                                Videos
+                            </MainLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://worldedit.enginehub.org">
+                                Documentation
                             </MainOutboundLink>
-                        </SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/WorldEdit"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/WorldEdit on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
+                                Discord
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldEdit/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldEdit">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <SubtleText>
+                                Project lead:{' '}
+                                <MainOutboundLink href="https://twitter.com/the_me4502">
+                                    Me4502
+                                </MainOutboundLink>
+                            </SubtleText>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <GitHubButton
+                                href="https://github.com/EngineHub/WorldEdit"
+                                data-icon="octicon-star"
+                                data-show-count={true}
+                                aria-label="Star EngineHub/WorldEdit on GitHub"
+                            >
+                                Star
+                            </GitHubButton>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading
                             id="features"
                             style={{ marginTop: '0' }}
@@ -434,7 +440,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 pasting chests may not work with this version.
                             </p>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>
