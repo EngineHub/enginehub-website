@@ -21,18 +21,16 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-gtag`,
             options: {
-                trackingIds: ['UA-139849956-1'],
-                pluginConfig: {
-                    // Puts tracking script in the head instead of the body
-                    head: true
-                }
+                trackingId: 'UA-139849956-1',
+                // Puts tracking script in the head instead of the body
+                head: true
             }
         },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `EngineHub`,
-                short_name: `starter`,
+                short_name: `EngineHub`,
                 start_url: `/`,
                 background_color: `#4B3570`,
                 theme_color: `#4B3570`,

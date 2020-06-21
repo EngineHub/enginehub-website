@@ -74,3 +74,5 @@ sls-next-build
 
 # Next
 .next
+# Local Netlify folder
+.netlify

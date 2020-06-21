@@ -12,9 +12,9 @@
         "react-dom": "^16.13.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.10.2",
+        "@babel/core": "^7.10.3",
         "@types/node": "^14.0.13",
-        "@types/react": "^16.9.37",
+        "@types/react": "^16.9.38",
         "@types/react-dom": "^16.9.8",
         "babel-loader": "^8.1.0",
         "lint-staged": "^10.2.11",
