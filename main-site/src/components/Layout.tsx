@@ -10,7 +10,7 @@ import {
     LinkProviderContext
 } from '@shared/utils/LinkProvider';
 import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-gtag';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
 
 interface LayoutProps {
