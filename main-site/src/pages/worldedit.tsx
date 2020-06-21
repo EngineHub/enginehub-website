@@ -4,18 +4,9 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import {
-    Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import {
-    SidebarDivider,
-    SidebarNavListItem,
-    SidebarNavList
-} from '@shared/components/sidebar';
+import { Row, ColumnHalf } from '@shared/components/grid';
 import { FixedObject, FluidObject } from 'gatsby-image';
-import { MainOutboundLink, MainLink } from '@main/components/Link';
+import { MainOutboundLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
@@ -23,7 +14,6 @@ import JumbotronContainer, {
     JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
 import { WarningLabel } from '@shared/components/text/Label';
 import {
@@ -35,6 +25,7 @@ import {
     HorizontalNav,
     HorizontalNavItem
 } from '@shared/components/HorizontalNav';
+import AlignedContent from '@shared/components/AlignedContent';
 
 interface WorldEditPageData {
     file: {
@@ -81,30 +72,22 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
-                            WorldEdit let's you build <em>fast</em> and{' '}
-                            <em>smart</em>. Get started with the essential
-                            building tool used by almost all professional
-                            Minecraft builders today!
+                            WorldEdit lets you build <em>fast</em> and{' '}
+                            <em>smart</em>. Why should you spend your time
+                            building a wall or excavating a hole when you can
+                            work on something <em>creative</em>? Get started
+                            with the essential building tool used by almost all
+                            professional Minecraft builders today!
                         </JumbotronText>
                         <JumbotronButtonBox>
                             <BlueButton to={'/worldedit/#downloads'}>
-                                List downloads
+                                Go to downloads
                             </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
-                        <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink to={'/worldedit/#features'}>
-                                Features
-                            </MainLink>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink to={'/worldedit/#videos'}>
-                                Videos
-                            </MainLink>
-                        </HorizontalNavItem>
                         <HorizontalNavItem>
                             <MainOutboundLink href="https://worldedit.enginehub.org">
                                 Documentation
@@ -128,41 +111,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     </HorizontalNav>
                 </Row>
                 <Row>
-                    <HorizontalNav>
-                        <HorizontalNavItem>
-                            <SubtleText>
-                                Project lead:{' '}
-                                <MainOutboundLink href="https://twitter.com/the_me4502">
-                                    Me4502
-                                </MainOutboundLink>
-                            </SubtleText>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
-                            <GitHubButton
-                                href="https://github.com/EngineHub/WorldEdit"
-                                data-icon="octicon-star"
-                                data-show-count={true}
-                                aria-label="Star EngineHub/WorldEdit on GitHub"
-                            >
-                                Star
-                            </GitHubButton>
-                        </HorizontalNavItem>
-                    </HorizontalNav>
-                </Row>
-                <Row>
-                    <div>
-                        <SectionHeading
-                            id="features"
-                            style={{ marginTop: '0' }}
-                        >
-                            Features
-                        </SectionHeading>
-                        <p>
-                            WorldEdit lets you build <em>fast</em> and{' '}
-                            <em>smart</em>. Why should you spend your time
-                            building a wall or excavating a hole when you can
-                            work on something <em>creative</em>?
-                        </p>
+                    <AlignedContent header={'Build with Speed'} align={'left'} video={'/videos/worldedit_brushes.mp4'}>
                         <ul>
                             <li>
                                 Create more impressive and much larger builds
@@ -173,8 +122,8 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 down your server
                             </li>
                             <li>
-                                Quickly create, replace or delete thousands of
-                                blocks in seconds
+                                Quickly create, replace or delete tens of
+                                thousands of blocks in seconds
                             </li>
                             <li>
                                 Level an entire mountain and replace it with
@@ -184,6 +133,15 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 Use hand-bound tools and brushes to quickly
                                 build mountains
                             </li>
+                        </ul>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Have Complete Control'}
+                        align={'right'}
+                    >
+                        <ul>
                             <li>
                                 Generate spheres, cylinders, cuboids, forests,
                                 pumpkin patches, and snowy areas
@@ -200,29 +158,68 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 Copy areas, paste them, load them, and save them
                                 as schematics
                             </li>
+                        </ul>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Advanced Editing Features'}
+                        align={'left'}
+                    >
+                        <ul>
+                            <li>
+                                Manipulate terrain with complex deformations
+                            </li>
                             <li>
                                 Evaluate mathematical expressions such as{' '}
                                 <code>{`//g stone (0.75-sqrt(x^2+y^2))^2+z^2 < 0.25^2`}</code>
                             </li>
                             <li>Many more! There are over 100 functions.</li>
                         </ul>
-                        <SectionHeading id="videos">
-                            Watch it in action
-                        </SectionHeading>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Find Out More'}
+                        align={'right'}
+                        gatsbyImage={data.header.childImageSharp.fluid}
+                        gatsbyFluid={true}
+                    >
+                        <SubtleText>
+                            Project lead:{' '}
+                            <MainOutboundLink href="https://twitter.com/the_me4502">
+                                Me4502
+                            </MainOutboundLink>
+                        </SubtleText>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <SectionHeading id="videos">
+                        Watch it in action
+                    </SectionHeading>
+                </Row>
+                <Row>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
-                            height="410"
+                            height="300"
                             src="https://www.youtube.com/embed/72HlPD9CW10?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
-                            height="410"
+                            height="300"
                             src="https://www.youtube.com/embed/yl1hTctucOc?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
