@@ -19,7 +19,7 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            resolve: `gatsby-plugin-google-gtag`,
+            resolve: `gatsby-plugin-google-analytics`,
             options: {
                 trackingId: 'UA-139849956-1',
                 // Puts tracking script in the head instead of the body
