@@ -10,5 +10,6 @@
         "skipLibCheck": true
     },
     "include": ["./src/**/*"],
-    "exclude": [".cache", "public"]
+    "exclude": [".cache", "public"],
+    "files": ["./src/index.d.ts"]
 }

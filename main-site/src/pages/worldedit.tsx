@@ -1,11 +1,10 @@
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
 import { Row, ColumnHalf } from '@shared/components/grid';
-import { FixedObject, FluidObject } from 'gatsby-image';
+import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
@@ -26,16 +25,12 @@ import {
     HorizontalNavItem
 } from '@shared/components/HorizontalNav';
 import AlignedContent from '@shared/components/AlignedContent';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldedit-header.svg';
 
 interface WorldEditPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
-        };
-    };
-    header: {
-        childImageSharp: {
-            fluid: FluidObject;
         };
     };
     allFile: {
@@ -64,11 +59,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <Img
-                                    fluid={data.header.childImageSharp.fluid}
-                                    alt={'WorldEdit'}
-                                    loading={'eager'}
-                                />
+                                <HeaderLogo alt={'WorldEdit'} loading={'eager'} />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -182,8 +173,6 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     <AlignedContent
                         header={'Find Out More'}
                         align={'right'}
-                        gatsbyImage={data.header.childImageSharp.fluid}
-                        gatsbyFluid={true}
                     >
                         <SubtleText>
                             Project lead:{' '}
@@ -452,13 +441,6 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-            }
-        }
-        header: file(name: { eq: "worldedit-header" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }

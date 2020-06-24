@@ -30,16 +30,12 @@ import {
     BlueOutboundButton
 } from '@main/components/Button';
 import { WarningLabel } from '@shared/components/text/Label';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldguard-header.svg';
 
 interface WorldGuardPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
-        };
-    };
-    header: {
-        childImageSharp: {
-            fluid: FluidObject;
         };
     };
     allFile: {
@@ -68,11 +64,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <Img
-                                    fluid={data.header.childImageSharp.fluid}
-                                    alt={'WorldGuard'}
-                                    loading={'eager'}
-                                />
+                                <HeaderLogo alt={'WorldGuard'} loading={'eager'} />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -267,13 +259,6 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-            }
-        }
-        header: file(name: { eq: "worldguard-header" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }

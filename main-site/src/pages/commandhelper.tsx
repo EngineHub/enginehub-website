@@ -13,7 +13,7 @@ import {
     SidebarNavList,
     SidebarNavListItem
 } from '@shared/components/sidebar';
-import Img, { FixedObject, FluidObject } from 'gatsby-image';
+import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
@@ -26,16 +26,12 @@ import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
 import { BlueButton, BlueOutboundButton } from '@main/components/Button';
 import { InfoLabel } from '@shared/components/text/Label';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandhelper-header.svg';
 
 interface CommandHelperPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
-        };
-    };
-    header: {
-        childImageSharp: {
-            fluid: FluidObject;
         };
     };
     allFile: {
@@ -64,11 +60,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <Img
-                                    fluid={data.header.childImageSharp.fluid}
-                                    alt={'CommandHelper'}
-                                    loading={'eager'}
-                                />
+                                <HeaderLogo alt={'CommandHelper'} loading={'eager'} />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -235,13 +227,6 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-            }
-        }
-        header: file(name: { eq: "commandhelper-header" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }

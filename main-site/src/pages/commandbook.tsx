@@ -13,7 +13,7 @@ import {
     SidebarNavList,
     SidebarNavListItem
 } from '@shared/components/sidebar';
-import Img, { FixedObject, FluidObject } from 'gatsby-image';
+import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
@@ -30,16 +30,12 @@ import {
     BlueOutboundButton
 } from '@main/components/Button';
 import { WarningLabel, InfoLabel } from '@shared/components/text/Label';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandbook-header.svg';
 
 interface CommandBookPageData {
     file: {
         childImageSharp: {
             fixed: FixedObject;
-        };
-    };
-    header: {
-        childImageSharp: {
-            fluid: FluidObject;
         };
     };
     allFile: {
@@ -68,11 +64,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <Img
-                                    fluid={data.header.childImageSharp.fluid}
-                                    alt={'CommandBook'}
-                                    loading={'eager'}
-                                />
+                                <HeaderLogo alt={'CommandBook'} loading={'eager'} />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -260,13 +252,6 @@ export const query = graphql`
             childImageSharp {
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-            }
-        }
-        header: file(name: { eq: "commandbook-header" }) {
-            childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
             }
         }
