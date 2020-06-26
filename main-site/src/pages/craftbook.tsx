@@ -224,7 +224,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'http://builds.enginehub.org/job/craftbook?branch=3.x'
+                                        'http://builds.enginehub.org/job/craftbook?branch=master'
                                     }
                                 >
                                     Experimental builds for Bukkit
@@ -276,7 +276,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'http://builds.enginehub.org/job/craftbook'
+                                        'http://builds.enginehub.org/job/craftbook?branch=4.x'
                                     }
                                 >
                                     Experimental builds for Sponge
