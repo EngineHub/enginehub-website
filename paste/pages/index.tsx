@@ -1,26 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Layout } from '@paste/Layout';
 import styled from '@emotion/styled';
-import { Gutter } from '@paste/Gutter';
+import { getFiles } from '@paste/dragAndDrop';
+import { Layout } from '@paste/Layout';
 import Loader from '@shared/components/Loader';
 import Router from 'next/router';
+import React, { useEffect, useState } from 'react';
+
+const Row = styled.div`
+    display: flex;
+    flex-grow: 1;
+    min-height: min-content;
+`;
 
 const Form = styled.div`
-    position: fixed;
-    top: 72px;
-    right: 0;
-    bottom: 0;
-    left: 40px;
+    display: flex;
+    flex-grow: 1;
 `;
 
 const PasteArea = styled.textarea`
-    width: 100%;
-    height: 100%;
+    flex-grow: 1;
     resize: none;
     border: 0;
     margin: 0;
-    padding: 0;
+    padding: 15px;
+    padding-top: 15px;
     color: inherit;
+    background-color: transparent;
     outline: 0;
     font-size: 13px;
     line-height: 130%;
@@ -30,6 +34,11 @@ const PasteArea = styled.textarea`
         outline: 0;
     }
 `;
+
+const DropPendingPasteArea = styled.div`
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+`
 
 const SavingOverlay = styled.div`
     position: fixed;
@@ -46,48 +55,87 @@ const SavingOverlay = styled.div`
     align-items: center;
 `;
 
-function Index() {
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-    const [saving, setSaving] = useState(false);
-
-    const save = async () => {
-        setSaving(true);
-        var content = textAreaRef.current!.value;
-        if (content.trim().length > 0) {
-            try {
-                const response = await(
-                    await fetch('/paste', {
-                        method: 'POST',
-                        headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ content })
-                    })
-                ).json();
-                if ('url' in response) {
-                    const url = response.url;
-                    alert("Saved! Available at " + url);
-                    if (url.startsWith('https://paste.enginehub.org')) {
-                        Router.push('/[id]', url.substring('https://paste.enginehub.org'.length));
-                    } else {
-                        window.location.href = url;
-                    }
-                } else {
-                    alert(response['error']);
-                }
-            } catch (e) {
-                console.log(e);
-                alert('Failed to submit the post');
+async function postContent(content: string) {
+    try {
+        const response = await (
+            await fetch('/paste', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content })
+            })
+        ).json();
+        if ('url' in response) {
+            const url = response.url;
+            alert('Saved! Available at ' + url);
+            if (url.startsWith('https://paste.enginehub.org')) {
+                await Router.push('/[id]', url.substring('https://paste.enginehub.org'.length));
+            } else {
+                window.location.href = url;
             }
-            setSaving(false);
+        } else {
+            alert(response['error']);
+        }
+    } catch (e) {
+        console.error(e);
+        alert('Failed to submit the post');
+    }
+}
+
+function Index() {
+    const [content, setContent] = useState("");
+    const [saving, setSaving] = useState(false);
+    const [dragging, setDragging] = useState(false);
+
+    const save = () => {
+        setSaving(true);
+        if (content.trim().length > 0) {
+            postContent(content)
+                .then(() => setSaving(false));
         }
     };
 
-    const onKeyDown = async (event: KeyboardEvent) => {
-        if (!saving && event.ctrlKey && event.keyCode === 83) {
+    const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setContent(event.currentTarget.value);
+    };
+
+    const onDrop = (event: React.DragEvent<any>) => {
+        event.preventDefault();
+        setDragging(false);
+
+        const files = getFiles(event);
+        if (files.length === 0) {
+            return;
+        }
+        const firstFile = files[0];
+        firstFile.text()
+            .then(text => {
+                setContent(text);
+            })
+            .catch(e => console.error(e));
+    };
+
+    const onDragEnter = (event: React.DragEvent<any>) => {
+        event.preventDefault();
+        setDragging(true);
+    };
+
+    const onDragEnd = () => {
+        setDragging(false);
+    };
+
+    const dndProps = {
+        onDrop,
+        onDragEnter, onDragOver: onDragEnter,
+        onDragEnd, onDragLeave: onDragEnd
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+        if (!saving && event.ctrlKey && event.code === "KeyS") {
             event.preventDefault();
-            await save();
+            save();
         }
     };
 
@@ -95,12 +143,24 @@ function Index() {
         window.addEventListener('keydown', onKeyDown);
         return () => window.removeEventListener('keydown', onKeyDown);
     }, []);
+
     return (
         <Layout saveCallback={save}>
-            <Gutter>&gt;</Gutter>
-            <Form>
-                <PasteArea ref={textAreaRef} />
-            </Form>
+            {dragging
+                ? <Row>
+                    <DropPendingPasteArea {...dndProps}/>
+                </Row>
+                : <Row>
+                    <Form>
+                        <PasteArea
+                            placeholder="Enter your text here..."
+                            value={content}
+                            onChange={onChange}
+                            {...dndProps}
+                        />
+                    </Form>
+                </Row>
+            }
             {saving && (
                 <SavingOverlay>
                     <Loader />
@@ -110,6 +170,7 @@ function Index() {
     );
 }
 
+// prevent static optimization
 Index.getInitialProps = async ({}) => {
     return {};
 };
