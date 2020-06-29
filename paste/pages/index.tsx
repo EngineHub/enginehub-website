@@ -3,7 +3,7 @@ import { getFiles } from '@paste/dragAndDrop';
 import { Layout } from '@paste/Layout';
 import Loader from '@shared/components/Loader';
 import Router from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const Row = styled.div`
     display: flex;
@@ -89,13 +89,13 @@ function Index() {
     const [saving, setSaving] = useState(false);
     const [dragging, setDragging] = useState(false);
 
-    const save = () => {
+    const save = useCallback(() => {
         setSaving(true);
         if (content.trim().length > 0) {
             postContent(content)
                 .then(() => setSaving(false));
         }
-    };
+    }, [content]);
 
     const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setContent(event.currentTarget.value);
@@ -132,17 +132,17 @@ function Index() {
         onDragEnd, onDragLeave: onDragEnd
     }
 
-    const onKeyDown = (event: KeyboardEvent) => {
+    const onKeyDown = useCallback((event: KeyboardEvent) => {
         if (!saving && event.ctrlKey && event.code === "KeyS") {
             event.preventDefault();
             save();
         }
-    };
+    }, [save]);
 
     useEffect(() => {
         window.addEventListener('keydown', onKeyDown);
         return () => window.removeEventListener('keydown', onKeyDown);
-    }, []);
+    }, [onKeyDown]);
 
     return (
         <Layout saveCallback={save}>
