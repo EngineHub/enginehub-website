@@ -5,8 +5,7 @@ import { Gutter } from '@paste/Gutter';
 
 const PasteContent = styled.div`
     display: block;
-    padding: 15px;
-    padding-left: 55px;
+    padding-top: 15px;
     padding-right: 55px;
     line-height: 130%;
     white-space: pre;
