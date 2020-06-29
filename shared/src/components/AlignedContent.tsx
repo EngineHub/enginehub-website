@@ -15,8 +15,13 @@ interface AlignedContentProps {
 const AlignedContentWrapper = styled.div<{ align: 'left' | 'right' }>`
     display: flex;
     width: 100%;
-    flex-direction: ${props =>
-        props.align === 'left' ? 'row' : 'row-reverse'};
+
+    flex-direction: column;
+
+    @media (min-width: 992px) {
+        flex-direction: ${props =>
+            props.align === 'left' ? 'row' : 'row-reverse'};
+    }
 `;
 
 const InfoSide = styled.div`

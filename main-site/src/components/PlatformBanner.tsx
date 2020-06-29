@@ -9,11 +9,25 @@ const Wrapper = styled.div`
     padding-bottom: 20px;
     line-height: 1.7;
     display: flex;
+
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
 `;
 
 const LogoBox = styled.div`
     vertical-align: top;
+    display: flex;
+    justify-content: center;
     flex: 25%;
+
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+        margin-bottom: 0;
+    }
 `;
 
 const InfoBox = styled.div`
