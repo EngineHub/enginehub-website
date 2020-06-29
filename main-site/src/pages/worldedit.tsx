@@ -6,7 +6,6 @@ import { ContainerPadded } from '@shared/components/Container';
 import { Row, ColumnHalf } from '@shared/components/grid';
 import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox,

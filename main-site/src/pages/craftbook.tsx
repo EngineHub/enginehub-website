@@ -5,24 +5,16 @@ import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
 import {
     Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
+    ColumnHalf
 } from '@shared/components/grid';
-import {
-    SidebarDivider,
-    SidebarNavList,
-    SidebarNavListItem
-} from '@shared/components/sidebar';
 import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox,
     JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
 import {
     GrayOutboundButton,
@@ -31,6 +23,11 @@ import {
 } from '@main/components/Button';
 import { WarningLabel, InfoLabel } from '@shared/components/text/Label';
 import { ReactComponent as HeaderLogo } from '../images/projects/headers/craftbook-header.svg';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
+import AlignedContent from '@shared/components/AlignedContent';
 
 interface CraftBookPageData {
     file: {
@@ -64,7 +61,10 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo alt={'CraftBook'} loading={'eager'} />
+                                <HeaderLogo
+                                    alt={'CraftBook'}
+                                    loading={'eager'}
+                                />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -81,67 +81,31 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                     </JumbotronContainer>
                 </Row>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/craftbook/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/craftbook/#videos'}>
-                                    Videos
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/craftbook/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to="/documentation/">
-                                    Documentation
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/enginehub">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/CraftBook/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/CraftBook">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>
-                            Project lead:{' '}
-                            <MainOutboundLink href="https://twitter.com/the_me4502">
-                                Me4502
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <MainLink to="/documentation/">
+                                Documentation
+                            </MainLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
+                                Discord
                             </MainOutboundLink>
-                        </SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/CraftBook"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/CraftBook on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <SectionHeading
-                            id="features"
-                            style={{ marginTop: '0' }}
-                        >
-                            Features
-                        </SectionHeading>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/CraftBook/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/CraftBook">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
                                 Modular, and extremely light on your server.
@@ -185,30 +149,35 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                             <InfoLabel>Did you know?</InfoLabel> CraftBook is
                             one of Minecraft's first mods/plugins.
                         </p>
-                        <SectionHeading id="videos">
-                            Watch it in action
-                        </SectionHeading>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <SectionHeading id="videos">
+                        Watch it in action
+                    </SectionHeading>
+                </Row>
+                <Row>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
-                            height="410"
+                            height="300"
                             src="https://www.youtube.com/embed/nNb6jZYk55I?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
-                            height="410"
+                            height="300"
                             src="https://www.youtube.com/embed/OpKlSDPyR0M?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                        <iframe
-                            width="100%"
-                            height="410"
-                            src="https://www.youtube.com/embed/3l38t669ClA?theme=light&amp;rel=0"
-                            frameBorder={0}
-                            allowFullScreen={true}
-                        />
+                    </ColumnHalf>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
@@ -317,7 +286,7 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>

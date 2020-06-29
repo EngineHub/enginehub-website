@@ -3,26 +3,15 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import {
-    Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import {
-    SidebarDivider,
-    SidebarNavList,
-    SidebarNavListItem
-} from '@shared/components/sidebar';
-import Img, { FixedObject, FluidObject } from 'gatsby-image';
+import { Row, ColumnThreeQuarter, ColumnHalf } from '@shared/components/grid';
+import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox,
     JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '../components/PlatformBanner';
 import {
     GrayOutboundButton,
@@ -31,6 +20,11 @@ import {
 } from '@main/components/Button';
 import { WarningLabel } from '@shared/components/text/Label';
 import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldguard-header.svg';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
+import AlignedContent from '@shared/components/AlignedContent';
 
 interface WorldGuardPageData {
     file: {
@@ -64,7 +58,10 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo alt={'WorldGuard'} loading={'eager'} />
+                                <HeaderLogo
+                                    alt={'WorldGuard'}
+                                    loading={'eager'}
+                                />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -80,62 +77,31 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                     </JumbotronContainer>
                 </Row>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldguard/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldguard/#videos'}>
-                                    Videos
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldguard/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://worldguard.enginehub.org">
-                                    Documentation
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/enginehub">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldGuard/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldGuard">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>Project lead: wizjany</SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/WorldGuard"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/WorldGuard on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <SectionHeading
-                            id="features"
-                            style={{ marginTop: '0' }}
-                        >
-                            Features
-                        </SectionHeading>
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://worldguard.enginehub.org">
+                                Documentation
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
+                                Discord
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldGuard/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldGuard">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
                                 Block creeper and wither block damage, falling
@@ -178,9 +144,15 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 by default.
                             </li>
                         </ul>
-                        <SectionHeading id="videos">
-                            Watch it in action
-                        </SectionHeading>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <SectionHeading id="videos">
+                        Watch it in action
+                    </SectionHeading>
+                </Row>
+                <Row>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
                             height="410"
@@ -188,6 +160,10 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
@@ -244,7 +220,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>

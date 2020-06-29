@@ -3,26 +3,15 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import {
-    Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import {
-    SidebarDivider,
-    SidebarNavList,
-    SidebarNavListItem
-} from '@shared/components/sidebar';
+import { Row, ColumnHalf } from '@shared/components/grid';
 import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
     JumbotronButtonBox,
     JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
 import {
     GrayOutboundButton,
@@ -31,6 +20,11 @@ import {
 } from '@main/components/Button';
 import { WarningLabel, InfoLabel } from '@shared/components/text/Label';
 import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandbook-header.svg';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
+import AlignedContent from '@shared/components/AlignedContent';
 
 interface CommandBookPageData {
     file: {
@@ -64,7 +58,10 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo alt={'CommandBook'} loading={'eager'} />
+                                <HeaderLogo
+                                    alt={'CommandBook'}
+                                    loading={'eager'}
+                                />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -80,62 +77,31 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                     </JumbotronContainer>
                 </Row>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/commandbook/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/commandbook/#videos'}>
-                                    Videos
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/commandbook/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="http://wiki.sk89q.com/wiki/commandbook">
-                                    Documentation
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/enginehub">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/CommandBook/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/CommandBook">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>Project lead: Dark_Arc</SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/CommandBook"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/CommandBook on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <SectionHeading
-                            id="features"
-                            style={{ marginTop: '0' }}
-                        >
-                            Features
-                        </SectionHeading>
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="http://wiki.sk89q.com/wiki/commandbook">
+                                Documentation
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
+                                Discord
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/CommandBook/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/CommandBook">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
                                 Modular, and extremely light on your server.
@@ -171,9 +137,15 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                             language parameters ("3am" rather than "15450") for
                             commands.
                         </p>
-                        <SectionHeading id="videos">
-                            Watch it in action
-                        </SectionHeading>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <SectionHeading id="videos">
+                        Watch it in action
+                    </SectionHeading>
+                </Row>
+                <Row>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
                             height="410"
@@ -181,6 +153,10 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
@@ -237,7 +213,7 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>

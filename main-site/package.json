@@ -16,7 +16,6 @@
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-github-btn": "^1.2.0",
         "react-helmet": "^6.1.0",
         "smooth-scroll": "^16.1.3"
     },
