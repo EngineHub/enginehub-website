@@ -59,7 +59,10 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo alt={'WorldEdit'} loading={'eager'} />
+                                <HeaderLogo
+                                    alt={'WorldEdit'}
+                                    loading={'eager'}
+                                />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -102,7 +105,11 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     </HorizontalNav>
                 </Row>
                 <Row>
-                    <AlignedContent header={'Build with Speed'} align={'left'} video={'/videos/worldedit_brushes.mp4'}>
+                    <AlignedContent
+                        header={'Build with Speed'}
+                        align={'left'}
+                        video={'/videos/worldedit_brushes.mp4'}
+                    >
                         <ul>
                             <li>
                                 Create more impressive and much larger builds
@@ -131,6 +138,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     <AlignedContent
                         header={'Have Complete Control'}
                         align={'right'}
+                        video={'/videos/worldedit_copy_paste.mp4'}
                     >
                         <ul>
                             <li>
@@ -156,30 +164,24 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                     <AlignedContent
                         header={'Advanced Editing Features'}
                         align={'left'}
+                        video={'/videos/worldedit_gen_deform.mp4'}
                     >
                         <ul>
                             <li>
                                 Manipulate terrain with complex deformations
+                                such as <code>{`//deform x*=2;y*=2;z*=2`}</code>
                             </li>
                             <li>
                                 Evaluate mathematical expressions such as{' '}
                                 <code>{`//g stone (0.75-sqrt(x^2+y^2))^2+z^2 < 0.25^2`}</code>
                             </li>
+                            <li>
+                                Write complex scripts to manipulate the world
+                                with the full power of WorldEdit using
+                                JavaScript
+                            </li>
                             <li>Many more! There are over 100 functions.</li>
                         </ul>
-                    </AlignedContent>
-                </Row>
-                <Row>
-                    <AlignedContent
-                        header={'Find Out More'}
-                        align={'right'}
-                    >
-                        <SubtleText>
-                            Project lead:{' '}
-                            <MainOutboundLink href="https://twitter.com/the_me4502">
-                                Me4502
-                            </MainOutboundLink>
-                        </SubtleText>
                     </AlignedContent>
                 </Row>
                 <Row>

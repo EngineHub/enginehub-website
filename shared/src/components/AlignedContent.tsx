@@ -21,12 +21,12 @@ const AlignedContentWrapper = styled.div<{ align: 'left' | 'right' }>`
 
 const InfoSide = styled.div`
     flex: 60%;
-    margin: 0 0.5rem;
+    margin: 0 1rem;
 `;
 
 const ImageSide = styled.div`
     flex: 40%;
-    margin: 0 0.5rem;
+    margin: 0 1rem;
 `;
 
 const LimitedVideo = styled.video`
