@@ -9,6 +9,7 @@ export const HorizontalNav = styled.ul`
     width: 90%;
     margin: 0 auto;
     overflow-x: auto;
+    margin-bottom: 1rem;
 
     .hideSmall {
         display: none;

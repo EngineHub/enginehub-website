@@ -52,7 +52,7 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
             <>
                 <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
                     <img
-                        src={"/images/apex.svg"}
+                        src={"https://enginehub.org/images/apex.svg"}
                         style={{ marginBottom: 0, color: '#000000', width: '100%' }}
                         alt="Apex Hosting"
                     />

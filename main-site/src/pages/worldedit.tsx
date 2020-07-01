@@ -105,7 +105,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                 </Row>
                 <Row>
                     <AlignedContent
-                        header={'Build with Speed'}
+                        header={'Build With Speed'}
                         align={'left'}
                         video={'/videos/worldedit_brushes.mp4'}
                     >
@@ -179,7 +179,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 with the full power of WorldEdit using
                                 JavaScript
                             </li>
-                            <li>Many more! There are over 100 functions.</li>
+                            <li>Many more! There are over 100 functions</li>
                         </ul>
                     </AlignedContent>
                 </Row>

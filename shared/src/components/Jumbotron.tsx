@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 
 const JumbotronContainer = styled.div`
     padding: 20px;
+    padding-bottom: 0;
 
     @media screen and (min-width: 768px) {
         padding-left: 40px;
         padding-right: 40px;
         padding-top: 32px;
-        padding-bottom: 32px;
     }
 
     max-width: 700px;
