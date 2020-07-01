@@ -26,7 +26,7 @@
         "zlibt": "0.0.5"
     },
     "devDependencies": {
-        "@babel/core": "^7.10.3",
+        "@babel/core": "^7.10.4",
         "@types/gzip-js": "^0.3.1",
         "@types/jsonwebtoken": "^8.5.0",
         "@types/node": "^14.0.14",
@@ -34,7 +34,7 @@
         "@types/react-dom": "^16.9.8",
         "@types/safe-compare": "^1.1.0",
         "@types/shortid": "^0.0.29",
-        "aws-sdk": "^2.706.0",
+        "aws-sdk": "^2.708.0",
         "babel-loader": "^8.1.0",
         "cross-env": "^7.0.2",
         "serverless-nextjs-plugin": "^2.5.1",
