@@ -6,7 +6,7 @@ import {
     LinkProviderProps
 } from '@shared/utils/LinkProvider';
 
-const sponsors: string[] = ['mcprohosting'];
+const sponsors: string[] = ['apexhosting'];
 
 export interface ExtraSponsorProps {
     extraSponsors?: string[];
@@ -47,20 +47,16 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         );
     };
 
-    const MCProHostingSponsor: React.FC = () => {
-        const img = require('../images/mcprohosting.svg');
+    const ApexHostingSponsor: React.FC = () => {
         return (
             <>
-                <Link href="https://mcph.info/enginehub">
+                <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
                     <img
-                        src={img}
-                        style={{ marginBottom: 0 }}
-                        alt="MCProHosting"
+                        src={"/images/apex.svg"}
+                        style={{ marginBottom: 0, color: '#000000', width: '100%' }}
+                        alt="Apex Hosting"
                     />
                 </Link>
-                <p style={{ textAlign: 'center', lineHeight: '4px' }}>
-                    25% OFF! Code: <code>enginehub</code>
-                </p>
             </>
         );
     };
@@ -78,7 +74,7 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         ['empty', EmptySponsor],
         ['netlify', NetlifySponsor],
         ['beastnode', BeastNodeSponsor],
-        ['mcprohosting', MCProHostingSponsor]
+        ['apexhosting', ApexHostingSponsor]
     ]);
 
     const availableSponsors = sponsors.concat(extraSponsors);
