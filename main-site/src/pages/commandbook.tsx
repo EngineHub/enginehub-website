@@ -226,7 +226,7 @@ export const query = graphql`
     query {
         file(name: { eq: "commandbook-icon" }) {
             childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
+                fixed(width: 512, height: 512, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
             }

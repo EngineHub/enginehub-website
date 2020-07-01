@@ -14,6 +14,11 @@ import SidebarIcon from '@main/components/sidebar/SidebarIcon';
 import { BlueOutboundButton } from '@main/components/Button';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import PlatformBanner from '@main/components/PlatformBanner';
+import WorldEditHeader from '../images/projects/headers/worldedit-header.svg';
+import WorldGuardHeader from '../images/projects/headers/worldguard-header.svg';
+import CraftBookHeader from '../images/projects/headers/craftbook-header.svg';
+import CmdBookHeader from '../images/projects/headers/commandbook-header.svg';
+import CmdHelperHeader from '../images/projects/headers/commandhelper-header.svg';
 
 interface DocumentationPageData {
     file: {
@@ -21,20 +26,9 @@ interface DocumentationPageData {
             fixed: FixedObject;
         };
     };
-    allFile: {
-        nodes: {
-            childImageSharp: {
-                fixed: FixedObject;
-            };
-            name: string;
-        }[];
-    };
 }
 
 const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
-    );
     return (
         <Layout>
             <SEO
@@ -56,10 +50,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             Documentation
                         </SectionHeading>
                         <p>Documentation for the following is available:</p>
-                        <PlatformBanner
-                            logo={logoMap.get('worldedit-icon')!}
-                            alt={'WorldEdit'}
-                        >
+                        <PlatformBanner img={WorldEditHeader} alt={'WorldEdit'}>
                             <p>
                                 <BlueOutboundButton
                                     href={
@@ -71,7 +62,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             </p>
                         </PlatformBanner>
                         <PlatformBanner
-                            logo={logoMap.get('worldguard-icon')!}
+                            img={WorldGuardHeader}
                             alt={'WorldGuard'}
                         >
                             <p>
@@ -84,10 +75,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                                 </BlueOutboundButton>
                             </p>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('craftbook-icon')!}
-                            alt={'CraftBook'}
-                        >
+                        <PlatformBanner img={CraftBookHeader} alt={'CraftBook'}>
                             <p>
                                 <BlueOutboundButton
                                     href={
@@ -107,10 +95,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                                 </BlueOutboundButton>
                             </p>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('commandbook-icon')!}
-                            alt={'CommandBook'}
-                        >
+                        <PlatformBanner img={CmdBookHeader} alt={'CommandBook'}>
                             <p>
                                 <BlueOutboundButton
                                     href={
@@ -122,7 +107,7 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             </p>
                         </PlatformBanner>
                         <PlatformBanner
-                            logo={logoMap.get('commandhelper-icon')!}
+                            img={CmdHelperHeader}
                             alt={'CommandHelper'}
                         >
                             <p>
@@ -149,28 +134,6 @@ export const query = graphql`
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
-            }
-        }
-        allFile(
-            filter: {
-                name: {
-                    in: [
-                        "worldedit-icon"
-                        "worldguard-icon"
-                        "craftbook-icon"
-                        "commandbook-icon"
-                        "commandhelper-icon"
-                    ]
-                }
-            }
-        ) {
-            nodes {
-                childImageSharp {
-                    fixed(width: 100, quality: 100) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                    }
-                }
-                name
             }
         }
     }

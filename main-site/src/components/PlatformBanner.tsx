@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react";
-import styled from "@emotion/styled";
-import Img, { FixedObject } from "gatsby-image";
+import React, { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import Img, { FixedObject } from 'gatsby-image';
 
 const Wrapper = styled.div`
     border-top: 1px solid #ddd;
@@ -37,18 +37,23 @@ const InfoBox = styled.div`
 
 interface PlatformBannerProps {
     alt: string;
-    logo: FixedObject;
+    logo?: FixedObject;
+    img?: string;
 }
 
-const PlatformBanner: FunctionComponent<PlatformBannerProps> = ({ children, logo, alt }) => (
+const PlatformBanner: FunctionComponent<PlatformBannerProps> = ({
+    children,
+    logo,
+    img,
+    alt
+}) => (
     <Wrapper>
         <LogoBox>
-            <Img fixed={logo} alt={alt} />
+            {logo && <Img fixed={logo} alt={alt} />}
+            {img && <img src={img} alt={alt} />}
         </LogoBox>
-        <InfoBox>
-            {children}
-        </InfoBox>
+        <InfoBox>{children}</InfoBox>
     </Wrapper>
-)
+);
 
 export default PlatformBanner;
