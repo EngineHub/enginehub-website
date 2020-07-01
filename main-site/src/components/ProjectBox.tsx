@@ -1,6 +1,7 @@
-import styled from "@emotion/styled";
-import React, { FunctionComponent } from "react";
+import styled from '@emotion/styled';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
+import { MainLinkStyle } from '@shared/components/Link';
 
 interface ProjectBoxProps {
     description: string;
@@ -25,11 +26,10 @@ const ProjectListImg = styled.img`
 `;
 
 const ProjectListLink = styled(Link)`
+    ${MainLinkStyle}
     display: inline;
     font-size: 21px;
     padding: 5px 0;
-    color: #0059d1;
-    text-decoration: none;
 `;
 
 const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (

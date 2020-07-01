@@ -115,7 +115,7 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                 <RandomSponsor extraSponsors={props.extraSponsors} />
             </SponsorBox>
             <SiteBox>
-                <SectionHeader>EngineHub.org</SectionHeader>
+                <SectionHeader>EngineHub</SectionHeader>
                 <p>
                     <small>
                         The content and trademarks presented are the property of
