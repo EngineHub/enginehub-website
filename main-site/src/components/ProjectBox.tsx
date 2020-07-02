@@ -1,11 +1,11 @@
-import Img, { FixedObject } from "gatsby-image";
-import styled from "@emotion/styled";
-import React, { FunctionComponent } from "react";
+import styled from '@emotion/styled';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
+import { MainLinkStyle } from '@shared/components/Link';
 
 interface ProjectBoxProps {
     description: string;
-    icon: FixedObject;
+    icon: string;
     name: string;
     slug: string;
 }
@@ -17,7 +17,7 @@ const ProjectListItem = styled.li`
     line-height: 1.7;
 `;
 
-const ProjectListImg = styled(Img)`
+const ProjectListImg = styled.img`
     margin: 0 12px 12px 0;
     height: 80px;
     float: left;
@@ -26,16 +26,15 @@ const ProjectListImg = styled(Img)`
 `;
 
 const ProjectListLink = styled(Link)`
+    ${MainLinkStyle}
     display: inline;
     font-size: 21px;
     padding: 5px 0;
-    color: #0059d1;
-    text-decoration: none;
 `;
 
 const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (
     <ProjectListItem>
-        <ProjectListImg fixed={props.icon} />
+        <ProjectListImg src={props.icon} />
         <ProjectListLink to={`/${props.slug}/`}>{props.name}</ProjectListLink>
         <br />
         {props.description}

@@ -4,17 +4,18 @@ import { Container } from '@shared/components/Container';
 import css from '@emotion/css';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
 import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
+import { SECONDARY, BRAND } from '@shared/theme';
 
 const NavBackgroundColours = new Map([
-    ['default', '#f8f8f8'],
+    ['default', SECONDARY.darker],
     ['inverted', '0'],
-    ['purple', '#4d3672']
+    ['purple', BRAND.darker]
 ]);
 
 const HeaderTextColors = new Map([
-    ['default', '#777777'],
-    ['inverted', '#fff'],
-    ['purple', '#fff']
+    ['default', SECONDARY.font],
+    ['inverted', BRAND.font],
+    ['purple', BRAND.font]
 ]);
 
 interface NavbarProps {
@@ -70,7 +71,7 @@ const FloatedGrayButton = () => css`
 
 const Navbar: React.FC<NavbarProps> = ({
     headertheme = 'default',
-    headertitle = 'EngineHub.org',
+    headertitle = 'EngineHub',
     discordOverride,
     children
 }) => {

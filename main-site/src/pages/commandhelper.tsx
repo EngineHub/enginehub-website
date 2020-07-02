@@ -3,30 +3,24 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import {
-    Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import {
-    SidebarHeading,
-    SidebarDivider,
-    SidebarNavList,
-    SidebarNavListItem
-} from '@shared/components/sidebar';
+import { Row } from '@shared/components/grid';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
-import { MainOutboundLink, MainLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
+import { MainOutboundLink } from '@main/components/Link';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
 import { BlueButton, BlueOutboundButton } from '@main/components/Button';
 import { InfoLabel } from '@shared/components/text/Label';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandhelper-header.svg';
+import AlignedContent from '@shared/components/AlignedContent';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
 
 interface CommandHelperPageData {
     file: {
@@ -57,80 +51,54 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
             />
             <ContainerPadded>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'CommandHelper Logo'}
-                        />
-                        <SidebarHeading>CmdHelper</SidebarHeading>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/commandhelper/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://methodscript.com/docs/3.3.4/Beginner's_Guide.html">
-                                    Examples
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/commandhelper/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://methodscript.com/docs/">
-                                    Documentation
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/Z7jpHed">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/CommandHelper/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/CommandHelper">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>
-                            Project lead:{' '}
-                            <MainOutboundLink href="http://forum.sk89q.com/members/ladycailin.270/">
-                                LadyCailin
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <h1>
+                                <HeaderLogo
+                                    alt={'CommandHelper'}
+                                    loading={'eager'}
+                                />
+                            </h1>
+                        </JumbotronImageBox>
+                        <JumbotronText>
+                            CommandHelper lets you create easy-to-write and
+                            "hot-reloadable" scripts for your Bukkit server to
+                            handle events and perform tasks — no Java knowledge
+                            required!
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/commandhelper/#downloads'}>
+                                List downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://methodscript.com/docs/">
+                                Documentation
                             </MainOutboundLink>
-                        </SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/commandhelper"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/commandhelper on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                CommandHelper lets you create easy-to-write and
-                                "hot-reloadable" scripts for your Bukkit server
-                                to handle events and perform tasks — no Java
-                                knowledge required!
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/commandhelper/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/Z7jpHed">
+                                Discord
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/CommandHelper/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/CommandHelper">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
                                 Alias commands like /battle to run /warp
@@ -159,6 +127,10 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 with zero Java code.
                             </li>
                         </ul>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
@@ -205,7 +177,7 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>
@@ -218,7 +190,7 @@ export const query = graphql`
     query {
         file(name: { eq: "commandhelper-icon" }) {
             childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
+                fixed(width: 512, height: 512, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
             }

@@ -10,6 +10,12 @@ module.exports = {
         `gatsby-plugin-typescript`,
         `gatsby-plugin-react-helmet`,
         {
+            resolve: `gatsby-plugin-svgr`,
+            options: {
+                svgo: false
+            }
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `images`,
@@ -19,20 +25,18 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            resolve: `gatsby-plugin-google-gtag`,
+            resolve: `gatsby-plugin-google-analytics`,
             options: {
-                trackingIds: ['UA-139849956-1'],
-                pluginConfig: {
-                    // Puts tracking script in the head instead of the body
-                    head: true
-                }
+                trackingId: 'UA-139849956-1',
+                // Puts tracking script in the head instead of the body
+                head: true
             }
         },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `EngineHub`,
-                short_name: `starter`,
+                short_name: `EngineHub`,
                 start_url: `/`,
                 background_color: `#4B3570`,
                 theme_color: `#4B3570`,
@@ -46,8 +50,9 @@ module.exports = {
                 siteUrl: `https://enginehub.org`
             }
         },
+        `gatsby-plugin-remove-serviceworker`
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
-        `gatsby-plugin-offline`
+        // `gatsby-plugin-offline`
     ]
 };

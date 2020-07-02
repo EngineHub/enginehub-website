@@ -3,27 +3,15 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import {
-    Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import {
-    SidebarHeading,
-    SidebarDivider,
-    SidebarNavListItem,
-    SidebarNavList
-} from '@shared/components/sidebar';
+import { Row, ColumnHalf } from '@shared/components/grid';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
-import { MainOutboundLink, MainLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
+import { MainOutboundLink } from '@main/components/Link';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '@main/components/PlatformBanner';
 import { WarningLabel } from '@shared/components/text/Label';
 import {
@@ -31,6 +19,12 @@ import {
     BlueButton,
     BlueOutboundButton
 } from '@main/components/Button';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
+import AlignedContent from '@shared/components/AlignedContent';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldedit-header.svg';
 
 interface WorldEditPageData {
     file: {
@@ -56,90 +50,65 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
         <Layout>
             <SEO
                 title="WorldEdit"
-                description="WorldEdit is an open source in-game map editor available for Bukkit, Sponge, Forge, Fabric, MinecraftEdu, and many other platforms."
+                description="WorldEdit let's you build fast and smart. Get started with the essential building tool used by almost all professional Minecraft builders today"
                 image={data.file.childImageSharp.fixed.src}
             />
             <ContainerPadded>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'WorldEdit Logo'}
-                        />
-                        <SidebarHeading>WorldEdit</SidebarHeading>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldedit/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldedit/#videos'}>
-                                    Videos
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldedit/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://worldedit.enginehub.org">
-                                    Documentation
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/enginehub">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldEdit/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldEdit">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>
-                            Project lead:{' '}
-                            <MainOutboundLink href="https://twitter.com/the_me4502">
-                                Me4502
-                            </MainOutboundLink>
-                        </SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/worldedit"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/worldedit on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                WorldEdit is an open source in-game map editor
-                                available for Bukkit, Forge, MinecraftEdu, and
-                                many other platforms.
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/worldedit/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
-                        <p>
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <h1>
+                                <HeaderLogo
+                                    alt={'WorldEdit'}
+                                    loading={'eager'}
+                                />
+                            </h1>
+                        </JumbotronImageBox>
+                        <JumbotronText>
                             WorldEdit lets you build <em>fast</em> and{' '}
                             <em>smart</em>. Why should you spend your time
                             building a wall or excavating a hole when you can
-                            work on something <em>creative</em>?
-                        </p>
+                            work on something <em>creative</em>? Get started
+                            with the essential building tool used by almost all
+                            professional Minecraft builders today!
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/worldedit/#downloads'}>
+                                Go to downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://worldedit.enginehub.org">
+                                Documentation
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
+                                Discord
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldEdit/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldEdit">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Build With Speed'}
+                        align={'left'}
+                        video={'/videos/worldedit_brushes.mp4'}
+                    >
                         <ul>
                             <li>
                                 Create more impressive and much larger builds
@@ -150,8 +119,8 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 down your server
                             </li>
                             <li>
-                                Quickly create, replace or delete thousands of
-                                blocks in seconds
+                                Quickly create, replace or delete tens of
+                                thousands of blocks in seconds
                             </li>
                             <li>
                                 Level an entire mountain and replace it with
@@ -161,6 +130,16 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 Use hand-bound tools and brushes to quickly
                                 build mountains
                             </li>
+                        </ul>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Have Complete Control'}
+                        align={'right'}
+                        video={'/videos/worldedit_copy_paste.mp4'}
+                    >
+                        <ul>
                             <li>
                                 Generate spheres, cylinders, cuboids, forests,
                                 pumpkin patches, and snowy areas
@@ -177,29 +156,60 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 Copy areas, paste them, load them, and save them
                                 as schematics
                             </li>
+                        </ul>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Advanced Editing Features'}
+                        align={'left'}
+                        video={'/videos/worldedit_gen_deform.mp4'}
+                    >
+                        <ul>
+                            <li>
+                                Manipulate terrain with complex deformations
+                                such as <code>{`//deform x*=2;y*=2;z*=2`}</code>
+                            </li>
                             <li>
                                 Evaluate mathematical expressions such as{' '}
                                 <code>{`//g stone (0.75-sqrt(x^2+y^2))^2+z^2 < 0.25^2`}</code>
                             </li>
-                            <li>Many more! There are over 100 functions.</li>
+                            <li>
+                                Write complex scripts to manipulate the world
+                                with the full power of WorldEdit using
+                                JavaScript
+                            </li>
+                            <li>Many more! There are over 100 functions</li>
                         </ul>
-                        <SectionHeading id="videos">
-                            Watch it in action
-                        </SectionHeading>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <SectionHeading id="videos">
+                        Watch it in action
+                    </SectionHeading>
+                </Row>
+                <Row>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
-                            height="410"
+                            height="300"
                             src="https://www.youtube.com/embed/72HlPD9CW10?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
-                            height="410"
+                            height="300"
                             src="https://www.youtube.com/embed/yl1hTctucOc?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
@@ -417,7 +427,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 pasting chests may not work with this version.
                             </p>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>
@@ -430,7 +440,7 @@ export const query = graphql`
     query {
         file(name: { eq: "worldedit-icon" }) {
             childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
+                fixed(width: 512, height: 512, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
             }

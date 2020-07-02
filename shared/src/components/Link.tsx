@@ -1,11 +1,12 @@
 import css from '@emotion/css';
+import { PRIMARY } from '@shared/theme';
 
 export const MainLinkStyle = () => css`
-    color: rgb(0, 89, 209);
+    color: ${PRIMARY.normal};
     text-decoration: none;
 
     :hover {
-        color: #003884;
+        color: ${PRIMARY.darker};
         text-decoration: underline;
     }
 `;

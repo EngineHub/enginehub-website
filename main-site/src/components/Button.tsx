@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { OutboundLink } from 'gatsby-plugin-google-gtag';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Link } from 'gatsby';
 import {
     MainButtonStyle,

@@ -3,27 +3,15 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import {
-    Row,
-    ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import {
-    SidebarHeading,
-    SidebarDivider,
-    SidebarNavList,
-    SidebarNavListItem
-} from '@shared/components/sidebar';
+import { Row, ColumnThreeQuarter, ColumnHalf } from '@shared/components/grid';
 import { FixedObject } from 'gatsby-image';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
-import { SubtleText } from '@shared/components/text/SubtleText';
 import JumbotronContainer, {
     JumbotronText,
-    JumbotronButtonBox
+    JumbotronButtonBox,
+    JumbotronImageBox
 } from '@shared/components/Jumbotron';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
-import GitHubButton from 'react-github-btn';
 import PlatformBanner from '../components/PlatformBanner';
 import {
     GrayOutboundButton,
@@ -31,6 +19,12 @@ import {
     BlueOutboundButton
 } from '@main/components/Button';
 import { WarningLabel } from '@shared/components/text/Label';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldguard-header.svg';
+import {
+    HorizontalNav,
+    HorizontalNavItem
+} from '@shared/components/HorizontalNav';
+import AlignedContent from '@shared/components/AlignedContent';
 
 interface WorldGuardPageData {
     file: {
@@ -61,75 +55,53 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
             />
             <ContainerPadded>
                 <Row>
-                    <ColumnQuarter>
-                        <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
-                            alt={'WorldGuard Logo'}
-                        />
-                        <SidebarHeading>WorldGuard</SidebarHeading>
-                        <SidebarNavList>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldguard/#features'}>
-                                    Features
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldguard/#videos'}>
-                                    Videos
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainLink to={'/worldguard/#downloads'}>
-                                    Downloads
-                                </MainLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://worldguard.enginehub.org">
-                                    Documentation
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://discord.gg/enginehub">
-                                    Discord
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldGuard/issues">
-                                    Bug / Feature Tracker
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                            <SidebarNavListItem>
-                                <MainOutboundLink href="https://github.com/EngineHub/WorldGuard">
-                                    Source Code
-                                </MainOutboundLink>
-                            </SidebarNavListItem>
-                        </SidebarNavList>
-                        <SidebarDivider />
-                        <SubtleText>Project lead: wizjany</SubtleText>
-                        <GitHubButton
-                            href="https://github.com/EngineHub/worldguard"
-                            data-icon="octicon-star"
-                            data-show-count={true}
-                            aria-label="Star EngineHub/worldguard on GitHub"
-                        >
-                            Star
-                        </GitHubButton>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <JumbotronContainer>
-                            <JumbotronText>
-                                WorldGuard lets you and players guard areas of
-                                land against griefers and undesirables, as well
-                                as tweak and disable various gameplay features
-                                of Minecraft.
-                            </JumbotronText>
-                            <JumbotronButtonBox>
-                                <BlueButton to={'/worldguard/#downloads'}>
-                                    List downloads
-                                </BlueButton>
-                            </JumbotronButtonBox>
-                        </JumbotronContainer>
-                        <SectionHeading id="features">Features</SectionHeading>
+                    <JumbotronContainer>
+                        <JumbotronImageBox>
+                            <h1>
+                                <HeaderLogo
+                                    alt={'WorldGuard'}
+                                    loading={'eager'}
+                                />
+                            </h1>
+                        </JumbotronImageBox>
+                        <JumbotronText>
+                            WorldGuard lets you and players guard areas of land
+                            against griefers and undesirables, as well as tweak
+                            and disable various gameplay features of Minecraft.
+                        </JumbotronText>
+                        <JumbotronButtonBox>
+                            <BlueButton to={'/worldguard/#downloads'}>
+                                List downloads
+                            </BlueButton>
+                        </JumbotronButtonBox>
+                    </JumbotronContainer>
+                </Row>
+                <Row>
+                    <HorizontalNav>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://worldguard.enginehub.org">
+                                Documentation
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem className={'hideSmall'}>
+                            <MainOutboundLink href="https://discord.gg/enginehub">
+                                Discord
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldGuard/issues">
+                                Bug / Feature Tracker
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                        <HorizontalNavItem>
+                            <MainOutboundLink href="https://github.com/EngineHub/WorldGuard">
+                                Source Code
+                            </MainOutboundLink>
+                        </HorizontalNavItem>
+                    </HorizontalNav>
+                </Row>
+                <Row>
+                    <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
                                 Block creeper and wither block damage, falling
@@ -172,9 +144,15 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 by default.
                             </li>
                         </ul>
-                        <SectionHeading id="videos">
-                            Watch it in action
-                        </SectionHeading>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <SectionHeading id="videos">
+                        Watch it in action
+                    </SectionHeading>
+                </Row>
+                <Row>
+                    <ColumnHalf>
                         <iframe
                             width="100%"
                             height="410"
@@ -182,6 +160,10 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
+                    </ColumnHalf>
+                </Row>
+                <Row>
+                    <div>
                         <SectionHeading id="downloads">
                             Downloads
                         </SectionHeading>
@@ -238,7 +220,7 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
+                    </div>
                 </Row>
             </ContainerPadded>
         </Layout>
@@ -251,7 +233,7 @@ export const query = graphql`
     query {
         file(name: { eq: "worldguard-icon" }) {
             childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
+                fixed(width: 512, height: 512, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
             }

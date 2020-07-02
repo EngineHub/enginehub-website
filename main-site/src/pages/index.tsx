@@ -8,6 +8,11 @@ import { Row, ColumnHalf } from '@shared/components/grid';
 import { graphql } from 'gatsby';
 import { FixedObject } from 'gatsby-image';
 import ProjectBox from '@main/components/ProjectBox';
+import WorldEditIcon from '../images/projects/logo/worldedit-logo.svg';
+import WorldGuardIcon from '../images/projects/logo/worldguard-logo.svg';
+import CraftBookIcon from '../images/projects/logo/craftbook-logo.svg';
+import CmdBookIcon from '../images/projects/logo/commandbook-logo.svg';
+import CmdHelperIcon from '../images/projects/logo/commandhelper-logo.svg';
 
 const HeadingContainer = styled.div`
     margin: 20px 0 60px;
@@ -38,20 +43,9 @@ interface IndexPageData {
             fixed: FixedObject;
         };
     };
-    allFile: {
-        nodes: {
-            childImageSharp: {
-                fixed: FixedObject;
-            };
-            name: string;
-        }[];
-    };
 }
 
 const IndexPage = ({ data }: { data: IndexPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
-    );
     return (
         <Layout landing={true}>
             <SEO
@@ -69,19 +63,19 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
                             <ProjectBox
                                 name="WorldEdit"
                                 slug="worldedit"
-                                icon={logoMap.get('worldedit-icon')!}
+                                icon={WorldEditIcon}
                                 description="An in-game open source map editor for Bukkit, Forge, and more with support for other mods."
                             />
                             <ProjectBox
                                 name="WorldGuard"
                                 slug="worldguard"
-                                icon={logoMap.get('worldguard-icon')!}
+                                icon={WorldGuardIcon}
                                 description="Guard areas of the world against troublemakers and tweak Minecraft's features to your delight."
                             />
                             <ProjectBox
                                 name="CommandBook"
                                 slug="commandbook"
-                                icon={logoMap.get('commandbook-icon')!}
+                                icon={CmdBookIcon}
                                 description="Basic and essential commands for your Bukkit server in a lightweight plugin."
                             />
                         </ProjectList>
@@ -91,13 +85,13 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
                             <ProjectBox
                                 name="CraftBook"
                                 slug="craftbook"
-                                icon={logoMap.get('craftbook-icon')!}
+                                icon={CraftBookIcon}
                                 description="Magical drawbridges, functional elevators, compact logic gates, and more — all without a client mod!"
                             />
                             <ProjectBox
                                 name="CommandHelper"
                                 slug="commandhelper"
-                                icon={logoMap.get('commandhelper-icon')!}
+                                icon={CmdHelperIcon}
                                 description="Script your Bukkit server without any Java knowledge using a easy to use and powerful language."
                             />
                         </ProjectList>
@@ -117,28 +111,6 @@ export const query = graphql`
                 fixed(width: 100, height: 100, quality: 100) {
                     ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 }
-            }
-        }
-        allFile(
-            filter: {
-                name: {
-                    in: [
-                        "worldedit-icon"
-                        "worldguard-icon"
-                        "craftbook-icon"
-                        "commandbook-icon"
-                        "commandhelper-icon"
-                    ]
-                }
-            }
-        ) {
-            nodes {
-                childImageSharp {
-                    fixed(width: 80, height: 80, quality: 100) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                    }
-                }
-                name
             }
         }
     }
