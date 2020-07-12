@@ -15,6 +15,13 @@ const INVALID_REPORT = {
     content: 'This paste is not a valid report.'
 };
 
+const ReportWrapper = styled.div`
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+`;
+
 const ReportNodeBox = styled.div<{ open: boolean }>`
     tab-size: 3;
     margin: 0 0 5px 0;
@@ -118,11 +125,11 @@ const ReportComponent: React.FC<PasteProps> = ({ paste }) => {
         reportEntries.push(INVALID_REPORT);
     }
     return (
-        <>
+        <ReportWrapper>
             {reportEntries.map((entry, i) => (
                 <ReportNode key={`entry-${i}`} entry={entry} />
             ))}
-        </>
+        </ReportWrapper>
     );
 };
 

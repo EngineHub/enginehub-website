@@ -5,22 +5,28 @@ on:
     branches:    
       - master
     paths:
-      - 'golf/*'
-      - 'golf/*/*'
-      - 'golf/*/*/*'
-      - 'golf/*/*/*/*'
-      - 'golf/*/*/*/*/*'
-      - 'shared/*'
-      - 'shared/*/*'
-      - 'shared/*/*/*'
-      - 'shared/*/*/*/*'
-      - 'shared/*/*/*/*/*'
+      - 'golf/**'
+      - 'shared/**'
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+
+    # Cache & pull git-lfs.
+    - name: Install and checksum git-lfs
+      run: |
+        git lfs install
+        git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-asset-ids
+    - name: Cache git-lfs files
+      uses: actions/cache@v2
+      with:
+        path: .git/lfs
+        key: ${{ runner.os }}-git-lfs-{{ hashFiles('.lfs-asset-ids') }}
+    - name: Pull git-lfs files
+      run: git lfs pull
+
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
