@@ -17,5 +17,10 @@
     "pages/**/*",
     "src/**/*"
   ],
-  "files": ["typings.d.ts"]
+  "files": [
+    "typings.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

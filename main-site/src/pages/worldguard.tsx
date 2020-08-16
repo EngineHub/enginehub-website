@@ -3,7 +3,7 @@ import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
-import { Row, ColumnThreeQuarter, ColumnHalf } from '@shared/components/grid';
+import { Row, ColumnHalf } from '@shared/components/grid';
 import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import JumbotronContainer, {
