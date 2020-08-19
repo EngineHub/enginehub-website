@@ -38,7 +38,7 @@ const PasteArea = styled.textarea`
 const DropPendingPasteArea = styled.div`
     flex-grow: 1;
     background-color: rgba(0, 0, 0, 0.5);
-`
+`;
 
 const SavingOverlay = styled.div`
     position: fixed;
@@ -57,43 +57,50 @@ const SavingOverlay = styled.div`
 
 async function postContent(content: string) {
     try {
-        const response = await (
-            await fetch('/paste', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ content })
-            })
+        const { viewUrl, uploadUrl, uploadFields } = await (
+            await fetch('/signed_paste')
         ).json();
-        if ('url' in response) {
-            const url = response.url;
-            alert('Saved! Available at ' + url);
-            if (url.startsWith('https://paste.enginehub.org')) {
-                await Router.push('/[id]', url.substring('https://paste.enginehub.org'.length));
-            } else {
-                window.location.href = url;
-            }
+
+        const formData = new FormData();
+
+        Object.keys(uploadFields).forEach(key => {
+            formData.append(key, uploadFields[key]);
+        });
+
+        formData.append('file', content);
+
+        const data = await fetch(uploadUrl, {
+            method: 'POST',
+            body: formData
+        });
+        if (!data.ok) {
+            throw new Error(await data.text());
+        }
+
+        alert('Saved! Available at ' + viewUrl);
+        if (viewUrl.startsWith('https://paste.enginehub.org')) {
+            await Router.push(
+                '/[id]',
+                viewUrl.substring('https://paste.enginehub.org'.length)
+            );
         } else {
-            alert(response['error']);
+            window.location.href = viewUrl;
         }
     } catch (e) {
-        console.error(e);
-        alert('Failed to submit the post');
+        console.error(e?.message ?? e);
+        alert(`Failed to submit the post!`);
     }
 }
 
 function Index() {
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState('');
     const [saving, setSaving] = useState(false);
     const [dragging, setDragging] = useState(false);
 
     const save = useCallback(() => {
         setSaving(true);
         if (content.trim().length > 0) {
-            postContent(content)
-                .then(() => setSaving(false));
+            postContent(content).then(() => setSaving(false));
         }
     }, [content]);
 
@@ -110,7 +117,8 @@ function Index() {
             return;
         }
         const firstFile = files[0];
-        firstFile.text()
+        firstFile
+            .text()
             .then(text => {
                 setContent(text);
             })
@@ -128,16 +136,21 @@ function Index() {
 
     const dndProps = {
         onDrop,
-        onDragEnter, onDragOver: onDragEnter,
-        onDragEnd, onDragLeave: onDragEnd
-    }
+        onDragEnter,
+        onDragOver: onDragEnter,
+        onDragEnd,
+        onDragLeave: onDragEnd
+    };
 
-    const onKeyDown = useCallback((event: KeyboardEvent) => {
-        if (!saving && event.ctrlKey && event.code === "KeyS") {
-            event.preventDefault();
-            save();
-        }
-    }, [save]);
+    const onKeyDown = useCallback(
+        (event: KeyboardEvent) => {
+            if (!saving && event.ctrlKey && event.code === 'KeyS') {
+                event.preventDefault();
+                save();
+            }
+        },
+        [save]
+    );
 
     useEffect(() => {
         window.addEventListener('keydown', onKeyDown);
@@ -146,11 +159,12 @@ function Index() {
 
     return (
         <Layout saveCallback={save}>
-            {dragging
-                ? <Row>
-                    <DropPendingPasteArea {...dndProps}/>
+            {dragging ? (
+                <Row>
+                    <DropPendingPasteArea {...dndProps} />
                 </Row>
-                : <Row>
+            ) : (
+                <Row>
                     <Form>
                         <PasteArea
                             placeholder="Enter your text here..."
@@ -160,7 +174,7 @@ function Index() {
                         />
                     </Form>
                 </Row>
-            }
+            )}
             {saving && (
                 <SavingOverlay>
                     <Loader />

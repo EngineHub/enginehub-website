@@ -48,3 +48,30 @@ export async function getPaste(pasteId: string): Promise<string> {
     }
     return data.Body.toString('utf-8');
 }
+
+export async function signedUploadUrl(): Promise<{
+    pasteId: string;
+    uploadUrl: string;
+    uploadFields: { [key: string]: string };
+}> {
+    const id = shortid.generate();
+
+    const data = s3.createPresignedPost({
+        Bucket: PasteS3Bucket,
+        Fields: {
+            Key: PastePrefix + id
+        },
+        Conditions: [
+            ['content-length-range', 0, 5242880],
+        ],
+        Expires: 60 * 5
+    });
+
+    console.log(JSON.stringify(data.fields));
+
+    return {
+        pasteId: id,
+        uploadUrl: data.url,
+        uploadFields: data.fields
+    };
+}

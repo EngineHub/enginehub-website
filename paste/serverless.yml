@@ -21,6 +21,8 @@ custom:
     routes:
       - src: api/paste
         path: paste
+      - src: api/signed_paste
+        path: signed_paste
       - src: api/documents/[id]
         path: documents/{id}
         request:
