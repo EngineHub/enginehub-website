@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@emotion/core": "^10.0.34",
+        "@emotion/core": "^10.0.35",
         "@emotion/styled": "^10.0.27",
-        "axios": "^0.19.2",
+        "axios": "^0.20.0",
         "next": "^9.5.2",
         "next-images": "^1.4.1",
         "next-server": "^9.0.5",
@@ -17,16 +17,16 @@
         "shortid": "^2.2.15"
     },
     "devDependencies": {
-        "@types/node": "^14.0.27",
-        "@types/react": "^16.9.46",
+        "@types/node": "^14.6.2",
+        "@types/react": "^16.9.48",
         "@types/react-dom": "^16.9.8",
         "@types/shortid": "^0.0.29",
-        "aws-sdk": "^2.734.0",
+        "aws-sdk": "^2.742.0",
         "babel-loader": "^8.1.0",
         "babel-preset-react-app": "^9.1.2",
         "cross-env": "^7.0.2",
         "serverless-nextjs-plugin": "^2.5.1",
-        "serverless-offline": "^6.5.0",
+        "serverless-offline": "^6.7.0",
         "tsconfig-paths-webpack-plugin": "^3.3.0"
     },
     "keywords": [

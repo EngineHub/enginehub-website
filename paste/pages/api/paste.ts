@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createPaste } from '@paste/pasteStore';
 
-const MAX_CONTENT_LENGTH = 1024 * 1024 * 20; // 20MB
+const MAX_CONTENT_LENGTH = 1024 * 1024; // 1MB (API Gateway Limit, for larger use the signed paste)
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     let { content, from } = req.body;
@@ -23,7 +23,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     content = content.replace('\r', '\n');
 
     if (!content.trim()) {
-        res.writeHead(400);
+        res.status(400);
         res.end();
         return;
     }

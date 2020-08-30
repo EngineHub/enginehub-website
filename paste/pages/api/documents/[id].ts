@@ -13,7 +13,10 @@ export default async function handle(
     }
     const pasteContents = await loadPaste(pasteId);
     if (!pasteContents) {
-        res.end('Invalid Paste ID');
+        res.setHeader('content-type', 'text/plain');
+        res.write('Invalid Paste ID');
+        res.status(404);
+        res.end();
         return;
     }
     res.setHeader('content-type', 'text/plain');
