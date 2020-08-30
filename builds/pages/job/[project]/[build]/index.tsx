@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
     faCheckCircle,
-    faExclamationTriangle
+    faExclamationTriangle, faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import BranchWarning from '@builds/BranchWarning';
 import moment from 'moment';
@@ -193,13 +193,12 @@ function Index({ project, build }: BuildPageProps) {
                                         <DownloadLinkDiv
                                             key={`${artifact.name}-${i}`}
                                         >
-                                            <img
-                                                src="/static/download_icon.png"
-                                                alt="Download"
-                                            />
                                             <MainOutboundLink
                                                 href={`https://ci.enginehub.org/repository/download/${project.buildType}/${build.build_id}:id/${artifact.name}?branch=${build.branch}&guest=1`}
                                             >
+                                                <FontAwesomeIcon
+                                                    icon={faDownload}
+                                                />
                                                 {artifact.name}
                                             </MainOutboundLink>
                                             <small>
