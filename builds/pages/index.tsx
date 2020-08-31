@@ -178,29 +178,36 @@ function Index({ projectEntries }: IndexProps) {
     );
 }
 
-Index.getInitialProps = async () => {
-    const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
-        project: proj,
-        builds: []
-    }));
+export async function getStaticProps() {
+    async function getProjectEntries() {
+        const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
+            project: proj,
+            builds: []
+        }));
 
-    await Promise.all(
-        projectEntries.map(async proj => {
-            const branches = await getBranches(proj.project);
-            proj.builds = (
-                await Promise.all(
-                    branches.map(
-                        async branch =>
-                            await getLatestBuild(proj.project, branch)
+        await Promise.all(
+            projectEntries.map(async proj => {
+                const branches = await getBranches(proj.project);
+                proj.builds = (
+                    await Promise.all(
+                        branches.map(
+                            async branch =>
+                                await getLatestBuild(proj.project, branch)
+                        )
                     )
-                )
-            ).filter(b => b) as Build[];
-        })
-    );
+                ).filter(b => b) as Build[];
+            })
+        );
+
+        return projectEntries;
+    }
 
     return {
-        projectEntries
+        props: {
+            projectEntries: await getProjectEntries()
+        },
+        revalidate: 60
     };
-};
+}
 
 export default Index;

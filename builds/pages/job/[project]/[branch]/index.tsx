@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '@builds/Layout';
 import { Container } from '@shared/components/Container';
 import SEO from '@shared/components/Seo';
-import { NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { PageHeader } from '@shared/components/PageHeader';
-import { PROJECT_MAP, Project } from '@builds/project';
-import Error from '../../_error';
+import { PROJECT_MAP, Project, PROJECTS } from '@builds/project';
+import Error from '../../../404';
 import { Table } from '@shared/components/Table';
 import {
     Build,
@@ -33,10 +33,11 @@ import moment from 'moment';
 import Pagination from '@shared/components/Pagination';
 import Link from 'next/link';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
+import { ParsedUrlQuery } from 'querystring';
 
 interface ProjectPageProps {
     activeBranch: string;
-    project: Project;
+    project?: Project;
     builds: Build[];
     branches: string[];
     pageNumber: number;
@@ -69,7 +70,7 @@ function Index({
     hasNextPage
 }: ProjectPageProps) {
     if (!project) {
-        return <Error statusCode={404} />;
+        return <Error />;
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>
@@ -244,40 +245,67 @@ function Index({
     );
 }
 
-Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project, branch, page } = query;
-    const projectObj = PROJECT_MAP.get(project as string);
-    if (!projectObj) {
+interface ProjectStaticProps extends ParsedUrlQuery {
+    project: string;
+    branch: string;
+}
+
+export const getStaticProps: GetStaticProps<
+    ProjectPageProps,
+    ProjectStaticProps
+> = async ({ params }) => {
+    async function getProps() {
+        const { project, branch } = params!;
+        const projectObj = PROJECT_MAP.get(project);
+        if (!projectObj) {
+            return {
+                project: undefined,
+                builds: [],
+                branches: [],
+                activeBranch: '',
+                pageNumber: 0,
+                hasNextPage: false
+            };
+        }
+
+        const [builds, branches] = await Promise.all([
+            getBuildPage(projectObj, branch, 0),
+            getBranches(projectObj)
+        ]);
+        const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
+        if (hasNextPage) {
+            builds.pop();
+        }
+
         return {
-            project: undefined,
-            builds: [],
-            branches: [],
-            activeBranch: undefined
+            project: projectObj,
+            builds,
+            branches,
+            activeBranch: branch,
+            pageNumber: 0,
+            hasNextPage
         };
     }
 
-    const pageNumber = parseInt(page as string) || 0;
+    return {
+        props: await getProps(),
+        revalidate: 60
+    };
+};
 
-    const [builds, branches] = await Promise.all([
-        getBuildPage(
-            projectObj,
-            (branch as string) || projectObj.defaultBranch,
-            pageNumber
-        ),
-        getBranches(projectObj)
-    ]);
-    const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
-    if (hasNextPage) {
-        builds.pop();
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = [];
+
+    for (const proj of PROJECTS) {
+        const branches = await getBranches(proj);
+        for (const branch of branches) {
+            paths.push({ params: { project: proj.id, branch } });
+        }
     }
 
     return {
-        project: projectObj,
-        builds,
-        branches,
-        activeBranch: branch || projectObj.defaultBranch,
-        pageNumber,
-        hasNextPage
+        paths,
+        fallback: true
     };
 };
 

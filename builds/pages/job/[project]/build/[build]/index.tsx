@@ -3,10 +3,10 @@ import Layout from '@builds/Layout';
 import { ContainerPadded } from '@shared/components/Container';
 import styled from '@emotion/styled';
 import { InfoBox } from '@shared/components/InfoBox';
-import { NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import SEO from '@shared/components/Seo';
 import { PROJECT_MAP, Project } from '@builds/project';
-import Error from '../../../_error';
+import Error from '../../../../404';
 import {
     BreadcrumbWrapper,
     Breadcrumb,
@@ -19,21 +19,23 @@ import { Panel, PanelHeading, PanelBody } from '@shared/components/Panel';
 import { LabelledSponsorsArea } from '@shared/components/Sponsors';
 import { Table, BorderedTable } from '@shared/components/Table';
 import { Row, ColumnThird, ColumnTwoThird } from '@shared/components/grid';
-import { getBuild, Build, getLatestBuild } from '@builds/builds';
+import { getBuild, Build } from '@builds/builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
     faCheckCircle,
-    faExclamationTriangle, faDownload
+    faExclamationTriangle,
+    faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import BranchWarning from '@builds/BranchWarning';
 import moment from 'moment';
 import { WarningBox } from '@shared/components/WarningBox';
 import Link from 'next/link';
+import { ParsedUrlQuery } from 'querystring';
 
 interface BuildPageProps {
-    build: Build;
-    project: Project;
+    build?: Build;
+    project?: Project;
 }
 
 const MainLink = styled.a(MainLinkStyle);
@@ -74,7 +76,7 @@ const MiniPaddedIcon = styled(FontAwesomeIcon)`
 
 function Index({ project, build }: BuildPageProps) {
     if (!project || !build) {
-        return <Error statusCode={404} />;
+        return <Error />;
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>
@@ -266,21 +268,39 @@ function Index({ project, build }: BuildPageProps) {
     );
 }
 
-Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project, build, branch } = query;
-    const projectObj = PROJECT_MAP.get(project as string);
-    if (!projectObj) {
-        return { project: projectObj };
-    }
-    let buildObj = undefined;
-    try {
-        if (build === 'last-successful') {
-            buildObj = await getLatestBuild(projectObj, branch as string);
-        } else {
-            buildObj = await getBuild(build as string);
+interface BuildPageStaticProps extends ParsedUrlQuery {
+    project: string;
+    build: string;
+}
+
+export const getStaticProps: GetStaticProps<
+    BuildPageProps,
+    BuildPageStaticProps
+> = async ({ params }) => {
+    async function getProps() {
+        const { project, build } = params!;
+        const projectObj = PROJECT_MAP.get(project);
+        if (!projectObj) {
+            return { project: projectObj };
         }
-    } catch (e) {}
-    return { project: projectObj, build: buildObj };
+        let buildObj = undefined;
+        try {
+            buildObj = await getBuild(build);
+        } catch (e) {}
+        return { project: projectObj, build: buildObj };
+    }
+
+    return {
+        props: await getProps(),
+        revalidate: 3600
+    };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: true
+    };
 };
 
 export default Index;
