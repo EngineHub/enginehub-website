@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { PurpleButtonStyle } from '@shared/components/Button';
 import { FormLabel } from '@shared/components/text/FormLabel';
 

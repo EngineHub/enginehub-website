@@ -5,7 +5,7 @@ import {
     LeaderboardEntry,
     Leaderboard
 } from '@golf/components/Leaderboard/Leaderboard';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { pollBroker, queueTask, clearTask } from '@golf/broker';
 import { Schematic } from '@golf/components/Schematic';
 import { useToken } from '@golf/components/Auth';

@@ -5,16 +5,17 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
+        "@emotion/core": "^10.0.35",
+        "@emotion/styled": "^10.0.27",
+        "polished": "^3.6.5",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "styled-components": "^5.1.1"
+        "react-dom": "^16.13.1"
     },
     "devDependencies": {
         "@babel/core": "^7.11.4",
         "@types/node": "^14.6.2",
         "@types/react": "^16.9.48",
         "@types/react-dom": "^16.9.8",
-        "@types/styled-components": "^5.1.2",
         "babel-loader": "^8.1.0",
         "lint-staged": "^10.2.13",
         "tsconfig": "^7.0.0",

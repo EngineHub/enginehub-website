@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { Container } from '@shared/components/Container';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import {
     LinkProviderContext,
     LinkProviderProps

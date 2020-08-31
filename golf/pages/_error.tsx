@@ -4,7 +4,7 @@ import NextError from 'next/error';
 import SEO from '@shared/components/Seo';
 import { PageHeader } from '@shared/components/PageHeader';
 import { Container } from '@shared/components/Container';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { BlueButtonStyle } from '@shared/components/Button';
 import Layout from '@golf/Layout';
 

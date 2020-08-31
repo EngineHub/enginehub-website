@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Img, { FixedObject } from 'gatsby-image';
 
 const Wrapper = styled.div`

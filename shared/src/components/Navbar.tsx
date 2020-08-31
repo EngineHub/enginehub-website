@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Container } from '@shared/components/Container';
-import { css } from 'styled-components';
+import css from '@emotion/css';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
 import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
 import { SECONDARY, BRAND } from '@shared/theme';

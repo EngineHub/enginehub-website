@@ -5,6 +5,8 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
+        "@emotion/core": "^10.0.35",
+        "@emotion/styled": "^10.0.27",
         "@enginehub/schematicwebviewer": "^1.1.2",
         "@fortawesome/fontawesome-svg-core": "^1.2.30",
         "@fortawesome/free-solid-svg-icons": "^5.14.0",
@@ -21,7 +23,6 @@
         "react-helmet": "^6.1.0",
         "safe-compare": "^1.1.4",
         "shortid": "^2.2.14",
-        "styled-components": "^5.1.1",
         "zlibt": "0.0.5"
     },
     "devDependencies": {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import router from 'next/router';
 import { useSetToken } from '@golf/components/Auth';
 import { Loading } from '@golf/components/Loading';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Layout from '@golf/Layout';
 
 const LoadingContainer = styled.div`

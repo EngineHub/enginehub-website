@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import Navbar from '@shared/components/Navbar';
@@ -24,7 +24,7 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderImg = styled(Img)<{ fluid: FluidObject }>`
+const HeaderImg = styled(Img)`
     width: 100%;
     height: 100%;
 `;
@@ -105,7 +105,8 @@ export const Landing: FunctionComponent<LandingProps> = props => {
                             varieties of servers — from the large to the
                             family-sized. Many of our projects are available,
                             officially or unofficially, for Bukkit, Sponge,
-                            Minecraft Forge, Fabric, and other platforms.
+                            Minecraft Forge, MinecraftEdu, LiteLoader, and other
+                            platforms.
                         </Subtitle>
                     </Container>
                 </LandingText>
