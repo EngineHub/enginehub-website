@@ -1,12 +1,7 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withImages = require('next-images')
 
-const prod = process.env.NODE_ENV === 'production';
-const ASSETS_PREFIX = 'https://builds-static.enginehub.org'
-
 module.exports = withImages({
-    target: 'serverless',
-    assetPrefix: prod ? ASSETS_PREFIX : '',
     webpack: (config, options) => {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
@@ -24,10 +19,6 @@ module.exports = withImages({
         return config;
     },
     env: {
-        STATIC_PREFIX: prod ? ASSETS_PREFIX : '',
         GA_TRACKING_ID: 'UA-139849956-5'
-    },
-    experimental: {
-        granularChunks: true
     }
 });
