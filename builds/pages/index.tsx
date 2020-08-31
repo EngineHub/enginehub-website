@@ -114,8 +114,8 @@ function Index({ projectEntries }: IndexProps) {
                                                 icon={faCodeBranch}
                                             />
                                             <Link
-                                                href={`/job/[project]?branch=${build.branch}`}
-                                                as={`/job/${projectEntry.project.id}?branch=${build.branch}`}
+                                                href={`/job/[project]/[branch]`}
+                                                as={`/job/${projectEntry.project.id}/${encodeURIComponent(build.branch)}`}
                                                 passHref={true}
                                             >
                                                 <MainLink>
@@ -155,8 +155,8 @@ function Index({ projectEntries }: IndexProps) {
                                         </td>
                                         <td>
                                             <Link
-                                                href="/job/[project]/[build]"
-                                                as={`/job/${projectEntry.project.id}/${build.build_id}`}
+                                                href="/job/[project]/build/[build]"
+                                                as={`/job/${projectEntry.project.id}/build/${build.build_id}`}
                                                 passHref={true}
                                             >
                                                 <MainLink>

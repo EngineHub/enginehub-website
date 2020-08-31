@@ -83,8 +83,8 @@ function Index({
                     {branches.map(branch => (
                         <BranchButtonItem key={branch}>
                             <Link
-                                href={`/job/[project]?branch=${branch}`}
-                                as={`/job/${project.id}?branch=${branch}`}
+                                href={`/job/[project]/[branch]`}
+                                as={`/job/${project.id}/${encodeURIComponent(branch)}`}
                                 passHref={true}
                             >
                                 <BranchButton
@@ -113,8 +113,8 @@ function Index({
                         />
                     )}
                 <Link
-                    href={`/job/[project]/[build]?branch=${activeBranch}`}
-                    as={`/job/${project.id}/last-successful?branch=${activeBranch}`}
+                    href={`/job/[project]/build/last-successful/[branch]`}
+                    as={`/job/${project.id}/build/last-successful/${encodeURIComponent(activeBranch)}`}
                     passHref={true}
                 >
                     <MainButton
@@ -154,8 +154,8 @@ function Index({
                                 </TdNoWrap>
                                 <TdNoWrap>
                                     <Link
-                                        href="/job/[project]/[build]"
-                                        as={`/job/${project.id}/${build.build_id}`}
+                                        href="/job/[project]/build/[build]"
+                                        as={`/job/${project.id}/build/${build.build_id}`}
                                         passHref={true}
                                     >
                                         <MainLink>
@@ -214,8 +214,8 @@ function Index({
                                 </TdNoWrap>
                                 <TdNoWrap>
                                     <Link
-                                        href="/job/[project]/[build]"
-                                        as={`/job/${project.id}/${build.build_id}`}
+                                        href="/job/[project]/build/[build]"
+                                        as={`/job/${project.id}/build/${build.build_id}`}
                                         passHref={true}
                                     >
                                         <BlueButton>
@@ -234,8 +234,8 @@ function Index({
                         <Pagination
                             currentPage={pageNumber}
                             hasNextPage={hasNextPage}
-                            pageMask={`/job/[project]?branch=${activeBranch}&page=:page`}
-                            pageMaskAs={`/job/${project.id}?branch=${activeBranch}&page=:page`}
+                            pageMask={`/job/[project]/[branch]/[page]`}
+                            pageMaskAs={`/job/${project.id}/${activeBranch}/:page`}
                             linkProvider={linkProvider}
                         />
                     )}
