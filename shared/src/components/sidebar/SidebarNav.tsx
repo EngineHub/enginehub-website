@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 export const SidebarNavList = styled.ul`
     margin-bottom: 0;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '@builds/Layout';
 import { ContainerPadded } from '@shared/components/Container';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { InfoBox } from '@shared/components/InfoBox';
 import { NextPageContext } from 'next';
 import SEO from '@shared/components/Seo';

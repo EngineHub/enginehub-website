@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { getFiles } from '@paste/dragAndDrop';
 import { Layout } from '@paste/Layout';
 import Loader from '@shared/components/Loader';

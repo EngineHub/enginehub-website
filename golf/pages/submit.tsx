@@ -1,5 +1,5 @@
 import React, { useEffect, ReactNode, useRef, useState } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { TextArea } from '@golf/components/Input/TextArea';
 import Input from '@golf/components/Input/Input';
 import { useAuthenticatedFetch } from '@golf/components/Auth';

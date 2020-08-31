@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
 import {
     LinkProviderContext,

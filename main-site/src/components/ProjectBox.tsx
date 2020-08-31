@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
 import { MainLinkStyle } from '@shared/components/Link';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Img, { FluidObject, FixedObject } from 'gatsby-image';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { SectionHeading } from './text';
 
 interface AlignedContentProps {

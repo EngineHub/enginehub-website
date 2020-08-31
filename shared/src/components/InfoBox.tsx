@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const InfoBox = styled.div`
     background-color: rgb(217, 237, 247);

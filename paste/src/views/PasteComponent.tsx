@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import React, { useMemo } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import { Gutter } from '@paste/Gutter';

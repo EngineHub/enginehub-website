@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import Link from 'next/link';
 
 const MainHeader = styled.header`

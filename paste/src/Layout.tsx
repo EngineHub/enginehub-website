@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import React, { FC } from 'react';
 import { Header } from './Header';
 import SEO from '@shared/components/Seo';

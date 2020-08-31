@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Logo } from './Logo/Logo';
 import Link from 'next/link';
 

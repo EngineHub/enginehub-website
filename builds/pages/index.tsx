@@ -7,7 +7,7 @@ import { PageHeader } from '@shared/components/PageHeader';
 import { Table } from '@shared/components/Table';
 import { Project, PROJECTS } from '@builds/project';
 import { Build, getBranches, getLatestBuild } from '@builds/builds';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
