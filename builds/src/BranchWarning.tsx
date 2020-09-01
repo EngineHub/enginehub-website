@@ -23,8 +23,8 @@ const BranchWarning: React.FC<BranchWarningProps> = props => (
             you should be using stable releases rather than these test builds.
         </p>
         <Link
-            href={`/job/[project]?branch=${props.mainBranch}`}
-            as={`/job/${props.projectId}?branch=${props.mainBranch}`}
+            href={`/job/[project]/[branch]`}
+            as={`/job/${props.projectId}/${props.mainBranch}`}
             passHref={true}
         >
             <MainButton>Go to main branch</MainButton>
