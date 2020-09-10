@@ -32,7 +32,7 @@ class GatsbyLinkProvider implements LinkProvider {
                 );
             }
             if (href.startsWith('https://enginehub.org/')) {
-                href = href.substring('https://enginehub.org/'.length);
+                href = href.substring('https://enginehub.org'.length);
             }
             return (
                 <Link to={href} {...props}>

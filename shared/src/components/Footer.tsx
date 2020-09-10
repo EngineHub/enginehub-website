@@ -108,6 +108,11 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                             Discord
                         </MainLink>
                     </FooterLi>
+                    <FooterLi>
+                        <MainLink href="https://github.com/EngineHub">
+                            GitHub
+                        </MainLink>
+                    </FooterLi>
                 </FooterUl>
             </SocialBox>
             <SponsorBox>
