@@ -101,7 +101,11 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                     </HorizontalNav>
                 </Row>
                 <Row>
-                    <AlignedContent header={'Features'} align={'left'}>
+                    <AlignedContent
+                        header={'Secure Your Server'}
+                        align={'left'}
+                        video={'/videos/worldguard_no_creeper_explode.mp4'}
+                    >
                         <ul>
                             <li>
                                 Block creeper and wither block damage, falling
@@ -120,30 +124,60 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                                 are used.
                             </li>
                             <li>
-                                Protect areas of your world so only certain
-                                people can build in them.
-                            </li>
-                            <li>
-                                Set areas where PVP, TNT, mob damage, and other
-                                features are disabled.
-                            </li>
-                            <li>
                                 Protect your server from various 'exploits' like
                                 magical obsidian creation machines.
-                            </li>
-                            <li>
-                                Disable, or enable, various Minecraft features,
-                                like sponges from classic.
                             </li>
                             <li>
                                 Add useful commands like an immediate "STOP ALL
                                 FIRE SPREAD" command.
                             </li>
-                            <li>
-                                Enable only features you want! Everything is off
-                                by default.
-                            </li>
                         </ul>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Setup Protected Regions'}
+                        align={'right'}
+                        video={'/videos/worldguard_no_tnt.mp4'}
+                    >
+                        <li>
+                            Protect areas of your world so only certain people
+                            can build in them.
+                        </li>
+                        <li>
+                            Set areas where PVP, TNT, mob damage, and other
+                            features are disabled.
+                        </li>
+                        <li>
+                            Create entry and exit messages for areas, or set
+                            localized weather and time
+                        </li>
+                        <li>
+                            Use an extensible flag system to fine-tune region
+                            settings
+                        </li>
+                    </AlignedContent>
+                </Row>
+                <Row>
+                    <AlignedContent
+                        header={'Fully Customizable and Fast'}
+                        align={'left'}
+                        video={'/videos/worldguard_flags_menu.mp4'}
+                    >
+                        <li>
+                            Disable, or enable, various Minecraft features, like
+                            sponges from classic.
+                        </li>
+                        <li>
+                            Enable only features you want! Everything is off by
+                            default.
+                        </li>
+                        <li>
+                            Disable, or enable, features of other supported
+                            plugins that utilise our API.
+                        </li>
+                        <li>Have complete control over all protections.</li>
+                        <li>High performance design to minimize TPS impact</li>
                     </AlignedContent>
                 </Row>
                 <Row>

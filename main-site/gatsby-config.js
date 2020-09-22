@@ -52,7 +52,9 @@ module.exports = {
         },
         {
             resolve: `gatsby-plugin-robots-txt`,
-            policy: [{ userAgent: '*', allow: '/', disallow: '/cdn-cgi/' }]
+            options: {
+                policy: [{ userAgent: '*', allow: '/', disallow: '/cdn-cgi/' }]
+            }
         },
         {
             resolve: `gatsby-plugin-netlify`
