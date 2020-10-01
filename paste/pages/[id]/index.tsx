@@ -2,10 +2,10 @@ import React from 'react';
 import { Layout } from '@paste/Layout';
 import { NextPageContext } from 'next';
 import Router from 'next/router';
-import axios from 'axios';
 import PasteComponent from '@paste/views/PasteComponent';
 import ProfileComponent from '@paste/views/ProfileComponent';
 import ReportComponent from '@paste/views/ReportComponent';
+import { loadPaste } from '@paste/loadPaste';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -38,7 +38,7 @@ function isValidExtension(extension: string): extension is Extension {
     return EXTENSIONS.has(extension);
 }
 
-Document.getInitialProps = async ({ query, res }: NextPageContext) => {
+export const getServerSideProps = async ({ query, res }: NextPageContext) => {
     const { id } = query;
     let pasteId = `${id}`;
     let extension: Extension = '';
@@ -59,9 +59,7 @@ Document.getInitialProps = async ({ query, res }: NextPageContext) => {
             }
         }
     }
-    const pasteContents = (await axios.get(
-        `https://paste.enginehub.org/documents/${pasteId}`
-    )).data;
+    const pasteContents = await loadPaste(pasteId);
     if (!pasteContents) {
         if (res) {
             res.writeHead(302, {
@@ -73,8 +71,10 @@ Document.getInitialProps = async ({ query, res }: NextPageContext) => {
         }
     }
     return {
-        paste: pasteContents || '',
-        extension
+        props: {
+            paste: pasteContents || '',
+            extension
+        }
     };
 };
 

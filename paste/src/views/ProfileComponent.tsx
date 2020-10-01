@@ -103,7 +103,7 @@ function parseLine(line: string): { name: string; selfTime: number } {
 }
 
 const ProfileNode: React.FC<ProfileNodeProps> = ({ entry, allTime }) => {
-    const [open, setOpen] = useState<boolean>(true);
+    const [open, setOpen] = useState<boolean>(false);
     const onToggle = () => setOpen(!open);
     const percent = calculatePercentage(entry.selfTime, allTime);
     return (
