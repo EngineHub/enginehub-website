@@ -211,6 +211,6 @@ const Submit = () => {
     );
 };
 
-Submit.getInitialProps = () => ({});
+export const getServerSideProps = () => ({});
 
 export default Submit;

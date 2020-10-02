@@ -2,8 +2,10 @@ import React, { useContext, useState, useEffect, useMemo } from 'react';
 import router from 'next/router';
 import jwt from 'jsonwebtoken';
 
+const isServerRendered = typeof window === 'undefined';
+
 const getToken = () =>
-    typeof window !== 'undefined' ? window.localStorage.getItem('token')! : ' ';
+    isServerRendered ? ' ' : window.localStorage.getItem('token')!;
 
 const AuthContext = React.createContext<{
     token: string | undefined;
@@ -93,7 +95,7 @@ export const useAuthenticatedFetch: () => FetchFunction = () => {
 
 export const useIsLoggedIn: () => boolean = () => {
     const { token } = useContext(AuthContext);
-    return !!token;
+    return !!token && !isServerRendered;
 };
 
 export const useAuthenticatedPage = () => {

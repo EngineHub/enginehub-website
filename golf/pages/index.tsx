@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { Container } from '@shared/components/Container';
 import SEO from '@shared/components/Seo';
 import { BrandHeader } from '@golf/components/BrandHeader';
-import axios from 'axios';
+import { getAllGolfs } from '@golf/dynamoDb';
 
 const ChallengeButton = styled.a`
     ${PurpleButtonStyle()}
@@ -50,14 +50,11 @@ function Home({ golfs }: HomeProps) {
     );
 }
 
-Home.getInitialProps = async () => {
+export const getServerSideProps = async () => {
     try {
-        const { data } = await axios.get(
-            `${process.env.API_PREFIX}/api/get-golfs`
-        );
-        return { golfs: data };
+        return { props: { golfs: JSON.parse(JSON.stringify(await getAllGolfs())) } };
     } catch (e) {
-        return { error: e, golfs: [] };
+        return { props: { error: e, golfs: [] } };
     }
 };
 

@@ -113,13 +113,13 @@ export const OpenChallenge: React.FC<OpenChallengeProps> = ({
     <>
         <ChallengeTitle>Open Challenges</ChallengeTitle>
         <Entries>
-            {golfs.map(golf => (
+            {golfs.map((golf, i) => (
                 <ChallengeEntry
                     schematic={golf.test_schematic}
                     description={golf.description}
                     golfId={golf.golf_id}
                     title={golf.title}
-                    key={golf.golf_id}
+                    key={`${golf.golf_id}-${i}`}
                 />
             ))}
             {children}

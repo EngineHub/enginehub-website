@@ -5,6 +5,7 @@ import { renderSchematic } from '@enginehub/schematicwebviewer';
 interface SchematicProps {
     schematic: string;
     size?: number;
+    preview?: boolean;
 }
 
 const Container = styled.div<{ size: number }>`
@@ -22,28 +23,33 @@ const Container = styled.div<{ size: number }>`
 export const Schematic: React.FC<SchematicProps> = ({
     schematic,
     size = 500,
+    preview = true,
     ...rest
 }) => {
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] = useState<(size: number) => void>();
+    const [destroy, setDestroy] = useState<() => void>(() => {});
 
     useEffect(() => {
         if (resize) {
             resize(size);
         }
-    }, [size]);
+    }, [size, resize]);
 
     useEffect(() => {
         if (schematic && ref.current) {
-            const { destroy, resize: r } = renderSchematic(
+            renderSchematic(
                 ref.current,
                 schematic,
                 {
                     size,
-                    texturePrefix: 'https://worldedit.golf/static'
+                    texturePrefix: 'https://worldedit.golf/static',
+                    renderBars: !preview
                 }
-            );
-            setResize(() => r);
+            ).then(({destroy: d, resize: r}) => {
+                setResize(() => r);
+                setDestroy(() => d);
+            });
             return destroy;
         }
         return;
