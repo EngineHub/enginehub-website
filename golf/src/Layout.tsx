@@ -33,8 +33,6 @@ class NextLinkProvider extends AnchorLinkProvider {
     }
 }
 
-const isServerRendered = typeof window === 'undefined';
-
 const FloatedPurpleButton = styled.a`
     ${PurpleButtonStyle()};
     float: right;
@@ -60,23 +58,20 @@ const LayoutInner: React.FC<ExtraSponsorProps> = ({
     return (
         <LinkProviderContext.Provider value={linkProvider}>
             <Navbar headertheme="purple" headertitle="WorldEdit.golf">
-                {!isAuthenticated && (
-                    <div>
+                <div>
+                    {isAuthenticated ? (
+                        <FloatedPurpleButton key="logout" onClick={onLogOut}>
+                            Log out
+                        </FloatedPurpleButton>
+                    ) : (
                         <FloatedPurpleButton
                             key="login"
                             href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`}
                         >
                             Log in
                         </FloatedPurpleButton>
-                    </div>
-                )}
-                {isAuthenticated && !isServerRendered && (
-                    <div>
-                        <FloatedPurpleButton key="logout" onClick={onLogOut}>
-                            Log out
-                        </FloatedPurpleButton>
-                    </div>
-                )}
+                    )}
+                </div>
             </Navbar>
             <main>{children}</main>
             <Footer mainSite={false} extraSponsors={extraSponsors} />

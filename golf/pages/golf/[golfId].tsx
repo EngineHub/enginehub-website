@@ -17,8 +17,8 @@ import { Container } from '@shared/components/Container';
 import { useElementWidth } from '@shared/hooks/useElementWidth';
 import { BrandHeader } from '@golf/components/BrandHeader';
 import SEO from '@shared/components/Seo';
-import axios from 'axios';
 import { MainLinkStyle } from '@shared/components/Link';
+import { getGolfData } from '@golf/dynamoDb';
 
 interface DocumentProps {
     golf: Golf;
@@ -157,9 +157,9 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     };
 
     const contentRef = useRef<HTMLDivElement>(null)!;
-    const width = useElementWidth(contentRef as React.MutableRefObject<
-        HTMLElement
-    >);
+    const width = useElementWidth(
+        contentRef as React.MutableRefObject<HTMLElement>
+    );
 
     useEffect(() => {
         const timeout = setInterval(async () => {
@@ -230,7 +230,10 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
 
     return (
         <Layout>
-            <SEO title={`${golf.title} | WorldEdit Golf`} description={`Try out the ${golf.title} challenge by ${uploadingUser.fullname}! Only at WorldEdit.Golf`} />
+            <SEO
+                title={`${golf.title} | WorldEdit Golf`}
+                description={`Try out the ${golf.title} challenge by ${uploadingUser.fullname}! Only at WorldEdit.Golf`}
+            />
             <Container>
                 <BrandHeader />
                 <PageColumns>
@@ -290,8 +293,8 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                                     created={
                                         date
                                             .toLocaleTimeString()
-                                            .replace(' AM', '')
-                                            .replace(' PM', '') +
+                                            .replace(/ AM/i, '')
+                                            .replace(/ PM/i, '') +
                                         ' ' +
                                         date.toDateString()
                                     }
@@ -316,16 +319,24 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     );
 }
 
-Document.getInitialProps = async ({ query }: NextPageContext) => {
+export const getServerSideProps = async ({ query }: NextPageContext) => {
     const { golfId } = query;
 
     try {
-        const { data } = await axios.get(
-            `${process.env.API_PREFIX}/api/get-golf/${golfId}`
-        );
-        return data;
+        const data = await getGolfData(golfId as string);
+        if (!data) {
+            return {
+                props: {
+                    error: 'Unknown Golf',
+                    golf: {},
+                    leaderboards: [],
+                    userMap: {}
+                }
+            };
+        }
+        return { props: data };
     } catch (e) {
-        return { error: e, golf: {}, leaderboards: [], userMap: {} };
+        return { props: { error: e, golf: {}, leaderboards: [], userMap: {} } };
     }
 };
 

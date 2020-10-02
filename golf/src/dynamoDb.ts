@@ -224,6 +224,45 @@ export async function getAllGolfs(): Promise<Golf[]> {
     });
 }
 
+export async function getGolfData(golfId: string): Promise<{
+    golf: Golf;
+    leaderboards: GolfLeaderboard[];
+    userMap: { [key: string]: User };
+} | undefined> {
+    const [golf, leaderboards] = await Promise.all([
+        getGolf(golfId),
+        getLeaderboard(golfId)
+    ]);
+
+    if (!golf) {
+        return undefined;
+    }
+
+    const usersToLookup = new Set<string>();
+    let userMap = {};
+
+    if (leaderboards) {
+        leaderboards.forEach(lead => usersToLookup.add(`${lead.user_id}`));
+    }
+    usersToLookup.add(`${golf.user_id}`);
+
+    const users = await getUsers([...usersToLookup]);
+    userMap = users.reduce((a, b) => {
+        a[b.user_id] = b;
+        return a;
+    }, {});
+
+    const sortedLeaderboards = (leaderboards || []).sort((a, b) => {
+        return a.score - b.score || a.submitted_time - b.submitted_time;
+    });
+
+    return {
+        golf,
+        leaderboards: sortedLeaderboards,
+        userMap
+    };
+}
+
 export async function addGolf(golf: Golf): Promise<void> {
     const createParams: AWS.DynamoDB.DocumentClient.PutItemInput = {
         TableName: GolfsTableName,

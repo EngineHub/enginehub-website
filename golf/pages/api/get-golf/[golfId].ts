@@ -1,46 +1,21 @@
-import { getGolf, getLeaderboard, getUsers } from '@golf/dynamoDb';
+import { getGolfData } from '@golf/dynamoDb';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { golfId } = req.query;
 
     try {
-        const [golf, leaderboards] = await Promise.all([
-            getGolf(golfId as string),
-            getLeaderboard(golfId as string)
-        ]);
+        const data = await getGolfData(golfId as string);
 
-        if (!golf) {
+        if (!data) {
             res.status(404);
             res.end(JSON.stringify({ error: 'Unknown golf! ' }));
             return;
         }
 
-        const usersToLookup = new Set<string>();
-        let userMap = {};
-
-        if (leaderboards) {
-            leaderboards.forEach(lead => usersToLookup.add(`${lead.user_id}`));
-        }
-        usersToLookup.add(`${golf.user_id}`);
-
-        const users = await getUsers([...usersToLookup]);
-        userMap = users.reduce((a, b) => {
-            a[b.user_id] = b;
-            return a;
-        }, {});
-
-        const sortedLeaderboards = (leaderboards || []).sort((a, b) => {
-            return a.score - b.score || a.submitted_time - b.submitted_time;
-        });
-
         res.status(200);
         res.end(
-            JSON.stringify({
-                golf,
-                leaderboards: sortedLeaderboards,
-                userMap
-            })
+            JSON.stringify(data)
         );
     } catch (e) {
         console.error(e);
