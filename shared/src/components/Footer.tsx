@@ -120,7 +120,7 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                     </FooterLi>
                     <FooterLi>
                         <MainLink href="https://github.com/sponsors/EngineHub">
-                            Sponsor Us
+                            Support Us
                         </MainLink>
                     </FooterLi>
                 </FooterUl>
