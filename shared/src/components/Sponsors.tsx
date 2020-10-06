@@ -49,15 +49,17 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
 
     const ApexHostingSponsor: React.FC = () => {
         return (
-            <>
-                <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
-                    <img
-                        src={"https://enginehub.org/images/apex.svg"}
-                        style={{ marginBottom: 0, color: '#000000', width: '100%' }}
-                        alt="Apex Hosting"
-                    />
-                </Link>
-            </>
+            <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
+                <img
+                    src={'https://enginehub.org/images/apex.svg'}
+                    style={{
+                        marginBottom: 0,
+                        color: '#000000',
+                        width: '100%'
+                    }}
+                    alt="Apex Hosting"
+                />
+            </Link>
         );
     };
 
@@ -98,10 +100,16 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         return () => clearTimeout(timeout);
     }, [sponsorIndex]);
 
-    const SponsorComponent = sponsorMap.get(availableSponsors[sponsorIndex])!;
     return (
         <NarrowDiv>
-            <SponsorComponent />
+            {availableSponsors.map((spon, i) => {
+                const Component = sponsorMap.get(spon)!;
+                return (
+                    <div key={`sponsor-${spon}`} hidden={sponsorIndex !== i}>
+                        <Component />
+                    </div>
+                );
+            })}
         </NarrowDiv>
     );
 };
