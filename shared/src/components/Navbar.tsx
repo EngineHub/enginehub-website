@@ -22,6 +22,7 @@ interface NavbarProps {
     discordOverride?: string;
     headertheme?: 'default' | 'inverted' | 'purple';
     headertitle?: string;
+    showSponsor?: boolean;
 }
 
 const Nav = styled.nav<InvertedProps>`
@@ -52,8 +53,10 @@ const FloatedPurpleButton = () => css`
     float: right;
 
     display: none;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
 
-    @media (min-width: 410px) {
+    @media (min-width: 470px) {
         display: block;
     }
 `;
@@ -63,8 +66,10 @@ const FloatedGrayButton = () => css`
     float: right;
 
     display: none;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
 
-    @media (min-width: 410px) {
+    @media (min-width: 470px) {
         display: block;
     }
 `;
@@ -73,6 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({
     headertheme = 'default',
     headertitle = 'EngineHub',
     discordOverride,
+    showSponsor = true,
     children
 }) => {
     return (
@@ -92,6 +98,13 @@ const Navbar: React.FC<NavbarProps> = ({
                                     {headertitle}
                                 </HeaderLink>
                             </div>
+                            {showSponsor && (
+                                <div>
+                                    <ButtonComp href="https://github.com/sponsors/EngineHub">
+                                        Support Us
+                                    </ButtonComp>
+                                </div>
+                            )}
                             <div>
                                 <ButtonComp
                                     href={
@@ -100,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({
                                             : 'https://discord.gg/enginehub'
                                     }
                                 >
-                                    Ask questions on our Discord
+                                    Ask questions on Discord
                                 </ButtonComp>
                             </div>
                             {children}

@@ -98,6 +98,11 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                             Test Builds
                         </MainLink>
                     </FooterLi>
+                    <FooterLi>
+                        <MainLink href="https://paste.enginehub.org/">
+                            Paste Service
+                        </MainLink>
+                    </FooterLi>
                 </FooterUl>
             </LinksBox>
             <SocialBox>
@@ -111,6 +116,11 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                     <FooterLi>
                         <MainLink href="https://github.com/EngineHub">
                             GitHub
+                        </MainLink>
+                    </FooterLi>
+                    <FooterLi>
+                        <MainLink href="https://github.com/sponsors/EngineHub">
+                            Support Us
                         </MainLink>
                     </FooterLi>
                 </FooterUl>
