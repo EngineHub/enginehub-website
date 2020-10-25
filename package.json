@@ -23,5 +23,8 @@
     },
     "scripts": {
         "postinstall": "patch-package"
+    },
+    "resolutions": {
+        "react": "^17.0.1"
     }
 }
