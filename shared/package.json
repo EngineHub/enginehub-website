@@ -7,17 +7,17 @@
     "dependencies": {
         "@emotion/core": "^10.0.35",
         "@emotion/styled": "^10.0.27",
-        "polished": "^3.6.7",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "polished": "^4.0.3",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.11.6",
-        "@types/node": "^14.11.2",
-        "@types/react": "^16.9.50",
+        "@babel/core": "^7.12.3",
+        "@types/node": "^14.14.2",
+        "@types/react": "^16.9.53",
         "@types/react-dom": "^16.9.8",
         "babel-loader": "^8.1.0",
-        "lint-staged": "^10.4.0",
+        "lint-staged": "^10.4.2",
         "tsconfig": "^7.0.0",
         "tsconfig-paths": "^3.9.0",
         "tsconfig-paths-webpack-plugin": "^3.3.0",
