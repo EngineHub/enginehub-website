@@ -184,9 +184,4 @@ function Index() {
     );
 }
 
-// prevent static optimization
-Index.getInitialProps = async ({}) => {
-    return {};
-};
-
 export default Index;

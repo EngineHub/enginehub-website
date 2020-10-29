@@ -2,13 +2,15 @@ import AWS from 'aws-sdk';
 import shortid from 'shortid';
 
 AWS.config.update({
-    region: 'us-east-1'
+    region: 'us-central1'
 });
 
-const s3 = new AWS.S3();
+const s3 = new AWS.S3({
+    endpoint: 'storage.googleapis.com'
+});
 
-const PasteS3Bucket = 'paste-static.enginehub.org';
-const PastePrefix = 'pastes/';
+const PasteS3Bucket = 'enginehub-paste-data';
+const PastePrefix = 'paste/';
 
 // 1 Month
 const EXPIRY_TIME = 60 * 60 * 24 * 31 * 1;
@@ -24,7 +26,7 @@ export async function createPaste(
     await s3
         .putObject({
             Bucket: PasteS3Bucket,
-            Key: PastePrefix + id,
+            Key: `${PastePrefix}${id}`,
             Body: content,
             Expires: new Date(ttl * 1000),
             Metadata: {
@@ -40,7 +42,7 @@ export async function getPaste(pasteId: string): Promise<string> {
     const data = await s3
         .getObject({
             Bucket: PasteS3Bucket,
-            Key: PastePrefix + pasteId
+            Key: `${PastePrefix}${pasteId}`
         })
         .promise();
     if (!data.Body) {
@@ -59,7 +61,7 @@ export async function signedUploadUrl(): Promise<{
     const data = s3.createPresignedPost({
         Bucket: PasteS3Bucket,
         Fields: {
-            Key: PastePrefix + id
+            Key: `${PastePrefix}${id}`
         },
         Conditions: [
             ['content-length-range', 0, 5242880],
