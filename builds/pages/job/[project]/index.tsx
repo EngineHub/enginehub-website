@@ -244,41 +244,47 @@ function Index({
     );
 }
 
-Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project, branch, page } = query;
-    const projectObj = PROJECT_MAP.get(project as string);
-    if (!projectObj) {
+export async function getServerSideProps({ query }: NextPageContext) {
+    async function getProps() {
+        const { project, branch, page } = query;
+        const projectObj = PROJECT_MAP.get(project as string);
+        if (!projectObj) {
+            return {
+                project: undefined,
+                builds: [],
+                branches: [],
+                activeBranch: undefined
+            };
+        }
+
+        const pageNumber = parseInt(page as string) || 0;
+
+        const [builds, branches] = await Promise.all([
+            getBuildPage(
+                projectObj,
+                (branch as string) || projectObj.defaultBranch,
+                pageNumber
+            ),
+            getBranches(projectObj)
+        ]);
+        const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
+        if (hasNextPage) {
+            builds.pop();
+        }
+
         return {
-            project: undefined,
-            builds: [],
-            branches: [],
-            activeBranch: undefined
+            project: projectObj,
+            builds,
+            branches,
+            activeBranch: branch || projectObj.defaultBranch,
+            pageNumber,
+            hasNextPage
         };
     }
 
-    const pageNumber = parseInt(page as string) || 0;
-
-    const [builds, branches] = await Promise.all([
-        getBuildPage(
-            projectObj,
-            (branch as string) || projectObj.defaultBranch,
-            pageNumber
-        ),
-        getBranches(projectObj)
-    ]);
-    const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
-    if (hasNextPage) {
-        builds.pop();
-    }
-
     return {
-        project: projectObj,
-        builds,
-        branches,
-        activeBranch: branch || projectObj.defaultBranch,
-        pageNumber,
-        hasNextPage
+        props: await getProps()
     };
-};
+}
 
 export default Index;

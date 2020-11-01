@@ -1,5 +1,7 @@
 dispatch:
 - url: "paste.enginehub.org/*"
   service: pastebin
+- url: "builds.enginehub.org/*"
+  service: builds
 - url: "*/*"
   service: default
