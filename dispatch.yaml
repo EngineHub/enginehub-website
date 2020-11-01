@@ -1,0 +1,5 @@
+dispatch:
+- url: "paste.enginehub.org/*"
+  service: pastebin
+- url: "*/*"
+  service: default

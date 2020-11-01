@@ -1,52 +1,70 @@
-import AWS from 'aws-sdk';
 import shortid from 'shortid';
+import {
+    CreateReadStreamOptions,
+    CreateWriteStreamOptions,
+    GenerateSignedPostPolicyV4Options,
+    Storage
+} from '@google-cloud/storage';
 
-AWS.config.update({
-    region: 'us-east-1'
-});
+const storage = new Storage();
 
-const s3 = new AWS.S3();
-
-const PasteS3Bucket = 'paste-static.enginehub.org';
-const PastePrefix = 'pastes/';
-
-// 1 Month
-const EXPIRY_TIME = 60 * 60 * 24 * 31 * 1;
+const PasteBucket = 'enginehub-paste-data';
+const PastePrefix = 'paste/';
 
 export async function createPaste(
     content: string,
     from?: string
 ): Promise<string> {
-    const created_at = Math.floor(Date.now() / 1000);
-    const ttl = created_at + EXPIRY_TIME;
     const id = shortid.generate();
 
-    await s3
-        .putObject({
-            Bucket: PasteS3Bucket,
-            Key: PastePrefix + id,
-            Body: content,
-            Expires: new Date(ttl * 1000),
-            Metadata: {
-                from: from || 'unknown'
-            }
-        })
-        .promise();
+    const options: CreateWriteStreamOptions = {
+        gzip: true,
+        public: true,
+        resumable: false,
+        contentType: 'text/plain',
+        metadata: {
+            from: from ?? 'unknown'
+        }
+    };
 
-    return id;
+    return await new Promise((resolve, reject) => {
+        const stream = storage
+            .bucket(PasteBucket)
+            .file(`${PastePrefix}${id}`)
+            .createWriteStream(options);
+
+        stream.on('finish', () => resolve());
+
+        stream.on('error', reject);
+
+        stream.end(content);
+    });
 }
 
 export async function getPaste(pasteId: string): Promise<string> {
-    const data = await s3
-        .getObject({
-            Bucket: PasteS3Bucket,
-            Key: PastePrefix + pasteId
-        })
-        .promise();
-    if (!data.Body) {
+    const options: CreateReadStreamOptions = {
+        decompress: true
+    };
+
+    const data = await new Promise<Buffer>((resolve, reject) => {
+        const stream = storage
+            .bucket(PasteBucket)
+            .file(`${PastePrefix}${pasteId}`)
+            .createReadStream(options);
+
+        const buffers: Buffer[] = [];
+
+        stream.on('data', chunk => {
+            buffers.push(chunk);
+        });
+        stream.on('error', reject);
+        stream.on('end', () => resolve(Buffer.concat(buffers)));
+    });
+
+    if (!data) {
         throw new Error('Failed to find paste');
     }
-    return data.Body.toString('utf-8');
+    return data.toString('utf-8');
 }
 
 export async function signedUploadUrl(): Promise<{
@@ -56,18 +74,15 @@ export async function signedUploadUrl(): Promise<{
 }> {
     const id = shortid.generate();
 
-    const data = s3.createPresignedPost({
-        Bucket: PasteS3Bucket,
-        Fields: {
-            Key: PastePrefix + id
-        },
-        Conditions: [
-            ['content-length-range', 0, 5242880],
-        ],
-        Expires: 60 * 5
-    });
+    const options: GenerateSignedPostPolicyV4Options = {
+        expires: Date.now() + 60 * 5 * 1000, // 5 minutes
+        conditions: [['content-length-range', 0, 5242880]]
+    };
 
-    console.log(JSON.stringify(data.fields));
+    const [data] = await storage
+        .bucket(PasteBucket)
+        .file(`${PastePrefix}${id}`)
+        .generateSignedPostPolicyV4(options);
 
     return {
         pasteId: id,
