@@ -33,12 +33,12 @@ jobs:
         node-version: 12.x
 
     - name: GCloud Setup
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          version: "latest"
-          project_id: "enginehub-web"
-          service_account_key: ${{ secrets.GCLOUD_EH_WEB_SERVICE_ACCOUNT }}
-          export_default_credentials: true
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: "latest"
+        project_id: "enginehub-web"
+        service_account_key: ${{ secrets.GCLOUD_EH_WEB_SERVICE_ACCOUNT }}
+        export_default_credentials: true
     - name: Test and Deploy
       run: |
         yarn
