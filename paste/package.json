@@ -7,7 +7,7 @@
     "dependencies": {
         "@emotion/core": "^10.0.35",
         "@emotion/styled": "^10.0.27",
-        "aws-sdk": "^2.781.0",
+        "@google-cloud/storage": "^5.4.0",
         "axios": "^0.21.0",
         "next": "^10.0.0",
         "next-images": "^1.6.2",

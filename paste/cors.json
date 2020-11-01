@@ -1,0 +1,12 @@
+[
+    {
+        "origin": [
+            "https://paste.enginehub.org/",
+            "https://pastebin-dot-enginehub-web.uc.r.appspot.com/",
+            "http://localhost:3000"
+        ],
+        "responseHeader": ["*"],
+        "method": ["GET", "HEAD", "OPTIONS", "PUT", "DELETE", "POST"],
+        "maxAgeSeconds": 3600
+    }
+]
