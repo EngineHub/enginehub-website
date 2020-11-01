@@ -7,6 +7,7 @@ on:
     paths:
       - 'paste/**'
       - 'shared/**'
+      - '.github/workflows/paste_deployer.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,6 +44,8 @@ jobs:
       run: |
         yarn
         yarn workspace paste type-check
+        yarn workspace paste clean
+        yarn workspace paste build
         yarn workspace paste deploy
       env:
         CI: true

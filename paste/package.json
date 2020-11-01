@@ -37,6 +37,7 @@
     ],
     "scripts": {
         "dev": "next",
+        "clean": "rm -rf .next",
         "build": "next build",
         "deploy": "gcloud app deploy --promote --stop-previous-version",
         "start": "next start -p $PORT",
