@@ -41,9 +41,9 @@ jobs:
     - name: Test and Deploy
       run: |
         yarn
-        yarn workspace paste type-check
-        yarn workspace paste clean
-        yarn workspace paste build
-        yarn workspace paste deploy
+        yarn workspace builds type-check
+        yarn workspace builds clean
+        yarn workspace builds build
+        yarn workspace builds deploy
       env:
         CI: true
