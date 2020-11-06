@@ -1,33 +1,15 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const withImages = require('next-images')
+const withImages = require('next-images');
+const withTM = require('next-transpile-modules')(['shared']);
 
-const prod = process.env.NODE_ENV === 'production';
-const ASSETS_PREFIX = 'https://builds-static.enginehub.org'
-
-module.exports = withImages({
-    target: 'serverless',
-    assetPrefix: prod ? ASSETS_PREFIX : '',
-    webpack: (config, options) => {
-        config.module.rules.push({
-            test: /\.(ts|tsx)$/,
-            loader: require.resolve('babel-loader'),
-            options: {
-                presets: [['react-app', { flow: false, typescript: true }]]
-            }
-        });
-        config.resolve.extensions.push(".ts", ".tsx");
-        if (config.resolve.plugins) {
-            config.resolve.plugins.push(new TsconfigPathsPlugin());
-        } else {
-            config.resolve.plugins = [new TsconfigPathsPlugin()];
+module.exports = withTM(
+    withImages({
+        target: 'serverless',
+        distDir: 'build',
+        env: {
+            GA_TRACKING_ID: 'UA-139849956-5'
+        },
+        experimental: {
+            sprFlushToDisk: false
         }
-        return config;
-    },
-    env: {
-        STATIC_PREFIX: prod ? ASSETS_PREFIX : '',
-        GA_TRACKING_ID: 'UA-139849956-5'
-    },
-    experimental: {
-        granularChunks: true
-    }
-});
+    })
+);

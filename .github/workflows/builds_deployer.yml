@@ -31,13 +31,19 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
+    - name: GCloud Setup
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: "latest"
+        project_id: "enginehub-web"
+        service_account_key: ${{ secrets.GCLOUD_EH_WEB_SERVICE_ACCOUNT }}
+        export_default_credentials: true
     - name: Test and Deploy
       run: |
-        npm install -g yarn serverless
         yarn
-        yarn workspace builds type-check
-        yarn workspace builds deploy
+        yarn workspace paste type-check
+        yarn workspace paste clean
+        yarn workspace paste build
+        yarn workspace paste deploy
       env:
         CI: true
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

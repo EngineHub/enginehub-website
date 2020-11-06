@@ -1,5 +1,5 @@
 runtime: nodejs12
-service: pastebin
+service: builds 
 handlers:
   - url: /_next/static
     static_dir: build/static

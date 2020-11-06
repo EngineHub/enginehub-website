@@ -18,6 +18,7 @@ import moment from 'moment';
 import { MainLinkStyle } from '@shared/components/Link';
 import { InfoLabel } from '@shared/components/text/Label';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 interface ProjectEntry {
     project: Project;
@@ -178,29 +179,36 @@ function Index({ projectEntries }: IndexProps) {
     );
 }
 
-Index.getInitialProps = async () => {
-    const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
-        project: proj,
-        builds: []
-    }));
+export const getStaticProps: GetStaticProps = async () => {
+    async function getProjectEntries() {
+        const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
+            project: proj,
+            builds: []
+        }));
 
-    await Promise.all(
-        projectEntries.map(async proj => {
-            const branches = await getBranches(proj.project);
-            proj.builds = (
-                await Promise.all(
-                    branches.map(
-                        async branch =>
-                            await getLatestBuild(proj.project, branch)
+        await Promise.all(
+            projectEntries.map(async proj => {
+                const branches = await getBranches(proj.project);
+                proj.builds = (
+                    await Promise.all(
+                        branches.map(
+                            async branch =>
+                                await getLatestBuild(proj.project, branch)
+                        )
                     )
-                )
-            ).filter(b => b) as Build[];
-        })
-    );
+                ).filter(b => b) as Build[];
+            })
+        );
+
+        return {
+            projectEntries
+        };
+    }
 
     return {
-        projectEntries
+        props: await getProjectEntries(),
+        revalidate: 60
     };
-};
+}
 
 export default Index;

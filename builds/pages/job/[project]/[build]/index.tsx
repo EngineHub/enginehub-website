@@ -6,7 +6,7 @@ import { InfoBox } from '@shared/components/InfoBox';
 import { NextPageContext } from 'next';
 import SEO from '@shared/components/Seo';
 import { PROJECT_MAP, Project } from '@builds/project';
-import Error from '../../../_error';
+import MissingPage from '../../../404';
 import {
     BreadcrumbWrapper,
     Breadcrumb,
@@ -24,7 +24,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
     faCheckCircle,
-    faExclamationTriangle, faDownload
+    faExclamationTriangle,
+    faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import BranchWarning from '@builds/BranchWarning';
 import moment from 'moment';
@@ -74,7 +75,7 @@ const MiniPaddedIcon = styled(FontAwesomeIcon)`
 
 function Index({ project, build }: BuildPageProps) {
     if (!project || !build) {
-        return <Error statusCode={404} />;
+        return <MissingPage />;
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>
@@ -266,21 +267,27 @@ function Index({ project, build }: BuildPageProps) {
     );
 }
 
-Index.getInitialProps = async ({ query }: NextPageContext) => {
-    const { project, build, branch } = query;
-    const projectObj = PROJECT_MAP.get(project as string);
-    if (!projectObj) {
-        return { project: projectObj };
-    }
-    let buildObj = undefined;
-    try {
-        if (build === 'last-successful') {
-            buildObj = await getLatestBuild(projectObj, branch as string);
-        } else {
-            buildObj = await getBuild(build as string);
+export async function getServerSideProps({ query }: NextPageContext) {
+    async function getProps() {
+        const { project, build, branch } = query;
+        const projectObj = PROJECT_MAP.get(project as string);
+        if (!projectObj) {
+            return { project: projectObj };
         }
-    } catch (e) {}
-    return { project: projectObj, build: buildObj };
-};
+        let buildObj = undefined;
+        try {
+            if (build === 'last-successful') {
+                buildObj = await getLatestBuild(projectObj, branch as string);
+            } else {
+                buildObj = await getBuild(build as string);
+            }
+        } catch (e) {}
+        return { project: projectObj, build: buildObj };
+    }
+
+    return {
+        props: await getProps()
+    };
+}
 
 export default Index;
