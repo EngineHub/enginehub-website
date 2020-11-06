@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from '@paste/Layout';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import PasteComponent from '@paste/views/PasteComponent';
 import ProfileComponent from '@paste/views/ProfileComponent';
 import ReportComponent from '@paste/views/ReportComponent';
@@ -37,7 +37,7 @@ function isValidExtension(extension: string): extension is Extension {
     return EXTENSIONS.has(extension);
 }
 
-export const getServerSideProps: GetServerSideProps<
+export const getStaticProps: GetStaticProps<
     {},
     { id: string }
 > = async ({ params }) => {
@@ -63,8 +63,16 @@ export const getServerSideProps: GetServerSideProps<
     }
 
     return {
-        props: await getProps()
+        props: await getProps(),
+        revalidate: 60
     };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: 'blocking'
+    }
 };
 
 export default Document;

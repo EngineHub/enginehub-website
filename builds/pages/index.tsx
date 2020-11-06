@@ -18,6 +18,7 @@ import moment from 'moment';
 import { MainLinkStyle } from '@shared/components/Link';
 import { InfoLabel } from '@shared/components/text/Label';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 interface ProjectEntry {
     project: Project;
@@ -178,7 +179,7 @@ function Index({ projectEntries }: IndexProps) {
     );
 }
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
     async function getProjectEntries() {
         const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
             project: proj,
@@ -205,7 +206,8 @@ export async function getServerSideProps() {
     }
 
     return {
-        props: await getProjectEntries()
+        props: await getProjectEntries(),
+        revalidate: 60
     };
 }
 

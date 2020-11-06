@@ -5,7 +5,7 @@ import SEO from '@shared/components/Seo';
 import { NextPageContext } from 'next';
 import { PageHeader } from '@shared/components/PageHeader';
 import { PROJECT_MAP, Project } from '@builds/project';
-import Error from '../../_error';
+import MissingPage from '../../404';
 import { Table } from '@shared/components/Table';
 import {
     Build,
@@ -69,7 +69,7 @@ function Index({
     hasNextPage
 }: ProjectPageProps) {
     if (!project) {
-        return <Error statusCode={404} />;
+        return <MissingPage />;
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>

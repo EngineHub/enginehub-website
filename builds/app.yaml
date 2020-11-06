@@ -1,2 +1,9 @@
 runtime: nodejs12
 service: builds 
+handlers:
+  - url: /_next/static
+    static_dir: build/static
+  - url: /static
+    static_dir: public/static
+  - url: /.*
+    script: auto

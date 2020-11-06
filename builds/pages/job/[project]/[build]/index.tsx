@@ -6,7 +6,7 @@ import { InfoBox } from '@shared/components/InfoBox';
 import { NextPageContext } from 'next';
 import SEO from '@shared/components/Seo';
 import { PROJECT_MAP, Project } from '@builds/project';
-import Error from '../../../_error';
+import MissingPage from '../../../404';
 import {
     BreadcrumbWrapper,
     Breadcrumb,
@@ -75,7 +75,7 @@ const MiniPaddedIcon = styled(FontAwesomeIcon)`
 
 function Index({ project, build }: BuildPageProps) {
     if (!project || !build) {
-        return <Error statusCode={404} />;
+        return <MissingPage />;
     }
     return (
         <Layout extraSponsors={project.extraSponsors}>
