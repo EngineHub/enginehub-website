@@ -3,7 +3,7 @@ import Layout from '@builds/Layout';
 import { ContainerPadded } from '@shared/components/Container';
 import styled from '@emotion/styled';
 import { InfoBox } from '@shared/components/InfoBox';
-import { NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import SEO from '@shared/components/Seo';
 import { PROJECT_MAP, Project } from '@builds/project';
 import MissingPage from '../../../404';
@@ -19,7 +19,7 @@ import { Panel, PanelHeading, PanelBody } from '@shared/components/Panel';
 import { LabelledSponsorsArea } from '@shared/components/Sponsors';
 import { Table, BorderedTable } from '@shared/components/Table';
 import { Row, ColumnThird, ColumnTwoThird } from '@shared/components/grid';
-import { getBuild, Build, getLatestBuild } from '@builds/builds';
+import { getBuild, Build } from '@builds/builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
@@ -31,10 +31,11 @@ import BranchWarning from '@builds/BranchWarning';
 import moment from 'moment';
 import { WarningBox } from '@shared/components/WarningBox';
 import Link from 'next/link';
+import { ParsedUrlQuery } from 'querystring';
 
 interface BuildPageProps {
-    build: Build;
-    project: Project;
+    build?: Build;
+    project?: Project;
 }
 
 const MainLink = styled.a(MainLinkStyle);
@@ -267,27 +268,39 @@ function Index({ project, build }: BuildPageProps) {
     );
 }
 
-export async function getServerSideProps({ query }: NextPageContext) {
+interface BuildPageRouteParams extends ParsedUrlQuery {
+    project: string;
+    build: string;
+}
+
+export const getStaticProps: GetStaticProps<
+    BuildPageProps,
+    BuildPageRouteParams
+> = async ({ params }) => {
     async function getProps() {
-        const { project, build, branch } = query;
+        const { project, build } = params!;
         const projectObj = PROJECT_MAP.get(project as string);
         if (!projectObj) {
-            return { project: projectObj };
+            return { project: undefined, build: undefined };
         }
         let buildObj = undefined;
         try {
-            if (build === 'last-successful') {
-                buildObj = await getLatestBuild(projectObj, branch as string);
-            } else {
-                buildObj = await getBuild(build as string);
-            }
+            buildObj = await getBuild(build as string);
         } catch (e) {}
         return { project: projectObj, build: buildObj };
     }
 
     return {
-        props: await getProps()
+        props: await getProps(),
+        revalidate: 3600
     };
-}
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: 'blocking'
+    };
+};
 
 export default Index;
