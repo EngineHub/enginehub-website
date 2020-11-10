@@ -81,24 +81,6 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                             <p>
                                 <GrayOutboundButton
                                     href={
-                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-forge/release/'
-                                    }
-                                >
-                                    WorldEdit Forge JavaDocs
-                                </GrayOutboundButton>
-                            </p>
-                            <p>
-                                <GrayOutboundButton
-                                    href={
-                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-fabric/release/'
-                                    }
-                                >
-                                    WorldEdit Fabric JavaDocs
-                                </GrayOutboundButton>
-                            </p>
-                            <p>
-                                <GrayOutboundButton
-                                    href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-sponge/release/'
                                     }
                                 >
