@@ -11,7 +11,7 @@ import {
 import { SidebarHeading } from '@shared/components/sidebar';
 import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '@main/components/sidebar/SidebarIcon';
-import { BlueOutboundButton } from '@main/components/Button';
+import { BlueOutboundButton, GrayOutboundButton } from '@main/components/Button';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import PlatformBanner from '@main/components/PlatformBanner';
 import WorldEditHeader from '../images/projects/headers/worldedit-header.svg';
@@ -60,6 +60,60 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                                     WorldEdit Docs
                                 </BlueOutboundButton>
                             </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-core/release/'
+                                    }
+                                >
+                                    WorldEdit Core JavaDocs
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-bukkit/release/'
+                                    }
+                                >
+                                    WorldEdit Bukkit JavaDocs
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-forge/release/'
+                                    }
+                                >
+                                    WorldEdit Forge JavaDocs
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-fabric/release/'
+                                    }
+                                >
+                                    WorldEdit Fabric JavaDocs
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-sponge/release/'
+                                    }
+                                >
+                                    WorldEdit Sponge JavaDocs
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-cli/release/'
+                                    }
+                                >
+                                    WorldEdit CLI JavaDocs
+                                </GrayOutboundButton>
+                            </p>
                         </PlatformBanner>
                         <PlatformBanner
                             img={WorldGuardHeader}
@@ -73,6 +127,24 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                                 >
                                     WorldGuard Docs
                                 </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldguard/worldguard-core/release/'
+                                    }
+                                >
+                                    WorldGuard Core JavaDocs
+                                </GrayOutboundButton>
+                            </p>
+                            <p>
+                                <GrayOutboundButton
+                                    href={
+                                        'https://docs.enginehub.org/javadoc/com.sk89q.worldguard/worldguard-bukkit/release/'
+                                    }
+                                >
+                                    WorldGuard Bukkit JavaDocs
+                                </GrayOutboundButton>
                             </p>
                         </PlatformBanner>
                         <PlatformBanner img={CraftBookHeader} alt={'CraftBook'}>
@@ -92,6 +164,15 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
                                     }
                                 >
                                     CraftBook 4 Docs (Sponge)
+                                </BlueOutboundButton>
+                            </p>
+                            <p>
+                                <BlueOutboundButton
+                                    href={
+                                        'https://craftbook.enginehub.org/en/5.0.0/'
+                                    }
+                                >
+                                    CraftBook 5 Docs (Alpha - Spigot)
                                 </BlueOutboundButton>
                             </p>
                         </PlatformBanner>
