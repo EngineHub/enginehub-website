@@ -2,7 +2,7 @@ import React from 'react';
 
 import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Container } from '@shared/components/Container';
 import { Row, ColumnHalf } from '@shared/components/grid';
 import { graphql } from 'gatsby';

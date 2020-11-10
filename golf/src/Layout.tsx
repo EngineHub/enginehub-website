@@ -9,7 +9,7 @@ import Footer from '@shared/components/Footer';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
 import { PurpleButtonStyle } from '@shared/components/Button';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import Link from 'next/link';
 
 class NextLinkProvider extends AnchorLinkProvider {

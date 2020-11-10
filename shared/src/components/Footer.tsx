@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Container } from '@shared/components/Container';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import {
     LinkProviderContext,
     LinkProviderProps
@@ -73,15 +73,16 @@ const FooterLi = styled.li`
     margin-bottom: 0.75rem;
 `;
 
+const MainLink = styled.a`
+    ${MainLinkStyle()}
+`;
+
 interface FooterProps extends ExtraSponsorProps {
     mainSite: boolean;
 }
 
-const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
-    const MainLink = useMemo(
-        () => styled(props.linkProvider.getLinkComponent())(MainLinkStyle),
-        []
-    );
+const FooterImpl: React.FC<FooterProps & LinkProviderProps> = ({ linkProvider, extraSponsors }) => {
+    const Link = linkProvider.getLinkComponent();
 
     return (
         <ContainerFlex>
@@ -89,17 +90,17 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                 <SectionHeader>Resources</SectionHeader>
                 <FooterUl>
                     <FooterLi>
-                        <MainLink href="https://enginehub.org/documentation/">
+                        <MainLink href="https://enginehub.org/documentation/" forwardedAs={Link}>
                             Docs
                         </MainLink>
                     </FooterLi>
                     <FooterLi>
-                        <MainLink href="https://builds.enginehub.org/">
+                        <MainLink href="https://builds.enginehub.org/" forwardedAs={Link}>
                             Test Builds
                         </MainLink>
                     </FooterLi>
                     <FooterLi>
-                        <MainLink href="https://paste.enginehub.org/">
+                        <MainLink href="https://paste.enginehub.org/" forwardedAs={Link}>
                             Paste Service
                         </MainLink>
                     </FooterLi>
@@ -109,17 +110,17 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                 <SectionHeader>Social</SectionHeader>
                 <FooterUl>
                     <FooterLi>
-                        <MainLink href="https://discord.gg/enginehub">
+                        <MainLink href="https://discord.gg/enginehub" forwardedAs={Link}>
                             Discord
                         </MainLink>
                     </FooterLi>
                     <FooterLi>
-                        <MainLink href="https://github.com/EngineHub">
+                        <MainLink href="https://github.com/EngineHub" forwardedAs={Link}>
                             GitHub
                         </MainLink>
                     </FooterLi>
                     <FooterLi>
-                        <MainLink href="https://github.com/sponsors/EngineHub">
+                        <MainLink href="https://github.com/sponsors/EngineHub" forwardedAs={Link}>
                             Support Us
                         </MainLink>
                     </FooterLi>
@@ -127,7 +128,7 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
             </SocialBox>
             <SponsorBox>
                 <SectionHeader>Sponsors</SectionHeader>
-                <RandomSponsor extraSponsors={props.extraSponsors} />
+                <RandomSponsor extraSponsors={extraSponsors} />
             </SponsorBox>
             <SiteBox>
                 <SectionHeader>EngineHub</SectionHeader>
@@ -135,7 +136,7 @@ const FooterImpl: React.FC<FooterProps & LinkProviderProps> = props => {
                     <small>
                         The content and trademarks presented are the property of
                         their respective owners. Please{' '}
-                        <MainLink href="https://matthewmiller.dev/contact/">
+                        <MainLink href="https://matthewmiller.dev/contact/" forwardedAs={Link}>
                             contact Me4502
                         </MainLink>{' '}
                         about website errors.

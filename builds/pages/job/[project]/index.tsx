@@ -12,7 +12,7 @@ import {
     getBuildPage,
     BUILDS_PER_PAGE
 } from '@builds/builds';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { BlueButtonStyle, MainButtonStyle } from '@shared/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

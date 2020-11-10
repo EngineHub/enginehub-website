@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 const CloseIcon = require('../../../shared/src/images/close.png');
 const OpenIcon = require('../../../shared/src/images/open.png');

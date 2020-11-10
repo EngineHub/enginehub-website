@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
 import { MainLinkStyle } from '@shared/components/Link';

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import Navbar from '@shared/components/Navbar';

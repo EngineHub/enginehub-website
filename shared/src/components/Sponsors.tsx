@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
 import {
     LinkProviderContext,
@@ -21,6 +21,10 @@ const NarrowDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+`;
+
+const MainLink = styled.a`
+    ${MainLinkStyle()}
 `;
 
 const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
@@ -64,11 +68,10 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
     };
 
     const EmptySponsor: React.FC = () => {
-        const MainOutboundLink = useMemo(() => styled(Link)(MainLinkStyle), []);
         return (
-            <MainOutboundLink href="https://matthewmiller.dev/contact/">
+            <MainLink href="https://matthewmiller.dev/contact/" forwardedAs={Link}>
                 Interested? Contact Me4502
-            </MainOutboundLink>
+            </MainLink>
         );
     };
 

@@ -10,6 +10,13 @@ module.exports = {
         `gatsby-plugin-typescript`,
         `gatsby-plugin-react-helmet`,
         {
+            resolve: `gatsby-plugin-styled-components`,
+            options: {
+                displayName: false,
+                pure: true
+            }
+        },
+        {
             resolve: `gatsby-plugin-svgr`,
             options: {
                 svgo: false

@@ -1,7 +1,7 @@
 import React from 'react';
 import { OpenChallenge } from '@golf/components/OpenChallenges';
 import { useIsLoggedIn } from '@golf/components/Auth';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import Layout from '@golf/Layout';
 import { Golf } from '@golf/types/database';
 import { PurpleButtonStyle } from '@shared/components/Button';

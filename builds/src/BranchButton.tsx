@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const BranchButtonList = styled.ul`
     margin-top: 0;

@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Container } from '@shared/components/Container';
-import css from '@emotion/css';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
 import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
 import { SECONDARY, BRAND } from '@shared/theme';
@@ -38,8 +37,8 @@ type InvertedProps = {
     headertheme: 'default' | 'inverted' | 'purple';
 };
 
-const HeaderLinkStyle = (props: InvertedProps) => css`
-    color: ${HeaderTextColors.get(props.headertheme)!};
+const HeaderLink = styled.a<InvertedProps>`
+    color: ${props => HeaderTextColors.get(props.headertheme)!};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;
@@ -48,7 +47,7 @@ const HeaderLinkStyle = (props: InvertedProps) => css`
     float: left;
 `;
 
-const FloatedPurpleButton = () => css`
+const FloatedPurpleButton = styled.a`
     ${PurpleButtonStyle()};
     float: right;
 
@@ -61,7 +60,7 @@ const FloatedPurpleButton = () => css`
     }
 `;
 
-const FloatedGrayButton = () => css`
+const FloatedGrayButton = styled.a`
     ${MainButtonStyle()};
     float: right;
 
@@ -85,22 +84,21 @@ const Navbar: React.FC<NavbarProps> = ({
         <LinkProviderContext.Consumer>
             {linkProvider => {
                 const Link = linkProvider.getLinkComponent();
-                const HeaderLink = styled(Link)<InvertedProps>(HeaderLinkStyle);
                 const ButtonComp =
                     headertheme !== 'default'
-                        ? styled(Link)(FloatedPurpleButton)
-                        : styled(Link)(FloatedGrayButton);
+                        ? FloatedPurpleButton
+                        : FloatedGrayButton;
                 return (
                     <Nav headertheme={headertheme}>
                         <Container>
                             <div>
-                                <HeaderLink href="/" headertheme={headertheme}>
+                                <HeaderLink href="/" headertheme={headertheme} forwardedAs={Link}>
                                     {headertitle}
                                 </HeaderLink>
                             </div>
                             {showSponsor && (
                                 <div>
-                                    <ButtonComp href="https://github.com/sponsors/EngineHub">
+                                    <ButtonComp href="https://github.com/sponsors/EngineHub" forwardedAs={Link}>
                                         Support Us
                                     </ButtonComp>
                                 </div>
@@ -112,6 +110,7 @@ const Navbar: React.FC<NavbarProps> = ({
                                             ? discordOverride
                                             : 'https://discord.gg/enginehub'
                                     }
+                                    forwardedAs={Link}
                                 >
                                     Ask questions on Discord
                                 </ButtonComp>

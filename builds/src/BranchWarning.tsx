@@ -1,6 +1,6 @@
 import { WarningBox } from '@shared/components/WarningBox';
 import { MainButtonStyle } from '@shared/components/Button';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import React from 'react';
 import Link from 'next/link';
 

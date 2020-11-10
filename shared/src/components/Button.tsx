@@ -1,4 +1,4 @@
-import css from '@emotion/css';
+import { css } from 'styled-components';
 import { SECONDARY, ColorPalette, BRAND, PRIMARY } from '@shared/theme';
 
 const BaseButtonLayout = () => css`

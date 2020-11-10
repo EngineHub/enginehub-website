@@ -1,4 +1,4 @@
-import css from '@emotion/css';
+import { css } from 'styled-components';
 import { PRIMARY } from '@shared/theme';
 
 export const MainLinkStyle = () => css`

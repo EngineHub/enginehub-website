@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const ColumnThird = styled.div`
     padding-left: 15px;

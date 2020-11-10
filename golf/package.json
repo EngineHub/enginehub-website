@@ -5,12 +5,11 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@emotion/core": "^10.1.1",
-        "@emotion/styled": "^10.0.27",
         "@enginehub/schematicwebviewer": "^1.2.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.32",
         "@fortawesome/free-solid-svg-icons": "^5.15.1",
         "@fortawesome/react-fontawesome": "^0.1.12",
+        "@types/styled-components": "^5.1.4",
         "axios": "^0.21.0",
         "bcrypt": "^5.0.0",
         "got": "^11.8.0",
@@ -23,6 +22,7 @@
         "react-helmet": "^6.1.0",
         "safe-compare": "^1.1.4",
         "shortid": "^2.2.16",
+        "styled-components": "^5.2.1",
         "zlibt": "0.0.5"
     },
     "devDependencies": {
@@ -36,6 +36,7 @@
         "@types/shortid": "^0.0.29",
         "aws-sdk": "^2.788.0",
         "babel-loader": "^8.1.0",
+        "babel-plugin-styled-components": "^1.11.1",
         "cross-env": "^7.0.2",
         "serverless-nextjs-plugin": "^2.5.1",
         "serverless-offline": "^6.8.0",
