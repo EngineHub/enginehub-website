@@ -2,10 +2,9 @@ import React from 'react';
 import Layout from '@builds/Layout';
 import { Container } from '@shared/components/Container';
 import SEO from '@shared/components/Seo';
-import { NextPageContext } from 'next';
+import { GetServerSideProps } from 'next';
 import { PageHeader } from '@shared/components/PageHeader';
 import { PROJECT_MAP, Project } from '@builds/project';
-import MissingPage from '../../404';
 import { Table } from '@shared/components/Table';
 import {
     Build,
@@ -68,9 +67,6 @@ function Index({
     pageNumber,
     hasNextPage
 }: ProjectPageProps) {
-    if (!project) {
-        return <MissingPage />;
-    }
     return (
         <Layout extraSponsors={project.extraSponsors}>
             <SEO
@@ -244,47 +240,40 @@ function Index({
     );
 }
 
-export async function getServerSideProps({ query }: NextPageContext) {
-    async function getProps() {
-        const { project, branch, page } = query;
-        const projectObj = PROJECT_MAP.get(project as string);
-        if (!projectObj) {
-            return {
-                project: undefined,
-                builds: [],
-                branches: [],
-                activeBranch: undefined
-            };
-        }
-
-        const pageNumber = parseInt(page as string) || 0;
-
-        const [builds, branches] = await Promise.all([
-            getBuildPage(
-                projectObj,
-                (branch as string) || projectObj.defaultBranch,
-                pageNumber
-            ),
-            getBranches(projectObj)
-        ]);
-        const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
-        if (hasNextPage) {
-            builds.pop();
-        }
-
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+    const { project, branch, page } = query;
+    const projectObj = PROJECT_MAP.get(project as string);
+    if (!projectObj) {
         return {
+            notFound: true
+        };
+    }
+
+    const pageNumber = parseInt(page as string) || 0;
+
+    const [builds, branches] = await Promise.all([
+        getBuildPage(
+            projectObj,
+            (branch as string) || projectObj.defaultBranch,
+            pageNumber
+        ),
+        getBranches(projectObj)
+    ]);
+    const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
+    if (hasNextPage) {
+        builds.pop();
+    }
+
+    return {
+        props: {
             project: projectObj,
             builds,
             branches,
             activeBranch: branch || projectObj.defaultBranch,
             pageNumber,
             hasNextPage
-        };
-    }
-
-    return {
-        props: await getProps()
+        }
     };
-}
+};
 
 export default Index;

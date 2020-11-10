@@ -1,9 +1,16 @@
 import React from 'react';
-import Document, { Head, Main, NextScript, Html } from 'next/document';
-import Helmet from 'react-helmet';
+import Document, {
+    Head,
+    Main,
+    NextScript,
+    Html,
+    DocumentContext,
+    DocumentProps
+} from 'next/document';
+import Helmet, { HelmetData } from 'react-helmet';
 
-class MyDocument extends Document {
-    static async getInitialProps(ctx) {
+class MyDocument extends Document<DocumentProps & { helmet: HelmetData }> {
+    static async getInitialProps(ctx: DocumentContext) {
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps, helmet: Helmet.renderStatic() };
     }
@@ -69,10 +76,8 @@ class MyDocument extends Document {
 
                     {/* Global Site Tag (gtag.js) - Google Analytics */}
                     <script
-                        async
-                        src={`https://www.googletagmanager.com/gtag/js?id=${
-                            process.env.GA_TRACKING_ID
-                        }`}
+                        async={true}
+                        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
                     />
                     <script
                         dangerouslySetInnerHTML={{

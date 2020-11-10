@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps<
 
     return {
         props: await getProps(),
-        revalidate: 60
+        revalidate: 3600
     };
 };
 

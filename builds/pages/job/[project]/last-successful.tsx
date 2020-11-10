@@ -1,25 +1,25 @@
 import { getLatestBuild } from '@builds/builds';
 import { PROJECT_MAP } from '@builds/project';
-import { NextPageContext } from 'next';
+import { GetServerSideProps } from 'next';
 
 const LastSuccessful = () => <div>placeholder</div>;
 
-export async function getServerSideProps({ query, res }: NextPageContext) {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const { project, branch } = query;
     const projectObj = PROJECT_MAP.get(project as string);
     if (!projectObj) {
-        res?.writeHead(301, {
-            Location: '/404'
-        });
-        res?.end();
-        return;
+        return {
+            notFound: true
+        };
     }
     const buildObj = await getLatestBuild(projectObj, branch as string);
 
-    res?.writeHead(301, {
-        Location: `/job/${project}/${buildObj?.build_id}`
-    });
-    res?.end();
-}
+    return {
+        redirect: {
+            permanent: false,
+            destination: `/job/${project}/${buildObj?.build_id}`
+        }
+    };
+};
 
 export default LastSuccessful;

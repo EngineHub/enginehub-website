@@ -6,7 +6,6 @@ import { InfoBox } from '@shared/components/InfoBox';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import SEO from '@shared/components/Seo';
 import { PROJECT_MAP, Project } from '@builds/project';
-import MissingPage from '../../../404';
 import {
     BreadcrumbWrapper,
     Breadcrumb,
@@ -34,8 +33,8 @@ import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 
 interface BuildPageProps {
-    build?: Build;
-    project?: Project;
+    build: Build;
+    project: Project;
 }
 
 const MainLink = styled.a(MainLinkStyle);
@@ -75,9 +74,6 @@ const MiniPaddedIcon = styled(FontAwesomeIcon)`
 `;
 
 function Index({ project, build }: BuildPageProps) {
-    if (!project || !build) {
-        return <MissingPage />;
-    }
     return (
         <Layout extraSponsors={project.extraSponsors}>
             <SEO
@@ -277,21 +273,26 @@ export const getStaticProps: GetStaticProps<
     BuildPageProps,
     BuildPageRouteParams
 > = async ({ params }) => {
-    async function getProps() {
-        const { project, build } = params!;
-        const projectObj = PROJECT_MAP.get(project as string);
-        if (!projectObj) {
-            return { project: undefined, build: undefined };
-        }
-        let buildObj = undefined;
-        try {
-            buildObj = await getBuild(build as string);
-        } catch (e) {}
-        return { project: projectObj, build: buildObj };
+    const { project, build } = params!;
+    const projectObj = PROJECT_MAP.get(project);
+    if (!projectObj) {
+        return {
+            notFound: true
+        };
+    }
+
+    let buildObj = undefined;
+    try {
+        buildObj = await getBuild(build as string);
+    } catch (e) {}
+    if (!buildObj) {
+        return {
+            notFound: true
+        };
     }
 
     return {
-        props: await getProps(),
+        props: { project: projectObj!, build: buildObj! },
         revalidate: 3600
     };
 };
