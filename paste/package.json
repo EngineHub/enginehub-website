@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@google-cloud/storage": "^5.4.0",
+        "@google-cloud/storage": "^5.5.0",
         "@types/styled-components": "^5.1.4",
         "axios": "^0.21.0",
         "next": "^10.0.1",
@@ -23,7 +23,7 @@
         "@types/react": "^16.9.56",
         "@types/react-dom": "^16.9.9",
         "@types/shortid": "^0.0.29",
-        "babel-loader": "^8.1.0",
+        "babel-loader": "^8.2.1",
         "babel-plugin-styled-components": "^1.11.1",
         "babel-preset-react-app": "^10.0.0",
         "cross-env": "^7.0.2",
