@@ -37,33 +37,31 @@ function isValidExtension(extension: string): extension is Extension {
     return EXTENSIONS.has(extension);
 }
 
-export const getStaticProps: GetStaticProps<
-    {},
-    { id: string }
-> = async ({ params }) => {
-    async function getProps() {
-        const { id } = params!;
-        let pasteId = `${id}`;
-        let extension: Extension = '';
-        const dotIndex = id!.lastIndexOf('.');
-        if (dotIndex !== -1) {
-            const extracted = pasteId.substring(dotIndex + 1);
-            pasteId = pasteId.substring(0, dotIndex);
-            if (isValidExtension(extracted)) {
-                extension = extracted;
-            }
+export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
+    params
+}) => {
+    const { id } = params!;
+    let pasteId = `${id}`;
+    let extension: Extension = '';
+    const dotIndex = id!.lastIndexOf('.');
+    if (dotIndex !== -1) {
+        const extracted = pasteId.substring(dotIndex + 1);
+        pasteId = pasteId.substring(0, dotIndex);
+        if (isValidExtension(extracted)) {
+            extension = extracted;
         }
+    }
 
-        const pasteContents = await loadPaste(pasteId);
+    const pasteContents = await loadPaste(pasteId);
 
+    if (!pasteContents) {
         return {
-            paste: pasteContents ?? 'Unknown Paste ID!',
-            extension
+            notFound: true
         };
     }
 
     return {
-        props: await getProps(),
+        props: { paste: pasteContents, extension },
         revalidate: 3600
     };
 };
@@ -72,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return {
         paths: [],
         fallback: 'blocking'
-    }
+    };
 };
 
 export default Document;
