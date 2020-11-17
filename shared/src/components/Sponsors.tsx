@@ -1,10 +1,7 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
-import {
-    LinkProviderContext,
-    LinkProviderProps
-} from '@shared/utils/LinkProvider';
+import { LinkProviderContext } from '@shared/utils/LinkProvider';
 
 const sponsors: string[] = ['apexhosting'];
 
@@ -27,11 +24,8 @@ const MainLink = styled.a`
     ${MainLinkStyle()}
 `;
 
-const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
-    extraSponsors = [],
-    linkProvider
-}) => {
-    const Link = useMemo(() => linkProvider.getLinkComponent(), []);
+const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
+    const Link = useContext(LinkProviderContext);
 
     const NetlifySponsor: React.FC = () => (
         <Link href="https://www.netlify.com">
@@ -69,7 +63,7 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
 
     const EmptySponsor: React.FC = () => {
         return (
-            <MainLink href="https://matthewmiller.dev/contact/" forwardedAs={Link}>
+            <MainLink href="https://matthewmiller.dev/contact/" as={Link}>
                 Interested? Contact Me4502
             </MainLink>
         );
@@ -116,12 +110,6 @@ const SponsorImpl: React.FC<ExtraSponsorProps & LinkProviderProps> = ({
         </NarrowDiv>
     );
 };
-
-const RandomSponsor: React.FC<ExtraSponsorProps> = props => (
-    <LinkProviderContext.Consumer>
-        {linkProvider => <SponsorImpl linkProvider={linkProvider} {...props} />}
-    </LinkProviderContext.Consumer>
-);
 
 const HorizontalSponsorArea = styled.div`
     display: flex;

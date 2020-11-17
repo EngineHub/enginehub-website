@@ -91,7 +91,7 @@ export const ChallengeEntry: React.FC<ChallengeEntryProps> = ({
         <ChallengeEntryContainer {...rest}>
             <Schematic schematic={schematic} size={DEFAULT_SIZE} />
             <InfoContainer>
-                <Link href="/golf/[golfId]" as={`/golf/${golfId}`}>
+                <Link href={`/golf/${golfId}`}>
                     <HeaderLink>
                         <h3>{title}</h3>
                     </HeaderLink>

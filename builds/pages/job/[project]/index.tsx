@@ -31,7 +31,6 @@ import {
 import moment from 'moment';
 import Pagination from '@shared/components/Pagination';
 import Link from 'next/link';
-import { LinkProviderContext } from '@shared/utils/LinkProvider';
 
 interface ProjectPageProps {
     activeBranch: string;
@@ -78,8 +77,7 @@ function Index({
                     {branches.map(branch => (
                         <BranchButtonItem key={branch}>
                             <Link
-                                href={`/job/[project]?branch=${branch}`}
-                                as={`/job/${project.id}?branch=${branch}`}
+                                href={`/job/${project.id}?branch=${branch}`}
                                 passHref={true}
                             >
                                 <BranchButton
@@ -108,8 +106,7 @@ function Index({
                         />
                     )}
                 <Link
-                    href={`/job/[project]/[build]?branch=${activeBranch}`}
-                    as={`/job/${project.id}/last-successful?branch=${activeBranch}`}
+                    href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
                     passHref={true}
                 >
                     <MainButton
@@ -149,8 +146,7 @@ function Index({
                                 </TdNoWrap>
                                 <TdNoWrap>
                                     <Link
-                                        href="/job/[project]/[build]"
-                                        as={`/job/${project.id}/${build.build_id}`}
+                                        href={`/job/${project.id}/${build.build_id}`}
                                         passHref={true}
                                     >
                                         <MainLink>
@@ -209,8 +205,7 @@ function Index({
                                 </TdNoWrap>
                                 <TdNoWrap>
                                     <Link
-                                        href="/job/[project]/[build]"
-                                        as={`/job/${project.id}/${build.build_id}`}
+                                        href={`/job/${project.id}/${build.build_id}`}
                                         passHref={true}
                                     >
                                         <BlueButton>
@@ -224,17 +219,11 @@ function Index({
                         ))}
                     </tbody>
                 </Table>
-                <LinkProviderContext.Consumer>
-                    {linkProvider => (
-                        <Pagination
-                            currentPage={pageNumber}
-                            hasNextPage={hasNextPage}
-                            pageMask={`/job/[project]?branch=${activeBranch}&page=:page`}
-                            pageMaskAs={`/job/${project.id}?branch=${activeBranch}&page=:page`}
-                            linkProvider={linkProvider}
-                        />
-                    )}
-                </LinkProviderContext.Consumer>
+                <Pagination
+                    currentPage={pageNumber}
+                    hasNextPage={hasNextPage}
+                    pageMask={`/job/${project.id}?branch=${activeBranch}&page=:page`}
+                />
             </Container>
         </Layout>
     );

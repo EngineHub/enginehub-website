@@ -24,7 +24,7 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderImg = styled(Img)`
+const HeaderImg = styled(Img)<{ fluid: FluidObject }>`
     width: 100%;
     height: 100%;
 `;

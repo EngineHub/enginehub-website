@@ -1,11 +1,10 @@
-import React, { FunctionComponent, useEffect, useMemo } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@shared/components/Navbar';
 import './layout.css';
 import Footer from '@shared/components/Footer';
 import { Landing } from './Landing';
 import {
-    LinkProvider,
     WrapperLinkProps,
     LinkProviderContext
 } from '@shared/utils/LinkProvider';
@@ -18,30 +17,30 @@ interface LayoutProps {
     landing?: boolean;
 }
 
-class GatsbyLinkProvider implements LinkProvider {
-    getLinkComponent(): FunctionComponent<WrapperLinkProps> {
-        return ({ href, children, ...props }) => {
-            if (
-                !href.startsWith('https://enginehub.org/') &&
-                (!href.startsWith('/') || href.startsWith('//'))
-            ) {
-                return (
-                    <OutboundLink href={href} {...props}>
-                        {children}
-                    </OutboundLink>
-                );
-            }
-            if (href.startsWith('https://enginehub.org/')) {
-                href = href.substring('https://enginehub.org'.length);
-            }
-            return (
-                <Link to={href} {...props}>
-                    {children}
-                </Link>
-            );
-        };
+const GatsbyLink: React.FC<WrapperLinkProps> = ({
+    href,
+    children,
+    ...props
+}) => {
+    if (
+        !href.startsWith('https://enginehub.org/') &&
+        (!href.startsWith('/') || href.startsWith('//'))
+    ) {
+        return (
+            <OutboundLink href={href} {...props}>
+                {children}
+            </OutboundLink>
+        );
     }
-}
+    if (href.startsWith('https://enginehub.org/')) {
+        href = href.substring('https://enginehub.org'.length);
+    }
+    return (
+        <Link to={href} {...props}>
+            {children}
+        </Link>
+    );
+};
 
 const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
     children,
@@ -54,9 +53,8 @@ const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
             require('smooth-scroll')('a[href*="#"]');
         }
     }, []);
-    const linkProvider = useMemo(() => new GatsbyLinkProvider(), []);
     return (
-        <LinkProviderContext.Provider value={linkProvider}>
+        <LinkProviderContext.Provider value={GatsbyLink}>
             <Helmet
                 link={[
                     {

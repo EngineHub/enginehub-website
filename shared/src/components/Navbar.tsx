@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Container } from '@shared/components/Container';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
@@ -80,47 +80,43 @@ const Navbar: React.FC<NavbarProps> = ({
     showSponsor = true,
     children
 }) => {
+    const Link = useContext(LinkProviderContext);
+
+    const ButtonComp =
+        headertheme !== 'default' ? FloatedPurpleButton : FloatedGrayButton;
     return (
-        <LinkProviderContext.Consumer>
-            {linkProvider => {
-                const Link = linkProvider.getLinkComponent();
-                const ButtonComp =
-                    headertheme !== 'default'
-                        ? FloatedPurpleButton
-                        : FloatedGrayButton;
-                return (
-                    <Nav headertheme={headertheme}>
-                        <Container>
-                            <div>
-                                <HeaderLink href="/" headertheme={headertheme} forwardedAs={Link}>
-                                    {headertitle}
-                                </HeaderLink>
-                            </div>
-                            {showSponsor && (
-                                <div>
-                                    <ButtonComp href="https://github.com/sponsors/EngineHub" forwardedAs={Link}>
-                                        Support Us
-                                    </ButtonComp>
-                                </div>
-                            )}
-                            <div>
-                                <ButtonComp
-                                    href={
-                                        discordOverride
-                                            ? discordOverride
-                                            : 'https://discord.gg/enginehub'
-                                    }
-                                    forwardedAs={Link}
-                                >
-                                    Ask questions on Discord
-                                </ButtonComp>
-                            </div>
-                            {children}
-                        </Container>
-                    </Nav>
-                );
-            }}
-        </LinkProviderContext.Consumer>
+        <Nav headertheme={headertheme}>
+            <Container>
+                <div>
+                    <HeaderLink href="/" headertheme={headertheme} as={Link}>
+                        {headertitle}
+                    </HeaderLink>
+                </div>
+                {showSponsor && (
+                    <div>
+                        <ButtonComp
+                            href="https://github.com/sponsors/EngineHub"
+                            as={Link}
+                        >
+                            Support Us
+                        </ButtonComp>
+                    </div>
+                )}
+                <div>
+                    <ButtonComp
+                        href={
+                            discordOverride
+                                ? discordOverride
+                                : 'https://discord.gg/enginehub'
+                        }
+                        as={Link}
+                    >
+                        Ask questions on Discord
+                    </ButtonComp>
+                </div>
+                {children}
+            </Container>
+        </Nav>
     );
 };
 

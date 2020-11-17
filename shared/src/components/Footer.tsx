@@ -1,10 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { useContext } from 'react';
 import { Container } from '@shared/components/Container';
 import styled from 'styled-components';
-import {
-    LinkProviderContext,
-    LinkProviderProps
-} from '@shared/utils/LinkProvider';
+import { LinkProviderContext } from '@shared/utils/LinkProvider';
 import { MainLinkStyle } from '@shared/components/Link';
 import RandomSponsor, { ExtraSponsorProps } from './Sponsors';
 
@@ -81,80 +78,91 @@ interface FooterProps extends ExtraSponsorProps {
     mainSite: boolean;
 }
 
-const FooterImpl: React.FC<FooterProps & LinkProviderProps> = ({ linkProvider, extraSponsors }) => {
-    const Link = linkProvider.getLinkComponent();
+const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
+    const Link = useContext(LinkProviderContext);
 
-    return (
-        <ContainerFlex>
-            <LinksBox>
-                <SectionHeader>Resources</SectionHeader>
-                <FooterUl>
-                    <FooterLi>
-                        <MainLink href="https://enginehub.org/documentation/" forwardedAs={Link}>
-                            Docs
-                        </MainLink>
-                    </FooterLi>
-                    <FooterLi>
-                        <MainLink href="https://builds.enginehub.org/" forwardedAs={Link}>
-                            Test Builds
-                        </MainLink>
-                    </FooterLi>
-                    <FooterLi>
-                        <MainLink href="https://paste.enginehub.org/" forwardedAs={Link}>
-                            Paste Service
-                        </MainLink>
-                    </FooterLi>
-                </FooterUl>
-            </LinksBox>
-            <SocialBox>
-                <SectionHeader>Social</SectionHeader>
-                <FooterUl>
-                    <FooterLi>
-                        <MainLink href="https://discord.gg/enginehub" forwardedAs={Link}>
-                            Discord
-                        </MainLink>
-                    </FooterLi>
-                    <FooterLi>
-                        <MainLink href="https://github.com/EngineHub" forwardedAs={Link}>
-                            GitHub
-                        </MainLink>
-                    </FooterLi>
-                    <FooterLi>
-                        <MainLink href="https://github.com/sponsors/EngineHub" forwardedAs={Link}>
-                            Support Us
-                        </MainLink>
-                    </FooterLi>
-                </FooterUl>
-            </SocialBox>
-            <SponsorBox>
-                <SectionHeader>Sponsors</SectionHeader>
-                <RandomSponsor extraSponsors={extraSponsors} />
-            </SponsorBox>
-            <SiteBox>
-                <SectionHeader>EngineHub</SectionHeader>
-                <p>
-                    <small>
-                        The content and trademarks presented are the property of
-                        their respective owners. Please{' '}
-                        <MainLink href="https://matthewmiller.dev/contact/" forwardedAs={Link}>
-                            contact Me4502
-                        </MainLink>{' '}
-                        about website errors.
-                    </small>
-                </p>
-            </SiteBox>
-        </ContainerFlex>
-    );
-};
-
-const Footer: FunctionComponent<FooterProps> = props => {
     return (
         <FooterWrapper>
-            <LinkProviderContext.Consumer>
-                {linkProvider => (
-                    <FooterImpl {...props} linkProvider={linkProvider} />
-                )}
-            </LinkProviderContext.Consumer>
+            <ContainerFlex>
+                <LinksBox>
+                    <SectionHeader>Resources</SectionHeader>
+                    <FooterUl>
+                        <FooterLi>
+                            <MainLink
+                                href="https://enginehub.org/documentation/"
+                                as={Link}
+                            >
+                                Docs
+                            </MainLink>
+                        </FooterLi>
+                        <FooterLi>
+                            <MainLink
+                                href="https://builds.enginehub.org/"
+                                as={Link}
+                            >
+                                Test Builds
+                            </MainLink>
+                        </FooterLi>
+                        <FooterLi>
+                            <MainLink
+                                href="https://paste.enginehub.org/"
+                                as={Link}
+                            >
+                                Paste Service
+                            </MainLink>
+                        </FooterLi>
+                    </FooterUl>
+                </LinksBox>
+                <SocialBox>
+                    <SectionHeader>Social</SectionHeader>
+                    <FooterUl>
+                        <FooterLi>
+                            <MainLink
+                                href="https://discord.gg/enginehub"
+                                as={Link}
+                            >
+                                Discord
+                            </MainLink>
+                        </FooterLi>
+                        <FooterLi>
+                            <MainLink
+                                href="https://github.com/EngineHub"
+                                as={Link}
+                            >
+                                GitHub
+                            </MainLink>
+                        </FooterLi>
+                        <FooterLi>
+                            <MainLink
+                                href="https://github.com/sponsors/EngineHub"
+                                as={Link}
+                            >
+                                Support Us
+                            </MainLink>
+                        </FooterLi>
+                    </FooterUl>
+                </SocialBox>
+                <SponsorBox>
+                    <SectionHeader>Sponsors</SectionHeader>
+                    <RandomSponsor extraSponsors={extraSponsors} />
+                </SponsorBox>
+                <SiteBox>
+                    <SectionHeader>EngineHub</SectionHeader>
+                    <p>
+                        <small>
+                            The content and trademarks presented are the
+                            property of their respective owners. Please{' '}
+                            <MainLink
+                                href="https://matthewmiller.dev/contact/"
+                                as={Link}
+                            >
+                                contact Me4502
+                            </MainLink>{' '}
+                            about website errors.
+                        </small>
+                    </p>
+                </SiteBox>
+            </ContainerFlex>
         </FooterWrapper>
     );
 };
