@@ -13,11 +13,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         };
     }
     const buildObj = await getLatestBuild(projectObj, branch as string);
+    if (!buildObj) {
+        return {
+            notFound: true
+        };
+    }
 
     return {
         redirect: {
             permanent: false,
-            destination: `/job/${project}/${buildObj?.build_id}`
+            destination: `/job/${project}/${buildObj.build_id}`
         }
     };
 };

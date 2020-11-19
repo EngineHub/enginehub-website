@@ -33,7 +33,7 @@ export async function createPaste(
             .file(`${PastePrefix}${id}`)
             .createWriteStream(options);
 
-        stream.on('finish', () => resolve());
+        stream.on('finish', () => resolve(id));
 
         stream.on('error', reject);
 
