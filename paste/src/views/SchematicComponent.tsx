@@ -7,7 +7,7 @@ const Container = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
-    justify-content: center;   
+    justify-content: center;
     background: grey;
 
     canvas {
@@ -17,35 +17,35 @@ const Container = styled.div`
 `;
 
 const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
-    const size = 0;
-
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] = useState<(size: number) => void>();
     const [destroy, setDestroy] = useState<() => void>(() => {});
 
-    const onResize = (_event: UIEvent) => {
-        if (resize) {
-            resize(Math.min(window.innerWidth, window.innerHeight - 44.5));
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', onResize);
-        return () => window.removeEventListener('resize', onResize);
-    }, []);
-
     useEffect(() => {
         if (resize) {
             resize(Math.min(window.innerWidth, window.innerHeight - 44.5));
+
+            const onResize = (_event: UIEvent) => {
+                if (resize) {
+                    resize(
+                        Math.min(window.innerWidth, window.innerHeight - 44.5)
+                    );
+                }
+            };
+
+            window.addEventListener('resize', onResize);
+            return () => window.removeEventListener('resize', onResize);
         }
+        return;
     }, [resize]);
 
     useEffect(() => {
         if (paste && ref.current) {
             renderSchematic(ref.current, paste, {
-                size,
+                size: 250,
                 texturePrefix: 'https://worldedit.golf/static',
-                renderBars: false
+                renderBars: false,
+                renderArrow: false
             }).then(({ destroy: d, resize: r }) => {
                 setResize(() => r);
                 setDestroy(() => d);
