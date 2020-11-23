@@ -5,6 +5,7 @@ import PasteComponent from '@paste/views/PasteComponent';
 import ProfileComponent from '@paste/views/ProfileComponent';
 import ReportComponent from '@paste/views/ReportComponent';
 import { loadPaste } from '@paste/loadPaste';
+import SchematicComponent from '@paste/views/SchematicComponent';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -19,10 +20,11 @@ const EXTENSIONS: Map<string, React.FC<PasteProps>> = new Map([
     ['paste', PasteComponent],
     ['report', ReportComponent],
     ['profile', ProfileComponent],
-    ['log', PasteComponent]
+    ['log', PasteComponent],
+    ['schem', SchematicComponent]
 ]);
 
-type Extension = '' | 'report' | 'paste' | 'profile';
+type Extension = '' | 'report' | 'paste' | 'profile' | 'log' | 'schem';
 
 function Document({ paste, extension }: DocumentProps) {
     const Renderer = EXTENSIONS.get(extension)!;
