@@ -120,10 +120,13 @@ const HorizontalSponsorArea = styled.div`
     }
 `;
 
-export const LabelledSponsorsArea: React.FC<ExtraSponsorProps> = props => (
-    <HorizontalSponsorArea>
+export const LabelledSponsorsArea: React.FC<ExtraSponsorProps> = ({
+    extraSponsors,
+    ...rest
+}) => (
+    <HorizontalSponsorArea {...rest}>
         <small>Sponsored by</small>
-        <RandomSponsor extraSponsors={props.extraSponsors} />
+        <RandomSponsor extraSponsors={extraSponsors} />
     </HorizontalSponsorArea>
 );
 

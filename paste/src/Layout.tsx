@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import { Header } from './Header';
-import { LabelledSponsorsArea } from '@shared/components/Sponsors';
 
 interface LayoutProps {
     showHelp?: boolean;
@@ -20,12 +19,6 @@ const Main = styled.main`
     display: flex;
 `;
 
-const Footer = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 70px;
-`;
-
 export const Layout: FC<LayoutProps> = ({
     children,
     showHelp = true,
@@ -34,8 +27,5 @@ export const Layout: FC<LayoutProps> = ({
     <MainContainer>
         <Header showHelp={showHelp} saveCallback={saveCallback} />
         <Main>{children}</Main>
-        <Footer>
-            <LabelledSponsorsArea />
-        </Footer>
     </MainContainer>
 );
