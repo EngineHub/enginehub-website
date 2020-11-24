@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import { Header } from './Header';
-import SEO from '@shared/components/Seo';
+import { LabelledSponsorsArea } from '@shared/components/Sponsors';
 
 interface LayoutProps {
     showHelp?: boolean;
@@ -20,15 +20,22 @@ const Main = styled.main`
     display: flex;
 `;
 
-export const Layout: FC<LayoutProps> = ({ children, showHelp = true, saveCallback }) => (
-    <>
-        <SEO
-            title="Pastebin at EngineHub"
-            description="EngineHub Pastebin Service. Store logs, profiles, and reports with ease."
-        />
-        <MainContainer>
-            <Header showHelp={showHelp} saveCallback={saveCallback} />
-            <Main>{children}</Main>
-        </MainContainer>
-    </>
+const Footer = styled.div`
+    display: flex;
+    justify-content: center;
+    height: 70px;
+`;
+
+export const Layout: FC<LayoutProps> = ({
+    children,
+    showHelp = true,
+    saveCallback
+}) => (
+    <MainContainer>
+        <Header showHelp={showHelp} saveCallback={saveCallback} />
+        <Main>{children}</Main>
+        <Footer>
+            <LabelledSponsorsArea />
+        </Footer>
+    </MainContainer>
 );

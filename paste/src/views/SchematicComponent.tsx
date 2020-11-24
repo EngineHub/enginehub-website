@@ -16,6 +16,8 @@ const Container = styled.div`
     }
 `;
 
+const PAGE_HEIGHT_MOD = 44.5 + 70; // navbar + footer;
+
 const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] = useState<(size: number) => void>();
@@ -23,12 +25,12 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
 
     useEffect(() => {
         if (resize) {
-            resize(Math.min(window.innerWidth, window.innerHeight - 44.5));
+            resize(Math.min(window.innerWidth, window.innerHeight - PAGE_HEIGHT_MOD));
 
             const onResize = (_event: UIEvent) => {
                 if (resize) {
                     resize(
-                        Math.min(window.innerWidth, window.innerHeight - 44.5)
+                        Math.min(window.innerWidth, window.innerHeight - PAGE_HEIGHT_MOD)
                     );
                 }
             };

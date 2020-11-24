@@ -6,6 +6,7 @@ import ProfileComponent from '@paste/views/ProfileComponent';
 import ReportComponent from '@paste/views/ReportComponent';
 import { loadPaste } from '@paste/loadPaste';
 import SchematicComponent from '@paste/views/SchematicComponent';
+import SEO from '@shared/components/Seo';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -30,6 +31,10 @@ function Document({ paste, extension }: DocumentProps) {
     const Renderer = EXTENSIONS.get(extension)!;
     return (
         <Layout showHelp={false}>
+            <SEO
+                title="Paste Viewer | EngineHub Pastebin"
+                description={paste.substring(0, 150)}
+            />
             <Renderer paste={paste} />
         </Layout>
     );
