@@ -75,6 +75,7 @@ const FloatedSponsor = styled(LabelledSponsorsArea)`
     flex-grow: 0;
     flex-shrink: 0;
     display: none;
+    justify-content: center;
 
     @media (min-width: 768px) {
         flex: 33%;

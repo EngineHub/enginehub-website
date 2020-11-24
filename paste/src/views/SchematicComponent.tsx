@@ -16,7 +16,7 @@ const Container = styled.div`
     }
 `;
 
-const PAGE_HEIGHT_MOD = 44.5 + 70; // navbar + footer;
+const PAGE_HEIGHT_MOD = 57; // navbar height
 
 const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
     const ref = useRef<HTMLCanvasElement>(null);
