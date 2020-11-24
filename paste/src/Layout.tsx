@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import { Header } from './Header';
-import SEO from '@shared/components/Seo';
 
 interface LayoutProps {
     showHelp?: boolean;
@@ -20,15 +19,13 @@ const Main = styled.main`
     display: flex;
 `;
 
-export const Layout: FC<LayoutProps> = ({ children, showHelp = true, saveCallback }) => (
-    <>
-        <SEO
-            title="Pastebin at EngineHub"
-            description="EngineHub Pastebin Service. Store logs, profiles, and reports with ease."
-        />
-        <MainContainer>
-            <Header showHelp={showHelp} saveCallback={saveCallback} />
-            <Main>{children}</Main>
-        </MainContainer>
-    </>
+export const Layout: FC<LayoutProps> = ({
+    children,
+    showHelp = true,
+    saveCallback
+}) => (
+    <MainContainer>
+        <Header showHelp={showHelp} saveCallback={saveCallback} />
+        <Main>{children}</Main>
+    </MainContainer>
 );

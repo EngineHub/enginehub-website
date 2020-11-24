@@ -4,6 +4,7 @@ import { Layout } from '@paste/Layout';
 import Loader from '@shared/components/Loader';
 import Router from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
+import SEO from '@shared/components/Seo';
 
 const Row = styled.div`
     display: flex;
@@ -159,6 +160,10 @@ function Index() {
 
     return (
         <Layout saveCallback={save}>
+            <SEO
+                title="Create a Paste | EngineHub Pastebin"
+                description="EngineHub Pastebin Service. Store logs, profiles, and reports with ease."
+            />
             {dragging ? (
                 <Row>
                     <DropPendingPasteArea {...dndProps} />
