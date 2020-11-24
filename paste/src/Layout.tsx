@@ -17,7 +17,7 @@ const Main = styled.main`
     width: 100%;
     flex-grow: 1;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
 `;
 
 export const Layout: FC<LayoutProps> = ({
