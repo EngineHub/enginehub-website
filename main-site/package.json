@@ -7,7 +7,7 @@
     "dependencies": {
         "@svgr/webpack": "^5.5.0",
         "@types/styled-components": "^5.1.4",
-        "gatsby": "^2.27.0",
+        "gatsby": "^2.27.2",
         "gatsby-image": "^2.6.0",
         "gatsby-plugin-google-analytics": "^2.6.0",
         "gatsby-plugin-styled-components": "^3.5.0",
@@ -32,7 +32,7 @@
         "gatsby-plugin-typescript": "^2.7.0",
         "gatsby-source-filesystem": "^2.6.1",
         "gatsby-transformer-sharp": "^2.7.0",
-        "lint-staged": "^10.5.1",
+        "lint-staged": "^10.5.2",
         "prettier": "^2.2.0",
         "tsconfig": "^7.0.0",
         "tsconfig-paths": "^3.9.0",

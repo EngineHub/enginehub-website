@@ -33,7 +33,11 @@ function Document({ paste, extension }: DocumentProps) {
         <Layout showHelp={false}>
             <SEO
                 title="Paste Viewer | EngineHub Pastebin"
-                description={paste.substring(0, 150)}
+                description={
+                    extension === 'schem'
+                        ? 'View and download this schematic with EngineHub'
+                        : paste.substring(0, 150)
+                }
             />
             <Renderer paste={paste} />
         </Layout>
