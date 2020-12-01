@@ -17,8 +17,7 @@ const INVALID_REPORT = {
 
 const ReportWrapper = styled.div`
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto auto;
     white-space: nowrap;
 `;
 
