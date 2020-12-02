@@ -1,5 +1,5 @@
 const withImages = require('next-images');
-const withTM = require('next-transpile-modules')(['shared']);
+const withTM = require('next-transpile-modules')(['shared', '../shared']) ;
 
 module.exports = withTM(
     withImages({
