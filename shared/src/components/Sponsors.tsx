@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
 
-const sponsors: string[] = ['apexhosting'];
+const sponsors: string[] = ['apexhosting', 'gh-sponsors'];
 
 export interface ExtraSponsorProps {
     extraSponsors?: string[];
@@ -61,6 +61,21 @@ const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
         );
     };
 
+    const GitHubSponsorsSponsor: React.FC = () => {
+        return (
+            <MainLink href="https://github.com/sponsors/EngineHub" as={Link}>
+                <iframe
+                    src="https://github.com/sponsors/EngineHub/button"
+                    title="Sponsor EngineHub"
+                    height="35"
+                    width="116"
+                    style={{ border: 0, marginBottom: 0 }}
+                />
+                <p>Sponsored by users like you!</p>
+            </MainLink>
+        );
+    };
+
     const EmptySponsor: React.FC = () => {
         return (
             <MainLink href="https://matthewmiller.dev/contact/" as={Link}>
@@ -73,7 +88,8 @@ const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
         ['empty', EmptySponsor],
         ['netlify', NetlifySponsor],
         ['beastnode', BeastNodeSponsor],
-        ['apexhosting', ApexHostingSponsor]
+        ['apexhosting', ApexHostingSponsor],
+        ['gh-sponsors', GitHubSponsorsSponsor]
     ]);
 
     const availableSponsors = sponsors.concat(extraSponsors);
