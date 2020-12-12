@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
 
@@ -116,7 +116,7 @@ const ProfileNode: React.FC<ProfileNodeProps> = ({ entry, allTime }) => {
                 </Bar>
             </ProfileNodeText>
             {entry.children.length > 0 && (
-                <div style={{ display: open ? 'block' : 'none'}}>
+                <div style={{ display: open ? 'block' : 'none' }}>
                     {entry.children.map((child, i) => (
                         <ProfileNode key={i} entry={child} allTime={allTime} />
                     ))}
@@ -176,13 +176,13 @@ function generateProfileEntries(paste: string): RootEntry {
         };
         currentEntry.children.push(newEntry);
         currentEntry = newEntry;
-        currentDepth ++;
+        currentDepth++;
     }
     return rootEntry;
 }
 
 const ProfileComponent: React.FC<PasteProps> = ({ paste }) => {
-    const rootEntry = generateProfileEntries(paste);
+    const rootEntry = useMemo(() => generateProfileEntries(paste), [paste]);
     return (
         <>
             {rootEntry.children.map((entry, i) => (

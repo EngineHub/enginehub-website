@@ -3,8 +3,11 @@ import { createPaste } from '@paste/pasteStore';
 
 const MAX_CONTENT_LENGTH = 1024 * 1024; // 1MB (API Gateway Limit, for larger use the signed paste)
 
-export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-    let { content, from } = req.body;
+export default async function handle(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    let { content, ...metadata } = req.body;
 
     if (!content) {
         res.writeHead(400, 'Field "content" must be provided.');
@@ -29,8 +32,12 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     }
 
     try {
-        const pasteResponse = await createPaste(content, from);
-        res.json({ url: `https://paste.enginehub.org/${pasteResponse}` });
+        const pasteResponse = await createPaste(content, metadata);
+        res.json({
+            url: `https://paste.enginehub.org/${pasteResponse}${
+                metadata?.extension ? `.${metadata.extension}` : ''
+            }`
+        });
     } catch (e) {
         console.log(e);
         res.json({ error: 'An unknown error occurred.' });
