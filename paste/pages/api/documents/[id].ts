@@ -20,7 +20,7 @@ export default async function handle(
         return;
     }
     res.setHeader('content-type', 'text/plain');
-    res.write(pasteContents);
+    res.write(pasteContents.content);
     res.status(200);
     res.end();
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
 
@@ -115,14 +115,15 @@ function generateReportEntries(paste: string): ReportEntry[] {
     ) {
         sections.push(currentSection);
     }
+    if (sections.length === 0) {
+        sections.push(INVALID_REPORT);
+    }
     return sections;
 }
 
 const ReportComponent: React.FC<PasteProps> = ({ paste }) => {
-    const reportEntries = generateReportEntries(paste);
-    if (reportEntries.length === 0) {
-        reportEntries.push(INVALID_REPORT);
-    }
+    const reportEntries = useMemo(() => generateReportEntries(paste), [paste]);
+    
     return (
         <ReportWrapper>
             {reportEntries.map((entry, i) => (

@@ -5,6 +5,7 @@ import {
     GenerateSignedPostPolicyV4Options,
     Storage
 } from '@google-cloud/storage';
+import { PasteData } from './types';
 
 const storage = new Storage();
 
@@ -13,7 +14,7 @@ const PastePrefix = 'paste/';
 
 export async function createPaste(
     content: string,
-    from?: string
+    metadata?: PasteData['metadata']
 ): Promise<string> {
     const id = shortid.generate();
 
@@ -23,7 +24,7 @@ export async function createPaste(
         resumable: false,
         contentType: 'text/plain',
         metadata: {
-            from: from ?? 'unknown'
+            metadata
         }
     };
 
@@ -41,16 +42,15 @@ export async function createPaste(
     });
 }
 
-export async function getPaste(pasteId: string): Promise<string> {
+export async function getPaste(pasteId: string): Promise<PasteData> {
     const options: CreateReadStreamOptions = {
         decompress: true
     };
 
-    const data = await new Promise<Buffer>((resolve, reject) => {
-        const stream = storage
-            .bucket(PasteBucket)
-            .file(`${PastePrefix}${pasteId}`)
-            .createReadStream(options);
+    const file = storage.bucket(PasteBucket).file(`${PastePrefix}${pasteId}`);
+
+    const dataPromise = new Promise<Buffer>((resolve, reject) => {
+        const stream = file.createReadStream(options);
 
         const buffers: Buffer[] = [];
 
@@ -61,13 +61,23 @@ export async function getPaste(pasteId: string): Promise<string> {
         stream.on('end', () => resolve(Buffer.concat(buffers)));
     });
 
+    const [data, [metadata]] = await Promise.all([
+        dataPromise,
+        file.getMetadata()
+    ]);
+
     if (!data) {
         throw new Error('Failed to find paste');
     }
-    return data.toString('utf-8');
+    return {
+        content: data.toString('utf-8'),
+        metadata: metadata.metadata
+    };
 }
 
-export async function signedUploadUrl(): Promise<{
+export async function signedUploadUrl(fields?: {
+    [key: string]: string;
+}): Promise<{
     pasteId: string;
     uploadUrl: string;
     uploadFields: { [key: string]: string };
@@ -76,7 +86,8 @@ export async function signedUploadUrl(): Promise<{
 
     const options: GenerateSignedPostPolicyV4Options = {
         expires: Date.now() + 60 * 5 * 1000, // 5 minutes
-        conditions: [['content-length-range', 0, 5242880]]
+        conditions: [['content-length-range', 0, 5242880]],
+        fields
     };
 
     const [data] = await storage

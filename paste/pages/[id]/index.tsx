@@ -7,6 +7,7 @@ import ReportComponent from '@paste/views/ReportComponent';
 import { loadPaste } from '@paste/loadPaste';
 import SchematicComponent from '@paste/views/SchematicComponent';
 import SEO from '@shared/components/Seo';
+import { Extension } from '@paste/types';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -16,7 +17,7 @@ export interface PasteProps {
     paste: string;
 }
 
-const EXTENSIONS: Map<string, React.FC<PasteProps>> = new Map([
+const EXTENSIONS: Map<Extension, React.FC<PasteProps>> = new Map([
     ['', PasteComponent],
     ['paste', PasteComponent],
     ['report', ReportComponent],
@@ -24,8 +25,6 @@ const EXTENSIONS: Map<string, React.FC<PasteProps>> = new Map([
     ['log', PasteComponent],
     ['schem', SchematicComponent]
 ]);
-
-type Extension = '' | 'report' | 'paste' | 'profile' | 'log' | 'schem';
 
 function Document({ paste, extension }: DocumentProps) {
     const Renderer = EXTENSIONS.get(extension)!;
@@ -45,7 +44,7 @@ function Document({ paste, extension }: DocumentProps) {
 }
 
 function isValidExtension(extension: string): extension is Extension {
-    return EXTENSIONS.has(extension);
+    return EXTENSIONS.has(extension as Extension);
 }
 
 export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
@@ -53,7 +52,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
 }) => {
     const { id } = params!;
     let pasteId = `${id}`;
-    let extension: Extension = '';
+    let extension: Extension | undefined = undefined;
     const dotIndex = id!.lastIndexOf('.');
     if (dotIndex !== -1) {
         const extracted = pasteId.substring(dotIndex + 1);
@@ -71,8 +70,19 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
         };
     }
 
+    if (
+        !extension &&
+        pasteContents.metadata?.extension &&
+        isValidExtension(pasteContents.metadata?.extension)
+    ) {
+        extension = pasteContents.metadata?.extension;
+    }
+
     return {
-        props: { paste: pasteContents, extension },
+        props: {
+            paste: pasteContents.content,
+            extension: extension ?? ''
+        },
         revalidate: 3600
     };
 };
