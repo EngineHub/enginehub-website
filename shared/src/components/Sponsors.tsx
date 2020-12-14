@@ -24,6 +24,13 @@ const MainLink = styled.a`
     ${MainLinkStyle()}
 `;
 
+const FlexLink = styled.a`
+    ${MainLinkStyle()}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
     const Link = useContext(LinkProviderContext);
 
@@ -63,7 +70,7 @@ const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
 
     const GitHubSponsorsSponsor: React.FC = () => {
         return (
-            <MainLink href="https://github.com/sponsors/EngineHub" as={Link}>
+            <FlexLink href="https://github.com/sponsors/EngineHub" as={Link}>
                 <iframe
                     src="https://github.com/sponsors/EngineHub/button"
                     title="Sponsor EngineHub"
@@ -71,8 +78,8 @@ const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
                     width="116"
                     style={{ border: 0, marginBottom: 0 }}
                 />
-                <p>Sponsored by users like you!</p>
-            </MainLink>
+                <p style={{ margin: 0 }}>Sponsored by users like you!</p>
+            </FlexLink>
         );
     };
 
