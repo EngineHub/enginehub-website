@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { SECONDARY, ColorPalette, BRAND, PRIMARY } from '@shared/theme';
+import { ColorPalettes } from '@shared/theme';
 
 const BaseButtonLayout = () => css`
     font-weight: 700;
@@ -20,11 +20,11 @@ const BaseButtonLayout = () => css`
     }
 `;
 
-const ButtonColorStyle = (palette: ColorPalette) => css`
-    color: ${palette.font};
+const ButtonColorStyle = (palette: ColorPalettes) => css`
+    color: ${({ theme }) => theme[palette].font.inverse};
 
-    background-color: ${palette.normal};
-    border: 1px solid ${palette.accent};
+    background-color: ${({ theme }) => theme[palette].normal};
+    border: 1px solid ${({ theme }) => theme[palette].accent};
 
     transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
@@ -32,23 +32,24 @@ const ButtonColorStyle = (palette: ColorPalette) => css`
         opacity: 0.7;
     }
 
-    :hover, :focus {
-        background-color: ${palette.lighter};
-        box-shadow: 0 0 0 1px ${palette.accent} inset;
+    :hover,
+    :focus {
+        background-color: ${({ theme }) => theme[palette].lighter};
+        box-shadow: 0 0 0 1px ${({ theme }) => theme[palette].accent} inset;
     }
 `;
 
 export const MainButtonStyle = () => css`
     ${BaseButtonLayout()}
-    ${ButtonColorStyle(SECONDARY)}
+    ${ButtonColorStyle('secondary')}
 `;
 
 export const PurpleButtonStyle = () => css`
     ${BaseButtonLayout()}
-    ${ButtonColorStyle(BRAND)}
+    ${ButtonColorStyle('brand')}
 `;
 
 export const BlueButtonStyle = () => css`
     ${BaseButtonLayout()}
-    ${ButtonColorStyle(PRIMARY)}
+    ${ButtonColorStyle('primary')}
 `;

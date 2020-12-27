@@ -31,17 +31,17 @@ const SiteTitle = styled.h1`
 
 const ButtonStyle = css`
     padding: 4px 0.3rem;
-    color: #555;
+    color: ${({ theme }) => theme.gray.font.lighter};
     line-height: 1.7;
     border-radius: 5px;
-    background-color: #fff;
-    border: 1px solid #eee;
+    background-color: ${({ theme }) => theme.gray.normal};
+    border: 1px solid ${({ theme }) => theme.gray.accent};
     transition: background-color 0.1s ease-in-out;
     cursor: pointer;
     text-decoration: none;
 
     :hover {
-        background-color: #eee;
+        background-color: ${({ theme }) => theme.gray.accent};
     }
 `;
 

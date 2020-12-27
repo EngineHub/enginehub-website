@@ -3,18 +3,17 @@ import styled from 'styled-components';
 import { Container } from '@shared/components/Container';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
 import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
-import { SECONDARY, BRAND } from '@shared/theme';
 
 const NavBackgroundColours = new Map([
-    ['default', SECONDARY.darker],
+    ['default', 'secondary'],
     ['inverted', '0'],
-    ['purple', BRAND.darker]
+    ['purple', 'brand']
 ]);
 
 const HeaderTextColors = new Map([
-    ['default', SECONDARY.font],
-    ['inverted', BRAND.font],
-    ['purple', BRAND.font]
+    ['default', 'secondary'],
+    ['inverted', 'primary'],
+    ['purple', 'brand']
 ]);
 
 interface NavbarProps {
@@ -28,7 +27,10 @@ const Nav = styled.nav<InvertedProps>`
     position: relative;
     min-height: 50px;
     margin: 0;
-    background: ${props => NavBackgroundColours.get(props.headertheme)!};
+    background: ${({ theme, headertheme }) =>
+        NavBackgroundColours.get(headertheme) === '0'
+            ? '0'
+            : theme[NavBackgroundColours.get(headertheme)!].darker};
     border: 0;
     border-radius: 0;
 `;
@@ -38,7 +40,8 @@ type InvertedProps = {
 };
 
 const HeaderLink = styled.a<InvertedProps>`
-    color: ${props => HeaderTextColors.get(props.headertheme)!};
+    color: ${({ theme, headertheme }) =>
+        theme[HeaderTextColors.get(headertheme)!].font.inverse};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;

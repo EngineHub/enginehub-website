@@ -11,11 +11,18 @@ import {
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
+import styled, { ThemeProvider } from 'styled-components';
+import { LIGHT_THEME } from '@shared/theme';
 
 interface LayoutProps {
     discordOverride?: string;
     landing?: boolean;
 }
+
+const Wrapper = styled.div`
+    background-color: ${({ theme }) => theme.gray.normal};
+    color: ${({ theme }) => theme.gray.font.normal};
+`;
 
 const GatsbyLink: React.FC<WrapperLinkProps> = ({
     href,
@@ -54,36 +61,40 @@ const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
         }
     }, []);
     return (
-        <LinkProviderContext.Provider value={GatsbyLink}>
-            <Helmet
-                link={[
-                    {
-                        rel: 'preload',
-                        as: 'font',
-                        type: 'font/woff2',
-                        crossOrigin: 'true',
-                        href: '/fonts/open-sans-v16-latin-600.woff2'
-                    },
-                    {
-                        rel: 'preload',
-                        as: 'font',
-                        type: 'font/woff2',
-                        crossOrigin: 'true',
-                        href: '/fonts/open-sans-v16-latin-regular.woff2'
-                    }
-                ]}
-            />
-            {landing ? (
-                <Landing discordOverride={discordOverride} />
-            ) : (
-                <Navbar discordOverride={discordOverride} />
-            )}
-            <main>{children}</main>
-            <Footer
-                mainSite={true}
-                extraSponsors={['netlify'].concat(extraSponsors)}
-            />
-        </LinkProviderContext.Provider>
+        <ThemeProvider theme={LIGHT_THEME}>
+            <LinkProviderContext.Provider value={GatsbyLink}>
+                <Helmet
+                    link={[
+                        {
+                            rel: 'preload',
+                            as: 'font',
+                            type: 'font/woff2',
+                            crossOrigin: 'true',
+                            href: '/fonts/open-sans-v16-latin-600.woff2'
+                        },
+                        {
+                            rel: 'preload',
+                            as: 'font',
+                            type: 'font/woff2',
+                            crossOrigin: 'true',
+                            href: '/fonts/open-sans-v16-latin-regular.woff2'
+                        }
+                    ]}
+                />
+                <Wrapper>
+                    {landing ? (
+                        <Landing discordOverride={discordOverride} />
+                    ) : (
+                        <Navbar discordOverride={discordOverride} />
+                    )}
+                    <main>{children}</main>
+                    <Footer
+                        mainSite={true}
+                        extraSponsors={['netlify'].concat(extraSponsors)}
+                    />
+                </Wrapper>
+            </LinkProviderContext.Provider>
+        </ThemeProvider>
     );
 };
 

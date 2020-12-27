@@ -9,6 +9,7 @@ import Document, {
 } from 'next/document';
 import Helmet, { HelmetData } from 'react-helmet';
 import { ServerStyleSheet } from 'styled-components';
+import { LIGHT_THEME } from '@shared/theme';
 
 class MyDocument extends Document<DocumentProps & { helmet: HelmetData }> {
     static async getInitialProps(ctx: DocumentContext) {
@@ -52,7 +53,7 @@ class MyDocument extends Document<DocumentProps & { helmet: HelmetData }> {
                         rel="shortcut icon"
                         href="/static/icons/icon-48x48.png"
                     />
-                    <meta name="theme-color" content="#4B3570" />
+                    <meta name="theme-color" content={LIGHT_THEME.brand.normal} />
                     <link
                         rel="apple-touch-icon"
                         sizes="48x48"

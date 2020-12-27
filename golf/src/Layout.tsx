@@ -8,8 +8,9 @@ import Footer from '@shared/components/Footer';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
 import { PurpleButtonStyle } from '@shared/components/Button';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Link from 'next/link';
+import { LIGHT_THEME } from '@shared/theme';
 
 const NextLink: React.FC<WrapperLinkProps> = ({ href, children, ...props }) => {
     if (
@@ -53,26 +54,31 @@ const LayoutInner: React.FC<ExtraSponsorProps> = ({
     const onLogOut = () => setToken(undefined);
 
     return (
-        <LinkProviderContext.Provider value={NextLink}>
-            <Navbar headertheme="purple" headertitle="WorldEdit.golf">
-                <div>
-                    {isAuthenticated ? (
-                        <FloatedPurpleButton key="logout" onClick={onLogOut}>
-                            Log out
-                        </FloatedPurpleButton>
-                    ) : (
-                        <FloatedPurpleButton
-                            key="login"
-                            href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`}
-                        >
-                            Log in
-                        </FloatedPurpleButton>
-                    )}
-                </div>
-            </Navbar>
-            <main>{children}</main>
-            <Footer mainSite={false} extraSponsors={extraSponsors} />
-        </LinkProviderContext.Provider>
+        <ThemeProvider theme={LIGHT_THEME}>
+            <LinkProviderContext.Provider value={NextLink}>
+                <Navbar headertheme="purple" headertitle="WorldEdit.golf">
+                    <div>
+                        {isAuthenticated ? (
+                            <FloatedPurpleButton
+                                key="logout"
+                                onClick={onLogOut}
+                            >
+                                Log out
+                            </FloatedPurpleButton>
+                        ) : (
+                            <FloatedPurpleButton
+                                key="login"
+                                href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`}
+                            >
+                                Log in
+                            </FloatedPurpleButton>
+                        )}
+                    </div>
+                </Navbar>
+                <main>{children}</main>
+                <Footer mainSite={false} extraSponsors={extraSponsors} />
+            </LinkProviderContext.Provider>
+        </ThemeProvider>
     );
 };
 

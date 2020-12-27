@@ -140,6 +140,7 @@ const HorizontalSponsorArea = styled.div`
 
     small {
         margin-right: 0.5rem;
+        color: ${({ theme }) => theme.gray.font.lighter};
     }
 `;
 

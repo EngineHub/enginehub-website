@@ -1,12 +1,11 @@
 import { css } from 'styled-components';
-import { PRIMARY } from '@shared/theme';
 
 export const MainLinkStyle = () => css`
-    color: ${PRIMARY.normal};
+    color: ${({ theme }) => theme['primary'].normal};
     text-decoration: none;
 
     :hover {
-        color: ${PRIMARY.darker};
+        color: ${({ theme }) => theme['primary'].darker};
         text-decoration: underline;
     }
 `;

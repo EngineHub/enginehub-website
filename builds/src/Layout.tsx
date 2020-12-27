@@ -7,12 +7,10 @@ import Navbar from '@shared/components/Navbar';
 import Footer from '@shared/components/Footer';
 import { ExtraSponsorProps } from '@shared/components/Sponsors';
 import Link from 'next/link';
+import styled, { ThemeProvider } from 'styled-components';
+import { DARK_THEME } from '@shared/theme';
 
-const NextLink: React.FC<WrapperLinkProps> = ({
-    href,
-    children,
-    ...props
-}) => {
+const NextLink: React.FC<WrapperLinkProps> = ({ href, children, ...props }) => {
     if (
         !href.startsWith('https://builds.enginehub.org') &&
         (!href.startsWith('/') || href.startsWith('//'))
@@ -33,13 +31,22 @@ const NextLink: React.FC<WrapperLinkProps> = ({
     );
 };
 
+const Wrapper = styled.div`
+    background-color: ${({ theme }) => theme.gray.normal};
+    color: ${({ theme }) => theme.gray.font.normal};
+`;
+
 const Layout: React.FC<ExtraSponsorProps> = ({ children, extraSponsors }) => {
     return (
-        <LinkProviderContext.Provider value={NextLink}>
-            <Navbar headertheme="purple" />
-            <main>{children}</main>
-            <Footer mainSite={false} extraSponsors={extraSponsors} />
-        </LinkProviderContext.Provider>
+        <ThemeProvider theme={DARK_THEME}>
+            <LinkProviderContext.Provider value={NextLink}>
+                <Wrapper>
+                    <Navbar headertheme="purple" />
+                    <main>{children}</main>
+                    <Footer mainSite={false} extraSponsors={extraSponsors} />
+                </Wrapper>
+            </LinkProviderContext.Provider>
+        </ThemeProvider>
     );
 };
 

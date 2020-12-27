@@ -2,6 +2,7 @@ import React from 'react';
 import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import Helmet from 'react-helmet';
+import { BRAND } from '@shared/theme';
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
@@ -42,7 +43,7 @@ class MyDocument extends Document {
                         rel="shortcut icon"
                         href="/static/icons/icon-48x48.png"
                     />
-                    <meta name="theme-color" content="#4B3570" />
+                    <meta name="theme-color" content={BRAND.normal} />
                     <link
                         rel="apple-touch-icon"
                         sizes="48x48"

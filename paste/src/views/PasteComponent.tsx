@@ -9,6 +9,7 @@ const PasteContent = styled.div`
     padding-right: 55px;
     line-height: 130%;
     white-space: pre;
+    color: ${({ theme }) => theme.gray.font.normal};
 `;
 
 const PasteComponent: React.FC<PasteProps> = ({ paste }) => {
