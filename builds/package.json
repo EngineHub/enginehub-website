@@ -7,12 +7,12 @@
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.32",
         "@fortawesome/free-solid-svg-icons": "^5.15.1",
-        "@fortawesome/react-fontawesome": "^0.1.13",
+        "@fortawesome/react-fontawesome": "^0.1.14",
         "@google-cloud/storage": "^5.7.0",
-        "@types/styled-components": "^5.1.5",
-        "axios": "^0.21.0",
+        "@types/styled-components": "^5.1.7",
+        "axios": "^0.21.1",
         "moment": "^2.29.1",
-        "next": "^10.0.3",
+        "next": "^10.0.5",
         "next-images": "^1.6.2",
         "next-server": "^9.0.5",
         "next-transpile-modules": "^4.1.0",
@@ -22,7 +22,7 @@
         "styled-components": "^5.2.1"
     },
     "devDependencies": {
-        "@types/node": "^14.14.12",
+        "@types/node": "^14.14.20",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
         "babel-loader": "^8.2.2",

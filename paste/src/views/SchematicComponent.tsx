@@ -45,7 +45,7 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
         if (paste && ref.current) {
             renderSchematic(ref.current, paste, {
                 size: 250,
-                texturePrefix: 'https://worldedit.golf/static',
+                jarUrl: 'https://corsanywhere.minidigger.me/https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar',
                 renderBars: false,
                 renderArrow: false
             }).then(({ destroy: d, resize: r }) => {
