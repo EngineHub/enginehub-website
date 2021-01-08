@@ -1311,10 +1311,10 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.0.0.tgz#4f545e3b505323eb0c3e15cdf276a6245129f2a8"
-  integrity sha512-RFLYaK/JB386rd/Km2y20nbmXFmOpruj+6yxnzE+xY/cs59tPkQMjuhC+z4+DI2XU7Dv6KaqtcWMd6YZZJditA==
+"@enginehub/schematicwebviewer@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.0.1.tgz#96b885c0eb86446f3116a150cb514140d23281b7"
+  integrity sha512-E/aEzlIOuwYyG2LFJPUD8oBzaD608x8CRn1l8JC+icU06H4Qe+vT564tRp1D4B9pCdi43IYdIhqBLZNZIA4VOQ==
   dependencies:
     "@enginehub/schematicjs" "^0.1.0"
     deepmerge "^4.2.2"
@@ -1385,17 +1385,17 @@
   resolved "https://registry.yarnpkg.com/@google-cloud/promisify/-/promisify-2.0.3.tgz#f934b5cdc939e3c7039ff62b9caaf59a9d89e3a8"
   integrity sha512-d4VSA86eL/AFTe5xtyZX+ePUjE8dIFu2T8zmdeNBSa5/kNgXPCx/o/wbFNHAGLJdGnk1vddRuMESD9HbOC8irw==
 
-"@google-cloud/storage@^5.7.0":
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.7.0.tgz#1cdbeeaab21f78b69de060c11b765c2b5591de91"
-  integrity sha512-6nPTylNaYWsVo5yHDdjQfUSh9qP/DFwahhyvOAf9CSDKfeoOys8+PAyHsoKyL29uyYoC6ymws7uJDO48y/SzBA==
+"@google-cloud/storage@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.7.1.tgz#ba5e2d3eaff583181703452cd845d2ac2e1c94ab"
+  integrity sha512-/HmQNwmyP9eyD7emU/X0tXS2P4BTrcRVYwyygDhcX2pmV73hXL6BklsrkMPYU8ZdgGQgMYVZXboFFGOIanoTYA==
   dependencies:
     "@google-cloud/common" "^3.5.0"
     "@google-cloud/paginator" "^3.0.0"
     "@google-cloud/promisify" "^2.0.0"
     arrify "^2.0.0"
     compressible "^2.0.12"
-    date-and-time "^0.14.0"
+    date-and-time "^0.14.2"
     duplexify "^4.0.0"
     extend "^3.0.2"
     gaxios "^4.0.0"
@@ -3513,10 +3513,10 @@ aws-sdk@^2.0.4, aws-sdk@^2.624.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.823.0:
-  version "2.823.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.823.0.tgz#bbf7feaeb63959a451ec964b19cef6ea7128097a"
-  integrity sha512-djrTmGu9MqsoUoaVRXjIjNPCfHBsrBBGFyZtgRhUGz9toa1ubZb2W2buUnT3ncws/bhOj5+7nO+qxAf/JzH9NA==
+aws-sdk@^2.824.0:
+  version "2.824.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.824.0.tgz#a67747d4d0b53d09c6c121e93f44d8f6e76fc44b"
+  integrity sha512-9KNRQBkIMPn+6DWb4gR+RzqTMNyGLEwOgXbE4dDehOIAflfLnv3IFwLnzrhxJnleB4guYrILIsBroJFBzjiekg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -5520,10 +5520,10 @@ dataloader@2.0.0:
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-2.0.0.tgz#41eaf123db115987e21ca93c005cd7753c55fe6f"
   integrity sha512-YzhyDAwA4TaQIhM5go+vCLmU0UikghC/t9DTQYZR2M/UvZ1MdOhPezSDZcjj9uqQJOMqjLcpWtyW2iNINdlatQ==
 
-date-and-time@^0.14.0:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/date-and-time/-/date-and-time-0.14.1.tgz#969634697b78956fb66b8be6fb0f39fbd631f2f6"
-  integrity sha512-M4RggEH5OF2ZuCOxgOU67R6Z9ohjKbxGvAQz48vj53wLmL0bAgumkBvycR32f30pK+Og9pIR+RFDyChbaE4oLA==
+date-and-time@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/date-and-time/-/date-and-time-0.14.2.tgz#a4266c3dead460f6c231fe9674e585908dac354e"
+  integrity sha512-EFTCh9zRSEpGPmJaexg7HTuzZHh6cnJj1ui7IGCFNXzd2QdpsNh05Db5TF3xzJm30YN+A8/6xHSuRcQqoc3kFA==
 
 date-fns@^2.14.0:
   version "2.16.1"
@@ -7638,10 +7638,10 @@ gatsby-plugin-styled-components@^3.8.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-gatsby-plugin-svgr@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.0.2.tgz#22e08fb67ec63b68aca6ac3e89962af20214e2a5"
-  integrity sha512-54REIMe79qFBAwpcnWHBkvEE9CKoEVkefF9rDXai0k642r91SZ4UeWFuAmsegPG+sPVub7tHfHu/2LVXK1I9kg==
+gatsby-plugin-svgr@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.1.0.tgz#7ba4e53cc6b61ddb4653a021be2fe7a8f0830e4c"
+  integrity sha512-OgJ+M9EWMMXsEwhxefNvxCu2jmHmUHx/PgP+7A9pn7XUt1IYiZmEKteJ1ZP5tAPuUI2S539yYgW76H3u9u19SA==
 
 gatsby-plugin-typescript@^2.10.0:
   version "2.10.0"
