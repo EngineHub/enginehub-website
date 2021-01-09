@@ -1311,10 +1311,10 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.0.3.tgz#c9ca8e88e0260dd66227e77a740f6ff477c1f7f5"
-  integrity sha512-B/Ji7OMu9Z/ukd3GO5SjPGYCw/kvJIXR4a9adeAGkD14wMME7XFr07AZCHWMD8ALqqwSBsCoMz6Y6H7tTHcnyA==
+"@enginehub/schematicwebviewer@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.1.0.tgz#445c4b447ffb64c03d1ac9d5062704b098a3a1e1"
+  integrity sha512-1pMVexiDvFx2WcDjeJWP2aGnCQQ02SWeOg+8t+Yt1L8L4rsAvbJiMhWOt+HWlbg43blZ+Q+hfDoYV1I7YuNJrQ==
   dependencies:
     "@enginehub/schematicjs" "^0.1.0"
     deepmerge "^4.2.2"
