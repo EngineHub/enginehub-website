@@ -7,7 +7,7 @@ import ReportComponent from '@paste/views/ReportComponent';
 import { loadPaste } from '@paste/loadPaste';
 import SchematicComponent from '@paste/views/SchematicComponent';
 import SEO from '@shared/components/Seo';
-import { Extension } from '@paste/types';
+import { Extension, PasteData } from '@paste/types';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -15,6 +15,7 @@ interface DocumentProps extends PasteProps {
 
 export interface PasteProps {
     paste: string;
+    metadata?: PasteData['metadata'];
 }
 
 const EXTENSIONS: Map<Extension, React.FC<PasteProps>> = new Map([
@@ -26,7 +27,7 @@ const EXTENSIONS: Map<Extension, React.FC<PasteProps>> = new Map([
     ['schem', SchematicComponent]
 ]);
 
-function Document({ paste, extension }: DocumentProps) {
+function Document({ paste, extension, metadata }: DocumentProps) {
     const Renderer = EXTENSIONS.get(extension)!;
     return (
         <Layout showHelp={false}>
@@ -38,7 +39,7 @@ function Document({ paste, extension }: DocumentProps) {
                         : paste.substring(0, 150)
                 }
             />
-            <Renderer paste={paste} />
+            <Renderer paste={paste} metadata={metadata} />
         </Layout>
     );
 }
@@ -81,7 +82,8 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
     return {
         props: {
             paste: pasteContents.content,
-            extension: extension ?? ''
+            extension: extension ?? '',
+            metadata: pasteContents.metadata
         },
         revalidate: 3600
     };

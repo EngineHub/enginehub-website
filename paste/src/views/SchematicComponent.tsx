@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
 import styled from 'styled-components';
+import { BlueButtonStyle } from '@shared/components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
     display: flex;
@@ -16,21 +19,72 @@ const Container = styled.div`
     }
 `;
 
-const PAGE_HEIGHT_MOD = 57; // navbar height
+const BlueButton = styled.a(BlueButtonStyle);
 
-const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
+const PAGE_HEIGHT_MOD = 57 + 45; // navbar height + info bar height
+
+const InfoBarContainer = styled.div`
+    background-color: white;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 45px;
+
+    * {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+`;
+
+const InfoBar: React.FC<PasteProps> = ({ paste, metadata = {} }) => {
+    const onClickDownload = () => {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;base64,' + paste);
+        element.setAttribute(
+            'download',
+            `${metadata.name ?? 'enginehub_schematic'}.schem`
+        );
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    };
+
+    return (
+        <InfoBarContainer>
+            <p>Name: {metadata.name ?? 'Unnamed'}</p>
+            <p>Author: {metadata.author ?? 'Unknown'}</p>
+            <BlueButton onClick={onClickDownload}>
+                <FontAwesomeIcon icon={faDownload} />
+            </BlueButton>
+        </InfoBarContainer>
+    );
+};
+
+const SchematicComponent: React.FC<PasteProps> = ({ paste, metadata }) => {
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] = useState<(size: number) => void>();
     const [destroy, setDestroy] = useState<() => void>(() => {});
 
     useEffect(() => {
         if (resize) {
-            resize(Math.min(window.innerWidth, window.innerHeight - PAGE_HEIGHT_MOD));
+            resize(
+                Math.min(
+                    window.innerWidth,
+                    window.innerHeight - PAGE_HEIGHT_MOD
+                )
+            );
 
             const onResize = (_event: UIEvent) => {
                 if (resize) {
                     resize(
-                        Math.min(window.innerWidth, window.innerHeight - PAGE_HEIGHT_MOD)
+                        Math.min(
+                            window.innerWidth,
+                            window.innerHeight - PAGE_HEIGHT_MOD
+                        )
                     );
                 }
             };
@@ -45,7 +99,8 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
         if (paste && ref.current) {
             renderSchematic(ref.current, paste, {
                 size: 250,
-                jarUrl: 'https://corsanywhere.minidigger.me/https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar',
+                jarUrl:
+                    'https://corsanywhere.minidigger.me/https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar',
                 renderBars: false,
                 renderArrow: false
             }).then(({ destroy: d, resize: r }) => {
@@ -58,9 +113,12 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste }) => {
     }, [paste]);
 
     return (
-        <Container>
-            <canvas ref={ref} />
-        </Container>
+        <div style={{ width: '100%', height: 'calc(100% - 45px)' }}>
+            <Container>
+                <canvas ref={ref} />
+            </Container>
+            <InfoBar paste={paste} metadata={metadata} />
+        </div>
     );
 };
 
