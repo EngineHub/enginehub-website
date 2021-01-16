@@ -237,7 +237,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         };
     }
 
-    const pageNumber = parseInt(page as string) ?? 0;
+    const pageNumber = parseInt(page as string) || 0;
 
     const [builds, branches] = await Promise.all([
         getBuildPage(
