@@ -50,7 +50,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
         <Layout>
             <SEO
                 title="WorldEdit"
-                description="WorldEdit let's you build fast and smart. Get started with the essential building tool used by almost all professional Minecraft builders today"
+                description="WorldEdit lets you build fast and smart. Get started with the essential building tool used by almost all professional Minecraft builders today"
                 image={data.file.childImageSharp.fixed.src}
             />
             <ContainerPadded>
