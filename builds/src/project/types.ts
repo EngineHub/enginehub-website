@@ -16,7 +16,7 @@ export const PROJECTS = [
         defaultBranch: 'master',
         icon: require('../images/worldedit-logo.svg'),
         buildType: 'bt10',
-        pinnedBranches: ['forge-archive/1.12.2'],
+        pinnedBranches: ['forge-archive/1.12.2', 'version/7.2.x'],
         vcsRoot: 'https://github.com/EngineHub/WorldEdit'
     },
     {

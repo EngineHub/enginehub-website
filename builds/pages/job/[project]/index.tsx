@@ -97,8 +97,7 @@ function Index({
             </PageHeader>
             <Container>
                 {activeBranch !== project.defaultBranch &&
-                    (!project.pinnedBranches ||
-                        !project.pinnedBranches.includes(activeBranch)) && (
+                    !project.pinnedBranches?.includes(activeBranch) && (
                         <BranchWarning
                             currentBranch={activeBranch}
                             mainBranch={project.defaultBranch}
@@ -238,7 +237,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         };
     }
 
-    const pageNumber = parseInt(page as string) || 0;
+    const pageNumber = parseInt(page as string) ?? 0;
 
     const [builds, branches] = await Promise.all([
         getBuildPage(
