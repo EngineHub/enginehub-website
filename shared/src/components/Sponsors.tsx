@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useMemo } from 'react';
 import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
 import { LinkProviderContext } from '@shared/utils/LinkProvider';
@@ -31,65 +31,77 @@ const FlexLink = styled.a`
     align-items: center;
 `;
 
-const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
+const useSponsorComponents = () => {
     const Link = useContext(LinkProviderContext);
 
-    const NetlifySponsor: React.FC = () => (
-        <Link href="https://www.netlify.com">
-            <img
-                src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"
-                alt="Netlify"
-            />
-        </Link>
+    return useMemo(
+        () => [
+            () => (
+                <Link href="https://www.netlify.com">
+                    <img
+                        src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"
+                        alt="Netlify"
+                    />
+                </Link>
+            ),
+            () => {
+                const img = require('../images/beastnode.png');
+                return (
+                    <Link href="https://www.beastnode.com">
+                        <img
+                            src={img}
+                            style={{ marginBottom: 0 }}
+                            alt="BeastNode"
+                        />
+                    </Link>
+                );
+            },
+            () => (
+                <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
+                    <img
+                        src={'https://enginehub.org/images/apex.svg'}
+                        style={{
+                            marginBottom: 0,
+                            color: '#000000',
+                            width: '100%'
+                        }}
+                        alt="Apex Hosting"
+                    />
+                </Link>
+            ),
+            () => (
+                <FlexLink
+                    href="https://github.com/sponsors/EngineHub"
+                    as={Link}
+                >
+                    <iframe
+                        src="https://github.com/sponsors/EngineHub/button"
+                        title="Sponsor EngineHub"
+                        height="35"
+                        width="116"
+                        style={{ border: 0, marginBottom: 0 }}
+                    />
+                    <p style={{ margin: 0 }}>Sponsored by users like you!</p>
+                </FlexLink>
+            ),
+            () => (
+                <MainLink href="https://matthewmiller.dev/contact/" as={Link}>
+                    Interested? Contact Me4502
+                </MainLink>
+            )
+        ],
+        [Link]
     );
+};
 
-    const BeastNodeSponsor: React.FC = () => {
-        const img = require('../images/beastnode.png');
-        return (
-            <Link href="https://www.beastnode.com">
-                <img src={img} style={{ marginBottom: 0 }} alt="BeastNode" />
-            </Link>
-        );
-    };
-
-    const ApexHostingSponsor: React.FC = () => {
-        return (
-            <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
-                <img
-                    src={'https://enginehub.org/images/apex.svg'}
-                    style={{
-                        marginBottom: 0,
-                        color: '#000000',
-                        width: '100%'
-                    }}
-                    alt="Apex Hosting"
-                />
-            </Link>
-        );
-    };
-
-    const GitHubSponsorsSponsor: React.FC = () => {
-        return (
-            <FlexLink href="https://github.com/sponsors/EngineHub" as={Link}>
-                <iframe
-                    src="https://github.com/sponsors/EngineHub/button"
-                    title="Sponsor EngineHub"
-                    height="35"
-                    width="116"
-                    style={{ border: 0, marginBottom: 0 }}
-                />
-                <p style={{ margin: 0 }}>Sponsored by users like you!</p>
-            </FlexLink>
-        );
-    };
-
-    const EmptySponsor: React.FC = () => {
-        return (
-            <MainLink href="https://matthewmiller.dev/contact/" as={Link}>
-                Interested? Contact Me4502
-            </MainLink>
-        );
-    };
+const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
+    const [
+        NetlifySponsor,
+        BeastNodeSponsor,
+        ApexHostingSponsor,
+        GitHubSponsorsSponsor,
+        EmptySponsor
+    ] = useSponsorComponents();
 
     const sponsorMap = new Map([
         ['empty', EmptySponsor],
