@@ -1,13 +1,10 @@
 import React from 'react';
-import Img, { FluidObject, FixedObject } from 'gatsby-image';
 import styled from 'styled-components';
 import { SectionHeading } from './text';
 
 interface AlignedContentProps {
     header?: string;
     align: 'left' | 'right';
-    gatsbyImage?: FluidObject | FixedObject;
-    gatsbyFluid?: boolean;
     image?: string;
     video?: string;
 }
@@ -42,8 +39,6 @@ const LimitedVideo = styled.video`
 const AlignedContent: React.FC<AlignedContentProps> = ({
     header,
     align,
-    gatsbyImage,
-    gatsbyFluid,
     image,
     video,
     children
@@ -55,12 +50,6 @@ const AlignedContent: React.FC<AlignedContentProps> = ({
                 <div>{children}</div>
             </InfoSide>
             <ImageSide>
-                {gatsbyImage &&
-                    (gatsbyFluid ? (
-                        <Img fluid={gatsbyImage as FluidObject} />
-                    ) : (
-                        <Img fixed={gatsbyImage as FixedObject} />
-                    ))}
                 {image && <img src={image} />}
                 {video && (
                     <LimitedVideo

@@ -4,7 +4,6 @@ import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
 import { Row } from '@shared/components/grid';
-import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink } from '@main/components/Link';
 import JumbotronContainer, {
     JumbotronText,
@@ -21,33 +20,24 @@ import {
     HorizontalNav,
     HorizontalNavItem
 } from '@shared/components/HorizontalNav';
+import { getImage } from 'gatsby-plugin-image';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 interface CommandHelperPageData {
-    file: {
-        childImageSharp: {
-            fixed: FixedObject;
-        };
-    };
-    allFile: {
-        nodes: {
-            childImageSharp: {
-                fixed: FixedObject;
-            };
-            name: string;
-        }[];
-    };
+    file: FileNode & { publicURL: string };
+    allFile: { nodes: (FileNode & { name: string })[] };
 }
 
 const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
     const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
+        data.allFile.nodes.map(node => [node.name, getImage(node)])
     );
     return (
         <Layout discordOverride={'https://discord.gg/Z7jpHed'}>
             <SEO
                 title="CommandHelper"
                 description="CommandHelper lets you create easy-to-write and 'hot-reloadable' scripts for your Bukkit server to handle events and perform tasks — no Java knowledge required!"
-                image={data.file.childImageSharp.fixed.src}
+                image={data.file.publicURL}
             />
             <ContainerPadded>
                 <Row>
@@ -190,17 +180,23 @@ export const query = graphql`
     query {
         file(name: { eq: "commandhelper-icon" }) {
             childImageSharp {
-                fixed(width: 512, height: 512, quality: 100) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
+                gatsbyImageData(
+                    width: 512
+                    height: 512
+                    quality: 100
+                    layout: FIXED
+                )
             }
+            publicURL
         }
         allFile(filter: { name: { in: ["bukkit-logo"] } }) {
             nodes {
                 childImageSharp {
-                    fixed(width: 150, quality: 100) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                    }
+                    gatsbyImageData(
+                        width: 150
+                        quality: 100
+                        layout: FIXED
+                    )
                 }
                 name
             }

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import Img, { FixedObject } from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 const Wrapper = styled.div`
     border-top: 1px solid #ddd;
@@ -37,7 +37,7 @@ const InfoBox = styled.div`
 
 interface PlatformBannerProps {
     alt: string;
-    logo?: FixedObject;
+    logo?: IGatsbyImageData;
     img?: string;
 }
 
@@ -49,7 +49,7 @@ const PlatformBanner: FunctionComponent<PlatformBannerProps> = ({
 }) => (
     <Wrapper>
         <LogoBox>
-            {logo && <Img fixed={logo} alt={alt} />}
+            {logo && <GatsbyImage image={logo} alt={alt} />}
             {img && <img src={img} alt={alt} />}
         </LogoBox>
         <InfoBox>{children}</InfoBox>

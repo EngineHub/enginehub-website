@@ -6,8 +6,8 @@ module.exports = {
         siteUrl: 'https://enginehub.org/'
     },
     plugins: [
+        `gatsby-plugin-image`,
         `gatsby-plugin-sitemap`,
-        `gatsby-plugin-typescript`,
         `gatsby-plugin-react-helmet`,
         {
             resolve: `gatsby-plugin-styled-components`,

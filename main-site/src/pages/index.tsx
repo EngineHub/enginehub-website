@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { Container } from '@shared/components/Container';
 import { Row, ColumnHalf } from '@shared/components/grid';
 import { graphql } from 'gatsby';
-import { FixedObject } from 'gatsby-image';
 import ProjectBox from '@main/components/ProjectBox';
 import WorldEditIcon from '../images/projects/logo/worldedit-logo.svg';
 import WorldGuardIcon from '../images/projects/logo/worldguard-logo.svg';
@@ -39,9 +38,7 @@ const ProjectList = styled.ul`
 
 interface IndexPageData {
     file: {
-        childImageSharp: {
-            fixed: FixedObject;
-        };
+        publicURL: string;
     };
 }
 
@@ -51,7 +48,7 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
             <SEO
                 title="Welcome"
                 description="Open-source mods for and by the Minecraft community"
-                image={data.file.childImageSharp.fixed.src}
+                image={data.file.publicURL}
             />
             <Container>
                 <HeadingContainer>
@@ -107,11 +104,7 @@ export default IndexPage;
 export const query = graphql`
     query {
         file(name: { eq: "enginehub-logo" }) {
-            childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-            }
+            publicURL
         }
     }
 `;

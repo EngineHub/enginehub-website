@@ -4,7 +4,6 @@ import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
 import { Row, ColumnHalf } from '@shared/components/grid';
-import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink, MainLink } from '@main/components/Link';
 import JumbotronContainer, {
     JumbotronText,
@@ -25,33 +24,24 @@ import {
     HorizontalNavItem
 } from '@shared/components/HorizontalNav';
 import AlignedContent from '@shared/components/AlignedContent';
+import { getImage } from 'gatsby-plugin-image';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 interface WorldGuardPageData {
-    file: {
-        childImageSharp: {
-            fixed: FixedObject;
-        };
-    };
-    allFile: {
-        nodes: {
-            childImageSharp: {
-                fixed: FixedObject;
-            };
-            name: string;
-        }[];
-    };
+    file: FileNode & { publicURL: string };
+    allFile: { nodes: (FileNode & { name: string })[] };
 }
 
 const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
     const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
+        data.allFile.nodes.map(node => [node.name, getImage(node)])
     );
     return (
         <Layout>
             <SEO
                 title="WorldGuard"
                 description="WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft."
-                image={data.file.childImageSharp.fixed.src}
+                image={data.file.publicURL}
             />
             <ContainerPadded>
                 <Row>
@@ -267,17 +257,23 @@ export const query = graphql`
     query {
         file(name: { eq: "worldguard-icon" }) {
             childImageSharp {
-                fixed(width: 512, height: 512, quality: 100) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
+                gatsbyImageData(
+                    width: 512
+                    height: 512
+                    quality: 100
+                    layout: FIXED
+                )
             }
+            publicURL
         }
         allFile(filter: { name: { in: ["bukkit-logo"] } }) {
             nodes {
                 childImageSharp {
-                    fixed(width: 150, quality: 100) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                    }
+                    gatsbyImageData(
+                        width: 150
+                        quality: 100
+                        layout: FIXED
+                    )
                 }
                 name
             }

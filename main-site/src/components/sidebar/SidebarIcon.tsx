@@ -1,17 +1,16 @@
 import { FunctionComponent } from "react";
-import { FixedObject } from "gatsby-image";
 import React from "react";
-import Img from "gatsby-image";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 interface SidebarIconProps {
-    alt?: string;
-    image: FixedObject;
+    alt: string;
+    image: IGatsbyImageData;
 }
 
 const SidebarIcon: FunctionComponent<SidebarIconProps> = (props) => {
     return (
         <div>
-            <Img fixed={props.image} alt={props.alt} loading={'eager'} />
+            <GatsbyImage image={props.image} alt={props.alt} loading={'eager'} />
         </div>
     )
 };

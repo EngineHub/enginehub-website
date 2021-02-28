@@ -3,16 +3,13 @@ import React from 'react';
 import Layout from '@main/components/Layout';
 import SEO from '@shared/components/Seo';
 import { graphql } from 'gatsby';
-import { FixedObject } from 'gatsby-image';
 import { BlueButton } from '@main/components/Button';
 import { Container } from '@shared/components/Container';
 import { PageHeader } from '@shared/components/PageHeader';
 
 interface NotFoundData {
     file: {
-        childImageSharp: {
-            fixed: FixedObject;
-        };
+        publicURL: string
     };
 }
 
@@ -20,7 +17,7 @@ const NotFoundPage = ({ data }: { data: NotFoundData }) => (
     <Layout>
         <SEO
             title="Missing Page"
-            image={data.file.childImageSharp.fixed.src}
+            image={data.file.publicURL}
             description="Sorry, the page or resource that you are looking for cannot be found."
         />
         <PageHeader text={'Missing Page'} extraSponsors={['netlify']}>
@@ -38,11 +35,7 @@ export default NotFoundPage;
 export const query = graphql`
     query {
         file(name: { eq: "enginehub-logo" }) {
-            childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-            }
+            publicURL
         }
     }
 `;

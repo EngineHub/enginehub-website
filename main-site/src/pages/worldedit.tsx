@@ -4,7 +4,6 @@ import SEO from '@shared/components/Seo';
 import React from 'react';
 import { ContainerPadded } from '@shared/components/Container';
 import { Row, ColumnHalf } from '@shared/components/grid';
-import { FixedObject } from 'gatsby-image';
 import { MainOutboundLink } from '@main/components/Link';
 import JumbotronContainer, {
     JumbotronText,
@@ -25,33 +24,24 @@ import {
 } from '@shared/components/HorizontalNav';
 import AlignedContent from '@shared/components/AlignedContent';
 import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldedit-header.svg';
+import { getImage } from 'gatsby-plugin-image';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 interface WorldEditPageData {
-    file: {
-        childImageSharp: {
-            fixed: FixedObject;
-        };
-    };
-    allFile: {
-        nodes: {
-            childImageSharp: {
-                fixed: FixedObject;
-            };
-            name: string;
-        }[];
-    };
+    file: FileNode & { publicURL: string };
+    allFile: { nodes: (FileNode & { name: string })[] };
 }
 
 const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
     const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, node.childImageSharp.fixed])
+        data.allFile.nodes.map(node => [node.name, getImage(node)])
     );
     return (
         <Layout>
             <SEO
                 title="WorldEdit"
                 description="WorldEdit lets you build fast and smart. Get started with the essential building tool used by almost all professional Minecraft builders today"
-                image={data.file.childImageSharp.fixed.src}
+                image={data.file.publicURL}
             />
             <ContainerPadded>
                 <Row>
@@ -440,10 +430,14 @@ export const query = graphql`
     query {
         file(name: { eq: "worldedit-icon" }) {
             childImageSharp {
-                fixed(width: 512, height: 512, quality: 100) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
+                gatsbyImageData(
+                    width: 512
+                    height: 512
+                    quality: 100
+                    layout: FIXED
+                )
             }
+            publicURL
         }
         allFile(
             filter: {
@@ -462,9 +456,11 @@ export const query = graphql`
         ) {
             nodes {
                 childImageSharp {
-                    fixed(width: 150, quality: 100) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                    }
+                    gatsbyImageData(
+                        width: 150
+                        quality: 100
+                        layout: FIXED
+                    )
                 }
                 name
             }

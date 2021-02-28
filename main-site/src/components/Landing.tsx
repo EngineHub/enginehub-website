@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
 import Navbar from '@shared/components/Navbar';
 import { Container } from '@shared/components/Container';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 interface LandingProps {
     discordOverride?: string;
@@ -24,7 +25,7 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderImg = styled(Img)<{ fluid: FluidObject }>`
+const HeaderImg = styled(GatsbyImage)`
     width: 100%;
     height: 100%;
 `;
@@ -73,11 +74,7 @@ const Subtitle = styled.h2`
 `;
 
 interface ImageQueryResult {
-    file: {
-        childImageSharp: {
-            fluid: FluidObject;
-        };
-    };
+    file: FileNode;
 }
 
 export const Landing: FunctionComponent<LandingProps> = props => {
@@ -85,8 +82,9 @@ export const Landing: FunctionComponent<LandingProps> = props => {
     return (
         <HeaderWrapper>
             <HeaderImg
-                fluid={data.file.childImageSharp.fluid}
+                image={getImage(data.file)!}
                 loading={'eager'}
+                alt={'EngineHub Landing Background'}
             />
             <HeaderContent>
                 <Navbar
@@ -119,9 +117,7 @@ const query = graphql`
     query {
         file(relativePath: { eq: "landing-bg.jpg" }) {
             childImageSharp {
-                fluid(quality: 100) {
-                    ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
         }
     }

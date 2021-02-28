@@ -9,9 +9,11 @@ import {
     ColumnThreeQuarter
 } from '@shared/components/grid';
 import { SidebarHeading } from '@shared/components/sidebar';
-import { FixedObject } from 'gatsby-image';
 import SidebarIcon from '@main/components/sidebar/SidebarIcon';
-import { BlueOutboundButton, GrayOutboundButton } from '@main/components/Button';
+import {
+    BlueOutboundButton,
+    GrayOutboundButton
+} from '@main/components/Button';
 import { SectionHeading } from '@shared/components/text/SectionHeading';
 import PlatformBanner from '@main/components/PlatformBanner';
 import WorldEditHeader from '../images/projects/headers/worldedit-header.svg';
@@ -19,13 +21,11 @@ import WorldGuardHeader from '../images/projects/headers/worldguard-header.svg';
 import CraftBookHeader from '../images/projects/headers/craftbook-header.svg';
 import CmdBookHeader from '../images/projects/headers/commandbook-header.svg';
 import CmdHelperHeader from '../images/projects/headers/commandhelper-header.svg';
+import { getImage } from 'gatsby-plugin-image';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
 interface DocumentationPageData {
-    file: {
-        childImageSharp: {
-            fixed: FixedObject;
-        };
-    };
+    file: FileNode & { publicURL: string };
 }
 
 const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
@@ -34,13 +34,13 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
             <SEO
                 title="Documentation"
                 description="Documentation for the EngineHub projects. Home to the docs of WorldEdit, WorldGuard, CraftBook, CommandBook, CommandHelper, and more."
-                image={data.file.childImageSharp.fixed.src}
+                image={data.file.publicURL}
             />
             <ContainerPadded>
                 <Row>
                     <ColumnQuarter>
                         <SidebarIcon
-                            image={data.file.childImageSharp.fixed}
+                            image={getImage(data.file)!}
                             alt={'EngineHub Logo'}
                         />
                         <SidebarHeading>Docs</SidebarHeading>
@@ -194,10 +194,14 @@ export const query = graphql`
     query {
         file(name: { eq: "enginehub-logo" }) {
             childImageSharp {
-                fixed(width: 100, height: 100, quality: 100) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
+                gatsbyImageData(
+                    width: 100
+                    height: 100
+                    quality: 100
+                    layout: FIXED
+                )
             }
+            publicURL
         }
     }
 `;
