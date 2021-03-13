@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^2.1.0",
+        "@enginehub/schematicwebviewer": "^2.2.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.34",
         "@fortawesome/free-solid-svg-icons": "^5.15.2",
         "@fortawesome/react-fontawesome": "^0.1.14",

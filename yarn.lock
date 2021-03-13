@@ -1290,19 +1290,18 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.1.0.tgz#445c4b447ffb64c03d1ac9d5062704b098a3a1e1"
-  integrity sha512-1pMVexiDvFx2WcDjeJWP2aGnCQQ02SWeOg+8t+Yt1L8L4rsAvbJiMhWOt+HWlbg43blZ+Q+hfDoYV1I7YuNJrQ==
+"@enginehub/schematicwebviewer@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.2.0.tgz#2c0b5510cbfdbb5bbf8efab3faa808a5da6398f8"
+  integrity sha512-YcIuKMB4hOv1yLKk3lQorKgTB2kVitrNrraBwCv3lcTYpAPu7rDFhqP5027tD4JE2XIqsswBLq02qWsxOoddew==
   dependencies:
     "@enginehub/schematicjs" "^0.1.0"
     deepmerge "^4.2.2"
     gzip-js "^0.3.2"
-    jszip "^3.5.0"
+    jszip "^3.6.0"
     nbt-ts "^1.3.3"
-    patch-package "^6.2.2"
     postinstall-postinstall "^2.1.0"
-    three "^0.124.0"
+    three "^0.126.1"
     zlibt "^0.0.5"
 
 "@fortawesome/fontawesome-common-types@^0.2.34":
@@ -1364,10 +1363,10 @@
   resolved "https://registry.yarnpkg.com/@google-cloud/promisify/-/promisify-2.0.3.tgz#f934b5cdc939e3c7039ff62b9caaf59a9d89e3a8"
   integrity sha512-d4VSA86eL/AFTe5xtyZX+ePUjE8dIFu2T8zmdeNBSa5/kNgXPCx/o/wbFNHAGLJdGnk1vddRuMESD9HbOC8irw==
 
-"@google-cloud/storage@^5.8.0":
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.8.0.tgz#1f580e276f1d453790b382156421d1bcc4bd3f4b"
-  integrity sha512-WOShvBPOfkDXUzXMO+3j8Bzus+PFI9r1Ey9dLG2Zf458/PVuFTtaRWntd9ZiDG8g90zl2LmnA1JkDCreGUKr5g==
+"@google-cloud/storage@^5.8.1":
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-5.8.1.tgz#00e627723614bcf97e6e29f9a59ec39339171847"
+  integrity sha512-qP8gCJ2myyMN3JMJN12d82Oo8VBSDO8vO4/x56dtQZX9+WISqcagurntnJVyFX885tIOtS97bsyv8qR1xv6HMg==
   dependencies:
     "@google-cloud/common" "^3.6.0"
     "@google-cloud/paginator" "^3.0.0"
@@ -9670,7 +9669,7 @@ jsonwebtoken@^8.5.1:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
-jszip@^3.2.2, jszip@^3.5.0:
+jszip@^3.2.2, jszip@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.6.0.tgz#839b72812e3f97819cc13ac4134ffced95dd6af9"
   integrity sha512-jgnQoG9LKnWO3mnVNBnfhkh0QknICd1FGSrXcgrl67zioyJ4wgx25o9ZqwNtrROSflGBCGYnJfjrIyRIby1OoQ==
@@ -14842,10 +14841,10 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.124.0:
-  version "0.124.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.124.0.tgz#14ab1a26ba6c56e51190e1b55695cd3c1e69ea55"
-  integrity sha512-ROXp1Ly7YyF+jC910DQyAWj++Qlw2lQv0qwYLNQwdDbjk4bsOXAfGO92wYTMPNei1GMJUmCxSxc3MjGBTS09Rg==
+three@^0.126.1:
+  version "0.126.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.126.1.tgz#cf4e4e52060fd952f6f0d5440cbd422c66bc4be7"
+  integrity sha512-eOEXnZeE1FDV0XgL1u08auIP13jxdN9LQBAEmlErYzMxtIIfuGIAZbijOyookALUhqVzVOx0Tywj6n192VM+nQ==
 
 through2@^2.0.0, through2@^2.0.1:
   version "2.0.5"
