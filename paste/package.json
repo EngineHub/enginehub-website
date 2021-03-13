@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^2.2.0",
+        "@enginehub/schematicwebviewer": "^2.2.1",
         "@google-cloud/storage": "^5.8.1",
-        "@types/styled-components": "^5.1.7",
+        "@types/styled-components": "^5.1.8",
         "axios": "^0.21.1",
         "next": "^10.0.7",
         "next-images": "^1.7.0",
@@ -20,9 +20,9 @@
         "styled-components": "^5.2.1"
     },
     "devDependencies": {
-        "@types/node": "^14.14.31",
-        "@types/react": "^17.0.2",
-        "@types/react-dom": "^17.0.1",
+        "@types/node": "^14.14.34",
+        "@types/react": "^17.0.3",
+        "@types/react-dom": "^17.0.2",
         "@types/shortid": "^0.0.29",
         "babel-loader": "^8.2.2",
         "babel-plugin-styled-components": "^1.12.0",
