@@ -5,6 +5,7 @@ import Loader from '@shared/components/Loader';
 import Router from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
 import SEO from '@shared/components/Seo';
+import { fromByteArray } from 'base64-js';
 
 const Row = styled.div`
     display: flex;
@@ -56,10 +57,14 @@ const SavingOverlay = styled.div`
     align-items: center;
 `;
 
-async function postContent(content: string) {
+async function postContent(content: string, extension: string = '') {
     try {
         const { viewUrl, uploadUrl, uploadFields } = await (
-            await fetch('/signed_paste')
+            await fetch('/signed_paste', {
+                headers: {
+                    'x-paste-meta-extension': extension
+                }
+            })
         ).json();
 
         const formData = new FormData();
@@ -95,13 +100,14 @@ async function postContent(content: string) {
 
 function Index() {
     const [content, setContent] = useState('');
+    const [extension, setExtension] = useState('');
     const [saving, setSaving] = useState(false);
     const [dragging, setDragging] = useState(false);
 
     const save = useCallback(() => {
         setSaving(true);
         if (content.trim().length > 0) {
-            postContent(content).then(() => setSaving(false));
+            postContent(content, extension).then(() => setSaving(false));
         }
     }, [content]);
 
@@ -118,12 +124,22 @@ function Index() {
             return;
         }
         const firstFile = files[0];
-        firstFile
-            .text()
-            .then(text => {
-                setContent(text);
-            })
-            .catch(e => console.error(e));
+        if (firstFile.name.endsWith('.schem')) {
+            firstFile
+                .arrayBuffer()
+                .then(buffer => {
+                    setContent(fromByteArray(new Uint8Array(buffer)));
+                    setExtension('schem');
+                })
+                .catch(e => console.error(e));
+        } else {
+            firstFile
+                .text()
+                .then(text => {
+                    setContent(text);
+                })
+                .catch(e => console.error(e));
+        }
     };
 
     const onDragEnter = (event: React.DragEvent<any>) => {
