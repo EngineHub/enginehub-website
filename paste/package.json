@@ -9,7 +9,7 @@
         "@google-cloud/storage": "^5.8.1",
         "@types/styled-components": "^5.1.9",
         "axios": "^0.21.1",
-        "next": "^10.0.7",
+        "next": "^10.0.9",
         "next-images": "^1.7.0",
         "next-server": "^9.0.5",
         "next-transpile-modules": "^4.1.0",
@@ -28,7 +28,7 @@
         "babel-plugin-styled-components": "^1.12.0",
         "babel-preset-react-app": "^10.0.0",
         "cross-env": "^7.0.3",
-        "tsconfig-paths-webpack-plugin": "^3.3.0"
+        "tsconfig-paths-webpack-plugin": "^3.5.1"
     },
     "keywords": [
         "pastebin",
