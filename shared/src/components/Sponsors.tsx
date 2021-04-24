@@ -112,6 +112,9 @@ const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
     ]);
 
     const availableSponsors = sponsors.concat(extraSponsors);
+    if (availableSponsors.find(sponsor => sponsor === 'beastnode')) {
+        availableSponsors.splice(availableSponsors.indexOf('apexhosting'), 1);
+    }
     if (availableSponsors.length < 3) {
         availableSponsors.push('empty');
     }

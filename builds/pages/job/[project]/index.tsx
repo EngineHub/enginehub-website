@@ -72,7 +72,11 @@ function Index({
                 title={`${project.name} Builds`}
                 description={`Downloads and builds for the ${project.name} project. Download beta and test builds!`}
             />
-            <PageHeader text={`${project.name} Builds`} icon={project.icon}>
+            <PageHeader
+                text={`${project.name} Builds`}
+                icon={project.icon}
+                extraSponsors={project.extraSponsors}
+            >
                 <BranchButtonList>
                     {branches.map(branch => (
                         <BranchButtonItem key={branch}>
