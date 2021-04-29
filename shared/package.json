@@ -4,9 +4,10 @@
     "description": "Shared libs for the EngineHub sites",
     "version": "1.0.0",
     "author": "EngineHub",
+    "main": "index.js",
     "dependencies": {
         "@types/styled-components": "^5.1.9",
-        "polished": "^4.1.1",
+        "polished": "^4.1.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "styled-components": "^5.2.3"
@@ -14,7 +15,7 @@
     "devDependencies": {
         "@babel/core": "^7.13.16",
         "@types/node": "^14.14.41",
-        "@types/react": "^17.0.3",
+        "@types/react": "^17.0.4",
         "@types/react-dom": "^17.0.3",
         "babel-loader": "^8.2.2",
         "lint-staged": "^10.5.4",
