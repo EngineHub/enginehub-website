@@ -153,7 +153,7 @@ const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
                             The content and trademarks presented are the
                             property of their respective owners. Please{' '}
                             <MainLink
-                                href="https://matthewmiller.dev/contact/"
+                                href="https://madelinemiller.dev/contact/"
                                 as={Link}
                             >
                                 contact Me4502

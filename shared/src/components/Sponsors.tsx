@@ -85,7 +85,7 @@ const useSponsorComponents = () => {
                 </FlexLink>
             ),
             () => (
-                <MainLink href="https://matthewmiller.dev/contact/" as={Link}>
+                <MainLink href="https://madelinemiller.dev/contact/" as={Link}>
                     Interested? Contact Me4502
                 </MainLink>
             )
