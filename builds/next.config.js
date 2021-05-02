@@ -10,9 +10,6 @@ module.exports = withTM(
         },
         experimental: {
             sprFlushToDisk: false
-        },
-        future: {
-            webpack5: true
         }
     })
 );
