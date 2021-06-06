@@ -41,7 +41,7 @@ export const Schematic: React.FC<SchematicProps> = ({
             renderSchematic(ref.current, schematic, {
                 size,
                 jarUrl:
-                    'https://corsanywhere.minidigger.me/https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar',
+                    'https://cors-anywhere-eh.octyl.net/https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar',
                 renderBars: !preview
             }).then(({ destroy: d, resize: r }) => {
                 setResize(() => r);

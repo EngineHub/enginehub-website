@@ -5,8 +5,8 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^2.2.2",
-        "@google-cloud/storage": "^5.8.4",
+        "@enginehub/schematicwebviewer": "^2.2.3",
+        "@google-cloud/storage": "^5.8.5",
         "@types/styled-components": "^5.1.9",
         "axios": "^0.21.1",
         "base64-js": "^1.5.1",

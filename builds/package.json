@@ -8,7 +8,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "@fortawesome/react-fontawesome": "^0.1.14",
-        "@google-cloud/storage": "^5.8.4",
+        "@google-cloud/storage": "^5.8.5",
         "@types/styled-components": "^5.1.9",
         "axios": "^0.21.1",
         "moment": "^2.29.1",
