@@ -1339,10 +1339,10 @@
     ts-node "^9"
     tslib "^2"
 
-"@enginehub/schematicjs@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicjs/-/schematicjs-0.2.0.tgz#b527cc89102a7f3a79265e337c5f28e980d5b8c6"
-  integrity sha512-rtYvulpAPAvbDY/g3Zvbee7rxfo/d81UrbIAnGi87BMq8RVMDGHcNSQxAPuPLQqUmm9DlnykC40ppCKsIzovIg==
+"@enginehub/schematicjs@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicjs/-/schematicjs-0.2.1.tgz#a858808dbba5f602db128bfdc2e81dcd1ad12b86"
+  integrity sha512-Z+5UBXwt5SLe5tYoNs5aAwoscIWX9Cj9zi9EZZKAkcwT2oyCmg7ce7kSO6b0rdOstb4uBe8wBj3pP3wViKsP6g==
   dependencies:
     gzip-js "^0.3.2"
     nbt-ts "^1.3.3"
@@ -1350,12 +1350,12 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.2.3.tgz#6ec691ba41dac635aa39d15a9150eba7cfedb974"
-  integrity sha512-f6YQnKin3gmJHlfYT1rUNf5/4XzsM0pL+ipPa3MvSd74FN875qnS99NaqBZCvzFVX07F7SeJcGI72/wzxvrOWw==
+"@enginehub/schematicwebviewer@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.2.4.tgz#a1a229ad4fabb31ec47f1c2aa3af35494f3f23fe"
+  integrity sha512-b784qNFGvs56DkxMBSiJYPBwzYVGGDcBfRNNrOZi2ii9bHPxsdlv97MDjrTqw0PFGXMq3+EbUyTXPAWJCt6iVw==
   dependencies:
-    "@enginehub/schematicjs" "^0.2.0"
+    "@enginehub/schematicjs" "^0.2.1"
     deepmerge "^4.2.2"
     gzip-js "^0.3.2"
     jszip "^3.6.0"

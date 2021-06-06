@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^2.2.3",
+        "@enginehub/schematicwebviewer": "^2.2.4",
         "@google-cloud/storage": "^5.8.5",
         "@types/styled-components": "^5.1.9",
         "axios": "^0.21.1",
