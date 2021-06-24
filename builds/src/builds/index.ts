@@ -100,9 +100,7 @@ export async function getBranches(project: Project): Promise<string[]> {
             Accept: 'application/json'
         }
     });
-    const branches = data.branch.map((branch: any) =>
-        branch.default ? project.defaultBranch : branch.name
-    ) as string[];
+    const branches = data.branch.map((branch: any) => branch.name) as string[];
     if (project.pinnedBranches) {
         for (const pinnedBranch of project.pinnedBranches) {
             if (!branches.includes(pinnedBranch)) {
