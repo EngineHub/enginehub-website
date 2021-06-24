@@ -13,10 +13,10 @@ export const PROJECTS = [
     {
         id: 'worldedit',
         name: 'WorldEdit',
-        defaultBranch: 'master',
+        defaultBranch: 'version/7.2.x',
         icon: require('../images/worldedit-logo.svg'),
         buildType: 'bt10',
-        pinnedBranches: ['forge-archive/1.12.2', 'version/7.2.x'],
+        pinnedBranches: ['master'],
         vcsRoot: 'https://github.com/EngineHub/WorldEdit'
     },
     {
