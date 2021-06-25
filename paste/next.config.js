@@ -3,8 +3,6 @@ const withTM = require('next-transpile-modules')(['shared']);
 
 module.exports = withTM(
     withImages({
-        target: 'serverless',
-        distDir: 'build',
         env: {
             GA_TRACKING_ID: 'UA-139849956-4'
         },
@@ -23,9 +21,6 @@ module.exports = withTM(
                     destination: '/api/documents/:slug'
                 }
             ];
-        },
-        experimental: {
-            sprFlushToDisk: false
         },
         webpack5: false
     })
