@@ -26,6 +26,7 @@ module.exports = withTM(
         },
         experimental: {
             sprFlushToDisk: false
-        }
+        },
+        webpack5: false
     })
 );

@@ -9,7 +9,8 @@ module.exports = withTM(
             GA_TRACKING_ID: 'UA-139849956-5'
         },
         experimental: {
-            sprFlushToDisk: false
-        }
+            sprFlushToDisk: false,
+        },
+        webpack5: false
     })
 );
