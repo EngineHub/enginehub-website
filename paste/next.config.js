@@ -21,7 +21,6 @@ module.exports = withTM(
                     destination: '/api/documents/:slug'
                 }
             ];
-        },
-        webpack5: false
+        }
     })
 );
