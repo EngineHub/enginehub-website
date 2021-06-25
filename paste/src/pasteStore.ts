@@ -13,7 +13,7 @@ let authData: {
 
 if (process.env.GCLOUD_CREDENTIALS) {
     authData = {
-        credentials: JSON.parse(process.env.GCLOUD_CREDENTIALS)
+        credentials: JSON.parse(Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString('utf-8'))
     };
 }
 
