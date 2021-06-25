@@ -84,6 +84,8 @@ export async function signedUploadUrl(fields?: {
 }> {
     const id = shortid.generate();
 
+    console.log(process.env.GCLOUD_CREDENTIALS);
+
     const options: GenerateSignedPostPolicyV4Options = {
         expires: Date.now() + 60 * 10 * 1000, // 10 minutes
         conditions: [['content-length-range', 0, 1024 * 1024 * 10]], // 10MB
