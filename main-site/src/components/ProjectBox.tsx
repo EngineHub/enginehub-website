@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
-import { MainLinkStyle } from '@shared/components/Link';
+import { MainLinkStyle } from '@enginehub/shared';
 
 interface ProjectBoxProps {
     description: string;

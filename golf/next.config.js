@@ -1,4 +1,3 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withImages = require('next-images')
 
 const prod = process.env.NODE_ENV === 'production';
@@ -18,11 +17,6 @@ module.exports = withImages({
             }
         });
         config.resolve.extensions.push(".ts", ".tsx");
-        if (config.resolve.plugins) {
-            config.resolve.plugins.push(new TsconfigPathsPlugin());
-        } else {
-            config.resolve.plugins = [new TsconfigPathsPlugin()];
-        }
         return config;
     },
     env: {

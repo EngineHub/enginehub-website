@@ -77,3 +77,6 @@ sls-next-build
 build
 # Local Netlify folder
 .netlify
+
+# Webpack
+dist/

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Layout } from '@paste/Layout';
+import { Layout } from '../../src/Layout';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import PasteComponent from '@paste/views/PasteComponent';
-import ProfileComponent from '@paste/views/ProfileComponent';
-import ReportComponent from '@paste/views/ReportComponent';
-import { loadPaste } from '@paste/loadPaste';
-import SchematicComponent from '@paste/views/SchematicComponent';
-import SEO from '@shared/components/Seo';
-import { Extension, PasteData } from '@paste/types';
+import PasteComponent from '../../src/views/PasteComponent';
+import ProfileComponent from '../../src/views/ProfileComponent';
+import ReportComponent from '../../src/views/ReportComponent';
+import { loadPaste } from '../../src/loadPaste';
+import SchematicComponent from '../../src/views/SchematicComponent';
+import { SEO } from '@enginehub/shared';
+import { Extension, PasteData } from '../../src/types';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;

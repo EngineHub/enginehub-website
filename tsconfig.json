@@ -1,13 +1,6 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "paths": {
-            "@shared/*": ["shared/src/*"],
-            "@builds/*": ["builds/src/*"],
-            "@main/*": ["main-site/src/*"],
-            "@paste/*": ["paste/src/*"],
-            "@golf/*": ["golf/src/*"]
-        },
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,

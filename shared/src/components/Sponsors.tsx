@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useMemo } from 'react';
 import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
-import { LinkProviderContext } from '@shared/utils/LinkProvider';
+import { LinkProviderContext } from '../utils/LinkProvider';
 
 const sponsors: string[] = ['apexhosting', 'gh-sponsors'];
 
@@ -45,11 +45,10 @@ const useSponsorComponents = () => {
                 </Link>
             ),
             () => {
-                const img = require('../images/beastnode.png');
                 return (
                     <Link href="https://www.beastnode.com">
                         <img
-                            src={img}
+                            src={'https://enginehub.org/images/beastnode.png'}
                             style={{ marginBottom: 0 }}
                             alt="BeastNode"
                         />
@@ -94,7 +93,7 @@ const useSponsorComponents = () => {
     );
 };
 
-const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
+export const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
     const [
         NetlifySponsor,
         BeastNodeSponsor,
@@ -167,5 +166,3 @@ export const LabelledSponsorsArea: React.FC<ExtraSponsorProps> = ({
         <RandomSponsor extraSponsors={extraSponsors} />
     </HorizontalSponsorArea>
 );
-
-export default RandomSponsor;

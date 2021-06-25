@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useMemo } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
-import { Gutter } from '@paste/Gutter';
+import { Gutter } from '../Gutter';
 
 const PasteContent = styled.div`
     display: block;

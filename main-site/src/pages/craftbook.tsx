@@ -1,29 +1,30 @@
 import { graphql } from 'gatsby';
-import Layout from '@main/components/Layout';
-import SEO from '@shared/components/Seo';
-import React from 'react';
-import { ContainerPadded } from '@shared/components/Container';
-import { Row, ColumnHalf } from '@shared/components/grid';
-import { MainOutboundLink, MainLink } from '@main/components/Link';
-import JumbotronContainer, {
-    JumbotronText,
+import Layout from '../components/Layout';
+import {
+    SEO,
+    ContainerPadded,
+    Row,
+    ColumnHalf,
     JumbotronButtonBox,
-    JumbotronImageBox
-} from '@shared/components/Jumbotron';
-import { SectionHeading } from '@shared/components/text/SectionHeading';
-import PlatformBanner from '@main/components/PlatformBanner';
+    JumbotronContainer,
+    JumbotronImageBox,
+    JumbotronText,
+    SectionHeading,
+    WarningLabel,
+    InfoLabel,
+    HorizontalNav,
+    HorizontalNavItem,
+    AlignedContent
+} from '@enginehub/shared';
+import React from 'react';
+import { MainOutboundLink, MainLink } from '../components/Link';
+import PlatformBanner from '../components/PlatformBanner';
 import {
     GrayOutboundButton,
     BlueButton,
     BlueOutboundButton
-} from '@main/components/Button';
-import { WarningLabel, InfoLabel } from '@shared/components/text/Label';
+} from '../components/Button';
 import { ReactComponent as HeaderLogo } from '../images/projects/headers/craftbook-header.svg';
-import {
-    HorizontalNav,
-    HorizontalNavItem
-} from '@shared/components/HorizontalNav';
-import AlignedContent from '@shared/components/AlignedContent';
 import { getImage } from 'gatsby-plugin-image';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
@@ -300,11 +301,7 @@ export const query = graphql`
         ) {
             nodes {
                 childImageSharp {
-                    gatsbyImageData(
-                        width: 150
-                        quality: 100
-                        layout: FIXED
-                    )
+                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
                 }
                 name
             }

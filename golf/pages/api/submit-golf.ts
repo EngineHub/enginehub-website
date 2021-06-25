@@ -1,6 +1,6 @@
 import shortid from 'shortid';
-import { withAuth } from '@golf/auth';
-import { addGolf } from '@golf/dynamoDb';
+import { withAuth } from '../../src/auth';
+import { addGolf } from '../../src/dynamoDb';
 
 interface Body {
     title: string;

@@ -1,12 +1,16 @@
 import React from 'react';
 import Layout from '../src/Layout';
-import { Container } from '@shared/components/Container';
-import { WarningBox } from '@shared/components/WarningBox';
-import SEO from '@shared/components/Seo';
-import { PageHeader } from '@shared/components/PageHeader';
-import { Table } from '@shared/components/Table';
-import { Project, PROJECTS } from '@builds/project';
-import { Build, getBranches, getLatestBuild } from '@builds/builds';
+import {
+    Container,
+    WarningBox,
+    SEO,
+    PageHeader,
+    Table,
+    MainLinkStyle,
+    InfoLabel
+} from '@enginehub/shared';
+import { Project, PROJECTS } from '../src/project';
+import { Build, getBranches, getLatestBuild } from '../src/builds';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -15,8 +19,6 @@ import {
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import { MainLinkStyle } from '@shared/components/Link';
-import { InfoLabel } from '@shared/components/text/Label';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 

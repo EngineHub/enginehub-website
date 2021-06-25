@@ -5,7 +5,7 @@ import {
     MainButtonStyle,
     PurpleButtonStyle,
     BlueButtonStyle
-} from '@shared/components/Button';
+} from '@enginehub/shared';
 
 export const GrayOutboundButton = styled(OutboundLink)(MainButtonStyle);
 export const PurpleOutboundButton = styled(OutboundLink)(PurpleButtonStyle);

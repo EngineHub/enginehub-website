@@ -10,7 +10,7 @@ interface SEOProps {
     image?: string;
 }
 
-const SEO: FunctionComponent<SEOProps> = ({
+export const SEO: FunctionComponent<SEOProps> = ({
     description = 'Open-source mods for and by the Minecraft community',
     lang = 'en',
     meta = [],
@@ -75,5 +75,3 @@ const SEO: FunctionComponent<SEOProps> = ({
         />
     );
 };
-
-export default SEO;

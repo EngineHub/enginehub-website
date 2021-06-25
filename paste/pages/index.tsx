@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { getFiles } from '@paste/dragAndDrop';
-import { Layout } from '@paste/Layout';
-import Loader from '@shared/components/Loader';
+import { getFiles } from '../src/dragAndDrop';
+import { Layout } from '../src/Layout';
 import Router from 'next/router';
 import React, { useCallback, useEffect, useState } from 'react';
-import SEO from '@shared/components/Seo';
+import { SEO, Loader } from '@enginehub/shared';
 import { fromByteArray } from 'base64-js';
 
 const Row = styled.div`

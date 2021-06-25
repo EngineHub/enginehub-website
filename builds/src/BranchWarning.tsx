@@ -1,5 +1,4 @@
-import { WarningBox } from '@shared/components/WarningBox';
-import { MainButtonStyle } from '@shared/components/Button';
+import { WarningBox, MainButtonStyle } from '@enginehub/shared';
 import styled from 'styled-components';
 import React from 'react';
 import Link from 'next/link';

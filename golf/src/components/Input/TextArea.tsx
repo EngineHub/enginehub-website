@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormLabel } from '@shared/components/text/FormLabel';
+import { FormLabel } from '@enginehub/shared';
 
 export interface TextAreaProps {
     name: string;

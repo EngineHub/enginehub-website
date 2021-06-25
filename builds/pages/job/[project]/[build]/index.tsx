@@ -1,24 +1,30 @@
 import React from 'react';
-import Layout from '@builds/Layout';
-import { ContainerPadded } from '@shared/components/Container';
-import styled from 'styled-components';
-import { InfoBox } from '@shared/components/InfoBox';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import SEO from '@shared/components/Seo';
-import { PROJECT_MAP, Project } from '@builds/project';
+import Layout from '../../../../src/Layout';
 import {
-    BreadcrumbWrapper,
+    ContainerPadded,
+    InfoBox,
+    SEO,
     Breadcrumb,
-    ActiveBreadcrumb
-} from '@shared/components/Breadcrumbs';
-import { MainLinkStyle } from '@shared/components/Link';
-import { HeaderText } from '@shared/components/PageHeader';
-import { MainButtonStyle } from '@shared/components/Button';
-import { Panel, PanelHeading, PanelBody } from '@shared/components/Panel';
-import { LabelledSponsorsArea } from '@shared/components/Sponsors';
-import { Table, BorderedTable } from '@shared/components/Table';
-import { Row, ColumnThird, ColumnTwoThird } from '@shared/components/grid';
-import { getBuild, Build } from '@builds/builds';
+    BreadcrumbWrapper,
+    ActiveBreadcrumb,
+    MainLinkStyle,
+    HeaderText,
+    MainButtonStyle,
+    Panel,
+    PanelBody,
+    PanelHeading,
+    LabelledSponsorsArea,
+    Table,
+    BorderedTable,
+    Row,
+    ColumnThird,
+    ColumnTwoThird,
+    WarningBox
+} from '@enginehub/shared';
+import styled from 'styled-components';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { PROJECT_MAP, Project } from '../../../../src/project';
+import { getBuild, Build } from '../../../../src/builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
@@ -26,9 +32,8 @@ import {
     faExclamationTriangle,
     faDownload
 } from '@fortawesome/free-solid-svg-icons';
-import BranchWarning from '@builds/BranchWarning';
+import BranchWarning from '../../../../src/BranchWarning';
 import moment from 'moment';
-import { WarningBox } from '@shared/components/WarningBox';
 import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 

@@ -1,5 +1,5 @@
-import { getLatestBuild } from '@builds/builds';
-import { PROJECT_MAP } from '@builds/project';
+import { getLatestBuild } from '../../../src/builds';
+import { PROJECT_MAP } from '../../../src/project';
 import { GetServerSideProps } from 'next';
 
 const LastSuccessful = () => <div>placeholder</div>;

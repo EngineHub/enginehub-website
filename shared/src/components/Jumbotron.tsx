@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const JumbotronContainer = styled.div`
+export const JumbotronContainer = styled.div`
     padding: 20px;
     padding-bottom: 0;
 
@@ -35,5 +35,3 @@ export const JumbotronButtonBox = styled.div`
         margin: 1rem 0.5rem;
     }
 `;
-
-export default JumbotronContainer;

@@ -1,16 +1,16 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import Navbar from '@shared/components/Navbar';
-import './layout.css';
-import Footer from '@shared/components/Footer';
-import { Landing } from './Landing';
 import {
+    Navbar,
+    Footer,
     WrapperLinkProps,
-    LinkProviderContext
-} from '@shared/utils/LinkProvider';
+    LinkProviderContext,
+    ExtraSponsorProps
+} from '@enginehub/shared';
+import './layout.css';
+import { Landing } from './Landing';
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import { ExtraSponsorProps } from '@shared/components/Sponsors';
 
 interface LayoutProps {
     discordOverride?: string;

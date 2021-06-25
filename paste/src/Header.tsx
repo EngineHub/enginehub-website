@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
-import { LabelledSponsorsArea } from '@shared/components/Sponsors';
+import { LabelledSponsorsArea } from '@enginehub/shared';
 
 const MainHeader = styled.header`
     padding: 6px 15px;

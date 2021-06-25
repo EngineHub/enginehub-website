@@ -1,10 +1,7 @@
 import React from 'react';
-import Layout from '@builds/Layout';
-import SEO from '@shared/components/Seo';
-import { PageHeader } from '@shared/components/PageHeader';
-import { Container } from '@shared/components/Container';
+import Layout from '../src/Layout';
+import { SEO, PageHeader, Container, BlueButtonStyle } from '@enginehub/shared';
 import styled from 'styled-components';
-import { BlueButtonStyle } from '@shared/components/Button';
 
 export const BlueButton = styled.a(BlueButtonStyle);
 

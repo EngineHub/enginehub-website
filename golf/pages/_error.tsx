@@ -1,12 +1,9 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 import NextError from 'next/error';
-import SEO from '@shared/components/Seo';
-import { PageHeader } from '@shared/components/PageHeader';
-import { Container } from '@shared/components/Container';
+import { SEO, PageHeader, Container, BlueButtonStyle } from '@enginehub/shared';
 import styled from 'styled-components';
-import { BlueButtonStyle } from '@shared/components/Button';
-import Layout from '@golf/Layout';
+import Layout from '../src/Layout';
 
 export const BlueButton = styled.a(BlueButtonStyle);
 

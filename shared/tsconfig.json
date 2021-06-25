@@ -7,9 +7,11 @@
         "module": "esnext",
         "moduleResolution": "node",
         "isolatedModules": false,
-        "noEmit": true,
-        "jsx": "react"
+        "jsx": "react",
+        "sourceMap": true,
+        "declaration": true,
+        "outDir": "./dist"
     },
-    "include": ["src/**/*"],
+    "include": ["./src/**/*.ts"],
     "exclude": ["build"]
 }

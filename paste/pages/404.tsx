@@ -1,6 +1,6 @@
-import { Layout } from '@paste/Layout';
-import PasteComponent from '@paste/views/PasteComponent';
-import SEO from '@shared/components/Seo';
+import { Layout } from '../src/Layout';
+import PasteComponent from '../src/views/PasteComponent';
+import { SEO } from '@enginehub/shared';
 import React from 'react';
 
 function ErrorPage() {

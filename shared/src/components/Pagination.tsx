@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { useContext } from 'react';
-import { LinkProviderContext } from '@shared/utils/LinkProvider';
+import { LinkProviderContext } from '../utils/LinkProvider';
 
 const PaginationBox = styled.ul`
     margin-top: 0;
@@ -47,7 +47,7 @@ interface PaginationProps {
     pageMask: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+export const Pagination: React.FC<PaginationProps> = ({
     hasNextPage,
     currentPage,
     pageMask
@@ -90,5 +90,3 @@ const Pagination: React.FC<PaginationProps> = ({
         </PaginationBox>
     );
 };
-
-export default Pagination;

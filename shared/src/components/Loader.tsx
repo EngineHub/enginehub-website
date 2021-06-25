@@ -38,7 +38,7 @@ const LdsRing = styled.div`
     }
 `;
 
-const Loader = () => (
+export const Loader = () => (
     <LdsRing className="lds-ring">
         <div />
         <div />
@@ -46,5 +46,3 @@ const Loader = () => (
         <div />
     </LdsRing>
 );
-
-export default Loader;

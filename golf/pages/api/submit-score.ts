@@ -1,6 +1,6 @@
 import safeCompare from 'safe-compare';
-import { addLeaderboard } from '@golf/dynamoDb';
-import { withAuth } from '@golf/auth';
+import { addLeaderboard } from '../../src/dynamoDb';
+import { withAuth } from '../../src/auth';
 
 const EXPECTED_KEY = process.env.BROKER_API_KEY || 'TEST_KEY';
 

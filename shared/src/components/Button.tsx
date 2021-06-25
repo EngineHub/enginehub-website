@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { SECONDARY, ColorPalette, BRAND, PRIMARY } from '@shared/theme';
+import { SECONDARY, ColorPalette, BRAND, PRIMARY } from '../theme';
 
 const BaseButtonLayout = () => css`
     font-weight: 700;

@@ -1,13 +1,13 @@
 import React from 'react';
 import {
     LinkProviderContext,
-    WrapperLinkProps
-} from '@shared/utils/LinkProvider';
-import Navbar from '@shared/components/Navbar';
-import Footer from '@shared/components/Footer';
-import { ExtraSponsorProps } from '@shared/components/Sponsors';
+    WrapperLinkProps,
+    Navbar,
+    Footer,
+    ExtraSponsorProps,
+    PurpleButtonStyle
+} from '@enginehub/shared';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
-import { PurpleButtonStyle } from '@shared/components/Button';
 import styled from 'styled-components';
 import Link from 'next/link';
 

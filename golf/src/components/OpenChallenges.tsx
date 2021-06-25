@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
-import { MainLinkStyle } from '@shared/components/Link';
-import { Golf } from '@golf/types/database';
+import { MainLinkStyle } from '@enginehub/shared';
+import { Golf } from '../types/database';
 
 const Entries = styled.div`
     > div:not(:last) {
