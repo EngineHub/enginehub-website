@@ -7,7 +7,17 @@ import {
 } from '@google-cloud/storage';
 import { PasteData } from './types';
 
-const storage = new Storage();
+let authData: {
+    credentials?: { client_email?: string; private_key?: string };
+} = {};
+
+if (process.env.GCLOUD_CREDENTIALS) {
+    authData = {
+        credentials: JSON.parse(process.env.GCLOUD_CREDENTIALS)
+    };
+}
+
+const storage = new Storage(authData);
 
 const PasteBucket = 'enginehub-paste-data';
 const PastePrefix = 'paste/';
@@ -83,8 +93,6 @@ export async function signedUploadUrl(fields?: {
     uploadFields: { [key: string]: string };
 }> {
     const id = shortid.generate();
-
-    console.log(process.env.GCLOUD_CREDENTIALS);
 
     const options: GenerateSignedPostPolicyV4Options = {
         expires: Date.now() + 60 * 10 * 1000, // 10 minutes
