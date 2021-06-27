@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { PurpleButtonStyle } from '@shared/components/Button';
-import { FormLabel } from '@shared/components/text/FormLabel';
+import { PurpleButtonStyle } from './Button';
+import { FormLabel } from './text/FormLabel';
 
 interface FileSelectorProps {
     name: string;

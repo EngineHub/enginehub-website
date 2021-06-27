@@ -1,21 +1,18 @@
 import { graphql } from 'gatsby';
-import Layout from '@main/components/Layout';
-import SEO from '@shared/components/Seo';
-import React from 'react';
-import { ContainerPadded } from '@shared/components/Container';
+import Layout from '../components/Layout';
 import {
+    SEO,
+    ContainerPadded,
     Row,
     ColumnQuarter,
-    ColumnThreeQuarter
-} from '@shared/components/grid';
-import { SidebarHeading } from '@shared/components/sidebar';
-import SidebarIcon from '@main/components/sidebar/SidebarIcon';
-import {
-    BlueOutboundButton,
-    GrayOutboundButton
-} from '@main/components/Button';
-import { SectionHeading } from '@shared/components/text/SectionHeading';
-import PlatformBanner from '@main/components/PlatformBanner';
+    ColumnThreeQuarter,
+    SidebarHeading,
+    SectionHeading
+} from '@enginehub/shared';
+import React from 'react';
+import SidebarIcon from '../components/sidebar/SidebarIcon';
+import { BlueOutboundButton, GrayOutboundButton } from '../components/Button';
+import PlatformBanner from '../components/PlatformBanner';
 import WorldEditHeader from '../images/projects/headers/worldedit-header.svg';
 import WorldGuardHeader from '../images/projects/headers/worldguard-header.svg';
 import CraftBookHeader from '../images/projects/headers/craftbook-header.svg';

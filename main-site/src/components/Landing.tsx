@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import Navbar from '@shared/components/Navbar';
-import { Container } from '@shared/components/Container';
+import { Navbar, Container } from '@enginehub/shared';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 

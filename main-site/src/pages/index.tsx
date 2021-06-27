@@ -1,12 +1,10 @@
 import React from 'react';
 
-import Layout from '@main/components/Layout';
-import SEO from '@shared/components/Seo';
+import Layout from '../components/Layout';
+import { SEO, Container, Row, ColumnHalf } from '@enginehub/shared';
 import styled from 'styled-components';
-import { Container } from '@shared/components/Container';
-import { Row, ColumnHalf } from '@shared/components/grid';
 import { graphql } from 'gatsby';
-import ProjectBox from '@main/components/ProjectBox';
+import ProjectBox from '../components/ProjectBox';
 import WorldEditIcon from '../images/projects/logo/worldedit-logo.svg';
 import WorldGuardIcon from '../images/projects/logo/worldguard-logo.svg';
 import CraftBookIcon from '../images/projects/logo/craftbook-logo.svg';

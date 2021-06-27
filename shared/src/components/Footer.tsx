@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Container } from '@shared/components/Container';
+import { Container } from './Container';
 import styled from 'styled-components';
-import { LinkProviderContext } from '@shared/utils/LinkProvider';
-import { MainLinkStyle } from '@shared/components/Link';
-import RandomSponsor, { ExtraSponsorProps } from './Sponsors';
+import { LinkProviderContext } from '../utils/LinkProvider';
+import { MainLinkStyle } from './Link';
+import { RandomSponsor, ExtraSponsorProps } from './Sponsors';
 
 const ContainerFlex = styled(Container)`
     display: flex;
@@ -78,7 +78,7 @@ interface FooterProps extends ExtraSponsorProps {
     mainSite: boolean;
 }
 
-const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
+export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
     const Link = useContext(LinkProviderContext);
 
     return (
@@ -166,5 +166,3 @@ const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
         </FooterWrapper>
     );
 };
-
-export default Footer;

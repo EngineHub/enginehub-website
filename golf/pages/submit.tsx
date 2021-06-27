@@ -1,18 +1,20 @@
 import React, { useEffect, ReactNode, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { TextArea } from '@golf/components/Input/TextArea';
-import Input from '@golf/components/Input/Input';
-import { useAuthenticatedFetch } from '@golf/components/Auth';
-import { Loading } from '@golf/components/Loading';
-import { Schematic } from '@golf/components/Schematic';
-import { useAuthenticatedPage } from '@golf/components/Auth';
-import Layout from '@golf/Layout';
-import { PurpleButtonStyle } from '@shared/components/Button';
-import { FileSelector } from '@shared/components/FileSelector';
-import { useElementWidth } from '@shared/hooks/useElementWidth';
-import { BrandHeader } from '@golf/components/BrandHeader';
-import SEO from '@shared/components/Seo';
-import { Container } from '@shared/components/Container';
+import { TextArea } from '../src/components/Input/TextArea';
+import Input from '../src/components/Input/Input';
+import { useAuthenticatedFetch } from '../src/components/Auth';
+import { Loading } from '../src/components/Loading';
+import { Schematic } from '../src/components/Schematic';
+import { useAuthenticatedPage } from '../src/components/Auth';
+import Layout from '../src/Layout';
+import {
+    PurpleButtonStyle,
+    FileSelector,
+    useElementWidth,
+    SEO,
+    Container
+} from '@enginehub/shared';
+import { BrandHeader } from '../src/components/BrandHeader';
 
 const LoadingContainer = styled.div`
     position: absolute;
@@ -113,9 +115,9 @@ const Submit = () => {
     const fetch = useAuthenticatedFetch();
 
     const containerRef = useRef<HTMLDivElement>(null)!;
-    const width = useElementWidth(containerRef as React.MutableRefObject<
-        HTMLElement
-    >);
+    const width = useElementWidth(
+        containerRef as React.MutableRefObject<HTMLElement>
+    );
 
     useAuthenticatedPage();
 
@@ -162,7 +164,10 @@ const Submit = () => {
 
     return (
         <Layout>
-            <SEO title="Submit | WorldEdit Golf" description="Create a new challenge at WorldEdit Golf!" />
+            <SEO
+                title="Submit | WorldEdit Golf"
+                description="Create a new challenge at WorldEdit Golf!"
+            />
             <Container ref={containerRef}>
                 <BrandHeader />
                 {submitting && submitting.type === 'loading' && (

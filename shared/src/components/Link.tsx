@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { PRIMARY } from '@shared/theme';
+import { PRIMARY } from '../theme';
 
 export const MainLinkStyle = () => css`
     color: ${PRIMARY.normal};

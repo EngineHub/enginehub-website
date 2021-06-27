@@ -1,15 +1,13 @@
 import React from 'react';
-import { OpenChallenge } from '@golf/components/OpenChallenges';
-import { useIsLoggedIn } from '@golf/components/Auth';
+import { OpenChallenge } from '../src/components/OpenChallenges';
+import { useIsLoggedIn } from '../src/components/Auth';
 import styled from 'styled-components';
-import Layout from '@golf/Layout';
-import { Golf } from '@golf/types/database';
-import { PurpleButtonStyle } from '@shared/components/Button';
+import Layout from '../src/Layout';
+import { Golf } from '../src/types/database';
+import { PurpleButtonStyle, Container, SEO } from '@enginehub/shared';
 import Link from 'next/link';
-import { Container } from '@shared/components/Container';
-import SEO from '@shared/components/Seo';
-import { BrandHeader } from '@golf/components/BrandHeader';
-import { getAllGolfs } from '@golf/dynamoDb';
+import { BrandHeader } from '../src/components/BrandHeader';
+import { getAllGolfs } from '../src/dynamoDb';
 
 const ChallengeButton = styled.a`
     ${PurpleButtonStyle()}

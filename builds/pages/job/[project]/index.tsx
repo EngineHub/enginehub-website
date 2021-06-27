@@ -1,19 +1,22 @@
 import React from 'react';
-import Layout from '@builds/Layout';
-import { Container } from '@shared/components/Container';
-import SEO from '@shared/components/Seo';
+import Layout from '../../../src/Layout';
+import {
+    Container,
+    SEO,
+    PageHeader,
+    Table,
+    Pagination
+} from '@enginehub/shared';
 import { GetServerSideProps } from 'next';
-import { PageHeader } from '@shared/components/PageHeader';
-import { PROJECT_MAP, Project } from '@builds/project';
-import { Table } from '@shared/components/Table';
+import { PROJECT_MAP, Project } from '../../../src/project';
 import {
     Build,
     getBranches,
     getBuildPage,
     BUILDS_PER_PAGE
-} from '@builds/builds';
+} from '../../../src/builds';
 import styled from 'styled-components';
-import { BlueButtonStyle, MainButtonStyle } from '@shared/components/Button';
+import { BlueButtonStyle, MainButtonStyle } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDownload,
@@ -21,15 +24,14 @@ import {
     faExclamationTriangle,
     faCodeBranch
 } from '@fortawesome/free-solid-svg-icons';
-import { MainLinkStyle } from '@shared/components/Link';
-import BranchWarning from '@builds/BranchWarning';
+import { MainLinkStyle } from '@enginehub/shared';
+import BranchWarning from '../../../src/BranchWarning';
 import {
     BranchButtonList,
     BranchButtonItem,
     BranchButton
-} from '@builds/BranchButton';
+} from '../../../src/BranchButton';
 import moment from 'moment';
-import Pagination from '@shared/components/Pagination';
 import Link from 'next/link';
 
 interface ProjectPageProps {

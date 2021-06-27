@@ -1,11 +1,11 @@
 import React from 'react';
 import {
     LinkProviderContext,
-    WrapperLinkProps
-} from '@shared/utils/LinkProvider';
-import Navbar from '@shared/components/Navbar';
-import Footer from '@shared/components/Footer';
-import { ExtraSponsorProps } from '@shared/components/Sponsors';
+    WrapperLinkProps,
+    Navbar,
+    Footer,
+    ExtraSponsorProps
+} from '@enginehub/shared';
 import Link from 'next/link';
 
 const NextLink: React.FC<WrapperLinkProps> = ({

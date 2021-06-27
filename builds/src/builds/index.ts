@@ -1,7 +1,7 @@
 import { Build } from './types';
 import axios from 'axios';
 import { DUMMY_BUILD } from './dummyData';
-import { Project } from '@builds/project';
+import { Project } from '../project';
 import moment from 'moment';
 
 export * from './types';

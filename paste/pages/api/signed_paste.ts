@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { signedUploadUrl } from '@paste/pasteStore';
+import { signedUploadUrl } from '../../src/pasteStore';
 
 export default async function handle(
     req: NextApiRequest,

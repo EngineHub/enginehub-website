@@ -7,7 +7,17 @@ import {
 } from '@google-cloud/storage';
 import { PasteData } from './types';
 
-const storage = new Storage();
+let authData: {
+    credentials?: { client_email?: string; private_key?: string };
+} = {};
+
+if (process.env.GCLOUD_CREDENTIALS) {
+    authData = {
+        credentials: JSON.parse(Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString('utf-8'))
+    };
+}
+
+const storage = new Storage(authData);
 
 const PasteBucket = 'enginehub-paste-data';
 const PastePrefix = 'paste/';

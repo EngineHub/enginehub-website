@@ -1,24 +1,27 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { NextPageContext } from 'next';
-import { Golf, GolfLeaderboard, User } from '@golf/types/database';
+import { Golf, GolfLeaderboard, User } from '../../src/types/database';
 import {
     LeaderboardEntry,
     Leaderboard
-} from '@golf/components/Leaderboard/Leaderboard';
+} from '../../src/components/Leaderboard/Leaderboard';
 import styled from 'styled-components';
-import { pollBroker, queueTask, clearTask } from '@golf/broker';
-import { Schematic } from '@golf/components/Schematic';
-import { useToken } from '@golf/components/Auth';
-import Layout from '@golf/Layout';
-import { BlueButtonStyle, MainButtonStyle } from '@shared/components/Button';
+import { pollBroker, queueTask, clearTask } from '../../src/broker';
+import { Schematic } from '../../src/components/Schematic';
+import { useToken } from '../../src/components/Auth';
+import Layout from '../../src/Layout';
+import {
+    BlueButtonStyle,
+    MainButtonStyle,
+    Container,
+    useElementWidth,
+    SEO,
+    MainLinkStyle
+} from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { Container } from '@shared/components/Container';
-import { useElementWidth } from '@shared/hooks/useElementWidth';
-import { BrandHeader } from '@golf/components/BrandHeader';
-import SEO from '@shared/components/Seo';
-import { MainLinkStyle } from '@shared/components/Link';
-import { getGolfData } from '@golf/dynamoDb';
+import { BrandHeader } from '../../src/components/BrandHeader';
+import { getGolfData } from '../../src/dynamoDb';
 
 interface DocumentProps {
     golf: Golf;

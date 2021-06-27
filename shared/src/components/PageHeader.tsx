@@ -1,10 +1,10 @@
 import React from 'react';
-import { ContainerPadded } from '@shared/components/Container';
+import { ContainerPadded } from './Container';
 import styled from 'styled-components';
 import {
     LabelledSponsorsArea,
     ExtraSponsorProps
-} from '@shared/components/Sponsors';
+} from './Sponsors';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;

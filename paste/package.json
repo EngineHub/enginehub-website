@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
+        "@enginehub/shared": "1.0.0",
         "@enginehub/schematicwebviewer": "^2.2.4",
         "@google-cloud/storage": "^5.8.5",
         "@types/styled-components": "^5.1.10",
@@ -12,8 +13,6 @@
         "base64-js": "^1.5.1",
         "next": "^11.0.1",
         "next-images": "^1.8.1",
-        "next-server": "^9.0.5",
-        "next-transpile-modules": "4.1.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-helmet": "^6.1.0",
@@ -25,11 +24,7 @@
         "@types/react": "^17.0.11",
         "@types/react-dom": "^17.0.8",
         "@types/shortid": "^0.0.29",
-        "babel-loader": "^8.2.2",
-        "babel-plugin-styled-components": "^1.12.0",
-        "babel-preset-react-app": "^10.0.0",
-        "cross-env": "^7.0.3",
-        "tsconfig-paths-webpack-plugin": "^3.5.1"
+        "babel-plugin-styled-components": "^1.12.0"
     },
     "keywords": [
         "pastebin",
@@ -42,7 +37,6 @@
         "dev": "next",
         "clean": "rm -rf build",
         "build": "next build",
-        "deploy": "gcloud app deploy --promote --stop-previous-version",
         "start": "next start -p $PORT",
         "type-check": "tsc --project ./tsconfig.json --noEmit",
         "lint": "tslint --config ./tslint.json --project ./tsconfig.json",

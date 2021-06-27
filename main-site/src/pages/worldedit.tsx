@@ -1,28 +1,28 @@
 import { graphql } from 'gatsby';
-import Layout from '@main/components/Layout';
-import SEO from '@shared/components/Seo';
-import React from 'react';
-import { ContainerPadded } from '@shared/components/Container';
-import { Row, ColumnHalf } from '@shared/components/grid';
-import { MainOutboundLink } from '@main/components/Link';
-import JumbotronContainer, {
+import Layout from '../components/Layout';
+import {
+    SEO,
+    ContainerPadded,
+    Row,
+    ColumnHalf,
     JumbotronText,
     JumbotronButtonBox,
-    JumbotronImageBox
-} from '@shared/components/Jumbotron';
-import { SectionHeading } from '@shared/components/text/SectionHeading';
-import PlatformBanner from '@main/components/PlatformBanner';
-import { WarningLabel } from '@shared/components/text/Label';
+    JumbotronImageBox,
+    JumbotronContainer,
+    HorizontalNav,
+    HorizontalNavItem,
+    AlignedContent,
+    SectionHeading,
+    WarningLabel
+} from '@enginehub/shared';
+import React from 'react';
+import { MainOutboundLink } from '../components/Link';
+import PlatformBanner from '../components/PlatformBanner';
 import {
     GrayOutboundButton,
     BlueButton,
     BlueOutboundButton
-} from '@main/components/Button';
-import {
-    HorizontalNav,
-    HorizontalNavItem
-} from '@shared/components/HorizontalNav';
-import AlignedContent from '@shared/components/AlignedContent';
+} from '../components/Button';
 import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldedit-header.svg';
 import { getImage } from 'gatsby-plugin-image';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
@@ -456,11 +456,7 @@ export const query = graphql`
         ) {
             nodes {
                 childImageSharp {
-                    gatsbyImageData(
-                        width: 150
-                        quality: 100
-                        layout: FIXED
-                    )
+                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
                 }
                 name
             }

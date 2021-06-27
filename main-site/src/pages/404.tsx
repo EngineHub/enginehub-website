@@ -1,11 +1,9 @@
 import React from 'react';
 
-import Layout from '@main/components/Layout';
-import SEO from '@shared/components/Seo';
+import Layout from '../components/Layout';
+import { SEO, Container, PageHeader } from '@enginehub/shared';
 import { graphql } from 'gatsby';
-import { BlueButton } from '@main/components/Button';
-import { Container } from '@shared/components/Container';
-import { PageHeader } from '@shared/components/PageHeader';
+import { BlueButton } from '../components/Button';
 
 interface NotFoundData {
     file: {

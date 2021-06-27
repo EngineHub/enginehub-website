@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Container } from '@shared/components/Container';
-import { LinkProviderContext } from '@shared/utils/LinkProvider';
-import { MainButtonStyle, PurpleButtonStyle } from '@shared/components/Button';
-import { SECONDARY, BRAND } from '@shared/theme';
+import { Container } from './Container';
+import { LinkProviderContext } from '../utils/LinkProvider';
+import { MainButtonStyle, PurpleButtonStyle } from './Button';
+import { SECONDARY, BRAND } from '../theme';
 
 const NavBackgroundColours = new Map([
     ['default', SECONDARY.darker],
@@ -73,7 +73,7 @@ const FloatedGrayButton = styled.a`
     }
 `;
 
-const Navbar: React.FC<NavbarProps> = ({
+export const Navbar: React.FC<NavbarProps> = ({
     headertheme = 'default',
     headertitle = 'EngineHub',
     discordOverride,
@@ -119,5 +119,3 @@ const Navbar: React.FC<NavbarProps> = ({
         </Nav>
     );
 };
-
-export default Navbar;

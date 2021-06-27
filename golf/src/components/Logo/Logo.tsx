@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spin } from '@golf/animations/spin';
+import { spin } from '../../animations/spin';
 
 const ImageContainer = styled.div`
     position: relative;

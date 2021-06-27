@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createPaste } from '@paste/pasteStore';
+import { createPaste } from '../../src/pasteStore';
 
 const MAX_CONTENT_LENGTH = 1024 * 1024; // 1MB (API Gateway Limit, for larger use the signed paste)
 

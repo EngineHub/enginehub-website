@@ -1,25 +1,24 @@
 import { graphql } from 'gatsby';
-import Layout from '@main/components/Layout';
-import SEO from '@shared/components/Seo';
-import React from 'react';
-import { ContainerPadded } from '@shared/components/Container';
-import { Row } from '@shared/components/grid';
-import { MainOutboundLink } from '@main/components/Link';
-import JumbotronContainer, {
+import Layout from '../components/Layout';
+import {
+    SEO,
+    ContainerPadded,
+    Row,
     JumbotronText,
     JumbotronButtonBox,
-    JumbotronImageBox
-} from '@shared/components/Jumbotron';
-import { SectionHeading } from '@shared/components/text/SectionHeading';
-import PlatformBanner from '@main/components/PlatformBanner';
-import { BlueButton, BlueOutboundButton } from '@main/components/Button';
-import { InfoLabel } from '@shared/components/text/Label';
-import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandhelper-header.svg';
-import AlignedContent from '@shared/components/AlignedContent';
-import {
+    JumbotronImageBox,
+    SectionHeading,
+    InfoLabel,
+    AlignedContent,
     HorizontalNav,
-    HorizontalNavItem
-} from '@shared/components/HorizontalNav';
+    HorizontalNavItem,
+    JumbotronContainer
+} from '@enginehub/shared';
+import React from 'react';
+import { MainOutboundLink } from '../components/Link';
+import PlatformBanner from '../components/PlatformBanner';
+import { BlueButton, BlueOutboundButton } from '../components/Button';
+import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandhelper-header.svg';
 import { getImage } from 'gatsby-plugin-image';
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 
@@ -192,11 +191,7 @@ export const query = graphql`
         allFile(filter: { name: { in: ["bukkit-logo"] } }) {
             nodes {
                 childImageSharp {
-                    gatsbyImageData(
-                        width: 150
-                        quality: 100
-                        layout: FIXED
-                    )
+                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
                 }
                 name
             }

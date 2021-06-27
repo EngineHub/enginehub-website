@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { loadPaste } from '@paste/loadPaste';
+import { loadPaste } from '../../../src/loadPaste';
 
 export default async function handle(
     req: NextApiRequest,

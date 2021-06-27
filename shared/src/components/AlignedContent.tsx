@@ -36,7 +36,7 @@ const LimitedVideo = styled.video`
     border-radius: 5px;
 `;
 
-const AlignedContent: React.FC<AlignedContentProps> = ({
+export const AlignedContent: React.FC<AlignedContentProps> = ({
     header,
     align,
     image,
@@ -63,5 +63,3 @@ const AlignedContent: React.FC<AlignedContentProps> = ({
         </AlignedContentWrapper>
     );
 };
-
-export default AlignedContent;

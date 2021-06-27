@@ -1,4 +1,4 @@
-import { getAllGolfs } from '@golf/dynamoDb';
+import { getAllGolfs } from '../../src/dynamoDb';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
