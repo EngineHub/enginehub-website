@@ -14,7 +14,7 @@ export const PROJECTS = [
         id: 'worldedit',
         name: 'WorldEdit',
         defaultBranch: 'version/7.2.x',
-        icon: require('../images/worldedit-logo.svg'),
+        icon: '/projects/worldedit-logo.svg',
         buildType: 'bt10',
         pinnedBranches: ['master'],
         vcsRoot: 'https://github.com/EngineHub/WorldEdit'
@@ -23,7 +23,7 @@ export const PROJECTS = [
         id: 'worldguard',
         name: 'WorldGuard',
         defaultBranch: 'master',
-        icon: require('../images/worldguard-logo.svg'),
+        icon: '/projects/worldguard-logo.svg',
         buildType: 'bt11',
         vcsRoot: 'https://github.com/EngineHub/WorldGuard'
     },
@@ -31,7 +31,7 @@ export const PROJECTS = [
         id: 'craftbook',
         name: 'CraftBook',
         defaultBranch: 'master',
-        icon: require('../images/craftbook-logo.svg'),
+        icon: '/projects/craftbook-logo.svg',
         buildType: 'bt6',
         extraSponsors: ['beastnode'],
         pinnedBranches: ['4.x', 'five'],
@@ -41,7 +41,7 @@ export const PROJECTS = [
         id: 'commandbook',
         name: 'CommandBook',
         defaultBranch: 'master',
-        icon: require('../images/commandbook-logo.svg'),
+        icon: '/projects/commandbook-logo.svg',
         buildType: 'bt9',
         vcsRoot: 'https://github.com/EngineHub/CommandBook'
     },
@@ -49,7 +49,7 @@ export const PROJECTS = [
         id: 'commandhelper',
         name: 'CommandHelper',
         defaultBranch: 'master',
-        icon: require('../images/commandhelper-logo.svg'),
+        icon: '/projects/commandhelper-logo.svg',
         buildType: 'bt12',
         vcsRoot: 'https://github.com/EngineHub/CommandHelper'
     }

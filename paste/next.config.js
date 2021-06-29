@@ -1,6 +1,4 @@
-const withImages = require('next-images');
-
-module.exports = withImages({
+module.exports = {
     env: {
         GA_TRACKING_ID: 'UA-139849956-4'
     },
@@ -20,4 +18,4 @@ module.exports = withImages({
             }
         ];
     }
-});
+};
