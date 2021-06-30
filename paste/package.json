@@ -5,8 +5,8 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/shared": "1.0.0",
         "@enginehub/schematicwebviewer": "^2.2.4",
+        "@enginehub/shared": "1.0.0",
         "@google-cloud/storage": "^5.8.5",
         "@types/styled-components": "^5.1.10",
         "axios": "^0.21.1",
@@ -24,7 +24,7 @@
         "@types/react": "^17.0.11",
         "@types/react-dom": "^17.0.8",
         "@types/shortid": "^0.0.29",
-        "babel-plugin-styled-components": "^1.12.0"
+        "babel-plugin-styled-components": "^1.13.1"
     },
     "keywords": [
         "pastebin",
