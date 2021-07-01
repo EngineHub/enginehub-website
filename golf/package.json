@@ -37,9 +37,6 @@
         "aws-sdk": "^2.936.0",
         "babel-loader": "^8.2.2",
         "babel-plugin-styled-components": "^1.13.1",
-        "cross-env": "^7.0.3",
-        "serverless-nextjs-plugin": "^2.5.1",
-        "serverless-offline": "^6.9.0",
         "tslint": "^6.1.3",
         "tslint-react": "^5.0.0",
         "typescript": "^4.3.4"
@@ -54,7 +51,6 @@
     "scripts": {
         "dev": "next",
         "build": "next build",
-        "deploy": "cross-env NODE_ENV=production sls deploy -v",
         "start": "next start",
         "type-check": "tsc --project ./tsconfig.json --noEmit",
         "lint": "tslint --config ./tslint.json --project ./tsconfig.json",
