@@ -75,9 +75,9 @@ async function getLeaderboards(golfId: string): Promise<GolfLeaderboard[]> {
 }
 
 export async function getAllGolfs(): Promise<Golf[]> {
-    // if (process.env.NODE_ENV !== 'production') {
-    //     return Promise.resolve([TEST_GOLF, TEST_GOLF, TEST_GOLF]);
-    // }
+    if (process.env.NODE_ENV !== 'production') {
+        return Promise.resolve([TEST_GOLF, TEST_GOLF, TEST_GOLF]);
+    }
 
     const data = await firestore.getAll(
         ...(await firestore.collection(ChallengesCollection).listDocuments())
@@ -161,6 +161,7 @@ export async function addLeaderboard(
 }
 
 export async function addUser(user: User): Promise<void> {
+    console.log(JSON.stringify(user));
     const document = firestore.collection(UsersCollection).doc(user.user_id);
     await document.set(user, {
         merge: true
@@ -168,14 +169,14 @@ export async function addUser(user: User): Promise<void> {
 }
 
 export async function getUser(userId: string): Promise<User> {
-    // if (process.env.NODE_ENV !== 'production') {
-    //     return Promise.resolve({
-    //         user_id: userId,
-    //         fullname: 'Test Testerson',
-    //         username: 'test2',
-    //         avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
-    //     });
-    // }
+    if (process.env.NODE_ENV !== 'production') {
+        return Promise.resolve({
+            user_id: userId,
+            fullname: 'Test Testerson',
+            username: 'test2',
+            avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+        });
+    }
 
     const document = firestore.collection(UsersCollection).doc(userId);
     const data = await document.get();
@@ -183,16 +184,16 @@ export async function getUser(userId: string): Promise<User> {
 }
 
 async function getUsers(userIds: string[]): Promise<User[]> {
-    // if (process.env.NODE_ENV !== 'production') {
-    //     return Promise.resolve(
-    //         userIds.map(userId => ({
-    //             user_id: userId,
-    //             fullname: 'Test Testerson',
-    //             username: 'test2',
-    //             avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
-    //         }))
-    //     );
-    // }
+    if (process.env.NODE_ENV !== 'production') {
+        return Promise.resolve(
+            userIds.map(userId => ({
+                user_id: userId,
+                fullname: 'Test Testerson',
+                username: 'test2',
+                avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+            }))
+        );
+    }
 
     const users = await firestore.getAll(
         ...userIds.map(userId =>
