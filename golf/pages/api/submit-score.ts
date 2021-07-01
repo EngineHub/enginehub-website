@@ -14,8 +14,7 @@ const handler = withAuth(async (req, res) => {
     }
 
     try {
-        await addLeaderboard({
-            golf_id: golfId,
+        await addLeaderboard(golfId, {
             score: score,
             user_id: req.githubId,
             commands,

@@ -9,7 +9,6 @@ export interface Golf {
 }
 
 export interface GolfLeaderboard {
-    golf_id: string;
     user_id: string;
     score: number;
     commands: string;

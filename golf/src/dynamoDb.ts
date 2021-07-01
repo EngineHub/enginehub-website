@@ -1,102 +1,25 @@
-import AWS from 'aws-sdk';
 import { Golf, GolfLeaderboard, User } from './types/database';
+import { Firestore } from '@google-cloud/firestore';
 
-AWS.config.update({
-    region: 'us-east-1'
-});
+let authData: {
+    credentials?: { client_email?: string; private_key?: string };
+} = {};
 
-const dynamoDB = new AWS.DynamoDB();
-const docClient = new AWS.DynamoDB.DocumentClient();
-
-const GolfsTableName = 'WorldEditGolfs';
-const LeaderboardTableName = 'WorldEditGolfsLeaderboard';
-const UsersTableName = 'WorldEditGolfUsers';
-
-export function createTable() {
-    const golfsCreateParams: AWS.DynamoDB.CreateTableInput = {
-        TableName: GolfsTableName,
-        KeySchema: [
-            {
-                AttributeName: 'golf_id',
-                KeyType: 'HASH'
-            }
-        ],
-        AttributeDefinitions: [
-            {
-                AttributeName: 'golf_id',
-                AttributeType: 'S'
-            }
-        ],
-        BillingMode: 'PAY_PER_REQUEST'
+if (process.env.GCLOUD_CREDENTIALS) {
+    authData = {
+        credentials: JSON.parse(
+            Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString(
+                'utf-8'
+            )
+        )
     };
-
-    const leaderboardCreateParams: AWS.DynamoDB.CreateTableInput = {
-        TableName: LeaderboardTableName,
-        KeySchema: [
-            {
-                AttributeName: 'golf_id',
-                KeyType: 'HASH'
-            },
-            {
-                AttributeName: 'user_id',
-                KeyType: 'RANGE'
-            }
-        ],
-        AttributeDefinitions: [
-            {
-                AttributeName: 'golf_id',
-                AttributeType: 'S'
-            },
-            {
-                AttributeName: 'user_id',
-                AttributeType: 'S'
-            }
-        ],
-        BillingMode: 'PAY_PER_REQUEST'
-    };
-
-    const usersCreateParams: AWS.DynamoDB.CreateTableInput = {
-        TableName: UsersTableName,
-        KeySchema: [
-            {
-                AttributeName: 'user_id',
-                KeyType: 'HASH'
-            }
-        ],
-        AttributeDefinitions: [
-            {
-                AttributeName: 'user_id',
-                AttributeType: 'S'
-            }
-        ],
-        BillingMode: 'PAY_PER_REQUEST'
-    };
-
-    const createParams = [
-        golfsCreateParams,
-        leaderboardCreateParams,
-        usersCreateParams
-    ];
-
-    for (const createParam of createParams) {
-        dynamoDB.createTable(
-            createParam,
-            (err: AWS.AWSError, data: AWS.DynamoDB.CreateTableOutput) => {
-                if (err) {
-                    console.error(
-                        'Failed to create table. ',
-                        JSON.stringify(err, null, 2)
-                    );
-                } else {
-                    console.log(
-                        'Created table. ',
-                        JSON.stringify(data, null, 2)
-                    );
-                }
-            }
-        );
-    }
 }
+
+const firestore = new Firestore(authData);
+
+const ChallengesCollection = 'worldedit_golf_challenges';
+const LeaderboardSubcollection = 'leaderboard';
+const UsersCollection = 'worldedit_golf_users';
 
 const TEST_GOLF = {
     golf_id: 'test',
@@ -110,31 +33,17 @@ const TEST_GOLF = {
     user_id: 'test'
 };
 
-export async function getGolf(golfId: string): Promise<Golf> {
+async function getGolf(golfId: string): Promise<Golf> {
     if (process.env.NODE_ENV !== 'production' && golfId === 'test') {
         return Promise.resolve(TEST_GOLF);
     }
-    const readParams: AWS.DynamoDB.DocumentClient.GetItemInput = {
-        TableName: GolfsTableName,
-        Key: {
-            golf_id: golfId
-        }
-    };
 
-    return await new Promise((resolve, reject) => {
-        docClient.get(readParams, (err, data) => {
-            if (err || !data || !data.Item) {
-                reject(err);
-            } else {
-                resolve(data.Item as Golf);
-            }
-        });
-    });
+    const document = firestore.collection(ChallengesCollection).doc(golfId);
+    const data = await document.get();
+    return data.data() as Golf;
 }
 
-export async function getLeaderboard(
-    golfId: string
-): Promise<GolfLeaderboard[]> {
+async function getLeaderboards(golfId: string): Promise<GolfLeaderboard[]> {
     if (process.env.NODE_ENV !== 'production' && golfId === 'test') {
         return Promise.resolve([
             {
@@ -153,85 +62,40 @@ export async function getLeaderboard(
             }
         ]);
     }
-    const queryParams: AWS.DynamoDB.DocumentClient.QueryInput = {
-        TableName: LeaderboardTableName,
-        ExpressionAttributeValues: {
-            ':golfId': golfId
-        },
-        KeyConditionExpression: `golf_id = :golfId`
-    };
 
-    return await new Promise((resolve, reject) => {
-        docClient.query(queryParams, (err, data) => {
-            if (err || !data || !data.Items) {
-                reject(err);
-            } else {
-                resolve(data.Items as GolfLeaderboard[]);
-            }
-        });
-    });
-}
-
-export async function getSingleLeaderboard(
-    golfId: string,
-    userId: string
-): Promise<GolfLeaderboard> {
-    if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve({
-            golf_id: golfId,
-            user_id: userId,
-            score: 1,
-            commands: '//replace stone sand',
-            submitted_time: Date.now()
-        });
-    }
-    const queryParams: AWS.DynamoDB.DocumentClient.GetItemInput = {
-        TableName: LeaderboardTableName,
-        Key: {
-            golf_id: golfId,
-            user_id: `${userId}`
-        }
-    };
-
-    return await new Promise((resolve, reject) => {
-        docClient.get(queryParams, (err, data) => {
-            if (err || !data || !data.Item) {
-                reject(err);
-            } else {
-                resolve(data.Item as GolfLeaderboard);
-            }
-        });
-    });
+    return (
+        await firestore.getAll(
+            ...(await firestore
+                .collection(ChallengesCollection)
+                .doc(golfId)
+                .collection(LeaderboardSubcollection)
+                .listDocuments())
+        )
+    ).map(leaderboard => leaderboard.data() as GolfLeaderboard);
 }
 
 export async function getAllGolfs(): Promise<Golf[]> {
-    if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve([TEST_GOLF, TEST_GOLF, TEST_GOLF]);
-    }
+    // if (process.env.NODE_ENV !== 'production') {
+    //     return Promise.resolve([TEST_GOLF, TEST_GOLF, TEST_GOLF]);
+    // }
 
-    const queryParams: AWS.DynamoDB.DocumentClient.ScanInput = {
-        TableName: GolfsTableName
-    };
-
-    return await new Promise((resolve, reject) => {
-        docClient.scan(queryParams, (err, data) => {
-            if (err || !data || !data.Items) {
-                reject(err);
-            } else {
-                resolve(data.Items as Golf[]);
-            }
-        });
-    });
+    const data = await firestore.getAll(
+        ...(await firestore.collection(ChallengesCollection).listDocuments())
+    );
+    return data.map(dat => dat.data() as Golf);
 }
 
-export async function getGolfData(golfId: string): Promise<{
-    golf: Golf;
-    leaderboards: GolfLeaderboard[];
-    userMap: { [key: string]: User };
-} | undefined> {
+export async function getGolfData(golfId: string): Promise<
+    | {
+          golf: Golf;
+          leaderboards: GolfLeaderboard[];
+          userMap: { [key: string]: User };
+      }
+    | undefined
+> {
     const [golf, leaderboards] = await Promise.all([
         getGolf(golfId),
-        getLeaderboard(golfId)
+        getLeaderboards(golfId)
     ]);
 
     if (!golf) {
@@ -264,145 +128,76 @@ export async function getGolfData(golfId: string): Promise<{
 }
 
 export async function addGolf(golf: Golf): Promise<void> {
-    const createParams: AWS.DynamoDB.DocumentClient.PutItemInput = {
-        TableName: GolfsTableName,
-        Item: golf
-    };
+    const documentReference = firestore
+        .collection(ChallengesCollection)
+        .doc(golf.golf_id);
 
-    return await new Promise((resolve, reject) => {
-        docClient.put(createParams, (err, _data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
-    });
+    await documentReference.set(golf);
 }
 
 export async function addLeaderboard(
+    golfId: string,
     leaderboard: GolfLeaderboard
 ): Promise<void> {
+    const documentReference = firestore
+        .collection(ChallengesCollection)
+        .doc(golfId)
+        .collection(LeaderboardSubcollection)
+        .doc(leaderboard.user_id);
+
     let existingEntry = undefined;
     try {
-        existingEntry = await getSingleLeaderboard(
-            leaderboard.golf_id,
-            leaderboard.user_id
-        );
+        const existing = await documentReference.get();
+        if (existing.exists) {
+            existingEntry = existing.data() as GolfLeaderboard;
+        }
     } catch (e) {}
     if (existingEntry && existingEntry.score <= leaderboard.score) {
         // Don't add a score worse than their best
-        return Promise.resolve();
+        return;
     }
-    const updateParams: AWS.DynamoDB.DocumentClient.UpdateItemInput = {
-        TableName: LeaderboardTableName,
-        Key: {
-            golf_id: `${leaderboard.golf_id}`,
-            user_id: `${leaderboard.user_id}`
-        },
-        UpdateExpression: `set commands=:commands, score=:score, submitted_time=:submitted_time`,
-        ExpressionAttributeValues: {
-            ':commands': leaderboard.commands,
-            ':score': leaderboard.score,
-            ':submitted_time': leaderboard.submitted_time
-        }
-    };
 
-    return await new Promise((resolve, reject) => {
-        docClient.update(updateParams, (err, _data) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
-    });
+    await documentReference.set(leaderboard, { merge: true });
 }
 
 export async function addUser(user: User): Promise<void> {
-    const updateParams: AWS.DynamoDB.DocumentClient.UpdateItemInput = {
-        TableName: UsersTableName,
-        Key: {
-            user_id: `${user.user_id}`
-        },
-        UpdateExpression: `set avatar=:avatar, username=:username, fullname=:fullname`,
-        ExpressionAttributeValues: {
-            ':avatar': user.avatar,
-            ':username': user.username,
-            ':fullname': user.fullname
-        }
-    };
-
-    return await new Promise((resolve, reject) => {
-        docClient.update(updateParams, (err, _data) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
+    const document = firestore.collection(UsersCollection).doc(user.user_id);
+    await document.set(user, {
+        merge: true
     });
 }
 
 export async function getUser(userId: string): Promise<User> {
-    if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve({
-            user_id: userId,
-            fullname: 'Test Testerson',
-            username: 'test2',
-            avatar:
-                'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
-        });
-    }
-    const readParams: AWS.DynamoDB.DocumentClient.GetItemInput = {
-        TableName: UsersTableName,
-        Key: {
-            user_id: `${userId}`
-        }
-    };
+    // if (process.env.NODE_ENV !== 'production') {
+    //     return Promise.resolve({
+    //         user_id: userId,
+    //         fullname: 'Test Testerson',
+    //         username: 'test2',
+    //         avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+    //     });
+    // }
 
-    return await new Promise((resolve, reject) => {
-        docClient.get(readParams, (err, data) => {
-            if (err || !data || !data.Item) {
-                reject(err);
-            } else {
-                resolve(data.Item as User);
-            }
-        });
-    });
+    const document = firestore.collection(UsersCollection).doc(userId);
+    const data = await document.get();
+    return data.data() as User;
 }
 
-export async function getUsers(userIds: string[]): Promise<User[]> {
-    console.log(userIds);
-    if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve(
-            userIds.map(userId => ({
-                user_id: userId,
-                fullname: 'Test Testerson',
-                username: 'test2',
-                avatar:
-                    'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
-            }))
-        );
-    }
+async function getUsers(userIds: string[]): Promise<User[]> {
+    // if (process.env.NODE_ENV !== 'production') {
+    //     return Promise.resolve(
+    //         userIds.map(userId => ({
+    //             user_id: userId,
+    //             fullname: 'Test Testerson',
+    //             username: 'test2',
+    //             avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+    //         }))
+    //     );
+    // }
 
-    const readParams: AWS.DynamoDB.DocumentClient.BatchGetItemInput = {
-        RequestItems: {
-            [UsersTableName]: {
-                Keys: userIds.map(userId => ({ user_id: `${userId}` }))
-            }
-        }
-    };
-
-    return await new Promise((resolve, reject) => {
-        docClient.batchGet(readParams, (err, data) => {
-            if (err || !data || !data.Responses) {
-                reject(err);
-            } else {
-                resolve(data.Responses[UsersTableName] as User[]);
-            }
-        });
-    });
+    const users = await firestore.getAll(
+        ...userIds.map(userId =>
+            firestore.collection(UsersCollection).doc(userId)
+        )
+    );
+    return users.map(user => user.data() as User);
 }
