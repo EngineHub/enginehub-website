@@ -8,17 +8,6 @@ const API_PREFIX = prod ? 'https://worldedit.golf' : 'http://localhost:3000';
 module.exports = withImages({
     target: 'serverless',
     assetPrefix: prod ? ASSETS_PREFIX : '',
-    webpack: (config, options) => {
-        config.module.rules.push({
-            test: /\.(ts|tsx)$/,
-            loader: require.resolve('babel-loader'),
-            options: {
-                presets: [['react-app', { flow: false, typescript: true }]]
-            }
-        });
-        config.resolve.extensions.push(".ts", ".tsx");
-        return config;
-    },
     env: {
         STATIC_PREFIX: prod ? ASSETS_PREFIX : '',
         API_PREFIX,
@@ -29,7 +18,4 @@ module.exports = withImages({
         BROKER_API_HOSTNAME: process.env.BROKER_API_HOSTNAME,
         GA_TRACKING_ID: 'UA-139849956-6'
     },
-    experimental: {
-        granularChunks: true
-    }
 });
