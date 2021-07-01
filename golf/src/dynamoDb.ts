@@ -161,7 +161,6 @@ export async function addLeaderboard(
 }
 
 export async function addUser(user: User): Promise<void> {
-    console.log(JSON.stringify(user));
     const document = firestore.collection(UsersCollection).doc(user.user_id);
     await document.set(user, {
         merge: true
@@ -178,7 +177,7 @@ export async function getUser(userId: string): Promise<User> {
         });
     }
 
-    const document = firestore.collection(UsersCollection).doc(userId);
+    const document = firestore.collection(UsersCollection).doc(`${userId}`);
     const data = await document.get();
     return data.data() as User;
 }
