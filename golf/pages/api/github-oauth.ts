@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import got from 'got';
 import jwt from 'jsonwebtoken';
-import { addUser } from '../../src/dynamoDb';
+import { addUser } from '../../src/databaseConnector';
 
 interface UserResponse {
     body: {

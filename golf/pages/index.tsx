@@ -7,7 +7,7 @@ import { Golf } from '../src/types/database';
 import { PurpleButtonStyle, Container, SEO } from '@enginehub/shared';
 import Link from 'next/link';
 import { BrandHeader } from '../src/components/BrandHeader';
-import { getAllGolfs } from '../src/dynamoDb';
+import { getAllGolfs } from '../src/databaseConnector';
 
 const ChallengeButton = styled.a`
     ${PurpleButtonStyle()}

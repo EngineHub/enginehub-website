@@ -1,5 +1,6 @@
 import { Golf, GolfLeaderboard, User } from './types/database';
 import { Firestore } from '@google-cloud/firestore';
+import { decryptGCloud } from './encryptedSecrets';
 
 let authData: {
     credentials?: { client_email?: string; private_key?: string };
@@ -13,6 +14,8 @@ if (process.env.GCLOUD_CREDENTIALS) {
             )
         )
     };
+} else {
+    authData = decryptGCloud();
 }
 
 const firestore = new Firestore(authData);
