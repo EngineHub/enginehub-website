@@ -15,7 +15,7 @@ if (process.env.GCLOUD_CREDENTIALS) {
         )
     };
 } else {
-    authData = decryptGCloud();
+    authData = { credentials: decryptGCloud() };
 }
 
 const firestore = new Firestore(authData);
@@ -164,7 +164,9 @@ export async function addLeaderboard(
 }
 
 export async function addUser(user: User): Promise<void> {
-    const document = firestore.collection(UsersCollection).doc(`${user.user_id}`);
+    const document = firestore
+        .collection(UsersCollection)
+        .doc(`${user.user_id}`);
     await document.set(user, {
         merge: true
     });
