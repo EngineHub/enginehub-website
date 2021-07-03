@@ -18,6 +18,8 @@ if (process.env.GCLOUD_CREDENTIALS) {
     authData = { credentials: decryptGCloud() };
 }
 
+console.log(authData);
+
 const firestore = new Firestore(authData);
 
 const ChallengesCollection = 'worldedit_golf_challenges';
