@@ -75,6 +75,7 @@ sls-next-build
 # Next
 .next
 build
+.vercel
 # Local Netlify folder
 .netlify
 

@@ -5,12 +5,13 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^2.2.4",
+        "@enginehub/schematicwebviewer": "^2.2.5",
         "@enginehub/shared": "1.0.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "@fortawesome/react-fontawesome": "^0.1.14",
-        "@types/styled-components": "^5.1.10",
+        "@google-cloud/firestore": "^4.13.1",
+        "@types/styled-components": "^5.1.11",
         "axios": "^0.21.1",
         "bcrypt": "^5.0.1",
         "got": "^11.8.2",
@@ -28,21 +29,17 @@
     "devDependencies": {
         "@babel/core": "^7.14.6",
         "@types/gzip-js": "^0.3.2",
-        "@types/jsonwebtoken": "^8.5.2",
+        "@types/jsonwebtoken": "^8.5.3",
         "@types/node": "^14.14.41",
-        "@types/react": "^17.0.11",
+        "@types/react": "^17.0.13",
         "@types/react-dom": "^17.0.8",
         "@types/safe-compare": "^1.1.0",
         "@types/shortid": "^0.0.29",
-        "aws-sdk": "^2.936.0",
         "babel-loader": "^8.2.2",
         "babel-plugin-styled-components": "^1.13.1",
-        "cross-env": "^7.0.3",
-        "serverless-nextjs-plugin": "^2.5.1",
-        "serverless-offline": "^6.9.0",
         "tslint": "^6.1.3",
         "tslint-react": "^5.0.0",
-        "typescript": "^4.3.4"
+        "typescript": "^4.3.5"
     },
     "keywords": [
         "nextjs",
@@ -54,7 +51,6 @@
     "scripts": {
         "dev": "next",
         "build": "next build",
-        "deploy": "cross-env NODE_ENV=production sls deploy -v",
         "start": "next start",
         "type-check": "tsc --project ./tsconfig.json --noEmit",
         "lint": "tslint --config ./tslint.json --project ./tsconfig.json",

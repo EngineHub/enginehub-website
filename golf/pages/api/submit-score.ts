@@ -1,5 +1,5 @@
 import safeCompare from 'safe-compare';
-import { addLeaderboard } from '../../src/dynamoDb';
+import { addLeaderboard } from '../../src/databaseConnector';
 import { withAuth } from '../../src/auth';
 
 const EXPECTED_KEY = process.env.BROKER_API_KEY || 'TEST_KEY';
@@ -14,8 +14,7 @@ const handler = withAuth(async (req, res) => {
     }
 
     try {
-        await addLeaderboard({
-            golf_id: golfId,
+        await addLeaderboard(golfId, {
             score: score,
             user_id: req.githubId,
             commands,

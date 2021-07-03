@@ -21,7 +21,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { BrandHeader } from '../../src/components/BrandHeader';
-import { getGolfData } from '../../src/dynamoDb';
+import { getGolfData } from '../../src/databaseConnector';
 
 interface DocumentProps {
     golf: Golf;
