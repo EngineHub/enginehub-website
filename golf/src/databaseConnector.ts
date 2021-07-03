@@ -4,6 +4,7 @@ import { decryptGCloud } from './encryptedSecrets';
 
 let authData: {
     credentials?: { client_email?: string; private_key?: string };
+    projectId?: string;
 } = {};
 
 if (process.env.GCLOUD_CREDENTIALS) {
@@ -15,10 +16,14 @@ if (process.env.GCLOUD_CREDENTIALS) {
         )
     };
 } else {
-    authData = { credentials: decryptGCloud() };
+    const decryptedData = decryptGCloud();
+    if (decryptedData) {
+        authData = {
+            credentials: decryptedData,
+            projectId: decryptedData.project_id
+        };
+    }
 }
-
-console.log(authData);
 
 const firestore = new Firestore(authData);
 
