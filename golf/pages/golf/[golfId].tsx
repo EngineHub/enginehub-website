@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPageContext } from 'next';
 import { Golf, GolfLeaderboard, User } from '../../src/types/database';
 import {
     LeaderboardEntry,
@@ -322,25 +322,24 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     );
 }
 
-export const getServerSideProps = async ({ query }: NextPageContext) => {
-    const { golfId } = query;
+export const getStaticProps: GetStaticProps<DocumentProps, { golfId: string }> =
+    async ({ params }) => {
+        const { golfId } = params!;
 
-    try {
         const data = await getGolfData(golfId as string);
         if (!data) {
             return {
-                props: {
-                    error: 'Unknown Golf',
-                    golf: {},
-                    leaderboards: [],
-                    userMap: {}
-                }
+                notFound: true
             };
         }
         return { props: data };
-    } catch (e) {
-        return { props: { error: e, golf: {}, leaderboards: [], userMap: {} } };
+    };
+
+export const getStaticPaths: GetStaticPaths = () => {
+    return {
+        paths: [],
+        fallback: 'blocking'
     }
-};
+}
 
 export default Document;
