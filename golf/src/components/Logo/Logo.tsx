@@ -25,7 +25,7 @@ const InnerImage = styled.img`
 
 export const Logo: React.FC = () => (
     <ImageContainer>
-        <WorldEditLogo src="https://builds.enginehub.org/projects/worldedit-logo.svg" alt="World Edit Logo" />
+        <WorldEditLogo src="/static/worldedit-logo.svg" alt="World Edit Logo" />
         <InnerImage src="/static/golfball.svg" alt="Golf Ball" />
     </ImageContainer>
 );
