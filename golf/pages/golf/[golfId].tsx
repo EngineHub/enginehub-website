@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { GetStaticPaths, GetStaticProps, NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { Golf, GolfLeaderboard, User } from '../../src/types/database';
 import {
     LeaderboardEntry,
