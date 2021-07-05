@@ -8,6 +8,7 @@ import { PurpleButtonStyle, Container, SEO } from '@enginehub/shared';
 import Link from 'next/link';
 import { BrandHeader } from '../src/components/BrandHeader';
 import { getAllGolfs } from '../src/databaseConnector';
+import { GetStaticProps } from 'next';
 
 const ChallengeButton = styled.a`
     ${PurpleButtonStyle()}
@@ -48,12 +49,15 @@ function Home({ golfs }: HomeProps) {
     );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     try {
-        return { props: { golfs: JSON.parse(JSON.stringify(await getAllGolfs())) } };
+        return {
+            props: { golfs: await getAllGolfs() },
+            revalidate: 3600
+        };
     } catch (e) {
-        return { props: { error: e, golfs: [] } };
+        return { props: { error: e, golfs: [] }, revalidate: 3600 };
     }
-};
+}
 
 export default Home;

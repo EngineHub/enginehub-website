@@ -8,6 +8,11 @@ const ImageContainer = styled.div`
     display: inline-block;
 `;
 
+const WorldEditLogo = styled.img`
+    width: 100px;
+    height: 100px;
+`;
+
 const InnerImage = styled.img`
     position: absolute;
     z-index: 1;
@@ -20,7 +25,7 @@ const InnerImage = styled.img`
 
 export const Logo: React.FC = () => (
     <ImageContainer>
-        <img src="/static/WorldEdit.png" alt="World Edit Logo" />
+        <WorldEditLogo src="/static/worldedit-logo.svg" alt="World Edit Logo" />
         <InnerImage src="/static/golfball.svg" alt="Golf Ball" />
     </ImageContainer>
 );
