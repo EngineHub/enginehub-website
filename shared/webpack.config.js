@@ -33,7 +33,8 @@ module.exports = {
     externals: {
         react: 'react',
         'react-dom': 'react-dom',
-        'react-helmet': 'react-helmet'
+        'react-helmet': 'react-helmet',
+        'styled-components': 'styled-components'
     },
     plugins: [
         new DeclarationBundlerPlugin({
