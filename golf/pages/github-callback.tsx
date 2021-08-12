@@ -67,8 +67,4 @@ function FullPage() {
     );
 }
 
-FullPage.getInitialProps = () => {
-    return {};
-};
-
 export default FullPage;
