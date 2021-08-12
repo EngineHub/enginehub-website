@@ -216,6 +216,4 @@ const Submit = () => {
     );
 };
 
-export const getServerSideProps = () => ({});
-
 export default Submit;
