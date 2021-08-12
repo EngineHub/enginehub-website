@@ -99,8 +99,7 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste, metadata }) => {
         if (paste && ref.current) {
             renderSchematic(ref.current, paste, {
                 size: 250,
-                jarUrl:
-                    'https://cors-anywhere-eh.octyl.net/https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar',
+                corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
                 renderBars: false,
                 renderArrow: false
             }).then(({ destroy: d, resize: r }) => {

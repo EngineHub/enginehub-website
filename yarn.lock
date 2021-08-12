@@ -1108,10 +1108,10 @@
     ts-node "^9"
     tslib "^2"
 
-"@enginehub/schematicjs@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicjs/-/schematicjs-0.2.2.tgz#592af8937243fd332abf5b9d851e12f070790343"
-  integrity sha512-X+ILjYK2H3s2Obujnat7qNNk1mndOQ592GwjA6aY0CsfhDSjf6qkPNJyJsl6jF4J3L1TMQ6TN5h6BPnFygoatQ==
+"@enginehub/schematicjs@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicjs/-/schematicjs-0.3.1.tgz#1fee8540c498c11cb9bee6c6859323ea3ef022cd"
+  integrity sha512-O6VWCk/11HaTOL1L+G8eUxAAhjgvAVG13aMm3CBlBZV6Kgz9DFrJRU2hJDuuY8RpsS0wHtY07+sUkXvoodJpgA==
   dependencies:
     gzip-js "^0.3.2"
     nbt-ts "^1.3.3"
@@ -1119,18 +1119,18 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^2.2.5":
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-2.2.5.tgz#4e295d51fcdc65acd2ed3a00b8856574addc6239"
-  integrity sha512-jVruFLF1o5b/krQMKSEhGKyBh7rVne5cipOdyGiHD7POXdiEcT6azxpxDOiZG7sQ1QLztCW1RvlGBzrAJhsBFg==
+"@enginehub/schematicwebviewer@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-3.0.0.tgz#dea3e6e1c5375a5ba732ad4528d9bb73146dabb3"
+  integrity sha512-CJWeZSbptEzInKqEHBfJYxrHAe/ZDm825UBf61RfLpp8SQzxgXOTnj1wvtjpjseplCHZ5BKCexTL+3kcoCTJ8g==
   dependencies:
-    "@enginehub/schematicjs" "^0.2.2"
+    "@enginehub/schematicjs" "^0.3.1"
     deepmerge "^4.2.2"
     gzip-js "^0.3.2"
-    jszip "^3.6.0"
-    nbt-ts "^1.3.3"
+    jszip "^3.7.1"
+    nbt-ts "^1.3.4"
     postinstall-postinstall "^2.1.0"
-    three "^0.130.0"
+    three "^0.130.1"
     zlibt "^0.0.5"
 
 "@eslint/eslintrc@^0.4.3":
@@ -9074,10 +9074,10 @@ jsonwebtoken@^8.5.1:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
-jszip@^3.6.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.7.0.tgz#9b8b995a4e7c9024653ce743e902076a82fdf4e6"
-  integrity sha512-Y2OlFIzrDOPWUnpU0LORIcDn2xN7rC9yKffFM/7pGhQuhO+SUhfm2trkJ/S5amjFvem0Y+1EALz/MEPkvHXVNw==
+jszip@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.7.1.tgz#bd63401221c15625a1228c556ca8a68da6fda3d9"
+  integrity sha512-ghL0tz1XG9ZEmRMcEN2vt7xabrDdqHHeykgARpmZ0BiIctWxM47Vt63ZO2dnp4QYt/xJVLLy5Zv1l/xRdh2byg==
   dependencies:
     lie "~3.3.0"
     pako "~1.0.2"
@@ -10265,6 +10265,11 @@ nbt-ts@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/nbt-ts/-/nbt-ts-1.3.3.tgz#1c5c8fa60f4a1de5bfccc481b65436308973185e"
   integrity sha512-xmEVWDJzO7YdA2YJHqAkfiOKlKECXe/hfNB10t3W7aDJsCXTjXyRbhP5HYvCwrMefGk8p6arQqeMO2V6djyfxQ==
+
+nbt-ts@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/nbt-ts/-/nbt-ts-1.3.4.tgz#40d2c9c788c3f19bf63808eb276ebd74a66ef98f"
+  integrity sha512-8l8oY5DYAdg3fOOWKVqLYpwWfdgagxb/wcVw+dMnKKHgqIKeqMjfdaU7Mzm5910vwkKkQ07/K9ayIMN7ZB/Z7w==
 
 needle@^2.5.2:
   version "2.8.0"
@@ -12115,7 +12120,7 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
 
-react@^17.0.1, react@^17.0.2:
+react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
@@ -13957,7 +13962,7 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.130.0:
+three@^0.130.1:
   version "0.130.1"
   resolved "https://registry.yarnpkg.com/three/-/three-0.130.1.tgz#797588b2877ace31603bbbc864eb2e3022f0b3b4"
   integrity sha512-OSPPKcGvFSiGkG3jFrwwC76PBV/ZSrGxpBbg28bW8s9GU8r/y2spNGtEXHEb/CVqo0Ctf5Lx2rVaxQZB6OasaA==
