@@ -90,6 +90,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
             revalidate: 3600
         };
     } catch (e) {
+        console.error(e);
         return {
             props: {
                 paste: JSON.stringify(e),
