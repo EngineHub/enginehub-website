@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
         if (!pasteContents) {
             return {
                 notFound: true,
-                revalidate: 0
+                revalidate: false
             };
         }
 
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
                 extension: '',
                 metadata: {}
             },
-            revalidate: 0      
+            revalidate: false
         };
     }
 };

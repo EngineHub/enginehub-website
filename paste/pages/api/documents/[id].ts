@@ -26,7 +26,7 @@ export default async function handle(
         res.end();
     } catch (e) {
         res.setHeader('content-type', 'text/plain');
-        res.write(e);
+        res.write(JSON.stringify(e));
         res.status(500);
         res.end();
     }
