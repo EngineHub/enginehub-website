@@ -14,9 +14,6 @@ export async function loadPaste(id: string): Promise<PasteData | undefined> {
     } else if (id === 'test-schematic') {
         return { content: TEST_SCHEM, metadata: { extension: 'schem' } };
     }
-    try {
-        return await getPaste(id);
-    } catch (e) {
-        return undefined;
-    }
+
+    return await getPaste(id);
 }

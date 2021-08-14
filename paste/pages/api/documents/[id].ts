@@ -11,16 +11,23 @@ export default async function handle(
     if (dotIndex !== -1) {
         pasteId = pasteId.substring(0, dotIndex);
     }
-    const pasteContents = await loadPaste(pasteId);
-    if (!pasteContents) {
+    try {
+        const pasteContents = await loadPaste(pasteId);
+        if (!pasteContents) {
+            res.setHeader('content-type', 'text/plain');
+            res.write('Invalid Paste ID');
+            res.status(404);
+            res.end();
+            return;
+        }
         res.setHeader('content-type', 'text/plain');
-        res.write('Invalid Paste ID');
-        res.status(404);
+        res.write(pasteContents.content);
+        res.status(200);
         res.end();
-        return;
+    } catch (e) {
+        res.setHeader('content-type', 'text/plain');
+        res.write(e);
+        res.status(500);
+        res.end();
     }
-    res.setHeader('content-type', 'text/plain');
-    res.write(pasteContents.content);
-    res.status(200);
-    res.end();
 }

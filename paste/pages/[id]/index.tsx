@@ -63,30 +63,42 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
         }
     }
 
-    const pasteContents = await loadPaste(pasteId);
+    try {
+        const pasteContents = await loadPaste(pasteId);
 
-    if (!pasteContents) {
+        if (!pasteContents) {
+            return {
+                notFound: true,
+                revalidate: 0
+            };
+        }
+
+        if (
+            !extension &&
+            pasteContents.metadata?.extension &&
+            isValidExtension(pasteContents.metadata?.extension)
+        ) {
+            extension = pasteContents.metadata?.extension;
+        }
+
         return {
-            notFound: true
+            props: {
+                paste: pasteContents.content,
+                extension: extension ?? '',
+                metadata: pasteContents.metadata
+            },
+            revalidate: 3600
+        };
+    } catch (e) {
+        return {
+            props: {
+                paste: JSON.stringify(e),
+                extension: '',
+                metadata: {}
+            },
+            revalidate: 0      
         };
     }
-
-    if (
-        !extension &&
-        pasteContents.metadata?.extension &&
-        isValidExtension(pasteContents.metadata?.extension)
-    ) {
-        extension = pasteContents.metadata?.extension;
-    }
-
-    return {
-        props: {
-            paste: pasteContents.content,
-            extension: extension ?? '',
-            metadata: pasteContents.metadata
-        },
-        revalidate: 3600
-    };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

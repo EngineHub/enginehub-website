@@ -52,7 +52,7 @@ export async function createPaste(
     });
 }
 
-export async function getPaste(pasteId: string): Promise<PasteData> {
+export async function getPaste(pasteId: string): Promise<PasteData | undefined> {
     const options: CreateReadStreamOptions = {
         decompress: true
     };
@@ -77,7 +77,7 @@ export async function getPaste(pasteId: string): Promise<PasteData> {
     ]);
 
     if (!data) {
-        throw new Error('Failed to find paste');
+        return undefined;
     }
     return {
         content: data.toString('utf-8'),
