@@ -1,6 +1,6 @@
 import { Golf, GolfLeaderboard, User } from './types/database';
 import { Firestore } from '@google-cloud/firestore';
-import { decryptGCloud } from './encryptedSecrets';
+import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
 
 let authData: {
     credentials?: { client_email?: string; private_key?: string };

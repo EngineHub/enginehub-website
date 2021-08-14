@@ -16,7 +16,7 @@
   "include": [
     "pages/**/*",
     "src/**/*"
-  ],
+, "../shared/src/utils/encryptedSecrets.ts"  ],
   "exclude": [
     "node_modules"
   ]

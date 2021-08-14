@@ -6,15 +6,29 @@ import {
     Storage
 } from '@google-cloud/storage';
 import { PasteData } from './types';
+import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
 
 let authData: {
     credentials?: { client_email?: string; private_key?: string };
+    projectId?: string;
 } = {};
 
 if (process.env.GCLOUD_CREDENTIALS) {
     authData = {
-        credentials: JSON.parse(Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString('utf-8'))
+        credentials: JSON.parse(
+            Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString(
+                'utf-8'
+            )
+        )
     };
+} else {
+    const decryptedData = decryptGCloud();
+    if (decryptedData) {
+        authData = {
+            credentials: decryptedData,
+            projectId: decryptedData.project_id
+        };
+    }
 }
 
 const storage = new Storage(authData);
