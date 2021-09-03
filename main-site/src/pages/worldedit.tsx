@@ -183,7 +183,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                         <iframe
                             width="100%"
                             height="300"
-                            src="https://www.youtube.com/embed/72HlPD9CW10?theme=light&amp;rel=0"
+                            src="https://www.youtube.com/embed/yl1hTctucOc?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
@@ -192,7 +192,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                         <iframe
                             width="100%"
                             height="300"
-                            src="https://www.youtube.com/embed/yl1hTctucOc?theme=light&amp;rel=0"
+                            src="https://www.youtube.com/embed/72HlPD9CW10?theme=light&amp;rel=0"
                             frameBorder={0}
                             allowFullScreen={true}
                         />
