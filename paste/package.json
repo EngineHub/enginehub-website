@@ -7,17 +7,17 @@
     "dependencies": {
         "@enginehub/schematicwebviewer": "^3.0.0",
         "@enginehub/shared": "1.0.0",
-        "@google-cloud/storage": "^5.13.1",
-        "@types/styled-components": "^5.1.12",
+        "@google-cloud/storage": "^5.14.0",
+        "@types/styled-components": "^5.1.13",
         "axios": "^0.21.1",
         "base64-js": "^1.5.1",
-        "next": "^11.1.0",
+        "next": "^11.1.2",
         "next-images": "^1.8.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-helmet": "^6.1.0",
         "shortid": "^2.2.16",
-        "styled-components": "^5.3.0"
+        "styled-components": "^5.3.1"
     },
     "devDependencies": {
         "@types/node": "^14.14.41",
