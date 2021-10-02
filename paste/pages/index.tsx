@@ -91,7 +91,7 @@ async function postContent(content: string, extension: string = '') {
         } else {
             window.location.href = viewUrl;
         }
-    } catch (e) {
+    } catch (e: any) {
         console.error(e?.message ?? e);
         alert(`Failed to submit the post!`);
     }
