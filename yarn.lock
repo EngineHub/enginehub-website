@@ -1113,18 +1113,18 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-3.0.0.tgz#dea3e6e1c5375a5ba732ad4528d9bb73146dabb3"
-  integrity sha512-CJWeZSbptEzInKqEHBfJYxrHAe/ZDm825UBf61RfLpp8SQzxgXOTnj1wvtjpjseplCHZ5BKCexTL+3kcoCTJ8g==
+"@enginehub/schematicwebviewer@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-4.0.0.tgz#346b48dbc347aa24d665094b8077121e5cab2bda"
+  integrity sha512-QRzkGwijBQJOoWhKBDkRo2v7TpwcW4rhnAk4ypuIiOvz+BzkeJfXD60UcNgjgcKGqfZjSRjLIn2933kZ4+Ee6Q==
   dependencies:
     "@enginehub/schematicjs" "^0.3.1"
+    babylonjs "^5.0.0-alpha.48"
     deepmerge "^4.2.2"
     gzip-js "^0.3.2"
     jszip "^3.7.1"
     nbt-ts "^1.3.4"
     postinstall-postinstall "^2.1.0"
-    three "^0.130.1"
     zlibt "^0.0.5"
 
 "@eslint/eslintrc@^0.4.3":
@@ -3311,6 +3311,11 @@ babel-preset-gatsby@^1.13.0:
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     gatsby-core-utils "^2.13.0"
     gatsby-legacy-polyfills "^1.13.0"
+
+babylonjs@^5.0.0-alpha.48:
+  version "5.0.0-alpha.48"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.0.0-alpha.48.tgz#702845d9ed590d9e176176be37122c75344ab494"
+  integrity sha512-yes5MLcN21XATRDgnvbIxmCur94ZqcUOfITC7ejh9TAXoLwJi7tFGYvhHn5schodtz7JhHQGe1nqA9b91xnhQw==
 
 backo2@^1.0.2, backo2@~1.0.2:
   version "1.0.2"
@@ -12631,11 +12636,6 @@ text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
-
-three@^0.130.1:
-  version "0.130.1"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.130.1.tgz#797588b2877ace31603bbbc864eb2e3022f0b3b4"
-  integrity sha512-OSPPKcGvFSiGkG3jFrwwC76PBV/ZSrGxpBbg28bW8s9GU8r/y2spNGtEXHEb/CVqo0Ctf5Lx2rVaxQZB6OasaA==
 
 through@^2.3.6, through@^2.3.8:
   version "2.3.8"
