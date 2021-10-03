@@ -66,25 +66,19 @@ const InfoBar: React.FC<PasteProps> = ({ paste, metadata = {} }) => {
 
 const SchematicComponent: React.FC<PasteProps> = ({ paste, metadata }) => {
     const ref = useRef<HTMLCanvasElement>(null);
-    const [resize, setResize] = useState<(size: number) => void>();
+    const [resize, setResize] =
+        useState<(width: number, height: number) => void>();
     const [destroy, setDestroy] = useState<() => void>(() => {});
 
     useEffect(() => {
         if (resize) {
-            resize(
-                Math.min(
-                    window.innerWidth,
-                    window.innerHeight - PAGE_HEIGHT_MOD
-                )
-            );
+            resize(window.innerWidth, window.innerHeight - PAGE_HEIGHT_MOD);
 
             const onResize = (_event: UIEvent) => {
                 if (resize) {
                     resize(
-                        Math.min(
-                            window.innerWidth,
-                            window.innerHeight - PAGE_HEIGHT_MOD
-                        )
+                        window.innerWidth,
+                        window.innerHeight - PAGE_HEIGHT_MOD
                     );
                 }
             };
@@ -98,11 +92,10 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste, metadata }) => {
     useEffect(() => {
         if (paste && ref.current) {
             renderSchematic(ref.current, paste, {
-                size: 250,
                 corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
                 renderBars: false,
                 renderArrow: false
-            }).then(({ destroy: d, resize: r }) => {
+            }).then(({ destroy: d, setSize: r }) => {
                 setResize(() => r);
                 setDestroy(() => d);
             });
