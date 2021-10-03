@@ -1113,10 +1113,10 @@
     postinstall-postinstall "^2.1.0"
     zlibt "^0.0.5"
 
-"@enginehub/schematicwebviewer@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-4.0.0.tgz#346b48dbc347aa24d665094b8077121e5cab2bda"
-  integrity sha512-QRzkGwijBQJOoWhKBDkRo2v7TpwcW4rhnAk4ypuIiOvz+BzkeJfXD60UcNgjgcKGqfZjSRjLIn2933kZ4+Ee6Q==
+"@enginehub/schematicwebviewer@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@enginehub/schematicwebviewer/-/schematicwebviewer-4.1.0.tgz#89cf13b0c026f3c6897e3fe5077eac45655f5a8d"
+  integrity sha512-LntkDkzCdDnUaaE/5tsx1rY+NTHDeW08DccNSt8xkNhUbARqZAih7PD+J/3p/+ME/0C30FO118bycGTK0MQfKQ==
   dependencies:
     "@enginehub/schematicjs" "^0.3.1"
     babylonjs "^5.0.0-alpha.48"
@@ -10934,7 +10934,7 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
 
-react@^17.0.1, react@^17.0.2:
+react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
