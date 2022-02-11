@@ -181,8 +181,8 @@ function generateProfileEntries(paste: string): RootEntry {
     return rootEntry;
 }
 
-const ProfileComponent: React.FC<PasteProps> = ({ paste }) => {
-    const rootEntry = useMemo(() => generateProfileEntries(paste), [paste]);
+const ProfileComponent: React.FC<PasteProps> = React.memo(({ paste }) => {
+    const rootEntry = generateProfileEntries(paste);
     return (
         <>
             {rootEntry.children.map((entry, i) => (
@@ -194,6 +194,6 @@ const ProfileComponent: React.FC<PasteProps> = ({ paste }) => {
             ))}
         </>
     );
-};
+});
 
 export default ProfileComponent;

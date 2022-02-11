@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Golf, GolfLeaderboard, User } from '../../src/types/database';
 import {
@@ -164,7 +164,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
         contentRef as React.MutableRefObject<HTMLElement>
     );
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const timeout = setInterval(async () => {
             if (taskId) {
                 const pollResponse = await pollBroker(taskId!);

@@ -93,7 +93,7 @@ async function postContent(content: string, extension: string = '') {
         }
     } catch (e: any) {
         console.error(e?.message ?? e);
-        alert(`Failed to submit the post!`);
+        alert(`Failed to submit the post! ${e?.message ?? e}`);
     }
 }
 
