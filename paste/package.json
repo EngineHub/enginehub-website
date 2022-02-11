@@ -7,12 +7,12 @@
     "dependencies": {
         "@enginehub/schematicwebviewer": "^4.2.0",
         "@enginehub/shared": "1.0.0",
-        "@google-cloud/storage": "^5.15.3",
-        "@types/styled-components": "^5.1.15",
-        "axios": "^0.24.0",
+        "@google-cloud/storage": "^5.18.1",
+        "@types/styled-components": "^5.1.22",
+        "axios": "^0.25.0",
         "base64-js": "^1.5.1",
-        "next": "^12.0.1",
-        "next-images": "^1.8.2",
+        "next": "^12.0.10",
+        "next-images": "^1.8.4",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-helmet": "^6.1.0",
@@ -21,10 +21,10 @@
     },
     "devDependencies": {
         "@types/node": "^14.14.41",
-        "@types/react": "^17.0.33",
-        "@types/react-dom": "^17.0.10",
+        "@types/react": "^17.0.39",
+        "@types/react-dom": "^17.0.11",
         "@types/shortid": "^0.0.29",
-        "babel-plugin-styled-components": "^1.13.3"
+        "babel-plugin-styled-components": "^2.0.2"
     },
     "keywords": [
         "pastebin",

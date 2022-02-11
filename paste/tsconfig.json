@@ -11,7 +11,8 @@
     "noEmit": true,
     "skipLibCheck": true,
     "target": "esnext",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "incremental": true
   },
   "include": [
     "pages/**/*",

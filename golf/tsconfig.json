@@ -11,12 +11,14 @@
     "noEmit": true,
     "skipLibCheck": true,
     "target": "esnext",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "incremental": true
   },
   "include": [
     "pages/**/*",
-    "src/**/*"
-, "../shared/src/utils/encryptedSecrets.ts"  ],
+    "src/**/*",
+    "../shared/src/utils/encryptedSecrets.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
