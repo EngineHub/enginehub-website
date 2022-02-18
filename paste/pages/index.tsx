@@ -108,7 +108,7 @@ function Index() {
         if (content.trim().length > 0) {
             postContent(content, extension).then(() => setSaving(false));
         }
-    }, [content]);
+    }, [content, extension]);
 
     const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setContent(event.currentTarget.value);
@@ -165,7 +165,7 @@ function Index() {
                 save();
             }
         },
-        [save]
+        [save, saving]
     );
 
     useEffect(() => {
