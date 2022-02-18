@@ -45,6 +45,7 @@
         "type-check": "tsc --project ./tsconfig.json --noEmit",
         "lint": "eslint --config ./.eslintrc.js --ext .ts,.tsx src/",
         "lint:fix": "eslint --config ./.eslintrc.js --fix --ext .ts,.tsx src/",
-        "prepare": "npx webpack"
+        "prepare": "npx webpack",
+        "build": "npx webpack"
     }
 }

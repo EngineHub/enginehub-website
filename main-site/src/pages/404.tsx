@@ -7,7 +7,7 @@ import { BlueButton } from '../components/Button';
 
 interface NotFoundData {
     file: {
-        publicURL: string
+        publicURL: string;
     };
 }
 
