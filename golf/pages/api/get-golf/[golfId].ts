@@ -14,9 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         res.status(200);
-        res.end(
-            JSON.stringify(data)
-        );
+        res.end(JSON.stringify(data));
     } catch (e) {
         console.error(e);
         res.status(500);

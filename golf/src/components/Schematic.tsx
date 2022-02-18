@@ -27,7 +27,8 @@ export const Schematic: React.FC<SchematicProps> = ({
     ...rest
 }) => {
     const ref = useRef<HTMLCanvasElement>(null);
-    const [resize, setResize] = useState<(width: number, height: number) => void>();
+    const [resize, setResize] =
+        useState<(width: number, height: number) => void>();
     const [destroy, setDestroy] = useState<() => void>(() => {});
 
     useEffect(() => {
@@ -49,7 +50,7 @@ export const Schematic: React.FC<SchematicProps> = ({
             return destroy;
         }
         return;
-    }, [schematic]);
+    }, [schematic, destroy, preview, size]);
 
     return (
         <Container size={size} {...rest}>

@@ -47,26 +47,26 @@ export const useSetToken: () => (value?: string) => void = () => {
 
 export const useToken: () => string | undefined = () => {
     const { token } = useContext(AuthContext);
+    const setToken = useSetToken();
 
-    try {
-        if (token) {
-            const isValid = useMemo(() => {
-                const decodedToken = jwt.decode(token);
-
-                return (
-                    decodedToken &&
-                    decodedToken['exp'] &&
-                    decodedToken['exp'] * 1000 > Date.now()
-                );
-            }, [token]);
-
-            if (!isValid) {
-                const setToken = useSetToken();
-                setToken(undefined);
-                return undefined;
-            }
+    const isValid = useMemo(() => {
+        if (!token) {
+            return false;
         }
-    } catch (e) {}
+
+        const decodedToken = jwt.decode(token);
+
+        return (
+            decodedToken &&
+            decodedToken['exp'] &&
+            decodedToken['exp'] * 1000 > Date.now()
+        );
+    }, [token]);
+
+    if (token && !isValid) {
+        setToken(undefined);
+        return undefined;
+    }
 
     return token;
 };
@@ -104,5 +104,5 @@ export const useAuthenticatedPage = () => {
         if (!isLoggedIn) {
             router.push('/');
         }
-    }, [useIsLoggedIn]);
+    }, [isLoggedIn]);
 };

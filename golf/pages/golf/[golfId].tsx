@@ -322,24 +322,26 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     );
 }
 
-export const getStaticProps: GetStaticProps<DocumentProps, { golfId: string }> =
-    async ({ params }) => {
-        const { golfId } = params!;
+export const getStaticProps: GetStaticProps<
+    DocumentProps,
+    { golfId: string }
+> = async ({ params }) => {
+    const { golfId } = params!;
 
-        const data = await getGolfData(golfId as string);
-        if (!data) {
-            return {
-                notFound: true
-            };
-        }
-        return { props: data };
-    };
+    const data = await getGolfData(golfId as string);
+    if (!data) {
+        return {
+            notFound: true
+        };
+    }
+    return { props: data };
+};
 
 export const getStaticPaths: GetStaticPaths = () => {
     return {
         paths: [],
         fallback: 'blocking'
-    }
-}
+    };
+};
 
 export default Document;

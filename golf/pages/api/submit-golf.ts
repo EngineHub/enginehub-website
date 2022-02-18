@@ -22,13 +22,10 @@ const handler = withAuth(async (req, res) => {
         'description'
     ];
 
-    const data = fields.reduce(
-        (acc, a) => {
-            acc[a] = req.body[a];
-            return acc;
-        },
-        {} as Partial<Body>
-    ) as Body;
+    const data = fields.reduce((acc, a) => {
+        acc[a] = req.body[a];
+        return acc;
+    }, {} as Partial<Body>) as Body;
 
     for (const field of fields) {
         if (!data[field]) {
