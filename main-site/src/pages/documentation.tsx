@@ -26,6 +26,8 @@ interface DocumentationPageData {
 }
 
 const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
+    const iconImage = getImage(data.file);
+
     return (
         <Layout>
             <SEO
@@ -36,10 +38,12 @@ const DocumentationPage = ({ data }: { data: DocumentationPageData }) => {
             <ContainerPadded>
                 <Row>
                     <ColumnQuarter>
-                        <SidebarIcon
-                            image={getImage(data.file)!}
-                            alt={'EngineHub Logo'}
-                        />
+                        {iconImage && (
+                            <SidebarIcon
+                                image={iconImage}
+                                alt={'EngineHub Logo'}
+                            />
+                        )}
                         <SidebarHeading>Docs</SidebarHeading>
                     </ColumnQuarter>
                     <ColumnThreeQuarter>
