@@ -30,7 +30,8 @@ export const Table = styled.table`
         }
 
         tr.danger {
-            th, td {
+            th,
+            td {
                 background-color: #f2dede;
             }
         }

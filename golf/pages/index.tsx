@@ -58,6 +58,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     } catch (e) {
         return { props: { error: e, golfs: [] }, revalidate: 3600 };
     }
-}
+};
 
 export default Home;

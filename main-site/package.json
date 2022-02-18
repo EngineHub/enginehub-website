@@ -22,6 +22,13 @@
     "devDependencies": {
         "@types/react": "^17.0.39",
         "@types/react-helmet": "^6.1.5",
+        "@typescript-eslint/eslint-plugin": "^5.12.0",
+        "@typescript-eslint/parser": "^5.12.0",
+        "eslint": "^8.9.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.28.0",
+        "eslint-plugin-react-hooks": "^4.3.0",
         "gatsby-plugin-manifest": "^4.7.0",
         "gatsby-plugin-netlify": "^4.1.0",
         "gatsby-plugin-react-helmet": "^5.7.0",
@@ -34,8 +41,6 @@
         "lint-staged": "^12.3.4",
         "prettier": "^2.5.1",
         "tsconfig": "^7.0.0",
-        "tslint": "^6.1.3",
-        "tslint-react": "^5.0.0",
         "typescript": "^4.5.5"
     },
     "keywords": [
@@ -53,7 +58,7 @@
         "serve": "gatsby serve",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
         "type-check": "tsc --project ./tsconfig.json --noEmit",
-        "lint": "tslint --config ./tslint.json --project ./tsconfig.json",
-        "lint:fix": "tslint --config ./tslint.json --project ./tsconfig.json --fix"
+        "lint": "eslint --config ./.eslintrc.js --ext .ts,.tsx src/",
+        "lint:fix": "eslint --config ./.eslintrc.js --fix --ext .ts,.tsx src/"
     }
 }

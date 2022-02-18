@@ -10,4 +10,6 @@ const Image = styled.img`
     max-height: 100px;
 `;
 
-export const Loading = () => <Image src="/static/golfball.svg" />;
+export const Loading = () => (
+    <Image src="/static/golfball.svg" alt={'Loading spinner'} />
+);

@@ -5,17 +5,17 @@ import { LinkProviderContext } from '../utils/LinkProvider';
 import { MainButtonStyle, PurpleButtonStyle } from './Button';
 import { SECONDARY, BRAND } from '../theme';
 
-const NavBackgroundColours = new Map([
-    ['default', SECONDARY.darker],
-    ['inverted', '0'],
-    ['purple', BRAND.darker]
-]);
+const NavBackgroundColours = {
+    default: SECONDARY.darker,
+    inverted: '0',
+    purple: BRAND.darker
+};
 
-const HeaderTextColors = new Map([
-    ['default', SECONDARY.font],
-    ['inverted', BRAND.font],
-    ['purple', BRAND.font]
-]);
+const HeaderTextColors = {
+    default: SECONDARY.font,
+    inverted: BRAND.font,
+    purple: BRAND.font
+};
 
 interface NavbarProps {
     discordOverride?: string;
@@ -28,7 +28,7 @@ const Nav = styled.nav<InvertedProps>`
     position: relative;
     min-height: 50px;
     margin: 0;
-    background: ${props => NavBackgroundColours.get(props.headertheme)!};
+    background: ${props => NavBackgroundColours[props.headertheme]};
     border: 0;
     border-radius: 0;
 `;
@@ -38,7 +38,7 @@ type InvertedProps = {
 };
 
 const HeaderLink = styled.a<InvertedProps>`
-    color: ${props => HeaderTextColors.get(props.headertheme)!};
+    color: ${props => HeaderTextColors[props.headertheme]};
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;

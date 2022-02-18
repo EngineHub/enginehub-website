@@ -5,26 +5,20 @@
     "description": "EngineHub Websites",
     "version": "1.0.0",
     "author": "EngineHub",
-    "workspaces": [
-        "main-site",
-        "builds",
-        "paste",
-        "golf",
-        "shared"
-    ],
+    "workspaces": ["main-site", "builds", "paste", "golf", "shared"],
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/EngineHub/enginehub-website"
     },
     "dependencies": {
+        "husky": "^7.0.4",
         "patch-package": "^6.4.7",
         "postinstall-postinstall": "^2.1.0"
     },
     "scripts": {
-        "postinstall": "patch-package"
-    },
-    "resolutions": {
-        "react": "^17.0.1"
+        "postinstall": "husky install && patch-package",
+        "prepare": "husky install",
+        "precommit": "lint-staged"
     }
 }

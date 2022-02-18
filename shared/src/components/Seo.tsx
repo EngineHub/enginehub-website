@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 interface SEOProps {
     description?: string;
     lang?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     meta?: any[];
     keywords?: string[];
     title: string;
@@ -67,7 +68,7 @@ export const SEO: FunctionComponent<SEOProps> = ({
                     keywords.length > 0
                         ? {
                               name: `keywords`,
-                              content: keywords!.join(`, `)
+                              content: keywords.join(`, `)
                           }
                         : []
                 )

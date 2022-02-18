@@ -47,7 +47,7 @@ const Page = () => {
                     setError('An unexpected error occurred');
                 }
             });
-    }, []);
+    }, [setToken]);
 
     return errorMessage ? (
         <h1>{errorMessage}</h1>
