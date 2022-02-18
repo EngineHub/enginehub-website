@@ -296,7 +296,7 @@ export const getStaticProps: GetStaticProps<
     }
 
     return {
-        props: { project: projectObj!, build: buildObj! },
+        props: { project: projectObj, build: buildObj },
         revalidate: 3600
     };
 };

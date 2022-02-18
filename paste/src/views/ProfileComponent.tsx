@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
 

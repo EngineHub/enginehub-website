@@ -17,5 +17,8 @@ module.exports = {
                 destination: '/api/documents/:slug'
             }
         ];
+    },
+    compiler: {
+        styledComponents: true
     }
 };
