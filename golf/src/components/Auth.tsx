@@ -33,10 +33,12 @@ export const useSetToken: () => (value?: string) => void = () => {
     const { setToken } = useContext(AuthContext);
 
     const set = (value?: string) => {
-        if (value) {
-            window.localStorage.setItem('token', value);
-        } else {
-            window.localStorage.removeItem('token');
+        if (!isServerRendered) {
+            if (value) {
+                window.localStorage.setItem('token', value);
+            } else {
+                window.localStorage.removeItem('token');
+            }
         }
 
         setToken(value);
