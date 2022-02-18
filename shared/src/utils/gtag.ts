@@ -27,4 +27,4 @@ const event = ({
 export const gtag = {
     pageview,
     event
-}
+};

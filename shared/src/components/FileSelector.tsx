@@ -49,7 +49,10 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
     const inputRef = useRef<HTMLInputElement>(null);
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const f = Array.from(e.target.files!).filter(filter || (() => true));
+        if (!e.target.files) {
+            return;
+        }
+        const f = Array.from(e.target.files).filter(filter || (() => true));
         setFiles(f);
         if (onChange) {
             onChange(f[0]);
@@ -60,10 +63,13 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
         if (onChange) {
             onChange(files[0]);
         }
-    }, [files]);
+    }, [files, onChange]);
 
     const openFilePicker = () => {
-        inputRef.current!.click();
+        if (!inputRef.current) {
+            return;
+        }
+        inputRef.current.click();
     };
 
     return (

@@ -32,7 +32,8 @@ const ButtonColorStyle = (palette: ColorPalette) => css`
         opacity: 0.7;
     }
 
-    :hover, :focus {
+    :hover,
+    :focus {
         background-color: ${palette.lighter};
         box-shadow: 0 0 0 1px ${palette.accent} inset;
     }

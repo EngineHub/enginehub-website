@@ -93,7 +93,9 @@ const useSponsorComponents = () => {
     );
 };
 
-export const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] }) => {
+export const RandomSponsor: React.FC<ExtraSponsorProps> = ({
+    extraSponsors = []
+}) => {
     const [
         NetlifySponsor,
         BeastNodeSponsor,
@@ -132,12 +134,13 @@ export const RandomSponsor: React.FC<ExtraSponsorProps> = ({ extraSponsors = [] 
             setSponsorIndex((sponsorIndex + 1) % availableSponsors.length);
         }, timeoutTime);
         return () => clearTimeout(timeout);
-    }, [sponsorIndex]);
+    }, [sponsorIndex, availableSponsors]);
 
     return (
         <NarrowDiv>
             {availableSponsors.map((spon, i) => {
-                const Component = sponsorMap.get(spon)!;
+                const Component = sponsorMap.get(spon) ?? EmptySponsor;
+
                 return (
                     <div key={`sponsor-${spon}`} hidden={sponsorIndex !== i}>
                         <Component />

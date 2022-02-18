@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useElementWidth: <T extends HTMLElement>(
     ref: React.MutableRefObject<T>
 ) => number = ref => {
-    const getWidth = () =>
-        (ref && ref.current && ref.current.getBoundingClientRect().width) || 0;
+    const getWidth = useCallback(
+        () => ref?.current?.getBoundingClientRect()?.width ?? 0,
+        [ref]
+    );
 
     const [width, setWidth] = useState(getWidth());
 
@@ -17,7 +19,7 @@ export const useElementWidth: <T extends HTMLElement>(
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, [ref]);
+    }, [getWidth]);
 
     return width;
 };
