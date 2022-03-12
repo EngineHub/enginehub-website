@@ -22,9 +22,10 @@ export const PROJECTS = [
     {
         id: 'worldguard',
         name: 'WorldGuard',
-        defaultBranch: 'master',
+        defaultBranch: 'version/7.0.x',
         icon: '/projects/worldguard-logo.svg',
         buildType: 'bt11',
+        pinnedBranches: ['master'],
         vcsRoot: 'https://github.com/EngineHub/WorldGuard'
     },
     {
