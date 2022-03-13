@@ -5,7 +5,13 @@
     "description": "EngineHub Websites",
     "version": "1.0.0",
     "author": "EngineHub",
-    "workspaces": ["main-site", "builds", "paste", "golf", "shared"],
+    "workspaces": [
+        "main-site",
+        "builds",
+        "paste",
+        "golf",
+        "shared"
+    ],
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -13,6 +19,7 @@
     },
     "dependencies": {
         "husky": "^7.0.4",
+        "lint-staged": "^12.3.5",
         "patch-package": "^6.4.7",
         "postinstall-postinstall": "^2.1.0"
     },
@@ -20,5 +27,6 @@
         "postinstall": "husky install && patch-package",
         "prepare": "husky install",
         "precommit": "lint-staged"
-    }
+    },
+    "packageManager": "yarn@3.2.0"
 }
