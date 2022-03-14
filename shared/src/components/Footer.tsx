@@ -151,14 +151,21 @@ export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
                     <p>
                         <small>
                             The content and trademarks presented are the
-                            property of their respective owners. Please{' '}
+                            property of their respective owners. This website is
+                            maintained by{' '}
                             <MainLink
-                                href="https://madelinemiller.dev/contact/"
+                                href="https://madelinemiller.dev/"
                                 as={Link}
                             >
-                                contact Me4502
+                                Me4502
                             </MainLink>{' '}
-                            about website errors.
+                            For website errors,{' '}
+                            <MainLink
+                                href="https://github.com/EngineHub/EngineHub-Website"
+                                as={Link}
+                            >
+                                create a ticket here.
+                            </MainLink>
                         </small>
                     </p>
                 </SiteBox>
