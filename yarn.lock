@@ -1519,7 +1519,6 @@ __metadata:
     "@types/styled-components": ^5.1.24
     "@typescript-eslint/eslint-plugin": ^5.14.0
     "@typescript-eslint/parser": ^5.14.0
-    declaration-bundler-webpack-plugin: "git://github.com/clipchamp/declaration-bundler-webpack-plugin"
     eslint: ^8.11.0
     eslint-config-prettier: ^8.5.0
     eslint-plugin-prettier: ^4.0.0
@@ -6890,13 +6889,6 @@ __metadata:
   version: 1.2.0
   resolution: "decamelize@npm:1.2.0"
   checksum: ad8c51a7e7e0720c70ec2eeb1163b66da03e7616d7b98c9ef43cce2416395e84c1e9548dd94f5f6ffecfee9f8b94251fc57121a8b021f2ff2469b2bae247b8aa
-  languageName: node
-  linkType: hard
-
-"declaration-bundler-webpack-plugin@git://github.com/clipchamp/declaration-bundler-webpack-plugin":
-  version: 1.0.0
-  resolution: "declaration-bundler-webpack-plugin@git://github.com/clipchamp/declaration-bundler-webpack-plugin#commit=48e59dd210153944544db50fd61a5142f1431815"
-  checksum: 611990541f8e4e543ddb9a27b78df40b683d0d6537c37c00cec290da39b20f529822fbb391f8bda1aca5e9f52f356a98e780e1e9cdcf0c6b634b2a47931bb6a5
   languageName: node
   linkType: hard
 

@@ -1,5 +1,3 @@
-const DeclarationBundlerPlugin = require('declaration-bundler-webpack-plugin');
-
 module.exports = {
     mode: 'production',
     devtool: 'source-map',
@@ -35,11 +33,5 @@ module.exports = {
         'react-dom': 'react-dom',
         'react-helmet': 'react-helmet',
         'styled-components': 'styled-components'
-    },
-    plugins: [
-        new DeclarationBundlerPlugin({
-            moduleName: '"@enginehub/shared"',
-            out: 'index.d.ts'
-        })
-    ]
+    }
 };
