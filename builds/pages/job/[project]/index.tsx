@@ -102,8 +102,7 @@ function Index({
                 </BranchButtonList>
             </PageHeader>
             <Container>
-                {activeBranch !== project.defaultBranch &&
-                    !project.pinnedBranches?.includes(activeBranch) && (
+                {activeBranch !== project.defaultBranch && (
                         <BranchWarning
                             currentBranch={activeBranch}
                             mainBranch={project.defaultBranch}
