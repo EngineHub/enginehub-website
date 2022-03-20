@@ -103,12 +103,12 @@ function Index({
             </PageHeader>
             <Container>
                 {activeBranch !== project.defaultBranch && (
-                        <BranchWarning
-                            currentBranch={activeBranch}
-                            mainBranch={project.defaultBranch}
-                            projectId={project.id}
-                        />
-                    )}
+                    <BranchWarning
+                        currentBranch={activeBranch}
+                        mainBranch={project.defaultBranch}
+                        projectId={project.id}
+                    />
+                )}
                 <Link
                     href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
                     passHref={true}
