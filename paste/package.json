@@ -21,13 +21,14 @@
     },
     "devDependencies": {
         "@types/node": "^17.0.21",
-        "@types/react": "^17.0.40",
-        "@types/react-dom": "^17.0.13",
+        "@types/react": "^17.0.41",
+        "@types/react-dom": "^17.0.14",
         "@types/shortid": "^0.0.29",
+        "eslint": "^8.11.0",
         "eslint-config-next": "^12.1.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
-        "prettier": "^2.5.1"
+        "prettier": "^2.6.0"
     },
     "keywords": [
         "pastebin",
