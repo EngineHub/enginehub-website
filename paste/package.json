@@ -7,14 +7,14 @@
     "dependencies": {
         "@enginehub/schematicwebviewer": "^4.2.0",
         "@enginehub/shared": "1.0.0",
-        "@google-cloud/storage": "^5.18.2",
+        "@google-cloud/storage": "^5.18.3",
         "@types/styled-components": "^5.1.24",
         "axios": "^0.26.1",
         "base64-js": "^1.5.1",
-        "next": "^12.1.1",
+        "next": "^12.1.2",
         "next-images": "^1.8.4",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
         "react-helmet": "^6.1.0",
         "shortid": "^2.2.16",
         "styled-components": "^5.3.5"
@@ -25,7 +25,7 @@
         "@types/react-dom": "^17.0.14",
         "@types/shortid": "^0.0.29",
         "eslint": "^8.12.0",
-        "eslint-config-next": "^12.1.1",
+        "eslint-config-next": "^12.1.2",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
         "prettier": "^2.6.1"
