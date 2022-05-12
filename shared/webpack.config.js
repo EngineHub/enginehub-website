@@ -3,7 +3,8 @@ module.exports = {
     devtool: 'source-map',
     output: {
         libraryTarget: 'module',
-        filename: 'index.js'
+        filename: 'index.esm.js',
+        environment: { module: true }
     },
     experiments: {
         outputModule: true

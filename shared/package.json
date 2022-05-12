@@ -4,7 +4,7 @@
     "description": "Shared libs for the EngineHub sites",
     "version": "1.0.0",
     "author": "EngineHub",
-    "main": "./dist/index.js",
+    "main": "./dist/index.esm.js",
     "types": "./dist/index.d.ts",
     "dependencies": {
         "react": "^18.1.0",
@@ -45,5 +45,6 @@
         "lint:fix": "eslint --config ./.eslintrc.js --fix --ext .ts,.tsx src/",
         "prepare": "webpack",
         "build": "webpack"
-    }
+    },
+    "sideEffect": false
 }
