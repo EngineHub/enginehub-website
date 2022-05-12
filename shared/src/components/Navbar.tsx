@@ -73,7 +73,7 @@ const FloatedGrayButton = styled.a`
     }
 `;
 
-export const Navbar: React.FC<NavbarProps> = ({
+export const Navbar: React.FC<React.PropsWithChildren<NavbarProps>> = ({
     headertheme = 'default',
     headertitle = 'EngineHub',
     discordOverride,

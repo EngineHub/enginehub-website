@@ -36,30 +36,24 @@ const LimitedVideo = styled.video`
     border-radius: 5px;
 `;
 
-export const AlignedContent: React.FC<AlignedContentProps> = ({
-    header,
-    align,
-    image,
-    video,
-    children
-}) => {
-    return (
-        <AlignedContentWrapper align={align}>
-            <InfoSide>
-                {header && <SectionHeading>{header}</SectionHeading>}
-                <div>{children}</div>
-            </InfoSide>
-            <ImageSide>
-                {image && <img src={image} />}
-                {video && (
-                    <LimitedVideo
-                        src={video}
-                        autoPlay={true}
-                        muted={true}
-                        loop={true}
-                    />
-                )}
-            </ImageSide>
-        </AlignedContentWrapper>
-    );
-};
+export const AlignedContent: React.FC<
+    React.PropsWithChildren<AlignedContentProps>
+> = ({ header, align, image, video, children }) => (
+    <AlignedContentWrapper align={align}>
+        <InfoSide>
+            {header && <SectionHeading>{header}</SectionHeading>}
+            <div>{children}</div>
+        </InfoSide>
+        <ImageSide>
+            {image && <img src={image} />}
+            {video && (
+                <LimitedVideo
+                    src={video}
+                    autoPlay={true}
+                    muted={true}
+                    loop={true}
+                />
+            )}
+        </ImageSide>
+    </AlignedContentWrapper>
+);

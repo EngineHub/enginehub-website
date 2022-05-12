@@ -51,26 +51,24 @@ const RightAlignedSponsors = styled(LabelledSponsorsArea)`
     float: right;
 `;
 
-export const PageHeader: React.FC<PageHeaderProps> = ({
+export const PageHeader: React.FC<React.PropsWithChildren<PageHeaderProps>> = ({
     text,
     icon,
     extraSponsors,
     children
-}) => {
-    return (
-        <HeaderWrapper>
-            <ContainerPadded>
-                <HeaderContent>
-                    <HeaderLeftArea>
-                        {icon && <HeaderImg src={icon} />}
-                        <HeaderTextArea>
-                            <HeaderText>{text}</HeaderText>
-                            {children}
-                        </HeaderTextArea>
-                    </HeaderLeftArea>
-                    <RightAlignedSponsors extraSponsors={extraSponsors} />
-                </HeaderContent>
-            </ContainerPadded>
-        </HeaderWrapper>
-    );
-};
+}) => (
+    <HeaderWrapper>
+        <ContainerPadded>
+            <HeaderContent>
+                <HeaderLeftArea>
+                    {icon && <HeaderImg src={icon} />}
+                    <HeaderTextArea>
+                        <HeaderText>{text}</HeaderText>
+                        {children}
+                    </HeaderTextArea>
+                </HeaderLeftArea>
+                <RightAlignedSponsors extraSponsors={extraSponsors} />
+            </HeaderContent>
+        </ContainerPadded>
+    </HeaderWrapper>
+);

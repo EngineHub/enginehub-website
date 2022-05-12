@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
-export interface WrapperLinkProps {
+export type WrapperLinkProps = React.PropsWithChildren<{
     href: string;
-}
+}>;
 
 export type WrapperLink = FunctionComponent<WrapperLinkProps>;
 

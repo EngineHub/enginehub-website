@@ -24,6 +24,6 @@ const WrapperElement = styled.ol`
     }
 `;
 
-export const BreadcrumbWrapper: React.FC = ({ children }) => (
-    <WrapperElement>{children}</WrapperElement>
-);
+export const BreadcrumbWrapper: React.FC<React.PropsWithChildren<unknown>> = ({
+    children
+}) => <WrapperElement>{children}</WrapperElement>;

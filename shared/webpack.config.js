@@ -2,8 +2,11 @@ module.exports = {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        libraryTarget: 'commonjs',
+        libraryTarget: 'module',
         filename: 'index.js'
+    },
+    experiments: {
+        outputModule: true
     },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
