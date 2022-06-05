@@ -78,7 +78,7 @@ type FetchFunction = typeof fetch;
 export const useAuthenticatedFetch: () => FetchFunction = () => {
     const token = useToken();
 
-    return (input: RequestInfo, init?: RequestInit) => {
+    return (input: RequestInfo | URL, init?: RequestInit) => {
         if (!token) {
             return Promise.reject('Cannot find auth token!');
         }

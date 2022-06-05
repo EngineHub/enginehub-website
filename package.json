@@ -19,7 +19,7 @@
     },
     "dependencies": {
         "husky": "^8.0.1",
-        "lint-staged": "^12.4.1",
+        "lint-staged": "^12.5.0",
         "patch-package": "^6.4.7",
         "postinstall-postinstall": "^2.1.0"
     },
