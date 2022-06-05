@@ -36,6 +36,20 @@ const InfoBarContainer = styled.div`
     }
 `;
 
+const SiteLink = styled.a`
+    color: #0059d1;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+
+    :hover,
+    :focus {
+        color: #003884;
+        text-decoration: underline;
+    }
+`;
+
 const InfoBar: React.FC<PasteProps> = ({ paste, metadata = {} }) => {
     const onClickDownload = () => {
         var element = document.createElement('a');
@@ -60,6 +74,13 @@ const InfoBar: React.FC<PasteProps> = ({ paste, metadata = {} }) => {
             <BlueButton onClick={onClickDownload}>
                 <FontAwesomeIcon icon={faDownload} />
             </BlueButton>
+            <p>
+                Want more info about this schematic? Check out{' '}
+                <SiteLink href="https://madelinemiller.dev/apps/schematic-info/">
+                    this tool
+                </SiteLink>
+                !
+            </p>
         </InfoBarContainer>
     );
 };

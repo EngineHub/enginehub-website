@@ -58,7 +58,7 @@ const SavingOverlay = styled.div`
 
 async function postContent(content: string, extension: string = '') {
     try {
-        const { viewUrl, uploadUrl, uploadFields } = await (
+        let { viewUrl, uploadUrl, uploadFields } = await (
             await fetch('/signed_paste', {
                 headers: {
                     'x-paste-meta-extension': extension
@@ -82,7 +82,10 @@ async function postContent(content: string, extension: string = '') {
             throw new Error(await data.text());
         }
 
-        alert('Saved! Available at ' + viewUrl);
+        if (extension) {
+            viewUrl += `.${extension}`;
+        }
+        alert(`Saved! Available at ${viewUrl}`);
         if (viewUrl.startsWith('https://paste.enginehub.org')) {
             await Router.push(
                 '/[id]',
