@@ -1726,17 +1726,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicjs@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "@enginehub/schematicjs@npm:0.4.0"
-  dependencies:
-    gzip-js: ^0.3.2
-    nbt-ts: ^1.3.4
-    zlibt: ^0.0.5
-  checksum: a93c9144ccb9a84253bb58cf6b7b771fe7efc0d51f965e67060f8fb6ad11c2a2b2c6768ab14f4207948e968c7802b35c9e487b8d2e09c3c62a803e2b3ed49d70
-  languageName: node
-  linkType: hard
-
 "@enginehub/schematicjs@npm:^0.7.0":
   version: 0.7.0
   resolution: "@enginehub/schematicjs@npm:0.7.0"
@@ -1746,19 +1735,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicwebviewer@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@enginehub/schematicwebviewer@npm:4.2.0"
+"@enginehub/schematicwebviewer@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "@enginehub/schematicwebviewer@npm:4.2.1"
   dependencies:
-    "@enginehub/schematicjs": ^0.4.0
-    babylonjs: 5.0.0-alpha.50
+    "@enginehub/schematicjs": ^0.7.0
+    babylonjs: 5.9.0
     deepmerge: ^4.2.2
     gzip-js: ^0.3.2
-    jszip: ^3.7.1
+    jszip: ^3.10.0
     nbt-ts: ^1.3.4
     postinstall-postinstall: ^2.1.0
     zlibt: ^0.0.5
-  checksum: 86f183c1b37a28ee4e33920899d507a656044397aa5da5cdbe0dcfae7dbac9c505c7367d1ca887cea4558f1c8f35aeed7c02c7580de7e6d603de1cd02593f104
+  checksum: 399a9b8d67758310984c0fca6efc6ce7322013e2471f41c43e27007786cb47620d18ee6ecaa935571ed1b4da4878f7a3c80ffc9aab7eb8bf81d49544b3a9fae9
   languageName: node
   linkType: hard
 
@@ -5761,10 +5750,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babylonjs@npm:5.0.0-alpha.50":
-  version: 5.0.0-alpha.50
-  resolution: "babylonjs@npm:5.0.0-alpha.50"
-  checksum: 20ccd37ce810a314a23b7bc3516dff8a6be0c6f4413b8599afef6390d72e0b8a30ebc9924d86894cd73a5bd09ea6bcc186391c9e269e7c617967472e75763ade
+"babylonjs@npm:5.9.0":
+  version: 5.9.0
+  resolution: "babylonjs@npm:5.9.0"
+  checksum: 588bdb46e6ebda7a8dd62b61728608b588f8e8f4c6b542e2532e530e8f8733c77cf47eefa9ef9fde5139be046f9004e38d7e4179fa169295fbcc3d52f5db86ee
   languageName: node
   linkType: hard
 
@@ -11944,15 +11933,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jszip@npm:^3.7.1":
-  version: 3.7.1
-  resolution: "jszip@npm:3.7.1"
+"jszip@npm:^3.10.0":
+  version: 3.10.0
+  resolution: "jszip@npm:3.10.0"
   dependencies:
     lie: ~3.3.0
     pako: ~1.0.2
     readable-stream: ~2.3.6
-    set-immediate-shim: ~1.0.1
-  checksum: 67d737a82b294cc102e7451e32d5acbbab29860399be460cae598084327e6f2ea0c9bca2d3dad701da6a75ddf77f34c6a1dd7db0c3d5c0fec5998b7e56d6d59d
+    setimmediate: ^1.0.5
+  checksum: 80cc8e0e466467e9e21447f604f9262509b29a9c65170a3fee415ac0a403beb370840973cdc17f75d2b92ab3e60685f94d267706510d46bed2dd14858a38e459
   languageName: node
   linkType: hard
 
@@ -14250,7 +14239,7 @@ __metadata:
   resolution: "paste@workspace:paste"
   dependencies:
     "@enginehub/schematicjs": ^0.7.0
-    "@enginehub/schematicwebviewer": ^4.2.0
+    "@enginehub/schematicwebviewer": ^4.2.1
     "@enginehub/shared": 1.0.0
     "@google-cloud/storage": ^6.0.1
     "@types/node": ^17.0.39
@@ -16130,13 +16119,6 @@ __metadata:
   version: 2.0.0
   resolution: "set-blocking@npm:2.0.0"
   checksum: 6e65a05f7cf7ebdf8b7c75b101e18c0b7e3dff4940d480efed8aad3a36a4005140b660fa1d804cb8bce911cac290441dc728084a30504d3516ac2ff7ad607b02
-  languageName: node
-  linkType: hard
-
-"set-immediate-shim@npm:~1.0.1":
-  version: 1.0.1
-  resolution: "set-immediate-shim@npm:1.0.1"
-  checksum: 5085c84039d1e5eee73d2bf48ce765fcec76159021d0cc7b40e23bcdf62cb6d450ffb781e3c62c1118425242c48eae96df712cba0a20a437e86b0d4a15d51a11
   languageName: node
   linkType: hard
 
@@ -18246,7 +18228,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "worldedit-golf@workspace:golf"
   dependencies:
-    "@enginehub/schematicwebviewer": ^4.2.0
+    "@enginehub/schematicwebviewer": ^4.2.1
     "@enginehub/shared": 1.0.0
     "@fortawesome/fontawesome-svg-core": ^6.1.1
     "@fortawesome/free-solid-svg-icons": ^6.1.1
