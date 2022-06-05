@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
+        "@enginehub/schematicjs": "^0.7.0",
         "@enginehub/schematicwebviewer": "^4.2.0",
         "@enginehub/shared": "1.0.0",
         "@google-cloud/storage": "^6.0.1",
