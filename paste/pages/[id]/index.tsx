@@ -1,11 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Layout } from '../../src/Layout';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import PasteComponent from '../../src/views/PasteComponent';
-import ProfileComponent from '../../src/views/ProfileComponent';
-import ReportComponent from '../../src/views/ReportComponent';
 import { loadPaste } from '../../src/loadPaste';
-import SchematicComponent from '../../src/views/SchematicComponent';
 import { SEO } from '@enginehub/shared';
 import { Extension, PasteData } from '../../src/types';
 
@@ -19,12 +15,12 @@ export interface PasteProps {
 }
 
 const EXTENSIONS: Map<Extension, React.FC<PasteProps>> = new Map([
-    ['', PasteComponent],
-    ['paste', PasteComponent],
-    ['report', ReportComponent],
-    ['profile', ProfileComponent],
-    ['log', PasteComponent],
-    ['schem', SchematicComponent]
+    ['', React.lazy(() => import('../../src/views/PasteComponent'))],
+    ['paste', React.lazy(() => import('../../src/views/PasteComponent'))],
+    ['report', React.lazy(() => import('../../src/views/ReportComponent'))],
+    ['profile', React.lazy(() => import('../../src/views/ProfileComponent'))],
+    ['log', React.lazy(() => import('../../src/views/PasteComponent'))],
+    ['schem', React.lazy(() => import('../../src/views/SchematicComponent'))]
 ]);
 
 function Document({ paste, extension, metadata }: DocumentProps) {
@@ -39,7 +35,9 @@ function Document({ paste, extension, metadata }: DocumentProps) {
                         : paste.substring(0, 150)
                 }
             />
-            <Renderer paste={paste} metadata={metadata} />
+            <Suspense fallback={<p>Loading...</p>}>
+                <Renderer paste={paste} metadata={metadata} />
+            </Suspense>
         </Layout>
     );
 }

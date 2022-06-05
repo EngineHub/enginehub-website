@@ -126,7 +126,11 @@ function Index() {
             return;
         }
         const firstFile = files[0];
-        if (firstFile.name.endsWith('.schem')) {
+        if (
+            firstFile.name.endsWith('.schem') ||
+            firstFile.name.endsWith('.nbt') ||
+            firstFile.name.endsWith('.schematic')
+        ) {
             firstFile
                 .arrayBuffer()
                 .then(buffer => {
