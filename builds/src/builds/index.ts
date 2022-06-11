@@ -140,5 +140,12 @@ export async function getBranches(project: Project): Promise<string[]> {
         }
     }
 
-    return branches.filter(branch => !branch.startsWith('refs/heads/'));
+    return branches
+        .filter(branch => !branch.startsWith('refs/heads/'))
+        .map(branch => {
+            if (branch === '<default>') {
+                return project.defaultBranch;
+            }
+            return branch;
+        });
 }
