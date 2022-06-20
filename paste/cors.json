@@ -4,7 +4,9 @@
             "https://paste.enginehub.org/",
             "https://pastebin-dot-enginehub-web.uc.r.appspot.com/",
             "http://localhost:3000",
-            "https://enginehub-paste.vercel.app/"
+            "https://enginehub-paste.vercel.app/",
+            "https://madelinemiller.dev/",
+            "http://localhost:8000"
         ],
         "responseHeader": ["*"],
         "method": ["GET", "HEAD", "OPTIONS", "PUT", "DELETE", "POST"],
