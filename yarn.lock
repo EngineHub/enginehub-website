@@ -1735,19 +1735,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicwebviewer@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@enginehub/schematicwebviewer@npm:4.2.2"
+"@enginehub/schematicwebviewer@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "@enginehub/schematicwebviewer@npm:4.2.3"
   dependencies:
-    "@enginehub/schematicjs": ^0.7.0
-    babylonjs: 5.9.0
+    babylonjs: 5.11.0
     deepmerge: ^4.2.2
     gzip-js: ^0.3.2
     jszip: ^3.10.0
     nbt-ts: ^1.3.4
     postinstall-postinstall: ^2.1.0
     zlibt: ^0.0.5
-  checksum: 68dcd14e21cff1a1ebcce1a2514f81fbcc52dff0d6d466d6d08d1a321bfb7f68cbdfdb21d92fd412d0ffea88e54c3dd64f3619edf6d8d98516719ea7aa08cee5
+  peerDependencies:
+    "@enginehub/schematicjs": ^0.7.0
+  checksum: f354b987ef5996c9cfe0be3dd1e1337fcc2e21499433db58f7d6df5c15fc99ec3c16c500fedfcee3abb91dd822c67e15ca0336afc84a3165cdad415fbf4a63a4
   languageName: node
   linkType: hard
 
@@ -5750,10 +5751,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babylonjs@npm:5.9.0":
-  version: 5.9.0
-  resolution: "babylonjs@npm:5.9.0"
-  checksum: 588bdb46e6ebda7a8dd62b61728608b588f8e8f4c6b542e2532e530e8f8733c77cf47eefa9ef9fde5139be046f9004e38d7e4179fa169295fbcc3d52f5db86ee
+"babylonjs@npm:5.11.0":
+  version: 5.11.0
+  resolution: "babylonjs@npm:5.11.0"
+  checksum: 03122769256fca87f03358e1ec86fa9c64d625c4a4a25c14b2d566ef599c9f0955e2eea9bf208e91ab51ad399430d5298c74d81184bb8751c3e6892053d2df1a
   languageName: node
   linkType: hard
 
@@ -14239,7 +14240,7 @@ __metadata:
   resolution: "paste@workspace:paste"
   dependencies:
     "@enginehub/schematicjs": ^0.7.0
-    "@enginehub/schematicwebviewer": ^4.2.2
+    "@enginehub/schematicwebviewer": ^4.2.3
     "@enginehub/shared": 1.0.0
     "@google-cloud/storage": ^6.0.1
     "@types/node": ^17.0.39
@@ -18228,7 +18229,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "worldedit-golf@workspace:golf"
   dependencies:
-    "@enginehub/schematicwebviewer": ^4.2.2
+    "@enginehub/schematicwebviewer": ^4.2.3
     "@enginehub/shared": 1.0.0
     "@fortawesome/fontawesome-svg-core": ^6.1.1
     "@fortawesome/free-solid-svg-icons": ^6.1.1
