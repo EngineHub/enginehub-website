@@ -90,3 +90,7 @@ dist/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+#Misc
+*.tsbuildinfo
+.swc

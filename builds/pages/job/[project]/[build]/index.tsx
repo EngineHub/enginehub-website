@@ -291,7 +291,8 @@ export const getStaticProps: GetStaticProps<
     } catch (e) {}
     if (!buildObj) {
         return {
-            notFound: true
+            notFound: true,
+            revalidate: 60
         };
     }
 

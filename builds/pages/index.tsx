@@ -24,7 +24,7 @@ import { GetStaticProps } from 'next';
 
 interface ProjectEntry {
     project: Project;
-    builds: Build[];
+    builds: Omit<Build, 'changes' | 'artifacts'>[];
 }
 
 interface IndexProps {
@@ -195,7 +195,9 @@ export const getStaticProps: GetStaticProps = async () => {
                             await getLatestBuild(proj.project, branch)
                     )
                 )
-            ).filter(b => b) as Build[];
+            )
+                .filter((b): b is Build => !!b)
+                .map(({ artifacts, changes, ...b }) => b);
         })
     );
 
