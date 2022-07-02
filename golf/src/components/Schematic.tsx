@@ -49,7 +49,7 @@ export const Schematic: React.FC<SchematicProps> = ({
             return callbacks.current.destroy;
         }
         return;
-    }, [schematic, preview, size]);
+    }, [schematic, preview]);
 
     return (
         <Container size={size} {...rest}>

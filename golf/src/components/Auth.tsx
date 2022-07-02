@@ -1,4 +1,10 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
+import React, {
+    useContext,
+    useState,
+    useEffect,
+    useMemo,
+    useCallback
+} from 'react';
 import router from 'next/router';
 import jwt from 'jsonwebtoken';
 
@@ -32,17 +38,20 @@ export const AuthProvider: React.FC = ({ children }) => {
 export const useSetToken: () => (value?: string) => void = () => {
     const { setToken } = useContext(AuthContext);
 
-    const set = (value?: string) => {
-        if (!isServerRendered) {
-            if (value) {
-                window.localStorage.setItem('token', value);
-            } else {
-                window.localStorage.removeItem('token');
+    const set = useCallback(
+        (value?: string) => {
+            if (!isServerRendered) {
+                if (value) {
+                    window.localStorage.setItem('token', value);
+                } else {
+                    window.localStorage.removeItem('token');
+                }
             }
-        }
 
-        setToken(value);
-    };
+            setToken(value);
+        },
+        [setToken]
+    );
 
     return set;
 };
