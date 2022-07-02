@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 
 const Container = styled.ul`
     margin: 0;
@@ -60,7 +59,7 @@ const LeaderboardEntryImpl: React.FC<LeaderboardProps> = ({
     ...props
 }) => (
     <li {...props}>
-        <Image src={avatar} alt={name} />
+        <img src={avatar} alt={name} />
         <InfoContainer>
             <NameContainer>
                 {name} /{' '}

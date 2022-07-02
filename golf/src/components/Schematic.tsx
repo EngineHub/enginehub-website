@@ -29,7 +29,7 @@ export const Schematic: React.FC<SchematicProps> = ({
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] =
         useState<(width: number, height: number) => void>();
-    const [destroy, setDestroy] = useState<() => void>(() => {});
+    const callbacks = useRef<{ destroy: () => void }>({ destroy: () => {} });
 
     useEffect(() => {
         if (resize) {
@@ -40,17 +40,16 @@ export const Schematic: React.FC<SchematicProps> = ({
     useEffect(() => {
         if (schematic && ref.current) {
             renderSchematic(ref.current, schematic, {
-                size,
                 corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
                 renderBars: !preview
             }).then(({ destroy: d, setSize: r }) => {
                 setResize(() => r);
-                setDestroy(() => d);
+                callbacks.current.destroy = d;
             });
-            return destroy;
+            return callbacks.current.destroy;
         }
         return;
-    }, [schematic, destroy, preview, size]);
+    }, [schematic, preview, size]);
 
     return (
         <Container size={size} {...rest}>
