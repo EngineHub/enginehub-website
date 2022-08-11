@@ -34,7 +34,7 @@ const ProjectListLink = styled.a`
 
 const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (
     <ProjectListItem>
-        <ProjectListImg src={props.icon} />
+        <ProjectListImg src={props.icon?.['src'] ?? props.icon} />
         <Link href={`/${props.slug}/`}>
             <ProjectListLink>{props.name}</ProjectListLink>
         </Link>

@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "main": "./dist/index.js",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "devDependencies": {
         "@next/eslint-plugin-next": "^12.2.4",

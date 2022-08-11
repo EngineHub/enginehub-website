@@ -23,11 +23,6 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderImg = styled(Image)`
-    width: 100%;
-    height: 100%;
-`;
-
 const HeaderContent = styled.div`
     position: absolute;
     top: 1rem;
@@ -74,13 +69,18 @@ const Subtitle = styled.h2`
 export const Landing: FunctionComponent<LandingProps> = props => {
     return (
         <HeaderWrapper>
-            <HeaderImg
-                src={landingBg}
-                loading={'eager'}
-                alt={'EngineHub Landing Background'}
-                layout={'fill'}
-                placeholder="blur"
-            />
+            <div
+                style={{ width: '100%', height: '100%', position: 'relative' }}
+            >
+                <Image
+                    src={landingBg}
+                    loading={'eager'}
+                    alt={'EngineHub Landing Background'}
+                    layout={'fill'}
+                    objectFit={'cover'}
+                    placeholder="blur"
+                />
+            </div>
             <HeaderContent>
                 <Navbar
                     headertheme="inverted"
