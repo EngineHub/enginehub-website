@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import Image, { StaticImageData } from 'next/image';
 
 const Wrapper = styled.div`
     border-top: 1px solid #ddd;
@@ -37,20 +37,34 @@ const InfoBox = styled.div`
 
 interface PlatformBannerProps {
     alt: string;
-    logo?: IGatsbyImageData;
-    img?: string;
+    img:
+        | StaticImageData
+        | (Pick<StaticImageData, 'src'> & Partial<StaticImageData>);
+    width?: number;
 }
 
-const PlatformBanner: FunctionComponent<PlatformBannerProps> = ({
+const BANNER_WIDTH = 150;
+
+const PlatformBanner: React.FC<PlatformBannerProps> = ({
     children,
-    logo,
     img,
-    alt
+    alt,
+    width = BANNER_WIDTH
 }) => (
     <Wrapper>
         <LogoBox>
-            {logo && <GatsbyImage image={logo} alt={alt} />}
-            {img && <img src={img} alt={alt} />}
+            <Image
+                src={img.src}
+                alt={alt}
+                width={width}
+                height={
+                    img.height && img.width
+                        ? img.height * (width / img.width)
+                        : undefined
+                }
+                blurDataURL={img.blurDataURL}
+                layout="fixed"
+            />
         </LogoBox>
         <InfoBox>{children}</InfoBox>
     </Wrapper>

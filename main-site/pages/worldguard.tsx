@@ -1,5 +1,4 @@
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout';
 import {
     SEO,
     ContainerPadded,
@@ -13,45 +12,33 @@ import {
     HorizontalNav,
     HorizontalNavItem,
     AlignedContent,
-    SectionHeading
+    SectionHeading,
+    MainLink,
+    GrayButton,
+    BlueButton
 } from '@enginehub/shared';
 import React from 'react';
-import { MainOutboundLink, MainLink } from '../components/Link';
-import PlatformBanner from '../components/PlatformBanner';
-import {
-    GrayOutboundButton,
-    BlueButton,
-    BlueOutboundButton
-} from '../components/Button';
-import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldguard-header.svg';
-import { getImage } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import Link from 'next/link';
+import PlatformBanner from '../src/components/PlatformBanner';
+import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import worldGuardLogo from '../src/images/projects/worldguard-icon.png';
+import Image from 'next/image';
 
-interface WorldGuardPageData {
-    file: FileNode & { publicURL: string };
-    allFile: { nodes: (FileNode & { name: string })[] };
-}
-
-const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, getImage(node)])
-    );
+const WorldGuardPage = () => {
     return (
         <Layout>
             <SEO
                 title="WorldGuard"
                 description="WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft."
-                image={data.file.publicURL}
+                image={worldGuardLogo.src}
             />
             <ContainerPadded>
                 <Row>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo
-                                    alt={'WorldGuard'}
-                                    loading={'eager'}
-                                />
+                                <Image src={headerLogo} alt="WorldGuard" />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -60,33 +47,33 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                             and disable various gameplay features of Minecraft.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <BlueButton to={'/worldguard/#downloads'}>
-                                List downloads
-                            </BlueButton>
+                            <Link href={'/worldguard/#downloads'}>
+                                <BlueButton>List downloads</BlueButton>
+                            </Link>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://worldguard.enginehub.org">
+                            <MainLink href="https://worldguard.enginehub.org">
                                 Documentation
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainOutboundLink href="https://discord.gg/enginehub">
+                            <MainLink href="https://discord.gg/enginehub">
                                 Discord
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/WorldGuard/issues">
+                            <MainLink href="https://github.com/EngineHub/WorldGuard/issues">
                                 Bug / Feature Tracker
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/WorldGuard">
+                            <MainLink href="https://github.com/EngineHub/WorldGuard">
                                 Source Code
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </Row>
@@ -192,35 +179,32 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
                             Downloads
                         </SectionHeading>
                         <p>Please choose a download for your platform.</p>
-                        <PlatformBanner
-                            logo={logoMap.get('bukkit-logo')!}
-                            alt={'Bukkit'}
-                        >
+                        <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support WorldGuard for Bukkit.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/worldguard/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/worldguard'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <p>
                                 <WarningLabel>Note!</WarningLabel> WorldGuard
                                 requires that{' '}
-                                <MainLink to={'/worldedit/'}>
-                                    WorldEdit
-                                </MainLink>{' '}
+                                <Link href="/worldedit/">
+                                    <MainLink>WorldEdit</MainLink>
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>
@@ -252,27 +236,3 @@ const WorldGuardPage = ({ data }: { data: WorldGuardPageData }) => {
 };
 
 export default WorldGuardPage;
-
-export const query = graphql`
-    query {
-        file(name: { eq: "worldguard-icon" }) {
-            childImageSharp {
-                gatsbyImageData(
-                    width: 512
-                    height: 512
-                    quality: 100
-                    layout: FIXED
-                )
-            }
-            publicURL
-        }
-        allFile(filter: { name: { in: ["bukkit-logo"] } }) {
-            nodes {
-                childImageSharp {
-                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
-                }
-                name
-            }
-        }
-    }
-`;

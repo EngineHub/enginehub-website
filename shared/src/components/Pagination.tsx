@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import React, { useContext } from 'react';
-import { LinkProviderContext } from '../utils/LinkProvider';
+import React from 'react';
+import Link from 'next/link';
 
 const PaginationBox = styled.ul`
     margin-top: 0;
@@ -53,7 +53,6 @@ export const Pagination: React.FC<PaginationProps> = ({
     pageMask
 }) => {
     const hasPrevPage = currentPage > 0;
-    const Link = useContext(LinkProviderContext);
 
     return (
         <PaginationBox>
@@ -62,7 +61,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                     <Link
                         href={pageMask.replace(':page', `${currentPage - 1}`)}
                     >
-                        «
+                        <a>«</a>
                     </Link>
                 ) : (
                     <span>«</span>
@@ -70,7 +69,9 @@ export const Pagination: React.FC<PaginationProps> = ({
             </li>
             {hasPrevPage && (
                 <li>
-                    <Link href={pageMask.replace(':page', '0')}>1</Link>
+                    <Link href={pageMask.replace(':page', '0')}>
+                        <a>1</a>
+                    </Link>
                 </li>
             )}
             <li>
@@ -81,7 +82,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                     <Link
                         href={pageMask.replace(':page', `${currentPage + 1}`)}
                     >
-                        »
+                        <a>»</a>
                     </Link>
                 ) : (
                     <span>»</span>

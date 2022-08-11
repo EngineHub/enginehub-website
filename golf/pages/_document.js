@@ -1,7 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import Helmet from 'react-helmet';
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
@@ -20,8 +19,7 @@ class MyDocument extends Document {
                 styles: [
                     ...React.Children.toArray(initialProps.styles),
                     sheet.getStyleElement()
-                ],
-                helmet: Helmet.renderStatic()
+                ]
             };
         } finally {
             sheet.seal();
@@ -29,15 +27,9 @@ class MyDocument extends Document {
     }
 
     render() {
-        const { helmet } = this.props;
-
         return (
-            <Html {...helmet.htmlAttributes.toComponent()}>
+            <Html lang="en">
                 <Head>
-                    {helmet.meta.toComponent()}
-                    {helmet.title.toComponent()}
-                    {helmet.link.toComponent()}
-
                     <link
                         rel="shortcut icon"
                         href="/static/icons/icon-48x48.png"
@@ -105,7 +97,7 @@ class MyDocument extends Document {
                         }}
                     />
                 </Head>
-                <body {...helmet.bodyAttributes.toComponent()}>
+                <body>
                     <Main />
                     <NextScript />
                 </body>

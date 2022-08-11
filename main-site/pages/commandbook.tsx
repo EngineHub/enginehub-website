@@ -1,5 +1,4 @@
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout';
 import {
     SEO,
     ContainerPadded,
@@ -14,44 +13,35 @@ import {
     AlignedContent,
     SectionHeading,
     InfoLabel,
-    JumbotronContainer
+    JumbotronContainer,
+    MainLink,
+    GrayButton,
+    BlueButton
 } from '@enginehub/shared';
 import React from 'react';
-import { MainOutboundLink, MainLink } from '../components/Link';
-import PlatformBanner from '../components/PlatformBanner';
-import {
-    GrayOutboundButton,
-    BlueButton,
-    BlueOutboundButton
-} from '../components/Button';
-import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandbook-header.svg';
-import { getImage } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import PlatformBanner from '../src/components/PlatformBanner';
+import commandBookHeader from '../src/images/projects/headers/commandbook-header.svg';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import commandBookLogo from '../src/images/projects/commandbook-icon.png';
+import Image from 'next/image';
+import Link from 'next/link';
 
-interface CommandBookPageData {
-    file: FileNode & { publicURL: string };
-    allFile: { nodes: (FileNode & { name: string })[] };
-}
-
-const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, getImage(node)])
-    );
+const CommandBookPage = () => {
     return (
         <Layout>
             <SEO
                 title="CommandBook"
                 description="CommandBook provides a long list of basic, 'default' commands for you and your players on any Bukkit server."
-                image={data.file.publicURL}
+                image={commandBookLogo.src}
             />
             <ContainerPadded>
                 <Row>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo
+                                <Image
                                     alt={'CommandBook'}
-                                    loading={'eager'}
+                                    src={commandBookHeader}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -61,33 +51,33 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                             server.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <BlueButton to={'/commandbook/#downloads'}>
-                                List downloads
-                            </BlueButton>
+                            <Link href="/commandbook/#downloads">
+                                <BlueButton>List downloads</BlueButton>
+                            </Link>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="http://wiki.sk89q.com/wiki/commandbook">
+                            <MainLink href="http://wiki.sk89q.com/wiki/commandbook">
                                 Documentation
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainOutboundLink href="https://discord.gg/enginehub">
+                            <MainLink href="https://discord.gg/enginehub">
                                 Discord
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/CommandBook/issues">
+                            <MainLink href="https://github.com/EngineHub/CommandBook/issues">
                                 Bug / Feature Tracker
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/CommandBook">
+                            <MainLink href="https://github.com/EngineHub/CommandBook">
                                 Source Code
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </Row>
@@ -152,35 +142,32 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
                             Downloads
                         </SectionHeading>
                         <p>Please choose a download for your platform.</p>
-                        <PlatformBanner
-                            logo={logoMap.get('bukkit-logo')!}
-                            alt={'Bukkit'}
-                        >
+                        <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support CommandBook for Bukkit.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/commandbook/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/commandbook'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CommandBook
                                 requires that{' '}
-                                <MainLink to={'/worldedit/'}>
-                                    WorldEdit
-                                </MainLink>{' '}
+                                <Link href="/worldedit/">
+                                    <MainLink>WorldEdit</MainLink>
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>
@@ -212,27 +199,3 @@ const CommandBookPage = ({ data }: { data: CommandBookPageData }) => {
 };
 
 export default CommandBookPage;
-
-export const query = graphql`
-    query {
-        file(name: { eq: "commandbook-icon" }) {
-            childImageSharp {
-                gatsbyImageData(
-                    width: 512
-                    height: 512
-                    quality: 100
-                    layout: FIXED
-                )
-            }
-            publicURL
-        }
-        allFile(filter: { name: { in: ["bukkit-logo"] } }) {
-            nodes {
-                childImageSharp {
-                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
-                }
-                name
-            }
-        }
-    }
-`;

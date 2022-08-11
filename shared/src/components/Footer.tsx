@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container } from './Container';
 import styled from 'styled-components';
-import { LinkProviderContext } from '../utils/LinkProvider';
 import { MainLinkStyle } from './Link';
 import { RandomSponsor, ExtraSponsorProps } from './Sponsors';
 
@@ -79,8 +78,6 @@ interface FooterProps extends ExtraSponsorProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
-    const Link = useContext(LinkProviderContext);
-
     return (
         <FooterWrapper>
             <ContainerFlex>
@@ -88,26 +85,17 @@ export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
                     <SectionHeader>Resources</SectionHeader>
                     <FooterUl>
                         <FooterLi>
-                            <MainLink
-                                href="https://enginehub.org/documentation/"
-                                as={Link}
-                            >
+                            <MainLink href="https://enginehub.org/documentation/">
                                 Docs
                             </MainLink>
                         </FooterLi>
                         <FooterLi>
-                            <MainLink
-                                href="https://builds.enginehub.org/"
-                                as={Link}
-                            >
+                            <MainLink href="https://builds.enginehub.org/">
                                 Test Builds
                             </MainLink>
                         </FooterLi>
                         <FooterLi>
-                            <MainLink
-                                href="https://paste.enginehub.org/"
-                                as={Link}
-                            >
+                            <MainLink href="https://paste.enginehub.org/">
                                 Paste Service
                             </MainLink>
                         </FooterLi>
@@ -117,26 +105,17 @@ export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
                     <SectionHeader>Social</SectionHeader>
                     <FooterUl>
                         <FooterLi>
-                            <MainLink
-                                href="https://discord.gg/enginehub"
-                                as={Link}
-                            >
+                            <MainLink href="https://discord.gg/enginehub">
                                 Discord
                             </MainLink>
                         </FooterLi>
                         <FooterLi>
-                            <MainLink
-                                href="https://github.com/EngineHub"
-                                as={Link}
-                            >
+                            <MainLink href="https://github.com/EngineHub">
                                 GitHub
                             </MainLink>
                         </FooterLi>
                         <FooterLi>
-                            <MainLink
-                                href="https://github.com/sponsors/EngineHub"
-                                as={Link}
-                            >
+                            <MainLink href="https://github.com/sponsors/EngineHub">
                                 Support Us
                             </MainLink>
                         </FooterLi>
@@ -153,17 +132,11 @@ export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
                             The content and trademarks presented are the
                             property of their respective owners. This website is
                             maintained by{' '}
-                            <MainLink
-                                href="https://madelinemiller.dev/"
-                                as={Link}
-                            >
+                            <MainLink href="https://madelinemiller.dev/">
                                 Me4502
                             </MainLink>{' '}
                             For website errors,{' '}
-                            <MainLink
-                                href="https://github.com/EngineHub/EngineHub-Website"
-                                as={Link}
-                            >
+                            <MainLink href="https://github.com/EngineHub/EngineHub-Website">
                                 create a ticket here.
                             </MainLink>
                         </small>

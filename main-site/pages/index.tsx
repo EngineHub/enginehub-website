@@ -1,15 +1,14 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout';
 import { SEO, Container, Row, ColumnHalf } from '@enginehub/shared';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
-import ProjectBox from '../components/ProjectBox';
-import WorldEditIcon from '../images/projects/logo/worldedit-logo.svg';
-import WorldGuardIcon from '../images/projects/logo/worldguard-logo.svg';
-import CraftBookIcon from '../images/projects/logo/craftbook-logo.svg';
-import CmdBookIcon from '../images/projects/logo/commandbook-logo.svg';
-import CmdHelperIcon from '../images/projects/logo/commandhelper-logo.svg';
+import ProjectBox from '../src/components/ProjectBox';
+import WorldEditIcon from '../src/images/projects/logo/worldedit-logo.svg';
+import WorldGuardIcon from '../src/images/projects/logo/worldguard-logo.svg';
+import CraftBookIcon from '../src/images/projects/logo/craftbook-logo.svg';
+import CmdBookIcon from '../src/images/projects/logo/commandbook-logo.svg';
+import CmdHelperIcon from '../src/images/projects/logo/commandhelper-logo.svg';
 
 const HeadingContainer = styled.div`
     margin: 20px 0 60px;
@@ -34,19 +33,13 @@ const ProjectList = styled.ul`
     margin-bottom: 11.5px;
 `;
 
-interface IndexPageData {
-    file: {
-        publicURL: string;
-    };
-}
-
-const IndexPage = ({ data }: { data: IndexPageData }) => {
+const IndexPage = () => {
     return (
         <Layout landing={true}>
             <SEO
                 title="Welcome"
                 description="Open-source mods for and by the Minecraft community"
-                image={data.file.publicURL}
+                image={'/images/enginehub-logo.png'}
             />
             <Container>
                 <HeadingContainer>
@@ -98,11 +91,3 @@ const IndexPage = ({ data }: { data: IndexPageData }) => {
 };
 
 export default IndexPage;
-
-export const query = graphql`
-    query {
-        file(name: { eq: "enginehub-logo" }) {
-            publicURL
-        }
-    }
-`;

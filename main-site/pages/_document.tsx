@@ -38,10 +38,6 @@ class MyDocument extends Document<DocumentProps> {
             <Html lang="en">
                 <Head>
                     <link
-                        href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
-                        rel="stylesheet"
-                    />
-                    <link
                         rel="shortcut icon"
                         href="/static/icons/icon-48x48.png"
                     />

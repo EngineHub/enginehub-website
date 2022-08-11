@@ -26,8 +26,7 @@ const BranchWarning: React.FC<BranchWarningProps> = props => (
             passHref={true}
         >
             <MainButton>Go to main branch</MainButton>
-        </Link>
-        {' '}
+        </Link>{' '}
         <MainButton
             href={`https://enginehub.org/${props.projectId}/#downloads`}
         >

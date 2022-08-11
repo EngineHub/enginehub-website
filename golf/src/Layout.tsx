@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    LinkProviderContext,
-    WrapperLinkProps,
     Navbar,
     Footer,
     ExtraSponsorProps,
@@ -9,28 +7,6 @@ import {
 } from '@enginehub/shared';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
 import styled from 'styled-components';
-import Link from 'next/link';
-
-const NextLink: React.FC<WrapperLinkProps> = ({ href, children, ...props }) => {
-    if (
-        !href.startsWith('https://worldedit.golf/') &&
-        (!href.startsWith('/') || href.startsWith('//'))
-    ) {
-        return (
-            <a href={href} {...props}>
-                {children}
-            </a>
-        );
-    }
-    if (href.startsWith('https://worldedit.golf/')) {
-        href = href.substring('https://worldedit.golf/'.length);
-    }
-    return (
-        <Link href={href} passHref={true}>
-            <a {...props}>{children}</a>
-        </Link>
-    );
-};
 
 const FloatedPurpleButton = styled.a`
     ${PurpleButtonStyle()};
@@ -53,7 +29,7 @@ const LayoutInner: React.FC<ExtraSponsorProps> = ({
     const onLogOut = () => setToken(undefined);
 
     return (
-        <LinkProviderContext.Provider value={NextLink}>
+        <>
             <Navbar headertheme="purple" headertitle="WorldEdit.golf">
                 <div>
                     {isAuthenticated ? (
@@ -72,7 +48,7 @@ const LayoutInner: React.FC<ExtraSponsorProps> = ({
             </Navbar>
             <main>{children}</main>
             <Footer mainSite={false} extraSponsors={extraSponsors} />
-        </LinkProviderContext.Provider>
+        </>
     );
 };
 

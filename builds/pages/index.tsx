@@ -6,7 +6,7 @@ import {
     SEO,
     PageHeader,
     Table,
-    MainLinkStyle,
+    MainLink,
     InfoLabel
 } from '@enginehub/shared';
 import { Project, PROJECTS } from '../src/project';
@@ -54,8 +54,6 @@ const ProjectTitleRow = styled.tr`
         }
     }
 `;
-
-const MainLink = styled.a(MainLinkStyle);
 
 function Index({ projectEntries }: IndexProps) {
     return (

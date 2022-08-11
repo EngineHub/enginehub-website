@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { FunctionComponent } from 'react';
-import { Link } from 'gatsby';
 import { MainLinkStyle } from '@enginehub/shared';
+import Link from 'next/link';
 
 interface ProjectBoxProps {
     description: string;
@@ -25,7 +25,7 @@ const ProjectListImg = styled.img`
     border: 0;
 `;
 
-const ProjectListLink = styled(Link)`
+const ProjectListLink = styled.a`
     ${MainLinkStyle}
     display: inline;
     font-size: 21px;
@@ -35,7 +35,9 @@ const ProjectListLink = styled(Link)`
 const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (
     <ProjectListItem>
         <ProjectListImg src={props.icon} />
-        <ProjectListLink to={`/${props.slug}/`}>{props.name}</ProjectListLink>
+        <Link href={`/${props.slug}/`}>
+            <ProjectListLink>{props.name}</ProjectListLink>
+        </Link>
         <br />
         {props.description}
     </ProjectListItem>

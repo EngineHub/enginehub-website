@@ -1,5 +1,4 @@
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout';
 import {
     SEO,
     ContainerPadded,
@@ -14,45 +13,34 @@ import {
     InfoLabel,
     HorizontalNav,
     HorizontalNavItem,
-    AlignedContent
+    AlignedContent,
+    MainLink,
+    GrayButton,
+    BlueButton
 } from '@enginehub/shared';
 import React from 'react';
-import { MainOutboundLink, MainLink } from '../components/Link';
-import PlatformBanner from '../components/PlatformBanner';
-import {
-    GrayOutboundButton,
-    BlueButton,
-    BlueOutboundButton
-} from '../components/Button';
-import { ReactComponent as HeaderLogo } from '../images/projects/headers/craftbook-header.svg';
-import { getImage } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import Link from 'next/link';
+import PlatformBanner from '../src/components/PlatformBanner';
+import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
+import craftBookLogo from '../src/images/projects/craftbook-icon.png';
+import Image from 'next/image';
 
-interface CraftBookPageData {
-    file: FileNode & { publicURL: string };
-    allFile: { nodes: (FileNode & { name: string })[] };
-}
-
-const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, getImage(node)])
-    );
+const CraftBookPage = () => {
     return (
         <Layout extraSponsors={['beastnode']}>
             <SEO
                 title="CraftBook"
                 description="CraftBook lets you create magically extending bridges, compact Redstone circuits, complex Minecart mechanics, and much more — all without a client mod and fully customizable by the server."
-                image={data.file.publicURL}
+                image={craftBookLogo.src}
             />
             <ContainerPadded>
                 <Row>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo
-                                    alt={'CraftBook'}
-                                    loading={'eager'}
-                                />
+                                <Image src={craftBookHeader} alt="CraftBook" />
                             </h1>
                         </JumbotronImageBox>
                         <JumbotronText>
@@ -62,33 +50,33 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                             and fully customizable by the server.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <BlueButton to={'/craftbook/#downloads'}>
-                                List downloads
-                            </BlueButton>
+                            <Link href="/craftbook/#downloads">
+                                <BlueButton>List downloads</BlueButton>
+                            </Link>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainLink to="/documentation/">
-                                Documentation
-                            </MainLink>
+                            <Link href="/documentation/">
+                                <MainLink>Documentation</MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainOutboundLink href="https://discord.gg/enginehub">
+                            <MainLink href="https://discord.gg/enginehub">
                                 Discord
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/CraftBook/issues">
+                            <MainLink href="https://github.com/EngineHub/CraftBook/issues">
                                 Bug / Feature Tracker
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/CraftBook">
+                            <MainLink href="https://github.com/EngineHub/CraftBook">
                                 Source Code
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </Row>
@@ -170,35 +158,32 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                             Downloads
                         </SectionHeading>
                         <p>Please choose a download for your platform.</p>
-                        <PlatformBanner
-                            logo={logoMap.get('bukkit-logo')!}
-                            alt={'Bukkit'}
-                        >
+                        <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support CraftBook for Bukkit.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/craftbook/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/craftbook?branch=master'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CraftBook
                                 requires that{' '}
-                                <MainLink to={'/worldedit/'}>
-                                    WorldEdit
-                                </MainLink>{' '}
+                                <Link href="/worldedit/">
+                                    <MainLink>WorldEdit</MainLink>
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>
@@ -222,35 +207,32 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('spongepowered-logo')!}
-                            alt={'SpongePowered'}
-                        >
+                        <PlatformBanner img={spongeLogo} alt={'SpongePowered'}>
                             <p>We officially support CraftBook for Sponge.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'https://ore.spongepowered.org/EngineHub/CraftBook'
                                     }
                                 >
                                     Stable builds for Sponge
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/craftbook?branch=4.x'
                                     }
                                 >
                                     Experimental builds for Sponge
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CraftBook
                                 requires that{' '}
-                                <MainLink to={'/worldedit/'}>
-                                    WorldEdit
-                                </MainLink>{' '}
+                                <Link href="/worldedit/">
+                                    <MainLink>WorldEdit</MainLink>
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>
@@ -282,29 +264,3 @@ const CraftBookPage = ({ data }: { data: CraftBookPageData }) => {
 };
 
 export default CraftBookPage;
-
-export const query = graphql`
-    query {
-        file(name: { eq: "craftbook-icon" }) {
-            childImageSharp {
-                gatsbyImageData(
-                    width: 512
-                    height: 512
-                    quality: 100
-                    layout: FIXED
-                )
-            }
-            publicURL
-        }
-        allFile(
-            filter: { name: { in: ["bukkit-logo", "spongepowered-logo"] } }
-        ) {
-            nodes {
-                childImageSharp {
-                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
-                }
-                name
-            }
-        }
-    }
-`;

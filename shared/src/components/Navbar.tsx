@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Container } from './Container';
-import { LinkProviderContext } from '../utils/LinkProvider';
 import { MainButtonStyle, PurpleButtonStyle } from './Button';
 import { SECONDARY, BRAND } from '../theme';
+import Link from 'next/link';
 
 const NavBackgroundColours = {
     default: SECONDARY.darker,
@@ -45,6 +45,7 @@ const HeaderLink = styled.a<InvertedProps>`
     padding: 13.5px 15px;
     height: 50px;
     float: left;
+    cursor: pointer;
 `;
 
 const FloatedPurpleButton = styled.a`
@@ -80,24 +81,21 @@ export const Navbar: React.FC<React.PropsWithChildren<NavbarProps>> = ({
     showSponsor = true,
     children
 }) => {
-    const Link = useContext(LinkProviderContext);
-
     const ButtonComp =
         headertheme !== 'default' ? FloatedPurpleButton : FloatedGrayButton;
     return (
         <Nav headertheme={headertheme}>
             <Container>
                 <div>
-                    <HeaderLink href="/" headertheme={headertheme} as={Link}>
-                        {headertitle}
-                    </HeaderLink>
+                    <Link href="/">
+                        <HeaderLink headertheme={headertheme}>
+                            {headertitle}
+                        </HeaderLink>
+                    </Link>
                 </div>
                 {showSponsor && (
                     <div>
-                        <ButtonComp
-                            href="https://github.com/sponsors/EngineHub"
-                            as={Link}
-                        >
+                        <ButtonComp href="https://github.com/sponsors/EngineHub">
                             Support Us
                         </ButtonComp>
                     </div>
@@ -109,7 +107,6 @@ export const Navbar: React.FC<React.PropsWithChildren<NavbarProps>> = ({
                                 ? discordOverride
                                 : 'https://discord.gg/enginehub'
                         }
-                        as={Link}
                     >
                         Ask questions on Discord
                     </ButtonComp>

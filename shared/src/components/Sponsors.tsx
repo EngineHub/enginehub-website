@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
-import { MainLinkStyle } from './Link';
-import { LinkProviderContext } from '../utils/LinkProvider';
+import { MainLinkStyle, MainLink } from './Link';
 
 const sponsors: string[] = ['apexhosting', 'gh-sponsors'];
 
@@ -20,10 +19,6 @@ const NarrowDiv = styled.div`
     justify-content: center;
 `;
 
-const MainLink = styled.a`
-    ${MainLinkStyle()}
-`;
-
 const FlexLink = styled.a`
     ${MainLinkStyle()}
     display: flex;
@@ -32,31 +27,21 @@ const FlexLink = styled.a`
 `;
 
 const useSponsorComponents = () => {
-    const Link = useContext(LinkProviderContext);
-
     return useMemo(
         () => [
-            () => (
-                <Link href="https://www.netlify.com">
-                    <img
-                        src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"
-                        alt="Netlify"
-                    />
-                </Link>
-            ),
             () => {
                 return (
-                    <Link href="https://www.beastnode.com">
+                    <a href="https://www.beastnode.com">
                         <img
                             src={'https://enginehub.org/images/beastnode.png'}
                             style={{ marginBottom: 0 }}
                             alt="BeastNode"
                         />
-                    </Link>
+                    </a>
                 );
             },
             () => (
-                <Link href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
+                <a href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
                     <img
                         src={'https://enginehub.org/images/apex.svg'}
                         style={{
@@ -66,13 +51,10 @@ const useSponsorComponents = () => {
                         }}
                         alt="Apex Hosting"
                     />
-                </Link>
+                </a>
             ),
             () => (
-                <FlexLink
-                    href="https://github.com/sponsors/EngineHub"
-                    as={Link}
-                >
+                <FlexLink href="https://github.com/sponsors/EngineHub">
                     <iframe
                         src="https://github.com/sponsors/EngineHub/button"
                         title="Sponsor EngineHub"
@@ -84,12 +66,12 @@ const useSponsorComponents = () => {
                 </FlexLink>
             ),
             () => (
-                <MainLink href="https://madelinemiller.dev/contact/" as={Link}>
+                <MainLink href="https://madelinemiller.dev/contact/">
                     Interested? Contact Me4502
                 </MainLink>
             )
         ],
-        [Link]
+        []
     );
 };
 
@@ -97,7 +79,6 @@ export const RandomSponsor: React.FC<ExtraSponsorProps> = ({
     extraSponsors = []
 }) => {
     const [
-        NetlifySponsor,
         BeastNodeSponsor,
         ApexHostingSponsor,
         GitHubSponsorsSponsor,
@@ -106,7 +87,6 @@ export const RandomSponsor: React.FC<ExtraSponsorProps> = ({
 
     const sponsorMap = new Map([
         ['empty', EmptySponsor],
-        ['netlify', NetlifySponsor],
         ['beastnode', BeastNodeSponsor],
         ['apexhosting', ApexHostingSponsor],
         ['gh-sponsors', GitHubSponsorsSponsor]

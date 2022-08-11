@@ -7,7 +7,7 @@ export default async function handle(
 ) {
     const { id } = req.query;
     let pasteId = `${id}`;
-    const dotIndex = id.lastIndexOf('.');
+    const dotIndex = id?.lastIndexOf('.');
     if (dotIndex !== -1) {
         pasteId = pasteId.substring(0, dotIndex);
     }

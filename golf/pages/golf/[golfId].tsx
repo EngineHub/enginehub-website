@@ -16,7 +16,7 @@ import {
     Container,
     useElementWidth,
     SEO,
-    MainLinkStyle
+    MainLink
 } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -78,7 +78,6 @@ const SchematicBoxText = styled.div`
 
 const GrayButton = styled.a(MainButtonStyle);
 const BlueButton = styled.a(BlueButtonStyle);
-const MainLink = styled.a(MainLinkStyle);
 
 const RunButtonBox = styled.div`
     display: flex;

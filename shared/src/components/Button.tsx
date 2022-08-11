@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SECONDARY, ColorPalette, BRAND, PRIMARY } from '../theme';
 
 const BaseButtonLayout = () => css`
@@ -53,3 +53,7 @@ export const BlueButtonStyle = () => css`
     ${BaseButtonLayout()}
     ${ButtonColorStyle(PRIMARY)}
 `;
+
+export const GrayButton = styled.a(MainButtonStyle);
+export const PurpleButton = styled.a(PurpleButtonStyle);
+export const BlueButton = styled.a(BlueButtonStyle);

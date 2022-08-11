@@ -25,13 +25,15 @@ interface PollResponse {
 }
 
 export async function queueTask(request: QueueRequest): Promise<QueueResponse> {
-    return (await fetch(`${BROKER_API_HOSTNAME}/queue`, {
-        method: 'post',
-        body: JSON.stringify(request),
-        headers: {
-            authorization: 'token ' + request.token
-        }
-    })).json();
+    return (
+        await fetch(`${BROKER_API_HOSTNAME}/queue`, {
+            method: 'post',
+            body: JSON.stringify(request),
+            headers: {
+                authorization: 'token ' + request.token
+            }
+        })
+    ).json();
 }
 
 export async function clearTask(taskId: string): Promise<void> {

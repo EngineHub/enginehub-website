@@ -1,5 +1,4 @@
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout';
 import {
     SEO,
     ContainerPadded,
@@ -13,42 +12,39 @@ import {
     HorizontalNavItem,
     AlignedContent,
     SectionHeading,
-    WarningLabel
+    WarningLabel,
+    MainLink,
+    GrayButton,
+    BlueButton
 } from '@enginehub/shared';
 import React from 'react';
-import { MainOutboundLink } from '../components/Link';
-import PlatformBanner from '../components/PlatformBanner';
-import {
-    GrayOutboundButton,
-    BlueButton,
-    BlueOutboundButton
-} from '../components/Button';
-import { ReactComponent as HeaderLogo } from '../images/projects/headers/worldedit-header.svg';
-import { getImage } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import PlatformBanner from '../src/components/PlatformBanner';
+import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import forgeLogo from '../src/images/platforms/forge-logo.png';
+import fabricLogo from '../src/images/platforms/fabric-logo.png';
+import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
+import mceduLogo from '../src/images/platforms/mcedu-logo.png';
+import liteloaderLogo from '../src/images/platforms/liteloader-logo.png';
+import worldEditLogo from '../src/images/projects/worldedit-icon.png';
+import Link from 'next/link';
+import Image from 'next/image';
 
-interface WorldEditPageData {
-    file: FileNode & { publicURL: string };
-    allFile: { nodes: (FileNode & { name: string })[] };
-}
-
-const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, getImage(node)])
-    );
+const WorldEditPage = () => {
     return (
         <Layout>
             <SEO
                 title="WorldEdit"
                 description="WorldEdit lets you build fast and smart. Get started with the essential building tool used by almost all professional Minecraft builders today"
-                image={data.file.publicURL}
+                image={worldEditLogo.src}
             />
             <ContainerPadded>
                 <Row>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo
+                                <Image
+                                    src={worldEditHeader}
                                     alt={'WorldEdit'}
                                     loading={'eager'}
                                 />
@@ -63,33 +59,33 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             professional Minecraft builders today!
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <BlueButton to={'/worldedit/#downloads'}>
-                                Go to downloads
-                            </BlueButton>
+                            <Link href={'/worldedit/#downloads'}>
+                                <BlueButton>Go to downloads</BlueButton>
+                            </Link>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://worldedit.enginehub.org">
+                            <MainLink href="https://worldedit.enginehub.org">
                                 Documentation
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainOutboundLink href="https://discord.gg/enginehub">
+                            <MainLink href="https://discord.gg/enginehub">
                                 Discord
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/WorldEdit/issues">
+                            <MainLink href="https://github.com/EngineHub/WorldEdit/issues">
                                 Bug / Feature Tracker
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/WorldEdit">
+                            <MainLink href="https://github.com/EngineHub/WorldEdit">
                                 Source Code
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </Row>
@@ -204,28 +200,25 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                             Downloads
                         </SectionHeading>
                         <p>Please choose a download for your platform.</p>
-                        <PlatformBanner
-                            logo={logoMap.get('bukkit-logo')!}
-                            alt={'Bukkit'}
-                        >
+                        <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support WorldEdit for Bukkit.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/worldedit/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <ol>
                                 <li>
@@ -248,31 +241,28 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('forge-logo')!}
-                            alt={'Minecraft Forge'}
-                        >
+                        <PlatformBanner img={forgeLogo} alt={'Minecraft Forge'}>
                             <p>
                                 We officially support WorldEdit for
                                 MinecraftForge.
                             </p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'https://minecraft.curseforge.com/projects/worldedit'
                                     }
                                 >
                                     Stable builds for Forge
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Forge
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <ol>
                                 <li>
@@ -295,28 +285,25 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('fabric-logo')!}
-                            alt={'Fabric'}
-                        >
+                        <PlatformBanner img={fabricLogo} alt={'Fabric'}>
                             <p>We officially support WorldEdit for Fabric.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'https://minecraft.curseforge.com/projects/worldedit'
                                     }
                                 >
                                     Stable builds for Fabric
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Fabric
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <ol>
                                 <li>
@@ -339,28 +326,25 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('spongepowered-logo')!}
-                            alt={'SpongePowered'}
-                        >
+                        <PlatformBanner img={spongeLogo} alt={'SpongePowered'}>
                             <p>We officially support WorldEdit for Sponge.</p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'https://ore.spongepowered.org/enginehub/WorldEdit'
                                     }
                                 >
                                     Stable builds for Sponge
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
-                                <GrayOutboundButton
+                                <GrayButton
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Sponge
-                                </GrayOutboundButton>
+                                </GrayButton>
                             </p>
                             <ol>
                                 <li>
@@ -383,10 +367,7 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('mcedu-logo')!}
-                            alt={'MinecraftEdu'}
-                        >
+                        <PlatformBanner img={mceduLogo} alt={'MinecraftEdu'}>
                             <p>
                                 MinecraftEdu comes bundled with an (older)
                                 version of WorldEdit. While we can assist with
@@ -395,20 +376,17 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
                                 MinecraftEdu.
                             </p>
                         </PlatformBanner>
-                        <PlatformBanner
-                            logo={logoMap.get('liteloader-logo')!}
-                            alt={'LiteLoader'}
-                        >
+                        <PlatformBanner img={liteloaderLogo} alt={'LiteLoader'}>
                             <p>
                                 We do not officially support LiteLoader, but you
                                 can download{' '}
-                                <MainOutboundLink
+                                <MainLink
                                     href={
                                         'http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1294341-worldeditwrapper-use-worldedit-in-single-player'
                                     }
                                 >
                                     an unofficial WorldEditWrapper
-                                </MainOutboundLink>{' '}
+                                </MainLink>{' '}
                                 that supports Minecraft 1.7.2.
                             </p>
                             <p>
@@ -425,41 +403,3 @@ const WorldEditPage = ({ data }: { data: WorldEditPageData }) => {
 };
 
 export default WorldEditPage;
-
-export const query = graphql`
-    query {
-        file(name: { eq: "worldedit-icon" }) {
-            childImageSharp {
-                gatsbyImageData(
-                    width: 512
-                    height: 512
-                    quality: 100
-                    layout: FIXED
-                )
-            }
-            publicURL
-        }
-        allFile(
-            filter: {
-                name: {
-                    in: [
-                        "bukkit-logo"
-                        "forge-logo"
-                        "fabric-logo"
-                        "mcedu-logo"
-                        "liteloader-logo"
-                        "canarymod-logo"
-                        "spongepowered-logo"
-                    ]
-                }
-            }
-        ) {
-            nodes {
-                childImageSharp {
-                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
-                }
-                name
-            }
-        }
-    }
-`;

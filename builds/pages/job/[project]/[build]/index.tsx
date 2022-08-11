@@ -7,7 +7,7 @@ import {
     Breadcrumb,
     BreadcrumbWrapper,
     ActiveBreadcrumb,
-    MainLinkStyle,
+    MainLink,
     HeaderText,
     MainButtonStyle,
     Panel,
@@ -42,8 +42,6 @@ interface BuildPageProps {
     project: Project;
 }
 
-const MainLink = styled.a(MainLinkStyle);
-const MainOutboundLink = styled.a(MainLinkStyle);
 const MainButton = styled.a(MainButtonStyle);
 
 const DownloadLinkDiv = styled.div`
@@ -138,11 +136,11 @@ function Index({ project, build }: BuildPageProps) {
                                 <tr>
                                     <th>Project</th>
                                     <td>
-                                        <MainOutboundLink
+                                        <MainLink
                                             href={`https://enginehub.org/${project.id}/`}
                                         >
                                             {project.name}
-                                        </MainOutboundLink>
+                                        </MainLink>
                                     </td>
                                 </tr>
                                 <tr>
@@ -195,14 +193,14 @@ function Index({ project, build }: BuildPageProps) {
                                         <DownloadLinkDiv
                                             key={`${artifact.name}-${i}`}
                                         >
-                                            <MainOutboundLink
+                                            <MainLink
                                                 href={`https://ci.enginehub.org/repository/download/${project.buildType}/${build.build_id}:id/${artifact.name}?branch=${build.branch}&guest=1`}
                                             >
                                                 <FontAwesomeIcon
                                                     icon={faDownload}
                                                 />
                                                 {artifact.name}
-                                            </MainOutboundLink>
+                                            </MainLink>
                                             <small>
                                                 (
                                                 {Math.round(
@@ -249,11 +247,11 @@ function Index({ project, build }: BuildPageProps) {
                             {build.changes.map(change => (
                                 <tr key={change.version}>
                                     <td>
-                                        <MainOutboundLink
+                                        <MainLink
                                             href={`${project.vcsRoot}/commit/${change.version}`}
                                         >
                                             {change.version.substring(0, 8)}
-                                        </MainOutboundLink>
+                                        </MainLink>
                                     </td>
                                     <td>{change.comment}</td>
                                     <td>{change.username}</td>

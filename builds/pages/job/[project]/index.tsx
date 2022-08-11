@@ -24,7 +24,7 @@ import {
     faExclamationTriangle,
     faCodeBranch
 } from '@fortawesome/free-solid-svg-icons';
-import { MainLinkStyle } from '@enginehub/shared';
+import { MainLink } from '@enginehub/shared';
 import BranchWarning from '../../../src/BranchWarning';
 import {
     BranchButtonList,
@@ -47,10 +47,8 @@ const TdNoWrap = styled.td`
     white-space: nowrap;
 `;
 
-const MainLink = styled.a(MainLinkStyle);
 const MainButton = styled.a(MainButtonStyle);
 const BlueButton = styled.a(BlueButtonStyle);
-const MainOutboundLink = styled.a(MainLinkStyle);
 
 const MiniPaddedIcon = styled(FontAwesomeIcon)`
     line-height: 0.75em;
@@ -184,14 +182,14 @@ function Index({
                                                     {change.comment}{' '}
                                                     <small>
                                                         (
-                                                        <MainOutboundLink
+                                                        <MainLink
                                                             href={`${project.vcsRoot}/commit/${change.version}`}
                                                         >
                                                             {change.version.substring(
                                                                 0,
                                                                 8
                                                             )}
-                                                        </MainOutboundLink>{' '}
+                                                        </MainLink>{' '}
                                                         by {change.username})
                                                     </small>
                                                 </li>

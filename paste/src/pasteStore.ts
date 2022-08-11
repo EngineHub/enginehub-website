@@ -66,7 +66,9 @@ export async function createPaste(
     });
 }
 
-export async function getPaste(pasteId: string): Promise<PasteData | undefined> {
+export async function getPaste(
+    pasteId: string
+): Promise<PasteData | undefined> {
     const options: CreateReadStreamOptions = {
         decompress: true
     };

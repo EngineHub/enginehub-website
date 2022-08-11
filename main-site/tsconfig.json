@@ -4,12 +4,14 @@
         "target": "esnext",
         "module": "commonjs",
         "lib": ["dom", "es2017"],
-        "jsx": "react",
+        "jsx": "preserve",
         "emitDecoratorMetadata": true,
         "noEmit": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "incremental": true,
+        "isolatedModules": true
     },
-    "include": ["./src/**/*"],
-    "exclude": [".cache", "public"],
-    "files": ["./src/index.d.ts"]
+    "include": ["./src/**/*", "./pages/**/*"],
+    "exclude": [".next"],
+    "files": ["./src/index.d.ts", "next-env.d.ts"]
 }

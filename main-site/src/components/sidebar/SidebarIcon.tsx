@@ -1,19 +1,20 @@
 import { FunctionComponent } from 'react';
 import React from 'react';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-
+import Image from 'next/image';
 interface SidebarIconProps {
     alt: string;
-    image: IGatsbyImageData;
+    src: string;
 }
 
 const SidebarIcon: FunctionComponent<SidebarIconProps> = props => {
     return (
         <div>
-            <GatsbyImage
-                image={props.image}
+            <Image
+                src={props.src}
                 alt={props.alt}
                 loading={'eager'}
+                width={100}
+                height={100}
             />
         </div>
     );

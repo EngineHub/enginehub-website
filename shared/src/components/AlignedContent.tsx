@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 import { SectionHeading } from './text';
@@ -45,7 +46,7 @@ export const AlignedContent: React.FC<
             <div>{children}</div>
         </InfoSide>
         <ImageSide>
-            {image && <img src={image} />}
+            {image && <Image src={image} />}
             {video && (
                 <LimitedVideo
                     src={video}

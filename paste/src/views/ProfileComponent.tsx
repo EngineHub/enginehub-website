@@ -139,7 +139,7 @@ function generateProfileEntries(paste: string): RootEntry {
     let skipping = false;
     for (let line of lines) {
         const fullLength = line.length;
-        line = line.trimLeft();
+        line = line.trimStart();
         if (line.length === 0) {
             break;
         }
@@ -195,5 +195,6 @@ const ProfileComponent: React.FC<PasteProps> = React.memo(({ paste }) => {
         </>
     );
 });
+ProfileComponent.displayName = 'ProfileComponent';
 
 export default ProfileComponent;

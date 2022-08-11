@@ -35,7 +35,8 @@ module.exports = {
     externals: {
         react: 'react',
         'react-dom': 'react-dom',
-        'react-helmet': 'react-helmet',
-        'styled-components': 'styled-components'
+        'styled-components': 'styled-components',
+        'next/link': 'next/link',
+        'next/head': 'next/head'
     }
 };

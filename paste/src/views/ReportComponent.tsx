@@ -123,7 +123,7 @@ function generateReportEntries(paste: string): ReportEntry[] {
 
 const ReportComponent: React.FC<PasteProps> = ({ paste }) => {
     const reportEntries = useMemo(() => generateReportEntries(paste), [paste]);
-    
+
     return (
         <ReportWrapper>
             {reportEntries.map((entry, i) => (

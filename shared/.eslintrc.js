@@ -10,6 +10,7 @@ module.exports = {
         'plugin:prettier/recommended',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
+        'plugin:@next/next/recommended',
         'prettier' // enables eslint-plugin-prettier and eslint-config-prettier
     ],
     parserOptions: {

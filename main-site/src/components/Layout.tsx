@@ -1,46 +1,12 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import {
-    Navbar,
-    Footer,
-    WrapperLinkProps,
-    LinkProviderContext,
-    ExtraSponsorProps
-} from '@enginehub/shared';
-import './layout.css';
+import { Navbar, Footer, ExtraSponsorProps } from '@enginehub/shared';
 import { Landing } from './Landing';
-import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import Head from 'next/head';
 
 interface LayoutProps {
     discordOverride?: string;
     landing?: boolean;
 }
-
-const GatsbyLink: React.FC<WrapperLinkProps> = ({
-    href,
-    children,
-    ...props
-}) => {
-    if (
-        !href.startsWith('https://enginehub.org/') &&
-        (!href.startsWith('/') || href.startsWith('//'))
-    ) {
-        return (
-            <OutboundLink href={href} {...props}>
-                {children}
-            </OutboundLink>
-        );
-    }
-    if (href.startsWith('https://enginehub.org/')) {
-        href = href.substring('https://enginehub.org'.length);
-    }
-    return (
-        <Link to={href} {...props}>
-            {children}
-        </Link>
-    );
-};
 
 const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
     children,
@@ -54,36 +20,31 @@ const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
         }
     }, []);
     return (
-        <LinkProviderContext.Provider value={GatsbyLink}>
-            <Helmet
-                link={[
-                    {
-                        rel: 'preload',
-                        as: 'font',
-                        type: 'font/woff2',
-                        crossOrigin: 'true',
-                        href: '/fonts/open-sans-v16-latin-600.woff2'
-                    },
-                    {
-                        rel: 'preload',
-                        as: 'font',
-                        type: 'font/woff2',
-                        crossOrigin: 'true',
-                        href: '/fonts/open-sans-v16-latin-regular.woff2'
-                    }
-                ]}
-            />
+        <>
+            <Head>
+                <link
+                    rel="preload"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="true"
+                    href="/fonts/open-sans-v16-latin-regular.woff2"
+                />
+                <link
+                    rel="preload"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="true"
+                    href="/fonts/open-sans-v16-latin-600.woff2"
+                />
+            </Head>
             {landing ? (
                 <Landing discordOverride={discordOverride} />
             ) : (
                 <Navbar discordOverride={discordOverride} />
             )}
             <main>{children}</main>
-            <Footer
-                mainSite={true}
-                extraSponsors={['netlify'].concat(extraSponsors)}
-            />
-        </LinkProviderContext.Provider>
+            <Footer mainSite={true} extraSponsors={extraSponsors} />
+        </>
     );
 };
 

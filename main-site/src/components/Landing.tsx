@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
 import { Navbar, Container } from '@enginehub/shared';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import Image from 'next/image';
+import landingBg from '../images/landing-bg.jpg';
 
 interface LandingProps {
     discordOverride?: string;
@@ -24,7 +23,7 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderImg = styled(GatsbyImage)`
+const HeaderImg = styled(Image)`
     width: 100%;
     height: 100%;
 `;
@@ -72,18 +71,15 @@ const Subtitle = styled.h2`
     }
 `;
 
-interface ImageQueryResult {
-    file: FileNode;
-}
-
 export const Landing: FunctionComponent<LandingProps> = props => {
-    const data: ImageQueryResult = useStaticQuery(query);
     return (
         <HeaderWrapper>
             <HeaderImg
-                image={getImage(data.file)!}
+                src={landingBg}
                 loading={'eager'}
                 alt={'EngineHub Landing Background'}
+                layout={'fill'}
+                placeholder="blur"
             />
             <HeaderContent>
                 <Navbar
@@ -111,13 +107,3 @@ export const Landing: FunctionComponent<LandingProps> = props => {
         </HeaderWrapper>
     );
 };
-
-const query = graphql`
-    query {
-        file(relativePath: { eq: "landing-bg.jpg" }) {
-            childImageSharp {
-                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-            }
-        }
-    }
-`;

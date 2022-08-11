@@ -1,5 +1,4 @@
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import Layout from '../src/components/Layout';
 import {
     SEO,
     ContainerPadded,
@@ -12,40 +11,34 @@ import {
     AlignedContent,
     HorizontalNav,
     HorizontalNavItem,
-    JumbotronContainer
+    JumbotronContainer,
+    MainLink,
+    BlueButton
 } from '@enginehub/shared';
 import React from 'react';
-import { MainOutboundLink } from '../components/Link';
-import PlatformBanner from '../components/PlatformBanner';
-import { BlueButton, BlueOutboundButton } from '../components/Button';
-import { ReactComponent as HeaderLogo } from '../images/projects/headers/commandhelper-header.svg';
-import { getImage } from 'gatsby-plugin-image';
-import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
+import PlatformBanner from '../src/components/PlatformBanner';
+import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import commandHelperLogo from '../src/images/projects/commandhelper-icon.png';
+import Image from 'next/image';
+import Link from 'next/link';
 
-interface CommandHelperPageData {
-    file: FileNode & { publicURL: string };
-    allFile: { nodes: (FileNode & { name: string })[] };
-}
-
-const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
-    const logoMap = new Map(
-        data.allFile.nodes.map(node => [node.name, getImage(node)])
-    );
+const CommandHelperPage = () => {
     return (
         <Layout discordOverride={'https://discord.gg/Z7jpHed'}>
             <SEO
                 title="CommandHelper"
                 description="CommandHelper lets you create easy-to-write and 'hot-reloadable' scripts for your Bukkit server to handle events and perform tasks — no Java knowledge required!"
-                image={data.file.publicURL}
+                image={commandHelperLogo.src}
             />
             <ContainerPadded>
                 <Row>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
-                                <HeaderLogo
+                                <Image
                                     alt={'CommandHelper'}
-                                    loading={'eager'}
+                                    src={commandHelperHeader}
                                 />
                             </h1>
                         </JumbotronImageBox>
@@ -56,33 +49,33 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                             required!
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <BlueButton to={'/commandhelper/#downloads'}>
-                                List downloads
-                            </BlueButton>
+                            <Link href="/commandhelper/#downloads">
+                                <BlueButton>List downloads</BlueButton>
+                            </Link>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://methodscript.com/docs/">
+                            <MainLink href="https://methodscript.com/docs/">
                                 Documentation
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainOutboundLink href="https://discord.gg/Z7jpHed">
+                            <MainLink href="https://discord.gg/Z7jpHed">
                                 Discord
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/CommandHelper/issues">
+                            <MainLink href="https://github.com/EngineHub/CommandHelper/issues">
                                 Bug / Feature Tracker
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainOutboundLink href="https://github.com/EngineHub/CommandHelper">
+                            <MainLink href="https://github.com/EngineHub/CommandHelper">
                                 Source Code
-                            </MainOutboundLink>
+                            </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </Row>
@@ -124,21 +117,18 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
                             Downloads
                         </SectionHeading>
                         <p>Please choose a download for your platform.</p>
-                        <PlatformBanner
-                            logo={logoMap.get('bukkit-logo')!}
-                            alt={'Bukkit'}
-                        >
+                        <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>
                                 We officially support CommandHelper for Bukkit.
                             </p>
                             <p>
-                                <BlueOutboundButton
+                                <BlueButton
                                     href={
                                         'http://builds.enginehub.org/job/commandhelper/'
                                     }
                                 >
                                     Download builds for Bukkit
-                                </BlueOutboundButton>
+                                </BlueButton>
                             </p>
                             <p>
                                 <InfoLabel>Note!</InfoLabel> Stable builds are
@@ -174,27 +164,3 @@ const CommandHelperPage = ({ data }: { data: CommandHelperPageData }) => {
 };
 
 export default CommandHelperPage;
-
-export const query = graphql`
-    query {
-        file(name: { eq: "commandhelper-icon" }) {
-            childImageSharp {
-                gatsbyImageData(
-                    width: 512
-                    height: 512
-                    quality: 100
-                    layout: FIXED
-                )
-            }
-            publicURL
-        }
-        allFile(filter: { name: { in: ["bukkit-logo"] } }) {
-            nodes {
-                childImageSharp {
-                    gatsbyImageData(width: 150, quality: 100, layout: FIXED)
-                }
-                name
-            }
-        }
-    }
-`;
