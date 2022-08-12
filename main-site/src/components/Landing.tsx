@@ -78,7 +78,7 @@ export const Landing: FunctionComponent<LandingProps> = props => {
                     alt={'EngineHub Landing Background'}
                     layout={'fill'}
                     objectFit={'cover'}
-                    placeholder="blur"
+                    placeholder="empty"
                 />
             </div>
             <HeaderContent>
