@@ -9,11 +9,10 @@
         "@fortawesome/fontawesome-svg-core": "^6.1.2",
         "@fortawesome/free-solid-svg-icons": "^6.1.2",
         "@fortawesome/react-fontawesome": "^0.2.0",
-        "@types/styled-components": "^5.1.25",
+        "@types/styled-components": "^5.1.26",
         "axios": "^0.27.2",
         "moment": "^2.29.4",
         "next": "^12.2.4",
-        "next-images": "^1.8.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "styled-components": "^5.3.5"
@@ -31,12 +30,12 @@
     },
     "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
-        "dev": "next",
+        "dev": "yarn next",
         "clean": "rm -rf build",
-        "build": "next build",
-        "start": "next start -p $PORT",
-        "type-check": "tsc --project ./tsconfig.json --noEmit",
-        "lint": "next lint",
-        "lint:fix": "next lint --fix"
+        "build": "yarn next build",
+        "start": "yarn next start -p $PORT",
+        "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
+        "lint": "yarn next lint",
+        "lint:fix": "yarn next lint --fix"
     }
 }

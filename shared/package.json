@@ -12,7 +12,7 @@
         "@types/node": "^17.0.45",
         "@types/react": "17.0.48",
         "@types/react-dom": "17.0.17",
-        "@types/styled-components": "^5.1.25",
+        "@types/styled-components": "^5.1.26",
         "@typescript-eslint/eslint-plugin": "^5.33.0",
         "@typescript-eslint/parser": "^5.33.0",
         "eslint": "^8.21.0",
@@ -30,7 +30,7 @@
         "craftbook"
     ],
     "scripts": {
-        "type-check": "tsc --project ./tsconfig.json --noEmit",
+        "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
         "lint": "eslint --config ./.eslintrc.js --ext .ts,.tsx src/",
         "lint:fix": "eslint --config ./.eslintrc.js --fix --ext .ts,.tsx src/",
         "prepare": "yarn build",

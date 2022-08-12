@@ -29,6 +29,7 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 'warn',
         '@typescript-eslint/no-var-requires': 'warn',
         'react/prop-types': 'off',
+        'react/no-unescaped-entities': 'off',
         '@typescript-eslint/no-unused-vars': [
             'error',
             { argsIgnorePattern: '^_' }

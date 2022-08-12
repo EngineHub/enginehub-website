@@ -10,8 +10,8 @@
         "@fortawesome/fontawesome-svg-core": "^6.1.2",
         "@fortawesome/free-solid-svg-icons": "^6.1.2",
         "@fortawesome/react-fontawesome": "^0.2.0",
-        "@google-cloud/firestore": "^5.0.2",
-        "@types/styled-components": "^5.1.25",
+        "@google-cloud/firestore": "^6.0.0",
+        "@types/styled-components": "^5.1.26",
         "axios": "^0.27.2",
         "bcrypt": "^5.0.1",
         "got": "^12.3.1",
@@ -42,11 +42,11 @@
     },
     "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "start": "next start",
-        "type-check": "tsc --project ./tsconfig.json --noEmit",
-        "lint": "next lint",
-        "lint:fix": "next lint --fix"
+        "dev": "yarn next",
+        "build": "yarn next build",
+        "start": "yarn next start",
+        "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
+        "lint": "yarn next lint",
+        "lint:fix": "yarn next lint --fix"
     }
 }
