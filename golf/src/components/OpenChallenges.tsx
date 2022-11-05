@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
@@ -91,7 +91,11 @@ export const ChallengeEntry: React.FC<ChallengeEntryProps> = ({
         <ChallengeEntryContainer {...rest}>
             <Schematic schematic={schematic} size={DEFAULT_SIZE} />
             <InfoContainer>
-                <Link href={`/golf/${golfId}`} passHref={true}>
+                <Link
+                    href={`/golf/${golfId}`}
+                    passHref={true}
+                    legacyBehavior={true}
+                >
                     <HeaderLink>
                         <h3>{title}</h3>
                     </HeaderLink>
@@ -106,7 +110,7 @@ const ChallengeTitle = styled.h2`
     font-size: 24px;
 `;
 
-export const OpenChallenge: React.FC<OpenChallengeProps> = ({
+export const OpenChallenge: React.FC<PropsWithChildren<OpenChallengeProps>> = ({
     children,
     golfs
 }) => (

@@ -51,7 +51,7 @@ export const BrandHeader: React.FC<{ isHomePage?: boolean }> = ({
 }) => (
     <div>
         <StyledContainer isHome={isHomePage}>
-            <Link href="/" passHref={true}>
+            <Link href="/" passHref={true} legacyBehavior={true}>
                 <HeaderLink>
                     <HorizontalDiv>
                         <Logo />

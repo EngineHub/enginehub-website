@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { Header } from './Header';
 
 interface LayoutProps {
@@ -20,7 +20,7 @@ const Main = styled.main`
     overflow-x: auto;
 `;
 
-export const Layout: FC<LayoutProps> = ({
+export const Layout: FC<PropsWithChildren<LayoutProps>> = ({
     children,
     showHelp = true,
     saveCallback

@@ -49,7 +49,11 @@ const CommandHelperPage = () => {
                             required!
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link href="/commandhelper/#downloads">
+                            <Link
+                                href="/commandhelper/#downloads"
+                                passHref={true}
+                                legacyBehavior={true}
+                            >
                                 <BlueButton>List downloads</BlueButton>
                             </Link>
                         </JumbotronButtonBox>

@@ -51,7 +51,11 @@ const CommandBookPage = () => {
                             server.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link href="/commandbook/#downloads">
+                            <Link
+                                href="/commandbook/#downloads"
+                                passHref={true}
+                                legacyBehavior={true}
+                            >
                                 <BlueButton>List downloads</BlueButton>
                             </Link>
                         </JumbotronButtonBox>
@@ -165,7 +169,11 @@ const CommandBookPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CommandBook
                                 requires that{' '}
-                                <Link href="/worldedit/">
+                                <Link
+                                    href="/worldedit/"
+                                    passHref={true}
+                                    legacyBehavior={true}
+                                >
                                     <MainLink>WorldEdit</MainLink>
                                 </Link>{' '}
                                 is installed.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import {
     Navbar,
     Footer,
@@ -20,7 +20,7 @@ const FloatedPurpleButton = styled.a`
     }
 `;
 
-const LayoutInner: React.FC<ExtraSponsorProps> = ({
+const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
     children,
     extraSponsors
 }) => {
@@ -52,7 +52,10 @@ const LayoutInner: React.FC<ExtraSponsorProps> = ({
     );
 };
 
-export const Layout: React.FC<ExtraSponsorProps> = ({ children, ...rest }) => {
+export const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
+    children,
+    ...rest
+}) => {
     return (
         <AuthProvider>
             <LayoutInner {...rest}>{children}</LayoutInner>

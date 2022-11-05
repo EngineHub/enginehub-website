@@ -47,7 +47,11 @@ const WorldGuardPage = () => {
                             and disable various gameplay features of Minecraft.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link href={'/worldguard/#downloads'}>
+                            <Link
+                                href={'/worldguard/#downloads'}
+                                passHref={true}
+                                legacyBehavior={true}
+                            >
                                 <BlueButton>List downloads</BlueButton>
                             </Link>
                         </JumbotronButtonBox>
@@ -202,7 +206,11 @@ const WorldGuardPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> WorldGuard
                                 requires that{' '}
-                                <Link href="/worldedit/">
+                                <Link
+                                    href="/worldedit/"
+                                    passHref={true}
+                                    legacyBehavior={true}
+                                >
                                     <MainLink>WorldEdit</MainLink>
                                 </Link>{' '}
                                 is installed.

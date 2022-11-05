@@ -117,6 +117,7 @@ function Index({ projectEntries }: IndexProps) {
                                             <Link
                                                 href={`/job/${projectEntry.project.id}?branch=${build.branch}`}
                                                 passHref={true}
+                                                legacyBehavior={true}
                                             >
                                                 <MainLink>
                                                     {build.branch}
@@ -157,6 +158,7 @@ function Index({ projectEntries }: IndexProps) {
                                             <Link
                                                 href={`/job/${projectEntry.project.id}/${build.build_id}`}
                                                 passHref={true}
+                                                legacyBehavior={true}
                                             >
                                                 <MainLink>
                                                     #{build.build_number}

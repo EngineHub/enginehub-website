@@ -24,6 +24,7 @@ const BranchWarning: React.FC<BranchWarningProps> = props => (
         <Link
             href={`/job/${props.projectId}?branch=${props.mainBranch}`}
             passHref={true}
+            legacyBehavior={true}
         >
             <MainButton>Go to main branch</MainButton>
         </Link>{' '}

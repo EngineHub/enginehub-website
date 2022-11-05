@@ -87,7 +87,7 @@ export const Navbar: React.FC<React.PropsWithChildren<NavbarProps>> = ({
         <Nav headertheme={headertheme}>
             <Container>
                 <div>
-                    <Link href="/">
+                    <Link href="/" passHref={true} legacyBehavior={true}>
                         <HeaderLink headertheme={headertheme}>
                             {headertitle}
                         </HeaderLink>

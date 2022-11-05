@@ -66,7 +66,9 @@ const Subtitle = styled.h2`
     }
 `;
 
-export const Landing: FunctionComponent<LandingProps> = props => {
+export const Landing: FunctionComponent<LandingProps> = ({
+    discordOverride
+}) => {
     return (
         <HeaderWrapper>
             <div
@@ -84,7 +86,7 @@ export const Landing: FunctionComponent<LandingProps> = props => {
             <HeaderContent>
                 <Navbar
                     headertheme="inverted"
-                    discordOverride={props.discordOverride}
+                    discordOverride={discordOverride}
                 />
                 <LandingText>
                     <Container>

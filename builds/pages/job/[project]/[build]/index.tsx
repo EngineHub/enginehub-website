@@ -86,7 +86,7 @@ function Index({ project, build }: BuildPageProps) {
             <ContainerPadded>
                 <BreadcrumbWrapper>
                     <Breadcrumb>
-                        <Link href={'/'} passHref={true}>
+                        <Link href={'/'} passHref={true} legacyBehavior={true}>
                             <MainLink>Builds</MainLink>
                         </Link>
                     </Breadcrumb>
@@ -94,6 +94,7 @@ function Index({ project, build }: BuildPageProps) {
                         <Link
                             href={`/job/${project.id}?branch=${build.branch}`}
                             passHref={true}
+                            legacyBehavior={true}
                         >
                             <MainLink>
                                 {project.name} (<code>{build.branch}</code>)

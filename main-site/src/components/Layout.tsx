@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, PropsWithChildren, useEffect } from 'react';
 import { Navbar, Footer, ExtraSponsorProps } from '@enginehub/shared';
 import { Landing } from './Landing';
 import Head from 'next/head';
 
-interface LayoutProps {
+interface LayoutProps extends ExtraSponsorProps {
     discordOverride?: string;
     landing?: boolean;
 }
 
-const Layout: FunctionComponent<LayoutProps & ExtraSponsorProps> = ({
+const Layout: FunctionComponent<PropsWithChildren<LayoutProps>> = ({
     children,
     landing = false,
     discordOverride,

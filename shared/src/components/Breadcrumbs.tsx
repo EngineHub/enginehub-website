@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import React from 'react';
 
 export const Breadcrumb = styled.li`
     display: inline-block;
@@ -9,7 +8,7 @@ export const ActiveBreadcrumb = styled(Breadcrumb)`
     color: rgb(119, 119, 119);
 `;
 
-const WrapperElement = styled.ol`
+export const BreadcrumbWrapper = styled.ol`
     margin-bottom: 23px;
     margin-left: 0;
     background-color: rgb(245, 245, 245);
@@ -23,7 +22,3 @@ const WrapperElement = styled.ol`
         padding: 0px 5px;
     }
 `;
-
-export const BreadcrumbWrapper: React.FC<React.PropsWithChildren<unknown>> = ({
-    children
-}) => <WrapperElement>{children}</WrapperElement>;

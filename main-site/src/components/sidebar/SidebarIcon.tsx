@@ -6,12 +6,12 @@ interface SidebarIconProps {
     src: string;
 }
 
-const SidebarIcon: FunctionComponent<SidebarIconProps> = props => {
+const SidebarIcon: FunctionComponent<SidebarIconProps> = ({ src, alt }) => {
     return (
         <div>
             <Image
-                src={props.src}
-                alt={props.alt}
+                src={src}
+                alt={alt}
                 loading={'eager'}
                 width={100}
                 height={100}

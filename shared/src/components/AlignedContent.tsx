@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { SectionHeading } from './text';
 
@@ -37,16 +37,22 @@ const LimitedVideo = styled.video`
     border-radius: 5px;
 `;
 
-export const AlignedContent: React.FC<
-    React.PropsWithChildren<AlignedContentProps>
-> = ({ header, align, image, video, children }) => (
+export const AlignedContent: FC<PropsWithChildren<AlignedContentProps>> = ({
+    header,
+    align,
+    image,
+    video,
+    children
+}) => (
     <AlignedContentWrapper align={align}>
         <InfoSide>
             {header && <SectionHeading>{header}</SectionHeading>}
             <div>{children}</div>
         </InfoSide>
         <ImageSide>
-            {image && <Image src={image} />}
+            {image && (
+                <Image src={image} alt={header ?? 'aligned content image'} />
+            )}
             {video && (
                 <LimitedVideo
                     src={video}

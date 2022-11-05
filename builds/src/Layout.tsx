@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { Navbar, Footer, ExtraSponsorProps } from '@enginehub/shared';
 
-const Layout: React.FC<ExtraSponsorProps> = ({ children, extraSponsors }) => {
+const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
+    children,
+    extraSponsors
+}) => {
     return (
         <>
             <Navbar headertheme="purple" />

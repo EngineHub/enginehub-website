@@ -38,7 +38,11 @@ function Home({ golfs }: HomeProps) {
                 <BrandHeader isHomePage={true} />
                 {isAuthenticated && (
                     <NewChallengeBlock>
-                        <Link href="/submit" passHref={true}>
+                        <Link
+                            href="/submit"
+                            passHref={true}
+                            legacyBehavior={true}
+                        >
                             <ChallengeButton>New Challenge</ChallengeButton>
                         </Link>
                     </NewChallengeBlock>

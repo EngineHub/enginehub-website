@@ -59,7 +59,11 @@ const WorldEditPage = () => {
                             professional Minecraft builders today!
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link href={'/worldedit/#downloads'}>
+                            <Link
+                                href={'/worldedit/#downloads'}
+                                passHref={true}
+                                legacyBehavior={true}
+                            >
                                 <BlueButton>Go to downloads</BlueButton>
                             </Link>
                         </JumbotronButtonBox>

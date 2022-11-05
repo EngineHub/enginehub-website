@@ -60,6 +60,8 @@ export const Pagination: React.FC<PaginationProps> = ({
                 {hasPrevPage ? (
                     <Link
                         href={pageMask.replace(':page', `${currentPage - 1}`)}
+                        passHref={true}
+                        legacyBehavior={true}
                     >
                         <a>«</a>
                     </Link>
@@ -69,7 +71,11 @@ export const Pagination: React.FC<PaginationProps> = ({
             </li>
             {hasPrevPage && (
                 <li>
-                    <Link href={pageMask.replace(':page', '0')}>
+                    <Link
+                        href={pageMask.replace(':page', '0')}
+                        passHref={true}
+                        legacyBehavior={true}
+                    >
                         <a>1</a>
                     </Link>
                 </li>
@@ -81,6 +87,8 @@ export const Pagination: React.FC<PaginationProps> = ({
                 {hasNextPage ? (
                     <Link
                         href={pageMask.replace(':page', `${currentPage + 1}`)}
+                        passHref={true}
+                        legacyBehavior={true}
                     >
                         <a>»</a>
                     </Link>

@@ -3,7 +3,9 @@ import React, {
     useState,
     useEffect,
     useMemo,
-    useCallback
+    useCallback,
+    PropsWithChildren,
+    FC
 } from 'react';
 import router from 'next/router';
 import jwt from 'jsonwebtoken';
@@ -21,7 +23,7 @@ const AuthContext = React.createContext<{
     setToken: () => {}
 });
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const [token, setToken] = useState<string | undefined>(getToken());
 
     useEffect(() => {

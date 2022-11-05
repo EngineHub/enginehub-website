@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import Image, { StaticImageData } from 'next/image';
 
@@ -45,7 +45,7 @@ interface PlatformBannerProps {
 
 const BANNER_WIDTH = 150;
 
-const PlatformBanner: React.FC<PlatformBannerProps> = ({
+const PlatformBanner: FC<PropsWithChildren<PlatformBannerProps>> = ({
     children,
     img,
     alt,

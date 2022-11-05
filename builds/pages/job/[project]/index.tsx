@@ -83,6 +83,7 @@ function Index({
                             <Link
                                 href={`/job/${project.id}?branch=${branch}`}
                                 passHref={true}
+                                legacyBehavior={true}
                             >
                                 <BranchButton
                                     className={
@@ -110,6 +111,7 @@ function Index({
                 <Link
                     href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
                     passHref={true}
+                    legacyBehavior={true}
                 >
                     <MainButton
                         style={{ float: 'right', marginBottom: '2rem' }}
@@ -150,6 +152,7 @@ function Index({
                                     <Link
                                         href={`/job/${project.id}/${build.build_id}`}
                                         passHref={true}
+                                        legacyBehavior={true}
                                     >
                                         <MainLink>
                                             #{build.build_number}
@@ -209,6 +212,7 @@ function Index({
                                     <Link
                                         href={`/job/${project.id}/${build.build_id}`}
                                         passHref={true}
+                                        legacyBehavior={true}
                                     >
                                         <BlueButton>
                                             <FontAwesomeIcon

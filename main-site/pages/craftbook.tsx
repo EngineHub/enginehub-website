@@ -50,7 +50,11 @@ const CraftBookPage = () => {
                             and fully customizable by the server.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link href="/craftbook/#downloads">
+                            <Link
+                                href="/craftbook/#downloads"
+                                passHref={true}
+                                legacyBehavior={true}
+                            >
                                 <BlueButton>List downloads</BlueButton>
                             </Link>
                         </JumbotronButtonBox>
@@ -59,7 +63,11 @@ const CraftBookPage = () => {
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <Link href="/documentation/">
+                            <Link
+                                href="/documentation/"
+                                passHref={true}
+                                legacyBehavior={true}
+                            >
                                 <MainLink>Documentation</MainLink>
                             </Link>
                         </HorizontalNavItem>
@@ -181,7 +189,11 @@ const CraftBookPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CraftBook
                                 requires that{' '}
-                                <Link href="/worldedit/">
+                                <Link
+                                    href="/worldedit/"
+                                    passHref={true}
+                                    legacyBehavior={true}
+                                >
                                     <MainLink>WorldEdit</MainLink>
                                 </Link>{' '}
                                 is installed.
@@ -230,7 +242,11 @@ const CraftBookPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CraftBook
                                 requires that{' '}
-                                <Link href="/worldedit/">
+                                <Link
+                                    href="/worldedit/"
+                                    passHref={true}
+                                    legacyBehavior={true}
+                                >
                                     <MainLink>WorldEdit</MainLink>
                                 </Link>{' '}
                                 is installed.

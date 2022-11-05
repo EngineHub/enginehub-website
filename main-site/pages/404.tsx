@@ -16,7 +16,7 @@ const NotFoundPage = () => (
             found.
         </PageHeader>
         <Container>
-            <Link href="/">
+            <Link href="/" legacyBehavior={true} passHref={true}>
                 <BlueButton>Go to EngineHub.org</BlueButton>
             </Link>
         </Container>

@@ -9,7 +9,8 @@
         "noEmit": true,
         "skipLibCheck": true,
         "incremental": true,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "moduleResolution": "node"
     },
     "include": ["./src/**/*", "./pages/**/*"],
     "exclude": [".next"],

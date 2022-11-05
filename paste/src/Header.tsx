@@ -104,7 +104,7 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ showHelp, saveCallback }) => (
     <MainHeader>
         <SiteTitle>
-            <Link href="/" passHref={true}>
+            <Link href="/" passHref={true} legacyBehavior={true}>
                 <SiteLink>Pastebin</SiteLink>
             </Link>
         </SiteTitle>
