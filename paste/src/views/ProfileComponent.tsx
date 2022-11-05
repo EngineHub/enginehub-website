@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { PasteProps } from 'paste/pages/[id]';
+import type { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
 
-const CloseIcon = require('./images/close.png');
-const OpenIcon = require('./images/open.png');
+const CloseIcon = require('./images/close.png') as string;
+const OpenIcon = require('./images/open.png') as string;
 
 interface ProfileEntry {
     name: string;

@@ -1,8 +1,9 @@
-import React from 'react';
 import { Container } from './Container';
 import styled from 'styled-components';
 import { MainLinkStyle } from './Link';
-import { RandomSponsor, ExtraSponsorProps } from './Sponsors';
+import type { ExtraSponsorProps } from './Sponsors';
+import { RandomSponsor } from './Sponsors';
+import type { FC } from 'react';
 
 const ContainerFlex = styled(Container)`
     display: flex;
@@ -77,7 +78,7 @@ interface FooterProps extends ExtraSponsorProps {
     mainSite: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ extraSponsors }) => {
+export const Footer: FC<FooterProps> = ({ extraSponsors }) => {
     return (
         <FooterWrapper>
             <ContainerFlex>

@@ -1,4 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import type { NextApiRequest, NextApiResponse } from 'next';
 import got from 'got';
 import jwt from 'jsonwebtoken';
 import { addUser } from '../../src/databaseConnector';

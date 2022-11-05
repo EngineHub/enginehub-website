@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import React from 'react';
 import Link from 'next/link';
+import type { FC } from 'react';
 
 const PaginationBox = styled.ul`
     margin-top: 0;
@@ -47,7 +47,7 @@ interface PaginationProps {
     pageMask: string;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination: FC<PaginationProps> = ({
     hasNextPage,
     currentPage,
     pageMask

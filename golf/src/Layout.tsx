@@ -1,10 +1,6 @@
-import React, { FC, PropsWithChildren } from 'react';
-import {
-    Navbar,
-    Footer,
-    ExtraSponsorProps,
-    PurpleButtonStyle
-} from '@enginehub/shared';
+import type { FC, PropsWithChildren } from 'react';
+import type { ExtraSponsorProps } from '@enginehub/shared';
+import { Navbar, Footer, PurpleButtonStyle } from '@enginehub/shared';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
 import styled from 'styled-components';
 
@@ -39,6 +35,7 @@ const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
                     ) : (
                         <FloatedPurpleButton
                             key="login"
+                            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                             href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`}
                         >
                             Log in

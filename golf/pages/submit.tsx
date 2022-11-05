@@ -1,4 +1,6 @@
-import React, { useEffect, ReactNode, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { TextArea } from '../src/components/Input/TextArea';
 import Input from '../src/components/Input/Input';

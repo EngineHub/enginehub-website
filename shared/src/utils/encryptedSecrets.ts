@@ -23,5 +23,6 @@ export function decryptGCloud() {
 
     decrypted += decipher.final('utf8');
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(decrypted);
 }

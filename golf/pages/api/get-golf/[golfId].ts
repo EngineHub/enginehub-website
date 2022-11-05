@@ -1,5 +1,5 @@
 import { getGolfData } from '../../../src/databaseConnector';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { golfId } = req.query;

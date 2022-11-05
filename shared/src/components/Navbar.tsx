@@ -1,9 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Container } from './Container';
 import { MainButtonStyle, PurpleButtonStyle } from './Button';
 import { SECONDARY, BRAND } from '../theme';
 import Link from 'next/link';
+import type { FC, PropsWithChildren } from 'react';
 
 const NavBackgroundColours = {
     default: SECONDARY.darker,
@@ -74,7 +74,7 @@ const FloatedGrayButton = styled.a`
     }
 `;
 
-export const Navbar: React.FC<React.PropsWithChildren<NavbarProps>> = ({
+export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
     headertheme = 'default',
     headertitle = 'EngineHub',
     discordOverride,

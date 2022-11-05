@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import { Layout } from '../../src/Layout';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { loadPaste } from '../../src/loadPaste';
 import { SEO } from '@enginehub/shared';
-import { Extension, PasteData } from '../../src/types';
+import type { Extension, PasteData } from '../../src/types';
 
 interface DocumentProps extends PasteProps {
     extension: Extension;
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
     const { id } = params!;
     let pasteId = `${id}`;
     let extension: Extension | undefined = undefined;
-    const dotIndex = id!.lastIndexOf('.');
+    const dotIndex = id.lastIndexOf('.');
     if (dotIndex !== -1) {
         const extracted = pasteId.substring(dotIndex + 1);
         pasteId = pasteId.substring(0, dotIndex);
@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
     }
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
     return {
         paths: [],
         fallback: 'blocking'

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import type { FC } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { MainLinkStyle, MainLink } from './Link';
 
@@ -64,7 +65,7 @@ const useSponsorComponents = () => {
     );
 };
 
-export const RandomSponsor: React.FC<ExtraSponsorProps> = ({
+export const RandomSponsor: FC<ExtraSponsorProps> = ({
     extraSponsors = []
 }) => {
     const [ApexHostingSponsor, GitHubSponsorsSponsor, EmptySponsor] =
@@ -121,7 +122,7 @@ const HorizontalSponsorArea = styled.div`
     }
 `;
 
-export const LabelledSponsorsArea: React.FC<ExtraSponsorProps> = ({
+export const LabelledSponsorsArea: FC<ExtraSponsorProps> = ({
     extraSponsors,
     ...rest
 }) => (

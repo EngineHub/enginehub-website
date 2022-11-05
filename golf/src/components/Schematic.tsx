@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
+import type { FC } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
 
@@ -20,7 +21,7 @@ const Container = styled.div<{ size: number }>`
     }
 `;
 
-export const Schematic: React.FC<SchematicProps> = ({
+export const Schematic: FC<SchematicProps> = ({
     schematic,
     size = 500,
     preview = true,
@@ -42,10 +43,12 @@ export const Schematic: React.FC<SchematicProps> = ({
             renderSchematic(ref.current, schematic, {
                 corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
                 renderBars: !preview
-            }).then(({ destroy: d, setSize: r }) => {
-                setResize(() => r);
-                callbacks.current.destroy = d;
-            });
+            })
+                .then(({ destroy: d, setSize: r }) => {
+                    setResize(() => r);
+                    callbacks.current.destroy = d;
+                })
+                .catch(() => {});
             return callbacks.current.destroy;
         }
         return;

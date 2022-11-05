@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
-import { PasteProps } from 'paste/pages/[id]';
+import type React from 'react';
+import { useMemo, useState } from 'react';
+import type { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
 
-const CloseIcon = require('./images/close.png');
-const OpenIcon = require('./images/open.png');
+const CloseIcon = require('./images/close.png') as string;
+const OpenIcon = require('./images/open.png') as string;
 
 interface ReportEntry {
     title: string;

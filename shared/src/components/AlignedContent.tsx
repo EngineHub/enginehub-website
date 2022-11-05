@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { SectionHeading } from './text';
 

@@ -1,5 +1,7 @@
-import React, { FC, PropsWithChildren } from 'react';
-import { Navbar, Footer, ExtraSponsorProps } from '@enginehub/shared';
+import type { FC, PropsWithChildren } from 'react';
+import React from 'react';
+import type { ExtraSponsorProps } from '@enginehub/shared';
+import { Navbar, Footer } from '@enginehub/shared';
 
 const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
     children,

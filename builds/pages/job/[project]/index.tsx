@@ -7,10 +7,11 @@ import {
     Table,
     Pagination
 } from '@enginehub/shared';
-import { GetServerSideProps } from 'next';
-import { PROJECT_MAP, Project } from '../../../src/project';
+import type { GetServerSideProps } from 'next';
+import type { Project } from '../../../src/project';
+import { PROJECT_MAP } from '../../../src/project';
+import type { Build } from '../../../src/builds';
 import {
-    Build,
     getBranches,
     getBuildPage,
     BUILDS_PER_PAGE

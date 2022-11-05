@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { PasteProps } from 'paste/pages/[id]';
+import type { FC } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import type { PasteProps } from 'paste/pages/[id]';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
 import styled from 'styled-components';
 import { BlueButtonStyle } from '@enginehub/shared';
@@ -50,9 +51,9 @@ const SiteLink = styled.a`
     }
 `;
 
-const InfoBar: React.FC<PasteProps> = ({ paste, metadata = {} }) => {
+const InfoBar: FC<PasteProps> = ({ paste, metadata = {} }) => {
     const onClickDownload = () => {
-        var element = document.createElement('a');
+        const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;base64,' + paste);
         element.setAttribute(
             'download',
@@ -85,7 +86,7 @@ const InfoBar: React.FC<PasteProps> = ({ paste, metadata = {} }) => {
     );
 };
 
-const SchematicComponent: React.FC<PasteProps> = ({ paste, metadata }) => {
+const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] =
         useState<(width: number, height: number) => void>();
@@ -116,10 +117,12 @@ const SchematicComponent: React.FC<PasteProps> = ({ paste, metadata }) => {
                 corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
                 renderBars: false,
                 renderArrow: false
-            }).then(({ destroy: d, setSize: r }) => {
-                setResize(() => r);
-                setDestroy(() => d);
-            });
+            })
+                .then(({ destroy: d, setSize: r }) => {
+                    setResize(() => r);
+                    setDestroy(() => d);
+                })
+                .catch(() => {});
             return destroy;
         }
         return;

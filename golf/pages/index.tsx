@@ -3,12 +3,12 @@ import { OpenChallenge } from '../src/components/OpenChallenges';
 import { useIsLoggedIn } from '../src/components/Auth';
 import styled from 'styled-components';
 import Layout from '../src/Layout';
-import { Golf } from '../src/types/database';
+import type { Golf } from '../src/types/database';
 import { PurpleButtonStyle, Container, SEO } from '@enginehub/shared';
 import Link from 'next/link';
 import { BrandHeader } from '../src/components/BrandHeader';
 import { getAllGolfs } from '../src/databaseConnector';
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
 const ChallengeButton = styled.a`
     ${PurpleButtonStyle()}

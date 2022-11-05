@@ -1,9 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import type React from 'react';
 import styled from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
 import { MainLinkStyle } from '@enginehub/shared';
-import { Golf } from '../types/database';
+import type { Golf } from '../types/database';
 
 const Entries = styled.div`
     > div:not(:last) {

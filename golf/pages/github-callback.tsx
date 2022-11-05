@@ -40,13 +40,14 @@ const Page = () => {
             .then(({ error, token }) => {
                 if (token) {
                     setToken(token);
-                    router.push('/');
+                    router.push('/').catch(e => setError(e));
                 } else if (error) {
                     setError(error);
                 } else {
                     setError('An unexpected error occurred');
                 }
-            });
+            })
+            .catch(e => setError(e));
     }, [setToken]);
 
     return errorMessage ? (

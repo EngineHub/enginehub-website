@@ -1,7 +1,7 @@
-import { Build, BuildChange, BuildArtifact } from './types';
+import type { Build, BuildChange, BuildArtifact } from './types';
 import axios from 'axios';
 import { DUMMY_BUILD } from './dummyData';
-import { Project } from '../project';
+import type { Project } from '../project';
 import moment from 'moment';
 
 export * from './types';

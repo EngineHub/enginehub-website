@@ -1,11 +1,11 @@
 import shortid from 'shortid';
-import {
+import type {
     CreateReadStreamOptions,
     CreateWriteStreamOptions,
-    GenerateSignedPostPolicyV4Options,
-    Storage
+    GenerateSignedPostPolicyV4Options
 } from '@google-cloud/storage';
-import { PasteData } from './types';
+import { Storage } from '@google-cloud/storage';
+import type { PasteData } from './types';
 import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
 
 let authData: {
@@ -80,7 +80,7 @@ export async function getPaste(
 
         const buffers: Buffer[] = [];
 
-        stream.on('data', chunk => {
+        stream.on('data', (chunk: Buffer) => {
             buffers.push(chunk);
         });
         stream.on('error', reject);

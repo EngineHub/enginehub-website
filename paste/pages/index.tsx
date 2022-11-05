@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { getFiles } from '../src/dragAndDrop';
 import { Layout } from '../src/Layout';
 import Router from 'next/router';
-import React, { useCallback, useEffect, useState } from 'react';
+import type React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SEO, Loader } from '@enginehub/shared';
 import { fromByteArray } from 'base64-js';
 
@@ -56,8 +57,9 @@ const SavingOverlay = styled.div`
     align-items: center;
 `;
 
-async function postContent(content: string, extension: string = '') {
+async function postContent(content: string, extension = '') {
     try {
+        // eslint-disable-next-line prefer-const
         let { viewUrl, uploadUrl, uploadFields } = await (
             await fetch('/signed_paste', {
                 headers: {
@@ -85,6 +87,7 @@ async function postContent(content: string, extension: string = '') {
         if (extension) {
             viewUrl += `.${extension}`;
         }
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         alert(`Saved! Available at ${viewUrl}`);
         if (viewUrl.startsWith('https://paste.enginehub.org')) {
             await Router.push(
@@ -96,6 +99,7 @@ async function postContent(content: string, extension: string = '') {
         }
     } catch (e: any) {
         console.error(e?.message ?? e);
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         alert(`Failed to submit the post! ${e?.message ?? e}`);
     }
 }
@@ -109,7 +113,9 @@ function Index() {
     const save = useCallback(() => {
         setSaving(true);
         if (content.trim().length > 0) {
-            postContent(content, extension).then(() => setSaving(false));
+            postContent(content, extension)
+                .then(() => setSaving(false))
+                .catch(() => setSaving(false));
         }
     }, [content, extension]);
 

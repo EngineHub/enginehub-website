@@ -1,6 +1,8 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { Golf, GolfLeaderboard, User } from '../../src/types/database';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import type React from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { Golf, GolfLeaderboard, User } from '../../src/types/database';
 import {
     LeaderboardEntry,
     Leaderboard
@@ -102,7 +104,7 @@ const SchematicBox: React.FC<SchematicBoxProps> = ({
     title
 }) => {
     const onClickDownload = () => {
-        var element = document.createElement('a');
+        const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;base64,' + schematic);
         element.setAttribute('download', `${title}.schem`);
 
@@ -164,9 +166,10 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     );
 
     useLayoutEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         const timeout = setInterval(async () => {
             if (taskId) {
-                const pollResponse = await pollBroker(taskId!);
+                const pollResponse = await pollBroker(taskId);
                 switch (pollResponse.status) {
                     case 'queued':
                         statusBox.current!.value = `Queued. Position in queue: ${pollResponse.positionInQueue}`;
@@ -176,16 +179,16 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                         break;
                     case 'passed':
                         statusBox.current!.value = `Passed!\n\n${pollResponse.log}`;
-                        await cleanupTask(taskId!);
+                        await cleanupTask(taskId);
                         break;
                     case 'failed':
                         statusBox.current!.value = `The schematics aren't the same!\n\n${pollResponse.log}`;
                         setResultSchem(pollResponse.result);
-                        await cleanupTask(taskId!);
+                        await cleanupTask(taskId);
                         break;
                     case 'errored':
                         statusBox.current!.value = `An error occurred :(\n\n${pollResponse.reason}`;
-                        await cleanupTask(taskId!);
+                        await cleanupTask(taskId);
                         break;
                 }
             }
@@ -193,7 +196,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
         return () => clearInterval(timeout);
     }, [taskId]);
 
-    const queueBroker = async () => {
+    const queueBroker = () => {
         if (taskId) {
             return;
         }
@@ -206,19 +209,24 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
             return;
         }
         try {
-            const queueResponse = await queueTask({
+            queueTask({
                 golfId: golf.golf_id,
                 initial: false,
                 input: golf.start_schematic,
                 script: commandBox.current!.value,
                 test: golf.test_schematic,
                 token: token
-            });
-            if (queueResponse.taskId) {
-                setTaskId(queueResponse.taskId!);
-            } else {
-                statusBox.current!.value = `An error occurred`;
-            }
+            })
+                .then(queueResponse => {
+                    if (queueResponse.taskId) {
+                        setTaskId(queueResponse.taskId);
+                    } else {
+                        statusBox.current!.value = `An error occurred`;
+                    }
+                })
+                .catch(e => {
+                    statusBox.current!.value = `An error occurred, ${e}`;
+                });
         } catch (e) {
             statusBox.current!.value = `An error occurred :(\n\n${e}`;
         }
@@ -279,7 +287,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                         {resultSchem && (
                             <ResultPreview
                                 size={Math.min(width, 500)}
-                                schematic={resultSchem!}
+                                schematic={resultSchem}
                                 title={'Result'}
                             />
                         )}
@@ -327,7 +335,7 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
     const { golfId } = params!;
 
-    const data = await getGolfData(golfId as string);
+    const data = await getGolfData(golfId);
     if (!data) {
         return {
             notFound: true

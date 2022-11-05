@@ -1,4 +1,4 @@
-import { Golf, GolfLeaderboard, User } from './types/database';
+import type { Golf, GolfLeaderboard, User } from './types/database';
 import { Firestore } from '@google-cloud/firestore';
 import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
 
@@ -161,7 +161,9 @@ export async function addLeaderboard(
         if (existing.exists) {
             existingEntry = existing.data() as GolfLeaderboard;
         }
-    } catch (e) {}
+    } catch (e) {
+        // ignore the error
+    }
     if (existingEntry && existingEntry.score <= leaderboard.score) {
         // Don't add a score worse than their best
         return;

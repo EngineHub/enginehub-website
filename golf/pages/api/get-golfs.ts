@@ -1,5 +1,5 @@
 import { getAllGolfs } from '../../src/databaseConnector';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     try {

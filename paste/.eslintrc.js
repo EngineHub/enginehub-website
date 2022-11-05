@@ -1,3 +1,8 @@
+const path = require('path');
 module.exports = {
-    extends: ['next/core-web-vitals', 'plugin:prettier/recommended', 'prettier']
+    extends: '../.eslintrc.js',
+    parserOptions: {
+        project: path.resolve(__dirname, './tsconfig.json'),
+        tsconfigRootDir: __dirname
+    }
 };

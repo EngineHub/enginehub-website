@@ -1,12 +1,7 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from 'react';
-import Document, {
-    Head,
-    Main,
-    NextScript,
-    Html,
-    DocumentContext,
-    DocumentProps
-} from 'next/document';
+import type { DocumentContext, DocumentProps } from 'next/document';
+import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document<DocumentProps> {

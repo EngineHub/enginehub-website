@@ -1,13 +1,14 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "target": "es5",
+        "target": "esnext",
+        "noEmit": false,
         "lib": ["dom", "dom.iterable", "esnext"],
         "skipLibCheck": true,
         "module": "esnext",
         "moduleResolution": "node",
         "isolatedModules": false,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "sourceMap": true,
         "declaration": true,
         "outDir": "./dist"

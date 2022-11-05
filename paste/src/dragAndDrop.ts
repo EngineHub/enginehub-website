@@ -1,6 +1,6 @@
-import React from 'react';
+import type { DragEvent } from 'react';
 
-export function getFiles(event: React.DragEvent<any>): File[] {
+export function getFiles(event: DragEvent<any>): File[] {
     if (event.dataTransfer.items) {
         return Array.from(event.dataTransfer.items)
             .filter(item => item.kind === 'file')

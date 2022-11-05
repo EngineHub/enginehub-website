@@ -22,9 +22,11 @@ import {
     WarningBox
 } from '@enginehub/shared';
 import styled from 'styled-components';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { PROJECT_MAP, Project } from '../../../../src/project';
-import { getBuild, Build } from '../../../../src/builds';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { Project } from '../../../../src/project';
+import { PROJECT_MAP } from '../../../../src/project';
+import type { Build } from '../../../../src/builds';
+import { getBuild } from '../../../../src/builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
@@ -35,7 +37,7 @@ import {
 import BranchWarning from '../../../../src/BranchWarning';
 import moment from 'moment';
 import Link from 'next/link';
-import { ParsedUrlQuery } from 'querystring';
+import type { ParsedUrlQuery } from 'querystring';
 
 interface BuildPageProps {
     build: Build;
@@ -286,8 +288,10 @@ export const getStaticProps: GetStaticProps<
 
     let buildObj = undefined;
     try {
-        buildObj = await getBuild(build as string);
-    } catch (e) {}
+        buildObj = await getBuild(build);
+    } catch (e) {
+        // Ignore this
+    }
     if (!buildObj) {
         return {
             notFound: true,
@@ -301,7 +305,7 @@ export const getStaticProps: GetStaticProps<
     };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
     return {
         paths: [],
         fallback: 'blocking'

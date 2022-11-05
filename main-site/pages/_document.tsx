@@ -1,12 +1,7 @@
-import React from 'react';
-import Document, {
-    Head,
-    Main,
-    NextScript,
-    Html,
-    DocumentContext,
-    DocumentProps
-} from 'next/document';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import { Children } from 'react';
+import type { DocumentContext, DocumentProps } from 'next/document';
+import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document<DocumentProps> {
@@ -24,7 +19,7 @@ class MyDocument extends Document<DocumentProps> {
             return {
                 ...initialProps,
                 styles: [
-                    ...React.Children.toArray(initialProps.styles),
+                    ...Children.toArray(initialProps.styles),
                     sheet.getStyleElement()
                 ]
             };

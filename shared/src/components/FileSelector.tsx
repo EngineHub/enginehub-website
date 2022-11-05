@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import type { FC, ChangeEvent } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { PurpleButtonStyle } from './Button';
 import { FormLabel } from './text/FormLabel';
@@ -36,7 +37,7 @@ const FileName = styled.span`
 
 const PurpleButton = styled.button(PurpleButtonStyle);
 
-export const FileSelector: React.FC<FileSelectorProps> = ({
+export const FileSelector: FC<FileSelectorProps> = ({
     name,
     filter,
     accept,
@@ -48,7 +49,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) {
             return;
         }

@@ -1,11 +1,11 @@
-import React, {
+import type { PropsWithChildren, FC } from 'react';
+import {
+    createContext,
     useContext,
     useState,
     useEffect,
     useMemo,
-    useCallback,
-    PropsWithChildren,
-    FC
+    useCallback
 } from 'react';
 import router from 'next/router';
 import jwt from 'jsonwebtoken';
@@ -15,7 +15,7 @@ const isServerRendered = typeof window === 'undefined';
 const getToken = () =>
     isServerRendered ? ' ' : window.localStorage.getItem('token')!;
 
-const AuthContext = React.createContext<{
+const AuthContext = createContext<{
     token: string | undefined;
     setToken: (value?: string) => void;
 }>({
@@ -115,7 +115,7 @@ export const useAuthenticatedPage = () => {
     const isLoggedIn = useIsLoggedIn();
     useEffect(() => {
         if (!isLoggedIn) {
-            router.push('/');
+            router.push('/').catch(() => {});
         }
     }, [isLoggedIn]);
 };

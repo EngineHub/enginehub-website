@@ -1,4 +1,4 @@
-import { Build } from './types';
+import type { Build } from './types';
 
 export const DUMMY_BUILD: (buildId: string) => Build = (buildId: string) => ({
     build_id: buildId,

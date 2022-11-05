@@ -1,6 +1,6 @@
 import { WarningBox, MainButtonStyle } from '@enginehub/shared';
 import styled from 'styled-components';
-import React from 'react';
+import type React from 'react';
 import Link from 'next/link';
 
 interface BranchWarningProps {

@@ -9,8 +9,10 @@ import {
     MainLink,
     InfoLabel
 } from '@enginehub/shared';
-import { Project, PROJECTS } from '../src/project';
-import { Build, getBranches, getLatestBuild } from '../src/builds';
+import type { Project } from '../src/project';
+import { PROJECTS } from '../src/project';
+import type { Build } from '../src/builds';
+import { getBranches, getLatestBuild } from '../src/builds';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -20,7 +22,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
 interface ProjectEntry {
     project: Project;
@@ -197,7 +199,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 )
             )
                 .filter((b): b is Build => !!b)
-                .map(({ artifacts, changes, ...b }) => b);
+                .map(({ artifacts: _artifacts, changes: _changes, ...b }) => b);
         })
     );
 

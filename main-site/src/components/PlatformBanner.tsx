@@ -1,6 +1,8 @@
-import React, { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Image, { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 const Wrapper = styled.div`
     border-top: 1px solid #ddd;

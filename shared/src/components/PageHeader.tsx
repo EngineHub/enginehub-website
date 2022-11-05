@@ -1,7 +1,8 @@
-import React from 'react';
 import { ContainerPadded } from './Container';
 import styled from 'styled-components';
-import { LabelledSponsorsArea, ExtraSponsorProps } from './Sponsors';
+import type { ExtraSponsorProps } from './Sponsors';
+import { LabelledSponsorsArea } from './Sponsors';
+import type { FC, PropsWithChildren } from 'react';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;
@@ -51,7 +52,7 @@ const RightAlignedSponsors = styled(LabelledSponsorsArea)`
     float: right;
 `;
 
-export const PageHeader: React.FC<React.PropsWithChildren<PageHeaderProps>> = ({
+export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
     text,
     icon,
     extraSponsors,

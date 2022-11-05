@@ -1,5 +1,7 @@
-import React, { FunctionComponent, PropsWithChildren, useEffect } from 'react';
-import { Navbar, Footer, ExtraSponsorProps } from '@enginehub/shared';
+import type { FunctionComponent, PropsWithChildren } from 'react';
+import React, { useEffect } from 'react';
+import type { ExtraSponsorProps } from '@enginehub/shared';
+import { Navbar, Footer } from '@enginehub/shared';
 import { Landing } from './Landing';
 import Head from 'next/head';
 

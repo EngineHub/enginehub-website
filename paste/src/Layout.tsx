@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { Header } from './Header';
 
 interface LayoutProps {
