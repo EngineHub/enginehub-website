@@ -29,7 +29,7 @@ import Image from 'next/image';
 
 const CraftBookPage = () => {
     return (
-        <Layout extraSponsors={['beastnode']}>
+        <Layout>
             <SEO
                 title="CraftBook"
                 description="CraftBook lets you create magically extending bridges, compact Redstone circuits, complex Minecart mechanics, and much more — all without a client mod and fully customizable by the server."

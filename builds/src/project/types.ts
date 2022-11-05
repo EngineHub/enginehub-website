@@ -34,7 +34,6 @@ export const PROJECTS = [
         defaultBranch: 'master',
         icon: '/projects/craftbook-logo.svg',
         buildType: 'bt6',
-        extraSponsors: ['beastnode'],
         pinnedBranches: ['4.x', 'five'],
         vcsRoot: 'https://github.com/EngineHub/CraftBook'
     },

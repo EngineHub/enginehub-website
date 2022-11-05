@@ -29,17 +29,6 @@ const FlexLink = styled.a`
 const useSponsorComponents = () => {
     return useMemo(
         () => [
-            () => {
-                return (
-                    <a href="https://www.beastnode.com">
-                        <img
-                            src={'https://enginehub.org/images/beastnode.png'}
-                            style={{ marginBottom: 0 }}
-                            alt="BeastNode"
-                        />
-                    </a>
-                );
-            },
             () => (
                 <a href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
                     <img
@@ -78,24 +67,16 @@ const useSponsorComponents = () => {
 export const RandomSponsor: React.FC<ExtraSponsorProps> = ({
     extraSponsors = []
 }) => {
-    const [
-        BeastNodeSponsor,
-        ApexHostingSponsor,
-        GitHubSponsorsSponsor,
-        EmptySponsor
-    ] = useSponsorComponents();
+    const [ApexHostingSponsor, GitHubSponsorsSponsor, EmptySponsor] =
+        useSponsorComponents();
 
     const sponsorMap = new Map([
         ['empty', EmptySponsor],
-        ['beastnode', BeastNodeSponsor],
         ['apexhosting', ApexHostingSponsor],
         ['gh-sponsors', GitHubSponsorsSponsor]
     ]);
 
     const availableSponsors = sponsors.concat(extraSponsors);
-    if (availableSponsors.find(sponsor => sponsor === 'beastnode')) {
-        availableSponsors.splice(availableSponsors.indexOf('apexhosting'), 1);
-    }
     if (availableSponsors.length < 3) {
         availableSponsors.push('empty');
     }
