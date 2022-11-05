@@ -17,7 +17,6 @@ import {
     GrayButton,
     BlueButton
 } from '@enginehub/shared';
-import React from 'react';
 import PlatformBanner from '../src/components/PlatformBanner';
 import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';

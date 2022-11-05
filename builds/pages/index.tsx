@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import Layout from '../src/Layout';
 import {
     Container,
@@ -96,7 +96,7 @@ function Index({ projectEntries }: IndexProps) {
                             <th>Finished</th>
                         </tr>
                         {projectEntries.map(projectEntry => (
-                            <React.Fragment key={projectEntry.project.id}>
+                            <Fragment key={projectEntry.project.id}>
                                 <ProjectTitleRow>
                                     <td colSpan={6}>
                                         <h2>{projectEntry.project.name}</h2>
@@ -172,7 +172,7 @@ function Index({ projectEntries }: IndexProps) {
                                         </TdNoWrap>
                                     </tr>
                                 ))}
-                            </React.Fragment>
+                            </Fragment>
                         ))}
                     </tbody>
                 </Table>

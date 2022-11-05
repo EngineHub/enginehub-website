@@ -1,7 +1,7 @@
-import type React from 'react';
 import styled from 'styled-components';
 import { Logo } from './Logo/Logo';
 import Link from 'next/link';
+import type { FC } from 'react';
 
 const StyledContainerBase = styled.div<{ isHome: boolean }>`
     width: 100%;
@@ -46,7 +46,7 @@ const HorizontalDiv = styled.div`
     justify-content: center;
 `;
 
-export const BrandHeader: React.FC<{ isHomePage?: boolean }> = ({
+export const BrandHeader: FC<{ isHomePage?: boolean }> = ({
     isHomePage = false
 }) => (
     <div>

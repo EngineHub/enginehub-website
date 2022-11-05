@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import router from 'next/router';
 import { useSetToken } from '../src/components/Auth';
 import { Loading } from '../src/components/Loading';

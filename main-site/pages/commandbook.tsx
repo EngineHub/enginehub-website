@@ -18,7 +18,6 @@ import {
     GrayButton,
     BlueButton
 } from '@enginehub/shared';
-import React from 'react';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandBookHeader from '../src/images/projects/headers/commandbook-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';

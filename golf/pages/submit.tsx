@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import type React from 'react';
+import type { MutableRefObject, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { TextArea } from '../src/components/Input/TextArea';
@@ -118,7 +117,7 @@ const Submit = () => {
 
     const containerRef = useRef<HTMLDivElement>(null)!;
     const width = useElementWidth(
-        containerRef as React.MutableRefObject<HTMLElement>
+        containerRef as MutableRefObject<HTMLElement>
     );
 
     useAuthenticatedPage();

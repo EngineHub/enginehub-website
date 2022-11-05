@@ -1,5 +1,5 @@
 import type { FunctionComponent, PropsWithChildren } from 'react';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import type { ExtraSponsorProps } from '@enginehub/shared';
 import { Navbar, Footer } from '@enginehub/shared';
 import { Landing } from './Landing';

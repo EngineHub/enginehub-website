@@ -1,6 +1,6 @@
-import type React from 'react';
 import styled from 'styled-components';
 import { FormLabel } from '@enginehub/shared';
+import type { FC, ChangeEvent } from 'react';
 
 export interface TextAreaProps {
     name: string;
@@ -23,12 +23,8 @@ const Container = styled.div`
     }
 `;
 
-export const TextArea: React.FC<TextAreaProps> = ({
-    name,
-    onChange,
-    ...rest
-}) => {
-    const changed = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+export const TextArea: FC<TextAreaProps> = ({ name, onChange, ...rest }) => {
+    const changed = (e: ChangeEvent<HTMLTextAreaElement>) => {
         if (onChange) {
             onChange((e.target.value || '').trim());
         }

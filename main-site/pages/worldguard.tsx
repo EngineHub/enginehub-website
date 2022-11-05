@@ -17,7 +17,6 @@ import {
     GrayButton,
     BlueButton
 } from '@enginehub/shared';
-import React from 'react';
 import Link from 'next/link';
 import PlatformBanner from '../src/components/PlatformBanner';
 import headerLogo from '../src/images/projects/headers/worldguard-header.svg';

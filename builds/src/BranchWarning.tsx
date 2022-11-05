@@ -1,7 +1,7 @@
 import { WarningBox, MainButtonStyle } from '@enginehub/shared';
 import styled from 'styled-components';
-import type React from 'react';
 import Link from 'next/link';
+import type { FC } from 'react';
 
 interface BranchWarningProps {
     projectId: string;
@@ -11,7 +11,7 @@ interface BranchWarningProps {
 
 const MainButton = styled.a(MainButtonStyle);
 
-const BranchWarning: React.FC<BranchWarningProps> = props => (
+const BranchWarning: FC<BranchWarningProps> = props => (
     <WarningBox>
         <strong>
             Be aware that this branch (<code>{props.currentBranch}</code>) is

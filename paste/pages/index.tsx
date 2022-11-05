@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { getFiles } from '../src/dragAndDrop';
 import { Layout } from '../src/Layout';
 import Router from 'next/router';
-import type React from 'react';
+import type { ChangeEvent, DragEvent } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { SEO, Loader } from '@enginehub/shared';
 import { fromByteArray } from 'base64-js';
@@ -119,11 +119,11 @@ function Index() {
         }
     }, [content, extension]);
 
-    const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         setContent(event.currentTarget.value);
     };
 
-    const onDrop = (event: React.DragEvent<any>) => {
+    const onDrop = (event: DragEvent<any>) => {
         event.preventDefault();
         setDragging(false);
 
@@ -154,7 +154,7 @@ function Index() {
         }
     };
 
-    const onDragEnter = (event: React.DragEvent<any>) => {
+    const onDragEnter = (event: DragEvent<any>) => {
         event.preventDefault();
         setDragging(true);
     };

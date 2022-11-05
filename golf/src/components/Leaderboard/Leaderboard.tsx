@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { FC } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.ul`
@@ -50,7 +50,7 @@ interface LeaderboardProps {
     githubId: string;
 }
 
-const LeaderboardEntryImpl: React.FC<LeaderboardProps> = ({
+const LeaderboardEntryImpl: FC<LeaderboardProps> = ({
     name,
     created,
     avatar,
@@ -87,4 +87,4 @@ export const LeaderboardEntry = styled(LeaderboardEntryImpl)`
     }
 `;
 
-export const Leaderboard: React.FC = props => <Container {...props} />;
+export const Leaderboard: FC = props => <Container {...props} />;

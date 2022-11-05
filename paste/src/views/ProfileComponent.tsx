@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import type { FC } from 'react';
+import { memo } from 'react';
+import { useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
 
@@ -102,7 +104,7 @@ function parseLine(line: string): { name: string; selfTime: number } {
     };
 }
 
-const ProfileNode: React.FC<ProfileNodeProps> = ({ entry, allTime }) => {
+const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
     const [open, setOpen] = useState<boolean>(false);
     const onToggle = () => setOpen(!open);
     const percent = calculatePercentage(entry.selfTime, allTime);
@@ -181,7 +183,7 @@ function generateProfileEntries(paste: string): RootEntry {
     return rootEntry;
 }
 
-const ProfileComponent: React.FC<PasteProps> = React.memo(({ paste }) => {
+const ProfileComponent: FC<PasteProps> = memo(({ paste }) => {
     const rootEntry = generateProfileEntries(paste);
     return (
         <>

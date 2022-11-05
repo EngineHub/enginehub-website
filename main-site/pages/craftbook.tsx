@@ -18,7 +18,6 @@ import {
     GrayButton,
     BlueButton
 } from '@enginehub/shared';
-import React from 'react';
 import Link from 'next/link';
 import PlatformBanner from '../src/components/PlatformBanner';
 import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';

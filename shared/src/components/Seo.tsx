@@ -1,5 +1,4 @@
 import type { FunctionComponent } from 'react';
-import React from 'react';
 import Head from 'next/head';
 
 interface SEOProps {

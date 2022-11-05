@@ -1,5 +1,4 @@
 import type { FC, PropsWithChildren } from 'react';
-import React from 'react';
 import styled from 'styled-components';
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';

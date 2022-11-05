@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import type React from 'react';
+import type { FC } from 'react';
 import { useState, useRef, useLayoutEffect } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Golf, GolfLeaderboard, User } from '../../src/types/database';
@@ -98,11 +98,7 @@ const SchematicBoxTitle = styled.p`
     font-weight: 600;
 `;
 
-const SchematicBox: React.FC<SchematicBoxProps> = ({
-    schematic,
-    size,
-    title
-}) => {
+const SchematicBox: FC<SchematicBoxProps> = ({ schematic, size, title }) => {
     const onClickDownload = () => {
         const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;base64,' + schematic);

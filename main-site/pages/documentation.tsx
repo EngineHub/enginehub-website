@@ -10,7 +10,6 @@ import {
     BlueButton,
     GrayButton
 } from '@enginehub/shared';
-import React from 'react';
 import SidebarIcon from '../src/components/sidebar/SidebarIcon';
 import PlatformBanner from '../src/components/PlatformBanner';
 import WorldEditHeader from '../src/images/projects/headers/worldedit-header.svg';

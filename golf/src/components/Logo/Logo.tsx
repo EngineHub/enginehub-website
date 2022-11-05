@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { FC } from 'react';
 import styled from 'styled-components';
 import { spin } from '../../animations/spin';
 
@@ -23,7 +23,7 @@ const InnerImage = styled.img`
     animation: 800ms ${spin} ease-in-out;
 `;
 
-export const Logo: React.FC = () => (
+export const Logo: FC = () => (
     <ImageContainer>
         <WorldEditLogo src="/static/worldedit-logo.svg" alt="World Edit Logo" />
         <InnerImage src="/static/golfball.svg" alt="Golf Ball" />

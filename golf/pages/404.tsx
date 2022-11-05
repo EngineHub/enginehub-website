@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from '../src/Layout';
 import { SEO, PageHeader, Container, BlueButtonStyle } from '@enginehub/shared';
 import styled from 'styled-components';

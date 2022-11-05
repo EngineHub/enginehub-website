@@ -15,7 +15,6 @@ import {
     MainLink,
     BlueButton
 } from '@enginehub/shared';
-import React from 'react';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';

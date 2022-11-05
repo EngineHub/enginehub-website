@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from 'react';
-import type React from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
@@ -81,7 +80,7 @@ const Paragraph = styled.p`
     font-size: 16px;
 `;
 
-export const ChallengeEntry: React.FC<ChallengeEntryProps> = ({
+export const ChallengeEntry: FC<ChallengeEntryProps> = ({
     schematic,
     title,
     description,
@@ -111,7 +110,7 @@ const ChallengeTitle = styled.h2`
     font-size: 24px;
 `;
 
-export const OpenChallenge: React.FC<PropsWithChildren<OpenChallengeProps>> = ({
+export const OpenChallenge: FC<PropsWithChildren<OpenChallengeProps>> = ({
     children,
     golfs
 }) => (

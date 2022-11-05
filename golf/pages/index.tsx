@@ -1,4 +1,3 @@
-import React from 'react';
 import { OpenChallenge } from '../src/components/OpenChallenges';
 import { useIsLoggedIn } from '../src/components/Auth';
 import styled from 'styled-components';

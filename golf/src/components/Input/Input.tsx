@@ -1,6 +1,6 @@
-import type React from 'react';
 import styled from 'styled-components';
 import { FormLabel } from '@enginehub/shared';
+import type { FC } from 'react';
 
 export interface InputProps {
     name: string;
@@ -22,7 +22,7 @@ const Container = styled.div`
     }
 `;
 
-export const Input: React.FC<InputProps> = ({ name, onChange, ...rest }) => {
+export const Input: FC<InputProps> = ({ name, onChange, ...rest }) => {
     const changed = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
             onChange((e.target.value || '').trim());

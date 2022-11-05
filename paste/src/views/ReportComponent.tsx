@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { FC } from 'react';
 import { useMemo, useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
 import styled from 'styled-components';
@@ -53,7 +53,7 @@ interface ReportNodeProps {
     entry: ReportEntry;
 }
 
-const ReportNode: React.FC<ReportNodeProps> = ({ entry }) => {
+const ReportNode: FC<ReportNodeProps> = ({ entry }) => {
     const [open, setOpen] = useState<boolean>(true);
     const onToggle = () => setOpen(!open);
     return (
@@ -122,7 +122,7 @@ function generateReportEntries(paste: string): ReportEntry[] {
     return sections;
 }
 
-const ReportComponent: React.FC<PasteProps> = ({ paste }) => {
+const ReportComponent: FC<PasteProps> = ({ paste }) => {
     const reportEntries = useMemo(() => generateReportEntries(paste), [paste]);
 
     return (

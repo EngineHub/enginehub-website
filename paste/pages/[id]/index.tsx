@@ -1,4 +1,5 @@
-import React, { Suspense } from 'react';
+import type { FC } from 'react';
+import { lazy, Suspense } from 'react';
 import { Layout } from '../../src/Layout';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { loadPaste } from '../../src/loadPaste';
@@ -14,13 +15,13 @@ export interface PasteProps {
     metadata?: PasteData['metadata'];
 }
 
-const EXTENSIONS: Map<Extension, React.FC<PasteProps>> = new Map([
-    ['', React.lazy(() => import('../../src/views/PasteComponent'))],
-    ['paste', React.lazy(() => import('../../src/views/PasteComponent'))],
-    ['report', React.lazy(() => import('../../src/views/ReportComponent'))],
-    ['profile', React.lazy(() => import('../../src/views/ProfileComponent'))],
-    ['log', React.lazy(() => import('../../src/views/PasteComponent'))],
-    ['schem', React.lazy(() => import('../../src/views/SchematicComponent'))]
+const EXTENSIONS: Map<Extension, FC<PasteProps>> = new Map([
+    ['', lazy(() => import('../../src/views/PasteComponent'))],
+    ['paste', lazy(() => import('../../src/views/PasteComponent'))],
+    ['report', lazy(() => import('../../src/views/ReportComponent'))],
+    ['profile', lazy(() => import('../../src/views/ProfileComponent'))],
+    ['log', lazy(() => import('../../src/views/PasteComponent'))],
+    ['schem', lazy(() => import('../../src/views/SchematicComponent'))]
 ]);
 
 function Document({ paste, extension, metadata }: DocumentProps) {
