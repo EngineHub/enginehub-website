@@ -60,10 +60,8 @@ export const Pagination: FC<PaginationProps> = ({
                 {hasPrevPage ? (
                     <Link
                         href={pageMask.replace(':page', `${currentPage - 1}`)}
-                        passHref={true}
-                        legacyBehavior={true}
                     >
-                        <a>«</a>
+                        «
                     </Link>
                 ) : (
                     <span>«</span>
@@ -71,13 +69,7 @@ export const Pagination: FC<PaginationProps> = ({
             </li>
             {hasPrevPage && (
                 <li>
-                    <Link
-                        href={pageMask.replace(':page', '0')}
-                        passHref={true}
-                        legacyBehavior={true}
-                    >
-                        <a>1</a>
-                    </Link>
+                    <Link href={pageMask.replace(':page', '0')}>1</Link>
                 </li>
             )}
             <li>
@@ -87,10 +79,8 @@ export const Pagination: FC<PaginationProps> = ({
                 {hasNextPage ? (
                     <Link
                         href={pageMask.replace(':page', `${currentPage + 1}`)}
-                        passHref={true}
-                        legacyBehavior={true}
                     >
-                        <a>»</a>
+                        »
                     </Link>
                 ) : (
                     <span>»</span>

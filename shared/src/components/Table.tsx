@@ -11,6 +11,7 @@ export const Table = styled.table`
     border-style: solid;
     border-color: rgb(221, 221, 221);
     color: rgb(51, 51, 51);
+    word-break: break-word;
 
     tbody {
         tr {

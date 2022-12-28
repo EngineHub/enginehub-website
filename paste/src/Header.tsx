@@ -83,7 +83,7 @@ const FloatedSponsor = styled(LabelledSponsorsArea)`
     }
 `;
 
-const SiteLink = styled.a`
+const SiteLink = styled(Link)`
     color: #0059d1;
     text-decoration: none;
     cursor: pointer;
@@ -104,9 +104,7 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ showHelp, saveCallback }) => (
     <MainHeader>
         <SiteTitle>
-            <Link href="/" passHref={true} legacyBehavior={true}>
-                <SiteLink>Pastebin</SiteLink>
-            </Link>
+            <SiteLink href="/">Pastebin</SiteLink>
         </SiteTitle>
         <FloatedSponsor />
         <ButtonArea>

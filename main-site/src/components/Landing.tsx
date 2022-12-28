@@ -78,8 +78,8 @@ export const Landing: FunctionComponent<LandingProps> = ({
                     src={landingBg}
                     loading={'eager'}
                     alt={'EngineHub Landing Background'}
-                    layout={'fill'}
-                    objectFit={'cover'}
+                    fill={true}
+                    style={{ objectFit: 'cover' }}
                     placeholder="empty"
                 />
             </div>

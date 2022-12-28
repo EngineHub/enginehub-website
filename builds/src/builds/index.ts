@@ -1,5 +1,5 @@
 import type { Build, BuildChange, BuildArtifact } from './types';
-import axios from 'axios';
+import got from 'got';
 import { DUMMY_BUILD } from './dummyData';
 import type { Project } from '../project';
 import moment from 'moment';
@@ -37,11 +37,11 @@ async function getBuildFromTCSelector(
 ): Promise<Build | undefined> {
     const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds/?locator=${selector}&fields=build(id,status,statusText,branchName,finishDate,number,buildType(projectId),${CHANGE_FIELDS},${ARTIFACT_FIELDS})`;
 
-    const { data } = await axios.get<TCBuild>(url, {
+    const data = await got(url, {
         headers: {
             Accept: 'application/json'
         }
-    });
+    }).json<TCBuild>();
 
     const build = data.build[0];
 
@@ -98,11 +98,11 @@ export async function getBuildPage(
     },branch:${branch},count:${BUILDS_PER_PAGE + 1},start:${
         pageNumber * BUILDS_PER_PAGE
     }&fields=build(number,status,id,statusText,finishDate,${CHANGE_FIELDS})`;
-    const { data } = await axios.get<TCBuild>(url, {
+    const data = await got(url, {
         headers: {
             Accept: 'application/json'
         }
-    });
+    }).json<TCBuild>();
 
     return data.build.map(build => ({
         state: build.status,
@@ -126,11 +126,11 @@ interface TCBranch {
 
 export async function getBranches(project: Project): Promise<string[]> {
     const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/projects/${project.id}/branches`;
-    const { data } = await axios.get<TCBranch>(url, {
+    const data = await got(url, {
         headers: {
             Accept: 'application/json'
         }
-    });
+    }).json<TCBranch>();
     const branches = data.branch.map(branch => branch.name);
     if (project.pinnedBranches) {
         for (const pinnedBranch of project.pinnedBranches) {

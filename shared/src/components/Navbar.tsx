@@ -37,7 +37,7 @@ type InvertedProps = {
     headertheme: 'default' | 'inverted' | 'purple';
 };
 
-const HeaderLink = styled.a<InvertedProps>`
+const HeaderLink = styled(Link)<InvertedProps>`
     color: ${props => HeaderTextColors[props.headertheme]};
     font-size: 18px;
     line-height: 23px;
@@ -87,11 +87,9 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
         <Nav headertheme={headertheme}>
             <Container>
                 <div>
-                    <Link href="/" passHref={true} legacyBehavior={true}>
-                        <HeaderLink headertheme={headertheme}>
-                            {headertitle}
-                        </HeaderLink>
-                    </Link>
+                    <HeaderLink href="/" headertheme={headertheme}>
+                        {headertitle}
+                    </HeaderLink>
                 </div>
                 {showSponsor && (
                     <div>

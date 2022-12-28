@@ -64,7 +64,6 @@ const PlatformBanner: FC<PropsWithChildren<PlatformBannerProps>> = ({
                         : undefined
                 }
                 blurDataURL={img.blurDataURL}
-                layout="fixed"
             />
         </LogoBox>
         <InfoBox>{children}</InfoBox>

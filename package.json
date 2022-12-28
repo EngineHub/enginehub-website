@@ -18,8 +18,8 @@
     "url": "https://github.com/EngineHub/enginehub-website"
   },
   "dependencies": {
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "postinstall-postinstall": "^2.1.0"
   },
   "scripts": {
@@ -27,5 +27,5 @@
     "prepare": "husky install",
     "precommit": "lint-staged"
   },
-  "packageManager": "yarn@3.2.4"
+  "packageManager": "yarn@3.3.1"
 }

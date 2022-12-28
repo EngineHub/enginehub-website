@@ -121,7 +121,7 @@ function Index({
                 </Link>
                 <Table>
                     <colgroup>
-                        <col style={{ width: '1%' }} />
+                        <col style={{ width: '10%' }} />
                         <col style={{ width: '1%' }} />
                         <col style={{ width: '1%' }} />
                         <col style={{ width: '15%' }} />
