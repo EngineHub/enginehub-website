@@ -42,7 +42,8 @@ export const Schematic: FC<SchematicProps> = ({
         if (schematic && ref.current) {
             renderSchematic(ref.current, schematic, {
                 corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
-                renderBars: !preview
+                renderBars: !preview,
+                orbitSpeed: 0.01
             })
                 .then(({ destroy: d, setSize: r }) => {
                     setResize(() => r);

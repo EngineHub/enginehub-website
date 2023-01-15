@@ -337,7 +337,7 @@ export const getStaticProps: GetStaticProps<
             notFound: true
         };
     }
-    return { props: data };
+    return { props: data, revalidate: 60 };
 };
 
 export const getStaticPaths: GetStaticPaths = () => {

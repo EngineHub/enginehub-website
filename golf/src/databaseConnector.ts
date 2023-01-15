@@ -187,7 +187,7 @@ export async function getUser(userId: string): Promise<User> {
             user_id: userId,
             fullname: 'Test Testerson',
             username: 'test2',
-            avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+            avatar: 'https://enginehub.org/images/enginehub-logo.png'
         });
     }
 
@@ -203,7 +203,7 @@ async function getUsers(userIds: string[]): Promise<User[]> {
                 user_id: userId,
                 fullname: 'Test Testerson',
                 username: 'test2',
-                avatar: 'https://enginehub.org/static/f424a77f87272f1081deb39d11e08bf4/4da7c/worldedit-icon.png'
+                avatar: 'https://enginehub.org/images/enginehub-logo.png'
             }))
         );
     }

@@ -13,22 +13,20 @@ import jwt from 'jsonwebtoken';
 const isServerRendered = typeof window === 'undefined';
 
 const getToken = () =>
-    isServerRendered ? ' ' : window.localStorage.getItem('token')!;
+    isServerRendered ? ' ' : window.localStorage.getItem('token') || undefined;
 
 const AuthContext = createContext<{
     token: string | undefined;
     setToken: (value?: string) => void;
 }>({
     token: getToken(),
-    setToken: () => {}
+    setToken: () => {
+        return;
+    }
 });
 
 export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const [token, setToken] = useState<string | undefined>(getToken());
-
-    useEffect(() => {
-        setToken(getToken());
-    }, []);
 
     return (
         <AuthContext.Provider value={{ token, setToken }}>
@@ -107,8 +105,8 @@ export const useAuthenticatedFetch: () => FetchFunction = () => {
 };
 
 export const useIsLoggedIn: () => boolean = () => {
-    const { token } = useContext(AuthContext);
-    return !!token && !isServerRendered;
+    const token = useToken();
+    return token !== undefined && !isServerRendered;
 };
 
 export const useAuthenticatedPage = () => {

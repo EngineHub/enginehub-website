@@ -115,7 +115,7 @@ const Submit = () => {
 
     const fetch = useAuthenticatedFetch();
 
-    const containerRef = useRef<HTMLDivElement>(null)!;
+    const containerRef = useRef<HTMLDivElement>(null);
     const width = useElementWidth(
         containerRef as MutableRefObject<HTMLElement>
     );
@@ -190,7 +190,7 @@ const Submit = () => {
                 <Input onChange={setName} name="Title" />
                 <TextArea onChange={setDescription} name="Description" />
                 <FileSelector
-                    disabled={!!loading}
+                    disabled={loading !== undefined}
                     onChange={setLoadingFile('start')}
                     accept=".schem"
                     filter={filter}
@@ -200,7 +200,7 @@ const Submit = () => {
                     <Schematic size={Math.min(width, 500)} schematic={start} />
                 )}
                 <FileSelector
-                    disabled={!!loading}
+                    disabled={loading !== undefined}
                     onChange={setLoadingFile('test')}
                     accept=".schem"
                     filter={filter}

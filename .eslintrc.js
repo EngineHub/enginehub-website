@@ -32,6 +32,7 @@ module.exports = {
     "@typescript-eslint/no-empty-function": "warn",
     "@typescript-eslint/no-var-requires": "warn",
     "react/prop-types": "off",
+    "react/no-object-type-as-default-prop": "error",
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "react/no-unescaped-entities": "warn",
     "@typescript-eslint/ban-types": "warn",

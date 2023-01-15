@@ -51,7 +51,9 @@ const SiteLink = styled.a`
     }
 `;
 
-const InfoBar: FC<PasteProps> = ({ paste, metadata = {} }) => {
+const DEFAULT_METADATA: PasteProps['metadata'] = {};
+
+const InfoBar: FC<PasteProps> = ({ paste, metadata = DEFAULT_METADATA }) => {
     const onClickDownload = () => {
         const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;base64,' + paste);
