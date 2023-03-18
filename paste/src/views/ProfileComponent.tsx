@@ -11,7 +11,7 @@ interface ProfileEntry {
     name: string;
     selfTime: number;
     children: ProfileEntry[];
-    parent?: ProfileEntry | RootEntry;
+    parent: ProfileEntry | RootEntry;
 }
 
 interface RootEntry {
@@ -21,7 +21,8 @@ interface RootEntry {
 const INVALID_PROFILE = {
     name: 'Invalid Profile',
     selfTime: 60000,
-    children: []
+    children: [],
+    parent: { children: [] }
 };
 
 const ProfileNodeBox = styled.div`
@@ -156,7 +157,7 @@ function generateProfileEntries(paste: string): RootEntry {
         if (currentDepth + 1 < innerDepth) {
             return { children: [INVALID_PROFILE] };
         }
-        while (currentDepth > innerDepth) {
+        while (currentDepth > innerDepth && 'parent' in currentEntry) {
             currentEntry = currentEntry['parent'];
             currentDepth--;
         }

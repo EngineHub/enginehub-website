@@ -1,27 +1,17 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "target": "esnext",
-    "isolatedModules": true,
-    "incremental": true
-  },
-  "include": [
-    "pages/**/*",
-    "src/**/*"
-  ],
-  "files": [
-    "typings.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "preserve",
+        "lib": ["dom", "esnext"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "isolatedModules": true,
+        "incremental": true
+    },
+    "include": ["pages/**/*", "src/**/*"],
+    "files": ["typings.d.ts"],
+    "exclude": ["node_modules"]
 }

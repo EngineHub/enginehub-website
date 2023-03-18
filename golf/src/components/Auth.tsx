@@ -69,6 +69,7 @@ export const useToken: () => string | undefined = () => {
 
         return (
             decodedToken &&
+            typeof decodedToken === 'object' &&
             decodedToken['exp'] &&
             decodedToken['exp'] * 1000 > Date.now()
         );

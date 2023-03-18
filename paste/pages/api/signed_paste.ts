@@ -13,9 +13,9 @@ export default async function handle(
                     'x-paste-meta-',
                     'x-goog-meta-'
                 );
-                a[modifiedKey] = req.headers[key];
+                a[modifiedKey] = req.headers[key] as string;
                 return a;
-            }, {});
+            }, {} as { [key: string]: string });
         const { pasteId, uploadUrl, uploadFields } = await signedUploadUrl(
             googleMetaHeaders
         );

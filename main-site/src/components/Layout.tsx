@@ -14,7 +14,7 @@ const Layout: FunctionComponent<PropsWithChildren<LayoutProps>> = ({
     children,
     landing = false,
     discordOverride,
-    extraSponsors = []
+    extraSponsors
 }) => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -28,14 +28,14 @@ const Layout: FunctionComponent<PropsWithChildren<LayoutProps>> = ({
                     rel="preload"
                     as="font"
                     type="font/woff2"
-                    crossOrigin="true"
+                    crossOrigin="anonymous"
                     href="/fonts/open-sans-v16-latin-regular.woff2"
                 />
                 <link
                     rel="preload"
                     as="font"
                     type="font/woff2"
-                    crossOrigin="true"
+                    crossOrigin="anonymous"
                     href="/fonts/open-sans-v16-latin-600.woff2"
                 />
             </Head>

@@ -1,25 +1,20 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "es2017"
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "preserve",
+        "lib": ["dom", "esnext"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "isolatedModules": true,
+        "incremental": true
+    },
+    "include": [
+        "pages/**/*",
+        "src/**/*",
+        "../shared/src/utils/encryptedSecrets.ts"
     ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "target": "esnext",
-    "isolatedModules": true,
-    "incremental": true
-  },
-  "include": [
-    "pages/**/*",
-    "src/**/*",
-    "../shared/src/utils/encryptedSecrets.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "exclude": ["node_modules"]
 }

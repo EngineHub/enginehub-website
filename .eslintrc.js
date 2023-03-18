@@ -46,12 +46,13 @@ module.exports = {
     // Type imports/exports
     "@typescript-eslint/consistent-type-imports": [
       "error",
-      { prefer: "type-imports" },
+      { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
     "@typescript-eslint/consistent-type-exports": [
       "error",
       { fixMixedExportsWithInlineTypeSpecifier: true },
     ],
+    "@typescript-eslint/no-import-type-side-effects": "error",
 
     "prettier/prettier": "warn",
   },

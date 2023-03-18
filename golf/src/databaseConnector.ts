@@ -124,7 +124,7 @@ export async function getGolfData(golfId: string): Promise<
     userMap = users.reduce((a, b) => {
         a[b.user_id] = b;
         return a;
-    }, {});
+    }, {} as { [key: string]: User });
 
     const sortedLeaderboards = (leaderboards || []).sort((a, b) => {
         return a.score - b.score || a.submitted_time - b.submitted_time;

@@ -65,8 +65,10 @@ const useSponsorComponents = () => {
     );
 };
 
+const DEFAULT_EXTRA_SPONSORS: ExtraSponsorProps['extraSponsors'] = [];
+
 export const RandomSponsor: FC<ExtraSponsorProps> = ({
-    extraSponsors = []
+    extraSponsors = DEFAULT_EXTRA_SPONSORS
 }) => {
     const [ApexHostingSponsor, GitHubSponsorsSponsor, EmptySponsor] =
         useSponsorComponents();

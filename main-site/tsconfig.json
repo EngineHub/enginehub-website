@@ -2,8 +2,8 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
         "target": "esnext",
-        "module": "commonjs",
-        "lib": ["dom", "es2017"],
+        "module": "esnext",
+        "lib": ["dom", "esnext"],
         "jsx": "preserve",
         "emitDecoratorMetadata": true,
         "noEmit": true,
