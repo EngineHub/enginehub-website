@@ -1,4 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+declare global {
+    interface Window {
+        gtag: (
+            action: string,
+            data: string | undefined,
+            options: object
+        ) => void;
+    }
+}
+
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 const pageview = (url: string) => {
     window['gtag']('config', process.env.GA_TRACKING_ID, {
