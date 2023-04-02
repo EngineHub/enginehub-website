@@ -9,20 +9,20 @@
     "types": "./dist/index.d.ts",
     "devDependencies": {
         "@next/eslint-plugin-next": "^13.2.4",
-        "@types/node": "^18.15.3",
-        "@types/react": "18.0.28",
+        "@types/node": "^18.15.11",
+        "@types/react": "18.0.31",
         "@types/react-dom": "18.0.11",
         "@types/styled-components": "^5.1.26",
-        "@typescript-eslint/eslint-plugin": "^5.55.0",
-        "@typescript-eslint/parser": "^5.55.0",
-        "eslint": "^8.36.0",
-        "eslint-config-prettier": "^8.7.0",
+        "@typescript-eslint/eslint-plugin": "^5.57.0",
+        "@typescript-eslint/parser": "^5.57.0",
+        "eslint": "^8.37.0",
+        "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "prettier": "^2.8.4",
+        "prettier": "^2.8.7",
         "tslib": "^2.5.0",
-        "typescript": "^5.0.2"
+        "typescript": "^5.0.3"
     },
     "keywords": [
         "enginehub",

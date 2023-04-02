@@ -5,10 +5,10 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^4.5.0",
+        "@enginehub/schematicwebviewer": "^4.6.0",
         "@enginehub/shared": "1.0.0",
-        "@fortawesome/fontawesome-svg-core": "^6.3.0",
-        "@fortawesome/free-solid-svg-icons": "^6.3.0",
+        "@fortawesome/fontawesome-svg-core": "^6.4.0",
+        "@fortawesome/free-solid-svg-icons": "^6.4.0",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@google-cloud/firestore": "^6.5.0",
         "@types/styled-components": "^5.1.26",
@@ -20,7 +20,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "safe-compare": "^1.1.4",
-        "sharp": "^0.31.3",
+        "sharp": "^0.32.0",
         "shortid": "^2.2.16",
         "styled-components": "^5.3.9",
         "zlibt": "0.0.5"
@@ -28,17 +28,17 @@
     "devDependencies": {
         "@types/gzip-js": "^0.3.3",
         "@types/jsonwebtoken": "^9.0.1",
-        "@types/node": "^18.15.3",
-        "@types/react": "18.0.28",
+        "@types/node": "^18.15.11",
+        "@types/react": "18.0.31",
         "@types/react-dom": "18.0.11",
         "@types/safe-compare": "^1.1.0",
         "@types/shortid": "^0.0.29",
-        "eslint": "^8.36.0",
+        "eslint": "^8.37.0",
         "eslint-config-next": "^13.2.4",
-        "eslint-config-prettier": "^8.7.0",
+        "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
-        "prettier": "^2.8.4",
-        "typescript": "^5.0.2"
+        "prettier": "^2.8.7",
+        "typescript": "^5.0.3"
     },
     "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
