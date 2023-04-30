@@ -81,10 +81,16 @@ export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
     <HeaderWrapper>
         <ContainerPadded>
             <HeaderContent>
-                <HeaderTextArea>
-                    {icon && <HeaderImg src={icon} />}
-                    <HeaderText>{text}</HeaderText>
-                </HeaderTextArea>
+                {icon ? (
+                    <HeaderTextArea>
+                        <HeaderImg src={icon} />
+                        <HeaderText>{text}</HeaderText>
+                    </HeaderTextArea>
+                ) : (
+                    <div>
+                        <HeaderText>{text}</HeaderText>
+                    </div>
+                )}
                 <HeaderChildrenContainer>{children}</HeaderChildrenContainer>
                 <SponsorSection extraSponsors={extraSponsors} />
             </HeaderContent>
