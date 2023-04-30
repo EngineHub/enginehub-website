@@ -26,11 +26,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { MainLink } from '@enginehub/shared';
 import BranchWarning from '../../../src/BranchWarning';
-import {
-    BranchButtonList,
-    BranchButtonItem,
-    BranchButton
-} from '../../../src/BranchButton';
+import { BranchButtonList, BranchButton } from '../../../src/BranchButton';
 import moment from 'moment';
 import Link from 'next/link';
 
@@ -79,7 +75,7 @@ function Index({
             >
                 <BranchButtonList>
                     {branches.map(branch => (
-                        <BranchButtonItem key={branch}>
+                        <li key={branch}>
                             <Link
                                 href={`/job/${project.id}?branch=${branch}`}
                                 passHref={true}
@@ -96,7 +92,7 @@ function Index({
                                     {branch}
                                 </BranchButton>
                             </Link>
-                        </BranchButtonItem>
+                        </li>
                     ))}
                 </BranchButtonList>
             </PageHeader>

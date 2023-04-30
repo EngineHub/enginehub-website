@@ -6,13 +6,13 @@ export const BranchButtonList = styled.ul`
     padding-left: 0;
     list-style: none;
 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+
     li + li {
         margin-left: 2px;
     }
-`;
-
-export const BranchButtonItem = styled.li`
-    float: left;
 `;
 
 export const BranchButton = styled.a`
