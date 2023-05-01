@@ -1,6 +1,5 @@
 import Layout from '../src/components/Layout';
 import { SEO, Container, PageHeader, BlueButton } from '@enginehub/shared';
-import Link from 'next/link';
 
 const NotFoundPage = () => (
     <Layout>
@@ -14,9 +13,7 @@ const NotFoundPage = () => (
             found.
         </PageHeader>
         <Container>
-            <Link href="/" legacyBehavior={true} passHref={true}>
-                <BlueButton>Go to EngineHub.org</BlueButton>
-            </Link>
+            <BlueButton href="/">Go to EngineHub.org</BlueButton>
         </Container>
     </Layout>
 );

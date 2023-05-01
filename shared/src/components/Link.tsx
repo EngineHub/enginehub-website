@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { PRIMARY } from '../theme';
+import Link from 'next/link';
 
 export const MainLinkStyle = () => css`
     color: ${PRIMARY.normal};
@@ -12,4 +13,4 @@ export const MainLinkStyle = () => css`
     }
 `;
 
-export const MainLink = styled.a(MainLinkStyle);
+export const MainLink = styled(Link)(MainLinkStyle);

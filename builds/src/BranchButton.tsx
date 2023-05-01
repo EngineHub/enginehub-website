@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const BranchButtonList = styled.ul`
@@ -15,7 +16,7 @@ export const BranchButtonList = styled.ul`
     }
 `;
 
-export const BranchButton = styled.a`
+export const BranchButton = styled(Link)`
     padding: 5px 8px;
     border-radius: 4px;
     position: relative;

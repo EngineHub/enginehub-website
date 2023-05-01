@@ -54,7 +54,7 @@ const InfoContainer = styled.div`
     }
 `;
 
-const HeaderLink = styled.a`
+const HeaderLink = styled(Link)`
     ${MainLinkStyle()}
 
     font-size: 1.125rem;
@@ -91,15 +91,9 @@ export const ChallengeEntry: FC<ChallengeEntryProps> = ({
         <ChallengeEntryContainer {...rest}>
             <Schematic schematic={schematic} size={DEFAULT_SIZE} />
             <InfoContainer>
-                <Link
-                    href={`/golf/${golfId}`}
-                    passHref={true}
-                    legacyBehavior={true}
-                >
-                    <HeaderLink>
-                        <h3>{title}</h3>
-                    </HeaderLink>
-                </Link>
+                <HeaderLink href={`/golf/${golfId}`}>
+                    <h3>{title}</h3>
+                </HeaderLink>
                 <Paragraph>{description}</Paragraph>
             </InfoContainer>
         </ChallengeEntryContainer>

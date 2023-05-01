@@ -1,6 +1,4 @@
-import { WarningBox, MainButtonStyle } from '@enginehub/shared';
-import styled from 'styled-components';
-import Link from 'next/link';
+import { WarningBox, GrayButton } from '@enginehub/shared';
 import type { FC } from 'react';
 
 interface BranchWarningProps {
@@ -8,8 +6,6 @@ interface BranchWarningProps {
     currentBranch: string;
     mainBranch: string;
 }
-
-const MainButton = styled.a(MainButtonStyle);
 
 const BranchWarning: FC<BranchWarningProps> = props => (
     <WarningBox>
@@ -21,18 +17,14 @@ const BranchWarning: FC<BranchWarningProps> = props => (
             Branches other than the main one may be experimental. In addition,
             you should be using stable releases rather than these test builds.
         </p>
-        <Link
-            href={`/job/${props.projectId}?branch=${props.mainBranch}`}
-            passHref={true}
-            legacyBehavior={true}
-        >
-            <MainButton>Go to main branch</MainButton>
-        </Link>{' '}
-        <MainButton
+        <GrayButton href={`/job/${props.projectId}?branch=${props.mainBranch}`}>
+            Go to main branch
+        </GrayButton>{' '}
+        <GrayButton
             href={`https://enginehub.org/${props.projectId}/#downloads`}
         >
             View stable downloads
-        </MainButton>
+        </GrayButton>
     </WarningBox>
 );
 

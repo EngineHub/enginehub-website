@@ -8,7 +8,6 @@ import {
     ActiveBreadcrumb,
     MainLink,
     HeaderText,
-    MainButtonStyle,
     Panel,
     PanelBody,
     PanelHeading,
@@ -18,7 +17,8 @@ import {
     Row,
     ColumnThird,
     ColumnTwoThird,
-    WarningBox
+    WarningBox,
+    GrayButton
 } from '@enginehub/shared';
 import styled from 'styled-components';
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -35,15 +35,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import BranchWarning from '../../../../src/BranchWarning';
 import moment from 'moment';
-import Link from 'next/link';
 import type { ParsedUrlQuery } from 'querystring';
 
 interface BuildPageProps {
     build: Build;
     project: Project;
 }
-
-const MainButton = styled.a(MainButtonStyle);
 
 const DownloadLinkDiv = styled.div`
     display: flex;
@@ -87,20 +84,14 @@ function Index({ project, build }: BuildPageProps) {
             <ContainerPadded>
                 <BreadcrumbWrapper>
                     <Breadcrumb>
-                        <Link href={'/'} passHref={true} legacyBehavior={true}>
-                            <MainLink>Builds</MainLink>
-                        </Link>
+                        <MainLink href={'/'}>Builds</MainLink>
                     </Breadcrumb>
                     <Breadcrumb>
-                        <Link
+                        <MainLink
                             href={`/job/${project.id}?branch=${build.branch}`}
-                            passHref={true}
-                            legacyBehavior={true}
                         >
-                            <MainLink>
-                                {project.name} (<code>{build.branch}</code>)
-                            </MainLink>
-                        </Link>
+                            {project.name} (<code>{build.branch}</code>)
+                        </MainLink>
                     </Breadcrumb>
                     <ActiveBreadcrumb>
                         Build #{build.build_number}
@@ -124,11 +115,11 @@ function Index({ project, build }: BuildPageProps) {
                             We recommend the use of released versions whenever
                             possible.
                         </p>
-                        <MainButton
+                        <GrayButton
                             href={`https://enginehub.org/${project.id}/#downloads`}
                         >
                             View Stable Downloads
-                        </MainButton>
+                        </GrayButton>
                     </InfoBox>
                 )}
                 <Row>

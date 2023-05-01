@@ -26,7 +26,6 @@ import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
 import mceduLogo from '../src/images/platforms/mcedu-logo.png';
 import liteloaderLogo from '../src/images/platforms/liteloader-logo.png';
 import worldEditLogo from '../src/images/projects/worldedit-icon.png';
-import Link from 'next/link';
 import Image from 'next/image';
 
 const WorldEditPage = () => {
@@ -58,13 +57,9 @@ const WorldEditPage = () => {
                             professional Minecraft builders today!
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link
-                                href={'/worldedit/#downloads'}
-                                passHref={true}
-                                legacyBehavior={true}
-                            >
-                                <BlueButton>Go to downloads</BlueButton>
-                            </Link>
+                            <BlueButton href={'/worldedit/#downloads'}>
+                                Go to downloads
+                            </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>

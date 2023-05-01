@@ -9,7 +9,7 @@ import { BrandHeader } from '../src/components/BrandHeader';
 import { getAllGolfs } from '../src/databaseConnector';
 import type { GetStaticProps } from 'next';
 
-const ChallengeButton = styled.a`
+const ChallengeButton = styled(Link)`
     ${PurpleButtonStyle()}
     font-size: 22px;
 `;
@@ -37,13 +37,9 @@ function Home({ golfs }: HomeProps) {
                 <BrandHeader isHomePage={true} />
                 {isAuthenticated && (
                     <NewChallengeBlock>
-                        <Link
-                            href="/submit"
-                            passHref={true}
-                            legacyBehavior={true}
-                        >
-                            <ChallengeButton>New Challenge</ChallengeButton>
-                        </Link>
+                        <ChallengeButton href="/submit">
+                            New Challenge
+                        </ChallengeButton>
                     </NewChallengeBlock>
                 )}
                 <OpenChallenge golfs={golfs} />

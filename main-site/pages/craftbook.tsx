@@ -18,7 +18,6 @@ import {
     GrayButton,
     BlueButton
 } from '@enginehub/shared';
-import Link from 'next/link';
 import PlatformBanner from '../src/components/PlatformBanner';
 import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
@@ -49,26 +48,18 @@ const CraftBookPage = () => {
                             and fully customizable by the server.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link
-                                href="/craftbook/#downloads"
-                                passHref={true}
-                                legacyBehavior={true}
-                            >
-                                <BlueButton>List downloads</BlueButton>
-                            </Link>
+                            <BlueButton href="/craftbook/#downloads">
+                                List downloads
+                            </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
                 <Row>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <Link
-                                href="/documentation/"
-                                passHref={true}
-                                legacyBehavior={true}
-                            >
-                                <MainLink>Documentation</MainLink>
-                            </Link>
+                            <MainLink href="/documentation/">
+                                Documentation
+                            </MainLink>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
                             <MainLink href="https://discord.gg/enginehub">
@@ -188,13 +179,9 @@ const CraftBookPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CraftBook
                                 requires that{' '}
-                                <Link
-                                    href="/worldedit/"
-                                    passHref={true}
-                                    legacyBehavior={true}
-                                >
-                                    <MainLink>WorldEdit</MainLink>
-                                </Link>{' '}
+                                <MainLink href="/worldedit/">
+                                    WorldEdit
+                                </MainLink>{' '}
                                 is installed.
                             </p>
                             <ol>
@@ -241,13 +228,9 @@ const CraftBookPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CraftBook
                                 requires that{' '}
-                                <Link
-                                    href="/worldedit/"
-                                    passHref={true}
-                                    legacyBehavior={true}
-                                >
-                                    <MainLink>WorldEdit</MainLink>
-                                </Link>{' '}
+                                <MainLink href="/worldedit/">
+                                    WorldEdit
+                                </MainLink>{' '}
                                 is installed.
                             </p>
                             <ol>

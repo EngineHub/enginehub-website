@@ -4,7 +4,9 @@ import {
     SEO,
     PageHeader,
     Table,
-    Pagination
+    Pagination,
+    GrayButton,
+    BlueButton
 } from '@enginehub/shared';
 import type { GetServerSideProps } from 'next';
 import type { Project } from '../../../src/project';
@@ -16,7 +18,6 @@ import {
     BUILDS_PER_PAGE
 } from '../../../src/builds';
 import styled from 'styled-components';
-import { BlueButtonStyle, MainButtonStyle } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDownload,
@@ -28,7 +29,6 @@ import { MainLink } from '@enginehub/shared';
 import BranchWarning from '../../../src/BranchWarning';
 import { BranchButtonList, BranchButton } from '../../../src/BranchButton';
 import moment from 'moment';
-import Link from 'next/link';
 
 interface ProjectPageProps {
     activeBranch: string;
@@ -42,9 +42,6 @@ interface ProjectPageProps {
 const TdNoWrap = styled.td`
     white-space: nowrap;
 `;
-
-const MainButton = styled.a(MainButtonStyle);
-const BlueButton = styled.a(BlueButtonStyle);
 
 const MiniPaddedIcon = styled(FontAwesomeIcon)`
     line-height: 0.75em;
@@ -76,22 +73,16 @@ function Index({
                 <BranchButtonList>
                     {branches.map(branch => (
                         <li key={branch}>
-                            <Link
+                            <BranchButton
                                 href={`/job/${project.id}?branch=${branch}`}
-                                passHref={true}
-                                legacyBehavior={true}
+                                className={
+                                    branch === activeBranch
+                                        ? 'active'
+                                        : undefined
+                                }
                             >
-                                <BranchButton
-                                    className={
-                                        branch === activeBranch
-                                            ? 'active'
-                                            : undefined
-                                    }
-                                >
-                                    <MiniPaddedIcon icon={faCodeBranch} />{' '}
-                                    {branch}
-                                </BranchButton>
-                            </Link>
+                                <MiniPaddedIcon icon={faCodeBranch} /> {branch}
+                            </BranchButton>
                         </li>
                     ))}
                 </BranchButtonList>
@@ -104,17 +95,12 @@ function Index({
                         projectId={project.id}
                     />
                 )}
-                <Link
+                <GrayButton
                     href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
-                    passHref={true}
-                    legacyBehavior={true}
+                    style={{ float: 'right', marginBottom: '2rem' }}
                 >
-                    <MainButton
-                        style={{ float: 'right', marginBottom: '2rem' }}
-                    >
-                        View last successful build
-                    </MainButton>
-                </Link>
+                    View last successful build
+                </GrayButton>
                 <Table>
                     <colgroup>
                         <col style={{ width: '10%' }} />
@@ -145,15 +131,11 @@ function Index({
                                     <small>{build.branch}</small>
                                 </TdNoWrap>
                                 <TdNoWrap>
-                                    <Link
+                                    <MainLink
                                         href={`/job/${project.id}/${build.build_id}`}
-                                        passHref={true}
-                                        legacyBehavior={true}
                                     >
-                                        <MainLink>
-                                            #{build.build_number}
-                                        </MainLink>
-                                    </Link>
+                                        #{build.build_number}
+                                    </MainLink>
                                 </TdNoWrap>
                                 <td>
                                     <FontAwesomeIcon
@@ -205,17 +187,11 @@ function Index({
                                     {moment(build.build_date).fromNow()}
                                 </TdNoWrap>
                                 <TdNoWrap>
-                                    <Link
+                                    <BlueButton
                                         href={`/job/${project.id}/${build.build_id}`}
-                                        passHref={true}
-                                        legacyBehavior={true}
                                     >
-                                        <BlueButton>
-                                            <FontAwesomeIcon
-                                                icon={faDownload}
-                                            />
-                                        </BlueButton>
-                                    </Link>
+                                        <FontAwesomeIcon icon={faDownload} />
+                                    </BlueButton>
                                 </TdNoWrap>
                             </tr>
                         ))}

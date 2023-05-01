@@ -1,6 +1,6 @@
 import { Container } from './Container';
 import styled from 'styled-components';
-import { MainLinkStyle } from './Link';
+import { MainLink } from './Link';
 import type { ExtraSponsorProps } from './Sponsors';
 import { RandomSponsor } from './Sponsors';
 import type { FC } from 'react';
@@ -44,10 +44,6 @@ const FooterLi = styled.li`
     line-height: 23.8px;
     font-size: 14px;
     margin-bottom: 0.75rem;
-`;
-
-const MainLink = styled.a`
-    ${MainLinkStyle()}
 `;
 
 export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
