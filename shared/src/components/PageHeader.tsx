@@ -52,13 +52,20 @@ const HeaderChildrenContainer = styled.div`
 
 const HeaderTextArea = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    gap: 1rem;
     grid-area: text;
 
     h1 {
         text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.1rem;
     }
 `;
 
