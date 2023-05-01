@@ -10,7 +10,7 @@ const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
         <>
             <Navbar headertheme="purple" />
             <main>{children}</main>
-            <Footer mainSite={false} extraSponsors={extraSponsors} />
+            <Footer extraSponsors={extraSponsors} />
         </>
     );
 };

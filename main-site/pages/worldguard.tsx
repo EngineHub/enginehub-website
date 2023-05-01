@@ -17,7 +17,6 @@ import {
     GrayButton,
     BlueButton
 } from '@enginehub/shared';
-import Link from 'next/link';
 import PlatformBanner from '../src/components/PlatformBanner';
 import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
@@ -46,13 +45,9 @@ const WorldGuardPage = () => {
                             and disable various gameplay features of Minecraft.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link
-                                href={'/worldguard/#downloads'}
-                                passHref={true}
-                                legacyBehavior={true}
-                            >
-                                <BlueButton>List downloads</BlueButton>
-                            </Link>
+                            <BlueButton href={'/worldguard/#downloads'}>
+                                List downloads
+                            </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
@@ -205,13 +200,9 @@ const WorldGuardPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> WorldGuard
                                 requires that{' '}
-                                <Link
-                                    href="/worldedit/"
-                                    passHref={true}
-                                    legacyBehavior={true}
-                                >
-                                    <MainLink>WorldEdit</MainLink>
-                                </Link>{' '}
+                                <MainLink href="/worldedit/">
+                                    WorldEdit
+                                </MainLink>{' '}
                                 is installed.
                             </p>
                             <ol>

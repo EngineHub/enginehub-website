@@ -52,7 +52,7 @@ const useSponsorComponents = () => {
                         width="116"
                         style={{ border: 0, marginBottom: 0 }}
                     />
-                    <p style={{ margin: 0 }}>Sponsored by users like you!</p>
+                    <p style={{ margin: 0 }}>Sponsored by people like you!</p>
                 </FlexLink>
             ),
             () => (
@@ -129,7 +129,7 @@ export const LabelledSponsorsArea: FC<ExtraSponsorProps> = ({
     ...rest
 }) => (
     <HorizontalSponsorArea {...rest}>
-        <small>Sponsored by</small>
+        <small>Sponsor </small>
         <RandomSponsor extraSponsors={extraSponsors} />
     </HorizontalSponsorArea>
 );

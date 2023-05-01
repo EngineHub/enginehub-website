@@ -34,7 +34,7 @@ const StyledContainer = styled(StyledContainerBase)`
     }
 `;
 
-const HeaderLink = styled.a`
+const HeaderLink = styled(Link)`
     color: rgb(51, 51, 51);
     text-decoration: none;
 `;
@@ -51,14 +51,12 @@ export const BrandHeader: FC<{ isHomePage?: boolean }> = ({
 }) => (
     <div>
         <StyledContainer isHome={isHomePage}>
-            <Link href="/" passHref={true} legacyBehavior={true}>
-                <HeaderLink>
-                    <HorizontalDiv>
-                        <Logo />
-                        <h1 style={{ marginLeft: '0.5rem' }}>WorldEdit Golf</h1>
-                    </HorizontalDiv>
-                </HeaderLink>
-            </Link>
+            <HeaderLink href="/">
+                <HorizontalDiv>
+                    <Logo />
+                    <h1 style={{ marginLeft: '0.5rem' }}>WorldEdit Golf</h1>
+                </HorizontalDiv>
+            </HeaderLink>
         </StyledContainer>
         {isHomePage && (
             <StyledContainerBase isHome={isHomePage}>

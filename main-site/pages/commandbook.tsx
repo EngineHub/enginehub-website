@@ -23,7 +23,6 @@ import commandBookHeader from '../src/images/projects/headers/commandbook-header
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import commandBookLogo from '../src/images/projects/commandbook-icon.png';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const CommandBookPage = () => {
     return (
@@ -50,13 +49,9 @@ const CommandBookPage = () => {
                             server.
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link
-                                href="/commandbook/#downloads"
-                                passHref={true}
-                                legacyBehavior={true}
-                            >
-                                <BlueButton>List downloads</BlueButton>
-                            </Link>
+                            <BlueButton href="/commandbook/#downloads">
+                                List downloads
+                            </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>
@@ -168,13 +163,9 @@ const CommandBookPage = () => {
                             <p>
                                 <WarningLabel>Note!</WarningLabel> CommandBook
                                 requires that{' '}
-                                <Link
-                                    href="/worldedit/"
-                                    passHref={true}
-                                    legacyBehavior={true}
-                                >
-                                    <MainLink>WorldEdit</MainLink>
-                                </Link>{' '}
+                                <MainLink href="/worldedit/">
+                                    WorldEdit
+                                </MainLink>{' '}
                                 is installed.
                             </p>
                             <ol>

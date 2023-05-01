@@ -21,7 +21,6 @@ import {
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import Link from 'next/link';
 import type { GetStaticProps } from 'next';
 
 interface ProjectEntry {
@@ -116,15 +115,11 @@ function Index({ projectEntries }: IndexProps) {
                                             <MiniPaddedIcon
                                                 icon={faCodeBranch}
                                             />
-                                            <Link
+                                            <MainLink
                                                 href={`/job/${projectEntry.project.id}?branch=${build.branch}`}
-                                                passHref={true}
-                                                legacyBehavior={true}
                                             >
-                                                <MainLink>
-                                                    {build.branch}
-                                                </MainLink>
-                                            </Link>
+                                                {build.branch}
+                                            </MainLink>
                                             {build.branch ===
                                                 projectEntry.project
                                                     .defaultBranch && (
@@ -157,15 +152,11 @@ function Index({ projectEntries }: IndexProps) {
                                             <small>{build.statusText}</small>
                                         </td>
                                         <td>
-                                            <Link
+                                            <MainLink
                                                 href={`/job/${projectEntry.project.id}/${build.build_id}`}
-                                                passHref={true}
-                                                legacyBehavior={true}
                                             >
-                                                <MainLink>
-                                                    #{build.build_number}
-                                                </MainLink>
-                                            </Link>
+                                                #{build.build_number}
+                                            </MainLink>
                                         </td>
                                         <TdNoWrap>
                                             {moment(build.build_date).fromNow()}{' '}

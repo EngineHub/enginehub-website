@@ -26,30 +26,57 @@ export const HeaderText = styled.h1`
 `;
 
 const HeaderContent = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        'text text sponsors'
+        'children children children';
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'text'
+            'children'
+            'sponsors';
+        text-align: left;
+        grid-gap: 1rem;
+    }
 `;
 
-const HeaderLeftArea = styled.div`
+const HeaderChildrenContainer = styled.div`
     display: flex;
-    justify-content: left;
     align-items: center;
+    grid-area: children;
 `;
 
 const HeaderTextArea = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 1rem;
+    grid-area: text;
+
+    h1 {
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.1rem;
+    }
 `;
 
 const HeaderImg = styled.img`
-    margin: 0 20px 0 0;
+    margin: 0;
     width: 100px;
     height: 100px;
 `;
 
-const RightAlignedSponsors = styled(LabelledSponsorsArea)`
-    float: right;
+const SponsorSection = styled(LabelledSponsorsArea)`
+    grid-area: sponsors;
 `;
 
 export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
@@ -61,14 +88,18 @@ export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
     <HeaderWrapper>
         <ContainerPadded>
             <HeaderContent>
-                <HeaderLeftArea>
-                    {icon && <HeaderImg src={icon} />}
+                {icon ? (
                     <HeaderTextArea>
+                        <HeaderImg src={icon} />
                         <HeaderText>{text}</HeaderText>
-                        {children}
                     </HeaderTextArea>
-                </HeaderLeftArea>
-                <RightAlignedSponsors extraSponsors={extraSponsors} />
+                ) : (
+                    <div>
+                        <HeaderText>{text}</HeaderText>
+                    </div>
+                )}
+                <HeaderChildrenContainer>{children}</HeaderChildrenContainer>
+                <SponsorSection extraSponsors={extraSponsors} />
             </HeaderContent>
         </ContainerPadded>
     </HeaderWrapper>

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import type { ColorPalette } from '../theme';
 import { SECONDARY, BRAND, PRIMARY } from '../theme';
+import Link from 'next/link';
 
 const BaseButtonLayout = () => css`
     font-weight: 700;
@@ -55,6 +56,6 @@ export const BlueButtonStyle = () => css`
     ${ButtonColorStyle(PRIMARY)}
 `;
 
-export const GrayButton = styled.a(MainButtonStyle);
-export const PurpleButton = styled.a(PurpleButtonStyle);
-export const BlueButton = styled.a(BlueButtonStyle);
+export const GrayButton = styled(Link)(MainButtonStyle);
+export const PurpleButton = styled(Link)(PurpleButtonStyle);
+export const BlueButton = styled(Link)(BlueButtonStyle);

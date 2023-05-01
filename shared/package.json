@@ -8,21 +8,21 @@
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "devDependencies": {
-        "@next/eslint-plugin-next": "^13.2.4",
-        "@types/node": "^18.15.11",
-        "@types/react": "18.0.31",
-        "@types/react-dom": "18.0.11",
+        "@next/eslint-plugin-next": "^13.3.2",
+        "@types/node": "^18.16.3",
+        "@types/react": "18.2.0",
+        "@types/react-dom": "18.2.1",
         "@types/styled-components": "^5.1.26",
-        "@typescript-eslint/eslint-plugin": "^5.57.0",
-        "@typescript-eslint/parser": "^5.57.0",
-        "eslint": "^8.37.0",
+        "@typescript-eslint/eslint-plugin": "^5.59.1",
+        "@typescript-eslint/parser": "^5.59.1",
+        "eslint": "^8.39.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "prettier": "^2.8.7",
+        "prettier": "^2.8.8",
         "tslib": "^2.5.0",
-        "typescript": "^5.0.3"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         "enginehub",
@@ -35,13 +35,14 @@
         "lint": "eslint --config ./.eslintrc.js --ext .ts,.tsx src/",
         "lint:fix": "eslint --config ./.eslintrc.js --fix --ext .ts,.tsx src/",
         "prepare": "yarn build",
-        "build": "yarn tsc --project ./tsconfig.json"
+        "build": "yarn tsc --project ./tsconfig.json",
+        "watch": "yarn build --watch"
     },
     "sideEffects": false,
     "dependencies": {
-        "next": "^13.2.4",
+        "next": "^13.3.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "styled-components": "^5.3.9"
+        "styled-components": "^5.3.10"
     }
 }

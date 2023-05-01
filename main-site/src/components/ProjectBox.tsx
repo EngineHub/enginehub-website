@@ -25,7 +25,7 @@ const ProjectListImg = styled.img`
     border: 0;
 `;
 
-const ProjectListLink = styled.a`
+const ProjectListLink = styled(Link)`
     ${MainLinkStyle}
     display: inline;
     font-size: 21px;
@@ -37,9 +37,7 @@ const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (
         <ProjectListImg
             src={typeof props.icon === 'object' ? props.icon.src : props.icon}
         />
-        <Link href={`/${props.slug}/`} passHref={true} legacyBehavior={true}>
-            <ProjectListLink>{props.name}</ProjectListLink>
-        </Link>
+        <ProjectListLink href={`/${props.slug}/`}>{props.name}</ProjectListLink>
         <br />
         {props.description}
     </ProjectListItem>

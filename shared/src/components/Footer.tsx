@@ -1,17 +1,21 @@
 import { Container } from './Container';
 import styled from 'styled-components';
-import { MainLinkStyle } from './Link';
+import { MainLink } from './Link';
 import type { ExtraSponsorProps } from './Sponsors';
 import { RandomSponsor } from './Sponsors';
 import type { FC } from 'react';
 
-const ContainerFlex = styled(Container)`
-    display: flex;
-    flex-direction: column;
+const FooterContainer = styled(Container)`
+    display: grid;
     margin-top: 30px;
 
-    @media (min-width: 768px) {
-        flex-direction: row;
+    grid-template-columns: 1fr 1fr 1.5fr 2fr;
+    grid-gap: 0.5rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        text-align: left;
+        grid-gap: 1rem;
     }
 `;
 
@@ -20,34 +24,6 @@ const FooterWrapper = styled.footer`
     border-top: 1px solid #e7e7e7;
     padding: 20px 25px 40px;
     margin: 200px 0 0;
-`;
-
-const LinksBox = styled.div`
-    @media (min-width: 768px) {
-        width: 16.666%;
-    }
-    width: 100%;
-`;
-
-const SocialBox = styled.div`
-    @media (min-width: 768px) {
-        width: 16.666%;
-    }
-    width: 100%;
-`;
-
-const SponsorBox = styled.div`
-    @media (min-width: 768px) {
-        width: 25%;
-    }
-    width: 100%;
-`;
-
-const SiteBox = styled.div`
-    @media (min-width: 768px) {
-        width: 33.333%;
-    }
-    width: 100%;
 `;
 
 const SectionHeader = styled.h4`
@@ -70,19 +46,11 @@ const FooterLi = styled.li`
     margin-bottom: 0.75rem;
 `;
 
-const MainLink = styled.a`
-    ${MainLinkStyle()}
-`;
-
-interface FooterProps extends ExtraSponsorProps {
-    mainSite: boolean;
-}
-
-export const Footer: FC<FooterProps> = ({ extraSponsors }) => {
+export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
     return (
         <FooterWrapper>
-            <ContainerFlex>
-                <LinksBox>
+            <FooterContainer>
+                <div>
                     <SectionHeader>Resources</SectionHeader>
                     <FooterUl>
                         <FooterLi>
@@ -101,8 +69,8 @@ export const Footer: FC<FooterProps> = ({ extraSponsors }) => {
                             </MainLink>
                         </FooterLi>
                     </FooterUl>
-                </LinksBox>
-                <SocialBox>
+                </div>
+                <div>
                     <SectionHeader>Social</SectionHeader>
                     <FooterUl>
                         <FooterLi>
@@ -121,12 +89,12 @@ export const Footer: FC<FooterProps> = ({ extraSponsors }) => {
                             </MainLink>
                         </FooterLi>
                     </FooterUl>
-                </SocialBox>
-                <SponsorBox>
+                </div>
+                <div>
                     <SectionHeader>Sponsors</SectionHeader>
                     <RandomSponsor extraSponsors={extraSponsors} />
-                </SponsorBox>
-                <SiteBox>
+                </div>
+                <div>
                     <SectionHeader>EngineHub</SectionHeader>
                     <p>
                         <small>
@@ -142,8 +110,8 @@ export const Footer: FC<FooterProps> = ({ extraSponsors }) => {
                             </MainLink>
                         </small>
                     </p>
-                </SiteBox>
-            </ContainerFlex>
+                </div>
+            </FooterContainer>
         </FooterWrapper>
     );
 };

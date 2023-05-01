@@ -20,7 +20,6 @@ import commandHelperHeader from '../src/images/projects/headers/commandhelper-he
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import commandHelperLogo from '../src/images/projects/commandhelper-icon.png';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const CommandHelperPage = () => {
     return (
@@ -48,13 +47,9 @@ const CommandHelperPage = () => {
                             required!
                         </JumbotronText>
                         <JumbotronButtonBox>
-                            <Link
-                                href="/commandhelper/#downloads"
-                                passHref={true}
-                                legacyBehavior={true}
-                            >
-                                <BlueButton>List downloads</BlueButton>
-                            </Link>
+                            <BlueButton href="/commandhelper/#downloads">
+                                List downloads
+                            </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
                 </Row>

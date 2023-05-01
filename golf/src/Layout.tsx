@@ -44,7 +44,7 @@ const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
                 </div>
             </Navbar>
             <main>{children}</main>
-            <Footer mainSite={false} extraSponsors={extraSponsors} />
+            <Footer extraSponsors={extraSponsors} />
         </>
     );
 };

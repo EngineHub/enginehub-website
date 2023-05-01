@@ -12,22 +12,22 @@
         "@types/styled-components": "^5.1.26",
         "got": "^12.6.0",
         "moment": "^2.29.4",
-        "next": "^13.2.4",
+        "next": "^13.3.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "sharp": "^0.32.0",
-        "styled-components": "^5.3.9"
+        "sharp": "^0.32.1",
+        "styled-components": "^5.3.10"
     },
     "devDependencies": {
-        "@types/node": "^18.15.11",
-        "@types/react": "18.0.31",
-        "@types/react-dom": "18.0.11",
-        "eslint": "^8.37.0",
-        "eslint-config-next": "13.2.4",
+        "@types/node": "^18.16.3",
+        "@types/react": "18.2.0",
+        "@types/react-dom": "18.2.1",
+        "eslint": "^8.39.0",
+        "eslint-config-next": "13.3.2",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
-        "prettier": "^2.8.7",
-        "typescript": "^5.0.3"
+        "prettier": "^2.8.8",
+        "typescript": "^5.0.4"
     },
     "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
