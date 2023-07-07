@@ -3,8 +3,6 @@
     "compilerOptions": {
         "jsx": "preserve",
         "lib": ["dom", "esnext"],
-        "module": "esnext",
-        "moduleResolution": "node",
         "noEmit": true,
         "skipLibCheck": true,
         "target": "esnext",
@@ -14,7 +12,8 @@
     "include": [
         "pages/**/*",
         "src/**/*",
-        "../shared/src/utils/encryptedSecrets.ts"
+        "../shared/src/utils/encryptedSecrets.ts",
+        "*.{js,ts,tsx}"
     ],
     "exclude": ["node_modules"]
 }

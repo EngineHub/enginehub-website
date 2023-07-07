@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const ColumnQuarter = styled.div`
     padding-left: 15px;

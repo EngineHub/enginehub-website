@@ -1,6 +1,6 @@
 import { OpenChallenge } from '../src/components/OpenChallenges';
 import { useIsLoggedIn } from '../src/components/Auth';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Layout from '../src/Layout';
 import type { Golf } from '../src/types/database';
 import { PurpleButtonStyle, Container, SEO } from '@enginehub/shared';

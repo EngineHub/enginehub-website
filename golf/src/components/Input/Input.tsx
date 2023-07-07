@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { FormLabel } from '@enginehub/shared';
 import type { FC } from 'react';
 

@@ -13,7 +13,7 @@ import type { Project } from '../src/project';
 import { PROJECTS } from '../src/project';
 import type { Build } from '../src/builds';
 import { getBranches, getLatestBuild } from '../src/builds';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,

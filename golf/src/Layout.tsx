@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 import type { ExtraSponsorProps } from '@enginehub/shared';
 import { Navbar, Footer, PurpleButtonStyle } from '@enginehub/shared';
 import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 const FloatedPurpleButton = styled.a`
     ${PurpleButtonStyle()};

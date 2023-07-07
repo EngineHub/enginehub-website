@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
 import { MainLinkStyle } from '@enginehub/shared';

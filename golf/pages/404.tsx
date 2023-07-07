@@ -1,6 +1,6 @@
 import Layout from '../src/Layout';
 import { SEO, PageHeader, Container, BlueButtonStyle } from '@enginehub/shared';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const BlueButton = styled.a(BlueButtonStyle);
 

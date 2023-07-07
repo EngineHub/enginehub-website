@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import type { FC, PropsWithChildren } from 'react';
 import { Header } from './Header';
 

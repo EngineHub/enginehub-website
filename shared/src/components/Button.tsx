@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import type { ColorPalette } from '../theme';
-import { SECONDARY, BRAND, PRIMARY } from '../theme';
+import type { ColorPalette } from '../theme/index';
+import { SECONDARY, BRAND, PRIMARY } from '../theme/index';
 import Link from 'next/link';
 
 const BaseButtonLayout = () => css`

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useState, useEffect, useMemo } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { MainLinkStyle, MainLink } from './Link';
 
 const sponsors: string[] = ['apexhosting', 'gh-sponsors'];

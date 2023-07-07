@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { getFiles } from '../src/dragAndDrop';
 import { Layout } from '../src/Layout';
 import Router from 'next/router';

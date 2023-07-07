@@ -1,6 +1,6 @@
 import Layout from '../src/components/Layout';
 import { SEO, Container, Row, ColumnHalf } from '@enginehub/shared';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import ProjectBox from '../src/components/ProjectBox';
 import worldEditIcon from '../src/images/projects/logo/worldedit-logo.svg';
 import worldGuardIcon from '../src/images/projects/logo/worldguard-logo.svg';

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { BlueButtonStyle } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';

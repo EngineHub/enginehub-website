@@ -1,5 +1,5 @@
 import { Container } from './Container';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { MainLink } from './Link';
 import type { ExtraSponsorProps } from './Sponsors';
 import { RandomSponsor } from './Sponsors';

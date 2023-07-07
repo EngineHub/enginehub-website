@@ -20,7 +20,7 @@ import {
     WarningBox,
     GrayButton
 } from '@enginehub/shared';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Project } from '../../../../src/project';
 import { PROJECT_MAP } from '../../../../src/project';

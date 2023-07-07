@@ -1,5 +1,5 @@
 import type { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Navbar, Container } from '@enginehub/shared';
 import Image from 'next/image';
 import landingBg from '../images/landing-bg.jpg';

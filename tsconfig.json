@@ -15,17 +15,17 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "module": "esnext",
   },
   "exclude": ["node_modules"],
   "include": [
-    "main-site/src/**/*",
-    "builds/src/**/*",
-    "builds/pages/**/*",
-    "paste/pages/**/*",
-    "paste/src/**/*",
-    "golf/pages/**/*",
-    "golf/src/**/*",
-    "shared/src/**/*"
+    "main-site/**/*.{js,jsx,ts,tsx}",
+    "builds/**/*.{js,jsx,ts,tsx}",
+    "paste/**/*.{js,jsx,ts,tsx}",
+    "golf/**/*.{js,jsx,ts,tsx}",
+    "shared/**/*.{js,jsx,ts,tsx}"
   ]
 }

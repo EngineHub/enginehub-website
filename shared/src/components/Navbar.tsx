@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { Container } from './Container';
 import { MainButtonStyle, PurpleButtonStyle } from './Button';
-import { SECONDARY, BRAND } from '../theme';
+import { SECONDARY, BRAND } from '../theme/index';
 import Link from 'next/link';
 import type { FC, PropsWithChildren } from 'react';
 

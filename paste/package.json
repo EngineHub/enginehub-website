@@ -4,31 +4,29 @@
     "description": "EngineHub paste site, paste.enginehub.org",
     "version": "1.0.0",
     "author": "EngineHub",
+    "type": "module",
     "dependencies": {
         "@enginehub/schematicjs": "^0.9.1",
         "@enginehub/schematicwebviewer": "^4.6.0",
-        "@enginehub/shared": "1.0.0",
-        "@google-cloud/storage": "^6.10.0",
-        "@types/styled-components": "^5.1.26",
+        "@enginehub/shared": "workspace:*",
+        "@google-cloud/storage": "^6.11.0",
         "base64-js": "^1.5.1",
-        "next": "^13.4.1",
+        "next": "^13.4.9",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sharp": "^0.32.1",
         "shortid": "^2.2.16",
-        "styled-components": "^5.3.10"
+        "styled-components": "^6.0.2"
     },
     "devDependencies": {
-        "@types/node": "^18.16.5",
-        "@types/react": "18.2.6",
-        "@types/react-dom": "18.2.4",
+        "@types/node": "^18.16.19",
+        "@types/react": "18.2.14",
+        "@types/react-dom": "18.2.6",
         "@types/shortid": "^0.0.29",
-        "eslint": "^8.40.0",
-        "eslint-config-next": "^13.4.1",
-        "eslint-config-prettier": "^8.8.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "prettier": "^2.8.8",
-        "typescript": "^5.0.4"
+        "eslint": "^8.44.0",
+        "eslint-config-next": "^13.4.9",
+        "prettier": "^3.0.0",
+        "typescript": "^5.1.6"
     },
     "keywords": [
         "pastebin",
