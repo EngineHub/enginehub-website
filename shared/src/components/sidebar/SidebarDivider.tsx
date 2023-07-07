@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const SidebarDivider = styled.hr`
     margin-top: 23px;

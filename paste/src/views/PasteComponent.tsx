@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import type { FC } from 'react';
 import { useMemo } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';

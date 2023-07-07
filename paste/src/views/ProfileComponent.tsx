@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { memo } from 'react';
 import { useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 const CloseIcon = require('./images/close.png') as string;
 const OpenIcon = require('./images/open.png') as string;

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useRef, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
 
 interface SchematicProps {

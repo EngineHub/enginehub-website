@@ -5,6 +5,7 @@
   "description": "EngineHub Websites",
   "version": "1.0.0",
   "author": "EngineHub",
+  "type": "module",
   "workspaces": [
     "main-site",
     "builds",
@@ -19,7 +20,7 @@
   },
   "dependencies": {
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "^13.2.3",
     "postinstall-postinstall": "^2.1.0"
   },
   "scripts": {
@@ -27,5 +28,5 @@
     "prepare": "husky install",
     "precommit": "lint-staged"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.6.1"
 }

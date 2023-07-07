@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import router from 'next/router';
 import { useSetToken } from '../src/components/Auth';
 import { Loading } from '../src/components/Loading';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Layout from '../src/Layout';
 
 const LoadingContainer = styled.div`

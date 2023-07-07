@@ -1,6 +1,6 @@
 import type { MutableRefObject, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { TextArea } from '../src/components/Input/TextArea';
 import Input from '../src/components/Input/Input';
 import { useAuthenticatedFetch } from '../src/components/Auth';

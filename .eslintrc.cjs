@@ -1,4 +1,3 @@
-const path = require("path");
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
@@ -8,22 +7,23 @@ module.exports = {
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:@next/next/recommended",
-    "next/core-web-vitals",
-    "prettier", // enables eslint-plugin-prettier and eslint-config-prettier
   ],
+  env: {
+    browser: true,
+    node: true,
+    es2023: true
+  },
   parserOptions: {
-    ecmaVersion: 2022, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 'latest', // Allows for the parsing of modern ECMAScript features
     sourceType: "module", // Allows for the use of imports
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
     },
-    project: path.resolve(__dirname, "./tsconfig.json"),
-    tsconfigRootDir: __dirname,
+    project: true,
   },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
@@ -53,8 +53,6 @@ module.exports = {
       { fixMixedExportsWithInlineTypeSpecifier: true },
     ],
     "@typescript-eslint/no-import-type-side-effects": "error",
-
-    "prettier/prettier": "warn",
   },
   settings: {
     react: {

@@ -1,6 +1,6 @@
 import type { FC, ChangeEvent } from 'react';
 import { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { PurpleButtonStyle } from './Button';
 import { FormLabel } from './text/FormLabel';
 

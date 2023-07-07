@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const WarningBox = styled.div`
     background-color: #fcf8e3;

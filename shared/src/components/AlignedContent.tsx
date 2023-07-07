@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { FC, PropsWithChildren } from 'react';
-import styled from 'styled-components';
-import { SectionHeading } from './text';
+import { styled } from 'styled-components';
+import { SectionHeading } from './text/SectionHeading';
 
 interface AlignedContentProps {
     header?: string;

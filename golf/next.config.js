@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     env: {
         CLIENT_ID: process.env.CLIENT_ID,
         CLIENT_SECRET: process.env.CLIENT_SECRET,
@@ -9,5 +9,9 @@ module.exports = {
     },
     compiler: {
         styledComponents: true
-    }
+    },
+    eslint: {
+        ignoreDuringBuilds: true
+    },
+    transpilePackages: ['@enginehub/shared']
 };

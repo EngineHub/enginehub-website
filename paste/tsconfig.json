@@ -3,15 +3,13 @@
     "compilerOptions": {
         "jsx": "preserve",
         "lib": ["dom", "esnext"],
-        "module": "esnext",
-        "moduleResolution": "node",
         "noEmit": true,
         "skipLibCheck": true,
         "target": "esnext",
         "isolatedModules": true,
         "incremental": true
     },
-    "include": ["pages/**/*", "src/**/*"],
+    "include": ["pages/**/*", "src/**/*", "*.{js,ts,tsx}"],
     "files": ["typings.d.ts"],
     "exclude": ["node_modules"]
 }

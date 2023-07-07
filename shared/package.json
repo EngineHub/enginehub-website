@@ -4,25 +4,23 @@
     "description": "Shared libs for the EngineHub sites",
     "version": "1.0.0",
     "author": "EngineHub",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "main": "./src/index.ts",
+    "module": "./src/index.ts",
+    "types": "./src/index.ts",
+    "type": "module",
     "devDependencies": {
-        "@next/eslint-plugin-next": "^13.4.1",
-        "@types/node": "^18.16.5",
-        "@types/react": "18.2.6",
-        "@types/react-dom": "18.2.4",
-        "@types/styled-components": "^5.1.26",
-        "@typescript-eslint/eslint-plugin": "^5.59.2",
-        "@typescript-eslint/parser": "^5.59.2",
-        "eslint": "^8.40.0",
-        "eslint-config-prettier": "^8.8.0",
-        "eslint-plugin-prettier": "^4.2.1",
+        "@next/eslint-plugin-next": "^13.4.9",
+        "@types/node": "^18.16.19",
+        "@types/react": "18.2.14",
+        "@types/react-dom": "18.2.6",
+        "@typescript-eslint/eslint-plugin": "^5.61.0",
+        "@typescript-eslint/parser": "^5.61.0",
+        "eslint": "^8.44.0",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "prettier": "^2.8.8",
-        "tslib": "^2.5.0",
-        "typescript": "^5.0.4"
+        "prettier": "^3.0.0",
+        "tslib": "^2.6.0",
+        "typescript": "^5.1.6"
     },
     "keywords": [
         "enginehub",
@@ -40,9 +38,9 @@
     },
     "sideEffects": false,
     "dependencies": {
-        "next": "^13.4.1",
+        "next": "^13.4.9",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "styled-components": "^5.3.10"
+        "styled-components": "^6.0.2"
     }
 }

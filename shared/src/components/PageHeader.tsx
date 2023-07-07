@@ -1,5 +1,5 @@
 import { ContainerPadded } from './Container';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import type { ExtraSponsorProps } from './Sponsors';
 import { LabelledSponsorsArea } from './Sponsors';
 import type { FC, PropsWithChildren } from 'react';

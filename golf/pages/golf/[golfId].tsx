@@ -7,7 +7,7 @@ import {
     LeaderboardEntry,
     Leaderboard
 } from '../../src/components/Leaderboard/Leaderboard';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { pollBroker, queueTask, clearTask } from '../../src/broker';
 import { Schematic } from '../../src/components/Schematic';
 import { useToken } from '../../src/components/Auth';

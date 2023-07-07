@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { PRIMARY } from '../theme';
+import { PRIMARY } from '../theme/index';
 import Link from 'next/link';
 
 export const MainLinkStyle = () => css`

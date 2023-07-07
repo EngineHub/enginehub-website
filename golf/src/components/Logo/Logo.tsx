@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { spin } from '../../animations/spin';
 
 const ImageContainer = styled.div`

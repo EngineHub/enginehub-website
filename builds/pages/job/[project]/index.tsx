@@ -17,7 +17,7 @@ import {
     getBuildPage,
     BUILDS_PER_PAGE
 } from '../../../src/builds';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDownload,
