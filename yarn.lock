@@ -1561,7 +1561,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/shared@1.0.0, @enginehub/shared@workspace:shared":
+"@enginehub/shared@workspace:*, @enginehub/shared@workspace:shared":
   version: 0.0.0-use.local
   resolution: "@enginehub/shared@workspace:shared"
   dependencies:
@@ -2932,7 +2932,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "builds@workspace:builds"
   dependencies:
-    "@enginehub/shared": 1.0.0
+    "@enginehub/shared": "workspace:*"
     "@fortawesome/fontawesome-svg-core": ^6.4.0
     "@fortawesome/free-solid-svg-icons": ^6.4.0
     "@fortawesome/react-fontawesome": ^0.2.0
@@ -5637,7 +5637,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "main-site@workspace:main-site"
   dependencies:
-    "@enginehub/shared": 1.0.0
+    "@enginehub/shared": "workspace:*"
     "@next/eslint-plugin-next": ^13.4.9
     "@types/react": 18.2.14
     "@types/react-dom": 18.2.6
@@ -6442,7 +6442,7 @@ __metadata:
   dependencies:
     "@enginehub/schematicjs": ^0.9.1
     "@enginehub/schematicwebviewer": ^4.6.0
-    "@enginehub/shared": 1.0.0
+    "@enginehub/shared": "workspace:*"
     "@google-cloud/storage": ^6.11.0
     "@types/node": ^18.16.19
     "@types/react": 18.2.14
@@ -7874,11 +7874,11 @@ __metadata:
 
 "typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
   version: 5.1.6
-  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=85af82"
+  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 21e88b0a0c0226f9cb9fd25b9626fb05b4c0f3fddac521844a13e1f30beb8f14e90bd409a9ac43c812c5946d714d6e0dee12d5d02dfc1c562c5aacfa1f49b606
+  checksum: f53bfe97f7c8b2b6d23cf572750d4e7d1e0c5fff1c36d859d0ec84556a827b8785077bc27676bf7e71fae538e517c3ecc0f37e7f593be913d884805d931bc8be
   languageName: node
   linkType: hard
 
@@ -8107,7 +8107,7 @@ __metadata:
   resolution: "worldedit-golf@workspace:golf"
   dependencies:
     "@enginehub/schematicwebviewer": ^4.6.0
-    "@enginehub/shared": 1.0.0
+    "@enginehub/shared": "workspace:*"
     "@fortawesome/fontawesome-svg-core": ^6.4.0
     "@fortawesome/free-solid-svg-icons": ^6.4.0
     "@fortawesome/react-fontawesome": ^0.2.0
