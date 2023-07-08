@@ -22,7 +22,7 @@
         "safe-compare": "^1.1.4",
         "sharp": "^0.32.1",
         "shortid": "^2.2.16",
-        "styled-components": "^6.0.2",
+        "styled-components": "^6.0.3",
         "zlibt": "0.0.5"
     },
     "devDependencies": {
