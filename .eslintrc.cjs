@@ -15,10 +15,10 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2023: true
+    es2023: true,
   },
   parserOptions: {
-    ecmaVersion: 'latest', // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: "latest", // Allows for the parsing of modern ECMAScript features
     sourceType: "module", // Allows for the use of imports
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
@@ -42,6 +42,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
 
     // Type imports/exports
     "@typescript-eslint/consistent-type-imports": [

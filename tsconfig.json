@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "baseUrl": ".",
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,7 +19,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
-    "module": "esnext",
+    "module": "esnext"
   },
   "exclude": ["node_modules"],
   "include": [
@@ -26,6 +27,7 @@
     "builds/**/*.{js,jsx,ts,tsx}",
     "paste/**/*.{js,jsx,ts,tsx}",
     "golf/**/*.{js,jsx,ts,tsx}",
-    "shared/**/*.{js,jsx,ts,tsx}"
+    "shared/**/*.{js,jsx,ts,tsx}",
+    ".eslintrc.cjs"
   ]
 }

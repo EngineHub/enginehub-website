@@ -7,7 +7,8 @@ import {
     PageHeader,
     Table,
     MainLink,
-    InfoLabel
+    InfoLabel,
+    Label
 } from '@enginehub/shared';
 import type { Project } from '../src/project';
 import { PROJECTS } from '../src/project';
@@ -67,7 +68,7 @@ function Index({ projectEntries }: IndexProps) {
             />
             <PageHeader text={'Builds'} />
             <Container>
-                <WarningBox>
+                <div className={WarningBox}>
                     <strong>These are not the main downloads!</strong>
                     <p>
                         These downloads are created from every change made in
@@ -76,7 +77,7 @@ function Index({ projectEntries }: IndexProps) {
                         instructed to use these downloads, please prefer the use
                         of stable versions.
                     </p>
-                </WarningBox>
+                </div>
                 <Table>
                     <colgroup>
                         <col style={{ width: '20px' }} />
@@ -123,13 +124,14 @@ function Index({ projectEntries }: IndexProps) {
                                             {build.branch ===
                                                 projectEntry.project
                                                     .defaultBranch && (
-                                                <InfoLabel
+                                                <span
+                                                    className={`${Label} ${InfoLabel}`}
                                                     style={{
                                                         marginLeft: '0.5rem'
                                                     }}
                                                 >
                                                     main branch
-                                                </InfoLabel>
+                                                </span>
                                             )}
                                         </td>
                                         <td>

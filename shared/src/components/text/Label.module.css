@@ -1,6 +1,4 @@
-import { styled } from 'styled-components';
-
-const Label = styled.span`
+.Label {
     display: inline;
     padding: 0.2em 0.6em 0.3em;
     font-size: 75%;
@@ -11,12 +9,12 @@ const Label = styled.span`
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 0.25em;
-`;
+}
 
-export const WarningLabel = styled(Label)`
+.WarningLabel {
     background-color: #f0ad4e;
-`;
+}
 
-export const InfoLabel = styled(Label)`
+.InfoLabel {
     background-color: #777;
-`;
+}

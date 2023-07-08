@@ -122,8 +122,8 @@ function Index({ project, build }: BuildPageProps) {
                         </GrayButton>
                     </InfoBox>
                 )}
-                <Row>
-                    <ColumnThird style={{ paddingLeft: '0' }}>
+                <div className={Row}>
+                    <div className={ColumnThird} style={{ paddingLeft: '0' }}>
                         <BorderedTable>
                             <tbody>
                                 <tr>
@@ -176,8 +176,11 @@ function Index({ project, build }: BuildPageProps) {
                                 </tr>
                             </tbody>
                         </BorderedTable>
-                    </ColumnThird>
-                    <ColumnTwoThird style={{ paddingRight: '0' }}>
+                    </div>
+                    <div
+                        className={ColumnTwoThird}
+                        style={{ paddingRight: '0' }}
+                    >
                         <Panel>
                             <PanelHeading>Artifacts</PanelHeading>
                             <PanelBody>
@@ -206,12 +209,12 @@ function Index({ project, build }: BuildPageProps) {
                                         </DownloadLinkDiv>
                                     ))
                                 ) : (
-                                    <WarningBox>
+                                    <div className={WarningBox}>
                                         <p>
                                             No artifacts (files) are available
                                             for this build!
                                         </p>
-                                    </WarningBox>
+                                    </div>
                                 )}
                                 <Breaker />
                                 <LabelledSponsorsArea
@@ -219,8 +222,8 @@ function Index({ project, build }: BuildPageProps) {
                                 />
                             </PanelBody>
                         </Panel>
-                    </ColumnTwoThird>
-                </Row>
+                    </div>
+                </div>
                 <Panel>
                     <PanelHeading>Changes</PanelHeading>
                     <Table>

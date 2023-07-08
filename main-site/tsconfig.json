@@ -12,5 +12,5 @@
     },
     "include": ["./src/**/*", "./pages/**/*", "*.{js,ts,tsx}"],
     "exclude": [".next"],
-    "files": ["./src/index.d.ts", "next-env.d.ts"]
+    "files": ["./src/index.d.ts", "next-env.d.ts", "./typings.d.ts"]
 }

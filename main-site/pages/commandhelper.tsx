@@ -13,7 +13,8 @@ import {
     HorizontalNavItem,
     JumbotronContainer,
     MainLink,
-    BlueButton
+    BlueButton,
+    Label
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
@@ -30,7 +31,7 @@ const CommandHelperPage = () => {
                 image={commandHelperLogo.src}
             />
             <ContainerPadded>
-                <Row>
+                <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
@@ -52,8 +53,8 @@ const CommandHelperPage = () => {
                             </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
                             <MainLink href="https://methodscript.com/docs/">
@@ -76,8 +77,8 @@ const CommandHelperPage = () => {
                             </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
@@ -108,12 +109,12 @@ const CommandHelperPage = () => {
                             </li>
                         </ul>
                     </AlignedContent>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <div>
-                        <SectionHeading id="downloads">
+                        <h3 className={SectionHeading} id="downloads">
                             Downloads
-                        </SectionHeading>
+                        </h3>
                         <p>Please choose a download for your platform.</p>
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>
@@ -129,9 +130,11 @@ const CommandHelperPage = () => {
                                 </BlueButton>
                             </p>
                             <p>
-                                <InfoLabel>Note!</InfoLabel> Stable builds are
-                                no longer released — the builds above are built
-                                from the latest code.
+                                <span className={`${Label} ${InfoLabel}`}>
+                                    Note!
+                                </span>{' '}
+                                Stable builds are no longer released — the
+                                builds above are built from the latest code.
                             </p>
                             <ol>
                                 <li>
@@ -155,7 +158,7 @@ const CommandHelperPage = () => {
                             </ol>
                         </PlatformBanner>
                     </div>
-                </Row>
+                </div>
             </ContainerPadded>
         </Layout>
     );

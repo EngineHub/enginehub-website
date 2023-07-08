@@ -2,7 +2,7 @@ import type { FC, ChangeEvent } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { PurpleButtonStyle } from './Button';
-import { FormLabel } from './text/FormLabel';
+import { FormLabel } from './text/FormLabel.module.css';
 
 interface FileSelectorProps {
     name: string;
@@ -75,7 +75,7 @@ export const FileSelector: FC<FileSelectorProps> = ({
 
     return (
         <Container {...rest}>
-            <FormLabel>{name}</FormLabel>
+            <label className={FormLabel}>{name}</label>
             <ActionContainer>
                 <PurpleButton disabled={disabled} onClick={openFilePicker}>
                     Select File

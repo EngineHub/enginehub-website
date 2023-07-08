@@ -8,7 +8,7 @@ interface BranchWarningProps {
 }
 
 const BranchWarning: FC<BranchWarningProps> = props => (
-    <WarningBox>
+    <div className={WarningBox}>
         <strong>
             Be aware that this branch (<code>{props.currentBranch}</code>) is
             not the main branch (<code>{props.mainBranch}</code>)!
@@ -25,7 +25,7 @@ const BranchWarning: FC<BranchWarningProps> = props => (
         >
             View stable downloads
         </GrayButton>
-    </WarningBox>
+    </div>
 );
 
 export default BranchWarning;

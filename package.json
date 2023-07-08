@@ -28,5 +28,8 @@
     "prepare": "husky install",
     "precommit": "lint-staged"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.1",
+  "devDependencies": {
+    "typescript-plugin-css-modules": "^5.0.1"
+  }
 }

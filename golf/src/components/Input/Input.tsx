@@ -31,7 +31,7 @@ export const Input: FC<InputProps> = ({ name, onChange, ...rest }) => {
 
     return (
         <Container {...rest}>
-            <FormLabel>{name}</FormLabel>
+            <label className={FormLabel}>{name}</label>
             <input onChange={changed} />
         </Container>
     );

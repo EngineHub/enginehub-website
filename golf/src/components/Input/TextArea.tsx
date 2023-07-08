@@ -32,7 +32,7 @@ export const TextArea: FC<TextAreaProps> = ({ name, onChange, ...rest }) => {
 
     return (
         <Container {...rest}>
-            <FormLabel>{name}</FormLabel>
+            <label className={FormLabel}>{name}</label>
             <textarea onChange={changed} />
         </Container>
     );

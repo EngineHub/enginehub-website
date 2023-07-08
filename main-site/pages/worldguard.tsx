@@ -15,7 +15,8 @@ import {
     SectionHeading,
     MainLink,
     GrayButton,
-    BlueButton
+    BlueButton,
+    Label
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
@@ -32,7 +33,7 @@ const WorldGuardPage = () => {
                 image={worldGuardLogo.src}
             />
             <ContainerPadded>
-                <Row>
+                <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
@@ -50,8 +51,8 @@ const WorldGuardPage = () => {
                             </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
                             <MainLink href="https://worldguard.enginehub.org">
@@ -74,8 +75,8 @@ const WorldGuardPage = () => {
                             </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent
                         header={'Secure Your Server'}
                         align={'left'}
@@ -108,8 +109,8 @@ const WorldGuardPage = () => {
                             </li>
                         </ul>
                     </AlignedContent>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent
                         header={'Setup Protected Regions'}
                         align={'right'}
@@ -132,8 +133,8 @@ const WorldGuardPage = () => {
                             settings
                         </li>
                     </AlignedContent>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent
                         header={'Fully Customizable and Fast'}
                         align={'left'}
@@ -154,14 +155,14 @@ const WorldGuardPage = () => {
                         <li>Have complete control over all protections.</li>
                         <li>High performance design to minimize TPS impact</li>
                     </AlignedContent>
-                </Row>
-                <Row>
-                    <SectionHeading id="videos">
+                </div>
+                <div className={Row}>
+                    <h3 className={SectionHeading} id="videos">
                         Watch it in action
-                    </SectionHeading>
-                </Row>
-                <Row>
-                    <ColumnHalf>
+                    </h3>
+                </div>
+                <div className={Row}>
+                    <div className={ColumnHalf}>
                         <iframe
                             width="100%"
                             height="410"
@@ -169,13 +170,13 @@ const WorldGuardPage = () => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                    </ColumnHalf>
-                </Row>
-                <Row>
+                    </div>
+                </div>
+                <div className={Row}>
                     <div>
-                        <SectionHeading id="downloads">
+                        <h3 className={SectionHeading} id="downloads">
                             Downloads
-                        </SectionHeading>
+                        </h3>
                         <p>Please choose a download for your platform.</p>
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support WorldGuard for Bukkit.</p>
@@ -198,8 +199,10 @@ const WorldGuardPage = () => {
                                 </GrayButton>
                             </p>
                             <p>
-                                <WarningLabel>Note!</WarningLabel> WorldGuard
-                                requires that{' '}
+                                <span className={`${Label} ${WarningLabel}`}>
+                                    Note!
+                                </span>{' '}
+                                WorldGuard requires that{' '}
                                 <MainLink href="/worldedit/">
                                     WorldEdit
                                 </MainLink>{' '}
@@ -227,7 +230,7 @@ const WorldGuardPage = () => {
                             </ol>
                         </PlatformBanner>
                     </div>
-                </Row>
+                </div>
             </ContainerPadded>
         </Layout>
     );

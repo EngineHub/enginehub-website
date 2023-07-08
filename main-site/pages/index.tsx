@@ -43,8 +43,8 @@ const IndexPage = () => {
                 <HeadingContainer>
                     <FeatureHeading>Our Projects</FeatureHeading>
                 </HeadingContainer>
-                <Row>
-                    <ColumnHalf>
+                <div className={Row}>
+                    <div className={ColumnHalf}>
                         <ProjectList>
                             <ProjectBox
                                 name="WorldEdit"
@@ -65,8 +65,8 @@ const IndexPage = () => {
                                 description="Basic and essential commands for your Bukkit server in a lightweight plugin."
                             />
                         </ProjectList>
-                    </ColumnHalf>
-                    <ColumnHalf>
+                    </div>
+                    <div className={ColumnHalf}>
                         <ProjectList>
                             <ProjectBox
                                 name="CraftBook"
@@ -81,8 +81,8 @@ const IndexPage = () => {
                                 description="Script your Bukkit server without any Java knowledge using a easy to use and powerful language."
                             />
                         </ProjectList>
-                    </ColumnHalf>
-                </Row>
+                    </div>
+                </div>
             </Container>
         </Layout>
     );

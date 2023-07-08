@@ -16,7 +16,8 @@ import {
     AlignedContent,
     MainLink,
     GrayButton,
-    BlueButton
+    BlueButton,
+    Label
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
@@ -34,7 +35,7 @@ const CraftBookPage = () => {
                 image={craftBookLogo.src}
             />
             <ContainerPadded>
-                <Row>
+                <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
@@ -53,8 +54,8 @@ const CraftBookPage = () => {
                             </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
                             <MainLink href="/documentation/">
@@ -77,8 +78,8 @@ const CraftBookPage = () => {
                             </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
@@ -120,18 +121,20 @@ const CraftBookPage = () => {
                             <li>And much more...</li>
                         </ul>
                         <p>
-                            <InfoLabel>Did you know?</InfoLabel> CraftBook is
-                            one of Minecraft's first mods/plugins.
+                            <span className={`${Label} ${InfoLabel}`}>
+                                Did you know?
+                            </span>{' '}
+                            CraftBook is one of Minecraft's first mods/plugins.
                         </p>
                     </AlignedContent>
-                </Row>
-                <Row>
-                    <SectionHeading id="videos">
+                </div>
+                <div className={Row}>
+                    <h3 className={SectionHeading} id="videos">
                         Watch it in action
-                    </SectionHeading>
-                </Row>
-                <Row>
-                    <ColumnHalf>
+                    </h3>
+                </div>
+                <div className={Row}>
+                    <div className={ColumnHalf}>
                         <iframe
                             width="100%"
                             height="300"
@@ -139,8 +142,8 @@ const CraftBookPage = () => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                    </ColumnHalf>
-                    <ColumnHalf>
+                    </div>
+                    <div className={ColumnHalf}>
                         <iframe
                             width="100%"
                             height="300"
@@ -148,13 +151,13 @@ const CraftBookPage = () => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                    </ColumnHalf>
-                </Row>
-                <Row>
+                    </div>
+                </div>
+                <div className={Row}>
                     <div>
-                        <SectionHeading id="downloads">
+                        <h3 className={SectionHeading} id="downloads">
                             Downloads
-                        </SectionHeading>
+                        </h3>
                         <p>Please choose a download for your platform.</p>
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support CraftBook for Bukkit.</p>
@@ -177,8 +180,10 @@ const CraftBookPage = () => {
                                 </GrayButton>
                             </p>
                             <p>
-                                <WarningLabel>Note!</WarningLabel> CraftBook
-                                requires that{' '}
+                                <span className={`${Label} ${WarningLabel}`}>
+                                    Note!
+                                </span>{' '}
+                                CraftBook requires that{' '}
                                 <MainLink href="/worldedit/">
                                     WorldEdit
                                 </MainLink>{' '}
@@ -226,8 +231,10 @@ const CraftBookPage = () => {
                                 </GrayButton>
                             </p>
                             <p>
-                                <WarningLabel>Note!</WarningLabel> CraftBook
-                                requires that{' '}
+                                <span className={`${Label} ${WarningLabel}`}>
+                                    Note!
+                                </span>{' '}
+                                CraftBook requires that{' '}
                                 <MainLink href="/worldedit/">
                                     WorldEdit
                                 </MainLink>{' '}
@@ -255,7 +262,7 @@ const CraftBookPage = () => {
                             </ol>
                         </PlatformBanner>
                     </div>
-                </Row>
+                </div>
             </ContainerPadded>
         </Layout>
     );

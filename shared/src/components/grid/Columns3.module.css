@@ -1,0 +1,11 @@
+.ColumnThird {
+    padding-left: 15px;
+    padding-right: 15px;
+    flex: 33%;
+}
+
+.ColumnTwoThird {
+    flex: 66%;
+    padding-left: 15px;
+    padding-right: 15px;
+}

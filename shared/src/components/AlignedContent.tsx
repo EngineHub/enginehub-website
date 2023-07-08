@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { FC, PropsWithChildren } from 'react';
 import { styled } from 'styled-components';
-import { SectionHeading } from './text/SectionHeading';
+import { SectionHeading } from './text/SectionHeading.module.css';
 
 interface AlignedContentProps {
     header?: string;
@@ -46,7 +46,7 @@ export const AlignedContent: FC<PropsWithChildren<AlignedContentProps>> = ({
 }) => (
     <AlignedContentWrapper align={align}>
         <InfoSide>
-            {header && <SectionHeading>{header}</SectionHeading>}
+            {header && <div className={SectionHeading}>{header}</div>}
             <div>{children}</div>
         </InfoSide>
         <ImageSide>

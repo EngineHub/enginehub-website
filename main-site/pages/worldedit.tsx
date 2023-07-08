@@ -15,7 +15,8 @@ import {
     WarningLabel,
     MainLink,
     GrayButton,
-    BlueButton
+    BlueButton,
+    Label
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
@@ -37,7 +38,7 @@ const WorldEditPage = () => {
                 image={worldEditLogo.src}
             />
             <ContainerPadded>
-                <Row>
+                <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
@@ -62,8 +63,8 @@ const WorldEditPage = () => {
                             </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
                             <MainLink href="https://worldedit.enginehub.org">
@@ -86,8 +87,8 @@ const WorldEditPage = () => {
                             </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent
                         header={'Build With Speed'}
                         align={'left'}
@@ -116,8 +117,8 @@ const WorldEditPage = () => {
                             </li>
                         </ul>
                     </AlignedContent>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent
                         header={'Have Complete Control'}
                         align={'right'}
@@ -142,8 +143,8 @@ const WorldEditPage = () => {
                             </li>
                         </ul>
                     </AlignedContent>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent
                         header={'Advanced Editing Features'}
                         align={'left'}
@@ -166,14 +167,14 @@ const WorldEditPage = () => {
                             <li>Many more! There are over 100 functions</li>
                         </ul>
                     </AlignedContent>
-                </Row>
-                <Row>
-                    <SectionHeading id="videos">
+                </div>
+                <div className={Row}>
+                    <h3 className={SectionHeading} id="videos">
                         Watch it in action
-                    </SectionHeading>
-                </Row>
-                <Row>
-                    <ColumnHalf>
+                    </h3>
+                </div>
+                <div className={Row}>
+                    <div className={ColumnHalf}>
                         <iframe
                             width="100%"
                             height="300"
@@ -181,8 +182,8 @@ const WorldEditPage = () => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                    </ColumnHalf>
-                    <ColumnHalf>
+                    </div>
+                    <div className={ColumnHalf}>
                         <iframe
                             width="100%"
                             height="300"
@@ -190,13 +191,13 @@ const WorldEditPage = () => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                    </ColumnHalf>
-                </Row>
-                <Row>
+                    </div>
+                </div>
+                <div className={Row}>
                     <div>
-                        <SectionHeading id="downloads">
+                        <h3 className={SectionHeading} id="downloads">
                             Downloads
-                        </SectionHeading>
+                        </h3>
                         <p>Please choose a download for your platform.</p>
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support WorldEdit for Bukkit.</p>
@@ -388,13 +389,16 @@ const WorldEditPage = () => {
                                 that supports Minecraft 1.7.2.
                             </p>
                             <p>
-                                <WarningLabel>Note!</WarningLabel> Some
-                                features, such as setting biomes or copying and
-                                pasting chests may not work with this version.
+                                <span className={`${Label} ${WarningLabel}`}>
+                                    Note!
+                                </span>{' '}
+                                Some features, such as setting biomes or copying
+                                and pasting chests may not work with this
+                                version.
                             </p>
                         </PlatformBanner>
                     </div>
-                </Row>
+                </div>
             </ContainerPadded>
         </Layout>
     );

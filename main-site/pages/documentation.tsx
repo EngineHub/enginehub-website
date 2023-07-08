@@ -27,18 +27,18 @@ const DocumentationPage = () => {
                 image={'/images/enginehub-logo.png'}
             />
             <ContainerPadded>
-                <Row>
-                    <ColumnQuarter>
+                <div className={Row}>
+                    <div className={ColumnQuarter}>
                         <SidebarIcon
                             src={'/images/enginehub-logo.png'}
                             alt={'EngineHub Logo'}
                         />
-                        <SidebarHeading>Docs</SidebarHeading>
-                    </ColumnQuarter>
-                    <ColumnThreeQuarter>
-                        <SectionHeading id="documentation">
+                        <h1 className={SidebarHeading}>Docs</h1>
+                    </div>
+                    <div className={ColumnThreeQuarter}>
+                        <h3 className={SectionHeading} id="documentation">
                             Documentation
-                        </SectionHeading>
+                        </h3>
                         <p>Documentation for the following is available:</p>
                         <PlatformBanner
                             img={{ src: WorldEditHeader }}
@@ -180,8 +180,8 @@ const DocumentationPage = () => {
                                 </BlueButton>
                             </p>
                         </PlatformBanner>
-                    </ColumnThreeQuarter>
-                </Row>
+                    </div>
+                </div>
             </ContainerPadded>
         </Layout>
     );

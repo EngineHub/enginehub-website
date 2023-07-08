@@ -1,0 +1,11 @@
+.ColumnQuarter {
+    padding-left: 15px;
+    padding-right: 15px;
+    flex: 25%;
+}
+
+.ColumnThreeQuarter {
+    flex: 75%;
+    padding-left: 15px;
+    padding-right: 15px;
+}

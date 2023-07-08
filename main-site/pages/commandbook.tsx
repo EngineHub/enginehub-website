@@ -16,6 +16,7 @@ import {
     JumbotronContainer,
     MainLink,
     GrayButton,
+    Label,
     BlueButton
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
@@ -33,7 +34,7 @@ const CommandBookPage = () => {
                 image={commandBookLogo.src}
             />
             <ContainerPadded>
-                <Row>
+                <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
                             <h1>
@@ -54,8 +55,8 @@ const CommandBookPage = () => {
                             </BlueButton>
                         </JumbotronButtonBox>
                     </JumbotronContainer>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
                             <MainLink href="http://wiki.sk89q.com/wiki/commandbook">
@@ -78,8 +79,8 @@ const CommandBookPage = () => {
                             </MainLink>
                         </HorizontalNavItem>
                     </HorizontalNav>
-                </Row>
-                <Row>
+                </div>
+                <div className={Row}>
                     <AlignedContent header={'Features'} align={'left'}>
                         <ul>
                             <li>
@@ -110,21 +111,23 @@ const CommandBookPage = () => {
                             </li>
                         </ul>
                         <p>
-                            <InfoLabel>Did you know?</InfoLabel> CommandBook was
-                            the first addon for Minecraft that let you enter
-                            expressions (such as <code>#near</code>) and natural
-                            language parameters ("3am" rather than "15450") for
-                            commands.
+                            <span className={`${Label} ${InfoLabel}`}>
+                                Did you know?
+                            </span>{' '}
+                            CommandBook was the first addon for Minecraft that
+                            let you enter expressions (such as{' '}
+                            <code>#near</code>) and natural language parameters
+                            ("3am" rather than "15450") for commands.
                         </p>
                     </AlignedContent>
-                </Row>
-                <Row>
-                    <SectionHeading id="videos">
+                </div>
+                <div className={Row}>
+                    <h3 className={SectionHeading} id="videos">
                         Watch it in action
-                    </SectionHeading>
-                </Row>
-                <Row>
-                    <ColumnHalf>
+                    </h3>
+                </div>
+                <div className={Row}>
+                    <div className={ColumnHalf}>
                         <iframe
                             width="100%"
                             height="410"
@@ -132,13 +135,13 @@ const CommandBookPage = () => {
                             frameBorder={0}
                             allowFullScreen={true}
                         />
-                    </ColumnHalf>
-                </Row>
-                <Row>
+                    </div>
+                </div>
+                <div className={Row}>
                     <div>
-                        <SectionHeading id="downloads">
+                        <h3 className={SectionHeading} id="downloads">
                             Downloads
-                        </SectionHeading>
+                        </h3>
                         <p>Please choose a download for your platform.</p>
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support CommandBook for Bukkit.</p>
@@ -161,8 +164,10 @@ const CommandBookPage = () => {
                                 </GrayButton>
                             </p>
                             <p>
-                                <WarningLabel>Note!</WarningLabel> CommandBook
-                                requires that{' '}
+                                <span className={`${Label} ${WarningLabel}`}>
+                                    Note!
+                                </span>{' '}
+                                CommandBook requires that{' '}
                                 <MainLink href="/worldedit/">
                                     WorldEdit
                                 </MainLink>{' '}
@@ -190,7 +195,7 @@ const CommandBookPage = () => {
                             </ol>
                         </PlatformBanner>
                     </div>
-                </Row>
+                </div>
             </ContainerPadded>
         </Layout>
     );
