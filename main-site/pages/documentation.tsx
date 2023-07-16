@@ -8,7 +8,8 @@ import {
     SidebarHeading,
     SectionHeading,
     BlueButton,
-    GrayButton
+    GrayButton,
+    Container
 } from '@enginehub/shared';
 import SidebarIcon from '../src/components/sidebar/SidebarIcon';
 import PlatformBanner from '../src/components/PlatformBanner';
@@ -26,7 +27,7 @@ const DocumentationPage = () => {
                 description="Documentation for the EngineHub projects. Home to the docs of WorldEdit, WorldGuard, CraftBook, CommandBook, CommandHelper, and more."
                 image={'/images/enginehub-logo.png'}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
                     <div className={ColumnQuarter}>
                         <SidebarIcon
@@ -182,7 +183,7 @@ const DocumentationPage = () => {
                         </PlatformBanner>
                     </div>
                 </div>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 };

@@ -169,7 +169,7 @@ const Submit = () => {
                 title="Submit | WorldEdit Golf"
                 description="Create a new challenge at WorldEdit Golf!"
             />
-            <Container ref={containerRef}>
+            <div className={Container} ref={containerRef}>
                 <BrandHeader />
                 {submitting && submitting.type === 'loading' && (
                     <LoadingContainer>
@@ -212,7 +212,7 @@ const Submit = () => {
                 <PurpleButton onClick={submitGolf} disabled={!isValid}>
                     Upload Golf
                 </PurpleButton>
-            </Container>
+            </div>
         </Layout>
     );
 };

@@ -87,7 +87,7 @@ function Index({
                     ))}
                 </BranchButtonList>
             </PageHeader>
-            <Container>
+            <div className={Container}>
                 {activeBranch !== project.defaultBranch && (
                     <BranchWarning
                         currentBranch={activeBranch}
@@ -202,7 +202,7 @@ function Index({
                     hasNextPage={hasNextPage}
                     pageMask={`/job/${project.id}?branch=${activeBranch}&page=:page`}
                 />
-            </Container>
+            </div>
         </Layout>
     );
 }

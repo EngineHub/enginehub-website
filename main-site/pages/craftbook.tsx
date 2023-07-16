@@ -17,7 +17,8 @@ import {
     MainLink,
     GrayButton,
     BlueButton,
-    Label
+    Label,
+    Container
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
@@ -34,7 +35,7 @@ const CraftBookPage = () => {
                 description="CraftBook lets you create magically extending bridges, compact Redstone circuits, complex Minecart mechanics, and much more — all without a client mod and fully customizable by the server."
                 image={craftBookLogo.src}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
@@ -263,7 +264,7 @@ const CraftBookPage = () => {
                         </PlatformBanner>
                     </div>
                 </div>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 };

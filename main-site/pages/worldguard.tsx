@@ -2,6 +2,7 @@ import Layout from '../src/components/Layout';
 import {
     SEO,
     ContainerPadded,
+    Container,
     Row,
     ColumnHalf,
     JumbotronButtonBox,
@@ -32,7 +33,7 @@ const WorldGuardPage = () => {
                 description="WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft."
                 image={worldGuardLogo.src}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
@@ -231,7 +232,7 @@ const WorldGuardPage = () => {
                         </PlatformBanner>
                     </div>
                 </div>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 };

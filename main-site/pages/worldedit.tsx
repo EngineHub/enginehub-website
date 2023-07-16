@@ -16,7 +16,8 @@ import {
     MainLink,
     GrayButton,
     BlueButton,
-    Label
+    Label,
+    Container
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
@@ -37,7 +38,7 @@ const WorldEditPage = () => {
                 description="WorldEdit lets you build fast and smart. Get started with the essential building tool used by almost all professional Minecraft builders today"
                 image={worldEditLogo.src}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
@@ -399,7 +400,7 @@ const WorldEditPage = () => {
                         </PlatformBanner>
                     </div>
                 </div>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 };

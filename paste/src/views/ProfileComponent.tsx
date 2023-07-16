@@ -3,6 +3,13 @@ import { memo } from 'react';
 import { useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
 import { styled } from 'styled-components';
+import {
+    ProfileNodeBox,
+    PercentText,
+    TimeText,
+    Bar,
+    BarInner
+} from './ProfileComponent.module.css';
 
 const CloseIcon = require('./images/close.png') as string;
 const OpenIcon = require('./images/open.png') as string;
@@ -25,27 +32,6 @@ const INVALID_PROFILE = {
     parent: { children: [] }
 };
 
-const ProfileNodeBox = styled.div`
-    margin-left: 6px;
-    border-left: 1px solid #ccc;
-`;
-
-const PercentText = styled.span`
-    color: #0059d1;
-    font-size: 90%;
-    border-radius: 3px;
-    padding: 0 4px;
-`;
-
-const TimeText = styled.span`
-    display: none;
-    margin: 0;
-    color: #888;
-    font-size: 90%;
-    border-radius: 3px;
-    padding: 0 4px;
-`;
-
 const ProfileNodeText = styled.div<{ open: boolean }>`
     background: url(${props => (props.open ? CloseIcon : OpenIcon)}) center left
         no-repeat;
@@ -67,24 +53,6 @@ const ProfileNodeText = styled.div<{ open: boolean }>`
     &:hover .time {
         display: inline;
     }
-`;
-
-const Bar = styled.span`
-    display: inline-block;
-    width: 100px;
-    height: 12px;
-    margin-left: 20px;
-    border: 1px solid #ccc;
-    position: absolute;
-    right: 30px;
-    background: #fff;
-    line-height: 1;
-`;
-
-const BarInner = styled.span`
-    display: inline-block;
-    height: 12px;
-    background: #0059d1;
 `;
 
 interface ProfileNodeProps {
@@ -110,13 +78,13 @@ const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
     const onToggle = () => setOpen(!open);
     const percent = calculatePercentage(entry.selfTime, allTime);
     return (
-        <ProfileNodeBox>
+        <div className={ProfileNodeBox}>
             <ProfileNodeText onClick={onToggle} open={open}>
-                {entry.name} <PercentText>{percent}%</PercentText>{' '}
-                <TimeText className="time">{entry.selfTime}ms</TimeText>
-                <Bar>
-                    <BarInner style={{ width: percent }} />
-                </Bar>
+                {entry.name} <span className={PercentText}>{percent}%</span>{' '}
+                <span className={`${TimeText} time`}>{entry.selfTime}ms</span>
+                <span className={Bar}>
+                    <span className={BarInner} style={{ width: percent }} />
+                </span>
             </ProfileNodeText>
             {entry.children.length > 0 && (
                 <div style={{ display: open ? 'block' : 'none' }}>
@@ -125,7 +93,7 @@ const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
                     ))}
                 </div>
             )}
-        </ProfileNodeBox>
+        </div>
     );
 };
 

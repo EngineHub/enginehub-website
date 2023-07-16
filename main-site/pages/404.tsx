@@ -12,9 +12,9 @@ const NotFoundPage = () => (
             Sorry, the page or resource that you are looking for cannot be
             found.
         </PageHeader>
-        <Container>
+        <div className={Container}>
             <BlueButton href="/">Go to EngineHub.org</BlueButton>
-        </Container>
+        </div>
     </Layout>
 );
 

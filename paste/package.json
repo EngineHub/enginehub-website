@@ -9,22 +9,23 @@
         "@enginehub/schematicjs": "^0.9.1",
         "@enginehub/schematicwebviewer": "^4.6.0",
         "@enginehub/shared": "workspace:*",
-        "@google-cloud/storage": "^6.11.0",
+        "@google-cloud/storage": "^6.12.0",
         "base64-js": "^1.5.1",
-        "next": "^13.4.9",
+        "next": "^13.4.10",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "sharp": "^0.32.1",
+        "sharp": "^0.32.3",
         "shortid": "^2.2.16",
-        "styled-components": "^6.0.3"
+        "styled-components": "^6.0.4"
     },
     "devDependencies": {
         "@types/node": "^18.16.19",
-        "@types/react": "18.2.14",
-        "@types/react-dom": "18.2.6",
+        "@types/react": "18.2.15",
+        "@types/react-dom": "18.2.7",
         "@types/shortid": "^0.0.29",
-        "eslint": "^8.44.0",
-        "eslint-config-next": "^13.4.9",
+        "eslint": "^8.45.0",
+        "eslint-config-next": "^13.4.10",
+        "postcss-preset-env": "^9.0.0",
         "prettier": "^3.0.0",
         "typescript": "^5.1.6"
     },
@@ -43,5 +44,6 @@
         "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
         "lint": "yarn next lint",
         "lint:fix": "yarn next lint --fix"
-    }
+    },
+    "sideEffects": ["*.global.css"]
 }

@@ -14,7 +14,8 @@ import {
     JumbotronContainer,
     MainLink,
     BlueButton,
-    Label
+    Label,
+    Container
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
@@ -30,7 +31,7 @@ const CommandHelperPage = () => {
                 description="CommandHelper lets you create easy-to-write and 'hot-reloadable' scripts for your Bukkit server to handle events and perform tasks — no Java knowledge required!"
                 image={commandHelperLogo.src}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
@@ -159,7 +160,7 @@ const CommandHelperPage = () => {
                         </PlatformBanner>
                     </div>
                 </div>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 };

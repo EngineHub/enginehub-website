@@ -1,0 +1,12 @@
+.MainContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Main {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    overflow-x: auto;
+}

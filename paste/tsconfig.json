@@ -10,6 +10,6 @@
         "incremental": true
     },
     "include": ["pages/**/*", "src/**/*", "*.{js,ts,tsx}"],
-    "files": ["typings.d.ts"],
+    "files": ["index.d.ts"],
     "exclude": ["node_modules"]
 }

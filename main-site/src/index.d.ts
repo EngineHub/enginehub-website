@@ -3,3 +3,6 @@ declare module '*.svg' {
     export const ReactComponent: React.ComponentType<any>;
     export default content;
 }
+
+declare module '*.module.css';
+declare module '*.global.css';

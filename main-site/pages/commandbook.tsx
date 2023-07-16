@@ -17,7 +17,8 @@ import {
     MainLink,
     GrayButton,
     Label,
-    BlueButton
+    BlueButton,
+    Container
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandBookHeader from '../src/images/projects/headers/commandbook-header.svg';
@@ -33,7 +34,7 @@ const CommandBookPage = () => {
                 description="CommandBook provides a long list of basic, 'default' commands for you and your players on any Bukkit server."
                 image={commandBookLogo.src}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
                     <JumbotronContainer>
                         <JumbotronImageBox>
@@ -196,7 +197,7 @@ const CommandBookPage = () => {
                         </PlatformBanner>
                     </div>
                 </div>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 };

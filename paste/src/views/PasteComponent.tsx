@@ -1,16 +1,8 @@
-import { styled } from 'styled-components';
 import type { FC } from 'react';
 import { useMemo } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
-import { Gutter } from '../Gutter';
-
-const PasteContent = styled.div`
-    display: block;
-    padding-top: 15px;
-    padding-right: 55px;
-    line-height: 130%;
-    white-space: pre;
-`;
+import { Gutter } from '../Gutter.module.css';
+import { PasteContent } from './PasteComponent.module.css';
 
 const PasteComponent: FC<PasteProps> = ({ paste }) => {
     const lineNos = useMemo(() => {
@@ -26,8 +18,8 @@ const PasteComponent: FC<PasteProps> = ({ paste }) => {
     }, [paste]);
     return (
         <>
-            <Gutter>{lineNos}</Gutter>
-            <PasteContent>{paste}</PasteContent>
+            <div className={Gutter}>{lineNos}</div>
+            <div className={PasteContent}>{paste}</div>
         </>
     );
 };

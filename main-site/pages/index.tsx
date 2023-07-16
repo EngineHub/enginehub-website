@@ -39,7 +39,7 @@ const IndexPage = () => {
                 description="Open-source mods for and by the Minecraft community"
                 image={'/images/enginehub-logo.png'}
             />
-            <Container>
+            <div className={Container}>
                 <HeadingContainer>
                     <FeatureHeading>Our Projects</FeatureHeading>
                 </HeadingContainer>
@@ -83,7 +83,7 @@ const IndexPage = () => {
                         </ProjectList>
                     </div>
                 </div>
-            </Container>
+            </div>
         </Layout>
     );
 };

@@ -89,7 +89,7 @@ export const Landing: FunctionComponent<LandingProps> = ({
                     discordOverride={discordOverride}
                 />
                 <LandingText>
-                    <Container>
+                    <div className={Container}>
                         <Title>
                             Open-source mods for and by the Minecraft community
                         </Title>
@@ -103,7 +103,7 @@ export const Landing: FunctionComponent<LandingProps> = ({
                             Minecraft Forge, MinecraftEdu, LiteLoader, and other
                             platforms.
                         </Subtitle>
-                    </Container>
+                    </div>
                 </LandingText>
             </HeaderContent>
         </HeaderWrapper>

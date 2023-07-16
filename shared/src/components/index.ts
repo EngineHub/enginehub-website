@@ -23,7 +23,7 @@ export {
 export * from './AlignedContent';
 export * from './Breadcrumbs';
 export * from './Button';
-export * from './Container';
+export { Container, ContainerPadded } from './Container.module.css';
 export * from './FileSelector';
 export * from './Footer';
 export * from './HorizontalNav';

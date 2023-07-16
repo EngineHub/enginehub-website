@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, HTMLAttributes } from 'react';
 import { useState, useEffect, useMemo } from 'react';
 import { styled } from 'styled-components';
 import { MainLinkStyle, MainLink } from './Link';
@@ -124,10 +124,9 @@ const HorizontalSponsorArea = styled.div`
     }
 `;
 
-export const LabelledSponsorsArea: FC<ExtraSponsorProps> = ({
-    extraSponsors,
-    ...rest
-}) => (
+export const LabelledSponsorsArea: FC<
+    ExtraSponsorProps & HTMLAttributes<HTMLDivElement>
+> = ({ extraSponsors, ...rest }) => (
     <HorizontalSponsorArea {...rest}>
         <small>Sponsor </small>
         <RandomSponsor extraSponsors={extraSponsors} />

@@ -9,6 +9,7 @@
         "isolatedModules": true,
         "incremental": true
     },
+    "files": ["index.d.ts"],
     "include": [
         "pages/**/*",
         "src/**/*",

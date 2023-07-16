@@ -33,7 +33,7 @@ function Home({ golfs }: HomeProps) {
                 title="WorldEdit Golf"
                 description="For WorldEdit Pros, every command counts. Pick a challenge, write some commands, and show us what you've got."
             />
-            <Container>
+            <div className={Container}>
                 <BrandHeader isHomePage={true} />
                 {isAuthenticated && (
                     <NewChallengeBlock>
@@ -43,7 +43,7 @@ function Home({ golfs }: HomeProps) {
                     </NewChallengeBlock>
                 )}
                 <OpenChallenge golfs={golfs} />
-            </Container>
+            </div>
         </Layout>
     );
 }

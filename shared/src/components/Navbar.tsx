@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { Container } from './Container';
+import { Container } from './Container.module.css';
 import { MainButtonStyle, PurpleButtonStyle } from './Button';
 import { SECONDARY, BRAND } from '../theme/index';
 import Link from 'next/link';
@@ -85,7 +85,7 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
         headertheme !== 'default' ? FloatedPurpleButton : FloatedGrayButton;
     return (
         <Nav headertheme={headertheme}>
-            <Container>
+            <div className={Container}>
                 <div>
                     <HeaderLink href="/" headertheme={headertheme}>
                         {headertitle}
@@ -110,7 +110,7 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
                     </ButtonComp>
                 </div>
                 {children}
-            </Container>
+            </div>
         </Nav>
     );
 };

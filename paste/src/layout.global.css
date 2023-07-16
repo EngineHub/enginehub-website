@@ -1,4 +1,5 @@
-html, #__next {
+html,
+#__next {
     height: 100%;
 }
 

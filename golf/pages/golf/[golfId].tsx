@@ -240,7 +240,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                 title={`${golf.title} | WorldEdit Golf`}
                 description={`Try out the ${golf.title} challenge by ${uploadingUser.fullname}! Only at WorldEdit.Golf`}
             />
-            <Container>
+            <div className={Container}>
                 <BrandHeader />
                 <PageColumns>
                     <MainContent ref={contentRef}>
@@ -320,7 +320,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                         })}
                     </SideLeaderboard>
                 </PageColumns>
-            </Container>
+            </div>
         </Layout>
     );
 }

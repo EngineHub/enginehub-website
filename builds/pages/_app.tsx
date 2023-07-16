@@ -1,6 +1,6 @@
 import App from 'next/app';
 import Router from 'next/router';
-import '../src/layout.css';
+import '../src/layout.global.css';
 
 import { gtag } from '@enginehub/shared';
 

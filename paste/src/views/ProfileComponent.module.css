@@ -1,0 +1,38 @@
+.ProfileNodeBox {
+    margin-left: 6px;
+    border-left: 1px solid #ccc;
+}
+
+.PercentText {
+    color: #0059d1;
+    font-size: 90%;
+    border-radius: 3px;
+    padding: 0 4px;
+}
+
+.TimeText {
+    display: none;
+    margin: 0;
+    color: #888;
+    font-size: 90%;
+    border-radius: 3px;
+    padding: 0 4px;
+}
+
+.Bar {
+    display: inline-block;
+    width: 100px;
+    height: 12px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    position: absolute;
+    right: 30px;
+    background: #fff;
+    line-height: 1;
+}
+
+.BarInner {
+    display: inline-block;
+    height: 12px;
+    background: #0059d1;
+}

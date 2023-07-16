@@ -1,8 +1,8 @@
-import { ContainerPadded } from './Container';
 import { styled } from 'styled-components';
 import type { ExtraSponsorProps } from './Sponsors';
 import { LabelledSponsorsArea } from './Sponsors';
 import type { FC, PropsWithChildren } from 'react';
+import { Container, ContainerPadded } from './Container.module.css';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;
@@ -86,7 +86,7 @@ export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
     children
 }) => (
     <HeaderWrapper>
-        <ContainerPadded>
+        <div className={`${Container} ${ContainerPadded}`}>
             <HeaderContent>
                 {icon ? (
                     <HeaderTextArea>
@@ -101,6 +101,6 @@ export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
                 <HeaderChildrenContainer>{children}</HeaderChildrenContainer>
                 <SponsorSection extraSponsors={extraSponsors} />
             </HeaderContent>
-        </ContainerPadded>
+        </div>
     </HeaderWrapper>
 );

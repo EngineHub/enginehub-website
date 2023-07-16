@@ -18,7 +18,8 @@ import {
     ColumnThird,
     ColumnTwoThird,
     WarningBox,
-    GrayButton
+    GrayButton,
+    Container
 } from '@enginehub/shared';
 import { styled } from 'styled-components';
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -81,7 +82,7 @@ function Index({ project, build }: BuildPageProps) {
                 title={`${project.name} Build #${build.build_number}`}
                 description={`${project.name} Builds. Build #${build.build_number} for ${project.name} ${build.branch}. Download test builds at EngineHub.`}
             />
-            <ContainerPadded>
+            <div className={`${Container} ${ContainerPadded}`}>
                 <BreadcrumbWrapper>
                     <Breadcrumb>
                         <MainLink href={'/'}>Builds</MainLink>
@@ -257,7 +258,7 @@ function Index({ project, build }: BuildPageProps) {
                         </tbody>
                     </Table>
                 </Panel>
-            </ContainerPadded>
+            </div>
         </Layout>
     );
 }

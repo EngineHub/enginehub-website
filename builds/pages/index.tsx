@@ -67,7 +67,7 @@ function Index({ projectEntries }: IndexProps) {
                 }
             />
             <PageHeader text={'Builds'} />
-            <Container>
+            <div className={Container}>
                 <div className={WarningBox}>
                     <strong>These are not the main downloads!</strong>
                     <p>
@@ -169,7 +169,7 @@ function Index({ projectEntries }: IndexProps) {
                         ))}
                     </tbody>
                 </Table>
-            </Container>
+            </div>
         </Layout>
     );
 }
