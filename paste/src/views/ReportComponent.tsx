@@ -1,10 +1,15 @@
 import type { FC } from 'react';
 import { useMemo, useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
-import { styled } from 'styled-components';
+import {
+    ReportWrapper,
+    ReportNodeBox,
+    ReportNodeTitle,
+    ReportNodeContent
+} from './ReportComponent.module.css';
 
-const CloseIcon = require('./images/close.png') as string;
-const OpenIcon = require('./images/open.png') as string;
+const CloseIcon = require('./images/close.png').default as { src: string };
+const OpenIcon = require('./images/open.png').default as { src: string };
 
 interface ReportEntry {
     title: string;
@@ -16,39 +21,6 @@ const INVALID_REPORT = {
     content: 'This paste is not a valid report.'
 };
 
-const ReportWrapper = styled.div`
-    width: 100%;
-    overflow: auto auto;
-    white-space: nowrap;
-`;
-
-const ReportNodeBox = styled.div<{ open: boolean }>`
-    tab-size: 3;
-    margin: 0 0 5px 0;
-    padding: 0;
-    border-radius: 3px;
-
-    h2 {
-        cursor: pointer;
-        margin: 0;
-        padding: 0 0 0 25px;
-        font-size: 120%;
-        background: #efefef url(${props => (props.open ? CloseIcon : OpenIcon)})
-            center left no-repeat;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    pre {
-        display: ${props => (props.open ? 'block' : 'none')};
-        background: transparent;
-        border: 0;
-        margin: 10px 25px;
-        padding: 0;
-    }
-`;
-
 interface ReportNodeProps {
     entry: ReportEntry;
 }
@@ -57,10 +29,25 @@ const ReportNode: FC<ReportNodeProps> = ({ entry }) => {
     const [open, setOpen] = useState<boolean>(true);
     const onToggle = () => setOpen(!open);
     return (
-        <ReportNodeBox open={open}>
-            <h2 onClick={onToggle}>{entry.title}</h2>
-            <pre>{entry.content}</pre>
-        </ReportNodeBox>
+        <div className={ReportNodeBox}>
+            <h2
+                className={ReportNodeTitle}
+                onClick={onToggle}
+                style={{
+                    background: `#efefef url(${
+                        open ? CloseIcon.src : OpenIcon.src
+                    }) center left no-repeat`
+                }}
+            >
+                {entry.title}
+            </h2>
+            <pre
+                className={ReportNodeContent}
+                style={{ display: open ? 'block' : 'none' }}
+            >
+                {entry.content}
+            </pre>
+        </div>
     );
 };
 
@@ -81,7 +68,7 @@ function generateReportEntries(paste: string): ReportEntry[] {
         title: ''
     };
     for (let line of lines) {
-        line = line.trimRight();
+        line = line.trimEnd();
 
         switch (currentState) {
             case ReportState.CONTENT:
@@ -126,11 +113,11 @@ const ReportComponent: FC<PasteProps> = ({ paste }) => {
     const reportEntries = useMemo(() => generateReportEntries(paste), [paste]);
 
     return (
-        <ReportWrapper>
+        <div className={ReportWrapper}>
             {reportEntries.map((entry, i) => (
                 <ReportNode key={`entry-${i}`} entry={entry} />
             ))}
-        </ReportWrapper>
+        </div>
     );
 };
 
