@@ -2,17 +2,17 @@ import type { FC } from 'react';
 import { memo } from 'react';
 import { useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
-import { styled } from 'styled-components';
 import {
     ProfileNodeBox,
     PercentText,
     TimeText,
     Bar,
-    BarInner
+    BarInner,
+    ProfileNodeText
 } from './ProfileComponent.module.css';
 
-const CloseIcon = require('./images/close.png') as string;
-const OpenIcon = require('./images/open.png') as string;
+const CloseIcon = require('./images/close.png').default as { src: string };
+const OpenIcon = require('./images/open.png').default as { src: string };
 
 interface ProfileEntry {
     name: string;
@@ -31,29 +31,6 @@ const INVALID_PROFILE = {
     children: [],
     parent: { children: [] }
 };
-
-const ProfileNodeText = styled.div<{ open: boolean }>`
-    background: url(${props => (props.open ? CloseIcon : OpenIcon)}) center left
-        no-repeat;
-    padding-left: 20px;
-    cursor: pointer;
-    padding-top: 2px;
-    padding-bottom: 2px;
-
-    &:hover {
-        background-color: #ccc;
-    }
-
-    &:hover + div {
-        background: #efefef;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        border-radius: 3px;
-    }
-
-    &:hover .time {
-        display: inline;
-    }
-`;
 
 interface ProfileNodeProps {
     entry: ProfileEntry;
@@ -79,13 +56,24 @@ const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
     const percent = calculatePercentage(entry.selfTime, allTime);
     return (
         <div className={ProfileNodeBox}>
-            <ProfileNodeText onClick={onToggle} open={open}>
+            <div
+                className={ProfileNodeText}
+                onClick={onToggle}
+                style={{
+                    background:
+                        entry.children.length > 0
+                            ? `url(${
+                                  open ? CloseIcon.src : OpenIcon.src
+                              }) center left no-repeat`
+                            : 'none'
+                }}
+            >
                 {entry.name} <span className={PercentText}>{percent}%</span>{' '}
                 <span className={`${TimeText} time`}>{entry.selfTime}ms</span>
                 <span className={Bar}>
                     <span className={BarInner} style={{ width: percent }} />
                 </span>
-            </ProfileNodeText>
+            </div>
             {entry.children.length > 0 && (
                 <div style={{ display: open ? 'block' : 'none' }}>
                     {entry.children.map((child, i) => (
