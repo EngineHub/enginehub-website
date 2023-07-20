@@ -1,0 +1,20 @@
+.ProjectListItem {
+    padding: 0 0 30px;
+    clear: both;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.ProjectListImg {
+    margin: 0 12px 12px 0;
+    height: 80px;
+    float: left;
+    vertical-align: middle;
+    border: 0;
+}
+
+.ProjectListLink {
+    display: inline;
+    font-size: 21px;
+    padding: 5px 0;
+}

@@ -15,10 +15,11 @@ import {
     HorizontalNavItem,
     AlignedContent,
     MainLink,
-    GrayButton,
-    BlueButton,
     Label,
-    Container
+    Container,
+    Button,
+    SecondaryButton,
+    PrimaryButton
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
@@ -38,57 +39,60 @@ const CraftBookPage = () => {
             />
             <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
-                    <JumbotronContainer>
-                        <JumbotronImageBox>
+                    <div className={JumbotronContainer}>
+                        <div className={JumbotronImageBox}>
                             <h1>
                                 <Image src={craftBookHeader} alt="CraftBook" />
                             </h1>
-                        </JumbotronImageBox>
-                        <JumbotronText>
+                        </div>
+                        <h2 className={JumbotronText}>
                             CraftBook lets you create magically extending
                             bridges, compact Redstone circuits, complex Minecart
                             mechanics, and much more — all without a client mod
                             and fully customizable by the server.
-                        </JumbotronText>
-                        <JumbotronButtonBox>
-                            <BlueButton href="/craftbook/#downloads">
+                        </h2>
+                        <div className={JumbotronButtonBox}>
+                            <Link
+                                className={`${Button} ${PrimaryButton}`}
+                                href="/craftbook/#downloads"
+                            >
                                 List downloads
-                            </BlueButton>
-                        </JumbotronButtonBox>
-                    </JumbotronContainer>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
                 <div className={Row}>
-                    <HorizontalNav>
-                        <HorizontalNavItem>
+                    <ul className={HorizontalNav}>
+                        <li className={HorizontalNavItem}>
                             <Link className={MainLink} href="/documentation/">
                                 Documentation
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem className={'hideSmall'}>
+                        </li>
+                        <li className={`${HorizontalNavItem} hideSmall`}>
                             <Link
                                 className={MainLink}
                                 href="https://discord.gg/enginehub"
                             >
                                 Discord
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/CraftBook/issues"
                             >
                                 Bug / Feature Tracker
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/CraftBook"
                             >
                                 Source Code
                             </Link>
-                        </HorizontalNavItem>
-                    </HorizontalNav>
+                        </li>
+                    </ul>
                 </div>
                 <div className={Row}>
                     <AlignedContent header={'Features'} align={'left'}>
@@ -173,22 +177,24 @@ const CraftBookPage = () => {
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support CraftBook for Bukkit.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/craftbook/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/craftbook?branch=master'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
                                 <span className={`${Label} ${WarningLabel}`}>
@@ -224,22 +230,24 @@ const CraftBookPage = () => {
                         <PlatformBanner img={spongeLogo} alt={'SpongePowered'}>
                             <p>We officially support CraftBook for Sponge.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://ore.spongepowered.org/EngineHub/CraftBook'
                                     }
                                 >
                                     Stable builds for Sponge
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/craftbook?branch=4.x'
                                     }
                                 >
                                     Experimental builds for Sponge
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
                                 <span className={`${Label} ${WarningLabel}`}>

@@ -4,6 +4,6 @@
         "jsx": "preserve"
     },
     "include": ["pages/**/*", "src/**/*", "*.js", "*.ts", "*.tsx"],
-    "files": ["next-env.d.ts", "index.d.ts"],
+    "files": ["index.d.ts", "next-env.d.ts"],
     "exclude": ["node_modules", ".next", "build"]
 }

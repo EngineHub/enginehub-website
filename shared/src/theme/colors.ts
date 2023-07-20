@@ -32,21 +32,21 @@ export const SECONDARY: ColorPalette = {
 
 export const THEME_CSS = `
 html {
-    // Brand
+    /* Brand */
     --brand-lighter: ${BRAND.lighter};
     --brand-normal: ${BRAND.normal};
     --brand-darker: ${BRAND.darker};
     --brand-font: ${BRAND.font};
     --brand-accent: ${BRAND.accent};
 
-    // Primary
+    /* Primary */
     --primary-lighter: ${PRIMARY.lighter};
     --primary-normal: ${PRIMARY.normal};
     --primary-darker: ${PRIMARY.darker};
     --primary-font: ${PRIMARY.font};
     --primary-accent: ${PRIMARY.accent};
 
-    // Secondary
+    /* Secondary */
     --secondary-lighter: ${SECONDARY.lighter};
     --secondary-normal: ${SECONDARY.normal};
     --secondary-darker: ${SECONDARY.darker};

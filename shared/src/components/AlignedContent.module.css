@@ -1,0 +1,30 @@
+.AlignedContentWrapper {
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+
+    @media (min-width: 992px) {
+        &:global(.left) {
+            flex-direction: row;
+        }
+        &:global(.right) {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+.InfoSide {
+    flex: 60%;
+    margin: 0 1rem;
+}
+
+.ImageSide {
+    flex: 40%;
+    margin: 0 1rem;
+}
+
+.LimitedVideo {
+    width: 100%;
+    border-radius: 5px;
+}

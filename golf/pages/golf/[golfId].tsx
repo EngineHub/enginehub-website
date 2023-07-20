@@ -13,12 +13,13 @@ import { Schematic } from '../../src/components/Schematic';
 import { useToken } from '../../src/components/Auth';
 import Layout from '../../src/Layout';
 import {
-    BlueButtonStyle,
-    MainButtonStyle,
     Container,
     useElementWidth,
     SEO,
-    MainLink
+    MainLink,
+    Button,
+    SecondaryButton,
+    PrimaryButton
 } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -79,9 +80,6 @@ const SchematicBoxText = styled.div`
     justify-content: space-evenly;
 `;
 
-const GrayButton = styled.a(MainButtonStyle);
-const BlueButton = styled.a(BlueButtonStyle);
-
 const RunButtonBox = styled.div`
     display: flex;
     justify-content: center;
@@ -118,9 +116,12 @@ const SchematicBox: FC<SchematicBoxProps> = ({ schematic, size, title }) => {
             <Schematic size={size} schematic={schematic} />
             <SchematicBoxText>
                 <SchematicBoxTitle>{title}</SchematicBoxTitle>
-                <BlueButton onClick={onClickDownload}>
+                <a
+                    className={`${Button} ${PrimaryButton}`}
+                    onClick={onClickDownload}
+                >
                     <FontAwesomeIcon icon={faDownload} />
-                </BlueButton>
+                </a>
             </SchematicBoxText>
         </div>
     );
@@ -272,13 +273,20 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                         <h3>Commands</h3>
                         <BaseTextStyle ref={commandBox} />
                         <RunButtonBox>
-                            <GrayButton
+                            <a
+                                className={`${Button} ${SecondaryButton}`}
                                 target="_blank"
+                                rel="noreferrer"
                                 href="https://worldedit.enginehub.org/en/latest/commands/"
                             >
                                 Help
-                            </GrayButton>
-                            <BlueButton onClick={queueBroker}>Run</BlueButton>
+                            </a>
+                            <a
+                                className={`${Button} ${PrimaryButton}`}
+                                onClick={queueBroker}
+                            >
+                                Run
+                            </a>
                         </RunButtonBox>
                         <h3>Output</h3>
                         <BaseTextStyle disabled={true} ref={statusBox} />

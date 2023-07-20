@@ -1,7 +1,11 @@
-import { styled } from 'styled-components';
 import type { FunctionComponent } from 'react';
-import { MainLinkStyle } from '@enginehub/shared';
+import { MainLink } from '@enginehub/shared';
 import Link from 'next/link';
+import {
+    ProjectListItem,
+    ProjectListImg,
+    ProjectListLink
+} from './ProjectBox.module.css';
 
 interface ProjectBoxProps {
     description: string;
@@ -10,37 +14,22 @@ interface ProjectBoxProps {
     slug: string;
 }
 
-const ProjectListItem = styled.li`
-    padding: 0 0 30px;
-    clear: both;
-    font-size: 14px;
-    line-height: 1.7;
-`;
-
-const ProjectListImg = styled.img`
-    margin: 0 12px 12px 0;
-    height: 80px;
-    float: left;
-    vertical-align: middle;
-    border: 0;
-`;
-
-const ProjectListLink = styled(Link)`
-    ${MainLinkStyle}
-    display: inline;
-    font-size: 21px;
-    padding: 5px 0;
-`;
-
 const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (
-    <ProjectListItem>
-        <ProjectListImg
+    <li className={ProjectListItem}>
+        <img
+            className={ProjectListImg}
+            alt={props.name}
             src={typeof props.icon === 'object' ? props.icon.src : props.icon}
         />
-        <ProjectListLink href={`/${props.slug}/`}>{props.name}</ProjectListLink>
+        <Link
+            className={`${MainLink} ${ProjectListLink}`}
+            href={`/${props.slug}/`}
+        >
+            {props.name}
+        </Link>
         <br />
         {props.description}
-    </ProjectListItem>
+    </li>
 );
 
 export default ProjectBox;

@@ -13,9 +13,10 @@ import {
     HorizontalNavItem,
     JumbotronContainer,
     MainLink,
-    BlueButton,
     Label,
-    Container
+    Container,
+    Button,
+    PrimaryButton
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
@@ -34,63 +35,66 @@ const CommandHelperPage = () => {
             />
             <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
-                    <JumbotronContainer>
-                        <JumbotronImageBox>
+                    <div className={JumbotronContainer}>
+                        <div className={JumbotronImageBox}>
                             <h1>
                                 <Image
                                     alt={'CommandHelper'}
                                     src={commandHelperHeader}
                                 />
                             </h1>
-                        </JumbotronImageBox>
-                        <JumbotronText>
+                        </div>
+                        <h2 className={JumbotronText}>
                             CommandHelper lets you create easy-to-write and
                             "hot-reloadable" scripts for your Bukkit server to
                             handle events and perform tasks — no Java knowledge
                             required!
-                        </JumbotronText>
-                        <JumbotronButtonBox>
-                            <BlueButton href="/commandhelper/#downloads">
+                        </h2>
+                        <div className={JumbotronButtonBox}>
+                            <Link
+                                className={`${Button} ${PrimaryButton}`}
+                                href="/commandhelper/#downloads"
+                            >
                                 List downloads
-                            </BlueButton>
-                        </JumbotronButtonBox>
-                    </JumbotronContainer>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
                 <div className={Row}>
-                    <HorizontalNav>
-                        <HorizontalNavItem>
+                    <ul className={HorizontalNav}>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://methodscript.com/docs/"
                             >
                                 Documentation
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem className={'hideSmall'}>
+                        </li>
+                        <li className={`${HorizontalNavItem} hideSmall`}>
                             <Link
                                 className={MainLink}
                                 href="https://discord.gg/Z7jpHed"
                             >
                                 Discord
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/CommandHelper/issues"
                             >
                                 Bug / Feature Tracker
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/CommandHelper"
                             >
                                 Source Code
                             </Link>
-                        </HorizontalNavItem>
-                    </HorizontalNav>
+                        </li>
+                    </ul>
                 </div>
                 <div className={Row}>
                     <AlignedContent header={'Features'} align={'left'}>
@@ -135,13 +139,14 @@ const CommandHelperPage = () => {
                                 We officially support CommandHelper for Bukkit.
                             </p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/commandhelper/'
                                     }
                                 >
                                     Download builds for Bukkit
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
                                 <span className={`${Label} ${InfoLabel}`}>

@@ -1,5 +1,12 @@
+import Link from 'next/link';
 import Layout from '../src/components/Layout';
-import { SEO, Container, PageHeader, BlueButton } from '@enginehub/shared';
+import {
+    SEO,
+    Container,
+    PageHeader,
+    Button,
+    PrimaryButton
+} from '@enginehub/shared';
 
 const NotFoundPage = () => (
     <Layout>
@@ -13,7 +20,9 @@ const NotFoundPage = () => (
             found.
         </PageHeader>
         <div className={Container}>
-            <BlueButton href="/">Go to EngineHub.org</BlueButton>
+            <Link className={`${Button} ${PrimaryButton}`} href="/">
+                Go to EngineHub.org
+            </Link>
         </div>
     </Layout>
 );

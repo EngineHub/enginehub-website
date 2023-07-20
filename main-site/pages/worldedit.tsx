@@ -14,10 +14,11 @@ import {
     SectionHeading,
     WarningLabel,
     MainLink,
-    GrayButton,
-    BlueButton,
     Label,
-    Container
+    Container,
+    Button,
+    SecondaryButton,
+    PrimaryButton
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
@@ -41,8 +42,8 @@ const WorldEditPage = () => {
             />
             <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
-                    <JumbotronContainer>
-                        <JumbotronImageBox>
+                    <div className={JumbotronContainer}>
+                        <div className={JumbotronImageBox}>
                             <h1>
                                 <Image
                                     src={worldEditHeader}
@@ -50,57 +51,60 @@ const WorldEditPage = () => {
                                     loading={'eager'}
                                 />
                             </h1>
-                        </JumbotronImageBox>
-                        <JumbotronText>
+                        </div>
+                        <h2 className={JumbotronText}>
                             WorldEdit lets you build <em>fast</em> and{' '}
                             <em>smart</em>. Why should you spend your time
                             building a wall or excavating a hole when you can
                             work on something <em>creative</em>? Get started
                             with the essential building tool used by almost all
                             professional Minecraft builders today!
-                        </JumbotronText>
-                        <JumbotronButtonBox>
-                            <BlueButton href={'/worldedit/#downloads'}>
+                        </h2>
+                        <div className={JumbotronButtonBox}>
+                            <Link
+                                className={`${Button} ${PrimaryButton}`}
+                                href={'/worldedit/#downloads'}
+                            >
                                 Go to downloads
-                            </BlueButton>
-                        </JumbotronButtonBox>
-                    </JumbotronContainer>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
                 <div className={Row}>
-                    <HorizontalNav>
-                        <HorizontalNavItem>
+                    <ul className={HorizontalNav}>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://worldedit.enginehub.org"
                             >
                                 Documentation
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem className={'hideSmall'}>
+                        </li>
+                        <li className={`${HorizontalNavItem} hideSmall`}>
                             <Link
                                 className={MainLink}
                                 href="https://discord.gg/enginehub"
                             >
                                 Discord
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/WorldEdit/issues"
                             >
                                 Bug / Feature Tracker
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/WorldEdit"
                             >
                                 Source Code
                             </Link>
-                        </HorizontalNavItem>
-                    </HorizontalNav>
+                        </li>
+                    </ul>
                 </div>
                 <div className={Row}>
                     <AlignedContent
@@ -216,22 +220,24 @@ const WorldEditPage = () => {
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support WorldEdit for Bukkit.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/worldedit/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayButton>
+                                </Link>
                             </p>
                             <ol>
                                 <li>
@@ -260,22 +266,24 @@ const WorldEditPage = () => {
                                 MinecraftForge.
                             </p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://minecraft.curseforge.com/projects/worldedit'
                                     }
                                 >
                                     Stable builds for Forge
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Forge
-                                </GrayButton>
+                                </Link>
                             </p>
                             <ol>
                                 <li>
@@ -301,22 +309,24 @@ const WorldEditPage = () => {
                         <PlatformBanner img={fabricLogo} alt={'Fabric'}>
                             <p>We officially support WorldEdit for Fabric.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://minecraft.curseforge.com/projects/worldedit'
                                     }
                                 >
                                     Stable builds for Fabric
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Fabric
-                                </GrayButton>
+                                </Link>
                             </p>
                             <ol>
                                 <li>
@@ -342,22 +352,24 @@ const WorldEditPage = () => {
                         <PlatformBanner img={spongeLogo} alt={'SpongePowered'}>
                             <p>We officially support WorldEdit for Sponge.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://ore.spongepowered.org/enginehub/WorldEdit'
                                     }
                                 >
                                     Stable builds for Sponge
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Sponge
-                                </GrayButton>
+                                </Link>
                             </p>
                             <ol>
                                 <li>

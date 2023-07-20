@@ -3,16 +3,11 @@ import { useIsLoggedIn } from '../src/components/Auth';
 import { styled } from 'styled-components';
 import Layout from '../src/Layout';
 import type { Golf } from '../src/types/database';
-import { PurpleButtonStyle, Container, SEO } from '@enginehub/shared';
+import { Container, SEO, Button, BrandButton } from '@enginehub/shared';
 import Link from 'next/link';
 import { BrandHeader } from '../src/components/BrandHeader';
 import { getAllGolfs } from '../src/databaseConnector';
 import type { GetStaticProps } from 'next';
-
-const ChallengeButton = styled(Link)`
-    ${PurpleButtonStyle()}
-    font-size: 22px;
-`;
 
 const NewChallengeBlock = styled.div`
     display: flex;
@@ -37,9 +32,13 @@ function Home({ golfs }: HomeProps) {
                 <BrandHeader isHomePage={true} />
                 {isAuthenticated && (
                     <NewChallengeBlock>
-                        <ChallengeButton href="/submit">
+                        <Link
+                            className={`${Button} ${BrandButton}`}
+                            style={{ fontSize: '22px' }}
+                            href="/submit"
+                        >
                             New Challenge
-                        </ChallengeButton>
+                        </Link>
                     </NewChallengeBlock>
                 )}
                 <OpenChallenge golfs={golfs} />

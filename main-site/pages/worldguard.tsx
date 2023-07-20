@@ -15,9 +15,10 @@ import {
     AlignedContent,
     SectionHeading,
     MainLink,
-    GrayButton,
-    BlueButton,
-    Label
+    Label,
+    Button,
+    SecondaryButton,
+    PrimaryButton
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
@@ -36,59 +37,62 @@ const WorldGuardPage = () => {
             />
             <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
-                    <JumbotronContainer>
-                        <JumbotronImageBox>
+                    <div className={JumbotronContainer}>
+                        <div className={JumbotronImageBox}>
                             <h1>
                                 <Image src={headerLogo} alt="WorldGuard" />
                             </h1>
-                        </JumbotronImageBox>
-                        <JumbotronText>
+                        </div>
+                        <h2 className={JumbotronText}>
                             WorldGuard lets you and players guard areas of land
                             against griefers and undesirables, as well as tweak
                             and disable various gameplay features of Minecraft.
-                        </JumbotronText>
-                        <JumbotronButtonBox>
-                            <BlueButton href={'/worldguard/#downloads'}>
+                        </h2>
+                        <div className={JumbotronButtonBox}>
+                            <Link
+                                className={`${Button} ${PrimaryButton}`}
+                                href={'/worldguard/#downloads'}
+                            >
                                 List downloads
-                            </BlueButton>
-                        </JumbotronButtonBox>
-                    </JumbotronContainer>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
                 <div className={Row}>
-                    <HorizontalNav>
-                        <HorizontalNavItem>
+                    <ul className={HorizontalNav}>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://worldguard.enginehub.org"
                             >
                                 Documentation
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem className={'hideSmall'}>
+                        </li>
+                        <li className={`${HorizontalNavItem} hideSmall`}>
                             <Link
                                 className={MainLink}
                                 href="https://discord.gg/enginehub"
                             >
                                 Discord
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/WorldGuard/issues"
                             >
                                 Bug / Feature Tracker
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/WorldGuard"
                             >
                                 Source Code
                             </Link>
-                        </HorizontalNavItem>
-                    </HorizontalNav>
+                        </li>
+                    </ul>
                 </div>
                 <div className={Row}>
                     <AlignedContent
@@ -195,22 +199,24 @@ const WorldGuardPage = () => {
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support WorldGuard for Bukkit.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/worldguard/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/worldguard'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
                                 <span className={`${Label} ${WarningLabel}`}>

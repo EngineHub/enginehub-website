@@ -9,11 +9,12 @@ import { Schematic } from '../src/components/Schematic';
 import { useAuthenticatedPage } from '../src/components/Auth';
 import Layout from '../src/Layout';
 import {
-    PurpleButtonStyle,
     FileSelector,
     useElementWidth,
     SEO,
-    Container
+    Container,
+    Button,
+    BrandButton
 } from '@enginehub/shared';
 import { BrandHeader } from '../src/components/BrandHeader';
 
@@ -52,8 +53,6 @@ const InfoContainer = styled.div<{ color: string }>`
     background: ${props => props.color}66;
     padding: 6px 10px;
 `;
-
-const PurpleButton = styled.button(PurpleButtonStyle);
 
 const Submit = () => {
     const [name, setName] = useState<string>('');
@@ -209,9 +208,13 @@ const Submit = () => {
                 {test && (
                     <Schematic size={Math.min(width, 500)} schematic={test} />
                 )}
-                <PurpleButton onClick={submitGolf} disabled={!isValid}>
+                <button
+                    className={`${Button} ${BrandButton}`}
+                    onClick={submitGolf}
+                    disabled={!isValid}
+                >
                     Upload Golf
-                </PurpleButton>
+                </button>
             </div>
         </Layout>
     );

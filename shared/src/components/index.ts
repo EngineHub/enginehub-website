@@ -26,18 +26,29 @@ export {
     Breadcrumb,
     BreadcrumbWrapper
 } from './Breadcrumbs.module.css';
-export * from './Button';
+export {
+    Button,
+    PrimaryButton,
+    BrandButton,
+    SecondaryButton
+} from './Button.module.css';
 export { Container, ContainerPadded } from './Container.module.css';
 export * from './FileSelector';
 export * from './Footer';
-export * from './HorizontalNav';
+export { HorizontalNav, HorizontalNavItem } from './HorizontalNav.module.css';
 export { InfoBox } from './InfoBox.module.css';
-export * from './Jumbotron';
+export {
+    JumbotronButtonBox,
+    JumbotronContainer,
+    JumbotronImageBox,
+    JumbotronText
+} from './Jumbotron.module.css';
 export * from './Link';
 export { MainLink } from './Link.module.css';
 export * from './Loader';
 export * from './Navbar';
-export * from './PageHeader';
+export { PageHeader } from './PageHeader';
+export { HeaderText } from './PageHeader.module.css';
 export * from './Pagination';
 export { Panel, PanelBody, PanelHeading } from './Panel.module.css';
 export * from './Seo';

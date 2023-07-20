@@ -1,0 +1,29 @@
+.FloatedButton {
+    float: right;
+
+    display: none;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+
+    @media (min-width: 470px) {
+        display: block;
+    }
+}
+
+.Nav {
+    position: relative;
+    min-height: 50px;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+.HeaderLink {
+    font-size: 18px;
+    line-height: 23px;
+    text-decoration: none;
+    padding: 13.5px 15px;
+    height: 50px;
+    float: left;
+    cursor: pointer;
+}

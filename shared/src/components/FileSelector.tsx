@@ -1,8 +1,13 @@
 import type { FC, ChangeEvent } from 'react';
 import { useState, useRef, useEffect } from 'react';
-import { styled } from 'styled-components';
-import { PurpleButtonStyle } from './Button';
 import { FormLabel } from './text/FormLabel.module.css';
+import {
+    Input,
+    Container,
+    ActionContainer,
+    FileName
+} from './FileSelector.module.css';
+import { BrandButton, Button } from './Button.module.css';
 
 interface FileSelectorProps {
     name: string;
@@ -11,31 +16,6 @@ interface FileSelectorProps {
     filter?: (file: File) => boolean;
     disabled?: boolean;
 }
-
-const Input = styled.input`
-    visibility: hidden;
-    position: absolute;
-`;
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 6.5px;
-    margin-bottom: 6.5px;
-`;
-
-const ActionContainer = styled.div`
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-`;
-
-const FileName = styled.span`
-    font-size: 1.2rem;
-    margin-left: 1rem;
-`;
-
-const PurpleButton = styled.button(PurpleButtonStyle);
 
 export const FileSelector: FC<FileSelectorProps> = ({
     name,
@@ -74,20 +54,25 @@ export const FileSelector: FC<FileSelectorProps> = ({
     };
 
     return (
-        <Container {...rest}>
+        <div className={Container} {...rest}>
             <label className={FormLabel}>{name}</label>
-            <ActionContainer>
-                <PurpleButton disabled={disabled} onClick={openFilePicker}>
+            <div className={ActionContainer}>
+                <button
+                    className={`${Button} ${BrandButton}`}
+                    disabled={disabled}
+                    onClick={openFilePicker}
+                >
                     Select File
-                </PurpleButton>
-                <FileName>{files[0] && files[0].name}</FileName>
-            </ActionContainer>
-            <Input
+                </button>
+                <span className={FileName}>{files[0] && files[0].name}</span>
+            </div>
+            <input
+                className={Input}
                 ref={inputRef}
                 onChange={onInputChange}
                 {...{ accept }}
                 type="file"
             />
-        </Container>
+        </div>
     );
 };

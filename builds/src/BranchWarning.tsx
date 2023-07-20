@@ -1,4 +1,5 @@
-import { WarningBox, GrayButton } from '@enginehub/shared';
+import { WarningBox, Button, SecondaryButton } from '@enginehub/shared';
+import Link from 'next/link';
 import type { FC } from 'react';
 
 interface BranchWarningProps {
@@ -17,14 +18,18 @@ const BranchWarning: FC<BranchWarningProps> = props => (
             Branches other than the main one may be experimental. In addition,
             you should be using stable releases rather than these test builds.
         </p>
-        <GrayButton href={`/job/${props.projectId}?branch=${props.mainBranch}`}>
+        <Link
+            className={`${Button} ${SecondaryButton}`}
+            href={`/job/${props.projectId}?branch=${props.mainBranch}`}
+        >
             Go to main branch
-        </GrayButton>{' '}
-        <GrayButton
+        </Link>{' '}
+        <Link
+            className={`${Button} ${SecondaryButton}`}
             href={`https://enginehub.org/${props.projectId}/#downloads`}
         >
             View stable downloads
-        </GrayButton>
+        </Link>
     </div>
 );
 

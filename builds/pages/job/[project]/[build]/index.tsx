@@ -18,8 +18,9 @@ import {
     ColumnThird,
     ColumnTwoThird,
     WarningBox,
-    GrayButton,
-    Container
+    Container,
+    Button,
+    SecondaryButton
 } from '@enginehub/shared';
 import { styled } from 'styled-components';
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -102,9 +103,9 @@ function Index({ project, build }: BuildPageProps) {
                         Build #{build.build_number}
                     </li>
                 </ol>
-                <HeaderText>
+                <h1 className={HeaderText}>
                     {project.name} Build #{build.build_number}
-                </HeaderText>
+                </h1>
                 {build.branch !== project.defaultBranch ? (
                     <BranchWarning
                         currentBranch={build.branch}
@@ -120,11 +121,12 @@ function Index({ project, build }: BuildPageProps) {
                             We recommend the use of released versions whenever
                             possible.
                         </p>
-                        <GrayButton
+                        <Link
+                            className={`${Button} ${SecondaryButton}`}
                             href={`https://enginehub.org/${project.id}/#downloads`}
                         >
                             View Stable Downloads
-                        </GrayButton>
+                        </Link>
                     </div>
                 )}
                 <div className={Row}>

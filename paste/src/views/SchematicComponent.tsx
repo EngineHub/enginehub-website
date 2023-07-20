@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
 import { styled } from 'styled-components';
-import { BlueButtonStyle } from '@enginehub/shared';
+import { Button, PrimaryButton } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,8 +19,6 @@ const Container = styled.div`
         height: 100%;
     }
 `;
-
-const BlueButton = styled.a(BlueButtonStyle);
 
 const PAGE_HEIGHT_MOD = 57 + 45; // navbar height + info bar height
 
@@ -74,9 +72,12 @@ const InfoBar: FC<PasteProps> = ({ paste, metadata = DEFAULT_METADATA }) => {
         <InfoBarContainer>
             <p>Name: {metadata.name ?? 'Unnamed'}</p>
             <p>Author: {metadata.author ?? 'Unknown'}</p>
-            <BlueButton onClick={onClickDownload}>
+            <a
+                className={`${Button} ${PrimaryButton}`}
+                onClick={onClickDownload}
+            >
                 <FontAwesomeIcon icon={faDownload} />
-            </BlueButton>
+            </a>
             <p>
                 Want more info about this schematic? Check out{' '}
                 <SiteLink href="https://madelinemiller.dev/apps/schematic-info/">

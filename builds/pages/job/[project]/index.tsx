@@ -5,8 +5,9 @@ import {
     PageHeader,
     Table,
     Pagination,
-    GrayButton,
-    BlueButton
+    Button,
+    SecondaryButton,
+    PrimaryButton
 } from '@enginehub/shared';
 import type { GetServerSideProps } from 'next';
 import type { Project } from '../../../src/project';
@@ -96,12 +97,13 @@ function Index({
                         projectId={project.id}
                     />
                 )}
-                <GrayButton
+                <Link
+                    className={`${Button} ${SecondaryButton}`}
                     href={`/job/${project.id}/last-successful?branch=${activeBranch}`}
                     style={{ float: 'right', marginBottom: '2rem' }}
                 >
                     View last successful build
-                </GrayButton>
+                </Link>
                 <Table>
                     <colgroup>
                         <col style={{ width: '10%' }} />
@@ -190,11 +192,12 @@ function Index({
                                     {moment(build.build_date).fromNow()}
                                 </TdNoWrap>
                                 <TdNoWrap>
-                                    <BlueButton
+                                    <Link
+                                        className={`${Button} ${PrimaryButton}`}
                                         href={`/job/${project.id}/${build.build_id}`}
                                     >
                                         <FontAwesomeIcon icon={faDownload} />
-                                    </BlueButton>
+                                    </Link>
                                 </TdNoWrap>
                             </tr>
                         ))}

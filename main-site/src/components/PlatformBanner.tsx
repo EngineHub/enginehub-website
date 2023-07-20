@@ -1,40 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
-import { styled } from 'styled-components';
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-
-const Wrapper = styled.div`
-    border-top: 1px solid #ddd;
-    padding: 8px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    line-height: 1.7;
-    display: flex;
-
-    flex-direction: column;
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-    }
-`;
-
-const LogoBox = styled.div`
-    vertical-align: top;
-    display: flex;
-    justify-content: center;
-    flex: 25%;
-
-    margin-bottom: 1rem;
-
-    @media (min-width: 768px) {
-        margin-bottom: 0;
-    }
-`;
-
-const InfoBox = styled.div`
-    flex: 75%;
-    padding-left: 1rem;
-`;
+import { Wrapper, LogoBox, InfoBox } from './PlatformBanner.module.css';
 
 interface PlatformBannerProps {
     alt: string;
@@ -52,8 +19,8 @@ const PlatformBanner: FC<PropsWithChildren<PlatformBannerProps>> = ({
     alt,
     width = BANNER_WIDTH
 }) => (
-    <Wrapper>
-        <LogoBox>
+    <div className={Wrapper}>
+        <div className={LogoBox}>
             <Image
                 src={img.src}
                 alt={alt}
@@ -65,9 +32,9 @@ const PlatformBanner: FC<PropsWithChildren<PlatformBannerProps>> = ({
                 }
                 blurDataURL={img.blurDataURL}
             />
-        </LogoBox>
-        <InfoBox>{children}</InfoBox>
-    </Wrapper>
+        </div>
+        <div className={InfoBox}>{children}</div>
+    </div>
 );
 
 export default PlatformBanner;

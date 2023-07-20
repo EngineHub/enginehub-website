@@ -1,0 +1,10 @@
+.FloatedButton {
+    float: right;
+    margin-right: 0.5rem;
+
+    display: none;
+
+    @media (min-width: 410px) {
+        display: block;
+    }
+}

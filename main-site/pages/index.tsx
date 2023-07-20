@@ -1,35 +1,16 @@
 import Layout from '../src/components/Layout';
 import { SEO, Container, Row, ColumnHalf } from '@enginehub/shared';
-import { styled } from 'styled-components';
 import ProjectBox from '../src/components/ProjectBox';
 import worldEditIcon from '../src/images/projects/logo/worldedit-logo.svg';
 import worldGuardIcon from '../src/images/projects/logo/worldguard-logo.svg';
 import craftBookIcon from '../src/images/projects/logo/craftbook-logo.svg';
 import cmdBookIcon from '../src/images/projects/logo/commandbook-logo.svg';
 import cmdHelperIcon from '../src/images/projects/logo/commandhelper-logo.svg';
-
-const HeadingContainer = styled.div`
-    margin: 20px 0 60px;
-    text-align: center;
-`;
-
-const FeatureHeading = styled.h2`
-    padding: 8px 60px;
-    border-bottom: 1px solid #d0d0d0;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 1.8;
-    display: inline-block;
-    margin-top: 23px;
-    margin-bottom: 11.5px;
-`;
-
-const ProjectList = styled.ul`
-    padding-left: 0;
-    list-style: none;
-    margin-top: 0;
-    margin-bottom: 11.5px;
-`;
+import {
+    HeadingContainer,
+    FeatureHeading,
+    ProjectList
+} from '../src/components/Landing.module.css';
 
 const IndexPage = () => {
     return (
@@ -40,12 +21,12 @@ const IndexPage = () => {
                 image={'/images/enginehub-logo.png'}
             />
             <div className={Container}>
-                <HeadingContainer>
-                    <FeatureHeading>Our Projects</FeatureHeading>
-                </HeadingContainer>
+                <div className={HeadingContainer}>
+                    <h2 className={FeatureHeading}>Our Projects</h2>
+                </div>
                 <div className={Row}>
                     <div className={ColumnHalf}>
-                        <ProjectList>
+                        <ul className={ProjectList}>
                             <ProjectBox
                                 name="WorldEdit"
                                 slug="worldedit"
@@ -64,10 +45,10 @@ const IndexPage = () => {
                                 icon={cmdBookIcon}
                                 description="Basic and essential commands for your Bukkit server in a lightweight plugin."
                             />
-                        </ProjectList>
+                        </ul>
                     </div>
                     <div className={ColumnHalf}>
-                        <ProjectList>
+                        <ul className={ProjectList}>
                             <ProjectBox
                                 name="CraftBook"
                                 slug="craftbook"
@@ -80,7 +61,7 @@ const IndexPage = () => {
                                 icon={cmdHelperIcon}
                                 description="Script your Bukkit server without any Java knowledge using a easy to use and powerful language."
                             />
-                        </ProjectList>
+                        </ul>
                     </div>
                 </div>
             </div>

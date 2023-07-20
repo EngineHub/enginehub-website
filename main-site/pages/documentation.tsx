@@ -7,9 +7,10 @@ import {
     ColumnThreeQuarter,
     SidebarHeading,
     SectionHeading,
-    BlueButton,
-    GrayButton,
-    Container
+    Container,
+    Button,
+    PrimaryButton,
+    SecondaryButton
 } from '@enginehub/shared';
 import SidebarIcon from '../src/components/sidebar/SidebarIcon';
 import PlatformBanner from '../src/components/PlatformBanner';
@@ -18,6 +19,7 @@ import WorldGuardHeader from '../src/images/projects/headers/worldguard-header.s
 import CraftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
 import CmdBookHeader from '../src/images/projects/headers/commandbook-header.svg';
 import CmdHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
+import Link from 'next/link';
 
 const DocumentationPage = () => {
     return (
@@ -46,49 +48,54 @@ const DocumentationPage = () => {
                             alt={'WorldEdit'}
                         >
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://worldedit.enginehub.org/en/latest/'
                                     }
                                 >
                                     WorldEdit Docs
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-core/release/'
                                     }
                                 >
                                     WorldEdit Core JavaDocs
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-bukkit/release/'
                                     }
                                 >
                                     WorldEdit Bukkit JavaDocs
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-sponge/release/'
                                     }
                                 >
                                     WorldEdit Sponge JavaDocs
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-cli/release/'
                                     }
                                 >
                                     WorldEdit CLI JavaDocs
-                                </GrayButton>
+                                </Link>
                             </p>
                         </PlatformBanner>
                         <PlatformBanner
@@ -96,31 +103,34 @@ const DocumentationPage = () => {
                             alt={'WorldGuard'}
                         >
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://worldguard.enginehub.org/en/latest/'
                                     }
                                 >
                                     WorldGuard Docs
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldguard/worldguard-core/release/'
                                     }
                                 >
                                     WorldGuard Core JavaDocs
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'https://docs.enginehub.org/javadoc/com.sk89q.worldguard/worldguard-bukkit/release/'
                                     }
                                 >
                                     WorldGuard Bukkit JavaDocs
-                                </GrayButton>
+                                </Link>
                             </p>
                         </PlatformBanner>
                         <PlatformBanner
@@ -128,31 +138,34 @@ const DocumentationPage = () => {
                             alt={'CraftBook'}
                         >
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://craftbook.enginehub.org/en/3.x/'
                                     }
                                 >
                                     CraftBook 3 Docs (Spigot)
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://craftbook.enginehub.org/en/latest/'
                                     }
                                 >
                                     CraftBook 4 Docs (Sponge)
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'https://craftbook.enginehub.org/en/5.0.0/'
                                     }
                                 >
                                     CraftBook 5 Docs (Alpha - Spigot)
-                                </BlueButton>
+                                </Link>
                             </p>
                         </PlatformBanner>
                         <PlatformBanner
@@ -160,13 +173,14 @@ const DocumentationPage = () => {
                             alt={'CommandBook'}
                         >
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'http://web.archive.org/web/20181222152247/http://wiki.sk89q.com/wiki/CommandBook'
                                     }
                                 >
                                     CommandBook Docs
-                                </BlueButton>
+                                </Link>
                             </p>
                         </PlatformBanner>
                         <PlatformBanner
@@ -174,11 +188,12 @@ const DocumentationPage = () => {
                             alt={'CommandHelper'}
                         >
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={'https://methodscript.com/docs/'}
                                 >
                                     CommandHelper Docs
-                                </BlueButton>
+                                </Link>
                             </p>
                         </PlatformBanner>
                     </div>

@@ -1,0 +1,56 @@
+.Button {
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 6.5px;
+    margin-bottom: 6.5px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.7;
+    text-decoration: none;
+    border-radius: 5px;
+
+    /* Theming */
+    color: var(--button-font);
+
+    background-color: var(--button-normal);
+    border: 1px solid var(--button-accent);
+
+    transition:
+        box-shadow 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: var(--button-lighter);
+        box-shadow: 0 0 0 1px var(--button-accent) inset;
+    }
+}
+
+.BrandButton {
+    --button-font: var(--brand-font);
+    --button-normal: var(--brand-normal);
+    --button-accent: var(--brand-accent);
+    --button-lighter: var(--brand-lighter);
+}
+
+.PrimaryButton {
+    --button-font: var(--primary-font);
+    --button-normal: var(--primary-normal);
+    --button-accent: var(--primary-accent);
+    --button-lighter: var(--primary-lighter);
+}
+
+.SecondaryButton {
+    --button-font: var(--secondary-font);
+    --button-normal: var(--secondary-normal);
+    --button-accent: var(--secondary-accent);
+    --button-lighter: var(--secondary-lighter);
+}

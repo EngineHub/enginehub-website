@@ -1,9 +1,9 @@
-import { styled } from 'styled-components';
 import { Container } from './Container.module.css';
-import { MainButtonStyle, PurpleButtonStyle } from './Button';
 import { SECONDARY, BRAND } from '../theme/index';
 import Link from 'next/link';
 import type { FC, PropsWithChildren } from 'react';
+import { FloatedButton, Nav, HeaderLink } from './Navbar.module.css';
+import { BrandButton, Button, SecondaryButton } from './Button.module.css';
 
 const NavBackgroundColours = {
     default: SECONDARY.darker,
@@ -24,56 +24,6 @@ interface NavbarProps {
     showSponsor?: boolean;
 }
 
-const Nav = styled.nav<InvertedProps>`
-    position: relative;
-    min-height: 50px;
-    margin: 0;
-    background: ${props => NavBackgroundColours[props.headertheme]};
-    border: 0;
-    border-radius: 0;
-`;
-
-type InvertedProps = {
-    headertheme: 'default' | 'inverted' | 'purple';
-};
-
-const HeaderLink = styled(Link)<InvertedProps>`
-    color: ${props => HeaderTextColors[props.headertheme]};
-    font-size: 18px;
-    line-height: 23px;
-    text-decoration: none;
-    padding: 13.5px 15px;
-    height: 50px;
-    float: left;
-    cursor: pointer;
-`;
-
-const FloatedPurpleButton = styled.a`
-    ${PurpleButtonStyle()};
-    float: right;
-
-    display: none;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-
-    @media (min-width: 470px) {
-        display: block;
-    }
-`;
-
-const FloatedGrayButton = styled.a`
-    ${MainButtonStyle()};
-    float: right;
-
-    display: none;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-
-    @media (min-width: 470px) {
-        display: block;
-    }
-`;
-
 export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
     headertheme = 'default',
     headertitle = 'EngineHub',
@@ -81,25 +31,36 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
     showSponsor = true,
     children
 }) => {
-    const ButtonComp =
-        headertheme !== 'default' ? FloatedPurpleButton : FloatedGrayButton;
+    const buttonStyle =
+        headertheme !== 'default' ? BrandButton : SecondaryButton;
     return (
-        <Nav headertheme={headertheme}>
+        <nav
+            className={Nav}
+            style={{ background: NavBackgroundColours[headertheme] }}
+        >
             <div className={Container}>
                 <div>
-                    <HeaderLink href="/" headertheme={headertheme}>
+                    <Link
+                        className={HeaderLink}
+                        href="/"
+                        style={{ color: HeaderTextColors[headertheme] }}
+                    >
                         {headertitle}
-                    </HeaderLink>
+                    </Link>
                 </div>
                 {showSponsor && (
                     <div>
-                        <ButtonComp href="https://github.com/sponsors/EngineHub">
+                        <a
+                            className={`${Button} ${buttonStyle} ${FloatedButton}`}
+                            href="https://github.com/sponsors/EngineHub"
+                        >
                             Support Us
-                        </ButtonComp>
+                        </a>
                     </div>
                 )}
                 <div>
-                    <ButtonComp
+                    <a
+                        className={`${Button} ${buttonStyle} ${FloatedButton}`}
                         href={
                             discordOverride
                                 ? discordOverride
@@ -107,10 +68,10 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
                         }
                     >
                         Ask questions on Discord
-                    </ButtonComp>
+                    </a>
                 </div>
                 {children}
             </div>
-        </Nav>
+        </nav>
     );
 };

@@ -15,10 +15,11 @@ import {
     InfoLabel,
     JumbotronContainer,
     MainLink,
-    GrayButton,
     Label,
-    BlueButton,
-    Container
+    Container,
+    Button,
+    SecondaryButton,
+    PrimaryButton
 } from '@enginehub/shared';
 import PlatformBanner from '../src/components/PlatformBanner';
 import commandBookHeader from '../src/images/projects/headers/commandbook-header.svg';
@@ -37,62 +38,65 @@ const CommandBookPage = () => {
             />
             <div className={`${Container} ${ContainerPadded}`}>
                 <div className={Row}>
-                    <JumbotronContainer>
-                        <JumbotronImageBox>
+                    <div className={JumbotronContainer}>
+                        <div className={JumbotronImageBox}>
                             <h1>
                                 <Image
                                     alt={'CommandBook'}
                                     src={commandBookHeader}
                                 />
                             </h1>
-                        </JumbotronImageBox>
-                        <JumbotronText>
+                        </div>
+                        <h2 className={JumbotronText}>
                             CommandBook provides a long list of basic, "default"
                             commands for you and your players on any Bukkit
                             server.
-                        </JumbotronText>
-                        <JumbotronButtonBox>
-                            <BlueButton href="/commandbook/#downloads">
+                        </h2>
+                        <div className={JumbotronButtonBox}>
+                            <Link
+                                className={`${Button} ${PrimaryButton}`}
+                                href="/commandbook/#downloads"
+                            >
                                 List downloads
-                            </BlueButton>
-                        </JumbotronButtonBox>
-                    </JumbotronContainer>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
                 <div className={Row}>
-                    <HorizontalNav>
-                        <HorizontalNavItem>
+                    <ul className={HorizontalNav}>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="http://wiki.sk89q.com/wiki/commandbook"
                             >
                                 Documentation
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem className={'hideSmall'}>
+                        </li>
+                        <li className={`${HorizontalNavItem} hideSmall`}>
                             <Link
                                 className={MainLink}
                                 href="https://discord.gg/enginehub"
                             >
                                 Discord
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/CommandBook/issues"
                             >
                                 Bug / Feature Tracker
                             </Link>
-                        </HorizontalNavItem>
-                        <HorizontalNavItem>
+                        </li>
+                        <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
                                 href="https://github.com/EngineHub/CommandBook"
                             >
                                 Source Code
                             </Link>
-                        </HorizontalNavItem>
-                    </HorizontalNav>
+                        </li>
+                    </ul>
                 </div>
                 <div className={Row}>
                     <AlignedContent header={'Features'} align={'left'}>
@@ -160,22 +164,24 @@ const CommandBookPage = () => {
                         <PlatformBanner img={bukkitLogo} alt={'Bukkit'}>
                             <p>We officially support CommandBook for Bukkit.</p>
                             <p>
-                                <BlueButton
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
                                     href={
                                         'http://dev.bukkit.org/bukkit-plugins/commandbook/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
-                                </BlueButton>
+                                </Link>
                             </p>
                             <p>
-                                <GrayButton
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
                                     href={
                                         'http://builds.enginehub.org/job/commandbook'
                                     }
                                 >
                                     Experimental builds for Bukkit
-                                </GrayButton>
+                                </Link>
                             </p>
                             <p>
                                 <span className={`${Label} ${WarningLabel}`}>
