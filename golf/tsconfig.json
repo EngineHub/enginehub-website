@@ -1,20 +1,15 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "jsx": "preserve",
-        "lib": ["dom", "esnext"],
-        "noEmit": true,
-        "skipLibCheck": true,
-        "target": "esnext",
-        "isolatedModules": true,
-        "incremental": true
+        "jsx": "preserve"
     },
-    "files": ["index.d.ts"],
     "include": [
         "pages/**/*",
         "src/**/*",
         "../shared/src/utils/encryptedSecrets.ts",
-        "*.{js,ts,tsx}"
+        "*.{js,ts,tsx}",
+        "next.config.js"
     ],
-    "exclude": ["node_modules"]
+    "files": ["index.d.ts", "next-env.d.ts"],
+    "exclude": ["node_modules", ".next", "build"]
 }

@@ -1,15 +1,9 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "jsx": "preserve",
-        "lib": ["dom", "esnext"],
-        "noEmit": true,
-        "skipLibCheck": true,
-        "target": "esnext",
-        "isolatedModules": true,
-        "incremental": true
+        "jsx": "preserve"
     },
-    "include": ["pages/**/*", "src/**/*", "*.{js,ts,tsx}"],
-    "exclude": ["node_modules"],
-    "files": ["index.d.ts"]
+    "include": ["pages/**/*", "src/**/*", "*.{js,ts,tsx}", "next.config.js"],
+    "files": ["index.d.ts", "next-env.d.ts"],
+    "exclude": ["node_modules", ".next", "build"]
 }

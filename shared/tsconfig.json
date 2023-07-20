@@ -1,15 +1,5 @@
 {
     "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "target": "esnext",
-        "noEmit": false,
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "skipLibCheck": true,
-        "jsx": "react-jsx",
-        "sourceMap": true,
-        "declaration": true,
-        "outDir": "./dist"
-    },
     "include": ["./src/**/*.ts"],
-    "exclude": ["build"]
+    "exclude": ["dist"]
 }

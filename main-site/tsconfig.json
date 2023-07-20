@@ -1,16 +1,14 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "target": "esnext",
-        "lib": ["dom", "esnext"],
-        "jsx": "preserve",
-        "emitDecoratorMetadata": true,
-        "noEmit": true,
-        "skipLibCheck": true,
-        "incremental": true,
-        "isolatedModules": true
+        "jsx": "preserve"
     },
-    "include": ["./src/**/*", "./pages/**/*", "*.{js,ts,tsx}"],
-    "exclude": [".next"],
-    "files": ["./src/index.d.ts", "next-env.d.ts"]
+    "include": [
+        "./src/**/*",
+        "./pages/**/*",
+        "*.{js,ts,tsx}",
+        "next.config.js"
+    ],
+    "files": ["index.d.ts", "next-env.d.ts"],
+    "exclude": ["node_modules", ".next", "build"]
 }

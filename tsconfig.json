@@ -1,33 +1,37 @@
 {
-  "compilerOptions": {
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "baseUrl": ".",
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noUnusedParameters": true,
-    "importHelpers": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "bundler",
-    "module": "esnext"
-  },
-  "exclude": ["node_modules"],
-  "include": [
-    "main-site/**/*.{js,jsx,ts,tsx}",
-    "builds/**/*.{js,jsx,ts,tsx}",
-    "paste/**/*.{js,jsx,ts,tsx}",
-    "golf/**/*.{js,jsx,ts,tsx}",
-    "shared/**/*.{js,jsx,ts,tsx}",
-    ".eslintrc.cjs"
-  ]
+    "compilerOptions": {
+        "plugins": [{ "name": "typescript-plugin-css-modules" }],
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noUnusedParameters": true,
+        "importHelpers": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "noEmit": true,
+        "isolatedModules": true,
+        "jsx": "react-jsx",
+        "moduleResolution": "bundler",
+        "module": "esnext",
+        "lib": ["dom", "esnext"],
+        "skipLibCheck": true,
+        "target": "esnext",
+        "incremental": true
+    },
+    "exclude": ["node_modules"],
+    "include": [
+        "main-site/**/*.{js,jsx,ts,tsx}",
+        "builds/**/*.{js,jsx,ts,tsx}",
+        "paste/**/*.{js,jsx,ts,tsx}",
+        "golf/**/*.{js,jsx,ts,tsx}",
+        "shared/**/*.{js,jsx,ts,tsx}",
+        ".eslintrc.cjs",
+        "css.d.ts"
+    ]
 }

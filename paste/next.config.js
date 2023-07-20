@@ -1,8 +1,9 @@
+/** @type {import('next').NextConfig} */
 export default {
     env: {
         GA_TRACKING_ID: 'UA-139849956-4'
     },
-    async rewrites() {
+    rewrites() {
         return [
             {
                 source: '/paste',
@@ -18,7 +19,7 @@ export default {
             }
         ];
     },
-    async headers() {
+    headers() {
         return [
             {
                 // matching signed paste route

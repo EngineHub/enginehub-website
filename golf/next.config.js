@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 export default {
     env: {
         CLIENT_ID: process.env.CLIENT_ID,
