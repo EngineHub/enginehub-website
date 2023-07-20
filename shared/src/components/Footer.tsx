@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import { Container } from './Container.module.css';
-import { MainLink } from './Link';
+import { MainLink } from './Link.module.css';
 import type { ExtraSponsorProps } from './Sponsors';
 import { RandomSponsor } from './Sponsors';
 import type { FC } from 'react';
@@ -19,19 +20,28 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                     <h4 className={SectionHeader}>Resources</h4>
                     <ul className={FooterUl}>
                         <li className={FooterLi}>
-                            <MainLink href="https://enginehub.org/documentation/">
+                            <Link
+                                className={MainLink}
+                                href="https://enginehub.org/documentation/"
+                            >
                                 Docs
-                            </MainLink>
+                            </Link>
                         </li>
                         <li className={FooterLi}>
-                            <MainLink href="https://builds.enginehub.org/">
+                            <Link
+                                className={MainLink}
+                                href="https://builds.enginehub.org/"
+                            >
                                 Test Builds
-                            </MainLink>
+                            </Link>
                         </li>
                         <li className={FooterLi}>
-                            <MainLink href="https://paste.enginehub.org/">
+                            <Link
+                                className={MainLink}
+                                href="https://paste.enginehub.org/"
+                            >
                                 Paste Service
-                            </MainLink>
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -39,19 +49,28 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                     <h4 className={SectionHeader}>Social</h4>
                     <ul className={FooterUl}>
                         <li className={FooterLi}>
-                            <MainLink href="https://discord.gg/enginehub">
+                            <Link
+                                className={MainLink}
+                                href="https://discord.gg/enginehub"
+                            >
                                 Discord
-                            </MainLink>
+                            </Link>
                         </li>
                         <li className={FooterLi}>
-                            <MainLink href="https://github.com/EngineHub">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub"
+                            >
                                 GitHub
-                            </MainLink>
+                            </Link>
                         </li>
                         <li className={FooterLi}>
-                            <MainLink href="https://github.com/sponsors/EngineHub">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/sponsors/EngineHub"
+                            >
                                 Support Us
-                            </MainLink>
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -66,13 +85,19 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                             The content and trademarks presented are the
                             property of their respective owners. This website is
                             maintained by{' '}
-                            <MainLink href="https://madelinemiller.dev/">
+                            <Link
+                                className={MainLink}
+                                href="https://madelinemiller.dev/"
+                            >
                                 Me4502
-                            </MainLink>{' '}
+                            </Link>{' '}
                             For website errors,{' '}
-                            <MainLink href="https://github.com/EngineHub/EngineHub-Website">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/EngineHub-Website"
+                            >
                                 create a ticket here.
-                            </MainLink>
+                            </Link>
                         </small>
                     </p>
                 </div>

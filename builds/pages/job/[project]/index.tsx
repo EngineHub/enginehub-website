@@ -29,6 +29,7 @@ import { MainLink } from '@enginehub/shared';
 import BranchWarning from '../../../src/BranchWarning';
 import { BranchButtonList, BranchButton } from '../../../src/BranchButton';
 import moment from 'moment';
+import Link from 'next/link';
 
 interface ProjectPageProps {
     activeBranch: string;
@@ -131,11 +132,12 @@ function Index({
                                     <small>{build.branch}</small>
                                 </TdNoWrap>
                                 <TdNoWrap>
-                                    <MainLink
+                                    <Link
+                                        className={MainLink}
                                         href={`/job/${project.id}/${build.build_id}`}
                                     >
                                         #{build.build_number}
-                                    </MainLink>
+                                    </Link>
                                 </TdNoWrap>
                                 <td>
                                     <FontAwesomeIcon
@@ -163,14 +165,15 @@ function Index({
                                                     {change.comment}{' '}
                                                     <small>
                                                         (
-                                                        <MainLink
+                                                        <Link
+                                                            className={MainLink}
                                                             href={`${project.vcsRoot}/commit/${change.version}`}
                                                         >
                                                             {change.version.substring(
                                                                 0,
                                                                 8
                                                             )}
-                                                        </MainLink>{' '}
+                                                        </Link>{' '}
                                                         by {change.username})
                                                     </small>
                                                 </li>

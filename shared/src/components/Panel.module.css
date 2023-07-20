@@ -1,6 +1,4 @@
-import { styled } from 'styled-components';
-
-export const Panel = styled.div`
+.Panel {
     margin-bottom: 23px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px;
@@ -9,12 +7,12 @@ export const Panel = styled.div`
     border-color: rgb(221, 221, 221);
     border-radius: 4px;
 
-    table:last-child {
+    & table:last-child {
         margin-bottom: 0;
     }
-`;
+}
 
-export const PanelHeading = styled.div`
+.PanelHeading {
     color: rgb(51, 51, 51);
     background-color: rgb(245, 245, 245);
     border-color: rgb(221, 221, 221);
@@ -22,8 +20,8 @@ export const PanelHeading = styled.div`
     border-top-left-radius: 3px;
     padding: 10px 15px;
     border-bottom: 1px solid transparent;
-`;
+}
 
-export const PanelBody = styled.div`
+.PanelBody {
     padding: 15px;
-`;
+}

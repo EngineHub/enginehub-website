@@ -22,6 +22,7 @@ import commandHelperHeader from '../src/images/projects/headers/commandhelper-he
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import commandHelperLogo from '../src/images/projects/commandhelper-icon.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CommandHelperPage = () => {
     return (
@@ -58,24 +59,36 @@ const CommandHelperPage = () => {
                 <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainLink href="https://methodscript.com/docs/">
+                            <Link
+                                className={MainLink}
+                                href="https://methodscript.com/docs/"
+                            >
                                 Documentation
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink href="https://discord.gg/Z7jpHed">
+                            <Link
+                                className={MainLink}
+                                href="https://discord.gg/Z7jpHed"
+                            >
                                 Discord
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/CommandHelper/issues">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/CommandHelper/issues"
+                            >
                                 Bug / Feature Tracker
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/CommandHelper">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/CommandHelper"
+                            >
                                 Source Code
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </div>

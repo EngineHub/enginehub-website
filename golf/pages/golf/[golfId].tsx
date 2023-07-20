@@ -24,6 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { BrandHeader } from '../../src/components/BrandHeader';
 import { getGolfData } from '../../src/databaseConnector';
+import Link from 'next/link';
 
 interface DocumentProps {
     golf: Golf;
@@ -247,12 +248,13 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                         <TitleText>{golf.title}</TitleText>
                         <SmallText>
                             Uploaded by {uploadingUser.fullname} /{' '}
-                            <MainLink
+                            <Link
+                                className={MainLink}
                                 target="__blank"
                                 href={`https://github.com/${uploadingUser.username}/`}
                             >
                                 @{uploadingUser.username}
-                            </MainLink>
+                            </Link>
                         </SmallText>
                         <DescriptionText>{golf.description}</DescriptionText>
                         <PreviewBox>

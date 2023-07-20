@@ -37,6 +37,7 @@ import {
 import BranchWarning from '../../../../src/BranchWarning';
 import moment from 'moment';
 import type { ParsedUrlQuery } from 'querystring';
+import Link from 'next/link';
 
 interface BuildPageProps {
     build: Build;
@@ -83,21 +84,24 @@ function Index({ project, build }: BuildPageProps) {
                 description={`${project.name} Builds. Build #${build.build_number} for ${project.name} ${build.branch}. Download test builds at EngineHub.`}
             />
             <div className={`${Container} ${ContainerPadded}`}>
-                <BreadcrumbWrapper>
-                    <Breadcrumb>
-                        <MainLink href={'/'}>Builds</MainLink>
-                    </Breadcrumb>
-                    <Breadcrumb>
-                        <MainLink
+                <ol className={BreadcrumbWrapper}>
+                    <li className={Breadcrumb}>
+                        <Link className={MainLink} href={'/'}>
+                            Builds
+                        </Link>
+                    </li>
+                    <li className={Breadcrumb}>
+                        <Link
+                            className={MainLink}
                             href={`/job/${project.id}?branch=${build.branch}`}
                         >
                             {project.name} (<code>{build.branch}</code>)
-                        </MainLink>
-                    </Breadcrumb>
-                    <ActiveBreadcrumb>
+                        </Link>
+                    </li>
+                    <li className={`${Breadcrumb} ${ActiveBreadcrumb}`}>
                         Build #{build.build_number}
-                    </ActiveBreadcrumb>
-                </BreadcrumbWrapper>
+                    </li>
+                </ol>
                 <HeaderText>
                     {project.name} Build #{build.build_number}
                 </HeaderText>
@@ -108,7 +112,7 @@ function Index({ project, build }: BuildPageProps) {
                         projectId={project.id}
                     />
                 ) : (
-                    <InfoBox>
+                    <div className={InfoBox}>
                         <p>
                             <strong>This is not a stable download!</strong>
                         </p>
@@ -121,7 +125,7 @@ function Index({ project, build }: BuildPageProps) {
                         >
                             View Stable Downloads
                         </GrayButton>
-                    </InfoBox>
+                    </div>
                 )}
                 <div className={Row}>
                     <div className={ColumnThird} style={{ paddingLeft: '0' }}>
@@ -130,11 +134,12 @@ function Index({ project, build }: BuildPageProps) {
                                 <tr>
                                     <th>Project</th>
                                     <td>
-                                        <MainLink
+                                        <Link
+                                            className={MainLink}
                                             href={`https://enginehub.org/${project.id}/`}
                                         >
                                             {project.name}
-                                        </MainLink>
+                                        </Link>
                                     </td>
                                 </tr>
                                 <tr>
@@ -182,22 +187,23 @@ function Index({ project, build }: BuildPageProps) {
                         className={ColumnTwoThird}
                         style={{ paddingRight: '0' }}
                     >
-                        <Panel>
-                            <PanelHeading>Artifacts</PanelHeading>
-                            <PanelBody>
+                        <div className={Panel}>
+                            <div className={PanelHeading}>Artifacts</div>
+                            <div className={PanelBody}>
                                 {build.artifacts.length > 0 ? (
                                     build.artifacts.map((artifact, i) => (
                                         <DownloadLinkDiv
                                             key={`${artifact.name}-${i}`}
                                         >
-                                            <MainLink
+                                            <Link
+                                                className={MainLink}
                                                 href={`https://ci.enginehub.org/repository/download/${project.buildType}/${build.build_id}:id/${artifact.name}?branch=${build.branch}&guest=1`}
                                             >
                                                 <FontAwesomeIcon
                                                     icon={faDownload}
                                                 />
                                                 {artifact.name}
-                                            </MainLink>
+                                            </Link>
                                             <small>
                                                 (
                                                 {Math.round(
@@ -221,12 +227,12 @@ function Index({ project, build }: BuildPageProps) {
                                 <LabelledSponsorsArea
                                     extraSponsors={project.extraSponsors}
                                 />
-                            </PanelBody>
-                        </Panel>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <Panel>
-                    <PanelHeading>Changes</PanelHeading>
+                <div className={Panel}>
+                    <div className={PanelHeading}>Changes</div>
                     <Table>
                         <colgroup>
                             <col style={{ width: '15%' }} />
@@ -244,11 +250,12 @@ function Index({ project, build }: BuildPageProps) {
                             {build.changes.map(change => (
                                 <tr key={change.version}>
                                     <td>
-                                        <MainLink
+                                        <Link
+                                            className={MainLink}
                                             href={`${project.vcsRoot}/commit/${change.version}`}
                                         >
                                             {change.version.substring(0, 8)}
-                                        </MainLink>
+                                        </Link>
                                     </td>
                                     <td>{change.comment}</td>
                                     <td>{change.username}</td>
@@ -257,7 +264,7 @@ function Index({ project, build }: BuildPageProps) {
                             ))}
                         </tbody>
                     </Table>
-                </Panel>
+                </div>
             </div>
         </Layout>
     );

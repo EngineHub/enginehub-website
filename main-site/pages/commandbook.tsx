@@ -25,6 +25,7 @@ import commandBookHeader from '../src/images/projects/headers/commandbook-header
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import commandBookLogo from '../src/images/projects/commandbook-icon.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CommandBookPage = () => {
     return (
@@ -60,24 +61,36 @@ const CommandBookPage = () => {
                 <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainLink href="http://wiki.sk89q.com/wiki/commandbook">
+                            <Link
+                                className={MainLink}
+                                href="http://wiki.sk89q.com/wiki/commandbook"
+                            >
                                 Documentation
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink href="https://discord.gg/enginehub">
+                            <Link
+                                className={MainLink}
+                                href="https://discord.gg/enginehub"
+                            >
                                 Discord
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/CommandBook/issues">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/CommandBook/issues"
+                            >
                                 Bug / Feature Tracker
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/CommandBook">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/CommandBook"
+                            >
                                 Source Code
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </div>
@@ -169,9 +182,9 @@ const CommandBookPage = () => {
                                     Note!
                                 </span>{' '}
                                 CommandBook requires that{' '}
-                                <MainLink href="/worldedit/">
+                                <Link className={MainLink} href="/worldedit/">
                                     WorldEdit
-                                </MainLink>{' '}
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>

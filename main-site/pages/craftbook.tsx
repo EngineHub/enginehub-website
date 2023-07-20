@@ -26,6 +26,7 @@ import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
 import craftBookLogo from '../src/images/projects/craftbook-icon.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CraftBookPage = () => {
     return (
@@ -59,24 +60,33 @@ const CraftBookPage = () => {
                 <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainLink href="/documentation/">
+                            <Link className={MainLink} href="/documentation/">
                                 Documentation
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink href="https://discord.gg/enginehub">
+                            <Link
+                                className={MainLink}
+                                href="https://discord.gg/enginehub"
+                            >
                                 Discord
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/CraftBook/issues">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/CraftBook/issues"
+                            >
                                 Bug / Feature Tracker
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/CraftBook">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/CraftBook"
+                            >
                                 Source Code
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </div>
@@ -185,9 +195,9 @@ const CraftBookPage = () => {
                                     Note!
                                 </span>{' '}
                                 CraftBook requires that{' '}
-                                <MainLink href="/worldedit/">
+                                <Link className={MainLink} href="/worldedit/">
                                     WorldEdit
-                                </MainLink>{' '}
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>
@@ -236,9 +246,9 @@ const CraftBookPage = () => {
                                     Note!
                                 </span>{' '}
                                 CraftBook requires that{' '}
-                                <MainLink href="/worldedit/">
+                                <Link className={MainLink} href="/worldedit/">
                                     WorldEdit
-                                </MainLink>{' '}
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>

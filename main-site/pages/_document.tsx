@@ -3,6 +3,7 @@ import { Children } from 'react';
 import type { DocumentContext, DocumentProps } from 'next/document';
 import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { ThemeInjector } from '@enginehub/shared';
 
 class MyDocument extends Document<DocumentProps> {
     static async getInitialProps(ctx: DocumentContext) {
@@ -93,6 +94,7 @@ class MyDocument extends Document<DocumentProps> {
           `
                         }}
                     />
+                    <ThemeInjector />
                 </Head>
                 <body>
                     <Main />

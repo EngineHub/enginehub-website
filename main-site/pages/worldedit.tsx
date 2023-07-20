@@ -29,6 +29,7 @@ import mceduLogo from '../src/images/platforms/mcedu-logo.png';
 import liteloaderLogo from '../src/images/platforms/liteloader-logo.png';
 import worldEditLogo from '../src/images/projects/worldedit-icon.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const WorldEditPage = () => {
     return (
@@ -68,24 +69,36 @@ const WorldEditPage = () => {
                 <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainLink href="https://worldedit.enginehub.org">
+                            <Link
+                                className={MainLink}
+                                href="https://worldedit.enginehub.org"
+                            >
                                 Documentation
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink href="https://discord.gg/enginehub">
+                            <Link
+                                className={MainLink}
+                                href="https://discord.gg/enginehub"
+                            >
                                 Discord
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/WorldEdit/issues">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/WorldEdit/issues"
+                            >
                                 Bug / Feature Tracker
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/WorldEdit">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/WorldEdit"
+                            >
                                 Source Code
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </div>
@@ -380,13 +393,14 @@ const WorldEditPage = () => {
                             <p>
                                 We do not officially support LiteLoader, but you
                                 can download{' '}
-                                <MainLink
+                                <Link
+                                    className={MainLink}
                                     href={
                                         'http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1294341-worldeditwrapper-use-worldedit-in-single-player'
                                     }
                                 >
                                     an unofficial WorldEditWrapper
-                                </MainLink>{' '}
+                                </Link>{' '}
                                 that supports Minecraft 1.7.2.
                             </p>
                             <p>

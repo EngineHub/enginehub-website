@@ -3,7 +3,7 @@
     "compilerOptions": {
         "jsx": "preserve"
     },
-    "include": ["pages/**/*", "src/**/*", "*.{js,ts,tsx}", "next.config.js"],
+    "include": ["pages/**/*", "src/**/*", "*.js", "*.ts", "*.tsx"],
     "files": ["next-env.d.ts", "index.d.ts"],
     "exclude": ["node_modules", ".next", "build"]
 }

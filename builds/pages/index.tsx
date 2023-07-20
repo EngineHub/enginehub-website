@@ -23,6 +23,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import type { GetStaticProps } from 'next';
+import Link from 'next/link';
 
 interface ProjectEntry {
     project: Project;
@@ -116,11 +117,12 @@ function Index({ projectEntries }: IndexProps) {
                                             <MiniPaddedIcon
                                                 icon={faCodeBranch}
                                             />
-                                            <MainLink
+                                            <Link
+                                                className={MainLink}
                                                 href={`/job/${projectEntry.project.id}?branch=${build.branch}`}
                                             >
                                                 {build.branch}
-                                            </MainLink>
+                                            </Link>
                                             {build.branch ===
                                                 projectEntry.project
                                                     .defaultBranch && (
@@ -154,11 +156,12 @@ function Index({ projectEntries }: IndexProps) {
                                             <small>{build.statusText}</small>
                                         </td>
                                         <td>
-                                            <MainLink
+                                            <Link
+                                                className={MainLink}
                                                 href={`/job/${projectEntry.project.id}/${build.build_id}`}
                                             >
                                                 #{build.build_number}
-                                            </MainLink>
+                                            </Link>
                                         </td>
                                         <TdNoWrap>
                                             {moment(build.build_date).fromNow()}{' '}

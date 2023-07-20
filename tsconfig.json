@@ -26,12 +26,21 @@
     },
     "exclude": ["node_modules"],
     "include": [
-        "main-site/**/*.{js,jsx,ts,tsx}",
-        "builds/**/*.{js,jsx,ts,tsx}",
-        "paste/**/*.{js,jsx,ts,tsx}",
-        "golf/**/*.{js,jsx,ts,tsx}",
-        "shared/**/*.{js,jsx,ts,tsx}",
-        ".eslintrc.cjs",
-        "css.d.ts"
+        "main-site/**/*.js",
+        "main-site/**/*.ts",
+        "main-site/**/*.tsx",
+        "builds/**/*.js",
+        "builds/**/*.ts",
+        "builds/**/*.tsx",
+        "paste/**/*.js",
+        "paste/**/*.ts",
+        "paste/**/*.tsx",
+        "golf/**/*.js",
+        "golf/**/*.ts",
+        "golf/**/*.tsx",
+        "shared/**/*.js",
+        "shared/**/*.ts",
+        "shared/**/*.tsx",
+        ".eslintrc.cjs"
     ]
 }

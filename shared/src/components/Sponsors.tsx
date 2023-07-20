@@ -1,31 +1,18 @@
 import type { FC, HTMLAttributes } from 'react';
 import { useState, useEffect, useMemo } from 'react';
-import { styled } from 'styled-components';
-import { MainLinkStyle, MainLink } from './Link';
+import { MainLink } from './Link.module.css';
+import {
+    FlexLink,
+    NarrowDiv,
+    HorizontalSponsorArea
+} from './Sponsors.module.css';
+import Link from 'next/link';
 
 const sponsors: string[] = ['apexhosting', 'gh-sponsors'];
 
 export interface ExtraSponsorProps {
     extraSponsors?: string[];
 }
-
-const NarrowDiv = styled.div`
-    max-width: 200px;
-    min-height: 70px;
-    max-height: 70px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`;
-
-const FlexLink = styled.a`
-    ${MainLinkStyle()}
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
 
 const useSponsorComponents = () => {
     return useMemo(
@@ -44,7 +31,10 @@ const useSponsorComponents = () => {
                 </a>
             ),
             () => (
-                <FlexLink href="https://github.com/sponsors/EngineHub">
+                <a
+                    className={`${MainLink} ${FlexLink}`}
+                    href="https://github.com/sponsors/EngineHub"
+                >
                     <iframe
                         src="https://github.com/sponsors/EngineHub/button"
                         title="Sponsor EngineHub"
@@ -53,12 +43,15 @@ const useSponsorComponents = () => {
                         style={{ border: 0, marginBottom: 0 }}
                     />
                     <p style={{ margin: 0 }}>Sponsored by people like you!</p>
-                </FlexLink>
+                </a>
             ),
             () => (
-                <MainLink href="https://madelinemiller.dev/contact/">
+                <Link
+                    className={MainLink}
+                    href="https://madelinemiller.dev/contact/"
+                >
                     Interested? Contact Me4502
-                </MainLink>
+                </Link>
             )
         ],
         []
@@ -101,7 +94,7 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
     }, [sponsorIndex, availableSponsors]);
 
     return (
-        <NarrowDiv>
+        <div className={NarrowDiv}>
             {availableSponsors.map((spon, i) => {
                 const Component = sponsorMap.get(spon) ?? EmptySponsor;
 
@@ -111,24 +104,15 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
                     </div>
                 );
             })}
-        </NarrowDiv>
+        </div>
     );
 };
-
-const HorizontalSponsorArea = styled.div`
-    display: flex;
-    align-items: center;
-
-    small {
-        margin-right: 0.5rem;
-    }
-`;
 
 export const LabelledSponsorsArea: FC<
     ExtraSponsorProps & HTMLAttributes<HTMLDivElement>
 > = ({ extraSponsors, ...rest }) => (
-    <HorizontalSponsorArea {...rest}>
+    <div className={HorizontalSponsorArea} {...rest}>
         <small>Sponsor </small>
         <RandomSponsor extraSponsors={extraSponsors} />
-    </HorizontalSponsorArea>
+    </div>
 );

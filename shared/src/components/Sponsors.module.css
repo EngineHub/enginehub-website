@@ -1,0 +1,25 @@
+.NarrowDiv {
+    max-width: 200px;
+    min-height: 70px;
+    max-height: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.FlexLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.HorizontalSponsorArea = {
+    display: flex;
+    align-items: center;
+
+    & small {
+        margin-right: 0.5rem;
+    }
+}

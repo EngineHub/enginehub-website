@@ -29,3 +29,28 @@ export const SECONDARY: ColorPalette = {
     font: '#333',
     accent: '#cfcfcf'
 };
+
+export const THEME_CSS = `
+html {
+    // Brand
+    --brand-lighter: ${BRAND.lighter};
+    --brand-normal: ${BRAND.normal};
+    --brand-darker: ${BRAND.darker};
+    --brand-font: ${BRAND.font};
+    --brand-accent: ${BRAND.accent};
+
+    // Primary
+    --primary-lighter: ${PRIMARY.lighter};
+    --primary-normal: ${PRIMARY.normal};
+    --primary-darker: ${PRIMARY.darker};
+    --primary-font: ${PRIMARY.font};
+    --primary-accent: ${PRIMARY.accent};
+
+    // Secondary
+    --secondary-lighter: ${SECONDARY.lighter};
+    --secondary-normal: ${SECONDARY.normal};
+    --secondary-darker: ${SECONDARY.darker};
+    --secondary-font: ${SECONDARY.font};
+    --secondary-accent: ${SECONDARY.accent};
+}
+`;

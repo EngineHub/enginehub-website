@@ -21,20 +21,25 @@ export {
     WarningLabel
 } from './text/index';
 export * from './AlignedContent';
-export * from './Breadcrumbs';
+export {
+    ActiveBreadcrumb,
+    Breadcrumb,
+    BreadcrumbWrapper
+} from './Breadcrumbs.module.css';
 export * from './Button';
 export { Container, ContainerPadded } from './Container.module.css';
 export * from './FileSelector';
 export * from './Footer';
 export * from './HorizontalNav';
-export * from './InfoBox';
+export { InfoBox } from './InfoBox.module.css';
 export * from './Jumbotron';
 export * from './Link';
+export { MainLink } from './Link.module.css';
 export * from './Loader';
 export * from './Navbar';
 export * from './PageHeader';
 export * from './Pagination';
-export * from './Panel';
+export { Panel, PanelBody, PanelHeading } from './Panel.module.css';
 export * from './Seo';
 export * from './Sponsors';
 export * from './Table';

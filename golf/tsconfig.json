@@ -7,8 +7,9 @@
         "pages/**/*",
         "src/**/*",
         "../shared/src/utils/encryptedSecrets.ts",
-        "*.{js,ts,tsx}",
-        "next.config.js"
+        "*.js",
+        "*.ts",
+        "*.tsx"
     ],
     "files": ["index.d.ts", "next-env.d.ts"],
     "exclude": ["node_modules", ".next", "build"]

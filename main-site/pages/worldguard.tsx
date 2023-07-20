@@ -24,6 +24,7 @@ import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import worldGuardLogo from '../src/images/projects/worldguard-icon.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const WorldGuardPage = () => {
     return (
@@ -56,24 +57,36 @@ const WorldGuardPage = () => {
                 <div className={Row}>
                     <HorizontalNav>
                         <HorizontalNavItem>
-                            <MainLink href="https://worldguard.enginehub.org">
+                            <Link
+                                className={MainLink}
+                                href="https://worldguard.enginehub.org"
+                            >
                                 Documentation
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem className={'hideSmall'}>
-                            <MainLink href="https://discord.gg/enginehub">
+                            <Link
+                                className={MainLink}
+                                href="https://discord.gg/enginehub"
+                            >
                                 Discord
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/WorldGuard/issues">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/WorldGuard/issues"
+                            >
                                 Bug / Feature Tracker
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                         <HorizontalNavItem>
-                            <MainLink href="https://github.com/EngineHub/WorldGuard">
+                            <Link
+                                className={MainLink}
+                                href="https://github.com/EngineHub/WorldGuard"
+                            >
                                 Source Code
-                            </MainLink>
+                            </Link>
                         </HorizontalNavItem>
                     </HorizontalNav>
                 </div>
@@ -204,9 +217,9 @@ const WorldGuardPage = () => {
                                     Note!
                                 </span>{' '}
                                 WorldGuard requires that{' '}
-                                <MainLink href="/worldedit/">
+                                <Link className={MainLink} href="/worldedit/">
                                     WorldEdit
-                                </MainLink>{' '}
+                                </Link>{' '}
                                 is installed.
                             </p>
                             <ol>
