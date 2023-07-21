@@ -436,18 +436,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicwebviewer@npm:^4.6.0":
-  version: 4.6.0
-  resolution: "@enginehub/schematicwebviewer@npm:4.6.0"
+"@enginehub/schematicwebviewer@npm:^4.7.0":
+  version: 4.7.0
+  resolution: "@enginehub/schematicwebviewer@npm:4.7.0"
   dependencies:
     "@enginehub/schematicjs": ^0.9.1
-    babylonjs: 5.53.0
+    babylonjs: 6.13.0
     buffer: ^6.0.3
     deepmerge: ^4.3.1
     gzip-js: ^0.3.2
     jszip: ^3.10.1
     nbt-ts: ^1.3.5
-  checksum: 9ead655d9a3df305627d3334ec7e8e1560317e64d4e5b8e3bd0aecb9e60b1c805187b632522b8601402fd8a6e56166e104cdd68e9383ccbea93003a0e4eee420
+  checksum: a8aa8cb6e9c07cce3b5dfbf0d6220c845411316e9704952fffce66e58083e85436e05484bde84a2e912dc1a7e8049c49b51c3ae6025ef2060f7961ea32fd40ad
   languageName: node
   linkType: hard
 
@@ -1650,10 +1650,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babylonjs@npm:5.53.0":
-  version: 5.53.0
-  resolution: "babylonjs@npm:5.53.0"
-  checksum: 835e0b7969ad1c999fc4fb3713c1b38fde17278b66c9cb36b916e48b3097898aab3e0c3a2ab49bf3e3defa80f2d2df55d52305cf8397038f548865adf0ac749c
+"babylonjs@npm:6.13.0":
+  version: 6.13.0
+  resolution: "babylonjs@npm:6.13.0"
+  checksum: 9956361f4eaaee5e652f888f93c760e25323e6e68151ce8c26d9f1a3511980884fdddb1ab3fd8f1168c575a5c5a8d6305c7a3c4bcd8007850992266ed300aa32
   languageName: node
   linkType: hard
 
@@ -5392,7 +5392,7 @@ __metadata:
   resolution: "paste@workspace:paste"
   dependencies:
     "@enginehub/schematicjs": ^0.9.1
-    "@enginehub/schematicwebviewer": ^4.6.0
+    "@enginehub/schematicwebviewer": ^4.7.0
     "@enginehub/shared": "workspace:*"
     "@google-cloud/storage": ^6.12.0
     "@types/node": ^18.16.19
@@ -7503,7 +7503,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "worldedit-golf@workspace:golf"
   dependencies:
-    "@enginehub/schematicwebviewer": ^4.6.0
+    "@enginehub/schematicwebviewer": ^4.7.0
     "@enginehub/shared": "workspace:*"
     "@fortawesome/fontawesome-svg-core": ^6.4.0
     "@fortawesome/free-solid-svg-icons": ^6.4.0
