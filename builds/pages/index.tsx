@@ -14,7 +14,6 @@ import type { Project } from '../src/project';
 import { PROJECTS } from '../src/project';
 import type { Build } from '../src/builds';
 import { getBranches, getLatestBuild } from '../src/builds';
-import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCodeBranch,
@@ -24,6 +23,8 @@ import {
 import moment from 'moment';
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
+import { MiniPaddedIcon } from '../src/PaddedIcon.module.css';
+import { TableSeparatorHeader } from '../src/Components.module.css';
 
 interface ProjectEntry {
     project: Project;
@@ -33,30 +34,6 @@ interface ProjectEntry {
 interface IndexProps {
     projectEntries: ProjectEntry[];
 }
-
-const TdNoWrap = styled.td`
-    white-space: nowrap;
-`;
-
-const MiniPaddedIcon = styled(FontAwesomeIcon)`
-    line-height: 0.75em;
-    vertical-align: -15%;
-    margin-right: 0.25rem;
-    max-width: 16px;
-    max-height: 16px;
-`;
-
-const ProjectTitleRow = styled.tr`
-    background: #eee;
-
-    td {
-        h2 {
-            margin: 2px 0 0;
-            padding: 0 5px;
-            font-size: 14px;
-        }
-    }
-`;
 
 function Index({ projectEntries }: IndexProps) {
     return (
@@ -98,11 +75,13 @@ function Index({ projectEntries }: IndexProps) {
                         </tr>
                         {projectEntries.map(projectEntry => (
                             <Fragment key={projectEntry.project.id}>
-                                <ProjectTitleRow>
+                                <tr style={{ background: '#eee' }}>
                                     <td colSpan={6}>
-                                        <h2>{projectEntry.project.name}</h2>
+                                        <h2 className={TableSeparatorHeader}>
+                                            {projectEntry.project.name}
+                                        </h2>
                                     </td>
-                                </ProjectTitleRow>
+                                </tr>
                                 {projectEntry.builds.map(build => (
                                     <tr
                                         className={
@@ -114,7 +93,8 @@ function Index({ projectEntries }: IndexProps) {
                                     >
                                         <td />
                                         <td>
-                                            <MiniPaddedIcon
+                                            <FontAwesomeIcon
+                                                className={MiniPaddedIcon}
                                                 icon={faCodeBranch}
                                             />
                                             <Link
@@ -163,9 +143,9 @@ function Index({ projectEntries }: IndexProps) {
                                                 #{build.build_number}
                                             </Link>
                                         </td>
-                                        <TdNoWrap>
+                                        <td style={{ whiteSpace: 'nowrap' }}>
                                             {moment(build.build_date).fromNow()}{' '}
-                                        </TdNoWrap>
+                                        </td>
                                     </tr>
                                 ))}
                             </Fragment>

@@ -1,0 +1,29 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ImageContainer {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+}
+
+.WorldEditLogo {
+    width: 100px;
+    height: 100px;
+}
+
+.InnerImage {
+    position: absolute;
+    z-index: 1;
+    height: 40px;
+    width: 40px;
+    bottom: 0;
+    right: 0;
+    animation: 800ms spin ease-in-out;
+}

@@ -1,5 +1,4 @@
 import type { FC, PropsWithChildren } from 'react';
-import { styled } from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
 import { MainLink } from '@enginehub/shared';
@@ -11,12 +10,6 @@ import {
     ChallengeEntryContainer,
     HeaderLink
 } from './OpenChallenges.module.css';
-
-const Entries = styled.div`
-    > div:not(:last) {
-        border-bottom: 2px red;
-    }
-`;
 
 export interface ChallengeEntryProps {
     schematic: string;
@@ -54,17 +47,13 @@ export const ChallengeEntry: FC<ChallengeEntryProps> = ({
     );
 };
 
-const ChallengeTitle = styled.h2`
-    font-size: 24px;
-`;
-
 export const OpenChallenge: FC<PropsWithChildren<OpenChallengeProps>> = ({
     children,
     golfs
 }) => (
     <>
-        <ChallengeTitle>Open Challenges</ChallengeTitle>
-        <Entries>
+        <h2 style={{ fontSize: '24px' }}>Open Challenges</h2>
+        <div>
             {golfs.map((golf, i) => (
                 <ChallengeEntry
                     schematic={golf.test_schematic}
@@ -75,6 +64,6 @@ export const OpenChallenge: FC<PropsWithChildren<OpenChallengeProps>> = ({
                 />
             ))}
             {children}
-        </Entries>
+        </div>
     </>
 );

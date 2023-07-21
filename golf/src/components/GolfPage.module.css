@@ -1,0 +1,53 @@
+.PageColumns {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.MainContent {
+    flex: 60%;
+    overflow: hidden;
+}
+
+.PreviewBox {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 0;
+    margin-bottom: 2rem;
+}
+
+.BaseTextStyle {
+    width: 100%;
+    resize: none;
+    height: 200px;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    padding: 0.5rem;
+}
+
+.SchematicBoxText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.RunButtonBox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    & * {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
+
+.SchematicBoxTitle {
+    font-size: 16px;
+    margin: 12px 0;
+    font-weight: 600;
+}

@@ -1,6 +1,5 @@
 import { OpenChallenge } from '../src/components/OpenChallenges';
 import { useIsLoggedIn } from '../src/components/Auth';
-import { styled } from 'styled-components';
 import Layout from '../src/Layout';
 import type { Golf } from '../src/types/database';
 import { Container, SEO, Button, BrandButton } from '@enginehub/shared';
@@ -8,12 +7,6 @@ import Link from 'next/link';
 import { BrandHeader } from '../src/components/BrandHeader';
 import { getAllGolfs } from '../src/databaseConnector';
 import type { GetStaticProps } from 'next';
-
-const NewChallengeBlock = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-`;
 
 interface HomeProps {
     golfs: Golf[];
@@ -31,7 +24,13 @@ function Home({ golfs }: HomeProps) {
             <div className={Container}>
                 <BrandHeader isHomePage={true} />
                 {isAuthenticated && (
-                    <NewChallengeBlock>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginBottom: '2rem'
+                        }}
+                    >
                         <Link
                             className={`${Button} ${BrandButton}`}
                             style={{ fontSize: '22px' }}
@@ -39,7 +38,7 @@ function Home({ golfs }: HomeProps) {
                         >
                             New Challenge
                         </Link>
-                    </NewChallengeBlock>
+                    </div>
                 )}
                 <OpenChallenge golfs={golfs} />
             </div>

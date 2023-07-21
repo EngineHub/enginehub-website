@@ -7,7 +7,6 @@ import {
     LeaderboardEntry,
     Leaderboard
 } from '../../src/components/Leaderboard/Leaderboard';
-import { styled } from 'styled-components';
 import { pollBroker, queueTask, clearTask } from '../../src/broker';
 import { Schematic } from '../../src/components/Schematic';
 import { useToken } from '../../src/components/Auth';
@@ -26,6 +25,15 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { BrandHeader } from '../../src/components/BrandHeader';
 import { getGolfData } from '../../src/databaseConnector';
 import Link from 'next/link';
+import {
+    SchematicBoxTitle,
+    BaseTextStyle,
+    MainContent,
+    PageColumns,
+    PreviewBox,
+    RunButtonBox,
+    SchematicBoxText
+} from '../../src/components/GolfPage.module.css';
 
 interface DocumentProps {
     golf: Golf;
@@ -33,69 +41,11 @@ interface DocumentProps {
     userMap: { [key: string]: User };
 }
 
-const PageColumns = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-    }
-`;
-
-const MainContent = styled.div`
-    flex: 60%;
-    overflow: hidden;
-`;
-
-const PreviewBox = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    flex-grow: 0;
-    margin-bottom: 2rem;
-`;
-
-const SideLeaderboard = styled(Leaderboard)`
-    flex: 35%;
-    margin-left: 1rem;
-`;
-
-const BaseTextStyle = styled.textarea`
-    width: 100%;
-    resize: none;
-    height: 200px;
-    font-size: 1.3rem;
-    line-height: 1.5;
-`;
-
 interface SchematicBoxProps {
     schematic: string;
     size: number;
     title: string;
 }
-
-const SchematicBoxText = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-`;
-
-const RunButtonBox = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-
-    * {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-`;
-
-const SchematicBoxTitle = styled.p`
-    font-size: 16px;
-    margin: 12px 0;
-    font-weight: 600;
-`;
 
 const SchematicBox: FC<SchematicBoxProps> = ({ schematic, size, title }) => {
     const onClickDownload = () => {
@@ -114,34 +64,18 @@ const SchematicBox: FC<SchematicBoxProps> = ({ schematic, size, title }) => {
     return (
         <div>
             <Schematic size={size} schematic={schematic} />
-            <SchematicBoxText>
-                <SchematicBoxTitle>{title}</SchematicBoxTitle>
+            <div className={SchematicBoxText}>
+                <p className={SchematicBoxTitle}>{title}</p>
                 <a
                     className={`${Button} ${PrimaryButton}`}
                     onClick={onClickDownload}
                 >
                     <FontAwesomeIcon icon={faDownload} />
                 </a>
-            </SchematicBoxText>
+            </div>
         </div>
     );
 };
-
-const ResultPreview = styled(SchematicBox)`
-    margin-top: 48px;
-`;
-
-const DescriptionText = styled.p`
-    font-size: 20px;
-`;
-
-const TitleText = styled.h1`
-    margin-bottom: 0;
-`;
-
-const SmallText = styled.small`
-    margin-bottom: 1.5rem;
-`;
 
 function Document({ golf, leaderboards, userMap }: DocumentProps) {
     const [taskId, setTaskId] = useState<string | undefined>(undefined);
@@ -244,10 +178,10 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
             />
             <div className={Container}>
                 <BrandHeader />
-                <PageColumns>
-                    <MainContent ref={contentRef}>
-                        <TitleText>{golf.title}</TitleText>
-                        <SmallText>
+                <div className={PageColumns}>
+                    <div className={MainContent} ref={contentRef}>
+                        <h1 style={{ marginBottom: '0' }}>{golf.title}</h1>
+                        <small style={{ marginBottom: '1.5rem' }}>
                             Uploaded by {uploadingUser.fullname} /{' '}
                             <Link
                                 className={MainLink}
@@ -256,9 +190,9 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                             >
                                 @{uploadingUser.username}
                             </Link>
-                        </SmallText>
-                        <DescriptionText>{golf.description}</DescriptionText>
-                        <PreviewBox>
+                        </small>
+                        <p style={{ fontSize: '20px' }}>{golf.description}</p>
+                        <div className={PreviewBox}>
                             <SchematicBox
                                 schematic={golf.start_schematic}
                                 size={smallSize}
@@ -269,10 +203,10 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                                 size={smallSize}
                                 title={'After'}
                             />
-                        </PreviewBox>
+                        </div>
                         <h3>Commands</h3>
-                        <BaseTextStyle ref={commandBox} />
-                        <RunButtonBox>
+                        <textarea className={BaseTextStyle} ref={commandBox} />
+                        <div className={RunButtonBox}>
                             <a
                                 className={`${Button} ${SecondaryButton}`}
                                 target="_blank"
@@ -287,18 +221,24 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                             >
                                 Run
                             </a>
-                        </RunButtonBox>
+                        </div>
                         <h3>Output</h3>
-                        <BaseTextStyle disabled={true} ref={statusBox} />
+                        <textarea
+                            className={BaseTextStyle}
+                            disabled={true}
+                            ref={statusBox}
+                        />
                         {resultSchem && (
-                            <ResultPreview
-                                size={Math.min(width, 500)}
-                                schematic={resultSchem}
-                                title={'Result'}
-                            />
+                            <div style={{ marginTop: '48px' }}>
+                                <SchematicBox
+                                    size={Math.min(width, 500)}
+                                    schematic={resultSchem}
+                                    title={'Result'}
+                                />
+                            </div>
                         )}
-                    </MainContent>
-                    <SideLeaderboard>
+                    </div>
+                    <Leaderboard>
                         {leaderboards.map(leaderboard => {
                             const date = new Date(leaderboard.submitted_time);
                             const user = userMap[leaderboard.user_id];
@@ -328,8 +268,8 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                                 />
                             );
                         })}
-                    </SideLeaderboard>
-                </PageColumns>
+                    </Leaderboard>
+                </div>
             </div>
         </Layout>
     );

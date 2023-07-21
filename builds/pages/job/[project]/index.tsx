@@ -18,7 +18,6 @@ import {
     getBuildPage,
     BUILDS_PER_PAGE
 } from '../../../src/builds';
-import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDownload,
@@ -34,6 +33,7 @@ import {
 } from '../../../src/BranchButton.module.css';
 import moment from 'moment';
 import Link from 'next/link';
+import { MiniPaddedIcon } from '../../../src/PaddedIcon.module.css';
 
 interface ProjectPageProps {
     activeBranch: string;
@@ -43,18 +43,6 @@ interface ProjectPageProps {
     pageNumber: number;
     hasNextPage: boolean;
 }
-
-const TdNoWrap = styled.td`
-    white-space: nowrap;
-`;
-
-const MiniPaddedIcon = styled(FontAwesomeIcon)`
-    line-height: 0.75em;
-    vertical-align: -15%;
-    margin-right: 0.25rem;
-    max-width: 16px;
-    max-height: 16px;
-`;
 
 function Index({
     project,
@@ -84,7 +72,11 @@ function Index({
                                     branch === activeBranch ? ' active' : ''
                                 }`}
                             >
-                                <MiniPaddedIcon icon={faCodeBranch} /> {branch}
+                                <FontAwesomeIcon
+                                    className={MiniPaddedIcon}
+                                    icon={faCodeBranch}
+                                />{' '}
+                                {branch}
                             </Link>
                         </li>
                     ))}
@@ -131,17 +123,17 @@ function Index({
                                 }
                                 key={build.build_id}
                             >
-                                <TdNoWrap>
+                                <td style={{ whiteSpace: 'nowrap' }}>
                                     <small>{build.branch}</small>
-                                </TdNoWrap>
-                                <TdNoWrap>
+                                </td>
+                                <td style={{ whiteSpace: 'nowrap' }}>
                                     <Link
                                         className={MainLink}
                                         href={`/job/${project.id}/${build.build_id}`}
                                     >
                                         #{build.build_number}
                                     </Link>
-                                </TdNoWrap>
+                                </td>
                                 <td>
                                     <FontAwesomeIcon
                                         icon={
@@ -189,17 +181,17 @@ function Index({
                                         )}
                                     </ul>
                                 </td>
-                                <TdNoWrap>
+                                <td style={{ whiteSpace: 'nowrap' }}>
                                     {moment(build.build_date).fromNow()}
-                                </TdNoWrap>
-                                <TdNoWrap>
+                                </td>
+                                <td style={{ whiteSpace: 'nowrap' }}>
                                     <Link
                                         className={`${Button} ${PrimaryButton}`}
                                         href={`/job/${project.id}/${build.build_id}`}
                                     >
                                         <FontAwesomeIcon icon={faDownload} />
                                     </Link>
-                                </TdNoWrap>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

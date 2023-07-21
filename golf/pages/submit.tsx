@@ -1,6 +1,5 @@
 import type { MutableRefObject, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { styled } from 'styled-components';
 import { TextArea } from '../src/components/Input/TextArea';
 import Input from '../src/components/Input/Input';
 import { useAuthenticatedFetch } from '../src/components/Auth';
@@ -17,21 +16,7 @@ import {
     BrandButton
 } from '@enginehub/shared';
 import { BrandHeader } from '../src/components/BrandHeader';
-
-const LoadingContainer = styled.div`
-    position: absolute;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    justify-content: center;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8);
-
-    h1 {
-        margin-left: 20px;
-    }
-`;
+import { SubmitLoadingContainer } from '../src/components/Loading.module.css';
 
 type SchematicType = 'start' | 'test';
 
@@ -46,13 +31,6 @@ interface Submitting {
     type: SubmittingType;
     data?: ReactNode;
 }
-
-const InfoContainer = styled.div<{ color: string }>`
-    border: ${props => props.color} 2px solid;
-    border-radius: 3px;
-    background: ${props => props.color}66;
-    padding: 6px 10px;
-`;
 
 const Submit = () => {
     const [name, setName] = useState<string>('');
@@ -171,20 +149,29 @@ const Submit = () => {
             <div className={Container} ref={containerRef}>
                 <BrandHeader />
                 {submitting && submitting.type === 'loading' && (
-                    <LoadingContainer>
+                    <div className={SubmitLoadingContainer}>
                         <Loading />
                         <h1>Loading...</h1>
-                    </LoadingContainer>
+                    </div>
                 )}
                 <h1>Create Golf!</h1>
                 {submitting && submitting.data && (
-                    <InfoContainer
-                        color={
-                            submitting.type === 'failed' ? '#ff0000' : '#00ff00'
-                        }
+                    <div
+                        style={{
+                            borderRadius: '3px',
+                            padding: '6px 10px',
+                            background:
+                                submitting.type === 'failed'
+                                    ? '#ff000066'
+                                    : '#00ff0066',
+                            border:
+                                submitting.type === 'failed'
+                                    ? '#ff0000 2px solid'
+                                    : '#00ff00 2px solid'
+                        }}
                     >
                         {submitting.data}
-                    </InfoContainer>
+                    </div>
                 )}
                 <Input onChange={setName} name="Title" />
                 <TextArea onChange={setDescription} name="Description" />

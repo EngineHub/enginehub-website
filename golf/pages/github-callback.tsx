@@ -2,19 +2,8 @@ import { useEffect, useState } from 'react';
 import router from 'next/router';
 import { useSetToken } from '../src/components/Auth';
 import { Loading } from '../src/components/Loading';
-import { styled } from 'styled-components';
 import Layout from '../src/Layout';
-
-const LoadingContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 120px;
-
-    h1 {
-        margin-left: 20px;
-    }
-`;
+import { SignInLoadingContainer } from '../src/components/Loading.module.css';
 
 const Page = () => {
     const [errorMessage, setError] = useState<string>();
@@ -53,10 +42,10 @@ const Page = () => {
     return errorMessage ? (
         <h1>{errorMessage}</h1>
     ) : (
-        <LoadingContainer>
+        <div className={SignInLoadingContainer}>
             <Loading />
             <h1>Loading...</h1>
-        </LoadingContainer>
+        </div>
     );
 };
 

@@ -22,7 +22,6 @@ import {
     Button,
     SecondaryButton
 } from '@enginehub/shared';
-import { styled } from 'styled-components';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Project } from '../../../../src/project';
 import { PROJECT_MAP } from '../../../../src/project';
@@ -39,43 +38,16 @@ import BranchWarning from '../../../../src/BranchWarning';
 import moment from 'moment';
 import type { ParsedUrlQuery } from 'querystring';
 import Link from 'next/link';
+import { MiniPaddedIcon } from '../../../../src/PaddedIcon.module.css';
+import {
+    Breaker,
+    DownloadLinkDiv
+} from '../../../../src/Components.module.css';
 
 interface BuildPageProps {
     build: Build;
     project: Project;
 }
-
-const DownloadLinkDiv = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 11.5px;
-
-    img {
-        border: 0;
-        margin-bottom: 0;
-    }
-
-    * {
-        margin-right: 0.3rem;
-    }
-`;
-
-const Breaker = styled.hr`
-    margin-top: 23px;
-    margin-bottom: 23px;
-    border: 0;
-    border-top: 1px solid #eee;
-    box-sizing: content-box;
-    height: 0;
-`;
-
-const MiniPaddedIcon = styled(FontAwesomeIcon)`
-    line-height: 0.75em;
-    vertical-align: -15%;
-    margin-right: 0.25rem;
-    max-width: 16px;
-    max-height: 16px;
-`;
 
 function Index({ project, build }: BuildPageProps) {
     return (
@@ -147,7 +119,8 @@ function Index({ project, build }: BuildPageProps) {
                                 <tr>
                                     <th>Status</th>
                                     <td>
-                                        <MiniPaddedIcon
+                                        <FontAwesomeIcon
+                                            className={MiniPaddedIcon}
                                             icon={
                                                 build.state === 'SUCCESS'
                                                     ? faCheckCircle
@@ -166,7 +139,10 @@ function Index({ project, build }: BuildPageProps) {
                                 <tr>
                                     <th>Branch</th>
                                     <td>
-                                        <MiniPaddedIcon icon={faCodeBranch} />
+                                        <FontAwesomeIcon
+                                            className={MiniPaddedIcon}
+                                            icon={faCodeBranch}
+                                        />
                                         {build.branch}
                                     </td>
                                 </tr>
@@ -194,7 +170,8 @@ function Index({ project, build }: BuildPageProps) {
                             <div className={PanelBody}>
                                 {build.artifacts.length > 0 ? (
                                     build.artifacts.map((artifact, i) => (
-                                        <DownloadLinkDiv
+                                        <div
+                                            className={DownloadLinkDiv}
                                             key={`${artifact.name}-${i}`}
                                         >
                                             <Link
@@ -215,7 +192,7 @@ function Index({ project, build }: BuildPageProps) {
                                                 ) / 100}{' '}
                                                 kBytes)
                                             </small>
-                                        </DownloadLinkDiv>
+                                        </div>
                                     ))
                                 ) : (
                                     <div className={WarningBox}>
@@ -225,7 +202,7 @@ function Index({ project, build }: BuildPageProps) {
                                         </p>
                                     </div>
                                 )}
-                                <Breaker />
+                                <hr className={Breaker} />
                                 <LabelledSponsorsArea
                                     extraSponsors={project.extraSponsors}
                                 />

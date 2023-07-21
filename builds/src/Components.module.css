@@ -1,0 +1,29 @@
+.TableSeparatorHeader {
+    margin: 2px 0 0;
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.DownloadLinkDiv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 11.5px;
+
+    & img {
+        border: 0;
+        margin-bottom: 0;
+    }
+
+    & * {
+        margin-right: 0.3rem;
+    }
+}
+
+.Breaker {
+    margin-top: 23px;
+    margin-bottom: 23px;
+    border: 0;
+    border-top: 1px solid #eee;
+    box-sizing: content-box;
+    height: 0;
+}

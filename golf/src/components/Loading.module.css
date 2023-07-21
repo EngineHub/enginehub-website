@@ -1,0 +1,42 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.Image {
+    max-width: 100px;
+    width: 80vw;
+    height: 80vw;
+    animation: spin 800ms cubic-bezier(0.3, 0, 0.38, 0.99) infinite;
+    max-height: 100px;
+}
+
+.SignInLoadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+
+    & h1 {
+        margin-left: 20px;
+    }
+}
+
+.SubmitLoadingContainer {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    justify-content: center;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+
+    & h1 {
+        margin-left: 20px;
+    }
+}

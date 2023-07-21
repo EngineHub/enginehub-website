@@ -1,25 +1,13 @@
 import type { FC } from 'react';
 import { useRef, useEffect, useState } from 'react';
-import { styled } from 'styled-components';
 import { renderSchematic } from '@enginehub/schematicwebviewer';
+import { Container } from './Schematic.module.css';
 
 interface SchematicProps {
     schematic: string;
     size?: number;
     preview?: boolean;
 }
-
-const Container = styled.div<{ size: number }>`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    canvas {
-        width: ${({ size }) => size}px;
-        height: ${({ size }) => size}px;
-        border: solid 2px rgba(28, 28, 28, 0.3);
-    }
-`;
 
 export const Schematic: FC<SchematicProps> = ({
     schematic,
@@ -49,15 +37,15 @@ export const Schematic: FC<SchematicProps> = ({
                     setResize(() => r);
                     callbacks.current.destroy = d;
                 })
-                .catch(() => {});
+                .catch(() => undefined);
             return callbacks.current.destroy;
         }
         return;
     }, [schematic, preview]);
 
     return (
-        <Container size={size} {...rest}>
+        <div className={Container} {...rest}>
             <canvas ref={ref} style={{ width: size, height: size }} />
-        </Container>
+        </div>
     );
 };
