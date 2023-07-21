@@ -1,7 +1,4 @@
-import Link from 'next/link';
-import { styled } from 'styled-components';
-
-export const BranchButtonList = styled.ul`
+.BranchButtonList {
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
@@ -11,12 +8,12 @@ export const BranchButtonList = styled.ul`
     flex-wrap: wrap;
     gap: 0.2rem;
 
-    li + li {
+    & li + & li {
         margin-left: 2px;
     }
-`;
+}
 
-export const BranchButton = styled(Link)`
+.BranchButton {
     padding: 5px 8px;
     border-radius: 4px;
     position: relative;
@@ -24,13 +21,13 @@ export const BranchButton = styled(Link)`
     color: #0059d1;
     text-decoration: none;
 
-    :hover {
+    &:hover {
         text-decoration: none;
         background-color: #eee;
     }
 
-    &.active {
+    &:global(.active) {
         color: #fff;
         background-color: #0059d1;
     }
-`;
+}

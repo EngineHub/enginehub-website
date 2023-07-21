@@ -79,7 +79,7 @@ function Index({ projectEntries }: IndexProps) {
                         of stable versions.
                     </p>
                 </div>
-                <Table>
+                <table className={Table}>
                     <colgroup>
                         <col style={{ width: '20px' }} />
                         <col />
@@ -171,7 +171,7 @@ function Index({ projectEntries }: IndexProps) {
                             </Fragment>
                         ))}
                     </tbody>
-                </Table>
+                </table>
             </div>
         </Layout>
     );

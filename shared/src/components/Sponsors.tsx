@@ -110,8 +110,8 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
 
 export const LabelledSponsorsArea: FC<
     ExtraSponsorProps & HTMLAttributes<HTMLDivElement>
-> = ({ extraSponsors, ...rest }) => (
-    <div className={HorizontalSponsorArea} {...rest}>
+> = ({ extraSponsors, className }) => (
+    <div className={`${HorizontalSponsorArea} ${className ?? ''}`}>
         <small>Sponsor </small>
         <RandomSponsor extraSponsors={extraSponsors} />
     </div>

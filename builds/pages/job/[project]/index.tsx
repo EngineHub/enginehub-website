@@ -28,7 +28,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { MainLink } from '@enginehub/shared';
 import BranchWarning from '../../../src/BranchWarning';
-import { BranchButtonList, BranchButton } from '../../../src/BranchButton';
+import {
+    BranchButtonList,
+    BranchButton
+} from '../../../src/BranchButton.module.css';
 import moment from 'moment';
 import Link from 'next/link';
 
@@ -72,22 +75,20 @@ function Index({
                 icon={project.icon}
                 extraSponsors={project.extraSponsors}
             >
-                <BranchButtonList>
+                <ul className={BranchButtonList}>
                     {branches.map(branch => (
                         <li key={branch}>
-                            <BranchButton
+                            <Link
                                 href={`/job/${project.id}?branch=${branch}`}
-                                className={
-                                    branch === activeBranch
-                                        ? 'active'
-                                        : undefined
-                                }
+                                className={`${BranchButton} ${
+                                    branch === activeBranch ? ' active' : ''
+                                }`}
                             >
                                 <MiniPaddedIcon icon={faCodeBranch} /> {branch}
-                            </BranchButton>
+                            </Link>
                         </li>
                     ))}
-                </BranchButtonList>
+                </ul>
             </PageHeader>
             <div className={Container}>
                 {activeBranch !== project.defaultBranch && (
@@ -104,7 +105,7 @@ function Index({
                 >
                     View last successful build
                 </Link>
-                <Table>
+                <table className={Table}>
                     <colgroup>
                         <col style={{ width: '10%' }} />
                         <col style={{ width: '1%' }} />
@@ -202,7 +203,7 @@ function Index({
                             </tr>
                         ))}
                     </tbody>
-                </Table>
+                </table>
                 <Pagination
                     currentPage={pageNumber}
                     hasNextPage={hasNextPage}

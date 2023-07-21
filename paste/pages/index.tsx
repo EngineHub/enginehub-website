@@ -1,4 +1,3 @@
-import { styled } from 'styled-components';
 import { getFiles } from '../src/dragAndDrop';
 import { Layout } from '../src/Layout';
 import Router from 'next/router';
@@ -6,56 +5,13 @@ import type { ChangeEvent, DragEvent } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { SEO, Loader } from '@enginehub/shared';
 import { fromByteArray } from 'base64-js';
-
-const Row = styled.div`
-    display: flex;
-    flex-grow: 1;
-    min-height: min-content;
-`;
-
-const Form = styled.div`
-    display: flex;
-    flex-grow: 1;
-`;
-
-const PasteArea = styled.textarea`
-    flex-grow: 1;
-    resize: none;
-    border: 0;
-    margin: 0;
-    padding: 15px;
-    padding-top: 15px;
-    color: inherit;
-    background-color: transparent;
-    outline: 0;
-    font-size: 13px;
-    line-height: 130%;
-    white-space: pre;
-
-    &:focus {
-        outline: 0;
-    }
-`;
-
-const DropPendingPasteArea = styled.div`
-    flex-grow: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-`;
-
-const SavingOverlay = styled.div`
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
+import {
+    DropPendingPasteArea,
+    Form,
+    PasteArea,
+    Row,
+    SavingOverlay
+} from '../src/IndexComponents.module.css';
 
 async function postContent(content: string, extension = '') {
     try {
@@ -193,25 +149,26 @@ function Index() {
                 description="EngineHub Pastebin Service. Store logs, profiles, and reports with ease."
             />
             {dragging ? (
-                <Row>
-                    <DropPendingPasteArea {...dndProps} />
-                </Row>
+                <div className={Row}>
+                    <div className={DropPendingPasteArea} {...dndProps} />
+                </div>
             ) : (
-                <Row>
-                    <Form>
-                        <PasteArea
+                <div className={Row}>
+                    <div className={Form}>
+                        <textarea
+                            className={PasteArea}
                             placeholder="Enter your text here..."
                             value={content}
                             onChange={onChange}
                             {...dndProps}
                         />
-                    </Form>
-                </Row>
+                    </div>
+                </div>
             )}
             {saving && (
-                <SavingOverlay>
+                <div className={SavingOverlay}>
                     <Loader />
-                </SavingOverlay>
+                </div>
             )}
         </Layout>
     );

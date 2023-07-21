@@ -1946,7 +1946,6 @@ __metadata:
     prettier: ^3.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
-    styled-components: ^6.0.4
     tslib: ^2.6.0
     typescript: ^5.1.6
   languageName: unknown
@@ -7150,7 +7149,6 @@ __metadata:
     react-dom: ^18.2.0
     sharp: ^0.32.3
     shortid: ^2.2.16
-    styled-components: ^6.0.4
     typescript: ^5.1.6
   languageName: unknown
   linkType: soft

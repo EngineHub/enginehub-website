@@ -57,7 +57,7 @@ export const Schematic: FC<SchematicProps> = ({
 
     return (
         <Container size={size} {...rest}>
-            <canvas ref={ref} />
+            <canvas ref={ref} style={{ width: size, height: size }} />
         </Container>
     );
 };

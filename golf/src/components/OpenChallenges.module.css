@@ -1,0 +1,46 @@
+.ChallengeEntryContainer {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    padding: 8px 0;
+}
+
+.InfoContainer {
+    flex-grow: 1;
+    margin-left: 22px;
+
+    & h4 {
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
+.HeaderTitle {
+    font-size: 28px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.HeaderLink {
+    font-size: 1.125rem;
+    line-height: 1.4375rem;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 8px 0px;
+    cursor: pointer;
+
+    &:hover {
+        color: black;
+        font-size: 1.125rem;
+        line-height: 1.4375rem;
+        display: inline-block;
+        text-decoration: none;
+    }
+}
+
+.Paragraph {
+    margin: 16px 0;
+    color: black;
+    font-size: 16px;
+}

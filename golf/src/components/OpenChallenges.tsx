@@ -2,8 +2,15 @@ import type { FC, PropsWithChildren } from 'react';
 import { styled } from 'styled-components';
 import { Schematic } from './Schematic';
 import Link from 'next/link';
-import { MainLinkStyle } from '@enginehub/shared';
+import { MainLink } from '@enginehub/shared';
 import type { Golf } from '../types/database';
+import {
+    Paragraph,
+    HeaderTitle,
+    InfoContainer,
+    ChallengeEntryContainer,
+    HeaderLink
+} from './OpenChallenges.module.css';
 
 const Entries = styled.div`
     > div:not(:last) {
@@ -24,62 +31,6 @@ interface OpenChallengeProps {
 
 const DEFAULT_SIZE = 140;
 
-const ChallengeEntryContainer = styled.div`
-    display: flex;
-    align-items: center;
-    margin: 12px 0;
-    padding: 8px 0;
-
-    canvas {
-        width: ${DEFAULT_SIZE}px;
-        height: ${DEFAULT_SIZE}px;
-    }
-`;
-
-const InfoContainer = styled.div`
-    flex-grow: 1;
-    margin-left: 22px;
-
-    a {
-        h3 {
-            font-size: 28px;
-            margin: 0;
-            font-weight: normal;
-        }
-    }
-
-    h4 {
-        font-size: 18px;
-        margin: 0;
-    }
-`;
-
-const HeaderLink = styled(Link)`
-    ${MainLinkStyle()}
-
-    font-size: 1.125rem;
-    line-height: 1.4375rem;
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    padding: 8px 0px;
-    cursor: pointer;
-
-    :hover {
-        color: black;
-        font-size: 1.125rem;
-        line-height: 1.4375rem;
-        display: inline-block;
-        text-decoration: none;
-    }
-`;
-
-const Paragraph = styled.p`
-    margin: 16px 0;
-    color: black;
-    font-size: 16px;
-`;
-
 export const ChallengeEntry: FC<ChallengeEntryProps> = ({
     schematic,
     title,
@@ -88,15 +39,18 @@ export const ChallengeEntry: FC<ChallengeEntryProps> = ({
     ...rest
 }) => {
     return (
-        <ChallengeEntryContainer {...rest}>
+        <div className={ChallengeEntryContainer} {...rest}>
             <Schematic schematic={schematic} size={DEFAULT_SIZE} />
-            <InfoContainer>
-                <HeaderLink href={`/golf/${golfId}`}>
-                    <h3>{title}</h3>
-                </HeaderLink>
-                <Paragraph>{description}</Paragraph>
-            </InfoContainer>
-        </ChallengeEntryContainer>
+            <div className={InfoContainer}>
+                <Link
+                    className={`${MainLink} ${HeaderLink}`}
+                    href={`/golf/${golfId}`}
+                >
+                    <h3 className={HeaderTitle}>{title}</h3>
+                </Link>
+                <p className={Paragraph}>{description}</p>
+            </div>
+        </div>
     );
 };
 

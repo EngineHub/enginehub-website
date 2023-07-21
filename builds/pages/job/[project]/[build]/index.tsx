@@ -131,7 +131,7 @@ function Index({ project, build }: BuildPageProps) {
                 )}
                 <div className={Row}>
                     <div className={ColumnThird} style={{ paddingLeft: '0' }}>
-                        <BorderedTable>
+                        <table className={`${Table} ${BorderedTable}`}>
                             <tbody>
                                 <tr>
                                     <th>Project</th>
@@ -183,7 +183,7 @@ function Index({ project, build }: BuildPageProps) {
                                     </td>
                                 </tr>
                             </tbody>
-                        </BorderedTable>
+                        </table>
                     </div>
                     <div
                         className={ColumnTwoThird}
@@ -235,7 +235,7 @@ function Index({ project, build }: BuildPageProps) {
                 </div>
                 <div className={Panel}>
                     <div className={PanelHeading}>Changes</div>
-                    <Table>
+                    <table className={Table}>
                         <colgroup>
                             <col style={{ width: '15%' }} />
                             <col />
@@ -265,7 +265,7 @@ function Index({ project, build }: BuildPageProps) {
                                 </tr>
                             ))}
                         </tbody>
-                    </Table>
+                    </table>
                 </div>
             </div>
         </Layout>

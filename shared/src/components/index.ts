@@ -43,7 +43,6 @@ export {
     JumbotronImageBox,
     JumbotronText
 } from './Jumbotron.module.css';
-export * from './Link';
 export { MainLink } from './Link.module.css';
 export * from './Loader';
 export * from './Navbar';
@@ -53,5 +52,5 @@ export * from './Pagination';
 export { Panel, PanelBody, PanelHeading } from './Panel.module.css';
 export * from './Seo';
 export * from './Sponsors';
-export * from './Table';
+export { BorderedTable, Table } from './Table.module.css';
 export { WarningBox } from './WarningBox.module.css';

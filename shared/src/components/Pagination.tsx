@@ -1,45 +1,10 @@
-import { styled } from 'styled-components';
 import Link from 'next/link';
 import type { FC } from 'react';
-
-const PaginationBox = styled.ul`
-    margin-top: 0;
-    display: inline-block;
-    padding-left: 0;
-    margin: 23px 0;
-    border-radius: 4px;
-
-    li {
-        display: inline;
-
-        * {
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            line-height: 1.7;
-            text-decoration: none;
-            color: #0059d1;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin-left: -1px;
-        }
-
-        span {
-            color: #777;
-            background-color: #fff;
-            border-color: #ddd;
-            cursor: not-allowed;
-        }
-    }
-
-    li:first-of-type {
-        * {
-            margin-left: 0;
-            border-bottom-left-radius: 4px;
-            border-top-left-radius: 4px;
-        }
-    }
-`;
+import {
+    PaginationBox,
+    PaginationEntry,
+    PaginationEntryFirst
+} from './Pagination.module.css';
 
 interface PaginationProps {
     currentPage: number;
@@ -55,8 +20,8 @@ export const Pagination: FC<PaginationProps> = ({
     const hasPrevPage = currentPage > 0;
 
     return (
-        <PaginationBox>
-            <li>
+        <ul className={PaginationBox}>
+            <li className={`${PaginationEntry} ${PaginationEntryFirst}`}>
                 {hasPrevPage ? (
                     <Link
                         href={pageMask.replace(':page', `${currentPage - 1}`)}
@@ -68,14 +33,14 @@ export const Pagination: FC<PaginationProps> = ({
                 )}
             </li>
             {hasPrevPage && (
-                <li>
+                <li className={PaginationEntry}>
                     <Link href={pageMask.replace(':page', '0')}>1</Link>
                 </li>
             )}
-            <li>
+            <li className={PaginationEntry}>
                 <span>{currentPage + 1}</span>
             </li>
-            <li>
+            <li className={PaginationEntry}>
                 {hasNextPage ? (
                     <Link
                         href={pageMask.replace(':page', `${currentPage + 1}`)}
@@ -86,6 +51,6 @@ export const Pagination: FC<PaginationProps> = ({
                     <span>»</span>
                 )}
             </li>
-        </PaginationBox>
+        </ul>
     );
 };
