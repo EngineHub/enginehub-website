@@ -97,7 +97,7 @@ export async function getPaste(
     }
     return {
         content: data.toString('utf-8'),
-        metadata: metadata.metadata || null
+        metadata: metadata.metadata || undefined
     };
 }
 

@@ -1,35 +1,29 @@
 {
-  "name": "enginehub-websites",
-  "private": true,
-  "main": "index.js",
-  "description": "EngineHub Websites",
-  "version": "1.0.0",
-  "author": "EngineHub",
-  "type": "module",
-  "workspaces": [
-    "main-site",
-    "builds",
-    "paste",
-    "golf",
-    "shared"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/EngineHub/enginehub-website"
-  },
-  "dependencies": {
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "postinstall-postinstall": "^2.1.0"
-  },
-  "scripts": {
-    "postinstall": "husky install",
-    "prepare": "husky install",
-    "precommit": "lint-staged"
-  },
-  "packageManager": "yarn@3.6.1",
-  "devDependencies": {
-    "typescript-plugin-css-modules": "^5.0.1"
-  }
+    "name": "enginehub-websites",
+    "private": true,
+    "main": "index.js",
+    "description": "EngineHub Websites",
+    "version": "1.0.0",
+    "author": "EngineHub",
+    "type": "module",
+    "workspaces": ["main-site", "builds", "paste", "golf", "shared"],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EngineHub/enginehub-website"
+    },
+    "dependencies": {
+        "husky": "^8.0.3",
+        "lint-staged": "^14.0.1",
+        "postinstall-postinstall": "^2.1.0"
+    },
+    "scripts": {
+        "postinstall": "husky install",
+        "prepare": "husky install",
+        "precommit": "lint-staged"
+    },
+    "packageManager": "yarn@3.6.1",
+    "devDependencies": {
+        "typescript-plugin-css-modules": "^5.0.1"
+    }
 }
