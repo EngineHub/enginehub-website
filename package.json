@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "husky": "^8.0.3",
-        "lint-staged": "^14.0.1",
+        "lint-staged": "^15.0.2",
         "postinstall-postinstall": "^2.1.0"
     },
     "scripts": {
@@ -22,8 +22,8 @@
         "prepare": "husky install",
         "precommit": "lint-staged"
     },
-    "packageManager": "yarn@3.6.1",
+    "packageManager": "yarn@4.0.0",
     "devDependencies": {
-        "typescript-plugin-css-modules": "^5.0.1"
+        "typescript-plugin-css-modules": "^5.0.2"
     }
 }
