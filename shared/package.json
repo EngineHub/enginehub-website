@@ -9,18 +9,18 @@
     "types": "./src/index.ts",
     "type": "module",
     "devDependencies": {
-        "@next/eslint-plugin-next": "^13.5.6",
-        "@types/node": "^18.18.7",
-        "@types/react": "18.2.33",
-        "@types/react-dom": "18.2.14",
-        "@typescript-eslint/eslint-plugin": "^6.9.0",
-        "@typescript-eslint/parser": "^6.9.0",
-        "eslint": "^8.52.0",
+        "@next/eslint-plugin-next": "^14.0.4",
+        "@types/node": "^18.19.4",
+        "@types/react": "18.2.46",
+        "@types/react-dom": "18.2.18",
+        "@typescript-eslint/eslint-plugin": "^6.16.0",
+        "@typescript-eslint/parser": "^6.16.0",
+        "eslint": "^8.56.0",
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "prettier": "^3.0.3",
+        "prettier": "^3.1.1",
         "tslib": "^2.6.2",
-        "typescript": "^5.2.2"
+        "typescript": "^5.3.3"
     },
     "keywords": ["enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
@@ -33,7 +33,7 @@
     },
     "sideEffects": false,
     "dependencies": {
-        "next": "^13.5.6",
+        "next": "^14.0.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }
