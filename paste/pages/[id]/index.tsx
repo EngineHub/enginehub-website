@@ -89,6 +89,12 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
             revalidate: 3600
         };
     } catch (e) {
+        if (e && typeof e === 'object' && 'code' in e && e.code === 404) {
+            return {
+                notFound: true,
+                revalidate: false
+            };
+        }
         console.error(e);
         return {
             props: {
