@@ -11,21 +11,21 @@
         "@enginehub/shared": "workspace:*",
         "@google-cloud/storage": "^7.7.0",
         "base64-js": "^1.5.1",
-        "next": "^14.0.4",
+        "next": "^14.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "sharp": "^0.33.1",
+        "sharp": "^0.33.2",
         "shortid": "^2.2.16"
     },
     "devDependencies": {
-        "@types/node": "^18.19.4",
-        "@types/react": "18.2.46",
-        "@types/react-dom": "18.2.18",
+        "@types/node": "^20.11.17",
+        "@types/react": "18.2.55",
+        "@types/react-dom": "18.2.19",
         "@types/shortid": "^0.0.32",
         "eslint": "^8.56.0",
-        "eslint-config-next": "^14.0.4",
+        "eslint-config-next": "^14.1.0",
         "postcss-preset-env": "^9.3.0",
-        "prettier": "^3.1.1",
+        "prettier": "^3.2.5",
         "typescript": "^5.3.3"
     },
     "keywords": [
