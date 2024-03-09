@@ -223,7 +223,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'http://dev.bukkit.org/bukkit-plugins/worldedit/files/'
+                                        'https://modrinth.com/plugin/worldedit/versions?l=bukkit'
                                     }
                                 >
                                     Stable builds for Bukkit
@@ -269,7 +269,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'https://minecraft.curseforge.com/projects/worldedit'
+                                        'https://modrinth.com/plugin/worldedit/versions?l=forge'
                                     }
                                 >
                                     Stable builds for Forge
@@ -312,7 +312,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'https://minecraft.curseforge.com/projects/worldedit'
+                                        'https://modrinth.com/plugin/worldedit/versions?l=fabric'
                                     }
                                 >
                                     Stable builds for Fabric
