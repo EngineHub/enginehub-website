@@ -13,7 +13,7 @@ export const PROJECTS = [
     {
         id: 'worldedit',
         name: 'WorldEdit',
-        defaultBranch: 'version/7.2.x',
+        defaultBranch: 'version/7.3.x',
         icon: '/projects/worldedit-logo.svg',
         buildType: 'bt10',
         pinnedBranches: ['master'],
