@@ -7,26 +7,26 @@
     "type": "module",
     "dependencies": {
         "@enginehub/schematicjs": "^0.9.1",
-        "@enginehub/schematicwebviewer": "^4.8.1",
+        "@enginehub/schematicwebviewer": "^4.9.0",
         "@enginehub/shared": "workspace:*",
         "@google-cloud/storage": "^7.9.0",
         "base64-js": "^1.5.1",
-        "next": "^14.1.4",
+        "next": "^14.2.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sharp": "^0.33.3",
         "shortid": "^2.2.16"
     },
     "devDependencies": {
-        "@types/node": "^20.12.4",
-        "@types/react": "18.2.74",
-        "@types/react-dom": "18.2.24",
+        "@types/node": "^20.12.7",
+        "@types/react": "18.2.78",
+        "@types/react-dom": "18.2.25",
         "@types/shortid": "^0.0.32",
         "eslint": "^8.57.0",
-        "eslint-config-next": "^14.1.4",
-        "postcss-preset-env": "^9.5.4",
+        "eslint-config-next": "^14.2.1",
+        "postcss-preset-env": "^9.5.5",
         "prettier": "^3.2.5",
-        "typescript": "^5.4.3"
+        "typescript": "^5.4.5"
     },
     "keywords": [
         "pastebin",
