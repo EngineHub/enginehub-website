@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
-import { renderSchematic } from '@enginehub/schematicwebviewer';
 import { Button, MainLink, PrimaryButton } from '@enginehub/shared';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -80,11 +79,15 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
 
     useEffect(() => {
         if (paste && ref.current) {
-            renderSchematic(ref.current, paste, {
-                corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
-                renderBars: false,
-                renderArrow: false
-            })
+            import('@enginehub/schematicwebviewer')
+                .then(({ renderSchematic }) =>
+                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                    renderSchematic(ref.current!, paste, {
+                        corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
+                        renderBars: false,
+                        renderArrow: false
+                    })
+                )
                 .then(({ destroy: d, setSize: r }) => {
                     setResize(() => r);
                     setDestroy(() => d);
