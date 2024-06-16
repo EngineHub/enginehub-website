@@ -52,6 +52,14 @@ export const PROJECTS = [
         icon: '/projects/commandhelper-logo.svg',
         buildType: 'bt12',
         vcsRoot: 'https://github.com/EngineHub/CommandHelper'
+    },
+    {
+        id: 'worldeditcui',
+        name: 'WorldEditCUI',
+        defaultBranch: 'master',
+        icon: '/projects/worldedit-logo.svg',
+        buildType: 'WECUI_Build',
+        vcsRoot: 'https://github.com/EngineHub/WorldEditCUI'
     }
 ];
 
