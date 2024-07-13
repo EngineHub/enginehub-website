@@ -12,20 +12,20 @@
         "@fortawesome/react-fontawesome": "^0.2.2",
         "got": "^13.0.0",
         "moment": "^2.30.1",
-        "next": "^14.2.4",
+        "next": "^14.2.5",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "sharp": "^0.33.4"
     },
     "devDependencies": {
-        "@types/node": "^20.14.2",
+        "@types/node": "^20.14.10",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "eslint": "^8.57.0",
-        "eslint-config-next": "^14.2.4",
-        "postcss-preset-env": "^9.5.14",
+        "eslint-config-next": "^14.2.5",
+        "postcss-preset-env": "^9.6.0",
         "prettier": "^3.3.2",
-        "typescript": "^5.4.5"
+        "typescript": "^5.5.3"
     },
     "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
