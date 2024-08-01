@@ -12,9 +12,18 @@ import {
     Row,
     SavingOverlay
 } from '../src/IndexComponents.module.css';
+import { MAX_SIZE } from '../src/types';
 
 async function postContent(content: string, extension = '') {
     try {
+        if (Buffer.byteLength(content, 'utf-8') > MAX_SIZE) {
+            throw new Error(
+                'File too large, above max size of ' +
+                    Math.round(MAX_SIZE / 1024 / 1024) +
+                    'MB'
+            );
+        }
+
         // eslint-disable-next-line prefer-const
         let { viewUrl, uploadUrl, uploadFields } = await (
             await fetch('/signed_paste', {
@@ -43,7 +52,6 @@ async function postContent(content: string, extension = '') {
         if (extension) {
             viewUrl += `.${extension}`;
         }
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         alert(`Saved! Available at ${viewUrl}`);
         if (viewUrl.startsWith('https://paste.enginehub.org')) {
             await Router.push(
@@ -55,8 +63,7 @@ async function postContent(content: string, extension = '') {
         }
     } catch (e: any) {
         console.error(e?.message ?? e);
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        alert(`Failed to submit the post! ${e?.message ?? e}`);
+        alert(`Failed to submit the post? ${e?.message ?? e}`);
     }
 }
 

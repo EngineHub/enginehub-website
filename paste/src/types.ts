@@ -9,3 +9,6 @@ export interface PasteData {
         author?: string;
     };
 }
+
+export const MAX_SIZE = 1024 * 1024 * 150; // 150MB
+export const EXPIRY = 60 * 15 * 1000; // 15 minutes

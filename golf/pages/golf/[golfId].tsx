@@ -92,7 +92,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
         setTaskId(undefined);
     };
 
-    const contentRef = useRef<HTMLDivElement>(null)!;
+    const contentRef = useRef<HTMLDivElement>(null);
     const width = useElementWidth(
         contentRef as React.MutableRefObject<HTMLElement>
     );

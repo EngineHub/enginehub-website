@@ -5,7 +5,7 @@ import type {
     GenerateSignedPostPolicyV4Options
 } from '@google-cloud/storage';
 import { Storage } from '@google-cloud/storage';
-import type { PasteData } from './types';
+import { EXPIRY, MAX_SIZE, type PasteData } from './types';
 import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
 
 let authData: {
@@ -111,8 +111,8 @@ export async function signedUploadUrl(fields?: {
     const id = shortid.generate();
 
     const options: GenerateSignedPostPolicyV4Options = {
-        expires: Date.now() + 60 * 10 * 1000, // 10 minutes
-        conditions: [['content-length-range', 0, 1024 * 1024 * 10]], // 10MB
+        expires: Date.now() + EXPIRY,
+        conditions: [['content-length-range', MAX_SIZE]],
         fields
     };
 
