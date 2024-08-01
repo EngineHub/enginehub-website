@@ -112,7 +112,7 @@ export async function signedUploadUrl(fields?: {
 
     const options: GenerateSignedPostPolicyV4Options = {
         expires: Date.now() + EXPIRY,
-        conditions: [['content-length-range', MAX_SIZE]],
+        conditions: [['content-length-range', 0, MAX_SIZE]],
         fields
     };
 
