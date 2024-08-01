@@ -42,7 +42,7 @@ async function postContent(content: string, extension = '') {
         formData.append('file', content);
 
         const data = await fetch(uploadUrl, {
-            method: 'POST',
+            method: 'PUT',
             body: formData
         });
         if (!data.ok) {
