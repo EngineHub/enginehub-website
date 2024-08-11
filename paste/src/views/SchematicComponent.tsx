@@ -83,7 +83,7 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
                 .then(({ renderSchematic }) =>
                     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                     renderSchematic(ref.current!, paste, {
-                        corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
+                        corsBypassUrl: 'https://corsproxy.io/?',
                         renderBars: false,
                         renderArrow: false
                     })
@@ -92,7 +92,9 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
                     setResize(() => r);
                     setDestroy(() => d);
                 })
-                .catch(() => {});
+                .catch(e => {
+                    console.error(e, paste);
+                });
             return destroy;
         }
         return;

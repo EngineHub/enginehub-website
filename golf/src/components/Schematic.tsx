@@ -29,7 +29,7 @@ export const Schematic: FC<SchematicProps> = ({
     useEffect(() => {
         if (schematic && ref.current) {
             renderSchematic(ref.current, schematic, {
-                corsBypassUrl: 'https://cors-anywhere-eh.octyl.net/',
+                corsBypassUrl: 'https://corsproxy.io/?',
                 renderBars: !preview,
                 orbitSpeed: 0.01
             })
