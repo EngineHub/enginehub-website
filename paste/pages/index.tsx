@@ -107,6 +107,17 @@ function Index() {
                     setExtension('schem');
                 })
                 .catch(e => console.error(e));
+        } else if (
+            firstFile.name.endsWith('.log.gz') &&
+            typeof DecompressionStream !== 'undefined'
+        ) {
+            const decompressionStream = new DecompressionStream('gzip');
+            new Response(firstFile.stream().pipeThrough(decompressionStream))
+                .text()
+                .then(text => {
+                    setContent(text);
+                })
+                .catch(e => console.error(e));
         } else {
             firstFile
                 .text()
