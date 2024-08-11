@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
             props: {
                 paste: pasteContents.content,
                 extension: extension ?? '',
-                metadata: pasteContents.metadata
+                metadata: pasteContents.metadata ?? {}
             },
             revalidate: 3600
         };

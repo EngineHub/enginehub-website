@@ -10,5 +10,5 @@ export interface PasteData {
     };
 }
 
-export const MAX_SIZE = 1024 * 1024 * 10; // 10MB
+export const MAX_SIZE = 1024 * 1024 * 50; // 50MB
 export const EXPIRY = 60 * 15 * 1000; // 15 minutes

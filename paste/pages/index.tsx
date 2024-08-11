@@ -25,7 +25,7 @@ async function postContent(content: string, extension = '') {
         }
 
         // eslint-disable-next-line prefer-const
-        let { viewUrl, uploadUrl, uploadFields } = await (
+        let { viewUrl, uploadUrl, headers } = await (
             await fetch('/signed_paste', {
                 headers: {
                     'x-paste-meta-extension': extension
@@ -33,17 +33,10 @@ async function postContent(content: string, extension = '') {
             })
         ).json();
 
-        const formData = new FormData();
-
-        Object.keys(uploadFields).forEach(key => {
-            formData.append(key, uploadFields[key]);
-        });
-
-        formData.append('file', content);
-
         const data = await fetch(uploadUrl, {
-            method: 'POST',
-            body: formData
+            method: 'PUT',
+            body: content,
+            headers
         });
         if (!data.ok) {
             throw new Error(await data.text());

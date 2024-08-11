@@ -2,10 +2,10 @@ import shortid from 'shortid';
 import type {
     CreateReadStreamOptions,
     CreateWriteStreamOptions,
-    GenerateSignedPostPolicyV4Options
+    GetSignedUrlConfig
 } from '@google-cloud/storage';
 import { Storage } from '@google-cloud/storage';
-import { EXPIRY, MAX_SIZE, type PasteData } from './types';
+import { EXPIRY, type PasteData } from './types';
 import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
 
 let authData: {
@@ -101,29 +101,28 @@ export async function getPaste(
     };
 }
 
-export async function signedUploadUrl(fields?: {
+export async function signedUploadUrl(headers?: {
     [key: string]: string;
 }): Promise<{
     pasteId: string;
     uploadUrl: string;
-    uploadFields: { [key: string]: string };
 }> {
     const id = shortid.generate();
 
-    const options: GenerateSignedPostPolicyV4Options = {
+    const options: GetSignedUrlConfig = {
         expires: Date.now() + EXPIRY,
-        conditions: [['content-length-range', 0, MAX_SIZE]],
-        fields
+        version: 'v4',
+        action: 'write',
+        extensionHeaders: headers
     };
 
     const [data] = await storage
         .bucket(PasteBucket)
         .file(`${PastePrefix}${id}`)
-        .generateSignedPostPolicyV4(options);
+        .getSignedUrl(options);
 
     return {
         pasteId: id,
-        uploadUrl: data.url,
-        uploadFields: data.fields
+        uploadUrl: data
     };
 }
