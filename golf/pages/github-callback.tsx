@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
 import router from 'next/router';
+import { useEffect, useState } from 'react';
+
 import { useSetToken } from '../src/components/Auth';
 import { Loading } from '../src/components/Loading';
-import Layout from '../src/Layout';
 import { SignInLoadingContainer } from '../src/components/Loading.module.css';
+import Layout from '../src/Layout';
 
 const Page = () => {
     const [errorMessage, setError] = useState<string>();

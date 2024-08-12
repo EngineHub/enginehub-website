@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import Document, {
+    type DocumentProps,
     Head,
-    Main,
-    NextScript,
     Html,
-    type DocumentProps
+    Main,
+    NextScript
 } from 'next/document';
+
 import { ThemeInjector } from '@enginehub/shared';
 
 class MyDocument extends Document<DocumentProps> {

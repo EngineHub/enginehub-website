@@ -1,39 +1,40 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-import type { FC } from 'react';
-import { useState, useRef, useLayoutEffect } from 'react';
-import type { GetStaticPaths, GetStaticProps } from 'next';
-import type { Golf, GolfLeaderboard, User } from '../../src/types/database';
-import {
-    LeaderboardEntry,
-    Leaderboard
-} from '../../src/components/Leaderboard/Leaderboard';
-import { pollBroker, queueTask, clearTask } from '../../src/broker';
-import { Schematic } from '../../src/components/Schematic';
-import { useToken } from '../../src/components/Auth';
-import Layout from '../../src/Layout';
-import {
-    Container,
-    useElementWidth,
-    SEO,
-    MainLink,
-    Button,
-    SecondaryButton,
-    PrimaryButton
-} from '@enginehub/shared';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { BrandHeader } from '../../src/components/BrandHeader';
-import { getGolfData } from '../../src/databaseConnector';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import type { FC } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
+
 import {
-    SchematicBoxTitle,
+    Button,
+    Container,
+    MainLink,
+    PrimaryButton,
+    SecondaryButton,
+    SEO,
+    useElementWidth
+} from '@enginehub/shared';
+
+import { clearTask, pollBroker, queueTask } from '../../src/broker';
+import { useToken } from '../../src/components/Auth';
+import { BrandHeader } from '../../src/components/BrandHeader';
+import {
     BaseTextStyle,
     MainContent,
     PageColumns,
     PreviewBox,
     RunButtonBox,
-    SchematicBoxText
+    SchematicBoxText,
+    SchematicBoxTitle
 } from '../../src/components/GolfPage.module.css';
+import {
+    Leaderboard,
+    LeaderboardEntry
+} from '../../src/components/Leaderboard/Leaderboard';
+import { Schematic } from '../../src/components/Schematic';
+import { getGolfData } from '../../src/databaseConnector';
+import Layout from '../../src/Layout';
+import type { Golf, GolfLeaderboard, User } from '../../src/types/database';
 
 interface DocumentProps {
     golf: Golf;
@@ -54,11 +55,11 @@ const SchematicBox: FC<SchematicBoxProps> = ({ schematic, size, title }) => {
         element.setAttribute('download', `${title}.schem`);
 
         element.style.display = 'none';
-        document.body.appendChild(element);
+        document.body.append(element);
 
         element.click();
 
-        document.body.removeChild(element);
+        element.remove();
     };
 
     return (
@@ -78,10 +79,8 @@ const SchematicBox: FC<SchematicBoxProps> = ({ schematic, size, title }) => {
 };
 
 function Document({ golf, leaderboards, userMap }: DocumentProps) {
-    const [taskId, setTaskId] = useState<string | undefined>(undefined);
-    const [resultSchem, setResultSchem] = useState<string | undefined>(
-        undefined
-    );
+    const [taskId, setTaskId] = useState<string | undefined>();
+    const [resultSchem, setResultSchem] = useState<string | undefined>();
     const commandBox = useRef<HTMLTextAreaElement>(null);
     const statusBox = useRef<HTMLTextAreaElement>(null);
     const token = useToken();
@@ -103,25 +102,30 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
             if (taskId) {
                 const pollResponse = await pollBroker(taskId);
                 switch (pollResponse.status) {
-                    case 'queued':
+                    case 'queued': {
                         statusBox.current!.value = `Queued. Position in queue: ${pollResponse.positionInQueue}`;
                         break;
-                    case 'running':
+                    }
+                    case 'running': {
                         statusBox.current!.value = `Currently running... Please wait.`;
                         break;
-                    case 'passed':
+                    }
+                    case 'passed': {
                         statusBox.current!.value = `Passed!\n\n${pollResponse.log}`;
                         await cleanupTask(taskId);
                         break;
-                    case 'failed':
+                    }
+                    case 'failed': {
                         statusBox.current!.value = `The schematics aren't the same!\n\n${pollResponse.log}`;
                         setResultSchem(pollResponse.result);
                         await cleanupTask(taskId);
                         break;
-                    case 'errored':
+                    }
+                    case 'errored': {
                         statusBox.current!.value = `An error occurred :(\n\n${pollResponse.reason}`;
                         await cleanupTask(taskId);
                         break;
+                    }
                 }
             }
         }, 1000);
@@ -249,8 +253,8 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
                                     created={
                                         date
                                             .toLocaleTimeString()
-                                            .replace(/ AM/i, '')
-                                            .replace(/ PM/i, '') +
+                                            .replace(/ am/i, '')
+                                            .replace(/ pm/i, '') +
                                         ' ' +
                                         date.toDateString()
                                     }

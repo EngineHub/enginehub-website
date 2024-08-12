@@ -1,6 +1,7 @@
+import type { PasteProps } from 'paste/pages/[id]';
 import type { FC } from 'react';
 import { useMemo } from 'react';
-import type { PasteProps } from 'paste/pages/[id]';
+
 import { Gutter } from '../Gutter.module.css';
 import { PasteContent } from './PasteComponent.module.css';
 

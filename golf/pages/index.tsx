@@ -1,12 +1,14 @@
-import { OpenChallenge } from '../src/components/OpenChallenges';
+import type { GetStaticProps } from 'next';
+import Link from 'next/link';
+
+import { BrandButton, Button, Container, SEO } from '@enginehub/shared';
+
 import { useIsLoggedIn } from '../src/components/Auth';
+import { BrandHeader } from '../src/components/BrandHeader';
+import { OpenChallenge } from '../src/components/OpenChallenges';
+import { getAllGolfs } from '../src/databaseConnector';
 import Layout from '../src/Layout';
 import type { Golf } from '../src/types/database';
-import { Container, SEO, Button, BrandButton } from '@enginehub/shared';
-import Link from 'next/link';
-import { BrandHeader } from '../src/components/BrandHeader';
-import { getAllGolfs } from '../src/databaseConnector';
-import type { GetStaticProps } from 'next';
 
 interface HomeProps {
     golfs: Golf[];

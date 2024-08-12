@@ -1,22 +1,26 @@
 import type { MutableRefObject, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { TextArea } from '../src/components/Input/TextArea';
-import Input from '../src/components/Input/Input';
-import { useAuthenticatedFetch } from '../src/components/Auth';
-import { Loading } from '../src/components/Loading';
-import { Schematic } from '../src/components/Schematic';
-import { useAuthenticatedPage } from '../src/components/Auth';
-import Layout from '../src/Layout';
+
 import {
-    FileSelector,
-    useElementWidth,
-    SEO,
-    Container,
+    BrandButton,
     Button,
-    BrandButton
+    Container,
+    FileSelector,
+    SEO,
+    useElementWidth
 } from '@enginehub/shared';
+
+import {
+    useAuthenticatedFetch,
+    useAuthenticatedPage
+} from '../src/components/Auth';
 import { BrandHeader } from '../src/components/BrandHeader';
+import Input from '../src/components/Input/Input';
+import { TextArea } from '../src/components/Input/TextArea';
+import { Loading } from '../src/components/Loading';
 import { SubmitLoadingContainer } from '../src/components/Loading.module.css';
+import { Schematic } from '../src/components/Schematic';
+import Layout from '../src/Layout';
 
 type SchematicType = 'start' | 'test';
 
@@ -32,6 +36,8 @@ interface Submitting {
     data?: ReactNode;
 }
 
+const schematicFileFilter = (file: File) => file.name.endsWith('.schem');
+
 const Submit = () => {
     const [name, setName] = useState<string>('');
     const [description, setDescription] = useState<string>('');
@@ -39,8 +45,6 @@ const Submit = () => {
     const [test, setTest] = useState<string | undefined>();
     const [loading, setLoading] = useState<FileToLoad | undefined>();
     const [submitting, setSubmitting] = useState<Submitting>();
-
-    const filter = (file: File) => file.name.endsWith('.schem');
 
     const isValid =
         !loading &&
@@ -69,7 +73,7 @@ const Submit = () => {
                 let result = reader.result;
 
                 if (typeof result !== 'string') {
-                    throw new Error(
+                    throw new TypeError(
                         'Invalid result! Recieved type: ' + typeof result
                     );
                 }
@@ -87,7 +91,6 @@ const Submit = () => {
 
             return () => reader.abort();
         }
-        return;
     }, [loading]);
 
     const fetch = useAuthenticatedFetch();
@@ -120,9 +123,7 @@ const Submit = () => {
         })
             .then(res => res.json())
             .then(({ golf_id }: { golf_id: string }) => {
-                if (!golf_id) {
-                    setSubmitting({ type: 'failed' });
-                } else {
+                if (golf_id) {
                     setSubmitting({
                         type: 'success',
                         data: (
@@ -132,6 +133,8 @@ const Submit = () => {
                             </p>
                         )
                     });
+                } else {
+                    setSubmitting({ type: 'failed' });
                 }
             })
             .catch(e => {
@@ -179,7 +182,7 @@ const Submit = () => {
                     disabled={loading !== undefined}
                     onChange={setLoadingFile('start')}
                     accept=".schem"
-                    filter={filter}
+                    filter={schematicFileFilter}
                     name="Start Schematic"
                 />
                 {start && (
@@ -189,7 +192,7 @@ const Submit = () => {
                     disabled={loading !== undefined}
                     onChange={setLoadingFile('test')}
                     accept=".schem"
-                    filter={filter}
+                    filter={schematicFileFilter}
                     name="Test Schematic"
                 />
                 {test && (

@@ -1,14 +1,15 @@
-import { Logo } from './Logo/Logo';
 import Link from 'next/link';
 import type { FC } from 'react';
+
 import {
-    HeaderLink,
-    HorizontalDiv,
     Container,
-    TitleContainer,
+    HeaderLink,
     HomePageHeader,
-    OtherPageHeader
+    HorizontalDiv,
+    OtherPageHeader,
+    TitleContainer
 } from './BrandHeader.module.css';
+import { Logo } from './Logo/Logo';
 
 export const BrandHeader: FC<{ isHomePage?: boolean }> = ({
     isHomePage = false

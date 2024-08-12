@@ -1,7 +1,9 @@
 import type { FC, PropsWithChildren } from 'react';
+
 import type { ExtraSponsorProps } from '@enginehub/shared';
-import { Navbar, Footer, Button, BrandButton } from '@enginehub/shared';
-import { useIsLoggedIn, useSetToken, AuthProvider } from './components/Auth';
+import { BrandButton, Button, Footer, Navbar } from '@enginehub/shared';
+
+import { AuthProvider, useIsLoggedIn, useSetToken } from './components/Auth';
 import { FloatedButton } from './Layout.module.css';
 
 const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
@@ -28,7 +30,6 @@ const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
                         <a
                             className={`${Button} ${BrandButton} ${FloatedButton}`}
                             key="login"
-                            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                             href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`}
                         >
                             Log in

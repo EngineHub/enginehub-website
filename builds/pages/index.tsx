@@ -1,30 +1,32 @@
-import { Fragment } from 'react';
-import Layout from '../src/Layout';
 import {
-    Container,
-    WarningBox,
-    SEO,
-    PageHeader,
-    Table,
-    MainLink,
-    InfoLabel,
-    Label
-} from '@enginehub/shared';
-import type { Project } from '../src/project';
-import { PROJECTS } from '../src/project';
-import type { Build } from '../src/builds';
-import { getBranches, getLatestBuild } from '../src/builds';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCodeBranch,
     faCheckCircle,
+    faCodeBranch,
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { MiniPaddedIcon } from '../src/PaddedIcon.module.css';
+import { Fragment } from 'react';
+
+import {
+    Container,
+    InfoLabel,
+    Label,
+    MainLink,
+    PageHeader,
+    SEO,
+    Table,
+    WarningBox
+} from '@enginehub/shared';
+
+import type { Build } from '../src/builds';
+import { getBranches, getLatestBuild } from '../src/builds';
 import { TableSeparatorHeader } from '../src/Components.module.css';
+import Layout from '../src/Layout';
+import { MiniPaddedIcon } from '../src/PaddedIcon.module.css';
+import type { Project } from '../src/project';
+import { PROJECTS } from '../src/project';
 
 interface ProjectEntry {
     project: Project;
@@ -85,9 +87,9 @@ function Index({ projectEntries }: IndexProps) {
                                 {projectEntry.builds.map(build => (
                                     <tr
                                         className={
-                                            build.state !== 'SUCCESS'
-                                                ? 'danger'
-                                                : ''
+                                            build.state === 'SUCCESS'
+                                                ? ''
+                                                : 'danger'
                                         }
                                         key={build.build_id}
                                     >

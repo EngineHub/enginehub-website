@@ -1,14 +1,14 @@
-import type { PropsWithChildren, FC } from 'react';
+import jwt from 'jsonwebtoken';
+import router from 'next/router';
+import type { FC, PropsWithChildren } from 'react';
 import {
     createContext,
+    useCallback,
     useContext,
-    useState,
     useEffect,
     useMemo,
-    useCallback
+    useState
 } from 'react';
-import router from 'next/router';
-import jwt from 'jsonwebtoken';
 
 const isServerRendered = typeof window === 'undefined';
 
@@ -38,7 +38,7 @@ export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 export const useSetToken: () => (value?: string) => void = () => {
     const { setToken } = useContext(AuthContext);
 
-    const set = useCallback(
+    return useCallback(
         (value?: string) => {
             if (!isServerRendered) {
                 if (value) {
@@ -52,8 +52,6 @@ export const useSetToken: () => (value?: string) => void = () => {
         },
         [setToken]
     );
-
-    return set;
 };
 
 export const useToken: () => string | undefined = () => {
@@ -77,7 +75,7 @@ export const useToken: () => string | undefined = () => {
 
     if (token && !isValid) {
         setToken(undefined);
-        return undefined;
+        return;
     }
 
     return token;
@@ -90,6 +88,7 @@ export const useAuthenticatedFetch: () => FetchFunction = () => {
 
     return (input: RequestInfo | URL, init?: RequestInit) => {
         if (!token) {
+            // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
             return Promise.reject('Cannot find auth token!');
         }
 

@@ -1,4 +1,5 @@
 import shortid from 'shortid';
+
 import { withAuth } from '../../src/auth';
 import { addGolf } from '../../src/databaseConnector';
 

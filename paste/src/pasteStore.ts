@@ -1,12 +1,13 @@
-import shortid from 'shortid';
 import type {
     CreateReadStreamOptions,
     CreateWriteStreamOptions,
     GetSignedUrlConfig
 } from '@google-cloud/storage';
 import { Storage } from '@google-cloud/storage';
-import { EXPIRY, type PasteData } from './types';
+import shortid from 'shortid';
+
 import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
+import { EXPIRY, type PasteData } from './types';
 
 let authData: {
     credentials?: { client_email?: string; private_key?: string };
@@ -17,7 +18,7 @@ if (process.env.GCLOUD_CREDENTIALS) {
     authData = {
         credentials: JSON.parse(
             Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString(
-                'utf-8'
+                'utf8'
             )
         )
     };
@@ -96,7 +97,7 @@ export async function getPaste(
         return undefined;
     }
     return {
-        content: data.toString('utf-8'),
+        content: data.toString('utf8'),
         metadata: metadata.metadata || undefined
     };
 }

@@ -1,6 +1,7 @@
 import safeCompare from 'safe-compare';
-import { addLeaderboard } from '../../src/databaseConnector';
+
 import { withAuth } from '../../src/auth';
+import { addLeaderboard } from '../../src/databaseConnector';
 
 const EXPECTED_KEY = process.env.BROKER_API_KEY || 'TEST_KEY';
 

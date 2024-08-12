@@ -1,5 +1,7 @@
-import { FormLabel } from '@enginehub/shared';
 import type { FC } from 'react';
+
+import { FormLabel } from '@enginehub/shared';
+
 import { Container } from './Input.module.css';
 
 export interface InputProps {

@@ -1,6 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
+
 import type { ExtraSponsorProps } from '@enginehub/shared';
-import { Navbar, Footer } from '@enginehub/shared';
+import { Footer, Navbar } from '@enginehub/shared';
 
 const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
     children,

@@ -1,5 +1,5 @@
-import type { FunctionComponent } from 'react';
 import Head from 'next/head';
+import type { FunctionComponent } from 'react';
 
 interface SEOProps {
     description?: string;

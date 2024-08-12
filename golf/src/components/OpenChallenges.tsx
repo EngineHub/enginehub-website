@@ -1,15 +1,17 @@
-import type { FC, PropsWithChildren } from 'react';
-import { Schematic } from './Schematic';
 import Link from 'next/link';
+import type { FC, PropsWithChildren } from 'react';
+
 import { MainLink } from '@enginehub/shared';
+
 import type { Golf } from '../types/database';
 import {
-    Paragraph,
+    ChallengeEntryContainer,
+    HeaderLink,
     HeaderTitle,
     InfoContainer,
-    ChallengeEntryContainer,
-    HeaderLink
+    Paragraph
 } from './OpenChallenges.module.css';
+import { Schematic } from './Schematic';
 
 export interface ChallengeEntryProps {
     schematic: string;

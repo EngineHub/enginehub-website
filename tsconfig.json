@@ -41,6 +41,6 @@
         "shared/**/*.js",
         "shared/**/*.ts",
         "shared/**/*.tsx",
-        ".eslintrc.cjs"
+        "eslint.config.js"
     ]
 }

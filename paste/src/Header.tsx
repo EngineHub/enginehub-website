@@ -1,14 +1,16 @@
-import type { FC } from 'react';
 import Link from 'next/link';
+import type { FC } from 'react';
+
 import { LabelledSponsorsArea } from '@enginehub/shared';
+
 import {
-    MainHeader,
-    SiteTitle,
     Button,
-    SupportLink,
     ButtonArea,
+    FloatedSponsor,
+    MainHeader,
     SiteLink,
-    FloatedSponsor
+    SiteTitle,
+    SupportLink
 } from './Header.module.css';
 
 interface HeaderProps {

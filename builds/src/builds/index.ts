@@ -1,7 +1,8 @@
-import type { Build, BuildChange, BuildArtifact } from './types';
-import { DUMMY_BUILD } from './dummyData';
-import type { Project } from '../project';
 import moment from 'moment';
+
+import type { Project } from '../project';
+import { DUMMY_BUILD } from './dummyData';
+import type { Build, BuildArtifact, BuildChange } from './types';
 
 export * from './types';
 
@@ -57,7 +58,7 @@ async function getBuildFromTCSelector(
         branch: build.branchName,
         build_date: moment(build.finishDate, TEAMCITY_DATE_FORMAT).valueOf(),
         build_hash: build.number.split('-')[1],
-        build_number: parseInt(build.number.split('-')[0]),
+        build_number: Number.parseInt(build.number.split('-')[0]),
         project: build.buildType.projectId.toLowerCase()
     };
 }
@@ -75,7 +76,7 @@ export async function getLatestBuild(
     branch?: string
 ): Promise<Build | undefined> {
     return await getBuildFromTCSelector(
-        `branch:${branch ? branch : project.defaultBranch},buildType:${
+        `branch:${branch ?? project.defaultBranch},buildType:${
             project.buildType
         },status:SUCCESS`
     );
@@ -108,7 +109,7 @@ export async function getBuildPage(
         branch: branch,
         build_id: build.id,
         build_hash: build.number.split('-')[1],
-        build_number: parseInt(build.number.split('-')[0]),
+        build_number: Number.parseInt(build.number.split('-')[0]),
         statusText: build.statusText,
         build_date: moment(build.finishDate, TEAMCITY_DATE_FORMAT).valueOf(),
         changes: build.changes.change.flatMap(change => {

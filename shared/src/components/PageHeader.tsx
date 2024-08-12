@@ -1,15 +1,16 @@
-import type { ExtraSponsorProps } from './Sponsors';
-import { LabelledSponsorsArea } from './Sponsors';
 import type { FC, PropsWithChildren } from 'react';
+
 import { Container, ContainerPadded } from './Container.module.css';
 import {
-    HeaderWrapper,
-    HeaderText,
-    HeaderContent,
     HeaderChildrenContainer,
+    HeaderContent,
+    HeaderImg,
+    HeaderText,
     HeaderTextArea,
-    HeaderImg
+    HeaderWrapper
 } from './PageHeader.module.css';
+import type { ExtraSponsorProps } from './Sponsors';
+import { LabelledSponsorsArea } from './Sponsors';
 
 interface PageHeaderProps extends ExtraSponsorProps {
     text: string;

@@ -1,12 +1,14 @@
 import Link from 'next/link';
-import Layout from '../src/components/Layout';
+
 import {
-    SEO,
+    Button,
     Container,
     PageHeader,
-    Button,
-    PrimaryButton
+    PrimaryButton,
+    SEO
 } from '@enginehub/shared';
+
+import Layout from '../src/components/Layout';
 
 const NotFoundPage = () => (
     <Layout>

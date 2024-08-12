@@ -1,9 +1,11 @@
-import type { FunctionComponent } from 'react';
-import { MainLink } from '@enginehub/shared';
 import Link from 'next/link';
+import type { FunctionComponent } from 'react';
+
+import { MainLink } from '@enginehub/shared';
+
 import {
-    ProjectListItem,
     ProjectListImg,
+    ProjectListItem,
     ProjectListLink
 } from './ProjectBox.module.css';
 

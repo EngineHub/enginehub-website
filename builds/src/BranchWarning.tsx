@@ -1,6 +1,7 @@
-import { WarningBox, Button, SecondaryButton } from '@enginehub/shared';
 import Link from 'next/link';
 import type { FC } from 'react';
+
+import { Button, SecondaryButton, WarningBox } from '@enginehub/shared';
 
 interface BranchWarningProps {
     projectId: string;

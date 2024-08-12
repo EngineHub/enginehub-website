@@ -1,11 +1,12 @@
-import Layout from '../src/Layout';
 import {
-    SEO,
-    PageHeader,
-    Container,
     Button,
-    PrimaryButton
+    Container,
+    PageHeader,
+    PrimaryButton,
+    SEO
 } from '@enginehub/shared';
+
+import Layout from '../src/Layout';
 
 const MissingPage = () => (
     <Layout>

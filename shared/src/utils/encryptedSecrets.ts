@@ -6,7 +6,7 @@ const algorithm = 'aes-128-cbc';
 
 export function decryptGCloud() {
     if (!process.env.GCLOUD_AES_IV || !process.env.GCLOUD_AES_SECRET) {
-        return undefined;
+        return;
     }
 
     const decipher = crypto.createDecipheriv(
@@ -23,6 +23,5 @@ export function decryptGCloud() {
 
     decrypted += decipher.final('utf8');
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(decrypted);
 }

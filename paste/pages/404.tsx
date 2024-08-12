@@ -1,6 +1,7 @@
+import { SEO } from '@enginehub/shared';
+
 import { Layout } from '../src/Layout';
 import PasteComponent from '../src/views/PasteComponent';
-import { SEO } from '@enginehub/shared';
 
 function ErrorPage() {
     return (

@@ -1,9 +1,10 @@
-import { Container } from './Container.module.css';
-import { SECONDARY, BRAND } from '../theme/index';
 import Link from 'next/link';
 import type { FC, PropsWithChildren } from 'react';
-import { FloatedButton, Nav, HeaderLink } from './Navbar.module.css';
+
+import { BRAND, SECONDARY } from '../theme/index';
 import { BrandButton, Button, SecondaryButton } from './Button.module.css';
+import { Container } from './Container.module.css';
+import { FloatedButton, HeaderLink, Nav } from './Navbar.module.css';
 
 const NavBackgroundColours = {
     default: SECONDARY.darker,
@@ -32,7 +33,7 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
     children
 }) => {
     const buttonStyle =
-        headertheme !== 'default' ? BrandButton : SecondaryButton;
+        headertheme === 'default' ? SecondaryButton : BrandButton;
     return (
         <nav
             className={Nav}
@@ -61,11 +62,7 @@ export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
                 <div>
                     <a
                         className={`${Button} ${buttonStyle} ${FloatedButton}`}
-                        href={
-                            discordOverride
-                                ? discordOverride
-                                : 'https://discord.gg/enginehub'
-                        }
+                        href={discordOverride ?? 'https://discord.gg/enginehub'}
                     >
                         Ask questions on Discord
                     </a>

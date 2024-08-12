@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-import type { NextApiRequest, NextApiResponse } from 'next';
 import got from 'got';
 import jwt from 'jsonwebtoken';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { addUser } from '../../src/databaseConnector';
 
 interface UserResponse {
@@ -39,11 +39,14 @@ export default async function handle(
 
     const { body } = (await got(url)) as { body: string };
 
-    const data = body.split('&').reduce((acc, a) => {
-        const [key, value] = a.split('=');
-        acc[key] = value;
-        return acc;
-    }, {} as { [key: string]: string });
+    const data = body.split('&').reduce(
+        (acc, a) => {
+            const [key, value] = a.split('=');
+            acc[key] = value;
+            return acc;
+        },
+        {} as { [key: string]: string }
+    );
 
     if (data.error) {
         res.write(JSON.stringify(data));
@@ -100,6 +103,4 @@ export default async function handle(
     res.status(200);
     res.write(JSON.stringify({ token }));
     res.end();
-
-    return;
 }

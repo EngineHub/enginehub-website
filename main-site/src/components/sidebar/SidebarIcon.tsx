@@ -1,5 +1,5 @@
-import type { FunctionComponent } from 'react';
 import Image from 'next/image';
+import type { FunctionComponent } from 'react';
 interface SidebarIconProps {
     alt: string;
     src: string;

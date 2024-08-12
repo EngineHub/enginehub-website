@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { loadPaste } from '../../../src/loadPaste';
 
 export default async function handle(
@@ -6,11 +7,11 @@ export default async function handle(
     res: NextApiResponse
 ) {
     const { id } = req.query;
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+
     let pasteId = `${id}`;
     const dotIndex = id?.lastIndexOf('.');
     if (dotIndex !== -1) {
-        pasteId = pasteId.substring(0, dotIndex);
+        pasteId = pasteId.slice(0, Math.max(0, dotIndex));
     }
     try {
         const pasteContents = await loadPaste(pasteId);

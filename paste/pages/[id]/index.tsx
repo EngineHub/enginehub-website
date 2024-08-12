@@ -1,9 +1,11 @@
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
-import { Layout } from '../../src/Layout';
-import type { GetStaticPaths, GetStaticProps } from 'next';
-import { loadPaste } from '../../src/loadPaste';
+
 import { SEO } from '@enginehub/shared';
+
+import { Layout } from '../../src/Layout';
+import { loadPaste } from '../../src/loadPaste';
 import type { Extension, PasteData } from '../../src/types';
 
 interface DocumentProps extends PasteProps {
@@ -33,7 +35,7 @@ function Document({ paste, extension, metadata }: DocumentProps) {
                 description={
                     extension === 'schem'
                         ? 'View and download this schematic with EngineHub'
-                        : paste.substring(0, 150)
+                        : paste.slice(0, 150)
                 }
             />
             <Suspense fallback={<p>Loading...</p>}>
@@ -47,16 +49,16 @@ function isValidExtension(extension: string): extension is Extension {
     return EXTENSIONS.has(extension as Extension);
 }
 
-export const getStaticProps: GetStaticProps<{}, { id: string }> = async ({
+export const getStaticProps: GetStaticProps<object, { id: string }> = async ({
     params
 }) => {
     const { id } = params!;
     let pasteId = `${id}`;
-    let extension: Extension | undefined = undefined;
+    let extension: Extension | undefined;
     const dotIndex = id.lastIndexOf('.');
     if (dotIndex !== -1) {
-        const extracted = pasteId.substring(dotIndex + 1);
-        pasteId = pasteId.substring(0, dotIndex);
+        const extracted = pasteId.slice(Math.max(0, dotIndex + 1));
+        pasteId = pasteId.slice(0, Math.max(0, dotIndex));
         if (isValidExtension(extracted)) {
             extension = extracted;
         }

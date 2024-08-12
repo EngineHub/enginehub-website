@@ -1,16 +1,17 @@
-import Layout from '../src/components/Layout';
-import { SEO, Container, Row, ColumnHalf } from '@enginehub/shared';
-import ProjectBox from '../src/components/ProjectBox';
-import worldEditIcon from '../src/images/projects/logo/worldedit-logo.svg';
-import worldGuardIcon from '../src/images/projects/logo/worldguard-logo.svg';
-import craftBookIcon from '../src/images/projects/logo/craftbook-logo.svg';
-import cmdBookIcon from '../src/images/projects/logo/commandbook-logo.svg';
-import cmdHelperIcon from '../src/images/projects/logo/commandhelper-logo.svg';
+import { ColumnHalf, Container, Row, SEO } from '@enginehub/shared';
+
 import {
-    HeadingContainer,
     FeatureHeading,
+    HeadingContainer,
     ProjectList
 } from '../src/components/Landing.module.css';
+import Layout from '../src/components/Layout';
+import ProjectBox from '../src/components/ProjectBox';
+import cmdBookIcon from '../src/images/projects/logo/commandbook-logo.svg';
+import cmdHelperIcon from '../src/images/projects/logo/commandhelper-logo.svg';
+import craftBookIcon from '../src/images/projects/logo/craftbook-logo.svg';
+import worldEditIcon from '../src/images/projects/logo/worldedit-logo.svg';
+import worldGuardIcon from '../src/images/projects/logo/worldguard-logo.svg';
 
 const IndexPage = () => {
     return (

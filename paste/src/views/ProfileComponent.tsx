@@ -1,14 +1,14 @@
-import type { FC } from 'react';
-import { memo } from 'react';
-import { useState } from 'react';
 import type { PasteProps } from 'paste/pages/[id]';
+import type { FC } from 'react';
+import { memo, useState } from 'react';
+
 import {
-    ProfileNodeBox,
-    PercentText,
-    TimeText,
     Bar,
     BarInner,
-    ProfileNodeText
+    PercentText,
+    ProfileNodeBox,
+    ProfileNodeText,
+    TimeText
 } from './ProfileComponent.module.css';
 
 const CloseIcon = require('./images/close.png').default as { src: string };
@@ -27,7 +27,7 @@ interface RootEntry {
 
 const INVALID_PROFILE = {
     name: 'Invalid Profile',
-    selfTime: 60000,
+    selfTime: 60_000,
     children: [],
     parent: { children: [] }
 };
@@ -38,7 +38,7 @@ interface ProfileNodeProps {
 }
 
 function calculatePercentage(self: number, all: number): number {
-    return Math.round((self / all) * 10000) / 100;
+    return Math.round((self / all) * 10_000) / 100;
 }
 
 function parseLine(line: string): { name: string; selfTime: number } {
@@ -46,7 +46,9 @@ function parseLine(line: string): { name: string; selfTime: number } {
     const timePart = split.pop()!;
     return {
         name: split.join(' '),
-        selfTime: parseInt(timePart.substring(0, timePart.length - 2))
+        selfTime: Number.parseInt(
+            timePart.slice(0, Math.max(0, timePart.length - 2))
+        )
     };
 }
 
@@ -124,7 +126,7 @@ function generateProfileEntries(paste: string): RootEntry {
             skipping = true;
             continue;
         }
-        if (isNaN(currentLine.selfTime)) {
+        if (Number.isNaN(currentLine.selfTime)) {
             return { children: [INVALID_PROFILE] };
         }
         const newEntry: ProfileEntry = {

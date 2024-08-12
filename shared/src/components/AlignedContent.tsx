@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import type { FC, PropsWithChildren } from 'react';
-import { SectionHeading } from './text/SectionHeading.module.css';
+
 import {
-    InfoSide,
+    AlignedContentWrapper,
     ImageSide,
-    LimitedVideo,
-    AlignedContentWrapper
+    InfoSide,
+    LimitedVideo
 } from './AlignedContent.module.css';
+import { SectionHeading } from './text/SectionHeading.module.css';
 
 interface AlignedContentProps {
     header?: string;

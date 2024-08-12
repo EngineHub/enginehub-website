@@ -1,9 +1,11 @@
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { PasteProps } from 'paste/pages/[id]';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import type { PasteProps } from 'paste/pages/[id]';
+
 import { Button, MainLink, PrimaryButton } from '@enginehub/shared';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+
 import { Container, InfoBarContainer } from './SchematicComponent.module.css';
 
 const PAGE_HEIGHT_MOD = 57 + 45; // navbar height + info bar height
@@ -20,11 +22,11 @@ const InfoBar: FC<PasteProps> = ({ paste, metadata = DEFAULT_METADATA }) => {
         );
 
         element.style.display = 'none';
-        document.body.appendChild(element);
+        document.body.append(element);
 
         element.click();
 
-        document.body.removeChild(element);
+        element.remove();
     };
 
     return (
@@ -74,7 +76,6 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
             window.addEventListener('resize', onResize);
             return () => window.removeEventListener('resize', onResize);
         }
-        return;
     }, [resize]);
 
     useEffect(() => {
@@ -97,7 +98,6 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
                 });
             return destroy;
         }
-        return;
     }, [paste]);
 
     return (

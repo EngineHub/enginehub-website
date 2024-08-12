@@ -1,6 +1,7 @@
-import type { Golf, GolfLeaderboard, User } from './types/database';
 import { Firestore } from '@google-cloud/firestore';
+
 import { decryptGCloud } from '../../shared/src/utils/encryptedSecrets';
+import type { Golf, GolfLeaderboard, User } from './types/database';
 
 let authData: {
     credentials?: { client_email?: string; private_key?: string };
@@ -11,7 +12,7 @@ if (process.env.GCLOUD_CREDENTIALS) {
     authData = {
         credentials: JSON.parse(
             Buffer.from(process.env.GCLOUD_CREDENTIALS, 'base64').toString(
-                'utf-8'
+                'utf8'
             )
         )
     };
@@ -45,7 +46,7 @@ const TEST_GOLF = {
 
 async function getGolf(golfId: string): Promise<Golf> {
     if (process.env.NODE_ENV !== 'production' && golfId === 'test') {
-        return Promise.resolve(TEST_GOLF);
+        return TEST_GOLF;
     }
 
     const document = firestore.collection(ChallengesCollection).doc(golfId);
@@ -55,7 +56,7 @@ async function getGolf(golfId: string): Promise<Golf> {
 
 async function getLeaderboards(golfId: string): Promise<GolfLeaderboard[]> {
     if (process.env.NODE_ENV !== 'production' && golfId === 'test') {
-        return Promise.resolve([
+        return [
             {
                 golf_id: 'test',
                 user_id: 'test2',
@@ -70,7 +71,7 @@ async function getLeaderboards(golfId: string): Promise<GolfLeaderboard[]> {
                 commands: '//replace stone cake\n//replace cake sand',
                 submitted_time: Date.now()
             }
-        ]);
+        ];
     }
 
     return (
@@ -86,7 +87,7 @@ async function getLeaderboards(golfId: string): Promise<GolfLeaderboard[]> {
 
 export async function getAllGolfs(): Promise<Golf[]> {
     if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve([TEST_GOLF, TEST_GOLF, TEST_GOLF]);
+        return [TEST_GOLF, TEST_GOLF, TEST_GOLF];
     }
 
     const data = await firestore.getAll(
@@ -116,15 +117,18 @@ export async function getGolfData(golfId: string): Promise<
     let userMap = {};
 
     if (leaderboards) {
-        leaderboards.forEach(lead => usersToLookup.add(`${lead.user_id}`));
+        for (const lead of leaderboards) usersToLookup.add(`${lead.user_id}`);
     }
     usersToLookup.add(`${golf.user_id}`);
 
     const users = await getUsers([...usersToLookup]);
-    userMap = users.reduce((a, b) => {
-        a[b.user_id] = b;
-        return a;
-    }, {} as { [key: string]: User });
+    userMap = users.reduce(
+        (a, b) => {
+            a[b.user_id] = b;
+            return a;
+        },
+        {} as { [key: string]: User }
+    );
 
     const sortedLeaderboards = (leaderboards || []).sort((a, b) => {
         return a.score - b.score || a.submitted_time - b.submitted_time;
@@ -161,7 +165,7 @@ export async function addLeaderboard(
         if (existing.exists) {
             existingEntry = existing.data() as GolfLeaderboard;
         }
-    } catch (e) {
+    } catch {
         // ignore the error
     }
     if (existingEntry && existingEntry.score <= leaderboard.score) {
@@ -183,12 +187,12 @@ export async function addUser(user: User): Promise<void> {
 
 export async function getUser(userId: string): Promise<User> {
     if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve({
+        return {
             user_id: userId,
             fullname: 'Test Testerson',
             username: 'test2',
             avatar: 'https://enginehub.org/images/enginehub-logo.png'
-        });
+        };
     }
 
     const document = firestore.collection(UsersCollection).doc(userId);
@@ -198,14 +202,12 @@ export async function getUser(userId: string): Promise<User> {
 
 async function getUsers(userIds: string[]): Promise<User[]> {
     if (process.env.NODE_ENV !== 'production') {
-        return Promise.resolve(
-            userIds.map(userId => ({
-                user_id: userId,
-                fullname: 'Test Testerson',
-                username: 'test2',
-                avatar: 'https://enginehub.org/images/enginehub-logo.png'
-            }))
-        );
+        return userIds.map(userId => ({
+            user_id: userId,
+            fullname: 'Test Testerson',
+            username: 'test2',
+            avatar: 'https://enginehub.org/images/enginehub-logo.png'
+        }));
     }
 
     const users = await firestore.getAll(

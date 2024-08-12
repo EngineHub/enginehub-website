@@ -1,31 +1,33 @@
-import Layout from '../src/components/Layout';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import {
-    SEO,
-    ContainerPadded,
-    Container,
-    Row,
+    AlignedContent,
+    Button,
     ColumnHalf,
+    Container,
+    ContainerPadded,
+    HorizontalNav,
+    HorizontalNavItem,
     JumbotronButtonBox,
     JumbotronContainer,
     JumbotronImageBox,
     JumbotronText,
-    WarningLabel,
-    HorizontalNav,
-    HorizontalNavItem,
-    AlignedContent,
-    SectionHeading,
-    MainLink,
     Label,
-    Button,
+    MainLink,
+    PrimaryButton,
+    Row,
     SecondaryButton,
-    PrimaryButton
+    SectionHeading,
+    SEO,
+    WarningLabel
 } from '@enginehub/shared';
+
+import Layout from '../src/components/Layout';
 import PlatformBanner from '../src/components/PlatformBanner';
-import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import headerLogo from '../src/images/projects/headers/worldguard-header.svg';
 import worldGuardLogo from '../src/images/projects/worldguard-icon.png';
-import Image from 'next/image';
-import Link from 'next/link';
 
 const WorldGuardPage = () => {
     return (

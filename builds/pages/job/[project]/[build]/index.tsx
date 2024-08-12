@@ -1,48 +1,50 @@
-import Layout from '../../../../src/Layout';
 import {
-    ContainerPadded,
-    InfoBox,
-    SEO,
+    faCheckCircle,
+    faCodeBranch,
+    faDownload,
+    faExclamationTriangle
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import moment from 'moment';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
+import type { ParsedUrlQuery } from 'querystring';
+
+import {
+    ActiveBreadcrumb,
+    BorderedTable,
     Breadcrumb,
     BreadcrumbWrapper,
-    ActiveBreadcrumb,
-    MainLink,
+    Button,
+    ColumnThird,
+    ColumnTwoThird,
+    Container,
+    ContainerPadded,
     HeaderText,
+    InfoBox,
+    LabelledSponsorsArea,
+    MainLink,
     Panel,
     PanelBody,
     PanelHeading,
-    LabelledSponsorsArea,
-    Table,
-    BorderedTable,
     Row,
-    ColumnThird,
-    ColumnTwoThird,
-    WarningBox,
-    Container,
-    Button,
-    SecondaryButton
+    SecondaryButton,
+    SEO,
+    Table,
+    WarningBox
 } from '@enginehub/shared';
-import type { GetStaticPaths, GetStaticProps } from 'next';
-import type { Project } from '../../../../src/project';
-import { PROJECT_MAP } from '../../../../src/project';
+
+import BranchWarning from '../../../../src/BranchWarning';
 import type { Build } from '../../../../src/builds';
 import { getBuild } from '../../../../src/builds';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCodeBranch,
-    faCheckCircle,
-    faExclamationTriangle,
-    faDownload
-} from '@fortawesome/free-solid-svg-icons';
-import BranchWarning from '../../../../src/BranchWarning';
-import moment from 'moment';
-import type { ParsedUrlQuery } from 'querystring';
-import Link from 'next/link';
-import { MiniPaddedIcon } from '../../../../src/PaddedIcon.module.css';
 import {
     Breaker,
     DownloadLinkDiv
 } from '../../../../src/Components.module.css';
+import Layout from '../../../../src/Layout';
+import { MiniPaddedIcon } from '../../../../src/PaddedIcon.module.css';
+import type { Project } from '../../../../src/project';
+import { PROJECT_MAP } from '../../../../src/project';
 
 interface BuildPageProps {
     build: Build;
@@ -78,13 +80,7 @@ function Index({ project, build }: BuildPageProps) {
                 <h1 className={HeaderText}>
                     {project.name} Build #{build.build_number}
                 </h1>
-                {build.branch !== project.defaultBranch ? (
-                    <BranchWarning
-                        currentBranch={build.branch}
-                        mainBranch={project.defaultBranch}
-                        projectId={project.id}
-                    />
-                ) : (
+                {build.branch === project.defaultBranch ? (
                     <div className={InfoBox}>
                         <p>
                             <strong>This is not a stable download!</strong>
@@ -100,6 +96,12 @@ function Index({ project, build }: BuildPageProps) {
                             View Stable Downloads
                         </Link>
                     </div>
+                ) : (
+                    <BranchWarning
+                        currentBranch={build.branch}
+                        mainBranch={project.defaultBranch}
+                        projectId={project.id}
+                    />
                 )}
                 <div className={Row}>
                     <div className={ColumnThird} style={{ paddingLeft: '0' }}>
@@ -233,7 +235,7 @@ function Index({ project, build }: BuildPageProps) {
                                             className={MainLink}
                                             href={`${project.vcsRoot}/commit/${change.version}`}
                                         >
-                                            {change.version.substring(0, 8)}
+                                            {change.version.slice(0, 8)}
                                         </Link>
                                     </td>
                                     <td>{change.comment}</td>
@@ -266,10 +268,10 @@ export const getStaticProps: GetStaticProps<
         };
     }
 
-    let buildObj = undefined;
+    let buildObj;
     try {
         buildObj = await getBuild(build);
-    } catch (e) {
+    } catch {
         // Ignore this
     }
     if (!buildObj) {

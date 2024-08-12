@@ -1,4 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
+
 import { Header } from './Header';
 import { Main, MainContainer } from './Layout.module.css';
 

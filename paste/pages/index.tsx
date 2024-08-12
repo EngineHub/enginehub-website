@@ -1,10 +1,11 @@
-import { getFiles } from '../src/dragAndDrop';
-import { Layout } from '../src/Layout';
+import { fromByteArray } from 'base64-js';
 import Router from 'next/router';
 import type { ChangeEvent, DragEvent } from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { SEO, Loader } from '@enginehub/shared';
-import { fromByteArray } from 'base64-js';
+
+import { Loader, SEO } from '@enginehub/shared';
+
+import { getFiles } from '../src/dragAndDrop';
 import {
     DropPendingPasteArea,
     Form,
@@ -12,11 +13,12 @@ import {
     Row,
     SavingOverlay
 } from '../src/IndexComponents.module.css';
+import { Layout } from '../src/Layout';
 import { MAX_SIZE } from '../src/types';
 
 async function postContent(content: string, extension = '') {
     try {
-        if (Buffer.byteLength(content, 'utf-8') > MAX_SIZE) {
+        if (Buffer.byteLength(content, 'utf8') > MAX_SIZE) {
             throw new Error(
                 'File too large, above max size of ' +
                     Math.round(MAX_SIZE / 1024 / 1024) +
@@ -49,7 +51,7 @@ async function postContent(content: string, extension = '') {
         if (viewUrl.startsWith('https://paste.enginehub.org')) {
             await Router.push(
                 '/[id]',
-                viewUrl.substring('https://paste.enginehub.org'.length)
+                viewUrl.slice('https://paste.enginehub.org'.length)
             );
         } else {
             window.location.href = viewUrl;

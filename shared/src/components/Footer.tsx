@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import { Container } from './Container.module.css';
-import { MainLink } from './Link.module.css';
-import type { ExtraSponsorProps } from './Sponsors';
-import { RandomSponsor } from './Sponsors';
 import type { FC } from 'react';
+
+import { Container } from './Container.module.css';
 import {
     FooterContainer,
     FooterLi,
@@ -11,6 +9,9 @@ import {
     FooterWrapper,
     SectionHeader
 } from './Footer.module.css';
+import { MainLink } from './Link.module.css';
+import type { ExtraSponsorProps } from './Sponsors';
+import { RandomSponsor } from './Sponsors';
 
 export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
     return (

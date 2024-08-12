@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { createPaste } from '../../src/pasteStore';
 
 const MAX_CONTENT_LENGTH = 1024 * 1024; // 1MB (API Gateway Limit, for larger use the signed paste)
@@ -36,7 +37,6 @@ export default async function handle(
         const pasteResponse = await createPaste(content, metadata);
         res.json({
             url: `https://paste.enginehub.org/${pasteResponse}${
-                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                 metadata?.extension ? `.${metadata.extension}` : ''
             }`
         });

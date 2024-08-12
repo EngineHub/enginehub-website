@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-type Handler<T = {}> = (
+type Handler<T = object> = (
     req: NextApiRequest & T,
     res: NextApiResponse
 ) => Promise<void>;
@@ -33,6 +33,7 @@ const verifyToken = (token: string) =>
                         reject(new Error('Token was not a valid token!'));
                     }
                 } else {
+                    // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
                     reject(error);
                 }
             }
@@ -57,6 +58,5 @@ export const withAuth: (handler: AuthenticatedHandler) => Handler = handler => {
         }
         res.status(401);
         res.end();
-        return Promise.resolve();
     };
 };

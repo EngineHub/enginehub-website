@@ -1,5 +1,7 @@
+import type { ChangeEvent, FC } from 'react';
+
 import { FormLabel } from '@enginehub/shared';
-import type { FC, ChangeEvent } from 'react';
+
 import { Container } from './TextArea.module.css';
 
 export interface TextAreaProps {

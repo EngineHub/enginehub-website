@@ -1,29 +1,31 @@
-import Layout from '../src/components/Layout';
-import {
-    SEO,
-    ContainerPadded,
-    Row,
-    JumbotronText,
-    JumbotronButtonBox,
-    JumbotronImageBox,
-    SectionHeading,
-    InfoLabel,
-    AlignedContent,
-    HorizontalNav,
-    HorizontalNavItem,
-    JumbotronContainer,
-    MainLink,
-    Label,
-    Container,
-    Button,
-    PrimaryButton
-} from '@enginehub/shared';
-import PlatformBanner from '../src/components/PlatformBanner';
-import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
-import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
-import commandHelperLogo from '../src/images/projects/commandhelper-icon.png';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import {
+    AlignedContent,
+    Button,
+    Container,
+    ContainerPadded,
+    HorizontalNav,
+    HorizontalNavItem,
+    InfoLabel,
+    JumbotronButtonBox,
+    JumbotronContainer,
+    JumbotronImageBox,
+    JumbotronText,
+    Label,
+    MainLink,
+    PrimaryButton,
+    Row,
+    SectionHeading,
+    SEO
+} from '@enginehub/shared';
+
+import Layout from '../src/components/Layout';
+import PlatformBanner from '../src/components/PlatformBanner';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import commandHelperLogo from '../src/images/projects/commandhelper-icon.png';
+import commandHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
 
 const CommandHelperPage = () => {
     return (

@@ -1,13 +1,14 @@
-import type { FC, ChangeEvent } from 'react';
-import { useState, useRef, useEffect } from 'react';
-import { FormLabel } from './text/FormLabel.module.css';
-import {
-    Input,
-    Container,
-    ActionContainer,
-    FileName
-} from './FileSelector.module.css';
+import type { ChangeEvent, FC } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import { BrandButton, Button } from './Button.module.css';
+import {
+    ActionContainer,
+    Container,
+    FileName,
+    Input
+} from './FileSelector.module.css';
+import { FormLabel } from './text/FormLabel.module.css';
 
 interface FileSelectorProps {
     name: string;
@@ -33,7 +34,10 @@ export const FileSelector: FC<FileSelectorProps> = ({
         if (!e.target.files) {
             return;
         }
-        const f = Array.from(e.target.files).filter(filter || (() => true));
+        // eslint-disable-next-line unicorn/prefer-spread
+        const f = Array.from(e.target.files).filter(file =>
+            filter ? filter(file) : true
+        );
         setFiles(f);
         if (onChange) {
             onChange(f[0]);

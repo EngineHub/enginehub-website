@@ -1,32 +1,34 @@
-import Layout from '../src/components/Layout';
-import {
-    SEO,
-    ContainerPadded,
-    Row,
-    ColumnHalf,
-    JumbotronText,
-    JumbotronButtonBox,
-    JumbotronImageBox,
-    WarningLabel,
-    HorizontalNav,
-    HorizontalNavItem,
-    AlignedContent,
-    SectionHeading,
-    InfoLabel,
-    JumbotronContainer,
-    MainLink,
-    Label,
-    Container,
-    Button,
-    SecondaryButton,
-    PrimaryButton
-} from '@enginehub/shared';
-import PlatformBanner from '../src/components/PlatformBanner';
-import commandBookHeader from '../src/images/projects/headers/commandbook-header.svg';
-import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
-import commandBookLogo from '../src/images/projects/commandbook-icon.png';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import {
+    AlignedContent,
+    Button,
+    ColumnHalf,
+    Container,
+    ContainerPadded,
+    HorizontalNav,
+    HorizontalNavItem,
+    InfoLabel,
+    JumbotronButtonBox,
+    JumbotronContainer,
+    JumbotronImageBox,
+    JumbotronText,
+    Label,
+    MainLink,
+    PrimaryButton,
+    Row,
+    SecondaryButton,
+    SectionHeading,
+    SEO,
+    WarningLabel
+} from '@enginehub/shared';
+
+import Layout from '../src/components/Layout';
+import PlatformBanner from '../src/components/PlatformBanner';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import commandBookLogo from '../src/images/projects/commandbook-icon.png';
+import commandBookHeader from '../src/images/projects/headers/commandbook-header.svg';
 
 const CommandBookPage = () => {
     return (

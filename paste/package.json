@@ -22,8 +22,7 @@
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "@types/shortid": "^0.0.32",
-        "eslint": "^8.57.0",
-        "eslint-config-next": "^14.2.5",
+        "eslint": "^9.9.0",
         "postcss-preset-env": "^10.0.0",
         "prettier": "^3.3.3",
         "typescript": "^5.5.4"
@@ -41,8 +40,8 @@
         "build": "yarn next build",
         "start": "yarn next start -p $PORT",
         "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
-        "lint": "yarn next lint",
-        "lint:fix": "yarn next lint --fix"
+        "lint": "eslint src/ pages/",
+        "lint:fix": "yarn lint --fix"
     },
     "sideEffects": ["*.global.css"]
 }

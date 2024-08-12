@@ -1,25 +1,27 @@
-import Layout from '../src/components/Layout';
+import Link from 'next/link';
+
 import {
-    SEO,
-    ContainerPadded,
-    Row,
+    Button,
     ColumnQuarter,
     ColumnThreeQuarter,
-    SidebarHeading,
-    SectionHeading,
     Container,
-    Button,
+    ContainerPadded,
     PrimaryButton,
-    SecondaryButton
+    Row,
+    SecondaryButton,
+    SectionHeading,
+    SEO,
+    SidebarHeading
 } from '@enginehub/shared';
-import SidebarIcon from '../src/components/sidebar/SidebarIcon';
+
+import Layout from '../src/components/Layout';
 import PlatformBanner from '../src/components/PlatformBanner';
-import WorldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
-import WorldGuardHeader from '../src/images/projects/headers/worldguard-header.svg';
-import CraftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
+import SidebarIcon from '../src/components/sidebar/SidebarIcon';
 import CmdBookHeader from '../src/images/projects/headers/commandbook-header.svg';
 import CmdHelperHeader from '../src/images/projects/headers/commandhelper-header.svg';
-import Link from 'next/link';
+import CraftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
+import WorldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
+import WorldGuardHeader from '../src/images/projects/headers/worldguard-header.svg';
 
 const DocumentationPage = () => {
     return (

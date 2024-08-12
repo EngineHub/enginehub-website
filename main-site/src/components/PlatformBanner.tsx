@@ -1,7 +1,8 @@
-import type { FC, PropsWithChildren } from 'react';
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import { Wrapper, LogoBox, InfoBox } from './PlatformBanner.module.css';
+import type { FC, PropsWithChildren } from 'react';
+
+import { InfoBox, LogoBox, Wrapper } from './PlatformBanner.module.css';
 
 interface PlatformBannerProps {
     alt: string;

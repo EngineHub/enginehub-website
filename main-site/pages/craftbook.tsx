@@ -1,33 +1,35 @@
-import Layout from '../src/components/Layout';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import {
-    SEO,
-    ContainerPadded,
-    Row,
+    AlignedContent,
+    Button,
     ColumnHalf,
+    Container,
+    ContainerPadded,
+    HorizontalNav,
+    HorizontalNavItem,
+    InfoLabel,
     JumbotronButtonBox,
     JumbotronContainer,
     JumbotronImageBox,
     JumbotronText,
-    SectionHeading,
-    WarningLabel,
-    InfoLabel,
-    HorizontalNav,
-    HorizontalNavItem,
-    AlignedContent,
-    MainLink,
     Label,
-    Container,
-    Button,
+    MainLink,
+    PrimaryButton,
+    Row,
     SecondaryButton,
-    PrimaryButton
+    SectionHeading,
+    SEO,
+    WarningLabel
 } from '@enginehub/shared';
+
+import Layout from '../src/components/Layout';
 import PlatformBanner from '../src/components/PlatformBanner';
-import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
 import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
 import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
 import craftBookLogo from '../src/images/projects/craftbook-icon.png';
-import Image from 'next/image';
-import Link from 'next/link';
+import craftBookHeader from '../src/images/projects/headers/craftbook-header.svg';
 
 const CraftBookPage = () => {
     return (

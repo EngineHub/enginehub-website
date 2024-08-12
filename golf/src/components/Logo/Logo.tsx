@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+
 import { ImageContainer, InnerImage, WorldEditLogo } from './Logo.module.css';
 
 export const Logo: FC = () => (

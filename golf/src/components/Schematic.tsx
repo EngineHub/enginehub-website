@@ -1,6 +1,8 @@
 import type { FC } from 'react';
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import { renderSchematic } from '@enginehub/schematicwebviewer';
+
 import { Container } from './Schematic.module.css';
 
 interface SchematicProps {
@@ -37,10 +39,9 @@ export const Schematic: FC<SchematicProps> = ({
                     setResize(() => r);
                     callbacks.current.destroy = d;
                 })
-                .catch(() => undefined);
+                .catch(() => {});
             return callbacks.current.destroy;
         }
-        return;
     }, [schematic, preview]);
 
     return (

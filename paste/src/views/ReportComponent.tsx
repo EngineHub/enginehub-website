@@ -1,11 +1,12 @@
+import type { PasteProps } from 'paste/pages/[id]';
 import type { FC } from 'react';
 import { useMemo, useState } from 'react';
-import type { PasteProps } from 'paste/pages/[id]';
+
 import {
-    ReportWrapper,
     ReportNodeBox,
+    ReportNodeContent,
     ReportNodeTitle,
-    ReportNodeContent
+    ReportWrapper
 } from './ReportComponent.module.css';
 
 const CloseIcon = require('./images/close.png').default as { src: string };
@@ -57,7 +58,7 @@ enum ReportState {
     HEADER_END
 }
 
-const REPORT_TITLE_REGEX = /^============+$/;
+const REPORT_TITLE_REGEX = /^={12,}$/;
 
 function generateReportEntries(paste: string): ReportEntry[] {
     const lines = paste.split('\n');
@@ -71,9 +72,9 @@ function generateReportEntries(paste: string): ReportEntry[] {
         line = line.trimEnd();
 
         switch (currentState) {
-            case ReportState.CONTENT:
-                if (line.match(REPORT_TITLE_REGEX)) {
-                    if (currentSection.content.length !== 0) {
+            case ReportState.CONTENT: {
+                if (REPORT_TITLE_REGEX.test(line)) {
+                    if (currentSection.content.length > 0) {
                         sections.push(currentSection);
                     }
 
@@ -83,23 +84,26 @@ function generateReportEntries(paste: string): ReportEntry[] {
                     };
                     currentState = ReportState.HEADER_TITLE;
                 } else {
-                    if (currentSection.content.length !== 0 || line !== '') {
+                    if (currentSection.content.length > 0 || line !== '') {
                         currentSection.content += `${line}\n`;
                     }
                 }
                 break;
-            case ReportState.HEADER_TITLE:
+            }
+            case ReportState.HEADER_TITLE: {
                 currentSection.title = line;
                 currentState = ReportState.HEADER_END;
                 break;
-            case ReportState.HEADER_END:
+            }
+            case ReportState.HEADER_END: {
                 currentState = ReportState.CONTENT;
                 break;
+            }
         }
     }
     if (
         currentState == ReportState.CONTENT &&
-        currentSection.content.length !== 0
+        currentSection.content.length > 0
     ) {
         sections.push(currentSection);
     }

@@ -1,12 +1,13 @@
+import Link from 'next/link';
 import type { FC, HTMLAttributes } from 'react';
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
 import { MainLink } from './Link.module.css';
 import {
     FlexLink,
-    NarrowDiv,
-    HorizontalSponsorArea
+    HorizontalSponsorArea,
+    NarrowDiv
 } from './Sponsors.module.css';
-import Link from 'next/link';
 
 const sponsors: string[] = ['apexhosting', 'gh-sponsors'];
 
@@ -72,7 +73,7 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
         ['gh-sponsors', GitHubSponsorsSponsor]
     ]);
 
-    const availableSponsors = sponsors.concat(extraSponsors);
+    const availableSponsors = [...sponsors, ...extraSponsors];
     if (availableSponsors.length < 3) {
         availableSponsors.push('empty');
     }
@@ -86,7 +87,7 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
 
     useEffect(() => {
         const timeoutTime =
-            availableSponsors[sponsorIndex] === 'empty' ? 5000 : 10000;
+            availableSponsors[sponsorIndex] === 'empty' ? 5000 : 10_000;
         const timeout = setTimeout(() => {
             setSponsorIndex((sponsorIndex + 1) % availableSponsors.length);
         }, timeoutTime);

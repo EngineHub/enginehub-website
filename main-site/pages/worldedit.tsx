@@ -1,36 +1,38 @@
-import Layout from '../src/components/Layout';
-import {
-    SEO,
-    ContainerPadded,
-    Row,
-    ColumnHalf,
-    JumbotronText,
-    JumbotronButtonBox,
-    JumbotronImageBox,
-    JumbotronContainer,
-    HorizontalNav,
-    HorizontalNavItem,
-    AlignedContent,
-    SectionHeading,
-    WarningLabel,
-    MainLink,
-    Label,
-    Container,
-    Button,
-    SecondaryButton,
-    PrimaryButton
-} from '@enginehub/shared';
-import PlatformBanner from '../src/components/PlatformBanner';
-import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
-import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
-import forgeLogo from '../src/images/platforms/forge-logo.png';
-import fabricLogo from '../src/images/platforms/fabric-logo.png';
-import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
-import mceduLogo from '../src/images/platforms/mcedu-logo.png';
-import liteloaderLogo from '../src/images/platforms/liteloader-logo.png';
-import worldEditLogo from '../src/images/projects/worldedit-icon.png';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import {
+    AlignedContent,
+    Button,
+    ColumnHalf,
+    Container,
+    ContainerPadded,
+    HorizontalNav,
+    HorizontalNavItem,
+    JumbotronButtonBox,
+    JumbotronContainer,
+    JumbotronImageBox,
+    JumbotronText,
+    Label,
+    MainLink,
+    PrimaryButton,
+    Row,
+    SecondaryButton,
+    SectionHeading,
+    SEO,
+    WarningLabel
+} from '@enginehub/shared';
+
+import Layout from '../src/components/Layout';
+import PlatformBanner from '../src/components/PlatformBanner';
+import bukkitLogo from '../src/images/platforms/bukkit-logo.png';
+import fabricLogo from '../src/images/platforms/fabric-logo.png';
+import forgeLogo from '../src/images/platforms/forge-logo.png';
+import liteloaderLogo from '../src/images/platforms/liteloader-logo.png';
+import mceduLogo from '../src/images/platforms/mcedu-logo.png';
+import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
+import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
+import worldEditLogo from '../src/images/projects/worldedit-icon.png';
 
 const WorldEditPage = () => {
     return (

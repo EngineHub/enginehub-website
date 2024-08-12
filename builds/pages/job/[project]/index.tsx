@@ -1,39 +1,41 @@
-import Layout from '../../../src/Layout';
 import {
-    Container,
-    SEO,
-    PageHeader,
-    Table,
-    Pagination,
-    Button,
-    SecondaryButton,
-    PrimaryButton
-} from '@enginehub/shared';
+    faCheckCircle,
+    faCodeBranch,
+    faDownload,
+    faExclamationTriangle
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import moment from 'moment';
 import type { GetServerSideProps } from 'next';
-import type { Project } from '../../../src/project';
-import { PROJECT_MAP } from '../../../src/project';
+import Link from 'next/link';
+
+import {
+    Button,
+    Container,
+    MainLink,
+    PageHeader,
+    Pagination,
+    PrimaryButton,
+    SecondaryButton,
+    SEO,
+    Table
+} from '@enginehub/shared';
+
+import {
+    BranchButton,
+    BranchButtonList
+} from '../../../src/BranchButton.module.css';
+import BranchWarning from '../../../src/BranchWarning';
 import type { Build } from '../../../src/builds';
 import {
+    BUILDS_PER_PAGE,
     getBranches,
-    getBuildPage,
-    BUILDS_PER_PAGE
+    getBuildPage
 } from '../../../src/builds';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faDownload,
-    faCheckCircle,
-    faExclamationTriangle,
-    faCodeBranch
-} from '@fortawesome/free-solid-svg-icons';
-import { MainLink } from '@enginehub/shared';
-import BranchWarning from '../../../src/BranchWarning';
-import {
-    BranchButtonList,
-    BranchButton
-} from '../../../src/BranchButton.module.css';
-import moment from 'moment';
-import Link from 'next/link';
+import Layout from '../../../src/Layout';
 import { MiniPaddedIcon } from '../../../src/PaddedIcon.module.css';
+import type { Project } from '../../../src/project';
+import { PROJECT_MAP } from '../../../src/project';
 
 interface ProjectPageProps {
     activeBranch: string;
@@ -119,7 +121,7 @@ function Index({
                         {builds.map(build => (
                             <tr
                                 className={
-                                    build.state !== 'SUCCESS' ? 'danger' : ''
+                                    build.state === 'SUCCESS' ? '' : 'danger'
                                 }
                                 key={build.build_id}
                             >
@@ -164,7 +166,7 @@ function Index({
                                                             className={MainLink}
                                                             href={`${project.vcsRoot}/commit/${change.version}`}
                                                         >
-                                                            {change.version.substring(
+                                                            {change.version.slice(
                                                                 0,
                                                                 8
                                                             )}
@@ -215,7 +217,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         };
     }
 
-    const pageNumber = parseInt(page as string) || 0;
+    const pageNumber = Number.parseInt(page as string) || 0;
 
     const [builds, branches] = await Promise.all([
         getBuildPage(

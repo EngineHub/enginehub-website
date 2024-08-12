@@ -1,6 +1,8 @@
-import type { FunctionComponent } from 'react';
-import { Navbar, Container } from '@enginehub/shared';
 import Image from 'next/image';
+import type { FunctionComponent } from 'react';
+
+import { Container, Navbar } from '@enginehub/shared';
+
 import landingBg from '../images/landing-bg.jpg';
 import {
     HeaderContent,
