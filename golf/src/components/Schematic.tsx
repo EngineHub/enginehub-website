@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
-import { renderSchematic } from '@enginehub/schematicwebviewer';
-
 import { Container } from './Schematic.module.css';
 
 interface SchematicProps {
@@ -30,16 +28,21 @@ export const Schematic: FC<SchematicProps> = ({
 
     useEffect(() => {
         if (schematic && ref.current) {
-            renderSchematic(ref.current, schematic, {
-                corsBypassUrl: 'https://corsproxy.io/?',
-                renderBars: !preview,
-                orbitSpeed: 0.01
-            })
+            import('@enginehub/schematicwebviewer')
+                .then(({ renderSchematic }) =>
+                    renderSchematic(ref.current!, schematic, {
+                        corsBypassUrl: 'https://corsproxy.io/?',
+                        renderBars: !preview,
+                        orbitSpeed: 0.01
+                    })
+                )
                 .then(({ destroy: d, setSize: r }) => {
                     setResize(() => r);
                     callbacks.current.destroy = d;
                 })
-                .catch(() => {});
+                .catch(e => {
+                    console.error(e, schematic);
+                });
             return callbacks.current.destroy;
         }
     }, [schematic, preview]);

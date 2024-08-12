@@ -58,14 +58,12 @@ async function getLeaderboards(golfId: string): Promise<GolfLeaderboard[]> {
     if (process.env.NODE_ENV !== 'production' && golfId === 'test') {
         return [
             {
-                golf_id: 'test',
                 user_id: 'test2',
                 score: 1,
                 commands: '//replace stone sand',
                 submitted_time: Date.now()
             },
             {
-                golf_id: 'test',
                 user_id: 'test3',
                 score: 2,
                 commands: '//replace stone cake\n//replace cake sand',
