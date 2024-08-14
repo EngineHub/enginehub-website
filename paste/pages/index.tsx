@@ -28,7 +28,7 @@ async function postContent(content: string, extension = '') {
 
         // eslint-disable-next-line prefer-const
         let { viewUrl, uploadUrl, headers } = await (
-            await fetch('/signed_paste', {
+            await fetch('/signed_paste_v2', {
                 headers: {
                     'x-paste-meta-extension': extension
                 }

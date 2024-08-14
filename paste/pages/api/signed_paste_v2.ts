@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { signedUploadUrlOld } from '../../src/pasteStore';
+import { signedUploadUrl } from '../../src/pasteStore';
 
 export default async function handle(
     req: NextApiRequest,
@@ -20,12 +20,11 @@ export default async function handle(
                 },
                 {} as { [key: string]: string }
             );
-        const { pasteId, uploadUrl, uploadFields } =
-            await signedUploadUrlOld(googleMetaHeaders);
+        const { pasteId, uploadUrl } = await signedUploadUrl(googleMetaHeaders);
         res.json({
             viewUrl: `https://paste.enginehub.org/${pasteId}`,
             uploadUrl,
-            uploadFields
+            headers: googleMetaHeaders
         });
     } catch (e) {
         console.log(e);

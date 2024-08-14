@@ -10,7 +10,7 @@ export default async function handle(
 
     let pasteId = `${id}`;
     const dotIndex = id?.lastIndexOf('.');
-    if (dotIndex !== -1) {
+    if (dotIndex !== -1 && dotIndex !== undefined) {
         pasteId = pasteId.slice(0, Math.max(0, dotIndex));
     }
     try {
