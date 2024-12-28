@@ -26,7 +26,13 @@
         "prettier": "^3.3.3",
         "typescript": "^5.5.4"
     },
-    "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
+    "keywords": [
+        "nextjs",
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
     "scripts": {
         "dev": "yarn next",
         "clean": "rm -rf build",

@@ -6,7 +6,7 @@
     "author": "EngineHub",
     "type": "module",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^4.9.0",
+        "@enginehub/schematicwebviewer": "^4.9.1",
         "@enginehub/shared": "workspace:*",
         "@fortawesome/fontawesome-svg-core": "^6.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
@@ -37,7 +37,13 @@
         "prettier": "^3.3.3",
         "typescript": "^5.5.4"
     },
-    "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
+    "keywords": [
+        "nextjs",
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
     "scripts": {
         "dev": "yarn next",
         "build": "yarn next build",

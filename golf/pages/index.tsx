@@ -55,7 +55,16 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
             revalidate: 3600
         };
     } catch (e) {
-        return { props: { error: e, golfs: [] }, revalidate: 3600 };
+        return {
+            props: {
+                error:
+                    e && typeof e === 'object' && 'message' in e
+                        ? e.message
+                        : 'Unknown error',
+                golfs: []
+            },
+            revalidate: 3600
+        };
     }
 };
 

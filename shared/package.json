@@ -17,7 +17,12 @@
         "tslib": "^2.6.3",
         "typescript": "^5.5.4"
     },
-    "keywords": ["enginehub", "worldedit", "worldguard", "craftbook"],
+    "keywords": [
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
     "scripts": {
         "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
         "lint": "eslint src/",

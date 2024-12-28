@@ -41,10 +41,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babylonjs/core@npm:^7.2.1":
-  version: 7.20.1
-  resolution: "@babylonjs/core@npm:7.20.1"
-  checksum: 10/d64377cdc3976cb763ea907025f6008ccec8e6fb6327dcebaea9723f72fe6241ff1a1ab604dfc15dd0512eaf181550f5686e1ed0b2d701ba974059b41c9ebce4
+"@babylonjs/core@npm:^7.42.0":
+  version: 7.42.0
+  resolution: "@babylonjs/core@npm:7.42.0"
+  checksum: 10/c421e950950db2a537b13a7fdb278bda7b4b54803079bdc01f9a0e025f941c2cf9147977d547d4e9e7b7ae302aa6da2de61a9bba63a90870efde75a9d2ffba72
   languageName: node
   linkType: hard
 
@@ -528,7 +528,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicjs@npm:^0.9.1, @enginehub/schematicjs@npm:^0.9.2":
+"@enginehub/schematicjs@npm:^0.9.2":
   version: 0.9.2
   resolution: "@enginehub/schematicjs@npm:0.9.2"
   dependencies:
@@ -537,18 +537,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicwebviewer@npm:^4.9.0":
-  version: 4.9.0
-  resolution: "@enginehub/schematicwebviewer@npm:4.9.0"
+"@enginehub/schematicwebviewer@npm:^4.9.1":
+  version: 4.9.1
+  resolution: "@enginehub/schematicwebviewer@npm:4.9.1"
   dependencies:
-    "@babylonjs/core": "npm:^7.2.1"
-    "@enginehub/schematicjs": "npm:^0.9.1"
+    "@babylonjs/core": "npm:^7.42.0"
+    "@enginehub/nbt-ts": "npm:^1.3.5"
+    "@enginehub/schematicjs": "npm:^0.9.2"
     buffer: "npm:^6.0.3"
     deepmerge: "npm:^4.3.1"
     gzip-js: "npm:^0.3.2"
     jszip: "npm:^3.10.1"
-    nbt-ts: "npm:^1.3.6"
-  checksum: 10/5f6d93f6e6f515395115d13381714df0264bf90fb070050e066d3b114552555cf7984dcfa26b24585dfd96fbdb8dbd1c4778708fda37a85e1d348bea4efa9250
+  checksum: 10/c852f49536bea0170a25031993d1eda43323d325800daaba51ff9ef3920973c806858c84910d4a84fd45fd80659055ba3b90eb084706274d6cf23d9bd6f1cbb5
   languageName: node
   linkType: hard
 
@@ -5318,13 +5318,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nbt-ts@npm:^1.3.6":
-  version: 1.3.6
-  resolution: "nbt-ts@npm:1.3.6"
-  checksum: 10/ba746118e39ba8c03aa686cdd282d98f34faf7034c2d3bfc8bb6c92f9a8ea7615e534ea8e01a12c495bf38fe3bc99e8fa5ed010bf3190cd7b84f419776dcc6c6
-  languageName: node
-  linkType: hard
-
 "needle@npm:^3.1.0":
   version: 3.3.1
   resolution: "needle@npm:3.3.1"
@@ -5770,7 +5763,7 @@ __metadata:
   resolution: "paste@workspace:paste"
   dependencies:
     "@enginehub/schematicjs": "npm:^0.9.2"
-    "@enginehub/schematicwebviewer": "npm:^4.9.0"
+    "@enginehub/schematicwebviewer": "npm:^4.9.1"
     "@enginehub/shared": "workspace:*"
     "@google-cloud/storage": "npm:^7.12.1"
     "@types/node": "npm:^20.14.15"
@@ -7916,7 +7909,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "worldedit-golf@workspace:golf"
   dependencies:
-    "@enginehub/schematicwebviewer": "npm:^4.9.0"
+    "@enginehub/schematicwebviewer": "npm:^4.9.1"
     "@enginehub/shared": "workspace:*"
     "@fortawesome/fontawesome-svg-core": "npm:^6.6.0"
     "@fortawesome/free-solid-svg-icons": "npm:^6.6.0"
