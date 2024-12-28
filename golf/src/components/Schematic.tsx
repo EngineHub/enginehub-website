@@ -31,7 +31,7 @@ export const Schematic: FC<SchematicProps> = ({
             import('@enginehub/schematicwebviewer')
                 .then(({ renderSchematic }) =>
                     renderSchematic(ref.current!, schematic, {
-                        corsBypassUrl: 'https://corsanywhere.enginehub.org/?',
+                        corsBypassUrl: 'https://corsanywhere.enginehub.org/',
                         renderBars: !preview,
                         orbitSpeed: 0.01
                     })

@@ -84,7 +84,7 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
                 .then(({ renderSchematic }) =>
                     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                     renderSchematic(ref.current!, paste, {
-                        corsBypassUrl: 'https://corsanywhere.enginehub.org/?',
+                        corsBypassUrl: 'https://corsanywhere.enginehub.org/',
                         renderBars: false,
                         renderArrow: false
                     })
