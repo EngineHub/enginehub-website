@@ -69,7 +69,7 @@ const CommandBookPage = () => {
                         <li className={HorizontalNavItem}>
                             <Link
                                 className={MainLink}
-                                href="http://wiki.sk89q.com/wiki/commandbook"
+                                href="https://wiki.sk89q.com/wiki/commandbook"
                             >
                                 Documentation
                             </Link>
@@ -152,7 +152,7 @@ const CommandBookPage = () => {
                             width="100%"
                             height="410"
                             src="https://www.youtube.com/embed/CFJ2D_Wpcxk?theme=light&amp;rel=0"
-                            frameBorder={0}
+                            style={{ border: '0px' }}
                             allowFullScreen={true}
                         />
                     </div>
@@ -169,7 +169,7 @@ const CommandBookPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'http://dev.bukkit.org/bukkit-plugins/commandbook/files/'
+                                        'https://dev.bukkit.org/bukkit-plugins/commandbook/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
@@ -179,7 +179,7 @@ const CommandBookPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/commandbook'
+                                        'https://builds.enginehub.org/job/commandbook'
                                     }
                                 >
                                     Experimental builds for Bukkit

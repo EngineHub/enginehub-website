@@ -60,17 +60,16 @@ enum ReportState {
 
 const REPORT_TITLE_REGEX = /^={12,}$/;
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function generateReportEntries(paste: string): ReportEntry[] {
-    const lines = paste.split('\n');
+    const lines = paste.split('\n').map(line => line.trimEnd());
     const sections: ReportEntry[] = [];
     let currentState: ReportState = ReportState.CONTENT;
     let currentSection: ReportEntry = {
         content: '',
         title: ''
     };
-    for (let line of lines) {
-        line = line.trimEnd();
-
+    for (const line of lines) {
         switch (currentState) {
             case ReportState.CONTENT: {
                 if (REPORT_TITLE_REGEX.test(line)) {

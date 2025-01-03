@@ -156,7 +156,7 @@ const CraftBookPage = () => {
                             width="100%"
                             height="300"
                             src="https://www.youtube.com/embed/nNb6jZYk55I?theme=light&amp;rel=0"
-                            frameBorder={0}
+                            style={{ border: '0px' }}
                             allowFullScreen={true}
                         />
                     </div>
@@ -165,7 +165,7 @@ const CraftBookPage = () => {
                             width="100%"
                             height="300"
                             src="https://www.youtube.com/embed/OpKlSDPyR0M?theme=light&amp;rel=0"
-                            frameBorder={0}
+                            style={{ border: '0px' }}
                             allowFullScreen={true}
                         />
                     </div>
@@ -182,7 +182,7 @@ const CraftBookPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'http://dev.bukkit.org/bukkit-plugins/craftbook/files/'
+                                        'https://dev.bukkit.org/bukkit-plugins/craftbook/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
@@ -192,7 +192,7 @@ const CraftBookPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/craftbook?branch=master'
+                                        'https://builds.enginehub.org/job/craftbook?branch=master'
                                     }
                                 >
                                     Experimental builds for Bukkit
@@ -245,7 +245,7 @@ const CraftBookPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/craftbook?branch=4.x'
+                                        'https://builds.enginehub.org/job/craftbook?branch=4.x'
                                     }
                                 >
                                     Experimental builds for Sponge

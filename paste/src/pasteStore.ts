@@ -77,7 +77,7 @@ export async function getPaste(
 
     const file = storage.bucket(PasteBucket).file(`${PastePrefix}${pasteId}`);
 
-    const dataPromise = new Promise<Buffer>((resolve, reject) => {
+    const dataPromise = new Promise<Buffer<ArrayBuffer>>((resolve, reject) => {
         const stream = file.createReadStream(options);
 
         const buffers: Buffer[] = [];

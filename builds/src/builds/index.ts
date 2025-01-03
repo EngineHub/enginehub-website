@@ -4,7 +4,7 @@ import type { Project } from '../project';
 import { DUMMY_BUILD } from './dummyData';
 import type { Build, BuildArtifact, BuildChange } from './types';
 
-export * from './types';
+export type * from './types';
 
 const TEAMCITY_API_URL = 'https://ci.enginehub.org';
 const TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmssZ';
@@ -45,7 +45,7 @@ async function getBuildFromTCSelector(
 
     const build = data.build[0];
 
-    if (build === undefined) {
+    if (build == undefined) {
         return undefined;
     }
 

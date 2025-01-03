@@ -187,7 +187,7 @@ const WorldGuardPage = () => {
                             width="100%"
                             height="410"
                             src="https://www.youtube.com/embed/2BaA6ma8L-E?theme=light&amp;rel=0"
-                            frameBorder={0}
+                            style={{ border: '0px' }}
                             allowFullScreen={true}
                         />
                     </div>
@@ -204,7 +204,7 @@ const WorldGuardPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'http://dev.bukkit.org/bukkit-plugins/worldguard/files/'
+                                        'https://dev.bukkit.org/bukkit-plugins/worldguard/files/'
                                     }
                                 >
                                     Stable builds for Bukkit
@@ -214,7 +214,7 @@ const WorldGuardPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/worldguard'
+                                        'https://builds.enginehub.org/job/worldguard'
                                     }
                                 >
                                     Experimental builds for Bukkit

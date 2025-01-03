@@ -178,7 +178,7 @@ const DocumentationPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'http://web.archive.org/web/20181222152247/http://wiki.sk89q.com/wiki/CommandBook'
+                                        'https://web.archive.org/web/20181222152247/http://wiki.sk89q.com/wiki/CommandBook'
                                     }
                                 >
                                     CommandBook Docs

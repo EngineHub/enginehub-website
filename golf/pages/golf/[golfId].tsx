@@ -2,8 +2,13 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
-import type { FC } from 'react';
-import { useLayoutEffect, useRef, useState } from 'react';
+import {
+    type FC,
+    type RefObject,
+    useLayoutEffect,
+    useRef,
+    useState
+} from 'react';
 
 import {
     Button,
@@ -92,9 +97,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
     };
 
     const contentRef = useRef<HTMLDivElement>(null);
-    const width = useElementWidth(
-        contentRef as React.MutableRefObject<HTMLElement>
-    );
+    const width = useElementWidth(contentRef as RefObject<HTMLElement>);
 
     useLayoutEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -144,28 +147,24 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
             statusBox.current!.value = `You must enter commands.`;
             return;
         }
-        try {
-            queueTask({
-                golfId: golf.golf_id,
-                initial: false,
-                input: golf.start_schematic,
-                script: commandBox.current!.value,
-                test: golf.test_schematic,
-                token: token
+        queueTask({
+            golfId: golf.golf_id,
+            initial: false,
+            input: golf.start_schematic,
+            script: commandBox.current!.value,
+            test: golf.test_schematic,
+            token: token
+        })
+            .then(queueResponse => {
+                if (queueResponse.taskId) {
+                    setTaskId(queueResponse.taskId);
+                } else {
+                    statusBox.current!.value = `An error occurred`;
+                }
             })
-                .then(queueResponse => {
-                    if (queueResponse.taskId) {
-                        setTaskId(queueResponse.taskId);
-                    } else {
-                        statusBox.current!.value = `An error occurred`;
-                    }
-                })
-                .catch(e => {
-                    statusBox.current!.value = `An error occurred, ${e}`;
-                });
-        } catch (e) {
-            statusBox.current!.value = `An error occurred :(\n\n${e}`;
-        }
+            .catch(e => {
+                statusBox.current!.value = `An error occurred, ${e}`;
+            });
     };
 
     const smallSize = width / 2.05;

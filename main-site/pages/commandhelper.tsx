@@ -144,7 +144,7 @@ const CommandHelperPage = () => {
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/commandhelper/'
+                                        'https://builds.enginehub.org/job/commandhelper/'
                                     }
                                 >
                                     Download builds for Bukkit

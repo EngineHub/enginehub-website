@@ -1,5 +1,10 @@
-import type { MutableRefObject, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import {
+    type ReactNode,
+    type RefObject,
+    useEffect,
+    useRef,
+    useState
+} from 'react';
 
 import {
     BrandButton,
@@ -96,9 +101,7 @@ const Submit = () => {
     const fetch = useAuthenticatedFetch();
 
     const containerRef = useRef<HTMLDivElement>(null);
-    const width = useElementWidth(
-        containerRef as MutableRefObject<HTMLElement>
-    );
+    const width = useElementWidth(containerRef as RefObject<HTMLElement>);
 
     useAuthenticatedPage();
 

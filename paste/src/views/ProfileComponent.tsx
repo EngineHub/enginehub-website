@@ -65,6 +65,7 @@ const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
                     background:
                         entry.children.length > 0
                             ? `url(${
+                                  // eslint-disable-next-line sonarjs/no-nested-conditional
                                   open ? CloseIcon.src : OpenIcon.src
                               }) center left no-repeat`
                             : 'none'
@@ -87,6 +88,7 @@ const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
     );
 };
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function generateProfileEntries(paste: string): RootEntry {
     const lines = paste.split('\n');
     if (lines.length < 2 || !lines[0].startsWith('Server thread')) {
@@ -98,13 +100,13 @@ function generateProfileEntries(paste: string): RootEntry {
     let currentDepth = 0;
     let currentEntry: ProfileEntry | RootEntry = rootEntry;
     let skipping = false;
-    for (let line of lines) {
+    for (const line of lines) {
         const fullLength = line.length;
-        line = line.trimStart();
+        const trimmedLine = line.trimStart();
         if (line.length === 0) {
             break;
         }
-        const innerDepth = fullLength - line.length;
+        const innerDepth = fullLength - trimmedLine.length;
         if (skipping) {
             if (innerDepth < currentDepth) {
                 skipping = false;
@@ -121,7 +123,7 @@ function generateProfileEntries(paste: string): RootEntry {
         }
         currentDepth = innerDepth;
 
-        const currentLine = parseLine(line);
+        const currentLine = parseLine(trimmedLine);
         if (currentLine.selfTime <= 200) {
             skipping = true;
             continue;

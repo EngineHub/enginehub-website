@@ -199,7 +199,7 @@ const WorldEditPage = () => {
                             width="100%"
                             height="300"
                             src="https://www.youtube.com/embed/yl1hTctucOc?theme=light&amp;rel=0"
-                            frameBorder={0}
+                            style={{ border: '0px' }}
                             allowFullScreen={true}
                         />
                     </div>
@@ -208,7 +208,7 @@ const WorldEditPage = () => {
                             width="100%"
                             height="300"
                             src="https://www.youtube.com/embed/72HlPD9CW10?theme=light&amp;rel=0"
-                            frameBorder={0}
+                            style={{ border: '0px' }}
                             allowFullScreen={true}
                         />
                     </div>
@@ -235,7 +235,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/worldedit'
+                                        'https://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Bukkit
@@ -281,7 +281,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/worldedit'
+                                        'https://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Forge
@@ -324,7 +324,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/worldedit'
+                                        'https://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Fabric
@@ -367,7 +367,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={`${Button} ${SecondaryButton}`}
                                     href={
-                                        'http://builds.enginehub.org/job/worldedit'
+                                        'https://builds.enginehub.org/job/worldedit'
                                     }
                                 >
                                     Experimental builds for Sponge
@@ -410,7 +410,7 @@ const WorldEditPage = () => {
                                 <Link
                                     className={MainLink}
                                     href={
-                                        'http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1294341-worldeditwrapper-use-worldedit-in-single-player'
+                                        'https://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1294341-worldeditwrapper-use-worldedit-in-single-player'
                                     }
                                 >
                                     an unofficial WorldEditWrapper

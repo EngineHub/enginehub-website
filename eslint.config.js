@@ -117,6 +117,8 @@ export default tseslint.config(
             ],
 
             'sonarjs/no-duplicate-string': 'off',
+            'sonarjs/prefer-read-only-props': 'off',
+            'sonarjs/function-return-type': 'off',
 
             // Unicorn rules
             'unicorn/filename-case': 'off',
@@ -132,7 +134,8 @@ export default tseslint.config(
             'unicorn/no-useless-undefined': 'warn',
             'unicorn/prefer-string-replace-all': 'error',
             'unicorn/no-abusive-eslint-disable': 'off',
-            'unicorn/no-array-reduce': 'off'
+            'unicorn/no-array-reduce': 'off',
+            'unicorn/prefer-global-this': 'off'
         }
     }
 );
