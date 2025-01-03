@@ -13,14 +13,13 @@
         "@fortawesome/react-fontawesome": "^0.2.2",
         "@google-cloud/firestore": "^7.9.0",
         "bcrypt": "^5.1.1",
-        "got": "^14.4.2",
         "gzip-js": "^0.3.2",
         "jsonwebtoken": "^9.0.2",
         "next": "^14.2.5",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "safe-compare": "^1.1.4",
-        "sharp": "^0.33.4",
+        "sharp": "^0.33.5",
         "shortid": "^2.2.16",
         "zlibt": "0.0.5"
     },
@@ -35,15 +34,9 @@
         "eslint": "^9.9.0",
         "postcss-preset-env": "^10.0.0",
         "prettier": "^3.3.3",
-        "typescript": "^5.5.4"
+        "typescript": "^5.7.2"
     },
-    "keywords": [
-        "nextjs",
-        "enginehub",
-        "worldedit",
-        "worldguard",
-        "craftbook"
-    ],
+    "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
         "dev": "yarn next",
         "build": "yarn next build",

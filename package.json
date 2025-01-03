@@ -6,21 +6,15 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "type": "module",
-    "workspaces": [
-        "main-site",
-        "builds",
-        "paste",
-        "golf",
-        "shared"
-    ],
+    "workspaces": ["main-site", "builds", "paste", "golf", "shared"],
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/EngineHub/enginehub-website"
     },
     "dependencies": {
-        "husky": "^9.1.4",
-        "lint-staged": "^15.2.8",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.3.0",
         "postinstall-postinstall": "^2.1.0"
     },
     "scripts": {

@@ -1,16 +1,13 @@
-import got from 'got';
 import jwt from 'jsonwebtoken';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { addUser } from '../../src/databaseConnector';
 
 interface UserResponse {
-    body: {
-        id: string;
-        avatar_url: string;
-        login: string;
-        name: string;
-    };
+    id: string;
+    avatar_url: string;
+    login: string;
+    name: string;
 }
 
 export default async function handle(
@@ -37,7 +34,7 @@ export default async function handle(
     const clientSecret = process.env.CLIENT_SECRET;
     const url = `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`;
 
-    const { body } = (await got(url)) as { body: string };
+    const body = await (await fetch(url)).text();
 
     const data = body.split('&').reduce(
         (acc, a) => {
@@ -72,11 +69,15 @@ export default async function handle(
 
     try {
         const {
-            body: { id: github_id, avatar_url, name, login }
-        }: UserResponse = await got('https://api.github.com/user', {
-            responseType: 'json',
-            headers: { authorization: `token ${access_token}` }
-        });
+            id: github_id,
+            avatar_url,
+            name,
+            login
+        } = (await (
+            await fetch('https://api.github.com/user', {
+                headers: { authorization: `token ${access_token}` }
+            })
+        ).json()) as UserResponse;
 
         await addUser({
             user_id: github_id,
