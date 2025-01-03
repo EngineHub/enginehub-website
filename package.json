@@ -28,7 +28,7 @@
         "prepare": "husky",
         "precommit": "lint-staged"
     },
-    "packageManager": "yarn@4.5.3",
+    "packageManager": "yarn@4.6.0",
     "devDependencies": {
         "@eslint/compat": "^1.1.1",
         "@next/eslint-plugin-next": "^14.2.5",
