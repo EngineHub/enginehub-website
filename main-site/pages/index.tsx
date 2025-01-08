@@ -1,4 +1,5 @@
 import { ColumnHalf, Container, Row, SEO } from '@enginehub/shared';
+import { getHomeStructuredData } from '@enginehub/shared/src/components/structured_data';
 
 import {
     FeatureHeading,
@@ -20,6 +21,7 @@ const IndexPage = () => {
                 title="Welcome"
                 description="Open-source mods for and by the Minecraft community"
                 image={'/images/enginehub-logo.png'}
+                structuredData={getHomeStructuredData}
             />
             <div className={Container}>
                 <div className={HeadingContainer}>

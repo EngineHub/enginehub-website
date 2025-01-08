@@ -1,18 +1,29 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import type { FunctionComponent } from 'react';
+
+import {
+    getDefaultStructuredData,
+    SITE_URL,
+    type StructuredDataGenerator
+} from './structured_data';
 
 interface SEOProps {
     description?: string;
     lang?: string;
     title: string;
     image?: string;
+    structuredData?: StructuredDataGenerator;
 }
 
 export const SEO: FunctionComponent<SEOProps> = ({
     description = 'Open-source mods for and by the Minecraft community',
     title,
-    image
+    image,
+    structuredData = getDefaultStructuredData
 }) => {
+    const router = useRouter();
+
     return (
         <Head>
             <title>{`${title} | EngineHub`}</title>
@@ -27,6 +38,17 @@ export const SEO: FunctionComponent<SEOProps> = ({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta property="og:image" content={image} />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(
+                        structuredData({
+                            title,
+                            url: `${SITE_URL}${router.asPath}`
+                        })
+                    )
+                }}
+            ></script>
         </Head>
     );
 };
