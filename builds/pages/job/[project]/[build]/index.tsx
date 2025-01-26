@@ -37,7 +37,7 @@ import {
 import BranchWarning from '../../../../src/BranchWarning';
 import type { Build } from '../../../../src/builds';
 import { getBuild } from '../../../../src/builds';
-import { getUsernameFromChange } from '../../../../src/builds/vcsUsernameMapping';
+import { CommiterName } from '../../../../src/builds/vcsUsernameMapping';
 import {
     Breaker,
     DownloadLinkDiv
@@ -240,7 +240,9 @@ function Index({ project, build }: BuildPageProps) {
                                         </Link>
                                     </td>
                                     <td>{change.comment}</td>
-                                    <td>{getUsernameFromChange(change)}</td>
+                                    <td>
+                                        <CommiterName buildChange={change} />
+                                    </td>
                                     <td>{moment(change.date).fromNow()}</td>
                                 </tr>
                             ))}
