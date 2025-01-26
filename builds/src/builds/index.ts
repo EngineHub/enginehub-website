@@ -9,8 +9,10 @@ export type * from './types';
 const TEAMCITY_API_URL = 'https://ci.enginehub.org';
 const TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmssZ';
 
-const CHANGE_FIELDS = `changes(change(version,username,comment,date))`;
+const CHANGE_FIELDS = `changes(change(version,commiter(vcsUsername,users(user(name,username))),comment,date))`;
 const ARTIFACT_FIELDS = `artifacts(file(name,size))`;
+
+const TEAMCITY_TOKEN = process.env.TEAMCITY_TOKEN;
 
 interface TCBuild {
     build: {
@@ -35,11 +37,12 @@ interface TCBuild {
 async function getBuildFromTCSelector(
     selector: string
 ): Promise<Build | undefined> {
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds/?locator=${selector}&fields=build(id,status,statusText,branchName,finishDate,number,buildType(projectId),${CHANGE_FIELDS},${ARTIFACT_FIELDS})`;
+    const url = `${TEAMCITY_API_URL}/app/rest/latest/builds/?locator=${selector}&fields=build(id,status,statusText,branchName,finishDate,number,buildType(projectId),${CHANGE_FIELDS},${ARTIFACT_FIELDS})`;
 
     const data = (await fetch(url, {
         headers: {
-            Accept: 'application/json'
+            Accept: 'application/json',
+            Authorization: `Bearer ${TEAMCITY_TOKEN}`
         }
     }).then(response => response.json())) as TCBuild;
 
@@ -93,14 +96,15 @@ export async function getBuildPage(
         return [];
     }
 
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/builds?locator=buildType:${
+    const url = `${TEAMCITY_API_URL}/app/rest/latest/builds?locator=buildType:${
         project.buildType
     },branch:${branch},count:${BUILDS_PER_PAGE + 1},start:${
         pageNumber * BUILDS_PER_PAGE
     }&fields=build(number,status,id,statusText,finishDate,${CHANGE_FIELDS})`;
     const data = (await fetch(url, {
         headers: {
-            Accept: 'application/json'
+            Accept: 'application/json',
+            Authorization: `Bearer ${TEAMCITY_TOKEN}`
         }
     }).then(response => response.json())) as TCBuild;
 
@@ -134,10 +138,11 @@ interface TCBranch {
 }
 
 export async function getBranches(project: Project): Promise<string[]> {
-    const url = `${TEAMCITY_API_URL}/guestAuth/app/rest/latest/projects/${project.id}/branches`;
+    const url = `${TEAMCITY_API_URL}/app/rest/latest/projects/${project.id}/branches`;
     const data = (await fetch(url, {
         headers: {
-            Accept: 'application/json'
+            Accept: 'application/json',
+            Authorization: `Bearer ${TEAMCITY_TOKEN}`
         }
     }).then(response => response.json())) as TCBranch;
     const branches = data.branch.map(branch => branch.name);

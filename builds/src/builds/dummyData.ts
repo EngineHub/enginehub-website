@@ -12,13 +12,13 @@ export const DUMMY_BUILD: (buildId: string) => Build = (buildId: string) => ({
     changes: [
         {
             version: 'abababa',
-            username: 'testerson',
+            commiter: { vcsUsername: 'testerson', users: { user: [] } },
             comment: 'Made some test changes',
             date: Date.now()
         },
         {
             version: 'abababa',
-            username: 'testerson',
+            commiter: { vcsUsername: 'testerson', users: { user: [] } },
             comment: 'Made some test changes',
             date: Date.now()
         }

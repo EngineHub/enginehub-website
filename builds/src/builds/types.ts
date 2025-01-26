@@ -14,7 +14,10 @@ export interface Build {
 export interface BuildChange {
     version: string;
     comment: string;
-    username: string;
+    commiter: {
+        vcsUsername: string;
+        users: { user: { username?: string; name?: string }[] };
+    };
     date: number;
 }
 

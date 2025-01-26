@@ -32,6 +32,7 @@ import {
     getBranches,
     getBuildPage
 } from '../../../src/builds';
+import { getUsernameFromChange } from '../../../src/builds/vcsUsernameMapping';
 import Layout from '../../../src/Layout';
 import { MiniPaddedIcon } from '../../../src/PaddedIcon.module.css';
 import type { Project } from '../../../src/project';
@@ -171,7 +172,11 @@ function Index({
                                                                 8
                                                             )}
                                                         </Link>{' '}
-                                                        by {change.username})
+                                                        by{' '}
+                                                        {getUsernameFromChange(
+                                                            change
+                                                        )}
+                                                        )
                                                     </small>
                                                 </li>
                                             ))

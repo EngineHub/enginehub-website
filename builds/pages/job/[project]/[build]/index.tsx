@@ -37,6 +37,7 @@ import {
 import BranchWarning from '../../../../src/BranchWarning';
 import type { Build } from '../../../../src/builds';
 import { getBuild } from '../../../../src/builds';
+import { getUsernameFromChange } from '../../../../src/builds/vcsUsernameMapping';
 import {
     Breaker,
     DownloadLinkDiv
@@ -239,7 +240,7 @@ function Index({ project, build }: BuildPageProps) {
                                         </Link>
                                     </td>
                                     <td>{change.comment}</td>
-                                    <td>{change.username}</td>
+                                    <td>{getUsernameFromChange(change)}</td>
                                     <td>{moment(change.date).fromNow()}</td>
                                 </tr>
                             ))}
