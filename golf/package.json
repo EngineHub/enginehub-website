@@ -26,7 +26,7 @@
     "devDependencies": {
         "@types/gzip-js": "^0.3.5",
         "@types/jsonwebtoken": "^9.0.8",
-        "@types/node": "^22.10.10",
+        "@types/node": "^22.12.0",
         "@types/react": "19.0.8",
         "@types/react-dom": "19.0.3",
         "@types/safe-compare": "^1.1.2",
@@ -36,7 +36,13 @@
         "prettier": "^3.4.2",
         "typescript": "^5.7.3"
     },
-    "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
+    "keywords": [
+        "nextjs",
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
     "scripts": {
         "dev": "yarn next",
         "build": "yarn next build",

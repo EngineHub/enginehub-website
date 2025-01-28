@@ -21,7 +21,13 @@
         "prettier": "^3.4.2",
         "typescript": "^5.7.3"
     },
-    "keywords": ["gatsby", "enginehub", "worldedit", "worldguard", "craftbook"],
+    "keywords": [
+        "gatsby",
+        "enginehub",
+        "worldedit",
+        "worldguard",
+        "craftbook"
+    ],
     "scripts": {
         "build": "yarn next build",
         "dev": "yarn next dev",

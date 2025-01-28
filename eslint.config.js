@@ -119,6 +119,7 @@ export default tseslint.config(
             'sonarjs/no-duplicate-string': 'off',
             'sonarjs/prefer-read-only-props': 'off',
             'sonarjs/function-return-type': 'off',
+            'sonarjs/pseudo-random': 'off',
 
             // Unicorn rules
             'unicorn/filename-case': 'off',

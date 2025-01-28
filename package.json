@@ -6,7 +6,13 @@
     "version": "1.0.0",
     "author": "EngineHub",
     "type": "module",
-    "workspaces": ["main-site", "builds", "paste", "golf", "shared"],
+    "workspaces": [
+        "main-site",
+        "builds",
+        "paste",
+        "golf",
+        "shared"
+    ],
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -14,7 +20,7 @@
     },
     "dependencies": {
         "husky": "^9.1.7",
-        "lint-staged": "^15.4.2",
+        "lint-staged": "^15.4.3",
         "postinstall-postinstall": "^2.1.0"
     },
     "scripts": {
@@ -34,7 +40,7 @@
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-sonarjs": "^3.0.1",
         "eslint-plugin-unicorn": "^56.0.1",
-        "typescript-eslint": "^8.21.0",
+        "typescript-eslint": "^8.22.0",
         "typescript-plugin-css-modules": "^5.1.0"
     }
 }

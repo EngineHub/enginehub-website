@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { type RefObject, useCallback, useEffect, useState } from 'react';
 
 export const useElementWidth: <T extends HTMLElement>(
-    ref: React.MutableRefObject<T>
+    ref: RefObject<T>
 ) => number = ref => {
     const getWidth = useCallback(
         () => ref?.current?.getBoundingClientRect()?.width ?? 0,
