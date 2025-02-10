@@ -2,6 +2,7 @@ import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
+import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
@@ -20,11 +21,11 @@ const compat = new FlatCompat({
 export default tseslint.config(
     eslint.configs.recommended,
     ...tseslint.configs['recommendedTypeChecked'],
-    ...compat.plugins('import', 'react-hooks', 'simple-import-sort'),
+    ...compat.plugins('react-hooks', 'simple-import-sort'),
     unicorn.configs['flat/recommended'],
     sonarjs.configs.recommended,
-    ...compat.extends('plugin:import/recommended'),
-    ...compat.extends('plugin:import/typescript'),
+    importPlugin.flatConfigs.recommended,
+    importPlugin.flatConfigs.typescript,
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
     {

@@ -9,21 +9,16 @@
     "types": "./src/index.ts",
     "type": "module",
     "devDependencies": {
-        "@types/node": "^22.12.0",
+        "@types/node": "^22.13.1",
         "@types/react": "19.0.8",
         "@types/react-dom": "19.0.3",
-        "eslint": "^9.19.0",
-        "prettier": "^3.4.2",
+        "eslint": "^9.20.0",
+        "prettier": "^3.5.0",
         "schema-dts": "^1.1.2",
         "tslib": "^2.8.1",
         "typescript": "^5.7.3"
     },
-    "keywords": [
-        "enginehub",
-        "worldedit",
-        "worldguard",
-        "craftbook"
-    ],
+    "keywords": ["enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
         "type-check": "yarn tsc --project ./tsconfig.json --noEmit",
         "lint": "eslint src/",
