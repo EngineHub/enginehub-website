@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "husky": "^9.1.7",
-        "lint-staged": "^15.4.3",
+        "lint-staged": "^16.0.0",
         "postinstall-postinstall": "^2.1.0"
     },
     "scripts": {
