@@ -6,5 +6,8 @@ export default {
     eslint: {
         ignoreDuringBuilds: true
     },
-    transpilePackages: ['@enginehub/shared']
+    transpilePackages: ['@enginehub/shared'],
+    experimental: {
+        reactCompiler: true
+    }
 };

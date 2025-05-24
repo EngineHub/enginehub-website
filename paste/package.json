@@ -22,6 +22,7 @@
         "@types/react": "19.1.5",
         "@types/react-dom": "19.1.5",
         "@types/shortid": "^2.2.0",
+        "babel-plugin-react-compiler": "^19.1.0-rc.2",
         "eslint": "^9.27.0",
         "postcss-preset-env": "^10.1.6",
         "prettier": "^3.5.3",
