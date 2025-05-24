@@ -1,9 +1,10 @@
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
+import { fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import path from 'node:path';
@@ -21,13 +22,14 @@ const compat = new FlatCompat({
 export default tseslint.config(
     eslint.configs.recommended,
     ...tseslint.configs['recommendedTypeChecked'],
-    ...compat.plugins('react-hooks', 'simple-import-sort'),
-    unicorn.configs['flat/recommended'],
+    ...compat.plugins('simple-import-sort'),
+    unicorn.configs.recommended,
     sonarjs.configs.recommended,
     importPlugin.flatConfigs.recommended,
     importPlugin.flatConfigs.typescript,
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
+    reactHooks.configs.recommended,
     {
         plugins: {
             '@next/next': fixupPluginRules(nextPlugin)
@@ -54,9 +56,6 @@ export default tseslint.config(
         rules: {
             ...nextPlugin.configs.recommended.rules,
             ...nextPlugin.configs['core-web-vitals'].rules,
-            ...fixupConfigRules(
-                compat.extends('plugin:react-hooks/recommended')[0]
-            ).rules,
 
             // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
             // React
