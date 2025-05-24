@@ -30,6 +30,7 @@ import fabricLogo from '../src/images/platforms/fabric-logo.png';
 import forgeLogo from '../src/images/platforms/forge-logo.png';
 import liteloaderLogo from '../src/images/platforms/liteloader-logo.png';
 import mceduLogo from '../src/images/platforms/mcedu-logo.png';
+import neoforgedLogo from '../src/images/platforms/neoforged-logo.png';
 import spongeLogo from '../src/images/platforms/spongepowered-logo.png';
 import worldEditHeader from '../src/images/projects/headers/worldedit-header.svg';
 import worldEditLogo from '../src/images/projects/worldedit-icon.png';
@@ -262,19 +263,18 @@ const WorldEditPage = () => {
                                 </li>
                             </ol>
                         </PlatformBanner>
-                        <PlatformBanner img={forgeLogo} alt={'Minecraft Forge'}>
+                        <PlatformBanner img={neoforgedLogo} alt={'NeoForged'}>
                             <p>
-                                We officially support WorldEdit for
-                                MinecraftForge.
+                                We officially support WorldEdit for NeoForged.
                             </p>
                             <p>
                                 <Link
                                     className={`${Button} ${PrimaryButton}`}
                                     href={
-                                        'https://modrinth.com/plugin/worldedit/versions?l=forge'
+                                        'https://modrinth.com/plugin/worldedit/versions?l=neoforge'
                                     }
                                 >
-                                    Stable builds for Forge
+                                    Stable builds for NeoForge
                                 </Link>
                             </p>
                             <p>
@@ -284,7 +284,7 @@ const WorldEditPage = () => {
                                         'https://builds.enginehub.org/job/worldedit'
                                     }
                                 >
-                                    Experimental builds for Forge
+                                    Experimental builds for NeoForge
                                 </Link>
                             </p>
                             <ol>
@@ -385,6 +385,52 @@ const WorldEditPage = () => {
                                 <li>
                                     Start your server as you may have done
                                     before.
+                                </li>
+                                <li>
+                                    Either configure your permissions plugin (if
+                                    you are using one); otherwise, use{' '}
+                                    <b>/op your_name</b> to make yourself a
+                                    server operator.
+                                </li>
+                            </ol>
+                        </PlatformBanner>
+                        <PlatformBanner img={forgeLogo} alt={'Minecraft Forge'}>
+                            <p>
+                                We formerly officially support WorldEdit for
+                                MinecraftForge.
+                            </p>
+                            <p>
+                                <Link
+                                    className={`${Button} ${PrimaryButton}`}
+                                    href={
+                                        'https://modrinth.com/plugin/worldedit/versions?l=forge'
+                                    }
+                                >
+                                    Stable builds for Forge
+                                </Link>
+                            </p>
+                            <p>
+                                <Link
+                                    className={`${Button} ${SecondaryButton}`}
+                                    href={
+                                        'https://builds.enginehub.org/job/worldedit'
+                                    }
+                                >
+                                    Experimental builds for Forge
+                                </Link>
+                            </p>
+                            <ol>
+                                <li>
+                                    Find the <em>mods</em> folder inside your
+                                    Minecraft client/server's folder.
+                                </li>
+                                <li>
+                                    Place the downloaded ".jar" file in your
+                                    mods folder.
+                                </li>
+                                <li>
+                                    Start your server or client as you may have
+                                    done before.
                                 </li>
                                 <li>
                                     Either configure your permissions plugin (if
