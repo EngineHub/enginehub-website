@@ -396,7 +396,7 @@ const WorldEditPage = () => {
                         </PlatformBanner>
                         <PlatformBanner img={forgeLogo} alt={'Minecraft Forge'}>
                             <p>
-                                We formerly officially support WorldEdit for
+                                We formerly officially supported WorldEdit for
                                 MinecraftForge.
                             </p>
                             <p>
