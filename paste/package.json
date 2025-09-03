@@ -44,5 +44,7 @@
         "lint": "eslint src/ pages/",
         "lint:fix": "yarn lint --fix"
     },
-    "sideEffects": ["*.global.css"]
+    "sideEffects": [
+        "*.global.css"
+    ]
 }
