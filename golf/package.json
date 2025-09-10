@@ -8,9 +8,9 @@
     "dependencies": {
         "@enginehub/schematicwebviewer": "^4.9.1",
         "@enginehub/shared": "workspace:*",
-        "@fortawesome/fontawesome-svg-core": "^6.7.2",
-        "@fortawesome/free-solid-svg-icons": "^6.7.2",
-        "@fortawesome/react-fontawesome": "^0.2.6",
+        "@fortawesome/fontawesome-svg-core": "^7.0.1",
+        "@fortawesome/free-solid-svg-icons": "^7.0.1",
+        "@fortawesome/react-fontawesome": "^3.0.2",
         "@google-cloud/firestore": "^7.11.3",
         "bcrypt": "^6.0.0",
         "gzip-js": "^0.3.2",
@@ -36,13 +36,7 @@
         "prettier": "^3.6.2",
         "typescript": "^5.9.2"
     },
-    "keywords": [
-        "nextjs",
-        "enginehub",
-        "worldedit",
-        "worldguard",
-        "craftbook"
-    ],
+    "keywords": ["nextjs", "enginehub", "worldedit", "worldguard", "craftbook"],
     "scripts": {
         "dev": "yarn next",
         "build": "yarn next build",
