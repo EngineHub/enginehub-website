@@ -91,11 +91,6 @@ export default {
             }
         ];
     },
-    eslint: {
-        ignoreDuringBuilds: true
-    },
     transpilePackages: ['@enginehub/shared'],
-    experimental: {
-        reactCompiler: true
-    }
+    reactCompiler: true
 };

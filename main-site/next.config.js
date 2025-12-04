@@ -3,8 +3,6 @@ export default {
     env: {
         GA_TRACKING_ID: 'UA-139849956-1'
     },
-    eslint: {
-        ignoreDuringBuilds: true
-    },
+    reactCompiler: true,
     transpilePackages: ['@enginehub/shared']
 };

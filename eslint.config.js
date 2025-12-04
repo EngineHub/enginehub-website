@@ -2,6 +2,7 @@ import { fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
+import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -19,7 +20,7 @@ const compat = new FlatCompat({
     baseDirectory: __dirname
 });
 
-export default tseslint.config(
+export default defineConfig(
     eslint.configs.recommended,
     ...tseslint.configs['recommendedTypeChecked'],
     ...compat.plugins('simple-import-sort'),
@@ -29,7 +30,7 @@ export default tseslint.config(
     importPlugin.flatConfigs.typescript,
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
-    reactHooks.configs.recommended,
+    reactHooks.configs.flat['recommended-latest'],
     {
         plugins: {
             '@next/next': fixupPluginRules(nextPlugin)
@@ -136,7 +137,9 @@ export default tseslint.config(
             'unicorn/prefer-string-replace-all': 'error',
             'unicorn/no-abusive-eslint-disable': 'off',
             'unicorn/no-array-reduce': 'off',
-            'unicorn/prefer-global-this': 'off'
+            'unicorn/prefer-global-this': 'off',
+
+            'no-undef': 'off'
         }
     }
 );
