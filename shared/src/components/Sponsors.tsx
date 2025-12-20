@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { FC, HTMLAttributes } from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { Activity, useEffect, useMemo, useState } from 'react';
 
 import { MainLink } from './Link.module.css';
 import {
@@ -73,26 +73,27 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
         ['gh-sponsors', GitHubSponsorsSponsor]
     ]);
 
-    const availableSponsors = [...sponsors, ...extraSponsors];
-    if (availableSponsors.length < 3) {
-        availableSponsors.push('empty');
-    }
+    const availableSponsors = useMemo(() => {
+        const sponsorsList = [...sponsors, ...extraSponsors];
 
-    const [sponsorIndex, setSponsorIndex] = useState(
-        Math.floor(
-            Math.random() *
-                availableSponsors.filter(sp => sp !== 'empty').length
-        )
-    );
+        if (sponsorsList.length < 3) {
+            sponsorsList.push('empty');
+        }
+
+        return sponsorsList;
+    }, [extraSponsors]);
+
+    const [sponsorIndex, setSponsorIndex] = useState(0);
 
     useEffect(() => {
-        const timeoutTime =
-            availableSponsors[sponsorIndex] === 'empty' ? 5000 : 10_000;
-        const timeout = setTimeout(() => {
-            setSponsorIndex((sponsorIndex + 1) % availableSponsors.length);
-        }, timeoutTime);
-        return () => clearTimeout(timeout);
-    }, [sponsorIndex, availableSponsors]);
+        const interval = setInterval(() => {
+            setSponsorIndex(
+                currentSponsorIndex =>
+                    (currentSponsorIndex + 1) % availableSponsors.length
+            );
+        }, 10_000);
+        return () => clearInterval(interval);
+    }, [availableSponsors]);
 
     return (
         <div className={NarrowDiv}>
@@ -100,9 +101,12 @@ export const RandomSponsor: FC<ExtraSponsorProps> = ({
                 const Component = sponsorMap.get(spon) ?? EmptySponsor;
 
                 return (
-                    <div key={`sponsor-${spon}`} hidden={sponsorIndex !== i}>
+                    <Activity
+                        key={`sponsor-${spon}`}
+                        mode={sponsorIndex === i ? 'visible' : 'hidden'}
+                    >
                         <Component />
-                    </div>
+                    </Activity>
                 );
             })}
         </div>
