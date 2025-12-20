@@ -1,6 +1,6 @@
 import type { PasteProps } from 'paste/pages/[id]';
 import type { FC } from 'react';
-import { memo, useState } from 'react';
+import { Activity, memo, useCallback, useState } from 'react';
 
 import {
     Bar,
@@ -53,9 +53,9 @@ function parseLine(line: string): { name: string; selfTime: number } {
 }
 
 const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
-    const [open, setOpen] = useState<boolean>(false);
-    const onToggle = () => setOpen(!open);
     const percent = calculatePercentage(entry.selfTime, allTime);
+    const [open, setOpen] = useState<boolean>(false);
+    const onToggle = useCallback(() => setOpen(isOpen => !isOpen), [setOpen]);
     return (
         <div className={ProfileNodeBox}>
             <div
@@ -78,11 +78,17 @@ const ProfileNode: FC<ProfileNodeProps> = ({ entry, allTime }) => {
                 </span>
             </div>
             {entry.children.length > 0 && (
-                <div style={{ display: open ? 'block' : 'none' }}>
-                    {entry.children.map((child, i) => (
-                        <ProfileNode key={i} entry={child} allTime={allTime} />
-                    ))}
-                </div>
+                <Activity mode={open ? 'visible' : 'hidden'}>
+                    <div>
+                        {entry.children.map((child, i) => (
+                            <ProfileNode
+                                key={i}
+                                entry={child}
+                                allTime={allTime}
+                            />
+                        ))}
+                    </div>
+                </Activity>
             )}
         </div>
     );

@@ -1,6 +1,6 @@
 import type { PasteProps } from 'paste/pages/[id]';
 import type { FC } from 'react';
-import { useMemo, useState } from 'react';
+import { Activity, useMemo, useState } from 'react';
 
 import {
     ReportNodeBox,
@@ -42,12 +42,9 @@ const ReportNode: FC<ReportNodeProps> = ({ entry }) => {
             >
                 {entry.title}
             </h2>
-            <pre
-                className={ReportNodeContent}
-                style={{ display: open ? 'block' : 'none' }}
-            >
-                {entry.content}
-            </pre>
+            <Activity mode={open ? 'visible' : 'hidden'}>
+                <pre className={ReportNodeContent}>{entry.content}</pre>
+            </Activity>
         </div>
     );
 };
