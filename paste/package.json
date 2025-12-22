@@ -7,7 +7,7 @@
     "type": "module",
     "dependencies": {
         "@enginehub/schematicjs": "^0.10.0",
-        "@enginehub/schematicwebviewer": "^4.9.1",
+        "@enginehub/schematicwebviewer": "^5.0.1",
         "@enginehub/shared": "workspace:*",
         "@google-cloud/storage": "^7.18.0",
         "base64-js": "^1.5.1",

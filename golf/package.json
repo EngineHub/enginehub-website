@@ -6,7 +6,7 @@
     "author": "EngineHub",
     "type": "module",
     "dependencies": {
-        "@enginehub/schematicwebviewer": "^4.9.1",
+        "@enginehub/schematicwebviewer": "^5.0.1",
         "@enginehub/shared": "workspace:*",
         "@fortawesome/fontawesome-svg-core": "^7.1.0",
         "@fortawesome/free-solid-svg-icons": "^7.1.0",

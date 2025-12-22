@@ -187,10 +187,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babylonjs/core@npm:^7.42.0":
-  version: 7.54.3
-  resolution: "@babylonjs/core@npm:7.54.3"
-  checksum: 10/8126638d1a183f801bbee6bb0604117d177b11626d39ea07e7598f5fcda3ee31a7c2da0064d2abec0d7af70b80a0a0604fb3f6cdec879b5a6fd094ed7fa4ed76
+"@babylonjs/core@npm:^8.42.0":
+  version: 8.42.0
+  resolution: "@babylonjs/core@npm:8.42.0"
+  checksum: 10/2cf35a6601caa703be42972ea874eed668cf48ed0f66b593efedfb8a344fb89c54c62c39e62ee901ad66620fbf33356046c1a36f2de11993dc3a36067bade103
   languageName: node
   linkType: hard
 
@@ -809,27 +809,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enginehub/schematicjs@npm:^0.9.2":
-  version: 0.9.2
-  resolution: "@enginehub/schematicjs@npm:0.9.2"
+"@enginehub/schematicwebviewer@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@enginehub/schematicwebviewer@npm:5.0.1"
   dependencies:
+    "@babylonjs/core": "npm:^8.42.0"
     "@enginehub/nbt-ts": "npm:^1.3.5"
-  checksum: 10/85a3081e2a766516c0da09e65a8fb5e36264bc5c43c134273f779b3dad19a65d5cf6709d53164d94179672c7a23c8d1a43c334bd9efa7883d19f7ab96e6d3025
-  languageName: node
-  linkType: hard
-
-"@enginehub/schematicwebviewer@npm:^4.9.1":
-  version: 4.9.1
-  resolution: "@enginehub/schematicwebviewer@npm:4.9.1"
-  dependencies:
-    "@babylonjs/core": "npm:^7.42.0"
-    "@enginehub/nbt-ts": "npm:^1.3.5"
-    "@enginehub/schematicjs": "npm:^0.9.2"
+    "@enginehub/schematicjs": "npm:^0.10.0"
     buffer: "npm:^6.0.3"
     deepmerge: "npm:^4.3.1"
     gzip-js: "npm:^0.3.2"
     jszip: "npm:^3.10.1"
-  checksum: 10/c852f49536bea0170a25031993d1eda43323d325800daaba51ff9ef3920973c806858c84910d4a84fd45fd80659055ba3b90eb084706274d6cf23d9bd6f1cbb5
+  checksum: 10/c6e045af85c92deea4de3ebb8836bcf415cf5b630d567f67a4a5cdabe723b127a34a29fff74c084e88e102a82205ccf92d9ea44ee4248cb79d89e327568f3811
   languageName: node
   linkType: hard
 
@@ -1065,12 +1056,12 @@ __metadata:
   linkType: hard
 
 "@grpc/grpc-js@npm:^1.12.6":
-  version: 1.14.2
-  resolution: "@grpc/grpc-js@npm:1.14.2"
+  version: 1.14.3
+  resolution: "@grpc/grpc-js@npm:1.14.3"
   dependencies:
     "@grpc/proto-loader": "npm:^0.8.0"
     "@js-sdsl/ordered-map": "npm:^4.4.2"
-  checksum: 10/66fb50c64446602464d8532e5484746dab033802f7f539c95dde9743546287c2b05286ca8820461006e07bfe23dd7e84bb634297a74be07deebcc63f4b900a77
+  checksum: 10/bb9bfe2f749179ae5ac7774d30486dfa2e0b004518c28de158b248e0f6f65f40138f01635c48266fa540670220f850216726e3724e1eb29d078817581c96e4db
   languageName: node
   linkType: hard
 
@@ -1893,11 +1884,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=13.7.0":
-  version: 24.10.1
-  resolution: "@types/node@npm:24.10.1"
+  version: 25.0.3
+  resolution: "@types/node@npm:25.0.3"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/ddac8c97be5f7401e31ea0e9316c6e864993c6cd06689b7f9874ecfb576ef8349f2d14298248a08b94a6dd029570a46a285cddc4d50e524817f1a3730b29a86e
+  checksum: 10/5889b00f398eff4d4af28c3e5e97976f65c39a63fa3d7011f35cbf8640675fa6835e5dd47dce94d6ba48667711ddcd1f5c9bc5d93233e6a8e9ea1e502e8aa5a4
   languageName: node
   linkType: hard
 
@@ -3232,9 +3223,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.263":
-  version: 1.5.264
-  resolution: "electron-to-chromium@npm:1.5.264"
-  checksum: 10/83722da6fec39a3b1561a3d1087e726f9366339330891786de0af87cbaacc5c8484cc70ea2687c2c0e7ea702d4f56c45ec28dc5a831315b8f40ebd0da839ffa8
+  version: 1.5.267
+  resolution: "electron-to-chromium@npm:1.5.267"
+  checksum: 10/05e55e810cb6a3cda8d29dfdeec7ac0e59727a77a796a157f1a1d65edac16d45eed69ed5c99e354872ab16c48967c2d0a0600653051ae380a3b7a4d6210b1e60
   languageName: node
   linkType: hard
 
@@ -3332,9 +3323,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-abstract@npm:^1.17.5, es-abstract@npm:^1.23.2, es-abstract@npm:^1.23.3, es-abstract@npm:^1.23.5, es-abstract@npm:^1.23.6, es-abstract@npm:^1.23.9, es-abstract@npm:^1.24.0":
-  version: 1.24.0
-  resolution: "es-abstract@npm:1.24.0"
+"es-abstract@npm:^1.17.5, es-abstract@npm:^1.23.2, es-abstract@npm:^1.23.3, es-abstract@npm:^1.23.5, es-abstract@npm:^1.23.6, es-abstract@npm:^1.23.9, es-abstract@npm:^1.24.0, es-abstract@npm:^1.24.1":
+  version: 1.24.1
+  resolution: "es-abstract@npm:1.24.1"
   dependencies:
     array-buffer-byte-length: "npm:^1.0.2"
     arraybuffer.prototype.slice: "npm:^1.0.4"
@@ -3390,7 +3381,7 @@ __metadata:
     typed-array-length: "npm:^1.0.7"
     unbox-primitive: "npm:^1.1.0"
     which-typed-array: "npm:^1.1.19"
-  checksum: 10/64e07a886f7439cf5ccfc100f9716e6173e10af6071a50a5031afbdde474a3dbc9619d5965da54e55f8908746a9134a46be02af8c732d574b7b81ed3124e2daf
+  checksum: 10/c84cb69ebae36781309a3ed70ff40b4767a921d3b3518060fac4e08f14ede04491b68e9f318aedf186e349d4af4a40f5d0e4111e46513800e8368551fd09de8c
   languageName: node
   linkType: hard
 
@@ -3409,26 +3400,26 @@ __metadata:
   linkType: hard
 
 "es-iterator-helpers@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "es-iterator-helpers@npm:1.2.1"
+  version: 1.2.2
+  resolution: "es-iterator-helpers@npm:1.2.2"
   dependencies:
     call-bind: "npm:^1.0.8"
-    call-bound: "npm:^1.0.3"
+    call-bound: "npm:^1.0.4"
     define-properties: "npm:^1.2.1"
-    es-abstract: "npm:^1.23.6"
+    es-abstract: "npm:^1.24.1"
     es-errors: "npm:^1.3.0"
-    es-set-tostringtag: "npm:^2.0.3"
+    es-set-tostringtag: "npm:^2.1.0"
     function-bind: "npm:^1.1.2"
-    get-intrinsic: "npm:^1.2.6"
+    get-intrinsic: "npm:^1.3.0"
     globalthis: "npm:^1.0.4"
     gopd: "npm:^1.2.0"
     has-property-descriptors: "npm:^1.0.2"
     has-proto: "npm:^1.2.0"
     has-symbols: "npm:^1.1.0"
     internal-slot: "npm:^1.1.0"
-    iterator.prototype: "npm:^1.1.4"
+    iterator.prototype: "npm:^1.1.5"
     safe-array-concat: "npm:^1.1.3"
-  checksum: 10/802e0e8427a05ff4a5b0c70c7fdaaeff37cdb81a28694aeb7bfb831c6ab340d8f3deeb67b96732ff9e9699ea240524d5ea8a9a6a335fcd15aa3983b27b06113f
+  checksum: 10/17b5b2834c4f5719d6ce0e837a4d11c6ba4640bee28290d22ec4daf7106ec3d5fe0ff4f7e5dbaa2b4612e8335934360e964a8f08608d43f2889da106b25481ee
   languageName: node
   linkType: hard
 
@@ -3441,7 +3432,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-set-tostringtag@npm:^2.0.3, es-set-tostringtag@npm:^2.1.0":
+"es-set-tostringtag@npm:^2.1.0":
   version: 2.1.0
   resolution: "es-set-tostringtag@npm:2.1.0"
   dependencies:
@@ -5021,7 +5012,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iterator.prototype@npm:^1.1.4":
+"iterator.prototype@npm:^1.1.5":
   version: 1.1.5
   resolution: "iterator.prototype@npm:1.1.5"
   dependencies:
@@ -5221,8 +5212,8 @@ __metadata:
   linkType: hard
 
 "less@npm:^4.2.0":
-  version: 4.4.2
-  resolution: "less@npm:4.4.2"
+  version: 4.5.1
+  resolution: "less@npm:4.5.1"
   dependencies:
     copy-anything: "npm:^2.0.1"
     errno: "npm:^0.1.1"
@@ -5251,7 +5242,7 @@ __metadata:
       optional: true
   bin:
     lessc: bin/lessc
-  checksum: 10/634e669514e6c59270b04bb8b9f9b058bf07f99a3d06cda068b60576c84cfe79bfe83bde5d84abd35c37118b0342924f978a178dc8103be0e3ea85ab75c0feb2
+  checksum: 10/ea48075c73e206520b738c9387668a84cec404d24972b9e93c038fdde6ee38f8e2e9c820ed41e299c9f421711f4ce5bc9f719e6939367a0e6d5177d27f593038
   languageName: node
   linkType: hard
 
@@ -6077,7 +6068,7 @@ __metadata:
   resolution: "paste@workspace:paste"
   dependencies:
     "@enginehub/schematicjs": "npm:^0.10.0"
-    "@enginehub/schematicwebviewer": "npm:^4.9.1"
+    "@enginehub/schematicwebviewer": "npm:^5.0.1"
     "@enginehub/shared": "workspace:*"
     "@google-cloud/storage": "npm:^7.18.0"
     "@types/node": "npm:^22.19.3"
@@ -7115,8 +7106,8 @@ __metadata:
   linkType: hard
 
 "sass@npm:^1.70.0":
-  version: 1.94.2
-  resolution: "sass@npm:1.94.2"
+  version: 1.97.1
+  resolution: "sass@npm:1.97.1"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -7127,7 +7118,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10/e60c214ea93677740c9ddfad55c77fd433255bbfdd9faba137acf1215bed5ba6ad9d83efea81feb87a89283931d01f0435227e3fff37c65c263e0ee05f885328
+  checksum: 10/c493d08f63ecd82b6db94bed16c1fffc0cccf94fc30f73f0f09fa6023a811cafb3862697d8a24264b511541474d2be5fac7ddba00ed56738d13f1837c93721b5
   languageName: node
   linkType: hard
 
@@ -8118,8 +8109,8 @@ __metadata:
   linkType: hard
 
 "update-browserslist-db@npm:^1.2.0":
-  version: 1.2.1
-  resolution: "update-browserslist-db@npm:1.2.1"
+  version: 1.2.3
+  resolution: "update-browserslist-db@npm:1.2.3"
   dependencies:
     escalade: "npm:^3.2.0"
     picocolors: "npm:^1.1.1"
@@ -8127,7 +8118,7 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     update-browserslist-db: cli.js
-  checksum: 10/cbd915488264a7b5494502217071b6904a544820a3afa18d1d64fe968cd4734571801183dde1151f80b1e3c127b8b0f2ba09d2ef1546c9d670c3ef1225f677cf
+  checksum: 10/059f774300efb4b084a49293143c511f3ae946d40397b5c30914e900cd5691a12b8e61b41dd54ed73d3b56c8204165a0333107dd784ccf8f8c81790bcc423175
   languageName: node
   linkType: hard
 
@@ -8283,7 +8274,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "worldedit-golf@workspace:golf"
   dependencies:
-    "@enginehub/schematicwebviewer": "npm:^4.9.1"
+    "@enginehub/schematicwebviewer": "npm:^5.0.1"
     "@enginehub/shared": "workspace:*"
     "@fortawesome/fontawesome-svg-core": "npm:^7.1.0"
     "@fortawesome/free-solid-svg-icons": "npm:^7.1.0"
@@ -8445,8 +8436,8 @@ __metadata:
   linkType: hard
 
 "zod@npm:^3.25.0 || ^4.0.0":
-  version: 4.1.13
-  resolution: "zod@npm:4.1.13"
-  checksum: 10/0679190318928f69fcb07751063719de232c663b13955fcdb55db59839569d39f3f29b955cb0cba7af0b724233f88c06b3e84c550397ad4e68f8088fa6799d88
+  version: 4.2.1
+  resolution: "zod@npm:4.2.1"
+  checksum: 10/f21d106ce31e0f24040aa13b13fdd1300fcc8119622b28ca1b1b726ff70b75190dbcfeb927d34f19174683afa298e5df4d806f622abe9b037a0aadb9cdef6443
   languageName: node
   linkType: hard
