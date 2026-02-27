@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {
     type FC,
     type RefObject,
+    useCallback,
     useLayoutEffect,
     useRef,
     useState
@@ -135,7 +136,7 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
         return () => clearInterval(timeout);
     }, [taskId]);
 
-    const queueBroker = () => {
+    const queueBroker = useCallback(() => {
         if (taskId) {
             return;
         }
@@ -165,7 +166,13 @@ function Document({ golf, leaderboards, userMap }: DocumentProps) {
             .catch(e => {
                 statusBox.current!.value = `An error occurred, ${e}`;
             });
-    };
+    }, [
+        token,
+        golf.golf_id,
+        golf.start_schematic,
+        golf.test_schematic,
+        taskId
+    ]);
 
     const smallSize = width / 2.05;
     const uploadingUser = userMap[golf.user_id] || {
