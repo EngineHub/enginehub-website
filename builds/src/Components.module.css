@@ -27,3 +27,18 @@
     box-sizing: content-box;
     height: 0;
 }
+
+.BranchCell {
+    max-width: 12rem;
+    overflow-wrap: anywhere;
+}
+
+.BuildMetadataTable {
+    & th {
+        width: 7rem;
+    }
+
+    & td {
+        overflow-wrap: anywhere;
+    }
+}

@@ -41,6 +41,7 @@ import { BuildChangeComments } from '../../../../src/builds/BuildChangeComments'
 import { CommiterName } from '../../../../src/builds/vcsUsernameMapping';
 import {
     Breaker,
+    BuildMetadataTable,
     DownloadLinkDiv
 } from '../../../../src/Components.module.css';
 import Layout from '../../../../src/Layout';
@@ -107,7 +108,9 @@ function Index({ project, build }: BuildPageProps) {
                 )}
                 <div className={Row}>
                     <div className={ColumnThird} style={{ paddingLeft: '0' }}>
-                        <table className={`${Table} ${BorderedTable}`}>
+                        <table
+                            className={`${Table} ${BorderedTable} ${BuildMetadataTable}`}
+                        >
                             <tbody>
                                 <tr>
                                     <th>Project</th>

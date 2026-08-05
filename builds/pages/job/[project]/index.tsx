@@ -34,6 +34,7 @@ import {
 } from '../../../src/builds';
 import { BuildChangeComments } from '../../../src/builds/BuildChangeComments';
 import { CommiterName } from '../../../src/builds/vcsUsernameMapping';
+import { BranchCell } from '../../../src/Components.module.css';
 import Layout from '../../../src/Layout';
 import { MiniPaddedIcon } from '../../../src/PaddedIcon.module.css';
 import type { Project } from '../../../src/project';
@@ -127,7 +128,7 @@ function Index({
                                 }
                                 key={build.build_id}
                             >
-                                <td style={{ whiteSpace: 'nowrap' }}>
+                                <td className={BranchCell}>
                                     <small>{build.branch}</small>
                                 </td>
                                 <td style={{ whiteSpace: 'nowrap' }}>
