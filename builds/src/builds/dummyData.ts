@@ -13,7 +13,8 @@ export const DUMMY_BUILD: (buildId: string) => Build = (buildId: string) => ({
         {
             version: 'abababa',
             commiter: { vcsUsername: 'testerson', users: { user: [] } },
-            comment: 'Made some test changes',
+            comment:
+                'Made some test changes\n\n---------\nCo-authored-by: Someone <someone@users.noreply.github.com>',
             date: Date.now()
         },
         {

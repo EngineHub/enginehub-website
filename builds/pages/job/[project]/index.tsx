@@ -32,6 +32,7 @@ import {
     getBranches,
     getBuildPage
 } from '../../../src/builds';
+import { BuildChangeComments } from '../../../src/builds/BuildChangeComments';
 import { CommiterName } from '../../../src/builds/vcsUsernameMapping';
 import Layout from '../../../src/Layout';
 import { MiniPaddedIcon } from '../../../src/PaddedIcon.module.css';
@@ -158,28 +159,43 @@ function Index({
                                 <td>
                                     <ul>
                                         {build.changes.length > 0 ? (
-                                            build.changes.map(change => (
-                                                <li key={change.version}>
-                                                    {change.comment}{' '}
-                                                    <small>
-                                                        (
-                                                        <Link
-                                                            className={MainLink}
-                                                            href={`${project.vcsRoot}/commit/${change.version}`}
-                                                        >
-                                                            {change.version.slice(
-                                                                0,
-                                                                8
-                                                            )}
-                                                        </Link>{' '}
-                                                        by{' '}
-                                                        <CommiterName
-                                                            buildChange={change}
-                                                        />
-                                                        )
-                                                    </small>
-                                                </li>
-                                            ))
+                                            build.changes.map(
+                                                (change, index) => (
+                                                    <BuildChangeComments
+                                                        key={`${change.version}-${index}`}
+                                                        buildChange={change}
+                                                        vcsRoot={
+                                                            project.vcsRoot
+                                                        }
+                                                        suffix={
+                                                            <small>
+                                                                (
+                                                                <Link
+                                                                    className={
+                                                                        MainLink
+                                                                    }
+                                                                    href={`${project.vcsRoot}/commit/${change.version}`}
+                                                                >
+                                                                    {change.version.slice(
+                                                                        0,
+                                                                        8
+                                                                    )}
+                                                                </Link>{' '}
+                                                                by{' '}
+                                                                <CommiterName
+                                                                    buildChange={
+                                                                        change
+                                                                    }
+                                                                    showCoAuthors={
+                                                                        false
+                                                                    }
+                                                                />
+                                                                )
+                                                            </small>
+                                                        }
+                                                    />
+                                                )
+                                            )
                                         ) : (
                                             <small>
                                                 No new changes were added in

@@ -37,6 +37,7 @@ import {
 import BranchWarning from '../../../../src/BranchWarning';
 import type { Build } from '../../../../src/builds';
 import { getBuild } from '../../../../src/builds';
+import { BuildChangeComments } from '../../../../src/builds/BuildChangeComments';
 import { CommiterName } from '../../../../src/builds/vcsUsernameMapping';
 import {
     Breaker,
@@ -239,7 +240,14 @@ function Index({ project, build }: BuildPageProps) {
                                             {change.version.slice(0, 8)}
                                         </Link>
                                     </td>
-                                    <td>{change.comment}</td>
+                                    <td>
+                                        <ul>
+                                            <BuildChangeComments
+                                                buildChange={change}
+                                                vcsRoot={project.vcsRoot}
+                                            />
+                                        </ul>
+                                    </td>
                                     <td>
                                         <CommiterName buildChange={change} />
                                     </td>

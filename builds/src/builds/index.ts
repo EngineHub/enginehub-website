@@ -116,16 +116,7 @@ export async function getBuildPage(
         build_number: Number.parseInt(build.number.split('-')[0]),
         statusText: build.statusText,
         build_date: moment(build.finishDate, TEAMCITY_DATE_FORMAT).valueOf(),
-        changes: build.changes.change.flatMap(change => {
-            const changes = change.comment.trim().split('\n*');
-            return changes
-                .map(c => c.trim())
-                .filter(c => c.length > 0)
-                .map(c => ({
-                    ...change,
-                    comment: c
-                }));
-        }),
+        changes: build.changes.change,
         artifacts: [],
         project: project.id
     }));
