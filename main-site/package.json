@@ -19,7 +19,7 @@
         "oxfmt": "^0.78.0",
         "oxlint": "^1.93.0",
         "postcss-preset-env": "^11.6.2",
-        "typescript": "^6.0.3"
+        "typescript": "^7.0.2"
     },
     "keywords": [
         "gatsby",

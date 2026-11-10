@@ -91,14 +91,17 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
                         renderArrow: false
                     })
                 )
-                .then(({ destroy: destroySchematic, setSize }) => {
+                .then(schematicViewer => {
                     if (cancelled) {
-                        destroySchematic();
+                        schematicViewer.destroy();
                         return;
                     }
 
-                    destroy.current = destroySchematic;
-                    setResize(() => setSize);
+                    destroy.current = () => schematicViewer.destroy();
+                    setResize(
+                        () => (width: number, height: number) =>
+                            schematicViewer.setSize(width, height)
+                    );
                 })
                 .catch(e => {
                     console.error(e, paste);

@@ -36,9 +36,12 @@ export const Schematic: FC<SchematicProps> = ({
                         orbitSpeed: 0.01
                     })
                 )
-                .then(({ destroy: d, setSize: r }) => {
-                    setResize(() => r);
-                    callbacks.current.destroy = d;
+                .then(schematicViewer => {
+                    setResize(
+                        () => (width: number, height: number) =>
+                            schematicViewer.setSize(width, height)
+                    );
+                    callbacks.current.destroy = () => schematicViewer.destroy();
                 })
                 .catch(e => {
                     console.error(e, schematic);

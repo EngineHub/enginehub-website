@@ -8,7 +8,7 @@ export default async function handle(
 ) {
     const { id } = req.query;
 
-    let pasteId = `${id}`;
+    let pasteId = String(id);
     const dotIndex = id?.lastIndexOf('.');
     if (dotIndex !== -1 && dotIndex !== undefined) {
         pasteId = pasteId.slice(0, Math.max(0, dotIndex));

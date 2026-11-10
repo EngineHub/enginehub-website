@@ -10,6 +10,8 @@ import {
     useState
 } from 'react';
 
+import { scheduleTokenExpiration } from '../tokenExpiration';
+
 const isServerRendered = typeof window === 'undefined';
 
 const getToken = () =>
@@ -25,7 +27,7 @@ const AuthContext = createContext<{
     }
 });
 
-export const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     const [token, setToken] = useState<string | undefined>(getToken());
 
     return (
@@ -80,11 +82,9 @@ export const useToken: () => string | undefined = () => {
             return;
         }
 
-        const timeout = setTimeout(
-            () => setToken(undefined),
-            Math.max(0, (expiresAt ?? 0) - Date.now())
+        return scheduleTokenExpiration(expiresAt ?? 0, () =>
+            setToken(undefined)
         );
-        return () => clearTimeout(timeout);
     }, [expiresAt, setToken, token]);
 
     return token;
@@ -101,15 +101,13 @@ export const useAuthenticatedFetch: () => FetchFunction = () => {
             return Promise.reject('Cannot find auth token!');
         }
 
-        init = {
-            ...init,
-            headers: {
-                ...(init || { headers: {} }).headers,
-                authorization: `token ${token}`
-            }
-        };
+        const headers = new Headers(init?.headers);
+        headers.set('authorization', `token ${token}`);
 
-        return fetch(input, init);
+        return fetch(input, {
+            ...init,
+            headers
+        });
     };
 };
 

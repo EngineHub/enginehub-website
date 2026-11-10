@@ -7,8 +7,9 @@ const LastSuccessful = () => <div>placeholder</div>;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const { project, branch } = query;
-    const projectObj = PROJECT_MAP.get(project as string);
-    if (!projectObj) {
+    const projectName = typeof project === 'string' ? project : undefined;
+    const projectObj = projectName ? PROJECT_MAP.get(projectName) : undefined;
+    if (!projectName || !projectObj) {
         return {
             notFound: true
         };
@@ -24,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         redirect: {
             permanent: false,
 
-            destination: `/job/${project}/${buildObj.build_id}`
+            destination: `/job/${projectName}/${buildObj.build_id}`
         }
     };
 };

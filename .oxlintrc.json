@@ -14,6 +14,9 @@
         "suspicious": "warn",
         "perf": "warn"
     },
+    "options": {
+        "typeAware": true
+    },
     "rules": {
         "react/no-unescaped-entities": "off",
         "react/react-in-jsx-scope": "off",
