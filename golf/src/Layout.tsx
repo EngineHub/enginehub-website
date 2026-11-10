@@ -3,10 +3,10 @@ import type { FC, PropsWithChildren } from 'react';
 import type { ExtraSponsorProps } from '@enginehub/shared';
 import { BrandButton, Button, Footer, Navbar } from '@enginehub/shared';
 
-import { AuthProvider, useIsLoggedIn, useSetToken } from './components/Auth';
+import { useIsLoggedIn, useSetToken } from './components/Auth';
 import { FloatedButton } from './Layout.module.css';
 
-const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
+export const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
     children,
     extraSponsors
 }) => {
@@ -40,17 +40,6 @@ const LayoutInner: FC<PropsWithChildren<ExtraSponsorProps>> = ({
             <main>{children}</main>
             <Footer extraSponsors={extraSponsors} />
         </>
-    );
-};
-
-export const Layout: FC<PropsWithChildren<ExtraSponsorProps>> = ({
-    children,
-    ...rest
-}) => {
-    return (
-        <AuthProvider>
-            <LayoutInner {...rest}>{children}</LayoutInner>
-        </AuthProvider>
     );
 };
 
