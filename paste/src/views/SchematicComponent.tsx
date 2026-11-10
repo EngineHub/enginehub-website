@@ -58,7 +58,7 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
     const ref = useRef<HTMLCanvasElement>(null);
     const [resize, setResize] =
         useState<(width: number, height: number) => void>();
-    const [destroy, setDestroy] = useState<() => void>(() => {});
+    const destroy = useRef<(() => void) | undefined>(undefined);
 
     useEffect(() => {
         if (resize) {
@@ -79,6 +79,8 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
     }, [resize]);
 
     useEffect(() => {
+        let cancelled = false;
+
         if (paste && ref.current) {
             import('@enginehub/schematicwebviewer')
                 .then(({ renderSchematic }) =>
@@ -89,15 +91,25 @@ const SchematicComponent: FC<PasteProps> = ({ paste, metadata }) => {
                         renderArrow: false
                     })
                 )
-                .then(({ destroy: d, setSize: r }) => {
-                    setResize(() => r);
-                    setDestroy(() => d);
+                .then(({ destroy: destroySchematic, setSize }) => {
+                    if (cancelled) {
+                        destroySchematic();
+                        return;
+                    }
+
+                    destroy.current = destroySchematic;
+                    setResize(() => setSize);
                 })
                 .catch(e => {
                     console.error(e, paste);
                 });
-            return destroy;
         }
+
+        return () => {
+            cancelled = true;
+            destroy.current?.();
+            destroy.current = undefined;
+        };
     }, [paste]);
 
     return (

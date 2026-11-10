@@ -146,7 +146,9 @@ function Index({ projectEntries }: IndexProps) {
                                             </Link>
                                         </td>
                                         <td style={{ whiteSpace: 'nowrap' }}>
-                                            {moment(build.build_date).fromNow()}{' '}
+                                            {moment(
+                                                build.build_date
+                                            ).fromNow()}{' '}
                                         </td>
                                     </tr>
                                 ))}

@@ -1,5 +1,13 @@
-import { Image } from './Loading.module.css';
+import NextImage from 'next/image';
+
+import { Image as ImageStyle } from './Loading.module.css';
 
 export const Loading = () => (
-    <img className={Image} src="/static/golfball.svg" alt={'Loading spinner'} />
+    <NextImage
+        className={ImageStyle}
+        src="/static/golfball.svg"
+        width={400}
+        height={400}
+        alt={'Loading spinner'}
+    />
 );

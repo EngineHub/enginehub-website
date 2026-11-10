@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC, HTMLAttributes } from 'react';
 import { Activity, useEffect, useMemo, useState } from 'react';
@@ -20,12 +21,16 @@ const useSponsorComponents = () => {
         () => [
             () => (
                 <a href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
-                    <img
+                    <Image
                         src={'https://enginehub.org/images/apex.svg'}
+                        width={750}
+                        height={150}
+                        unoptimized
                         style={{
                             marginBottom: 0,
                             color: '#000000',
-                            width: '100%'
+                            width: '100%',
+                            height: 'auto'
                         }}
                         alt="Apex Hosting"
                     />

@@ -1,9 +1,6 @@
 {
-    "*.{ts,tsx,js,cjs,mjs}": [
-        "eslint --cache --config eslint.config.js --fix",
-        "prettier --parser typescript --write --config ./.prettierrc"
-    ],
-    "*.html": ["prettier --parser html --write --config ./.prettierrc"],
-    "*.css": ["prettier --parser css --write --config ./.prettierrc"],
-    "*.json": ["prettier --parser json --write --config ./.prettierrc"]
+    "*.{ts,tsx,js,cjs,mjs}": ["oxlint --fix", "oxfmt --write"],
+    "*.html": ["oxfmt --write"],
+    "*.css": ["oxfmt --write"],
+    "*.json": ["oxfmt --write"]
 }

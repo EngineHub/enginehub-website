@@ -1,0 +1,44 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "ignorePatterns": [
+        ".github/FUNDING.yml",
+        ".yarnrc.yml",
+        "**/next-env.d.ts"
+    ],
+    "sortImports": {
+        "groups": [
+            ["side_effect_style", "side_effect"],
+            [
+                "type-builtin",
+                "builtin",
+                "type-external",
+                "external",
+                "type-subpath",
+                "subpath"
+            ],
+            ["type-internal", "internal"],
+            [
+                "type-parent",
+                "parent",
+                "type-sibling",
+                "sibling",
+                "type-index",
+                "index",
+                "style"
+            ],
+            "unknown"
+        ],
+        "internalPattern": ["@enginehub/"],
+        "sortSideEffects": true
+    },
+    "sortPackageJson": false,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "useTabs": false
+}

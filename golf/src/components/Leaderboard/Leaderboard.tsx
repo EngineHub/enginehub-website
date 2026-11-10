@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC, PropsWithChildren } from 'react';
 
 import {
@@ -26,7 +27,14 @@ export const LeaderboardEntry: FC<LeaderboardProps> = ({
     ...props
 }) => (
     <li className={EntryContainer} {...props}>
-        <img className={AvatarIcon} src={avatar} alt={name} />
+        <Image
+            className={AvatarIcon}
+            src={avatar}
+            width={48}
+            height={48}
+            unoptimized
+            alt={name}
+        />
         <div className={InfoContainer}>
             <h4 className={NameContainer}>
                 {name} /{' '}

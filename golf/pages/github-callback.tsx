@@ -1,4 +1,4 @@
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { useSetToken } from '../src/components/Auth';
@@ -8,14 +8,13 @@ import Layout from '../src/Layout';
 
 const Page = () => {
     const [errorMessage, setError] = useState<string>();
-
+    const router = useRouter();
     const setToken = useSetToken();
+    const code =
+        typeof router.query.code === 'string' ? router.query.code : undefined;
 
     useEffect(() => {
-        const code = new URLSearchParams(location.search).get('code');
-
-        if (!code) {
-            setError('Could not find code in query params!');
+        if (!router.isReady || !code) {
             return;
         }
 
@@ -38,10 +37,16 @@ const Page = () => {
                 }
             })
             .catch(e => setError(e));
-    }, [setToken]);
+    }, [code, router, setToken]);
 
-    return errorMessage ? (
-        <h1>{errorMessage}</h1>
+    const error =
+        errorMessage ??
+        (router.isReady && !code
+            ? 'Could not find code in query params!'
+            : undefined);
+
+    return error ? (
+        <h1>{error}</h1>
     ) : (
         <div className={SignInLoadingContainer}>
             <Loading />

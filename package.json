@@ -20,28 +20,23 @@
     },
     "dependencies": {
         "husky": "^9.1.7",
-        "lint-staged": "^17.3.0",
+        "lint-staged": "^17.6.0",
         "postinstall-postinstall": "^2.1.0"
     },
     "scripts": {
         "postinstall": "husky",
         "prepare": "husky",
-        "precommit": "lint-staged"
+        "precommit": "lint-staged",
+        "format": "oxfmt --write .",
+        "format:check": "oxfmt --check .",
+        "lint": "yarn workspaces foreach -A -pt --exclude enginehub-websites run lint",
+        "lint:fix": "yarn workspaces foreach -A -pt --exclude enginehub-websites run lint:fix",
+        "type-check": "yarn workspaces foreach -A -pt --exclude enginehub-websites run type-check"
     },
-    "packageManager": "yarn@4.18.0",
+    "packageManager": "yarn@4.18.1",
     "devDependencies": {
-        "@eslint/compat": "^2.1.0",
-        "@eslint/js": "^9.39.5",
-        "@next/eslint-plugin-next": "^16.3.0",
-        "eslint-config-next": "^16.3.0",
-        "eslint-import-resolver-typescript": "^4.4.5",
-        "eslint-plugin-import": "^2.32.0",
-        "eslint-plugin-react": "^7.37.5",
-        "eslint-plugin-react-hooks": "7.1.1",
-        "eslint-plugin-simple-import-sort": "^14.0.0",
-        "eslint-plugin-sonarjs": "^4.2.0",
-        "eslint-plugin-unicorn": "^63.0.0",
-        "typescript-eslint": "^8.66.0",
-        "typescript-plugin-css-modules": "^5.2.0"
+        "oxfmt": "^0.78.0",
+        "oxlint": "^1.93.0",
+        "typescript-plugin-css-modules": "^5.3.0"
     }
 }

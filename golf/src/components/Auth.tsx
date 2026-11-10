@@ -58,25 +58,34 @@ export const useToken: () => string | undefined = () => {
     const { token } = useContext(AuthContext);
     const setToken = useSetToken();
 
-    const isValid = useMemo(() => {
+    const expiresAt = useMemo(() => {
         if (!token) {
-            return false;
+            return;
         }
 
         const decodedToken = jwt.decode(token);
 
-        return (
-            decodedToken &&
-            typeof decodedToken === 'object' &&
-            decodedToken['exp'] &&
-            decodedToken['exp'] * 1000 > Date.now()
-        );
+        if (!decodedToken || typeof decodedToken !== 'object') {
+            return;
+        }
+
+        const expiration = decodedToken['exp'];
+        return typeof expiration === 'number' && expiration
+            ? expiration * 1000
+            : undefined;
     }, [token]);
 
-    if (token && !isValid) {
-        setToken(undefined);
-        return;
-    }
+    useEffect(() => {
+        if (!token) {
+            return;
+        }
+
+        const timeout = setTimeout(
+            () => setToken(undefined),
+            Math.max(0, (expiresAt ?? 0) - Date.now())
+        );
+        return () => clearTimeout(timeout);
+    }, [expiresAt, setToken, token]);
 
     return token;
 };

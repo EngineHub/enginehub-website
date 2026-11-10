@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FunctionComponent } from 'react';
 
@@ -18,10 +19,12 @@ interface ProjectBoxProps {
 
 const ProjectBox: FunctionComponent<ProjectBoxProps> = props => (
     <li className={ProjectListItem}>
-        <img
+        <Image
             className={ProjectListImg}
             alt={props.name}
             src={typeof props.icon === 'object' ? props.icon.src : props.icon}
+            width={143}
+            height={143}
         />
         <Link
             className={`${MainLink} ${ProjectListLink}`}

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC, PropsWithChildren } from 'react';
 
 import { Container, ContainerPadded } from './Container.module.css';
@@ -28,7 +29,13 @@ export const PageHeader: FC<PropsWithChildren<PageHeaderProps>> = ({
             <div className={HeaderContent}>
                 {icon ? (
                     <div className={HeaderTextArea}>
-                        <img className={HeaderImg} src={icon} alt={text} />
+                        <Image
+                            className={HeaderImg}
+                            src={icon}
+                            width={100}
+                            height={100}
+                            alt={text}
+                        />
                         <h1 className={HeaderText}>{text}</h1>
                     </div>
                 ) : (

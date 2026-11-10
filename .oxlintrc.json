@@ -1,0 +1,57 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": [
+        "eslint",
+        "typescript",
+        "unicorn",
+        "oxc",
+        "react",
+        "nextjs",
+        "import"
+    ],
+    "categories": {
+        "correctness": "error",
+        "suspicious": "warn",
+        "perf": "warn"
+    },
+    "rules": {
+        "react/no-unescaped-entities": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/no-unstable-nested-components": "error",
+        "react/no-object-type-as-default-prop": "error",
+        "typescript/no-explicit-any": "warn",
+        "typescript/no-non-null-assertion": "warn",
+        "typescript/no-empty-function": "warn",
+        "typescript/no-var-requires": "warn",
+        "typescript/no-require-imports": "off",
+        "typescript/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "typescript/consistent-type-imports": "error",
+        "typescript/consistent-type-exports": "error",
+        "typescript/no-import-type-side-effects": "error",
+        "import/no-duplicates": "error",
+        "import/no-named-as-default": "off",
+        "import/no-named-as-default-member": "off",
+        "import/namespace": "off",
+        "import/default": "off",
+        "unicorn/filename-case": "off",
+        "unicorn/prefer-add-event-listener": "off",
+        "unicorn/prefer-ternary": "off",
+        "unicorn/no-null": "off",
+        "unicorn/prefer-node-protocol": "off",
+        "unicorn/catch-error-name": "off",
+        "unicorn/prefer-module": "off",
+        "unicorn/no-empty-file": "off",
+        "unicorn/no-await-expression-member": "off",
+        "unicorn/no-useless-undefined": "warn",
+        "unicorn/prefer-string-replace-all": "error",
+        "unicorn/no-abusive-eslint-disable": "off",
+        "unicorn/no-array-reduce": "off",
+        "unicorn/prefer-global-this": "off",
+        "no-undef": "off"
+    },
+    "settings": {
+        "next": {
+            "rootDir": ["builds", "golf", "paste", "main-site"]
+        }
+    }
+}

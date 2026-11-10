@@ -1,5 +1,4 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
 
 import { SEO } from '@enginehub/shared';
@@ -17,17 +16,7 @@ export interface PasteProps {
     metadata?: PasteData['metadata'];
 }
 
-const EXTENSIONS: Map<Extension, FC<PasteProps>> = new Map([
-    ['', lazy(() => import('../../src/views/PasteComponent'))],
-    ['paste', lazy(() => import('../../src/views/PasteComponent'))],
-    ['report', lazy(() => import('../../src/views/ReportComponent'))],
-    ['profile', lazy(() => import('../../src/views/ProfileComponent'))],
-    ['log', lazy(() => import('../../src/views/PasteComponent'))],
-    ['schem', lazy(() => import('../../src/views/SchematicComponent'))]
-]);
-
 function Document({ paste, extension, metadata }: DocumentProps) {
-    const Renderer = EXTENSIONS.get(extension)!;
     return (
         <Layout showHelp={false}>
             <SEO
@@ -39,11 +28,42 @@ function Document({ paste, extension, metadata }: DocumentProps) {
                 }
             />
             <Suspense fallback={<p>Loading...</p>}>
-                <Renderer paste={paste} metadata={metadata} />
+                {renderExtension(extension, { paste, metadata })}
             </Suspense>
         </Layout>
     );
 }
+
+const PasteRenderer = lazy(() => import('../../src/views/PasteComponent'));
+const ReportRenderer = lazy(() => import('../../src/views/ReportComponent'));
+const ProfileRenderer = lazy(() => import('../../src/views/ProfileComponent'));
+const SchematicRenderer = lazy(
+    () => import('../../src/views/SchematicComponent')
+);
+
+function renderExtension(extension: Extension, props: PasteProps) {
+    switch (extension) {
+        case '':
+        case 'paste':
+        case 'log':
+            return <PasteRenderer {...props} />;
+        case 'report':
+            return <ReportRenderer {...props} />;
+        case 'profile':
+            return <ProfileRenderer {...props} />;
+        case 'schem':
+            return <SchematicRenderer {...props} />;
+    }
+}
+
+const EXTENSIONS = new Set<Extension>([
+    '',
+    'paste',
+    'report',
+    'profile',
+    'log',
+    'schem'
+]);
 
 function isValidExtension(extension: string): extension is Extension {
     return EXTENSIONS.has(extension as Extension);

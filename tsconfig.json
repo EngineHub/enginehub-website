@@ -39,7 +39,6 @@
         "golf/**/*.tsx",
         "shared/**/*.js",
         "shared/**/*.ts",
-        "shared/**/*.tsx",
-        "eslint.config.js"
+        "shared/**/*.tsx"
     ]
 }
