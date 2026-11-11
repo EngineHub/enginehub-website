@@ -11,7 +11,7 @@
         "@fortawesome/fontawesome-svg-core": "^7.3.1",
         "@fortawesome/free-solid-svg-icons": "^7.3.1",
         "@fortawesome/react-fontawesome": "^3.5.0",
-        "@google-cloud/firestore": "^9.4.0",
+        "@google-cloud/firestore": "^9.4.1",
         "bcrypt": "^6.0.0",
         "gzip-js": "^0.3.2",
         "jsonwebtoken": "^9.0.3",
