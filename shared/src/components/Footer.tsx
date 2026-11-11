@@ -31,6 +31,14 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                         <li className={FooterLi}>
                             <Link
                                 className={MainLink}
+                                href="https://enginehub.org/contributing/"
+                            >
+                                Contributing Guidelines
+                            </Link>
+                        </li>
+                        <li className={FooterLi}>
+                            <Link
+                                className={MainLink}
                                 href="https://builds.enginehub.org/"
                             >
                                 Test Builds
