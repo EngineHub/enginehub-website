@@ -59,6 +59,14 @@ const ContributingPage = () => (
                     submission. Including a non-human co-author implies a level
                     of vetting far below what we expect.
                 </li>
+                <li>
+                    <strong>Write clear prose.</strong> Ensure your writing in
+                    all parts of the PR is clear. This includes the title,
+                    description, commit messages, code documentation, and
+                    comments. Text that is obviously AI-generated should not be
+                    present, and may result in only partial reviews until it is
+                    cleaned up.
+                </li>
             </ul>
 
             <h2 className={SectionHeading}>Checklist</h2>
