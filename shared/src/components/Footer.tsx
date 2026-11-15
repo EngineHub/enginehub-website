@@ -21,18 +21,12 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                     <h4 className={SectionHeader}>Resources</h4>
                     <ul className={FooterUl}>
                         <li className={FooterLi}>
-                            <Link
-                                className={MainLink}
-                                href="https://enginehub.org/documentation/"
-                            >
+                            <Link className={MainLink} href="/documentation/">
                                 Docs
                             </Link>
                         </li>
                         <li className={FooterLi}>
-                            <Link
-                                className={MainLink}
-                                href="https://enginehub.org/contributing/"
-                            >
+                            <Link className={MainLink} href="/contributing/">
                                 Contributing Guidelines
                             </Link>
                         </li>
