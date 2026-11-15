@@ -13,7 +13,28 @@ import { MainLink } from './Link.module.css';
 import type { ExtraSponsorProps } from './Sponsors';
 import { RandomSponsor } from './Sponsors';
 
-export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
+export type SiteType = 'main' | 'builds' | 'paste' | undefined;
+
+function trimUrlByType(url: string, siteType?: SiteType) {
+    if (!siteType) {
+        return url;
+    }
+    switch (siteType) {
+        case 'main':
+            return url.replace('https://enginehub.org', '');
+        case 'builds':
+            return url.replace('https://builds.enginehub.org', '');
+        case 'paste':
+            return url.replace('https://paste.enginehub.org', '');
+        default:
+            return url;
+    }
+}
+
+export const Footer: FC<ExtraSponsorProps & { siteType?: SiteType }> = ({
+    extraSponsors,
+    siteType
+}) => {
     return (
         <footer className={FooterWrapper}>
             <div className={`${Container} ${FooterContainer}`}>
@@ -21,19 +42,34 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                     <h4 className={SectionHeader}>Resources</h4>
                     <ul className={FooterUl}>
                         <li className={FooterLi}>
-                            <Link className={MainLink} href="/documentation/">
+                            <Link
+                                className={MainLink}
+                                href={trimUrlByType(
+                                    'https://enginehub.org/documentation/',
+                                    siteType
+                                )}
+                            >
                                 Docs
                             </Link>
                         </li>
                         <li className={FooterLi}>
-                            <Link className={MainLink} href="/contributing/">
+                            <Link
+                                className={MainLink}
+                                href={trimUrlByType(
+                                    'https://enginehub.org/contributing/',
+                                    siteType
+                                )}
+                            >
                                 Contributing Guidelines
                             </Link>
                         </li>
                         <li className={FooterLi}>
                             <Link
                                 className={MainLink}
-                                href="https://builds.enginehub.org/"
+                                href={trimUrlByType(
+                                    'https://builds.enginehub.org/',
+                                    siteType
+                                )}
                             >
                                 Test Builds
                             </Link>
@@ -41,7 +77,10 @@ export const Footer: FC<ExtraSponsorProps> = ({ extraSponsors }) => {
                         <li className={FooterLi}>
                             <Link
                                 className={MainLink}
-                                href="https://paste.enginehub.org/"
+                                href={trimUrlByType(
+                                    'https://paste.enginehub.org/',
+                                    siteType
+                                )}
                             >
                                 Paste Service
                             </Link>
