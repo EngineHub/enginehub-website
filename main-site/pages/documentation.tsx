@@ -166,7 +166,7 @@ const DocumentationPage = () => {
                                         'https://craftbook.enginehub.org/en/5.0.0/'
                                     }
                                 >
-                                    CraftBook 5 Docs (Alpha - Spigot)
+                                    CraftBook 5 Docs (Paper)
                                 </Link>
                             </p>
                         </PlatformBanner>
