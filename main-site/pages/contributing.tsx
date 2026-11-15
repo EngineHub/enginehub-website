@@ -91,6 +91,16 @@ const ContributingPage = () => (
                     For more details, place two new lines after the summary line
                     and write away!
                 </li>
+                <li>
+                    <strong>AI Disclosure.</strong> Beyond a certain point, we
+                    require that you disclose the level of AI involvement as
+                    part of your pull request description. If the committed code
+                    in your PR is more than 50% directly written by AI, you
+                    should disclose your best estimate of that percentage. PRs
+                    that are more than 90% AI generated and that contain a
+                    significant amount of changes have a higher chance of being
+                    rejected, as it may make it difficult for us to review.
+                </li>
             </ol>
             <p>
                 You should be aware of{' '}
