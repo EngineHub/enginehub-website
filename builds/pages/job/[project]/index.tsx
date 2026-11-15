@@ -18,7 +18,8 @@ import {
     PrimaryButton,
     SecondaryButton,
     SEO,
-    Table
+    Table,
+    WarningBox
 } from '@enginehub/shared';
 
 import {
@@ -47,6 +48,7 @@ interface ProjectPageProps {
     branches: string[];
     pageNumber: number;
     hasNextPage: boolean;
+    buildsUnavailable?: boolean;
 }
 
 function Index({
@@ -55,7 +57,8 @@ function Index({
     branches,
     activeBranch,
     pageNumber,
-    hasNextPage
+    hasNextPage,
+    buildsUnavailable
 }: ProjectPageProps) {
     return (
         <Layout extraSponsors={project.extraSponsors}>
@@ -94,6 +97,12 @@ function Index({
                         mainBranch={project.defaultBranch}
                         projectId={project.id}
                     />
+                )}
+                {buildsUnavailable && (
+                    <div className={WarningBox} role="alert">
+                        Build data is temporarily unavailable. Please try again
+                        shortly.
+                    </div>
                 )}
                 <Link
                     className={`${Button} ${SecondaryButton}`}
@@ -241,14 +250,20 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
     const pageNumber = Number.parseInt(page as string) || 0;
 
-    const [builds, branches] = await Promise.all([
-        getBuildPage(
-            projectObj,
-            (branch as string) || projectObj.defaultBranch,
-            pageNumber
-        ),
-        getBranches(projectObj)
-    ]);
+    const activeBranch =
+        typeof branch === 'string' ? branch : projectObj.defaultBranch;
+    let builds: Build[] = [];
+    let branches: string[] = [];
+    let buildsUnavailable = false;
+    try {
+        [builds, branches] = await Promise.all([
+            getBuildPage(projectObj, activeBranch, pageNumber),
+            getBranches(projectObj)
+        ]);
+    } catch (error) {
+        console.error('Unable to load project build data:', error);
+        buildsUnavailable = true;
+    }
     const hasNextPage = builds.length === BUILDS_PER_PAGE + 1;
     if (hasNextPage) {
         builds.pop();
@@ -259,9 +274,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
             project: projectObj,
             builds,
             branches,
-            activeBranch: branch || projectObj.defaultBranch,
+            activeBranch,
             pageNumber,
-            hasNextPage
+            hasNextPage,
+            buildsUnavailable
         }
     };
 };

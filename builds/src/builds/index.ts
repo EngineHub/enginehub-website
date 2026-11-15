@@ -14,6 +14,23 @@ const ARTIFACT_FIELDS = `artifacts(file(name,size))`;
 
 const TEAMCITY_TOKEN = process.env.TEAMCITY_TOKEN;
 
+async function fetchTeamCity<T>(url: string): Promise<T> {
+    const response = await fetch(url, {
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${TEAMCITY_TOKEN}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            `TeamCity request failed: HTTP ${response.status} ${response.statusText} (${url})`
+        );
+    }
+
+    return (await response.json()) as T;
+}
+
 interface TCBuild {
     build: {
         id: string;
@@ -39,12 +56,7 @@ async function getBuildFromTCSelector(
 ): Promise<Build | undefined> {
     const url = `${TEAMCITY_API_URL}/app/rest/latest/builds/?locator=${selector}&fields=build(id,status,statusText,branchName,finishDate,number,buildType(projectId),${CHANGE_FIELDS},${ARTIFACT_FIELDS})`;
 
-    const data = (await fetch(url, {
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${TEAMCITY_TOKEN}`
-        }
-    }).then(response => response.json())) as TCBuild;
+    const data = await fetchTeamCity<TCBuild>(url);
 
     const build = data.build[0];
 
@@ -101,12 +113,7 @@ export async function getBuildPage(
     },branch:${branch},count:${BUILDS_PER_PAGE + 1},start:${
         pageNumber * BUILDS_PER_PAGE
     }&fields=build(number,status,id,statusText,finishDate,${CHANGE_FIELDS})`;
-    const data = (await fetch(url, {
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${TEAMCITY_TOKEN}`
-        }
-    }).then(response => response.json())) as TCBuild;
+    const data = await fetchTeamCity<TCBuild>(url);
 
     return data.build.map(build => ({
         state: build.status,
@@ -130,12 +137,7 @@ interface TCBranch {
 
 export async function getBranches(project: Project): Promise<string[]> {
     const url = `${TEAMCITY_API_URL}/app/rest/latest/projects/${project.id}/branches`;
-    const data = (await fetch(url, {
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${TEAMCITY_TOKEN}`
-        }
-    }).then(response => response.json())) as TCBranch;
+    const data = await fetchTeamCity<TCBranch>(url);
     const branches = data.branch.map(branch => branch.name);
     if (project.pinnedBranches) {
         for (const pinnedBranch of project.pinnedBranches) {

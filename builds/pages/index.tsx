@@ -35,9 +35,10 @@ interface ProjectEntry {
 
 interface IndexProps {
     projectEntries: ProjectEntry[];
+    buildsUnavailable?: boolean;
 }
 
-function Index({ projectEntries }: IndexProps) {
+function Index({ projectEntries, buildsUnavailable }: IndexProps) {
     return (
         <Layout>
             <SEO
@@ -58,6 +59,12 @@ function Index({ projectEntries }: IndexProps) {
                         of stable versions.
                     </p>
                 </div>
+                {buildsUnavailable && (
+                    <div className={WarningBox} role="alert">
+                        Build data is temporarily unavailable. Please try again
+                        shortly.
+                    </div>
+                )}
                 <table className={Table}>
                     <colgroup>
                         <col style={{ width: '20px' }} />
@@ -161,27 +168,45 @@ function Index({ projectEntries }: IndexProps) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<IndexProps> = async ({
+    revalidateReason
+}) => {
     const projectEntries: ProjectEntry[] = PROJECTS.map(proj => ({
         project: proj,
         builds: []
     }));
 
-    await Promise.all(
-        projectEntries.map(async proj => {
-            const branches = await getBranches(proj.project);
-            proj.builds = (
-                await Promise.all(
-                    branches.map(
-                        async branch =>
-                            await getLatestBuild(proj.project, branch)
+    try {
+        await Promise.all(
+            projectEntries.map(async proj => {
+                const branches = await getBranches(proj.project);
+                proj.builds = (
+                    await Promise.all(
+                        branches.map(
+                            async branch =>
+                                await getLatestBuild(proj.project, branch)
+                        )
                     )
                 )
-            )
-                .filter((b): b is Build => !!b)
-                .map(({ artifacts: _artifacts, changes: _changes, ...b }) => b);
-        })
-    );
+                    .filter((b): b is Build => !!b)
+                    .map(
+                        ({ artifacts: _artifacts, changes: _changes, ...b }) =>
+                            b
+                    );
+            })
+        );
+    } catch (error) {
+        if (revalidateReason !== 'build') {
+            // Let ISR retain the last successful page when revalidation fails.
+            throw error;
+        }
+
+        console.error('Unable to load build data:', error);
+        return {
+            props: { projectEntries: [], buildsUnavailable: true },
+            revalidate: 60
+        };
+    }
 
     return {
         props: { projectEntries },

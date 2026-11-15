@@ -50,11 +50,33 @@ import type { Project } from '../../../../src/project';
 import { PROJECT_MAP } from '../../../../src/project';
 
 interface BuildPageProps {
-    build: Build;
+    build?: Build;
     project: Project;
+    buildsUnavailable?: boolean;
 }
 
-function Index({ project, build }: BuildPageProps) {
+function Index({ project, build, buildsUnavailable }: BuildPageProps) {
+    if (buildsUnavailable || !build) {
+        return (
+            <Layout extraSponsors={project.extraSponsors}>
+                <SEO
+                    title={`${project.name} Build`}
+                    description={`${project.name} build data is temporarily unavailable.`}
+                />
+                <div className={`${Container} ${ContainerPadded}`}>
+                    <h1 className={HeaderText}>{project.name} Build</h1>
+                    <div className={WarningBox} role="alert">
+                        Build data is temporarily unavailable. Please try again
+                        shortly.
+                    </div>
+                    <Link className={MainLink} href={`/job/${project.id}`}>
+                        View {project.name} builds
+                    </Link>
+                </div>
+            </Layout>
+        );
+    }
+
     return (
         <Layout extraSponsors={project.extraSponsors}>
             <SEO
@@ -273,7 +295,7 @@ interface BuildPageRouteParams extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps<
     BuildPageProps,
     BuildPageRouteParams
-> = async ({ params }) => {
+> = async ({ params, revalidateReason }) => {
     const { project, build } = params!;
     const projectObj = PROJECT_MAP.get(project);
     if (!projectObj) {
@@ -282,11 +304,20 @@ export const getStaticProps: GetStaticProps<
         };
     }
 
-    let buildObj;
+    let buildObj: Build | undefined;
     try {
         buildObj = await getBuild(build);
-    } catch {
-        // Ignore this
+    } catch (error) {
+        if (revalidateReason !== 'build') {
+            // Let ISR retain the last successful page when revalidation fails.
+            throw error;
+        }
+
+        console.error('Unable to load build data:', error);
+        return {
+            props: { project: projectObj, buildsUnavailable: true },
+            revalidate: 60
+        };
     }
     if (!buildObj) {
         return {
