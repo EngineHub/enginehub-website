@@ -26,12 +26,12 @@
     line-height: 1.4375rem;
     display: inline-block;
     text-decoration: none;
-    color: black;
+    color: var(--text-normal);
     padding: 8px 0px;
     cursor: pointer;
 
     &:hover {
-        color: black;
+        color: var(--text-normal);
         font-size: 1.125rem;
         line-height: 1.4375rem;
         display: inline-block;
@@ -41,6 +41,6 @@
 
 .Paragraph {
     margin: 16px 0;
-    color: black;
+    color: var(--text-normal);
     font-size: 16px;
 }

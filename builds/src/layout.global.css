@@ -5,6 +5,7 @@ html {
 }
 body {
     margin: 0;
+    background-color: var(--page-background);
     font-size: 14px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -67,8 +68,8 @@ h1 {
     margin: 0.67em 0;
 }
 mark {
-    background-color: #ff0;
-    color: #000;
+    background-color: var(--highlight-background);
+    color: var(--highlight-text);
 }
 small {
     font-size: 80%;
@@ -200,7 +201,7 @@ html {
     box-sizing: inherit;
 }
 body {
-    color: hsla(0, 0%, 0%, 0.8);
+    color: var(--text-normal);
     font-weight: normal;
     word-wrap: break-word;
     font-kerning: normal;
@@ -391,7 +392,7 @@ pre {
     margin-bottom: 1.45rem;
     font-size: 0.85rem;
     line-height: 1.42;
-    background: hsla(0, 0%, 0%, 0.04);
+    background: rgb(from var(--text-strong) r g b / 0.04);
     border-radius: 3px;
     overflow: auto;
     word-wrap: normal;
@@ -470,7 +471,7 @@ hr {
     padding-right: 0;
     padding-top: 0;
     margin-bottom: calc(1.45rem - 1px);
-    background: hsla(0, 0%, 0%, 0.2);
+    background: rgb(from var(--text-strong) r g b / 0.2);
     border: none;
     height: 1px;
 }
@@ -526,8 +527,8 @@ li > p {
 }
 code {
     font-size: 90%;
-    color: rgb(199, 37, 78);
-    background-color: rgb(249, 242, 244);
+    color: var(--code-text);
+    background-color: var(--code-background);
     padding: 2px 4px;
     border-radius: 4px;
 }
@@ -540,15 +541,15 @@ samp {
     line-height: 1.45rem;
 }
 abbr {
-    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+    border-bottom: 1px dotted rgb(from var(--text-strong) r g b / 0.5);
     cursor: help;
 }
 acronym {
-    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+    border-bottom: 1px dotted rgb(from var(--text-strong) r g b / 0.5);
     cursor: help;
 }
 abbr[title] {
-    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+    border-bottom: 1px dotted rgb(from var(--text-strong) r g b / 0.5);
     cursor: help;
     text-decoration: none;
 }
@@ -558,7 +559,7 @@ thead {
 td,
 th {
     text-align: left;
-    border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
+    border-bottom: 1px solid rgb(from var(--text-strong) r g b / 0.12);
     font-feature-settings: 'tnum';
     -moz-font-feature-settings: 'tnum';
     -ms-font-feature-settings: 'tnum';
@@ -578,7 +579,7 @@ td:last-child {
 }
 tt,
 code {
-    background-color: hsla(0, 0%, 0%, 0.04);
+    background-color: rgb(from var(--text-strong) r g b / 0.04);
     border-radius: 3px;
     font-family:
         Menlo,

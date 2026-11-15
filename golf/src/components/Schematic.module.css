@@ -4,6 +4,6 @@
     justify-content: center;
 
     & canvas {
-        border: solid 2px rgba(28, 28, 28, 0.3);
+        border: solid 2px rgb(from var(--text-strong) r g b / 0.3);
     }
 }

@@ -158,8 +158,8 @@ function Index({ project, build, buildsUnavailable }: BuildPageProps) {
                                             style={{
                                                 color:
                                                     build.state === 'SUCCESS'
-                                                        ? '#3c763d'
-                                                        : '#a94442'
+                                                        ? 'var(--success-text)'
+                                                        : 'var(--danger-text)'
                                             }}
                                         />
                                         {build.state}

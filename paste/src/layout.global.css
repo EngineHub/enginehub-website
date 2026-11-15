@@ -5,6 +5,8 @@ html,
 
 body {
     margin: 0;
+    background-color: var(--page-background);
+    color: var(--text-normal);
     font-size: 14px;
     height: 100%;
     font-family: 'Roboto', sans-serif;

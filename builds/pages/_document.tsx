@@ -1,7 +1,7 @@
 import type { DocumentProps } from 'next/document';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import { ThemeInjector } from '@enginehub/shared';
+import { LIGHT_THEME, ThemeInjector } from '@enginehub/shared';
 
 class MyDocument extends Document<DocumentProps> {
     render() {
@@ -16,7 +16,10 @@ class MyDocument extends Document<DocumentProps> {
                         rel="shortcut icon"
                         href="/static/icons/icon-48x48.png"
                     />
-                    <meta name="theme-color" content="#4B3570" />
+                    <meta
+                        name="theme-color"
+                        content={LIGHT_THEME.brand.normal}
+                    />
                     <link
                         rel="apple-touch-icon"
                         sizes="48x48"

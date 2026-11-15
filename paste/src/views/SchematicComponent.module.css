@@ -12,7 +12,7 @@
 }
 
 .InfoBarContainer {
-    background-color: white;
+    background-color: var(--page-background);
     display: flex;
     width: 100%;
     justify-content: center;

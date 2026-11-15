@@ -20,10 +20,10 @@
         width: 51px;
         height: 51px;
         margin: 6px;
-        border: 6px solid #fff;
+        border: 6px solid var(--brand-font);
         border-radius: 50%;
         animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-        border-color: #fff transparent transparent transparent;
+        border-color: var(--brand-font) transparent transparent transparent;
     }
     & div:nth-of-type(1) {
         animation-delay: -0.45s;

@@ -84,7 +84,11 @@ function Index({ projectEntries, buildsUnavailable }: IndexProps) {
                         </tr>
                         {projectEntries.map(projectEntry => (
                             <Fragment key={projectEntry.project.id}>
-                                <tr style={{ background: '#eee' }}>
+                                <tr
+                                    style={{
+                                        background: 'var(--secondary-lighter)'
+                                    }}
+                                >
                                     <td colSpan={6}>
                                         <h2 className={TableSeparatorHeader}>
                                             {projectEntry.project.name}
@@ -136,8 +140,8 @@ function Index({ projectEntries, buildsUnavailable }: IndexProps) {
                                                     color:
                                                         build.state ===
                                                         'SUCCESS'
-                                                            ? '#3c763d'
-                                                            : '#a94442'
+                                                            ? 'var(--success-text)'
+                                                            : 'var(--danger-text)'
                                                 }}
                                             />
                                         </td>

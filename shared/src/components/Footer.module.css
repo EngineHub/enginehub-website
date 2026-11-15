@@ -14,13 +14,13 @@
 
 .FooterWrapper {
     justify-content: center;
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid var(--secondary-lighter);
     padding: 20px 25px 40px;
     margin: 200px 0 0;
 }
 
 .SectionHeader {
-    color: rgb(119, 119, 119);
+    color: var(--text-muted);
     font-size: 18px;
     font-weight: 500;
     line-height: 32.4px;

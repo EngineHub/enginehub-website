@@ -1,5 +1,5 @@
 .HeaderLink {
-    color: rgb(51, 51, 51);
+    color: var(--text-normal);
     text-decoration: none;
 }
 
@@ -28,12 +28,12 @@
 
     & h2 {
         text-align: center;
-        color: #333333;
+        color: var(--text-normal);
     }
 
     & p {
         text-align: center;
-        color: #333333;
+        color: var(--text-normal);
     }
 }
 

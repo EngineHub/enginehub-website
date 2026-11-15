@@ -11,8 +11,10 @@ import {
     Button,
     Container,
     FileSelector,
+    InfoBox,
     SEO,
-    useElementWidth
+    useElementWidth,
+    WarningBox
 } from '@enginehub/shared';
 
 import {
@@ -163,18 +165,9 @@ const Submit = () => {
                 <h1>Create Golf!</h1>
                 {submitting && submitting.data && (
                     <div
-                        style={{
-                            borderRadius: '3px',
-                            padding: '6px 10px',
-                            background:
-                                submitting.type === 'failed'
-                                    ? '#ff000066'
-                                    : '#00ff0066',
-                            border:
-                                submitting.type === 'failed'
-                                    ? '#ff0000 2px solid'
-                                    : '#00ff00 2px solid'
-                        }}
+                        className={
+                            submitting.type === 'failed' ? WarningBox : InfoBox
+                        }
                     >
                         {submitting.data}
                     </div>

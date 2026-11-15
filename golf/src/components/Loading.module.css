@@ -34,7 +34,7 @@
     z-index: 1;
     justify-content: center;
     height: 100%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(from var(--page-background) r g b / 0.8);
 
     & h1 {
         margin-left: 20px;
