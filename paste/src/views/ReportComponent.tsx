@@ -35,7 +35,7 @@ const ReportNode: FC<ReportNodeProps> = ({ entry }) => {
                 className={ReportNodeTitle}
                 onClick={onToggle}
                 style={{
-                    background: `#efefef url(${
+                    background: `var(--secondary-lighter) url(${
                         open ? CloseIcon.src : OpenIcon.src
                     }) center left no-repeat`
                 }}

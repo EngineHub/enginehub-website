@@ -1,10 +1,10 @@
 .ProfileNodeBox {
     margin-left: 6px;
-    border-left: 1px solid #ccc;
+    border-left: 1px solid var(--secondary-accent);
 }
 
 .PercentText {
-    color: #0059d1;
+    color: var(--primary-normal);
     font-size: 90%;
     border-radius: 3px;
     padding: 0 4px;
@@ -13,7 +13,7 @@
 .TimeText {
     display: none;
     margin: 0;
-    color: #888;
+    color: color-mix(in srgb, var(--text-normal) 58%, var(--page-background));
     font-size: 90%;
     border-radius: 3px;
     padding: 0 4px;
@@ -24,17 +24,17 @@
     width: 100px;
     height: 12px;
     margin-left: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-accent);
     position: absolute;
     right: 30px;
-    background: #fff;
+    background: var(--page-background);
     line-height: 1;
 }
 
 .BarInner {
     display: inline-block;
     height: 12px;
-    background: #0059d1;
+    background: var(--primary-normal);
 }
 
 .ProfileNodeText {
@@ -44,12 +44,12 @@
     padding-bottom: 2px;
 
     &:hover {
-        background-color: #ccc;
+        background-color: var(--secondary-accent);
     }
 
     &:hover + div {
-        background: #efefef;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        background: var(--secondary-lighter);
+        box-shadow: 0 2px 4px rgb(from var(--shadow-color) r g b / 0.4);
         border-radius: 3px;
     }
 

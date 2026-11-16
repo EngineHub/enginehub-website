@@ -2,7 +2,7 @@
     padding: 15px;
     float: left;
     text-align: right;
-    color: #ccc;
+    color: var(--secondary-accent);
     display: flex;
     line-height: 130%;
     white-space: pre;

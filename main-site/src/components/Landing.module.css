@@ -28,7 +28,7 @@
 }
 
 .Title {
-    color: #ffffff;
+    color: var(--brand-font);
     line-height: 1.2;
     font-size: 30px;
     margin-top: 23px;
@@ -43,7 +43,7 @@
 }
 
 .Subtitle {
-    color: #b4a1d3;
+    color: var(--brand-muted);
     font-size: 14px;
     margin: 0 0 11.5px;
     line-height: 1.7;
@@ -63,7 +63,7 @@
 
 .FeatureHeading {
     padding: 8px 60px;
-    border-bottom: 1px solid #d0d0d0;
+    border-bottom: 1px solid var(--secondary-accent);
     font-weight: 700;
     font-size: 21px;
     line-height: 1.8;

@@ -12,9 +12,9 @@
 }
 
 .EntryContainer {
-    background: rgba(77, 54, 114, 0.8);
-    color: white;
-    border: solid rgb(77, 54, 114);
+    background: rgb(from var(--brand-normal) r g b / 0.8);
+    color: var(--brand-font);
+    border: solid var(--brand-normal);
     padding: 8px 14px;
     display: flex;
 }

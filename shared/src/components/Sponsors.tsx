@@ -28,7 +28,7 @@ const useSponsorComponents = () => {
                         unoptimized
                         style={{
                             marginBottom: 0,
-                            color: '#000000',
+                            color: 'var(--text-strong)',
                             width: '100%',
                             height: 'auto'
                         }}

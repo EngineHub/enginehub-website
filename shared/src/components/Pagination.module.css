@@ -19,16 +19,16 @@
         padding: 6px 12px;
         line-height: 1.7;
         text-decoration: none;
-        color: #0059d1;
-        background-color: #fff;
-        border: 1px solid #ddd;
+        color: var(--link-text);
+        background-color: var(--page-background);
+        border: 1px solid var(--border);
         margin-left: -1px;
     }
 
     & span {
-        color: #777;
-        background-color: #fff;
-        border-color: #ddd;
+        color: var(--text-muted);
+        background-color: var(--page-background);
+        border-color: var(--border);
         cursor: not-allowed;
     }
 }

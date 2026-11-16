@@ -18,16 +18,16 @@
     border-radius: 4px;
     position: relative;
     display: block;
-    color: #0059d1;
+    color: var(--primary-normal);
     text-decoration: none;
 
     &:hover {
         text-decoration: none;
-        background-color: #eee;
+        background-color: var(--secondary-lighter);
     }
 
     &:global(.active) {
-        color: #fff;
-        background-color: #0059d1;
+        color: var(--primary-font);
+        background-color: var(--primary-normal);
     }
 }

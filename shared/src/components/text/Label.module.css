@@ -4,7 +4,7 @@
     font-size: 75%;
     font-weight: 700;
     line-height: 1;
-    color: #fff;
+    color: var(--label-text);
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
@@ -12,9 +12,9 @@
 }
 
 .WarningLabel {
-    background-color: #f0ad4e;
+    background-color: var(--label-warning-background);
 }
 
 .InfoLabel {
-    background-color: #777;
+    background-color: var(--label-info-background);
 }

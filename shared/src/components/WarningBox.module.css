@@ -1,9 +1,9 @@
 .WarningBox {
-    background-color: #fcf8e3;
-    color: #8a6d3b;
+    background-color: var(--warning-background);
+    color: var(--warning-text);
 
     padding: 15px;
     margin-bottom: 23px;
-    border: 1px solid #faebcc;
+    border: 1px solid var(--warning-border);
     border-radius: 4px;
 }

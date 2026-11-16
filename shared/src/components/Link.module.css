@@ -1,10 +1,10 @@
 .MainLink {
-    color: var(--primary-normal);
+    color: var(--link-text);
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
-        color: var(--primary-darker);
+        color: var(--link-hover);
         text-decoration: underline;
     }
 }

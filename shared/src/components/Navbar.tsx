@@ -1,21 +1,20 @@
 import Link from 'next/link';
 import type { FC, PropsWithChildren } from 'react';
 
-import { BRAND, SECONDARY } from '../theme/index';
 import { BrandButton, Button, SecondaryButton } from './Button.module.css';
 import { Container } from './Container.module.css';
 import { FloatedButton, HeaderLink, Nav } from './Navbar.module.css';
 
 const NavBackgroundColours = {
-    default: SECONDARY.darker,
+    default: 'var(--secondary-darker)',
     inverted: '0',
-    purple: BRAND.darker
+    purple: 'var(--brand-darker)'
 };
 
 const HeaderTextColors = {
-    default: SECONDARY.font,
-    inverted: BRAND.font,
-    purple: BRAND.font
+    default: 'var(--secondary-font)',
+    inverted: 'var(--brand-font)',
+    purple: 'var(--brand-font)'
 };
 
 interface NavbarProps {

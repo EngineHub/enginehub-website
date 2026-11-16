@@ -1,7 +1,7 @@
 .MainHeader {
     padding: 6px 15px;
     height: 45px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 4px rgb(from var(--shadow-color) r g b / 0.3);
     font-family: 'Open Sans', Arial, sans-serif;
     transition: all 0.5s;
     transition-timing-function: ease-out;
@@ -26,17 +26,17 @@
 
 .Button {
     padding: 4px 0.3rem;
-    color: #555;
+    color: color-mix(in srgb, var(--text-normal) 83%, var(--page-background));
     line-height: 1.7;
     border-radius: 5px;
-    background-color: #fff;
-    border: 1px solid #eee;
+    background-color: var(--page-background);
+    border: 1px solid var(--secondary-lighter);
     transition: background-color 0.1s ease-in-out;
     cursor: pointer;
     text-decoration: none;
 
     &:hover {
-        background-color: #eee;
+        background-color: var(--secondary-lighter);
     }
 }
 
@@ -61,14 +61,14 @@
 }
 
 .SiteLink {
-    color: #0059d1;
+    color: var(--link-text);
     text-decoration: none;
     cursor: pointer;
     user-select: none;
 
     &:hover,
     &:focus {
-        color: #003884;
+        color: var(--link-strong-hover);
         text-decoration: underline;
     }
 }
