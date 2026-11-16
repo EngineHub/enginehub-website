@@ -27,6 +27,13 @@
     font-size: 1.3rem;
     line-height: 1.5;
     padding: 0.5rem;
+    color: var(--text-normal);
+    background-color: var(--page-background);
+    border: 1px solid var(--border);
+
+    &:disabled {
+        background-color: var(--secondary-normal);
+    }
 }
 
 .SchematicBoxText {

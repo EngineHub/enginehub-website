@@ -21,19 +21,25 @@ const useSponsorComponents = () => {
         () => [
             () => (
                 <a href="https://billing.apexminecrafthosting.com/aff.php?aff=3108">
-                    <Image
-                        src={'https://enginehub.org/images/apex.svg'}
-                        width={750}
-                        height={150}
-                        unoptimized
-                        style={{
-                            marginBottom: 0,
-                            color: 'var(--text-strong)',
-                            width: '100%',
-                            height: 'auto'
-                        }}
-                        alt="Apex Hosting"
-                    />
+                    <picture>
+                        <source
+                            media="(prefers-color-scheme: dark)"
+                            srcSet="https://enginehub.org/images/apex-hosting_light.svg"
+                            type="image/svg+xml"
+                        />
+                        <Image
+                            src="https://enginehub.org/images/apex-hosting_dark.svg"
+                            width={514}
+                            height={99}
+                            unoptimized
+                            style={{
+                                marginBottom: 0,
+                                width: '100%',
+                                height: 'auto'
+                            }}
+                            alt="Apex Hosting"
+                        />
+                    </picture>
                 </a>
             ),
             () => (
