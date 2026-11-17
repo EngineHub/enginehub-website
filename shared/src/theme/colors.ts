@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 export interface ColorPalette {
     normal: string;
     darker: string;
@@ -123,6 +125,70 @@ export const LIGHT_THEME: Theme = {
     }
 };
 
+type DeepPartial<T> = {
+    [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
+
+export const DARK_THEME: Theme = deepmerge<Theme, DeepPartial<Theme>>(
+    LIGHT_THEME,
+    {
+        primary: {
+            lighter: '#66a8ff',
+            normal: '#3b82e6',
+            darker: '#2563c4',
+            accent: '#8dc0ff'
+        },
+        secondary: {
+            lighter: '#3a3942',
+            normal: '#302f37',
+            darker: '#25242b',
+            font: '#e6e3eb',
+            accent: '#55545f'
+        },
+        pageBackground: '#18171c',
+        text: {
+            strong: '#fff',
+            muted: '#aaa6b2'
+        },
+        link: {
+            text: 'var(--primary-accent)',
+            hover: 'var(--primary-lighter)',
+            strongHover: '#b7d7ff'
+        },
+        highlight: {
+            background: '#594d20',
+            text: '#fff2b3'
+        },
+        code: {
+            text: '#f08bab',
+            background: '#29232b'
+        },
+        box: {
+            info: {
+                background: '#1e3440',
+                text: '#a9d8ec',
+                border: '#32586a'
+            },
+            warning: {
+                background: '#40351e',
+                text: '#f2d28b',
+                border: '#66552c'
+            }
+        },
+        label: {
+            infoBackground: 'var(--secondary-accent)',
+            warningBackground: '#b87825'
+        },
+        status: {
+            successText: '#8bd49b',
+            danger: {
+                text: '#ffaaaa',
+                background: '#48282c'
+            }
+        }
+    }
+);
+
 export const createThemeCss = (theme: Theme): string => `
     /* Brand */
     --brand-lighter: ${theme.brand.lighter};
@@ -179,5 +245,11 @@ export const createThemeCss = (theme: Theme): string => `
 export const THEME_CSS = `
 html {
 ${createThemeCss(LIGHT_THEME)}
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+${createThemeCss(DARK_THEME)}
+    }
 }
 `;
