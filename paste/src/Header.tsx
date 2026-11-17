@@ -1,16 +1,13 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 
-import { LabelledSponsorsArea } from '@enginehub/shared';
-
 import {
     Button,
     ButtonArea,
-    FloatedSponsor,
+    DesktopLink,
     MainHeader,
     SiteLink,
-    SiteTitle,
-    SupportLink
+    SiteTitle
 } from './Header.module.css';
 
 interface HeaderProps {
@@ -20,15 +17,26 @@ interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ showHelp, saveCallback }) => (
     <header className={MainHeader}>
+        <Link
+            className={`${SiteLink} ${SiteTitle}`}
+            href="https://enginehub.org/"
+        >
+            EngineHub
+        </Link>
         <h1 className={SiteTitle}>
             <Link className={SiteLink} href="/">
                 Pastebin
             </Link>
         </h1>
-        <LabelledSponsorsArea className={FloatedSponsor} />
         <div className={ButtonArea}>
             <a
-                className={`${Button} ${SupportLink}`}
+                className={`${Button} ${DesktopLink}`}
+                href="https://discord.gg/enginehub"
+            >
+                Ask questions on Discord
+            </a>
+            <a
+                className={`${Button} ${DesktopLink}`}
                 href="https://github.com/sponsors/EngineHub"
             >
                 Support Us

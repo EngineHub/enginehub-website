@@ -32,7 +32,15 @@ More info
             };
         }
         case 'test-schematic': {
-            return { content: TEST_SCHEM, metadata: { extension: 'schem' } };
+            return {
+                content: TEST_SCHEM,
+                metadata: {
+                    extension: 'schem',
+                    author: 'Test Author',
+                    name: 'Test Schematic',
+                    from: 'WorldEdit'
+                }
+            };
         }
         // No default
     }
