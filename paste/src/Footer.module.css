@@ -1,0 +1,35 @@
+.FooterContainer {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0 1rem;
+    padding: 0 15px;
+    background-color: var(--page-background);
+    box-shadow: 0 0 4px rgb(from var(--shadow-color) r g b / 0.3);
+}
+
+.InfoBar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0 1rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.Sponsors {
+    flex-shrink: 0;
+    width: 260px;
+    max-width: 100%;
+    height: 70px;
+    justify-content: center;
+    overflow: hidden;
+
+    & > div {
+        width: 200px;
+        flex-shrink: 0;
+    }
+}

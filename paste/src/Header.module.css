@@ -1,13 +1,14 @@
 .MainHeader {
     padding: 6px 15px;
-    height: 45px;
+    min-height: 45px;
+    flex-shrink: 0;
     box-shadow: 0 0 4px rgb(from var(--shadow-color) r g b / 0.3);
     font-family: 'Open Sans', Arial, sans-serif;
     transition: all 0.5s;
     transition-timing-function: ease-out;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.5rem;
     align-items: center;
 }
 
@@ -18,10 +19,6 @@
     font-size: 130%;
     line-height: 1.8;
     box-sizing: border-box;
-    display: inline-block;
-    flex: 33%;
-    flex-grow: 0;
-    flex-shrink: 0;
 }
 
 .Button {
@@ -40,8 +37,9 @@
     }
 }
 
-.SupportLink {
+.DesktopLink {
     display: none;
+    white-space: nowrap;
 
     @media (min-width: 768px) {
         display: block;
@@ -49,10 +47,9 @@
 }
 
 .ButtonArea {
-    flex: 33%;
-    flex-grow: 0;
-    flex-shrink: 0;
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 4px;
     justify-content: flex-end;
 
     & * {
@@ -61,27 +58,14 @@
 }
 
 .SiteLink {
-    color: var(--link-text);
+    color: var(--secondary-font);
     text-decoration: none;
     cursor: pointer;
     user-select: none;
 
     &:hover,
     &:focus {
-        color: var(--link-strong-hover);
-        text-decoration: underline;
-    }
-}
-
-.FloatedSponsor {
-    flex: 0;
-    flex-grow: 0;
-    flex-shrink: 0;
-    display: none;
-    justify-content: center;
-
-    @media (min-width: 768px) {
-        flex: 33%;
-        display: flex;
+        color: var(--secondary-font);
+        text-decoration: none;
     }
 }

@@ -18,7 +18,12 @@ export interface PasteProps {
 
 function Document({ paste, extension, metadata }: DocumentProps) {
     return (
-        <Layout showHelp={false}>
+        <Layout
+            showHelp={false}
+            paste={paste}
+            metadata={metadata}
+            extension={extension}
+        >
             <SEO
                 title="Paste Viewer | EngineHub Pastebin"
                 description={
@@ -73,7 +78,7 @@ export const getStaticProps: GetStaticProps<object, { id: string }> = async ({
     params
 }) => {
     const { id } = params!;
-    let pasteId = `${id}`;
+    let pasteId = id;
     let extension: Extension | undefined;
     const dotIndex = id.lastIndexOf('.');
     if (dotIndex !== -1) {
