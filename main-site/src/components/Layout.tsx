@@ -47,7 +47,7 @@ const Layout: FunctionComponent<PropsWithChildren<LayoutProps>> = ({
                 <Navbar discordOverride={discordOverride} />
             )}
             <main>{children}</main>
-            <Footer extraSponsors={extraSponsors} />
+            <Footer extraSponsors={extraSponsors} siteType="main" />
         </>
     );
 };
